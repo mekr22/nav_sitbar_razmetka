@@ -326,30 +326,32 @@ const MarketplaceRightMenuContent: FC = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
-          {sectorData.map((sector) => (
-            <div
-              key={sector.name}
-              className={cn(
-                "flex aspect-square flex-col justify-between rounded-xl p-1.5",
-                sector.highlighted ? "bg-[#523A83]" : "bg-[#2E2744]",
-              )}
-            >
-              <div className="flex flex-col gap-0.5">
-                <span className="text-[13px] text-webGray">{sector.percentage}</span>
-                <span className="text-sm font-bold text-white">{sector.name}</span>
-              </div>
-              <span
+        {!isSectorCollapsed && (
+          <div className="grid grid-cols-3 gap-2">
+            {sectorData.map((sector) => (
+              <div
+                key={sector.name}
                 className={cn(
-                  "text-right text-[17px] font-bold",
-                  sector.change.startsWith("+") ? "text-green" : "text-red",
+                  "flex aspect-square flex-col justify-between rounded-xl p-1.5",
+                  sector.highlighted ? "bg-[#523A83]" : "bg-[#2E2744]",
                 )}
               >
-                {sector.change}
-              </span>
-            </div>
-          ))}
-        </div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[13px] text-webGray">{sector.percentage}</span>
+                  <span className="text-sm font-bold text-white">{sector.name}</span>
+                </div>
+                <span
+                  className={cn(
+                    "text-right text-[17px] font-bold",
+                    sector.change.startsWith("+") ? "text-green" : "text-red",
+                  )}
+                >
+                  {sector.change}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-6 rounded-xl border border-[#181B22] bg-[#0C101480] p-4 pb-12 backdrop-blur-[50px]">
