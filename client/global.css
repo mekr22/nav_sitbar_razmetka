@@ -134,6 +134,29 @@ textarea::-webkit-scrollbar-track {
   background: transparent;
 }
 
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #482090 rgba(72, 32, 144, 0.2);
+}
+
+.custom-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(72, 32, 144, 0.2);
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: linear-gradient(270deg, #a06aff 0%, #482090 100%);
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(270deg, #b27bff 0%, #5b2db1 100%);
+}
+
 @layer components {
   .container-card {
     @apply border border-[#181B22] rounded-[24px] max-w-[1340px] bg-[#0C101480] backdrop-blur-[100px];
