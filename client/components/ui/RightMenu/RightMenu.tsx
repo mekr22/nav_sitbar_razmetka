@@ -378,21 +378,23 @@ const MarketplaceRightMenuContent: FC = () => {
           <h3 className="text-[19px] font-bold text-white">News</h3>
           <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
         </div>
-        <div className="flex items-center gap-1.5">
-          {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
-            <button
-              key={category}
-              onClick={() => setNewsCategory(category.toLowerCase())}
-              className={cn(
-                "flex h-9 shrink-0 items-center justify-center rounded-full px-3 text-[13px] font-semibold leading-none transition-all",
-                newsCategory === category.toLowerCase()
-                  ? "border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                  : "border border-[#181B22] bg-[#0C101480] text-white",
-              )}
-            >
-              {category}
-            </button>
-          ))}
+        <div className="-mx-1 overflow-x-auto pb-1">
+          <div className="flex min-w-max items-center gap-2 px-1">
+            {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
+              <button
+                key={category}
+                onClick={() => setNewsCategory(category.toLowerCase())}
+                className={cn(
+                  "flex h-9 shrink-0 items-center justify-center rounded-full px-4 text-xs font-semibold leading-none whitespace-nowrap transition-all",
+                  newsCategory === category.toLowerCase()
+                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.45)]"
+                    : "border border-[#181B22] bg-[#0C101480] text-white",
+                )}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="flex flex-col gap-4">
           {newsItems.map((item, idx) => (
