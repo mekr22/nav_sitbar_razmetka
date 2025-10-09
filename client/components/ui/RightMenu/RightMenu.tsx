@@ -467,7 +467,14 @@ const MarketplaceRightMenuContent: FC = () => {
           <h3 className="text-[19px] font-bold text-white">News</h3>
           <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
         </div>
-        <div className="custom-scroll -mx-1 overflow-x-auto pb-1">
+        <div
+          ref={newsFilterScrollRef}
+          className="custom-scroll -mx-1 overflow-x-auto pb-1"
+          onPointerDown={handleNewsPointerDown}
+          onPointerUp={handleNewsPointerCancel}
+          onPointerCancel={handleNewsPointerCancel}
+          onClickCapture={handleNewsClickCapture}
+        >
           <div className="flex min-w-max items-center gap-2 px-1">
             {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
               <button
