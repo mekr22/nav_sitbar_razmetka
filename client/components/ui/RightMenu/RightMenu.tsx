@@ -291,10 +291,11 @@ const MarketplaceRightMenuContent: FC = () => {
             </div>
             <button
               type="button"
-              className="text-[#B0B0B0] transition-colors hover:text-white"
-              aria-label="Close sector mover"
+              onClick={() => setIsSectorCollapsed((prev) => !prev)}
+              className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
+              aria-label={isSectorCollapsed ? "Expand sector mover" : "Close sector mover"}
             >
-              <X className="h-4 w-4" />
+              {isSectorCollapsed ? <Plus className="h-4 w-4" /> : <X className="h-4 w-4" />}
             </button>
           </div>
           <div className="flex items-center gap-2">
