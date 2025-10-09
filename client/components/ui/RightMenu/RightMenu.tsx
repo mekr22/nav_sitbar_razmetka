@@ -469,7 +469,7 @@ const MarketplaceRightMenuContent: FC = () => {
         </div>
         <div
           ref={newsFilterScrollRef}
-          className="custom-scroll -mx-1 overflow-x-auto pb-1"
+          className="news-filter-scroll custom-scroll -mx-1 overflow-x-auto pb-1"
           onPointerDown={handleNewsPointerDown}
           onPointerUp={handleNewsPointerCancel}
           onPointerCancel={handleNewsPointerCancel}
