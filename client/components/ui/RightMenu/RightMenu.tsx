@@ -257,22 +257,15 @@ const MarketplaceRightMenuContent: FC = () => {
         </button>
       </div>
 
-      <div className="rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
-        <button
-          onClick={() => setTradingPsychologyOpen((prev) => !prev)}
-          className="flex items-center justify-between pb-2"
-        >
+      <div className="flex flex-col gap-0 rounded-xl border border-[#181B22] bg-[#0C101480] py-4 backdrop-blur-[50px]">
+        <div className="flex items-center justify-between px-4 pb-2">
           <h3 className="text-[19px] font-bold text-white">Trading Psychology</h3>
-          <ChevronRight
-            className={cn("h-6 w-6 text-webGray transition-transform", tradingPsychologyOpen && "rotate-90")}
-          />
-        </button>
-        {tradingPsychologyOpen && (
-          <p className="pt-2 text-[15px] text-webGray">
-            You can trade if all factors of your strategy are met, you are confident in the trade, ready to accept a loss,
-            without emotions, and fully concentrated.
-          </p>
-        )}
+          <ChevronRight className="h-6 w-6 rotate-90 text-webGray" />
+        </div>
+        <p className="px-4 text-[15px] font-normal leading-normal text-webGray">
+          You can trade if all factors of your strategy are met, you are confident in the trade, ready to accept a loss,
+          without emotions, and fully concentrated.
+        </p>
       </div>
 
       <div className="flex flex-col gap-6 rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
