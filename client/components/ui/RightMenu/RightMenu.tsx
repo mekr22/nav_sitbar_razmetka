@@ -11,7 +11,6 @@ import {
   RefreshCw,
   MoreHorizontal,
   X,
-  HelpCircle,
 } from "lucide-react";
 
 interface Props {
