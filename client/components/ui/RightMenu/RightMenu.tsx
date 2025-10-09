@@ -296,7 +296,7 @@ const MarketplaceRightMenuContent: FC = () => {
               className={cn(
                 "flex-1 rounded-full border px-5 py-2.5 text-[15px] font-semibold transition-[color,background,box-shadow,border-color]",
                 sectorFilter === "domination"
-                  ? "border border-transparent bg-[linear-gradient(100deg,#232735_0%,#11131C_100%)] text-white shadow-[0_6px_20px_rgba(28,31,42,0.45)]"
+                  ? "border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.4)]"
                   : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
@@ -307,7 +307,7 @@ const MarketplaceRightMenuContent: FC = () => {
               className={cn(
                 "flex-1 rounded-full border px-5 py-2.5 text-[15px] font-semibold transition-[color,background,box-shadow,border-color]",
                 sectorFilter === "24hour"
-                  ? "border border-transparent bg-[linear-gradient(96deg,#7C4DFF_0%,#6A3EF1_52%,#5230CB_100%)] text-white shadow-[0_8px_26px_rgba(82,48,203,0.45)]"
+                  ? "border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.4)]"
                   : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
