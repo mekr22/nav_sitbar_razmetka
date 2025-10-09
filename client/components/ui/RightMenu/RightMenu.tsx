@@ -128,6 +128,94 @@ const MarketplaceRightMenuContent: FC = () => {
   const [newsCategory, setNewsCategory] = useState("earnings");
   const [watchlistSettingsOpen, setWatchlistSettingsOpen] = useState(false);
 
+  const newsFilterScrollRef = useRef<HTMLDivElement | null>(null);
+  const newsFilterDragRef = useRef({
+    active: false,
+    startX: 0,
+    scrollLeft: 0,
+    moved: false,
+  });
+
+  const handleNewsPointerMove = useCallback((event: PointerEvent) => {
+    const container = newsFilterScrollRef.current;
+    const dragState = newsFilterDragRef.current;
+    if (!dragState.active || !container) {
+      return;
+    }
+
+    const delta = event.clientX - dragState.startX;
+    if (!dragState.moved && Math.abs(delta) > 3) {
+      dragState.moved = true;
+    }
+
+    container.scrollLeft = dragState.scrollLeft - delta;
+    if (dragState.moved) {
+      event.preventDefault();
+    }
+  }, []);
+
+  const endNewsFilterDrag = useCallback(() => {
+    const container = newsFilterScrollRef.current;
+    if (container) {
+      container.classList.remove("is-dragging");
+    }
+
+    const dragState = newsFilterDragRef.current;
+    if (!dragState.active) {
+      return;
+    }
+
+    dragState.active = false;
+    window.removeEventListener("pointermove", handleNewsPointerMove);
+    window.removeEventListener("pointerup", endNewsFilterDrag);
+    window.removeEventListener("pointercancel", endNewsFilterDrag);
+  }, [handleNewsPointerMove]);
+
+  const handleNewsPointerDown = useCallback(
+    (event: ReactPointerEvent<HTMLDivElement>) => {
+      if (event.button !== 0 || newsFilterDragRef.current.active) {
+        return;
+      }
+
+      const container = newsFilterScrollRef.current;
+      if (!container) {
+        return;
+      }
+
+      newsFilterDragRef.current.active = true;
+      newsFilterDragRef.current.startX = event.clientX;
+      newsFilterDragRef.current.scrollLeft = container.scrollLeft;
+      newsFilterDragRef.current.moved = false;
+
+      container.classList.add("is-dragging");
+
+      window.addEventListener("pointermove", handleNewsPointerMove, { passive: false });
+      window.addEventListener("pointerup", endNewsFilterDrag);
+      window.addEventListener("pointercancel", endNewsFilterDrag);
+    },
+    [endNewsFilterDrag, handleNewsPointerMove],
+  );
+
+  const handleNewsPointerCancel = useCallback(() => {
+    endNewsFilterDrag();
+  }, [endNewsFilterDrag]);
+
+  const handleNewsClickCapture = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
+    if (newsFilterDragRef.current.moved) {
+      event.preventDefault();
+      event.stopPropagation();
+      newsFilterDragRef.current.moved = false;
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      window.removeEventListener("pointermove", handleNewsPointerMove);
+      window.removeEventListener("pointerup", endNewsFilterDrag);
+      window.removeEventListener("pointercancel", endNewsFilterDrag);
+    };
+  }, [endNewsFilterDrag, handleNewsPointerMove]);
+
   return (
     <>
       <div className="flex items-center gap-4">
