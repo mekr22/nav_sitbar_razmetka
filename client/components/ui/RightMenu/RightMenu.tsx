@@ -136,23 +136,39 @@ const MarketplaceRightMenuContent: FC = () => {
     moved: false,
   });
 
-  const handleNewsPointerMove = useCallback((event: PointerEvent) => {
+  const updateNewsFilterShadows = useCallback(() => {
     const container = newsFilterScrollRef.current;
-    const dragState = newsFilterDragRef.current;
-    if (!dragState.active || !container) {
+    if (!container) {
       return;
     }
 
-    const delta = event.clientX - dragState.startX;
-    if (!dragState.moved && Math.abs(delta) > 3) {
-      dragState.moved = true;
-    }
-
-    container.scrollLeft = dragState.scrollLeft - delta;
-    if (dragState.moved) {
-      event.preventDefault();
-    }
+    const { scrollLeft, scrollWidth, clientWidth } = container;
+    const maxScrollLeft = scrollWidth - clientWidth;
+    container.classList.toggle("has-left-shadow", scrollLeft > 1);
+    container.classList.toggle("has-right-shadow", scrollLeft < maxScrollLeft - 1);
   }, []);
+
+  const handleNewsPointerMove = useCallback(
+    (event: PointerEvent) => {
+      const container = newsFilterScrollRef.current;
+      const dragState = newsFilterDragRef.current;
+      if (!dragState.active || !container) {
+        return;
+      }
+
+      const delta = event.clientX - dragState.startX;
+      if (!dragState.moved && Math.abs(delta) > 3) {
+        dragState.moved = true;
+      }
+
+      container.scrollLeft = dragState.scrollLeft - delta;
+      updateNewsFilterShadows();
+      if (dragState.moved) {
+        event.preventDefault();
+      }
+    },
+    [updateNewsFilterShadows],
+  );
 
   const endNewsFilterDrag = useCallback(() => {
     const container = newsFilterScrollRef.current;
@@ -166,10 +182,11 @@ const MarketplaceRightMenuContent: FC = () => {
     }
 
     dragState.active = false;
+    updateNewsFilterShadows();
     window.removeEventListener("pointermove", handleNewsPointerMove);
     window.removeEventListener("pointerup", endNewsFilterDrag);
     window.removeEventListener("pointercancel", endNewsFilterDrag);
-  }, [handleNewsPointerMove]);
+  }, [handleNewsPointerMove, updateNewsFilterShadows]);
 
   const handleNewsPointerDown = useCallback(
     (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -188,17 +205,22 @@ const MarketplaceRightMenuContent: FC = () => {
       newsFilterDragRef.current.moved = false;
 
       container.classList.add("is-dragging");
+      updateNewsFilterShadows();
 
       window.addEventListener("pointermove", handleNewsPointerMove, { passive: false });
       window.addEventListener("pointerup", endNewsFilterDrag);
       window.addEventListener("pointercancel", endNewsFilterDrag);
     },
-    [endNewsFilterDrag, handleNewsPointerMove],
+    [endNewsFilterDrag, handleNewsPointerMove, updateNewsFilterShadows],
   );
 
   const handleNewsPointerCancel = useCallback(() => {
     endNewsFilterDrag();
   }, [endNewsFilterDrag]);
+
+  const handleNewsScroll = useCallback(() => {
+    updateNewsFilterShadows();
+  }, [updateNewsFilterShadows]);
 
   const handleNewsClickCapture = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
     if (newsFilterDragRef.current.moved) {
@@ -209,12 +231,17 @@ const MarketplaceRightMenuContent: FC = () => {
   }, []);
 
   useEffect(() => {
+    const container = newsFilterScrollRef.current;
+    updateNewsFilterShadows();
+
+    window.addEventListener("resize", updateNewsFilterShadows);
     return () => {
       window.removeEventListener("pointermove", handleNewsPointerMove);
       window.removeEventListener("pointerup", endNewsFilterDrag);
       window.removeEventListener("pointercancel", endNewsFilterDrag);
+      window.removeEventListener("resize", updateNewsFilterShadows);
     };
-  }, [endNewsFilterDrag, handleNewsPointerMove]);
+  }, [endNewsFilterDrag, handleNewsPointerMove, updateNewsFilterShadows]);
 
   return (
     <>
@@ -474,6 +501,7 @@ const MarketplaceRightMenuContent: FC = () => {
           onPointerUp={handleNewsPointerCancel}
           onPointerCancel={handleNewsPointerCancel}
           onClickCapture={handleNewsClickCapture}
+          onScroll={handleNewsScroll}
         >
           <div className="flex min-w-max items-center gap-2 px-1">
             {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
