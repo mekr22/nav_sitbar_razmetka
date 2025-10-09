@@ -192,12 +192,12 @@ const MarketplaceRightMenuContent: FC = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-3 gap-2">
           {sectorData.map((sector) => (
             <div
               key={sector.name}
               className={cn(
-                "flex h-[88px] w-[88px] flex-col justify-between rounded-xl p-2",
+                "flex aspect-square flex-col justify-between rounded-xl p-2",
                 sector.highlighted ? "bg-[#523A83]" : "bg-[#2E2744]",
               )}
             >
