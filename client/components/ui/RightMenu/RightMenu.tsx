@@ -374,7 +374,11 @@ const MarketplaceRightMenuContent: FC = () => {
             className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
             aria-label={isPortfolioCollapsed ? "Expand portfolio" : "Close portfolio"}
           >
-            {isPortfolioCollapsed ? <Plus className="h-4 w-4" /> : <X className="h-4 w-4" />}
+            {isPortfolioCollapsed ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <ChevronUp className="h-4 w-4" />
+            )}
           </button>
         </div>
         {!isPortfolioCollapsed && (
