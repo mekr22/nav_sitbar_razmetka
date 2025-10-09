@@ -588,45 +588,56 @@ const MarketplaceRightMenuContent: FC = () => {
       >
         <div className="flex items-center justify-between">
           <h3 className="text-[19px] font-bold text-white">Calendar</h3>
-          <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
+          <button
+            type="button"
+            onClick={() => setIsCalendarCollapsed((prev) => !prev)}
+            className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
+            aria-label={isCalendarCollapsed ? "Expand calendar" : "Close calendar"}
+          >
+            {isCalendarCollapsed ? <Plus className="h-4 w-4" /> : <X className="h-4 w-4" />}
+          </button>
         </div>
-        <button className="flex h-10 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-semibold text-white/90">
-          <span>Upcoming</span>
-          <ChevronDown className="h-5 w-5 text-webGray" />
-        </button>
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#181B22] to-transparent" />
-        <div className="space-y-6">
-          {calendarEvents.map((event, idx) => {
-            const [month, day] = event.date.split(" ");
+        {!isCalendarCollapsed && (
+          <>
+            <button className="flex h-10 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-semibold text-white/90">
+              <span>Upcoming</span>
+              <ChevronDown className="h-5 w-5 text-webGray" />
+            </button>
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-[#181B22] to-transparent" />
+            <div className="space-y-6">
+              {calendarEvents.map((event, idx) => {
+                const [month, day] = event.date.split(" ");
 
-            return (
-              <div key={event.date} className="flex gap-4">
-                <div className="flex w-[52px] flex-col leading-none">
-                  <span className="text-2xl font-bold text-webGray">{month}</span>
-                  <span className="text-[31px] font-bold text-white">{day}</span>
-                </div>
-                <div className="relative flex-1">
-                  <span
-                    className={cn(
-                      "pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-full",
-                      idx === 0
-                        ? "bg-gradient-to-b from-[#A06AFF] via-[#563191] to-[#2E2744]"
-                        : "bg-[#2E2744]",
-                    )}
-                  />
-                  <div className="space-y-4 pl-4">
-                    {event.events.map((detail) => (
-                      <div key={`${event.date}-${detail.symbol}`} className="flex flex-col gap-1">
-                        <span className="text-sm font-semibold text-white">{detail.symbol}</span>
-                        <span className="text-sm text-webGray">{detail.name}</span>
+                return (
+                  <div key={event.date} className="flex gap-4">
+                    <div className="flex w-[52px] flex-col leading-none">
+                      <span className="text-2xl font-bold text-webGray">{month}</span>
+                      <span className="text-[31px] font-bold text-white">{day}</span>
+                    </div>
+                    <div className="relative flex-1">
+                      <span
+                        className={cn(
+                          "pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-full",
+                          idx === 0
+                            ? "bg-gradient-to-b from-[#A06AFF] via-[#563191] to-[#2E2744]"
+                            : "bg-[#2E2744]",
+                        )}
+                      />
+                      <div className="space-y-4 pl-4">
+                        {event.events.map((detail) => (
+                          <div key={`${event.date}-${detail.symbol}`} className="flex flex-col gap-1">
+                            <span className="text-sm font-semibold text-white">{detail.symbol}</span>
+                            <span className="text-sm text-webGray">{detail.name}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
     </>
   );
