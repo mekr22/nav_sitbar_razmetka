@@ -295,10 +295,10 @@ const MarketplaceMyProducts: FC = () => {
                     />
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold leading-tight text-white">Sarah Lee</h3>
-                        <span className="rounded bg-[#A06AFF] px-1.5 text-[10px] font-black text-white">PRO</span>
+                        <h3 className="text-2xl font-bold leading-tight text-white">Sarah Lee</h3>
+                        <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
                       </div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#B0B0B0]">
+                      <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">
                         Berkshire Hathaway
                       </div>
                     </div>
@@ -320,22 +320,22 @@ const MarketplaceMyProducts: FC = () => {
                   </svg>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-1 text-[8px] font-semibold text-white sm:text-[9px]">
-                  <span className="rounded bg-[#3E321D] px-1.5 py-[2px] text-[7px] font-black uppercase tracking-[0.2em] text-[#FFA800] sm:text-[8px]">
+                <div className="flex flex-wrap items-center gap-1">
+                  <span className="rounded bg-[#3E321D] px-1 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
                     Hedge fund manager
                   </span>
-                  <span className="rounded bg-[#1C3430] px-1.5 py-[2px] text-[7px] font-black text-[#2EBD85] sm:text-[8px]">5.0</span>
-                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1.5 py-[2px] text-[7px] font-black sm:text-[8px]">
-                    <Users className="h-3 w-3 text-[#B0B0B0] sm:h-3.5 sm:w-3.5" />
+                  <span className="rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">5.0</span>
+                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold text-white">
+                    <Users className="h-4 w-4 text-[#B0B0B0]" />
                     15,054
                   </span>
-                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1.5 py-[2px] text-[7px] font-black sm:text-[8px]">
-                    <FileEdit className="h-3 w-3 text-[#B0B0B0] sm:h-3.5 sm:w-3.5" />
+                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold text-white">
+                    <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
                     983
                   </span>
                 </div>
 
-                <div className="grid gap-0.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-[#B0B0B0] sm:text-[9px]">
+                <div className="grid gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
                   <div className="flex items-center gap-1 whitespace-nowrap">
                     <span>Markets:</span>
                     <span className="text-white">Binance, NASDAQ</span>
@@ -352,18 +352,18 @@ const MarketplaceMyProducts: FC = () => {
 
                 <div className="h-px w-full bg-[#181B22]" />
 
-                <div className="flex items-center gap-1 text-[8px] font-semibold uppercase tracking-[0.16em] sm:text-[9px]">
+                <div className="flex items-center gap-1 text-xs font-bold uppercase">
                   <span className="text-[#B0B0B0]">Forecast Accuracy:</span>
                   <span className="text-[#2EBD85]">68%</span>
                 </div>
 
                 <div className="flex gap-2">
-                  <button className="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-[#1F2230] bg-[#0C1014]/60 px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:border-[#2A2E3F] sm:px-3 sm:py-1.5 sm:text-[9px]">
-                    <BookOpen className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                  <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#523A83] bg-[#0C1014]/50 px-4 py-2.5 text-xs font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#6A4A9F]">
+                    <BookOpen className="h-4 w-4" />
                     Learn More
                   </button>
-                  <button className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:px-3 sm:py-1.5 sm:text-[9px]">
-                    <Mail className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                  <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-xs font-bold text-white transition-opacity hover:opacity-90">
+                    <Mail className="h-4 w-4" />
                     Contact/Hire
                   </button>
                 </div>
