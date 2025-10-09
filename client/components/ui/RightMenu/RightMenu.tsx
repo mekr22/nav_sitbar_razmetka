@@ -270,7 +270,7 @@ const MarketplaceRightMenuContent: FC = () => {
       <div className="flex flex-col gap-0 rounded-xl border border-[#181B22] bg-[#0C101480] py-4 backdrop-blur-[50px]">
         <div className="flex items-center justify-between px-4 pb-2">
           <h3 className="text-[19px] font-bold text-white">Trading Psychology</h3>
-          <ChevronRight className="h-6 w-6 rotate-90 text-webGray" />
+          <ChevronDown className="h-4 w-4 text-[#B0B0B0]" />
         </div>
         <p className="px-4 text-[15px] font-normal leading-normal text-webGray">
           You can trade if all factors of your strategy are met, you are confident in the trade, ready to accept a loss,
