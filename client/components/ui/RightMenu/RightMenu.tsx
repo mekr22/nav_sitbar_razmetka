@@ -268,15 +268,29 @@ const MarketplaceRightMenuContent: FC = () => {
         </button>
       </div>
 
-      <div className="flex flex-col gap-0 rounded-xl border border-[#181B22] bg-[#0C101480] py-4 backdrop-blur-[50px]">
+      <div
+        className={cn(
+          "flex flex-col rounded-xl border border-[#181B22] bg-[#0C101480] py-4 backdrop-blur-[50px]",
+          isTradingCollapsed ? "gap-0" : "gap-2",
+        )}
+      >
         <div className="flex items-center justify-between px-4 pb-2">
           <h3 className="text-[19px] font-bold text-white">Trading Psychology</h3>
-          <ChevronDown className="h-4 w-4 text-[#B0B0B0]" />
+          <button
+            type="button"
+            onClick={() => setIsTradingCollapsed((prev) => !prev)}
+            className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
+            aria-label={isTradingCollapsed ? "Expand trading psychology" : "Close trading psychology"}
+          >
+            {isTradingCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+          </button>
         </div>
-        <p className="px-4 text-[15px] font-normal leading-normal text-webGray">
-          You can trade if all factors of your strategy are met, you are confident in the trade, ready to accept a loss,
-          without emotions, and fully concentrated.
-        </p>
+        {!isTradingCollapsed && (
+          <p className="px-4 text-[15px] font-normal leading-normal text-webGray">
+            You can trade if all factors of your strategy are met, you are confident in the trade, ready to accept a loss,
+            without emotions, and fully concentrated.
+          </p>
+        )}
       </div>
 
       <div
