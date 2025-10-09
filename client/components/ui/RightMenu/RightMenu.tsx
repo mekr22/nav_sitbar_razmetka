@@ -298,30 +298,32 @@ const MarketplaceRightMenuContent: FC = () => {
               {isSectorCollapsed ? <Plus className="h-4 w-4" /> : <X className="h-4 w-4" />}
             </button>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setSectorFilter("domination")}
-              className={cn(
-                "flex-1 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
-                sectorFilter === "domination"
-                  ? "border-0 bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
-                  : "border border-[#181B22] bg-[#0C101480] text-white/70",
-              )}
-            >
-              Domination
-            </button>
-            <button
-              onClick={() => setSectorFilter("24hour")}
-              className={cn(
-                "flex-1 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
-                sectorFilter === "24hour"
-                  ? "border-0 bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
-                  : "border border-[#181B22] bg-[#0C101480] text-white/70",
-              )}
-            >
-              24 Hour %
-            </button>
-          </div>
+          {!isSectorCollapsed && (
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setSectorFilter("domination")}
+                className={cn(
+                  "flex-1 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
+                  sectorFilter === "domination"
+                    ? "border-0 bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
+                    : "border border-[#181B22] bg-[#0C101480] text-white/70",
+                )}
+              >
+                Domination
+              </button>
+              <button
+                onClick={() => setSectorFilter("24hour")}
+                className={cn(
+                  "flex-1 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
+                  sectorFilter === "24hour"
+                    ? "border-0 bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
+                    : "border border-[#181B22] bg-[#0C101480] text-white/70",
+                )}
+              >
+                24 Hour %
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-3 gap-2">
