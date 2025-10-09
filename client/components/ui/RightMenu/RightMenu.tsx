@@ -197,17 +197,17 @@ const MarketplaceRightMenuContent: FC = () => {
             <div
               key={sector.name}
               className={cn(
-                "flex aspect-square flex-col justify-between rounded-xl p-2",
+                "flex aspect-square flex-col justify-between rounded-xl p-1.5",
                 sector.highlighted ? "bg-[#523A83]" : "bg-[#2E2744]",
               )}
             >
-              <div className="flex flex-col gap-1">
-                <span className="text-[15px] text-webGray">{sector.percentage}</span>
-                <span className="text-[15px] font-bold text-white">{sector.name}</span>
+              <div className="flex flex-col gap-0.5">
+                <span className="text-[13px] text-webGray">{sector.percentage}</span>
+                <span className="text-sm font-bold text-white">{sector.name}</span>
               </div>
               <span
                 className={cn(
-                  "text-right text-[19px] font-bold",
+                  "text-right text-[17px] font-bold",
                   sector.change.startsWith("+") ? "text-green" : "text-red",
                 )}
               >
