@@ -495,59 +495,77 @@ const MarketplaceRightMenuContent: FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center bg-[#2E2744] px-4 py-1">
-          <ChevronDown className="mr-2 h-4 w-4 text-webGray" />
-          <span className="flex-1 text-xs font-bold text-webGray">Group 1</span>
-          <button className="text-webGray transition-colors hover:text-white" aria-label="Delete group">
-            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M13 3.66663L12.5869 10.35C12.4813 12.0576 12.4285 12.9114 12.0005 13.5252C11.7889 13.8287 11.5165 14.0848 11.2005 14.2773C10.5614 14.6666 9.706 14.6666 7.99513 14.6666C6.28208 14.6666 5.42553 14.6666 4.78603 14.2766C4.46987 14.0838 4.19733 13.8272 3.98579 13.5232C3.55792 12.9084 3.5063 12.0534 3.40307 10.3434L3 3.66663"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M2 3.66671H14M10.7038 3.66671L10.2487 2.72786C9.9464 2.10421 9.7952 1.79239 9.53447 1.59791C9.47667 1.55477 9.4154 1.5164 9.35133 1.48317C9.0626 1.33337 8.71607 1.33337 8.023 1.33337C7.31253 1.33337 6.95733 1.33337 6.66379 1.48945C6.59873 1.52405 6.53665 1.56397 6.47819 1.60882C6.21443 1.81117 6.06709 2.13441 5.77241 2.78088L5.36861 3.66671"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path d="M6.3335 11V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              <path d="M9.6665 11V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+        {watchlistGroups.map((group, index) => {
+          const isCollapsed = collapsedWatchlistGroups[group.name];
 
-        {watchlistItems.map((item, idx) => (
-          <div key={`${item.symbol}-${idx}`}>
-            <div className="flex items-center px-4 py-1">
-              <div className="flex flex-1 items-center gap-2">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F5B300]">
-                  <span className="text-xs font-bold text-white">₿</span>
+          return (
+            <div key={group.name}>
+              <div
+                className={cn(
+                  "flex items-center px-4 py-1 transition-colors",
+                  isCollapsed ? "bg-transparent" : "bg-[#2E2744]",
+                )}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleWatchlistGroup(group.name)}
+                  className="mr-2 flex h-6 w-6 items-center justify-center rounded-full text-[#B0B0B0] transition-colors hover:text-white"
+                  aria-label={isCollapsed ? `Expand ${group.name}` : `Close ${group.name}`}
+                >
+                  {isCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+                </button>
+                <span className="flex-1 text-xs font-bold text-webGray">{group.name}</span>
+                <button className="text-webGray transition-colors hover:text-white" aria-label={`Delete ${group.name}`}>
+                  <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M13 3.66663L12.5869 10.35C12.4813 12.0576 12.4285 12.9114 12.0005 13.5252C11.7889 13.8287 11.5165 14.0848 11.2005 14.2773C10.5614 14.6666 9.706 14.6666 7.99513 14.6666C6.28208 14.6666 5.42553 14.6666 4.78603 14.2766C4.46987 14.0838 4.19733 13.8272 3.98579 13.5232C3.55792 12.9084 3.5063 12.0534 3.40307 10.3434L3 3.66663"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M2 3.66671H14M10.7038 3.66671L10.2487 2.72786C9.9464 2.10421 9.7952 1.79239 9.53447 1.59791C9.47667 1.55477 9.4154 1.5164 9.35133 1.48317C9.0626 1.33337 8.71607 1.33337 8.023 1.33337C7.31253 1.33337 6.95733 1.33337 6.66379 1.48945C6.59873 1.52405 6.53665 1.56397 6.47819 1.60882C6.21443 1.81117 6.06709 2.13441 5.77241 2.78088L5.36861 3.66671"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path d="M6.3335 11V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M9.6665 11V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </button>
+              </div>
+
+              {!isCollapsed && (
+                <div>
+                  {group.items.map((item, itemIdx) => (
+                    <div key={`${group.name}-${item.symbol}-${itemIdx}`}>
+                      <div className="flex items-center px-4 py-1">
+                        <div className="flex flex-1 items-center gap-2">
+                          <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F5B300]">
+                            <span className="text-xs font-bold text-white">₿</span>
+                          </div>
+                          <span className="text-xs font-bold uppercase text-white">{item.symbol}</span>
+                        </div>
+                        <div className="flex-1 text-right">
+                          <span className="text-xs font-bold text-white">{item.last}</span>
+                        </div>
+                        <div className="flex-1 text-right">
+                          <span className="text-xs font-bold text-green">{item.chg}</span>
+                        </div>
+                        <div className="flex-1 text-right">
+                          <span className="text-xs font-bold text-green">{item.chgPercent}</span>
+                        </div>
+                      </div>
+                      {itemIdx < group.items.length - 1 && <div className="h-px bg-[#181B22]" />}
+                    </div>
+                  ))}
                 </div>
-                <span className="text-xs font-bold uppercase text-white">{item.symbol}</span>
-              </div>
-              <div className="flex-1 text-right">
-                <span className="text-xs font-bold text-white">{item.last}</span>
-              </div>
-              <div className="flex-1 text-right">
-                <span className="text-xs font-bold text-green">{item.chg}</span>
-              </div>
-              <div className="flex-1 text-right">
-                <span className="text-xs font-bold text-green">{item.chgPercent}</span>
-              </div>
-            </div>
-            {idx < watchlistItems.length - 1 && <div className="h-px bg-[#181B22]" />}
-          </div>
-        ))}
+              )}
 
-        <div className="mt-1 h-px bg-[#181B22]" />
-        {["Group 2", "Group 3", "Group 4", "Group 5"].map((group) => (
-          <div key={group} className="flex items-center px-4 py-1">
-            <ChevronRight className="mr-2 h-4 w-4 text-webGray" />
-            <span className="text-xs font-bold text-webGray">{group}</span>
-          </div>
-        ))}
+              {index < watchlistGroups.length - 1 && <div className="mt-1 h-px bg-[#181B22]" />}
+            </div>
+          );
+        })}
       </div>
 
       <div
