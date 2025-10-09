@@ -151,7 +151,7 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
             <span className="text-[#2EBD85]">{trader.roiQuarter}</span>
           </div>
           <div className="flex items-center gap-1 whitespace-nowrap">
-            <span>Average trade profitability:</span>
+            <span>Average trade profit</span>
             <span className="text-[#2EBD85]">{trader.avgProfitability}</span>
           </div>
           <div className="flex items-center gap-1 whitespace-nowrap">
