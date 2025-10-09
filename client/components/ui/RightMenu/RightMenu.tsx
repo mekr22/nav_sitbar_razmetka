@@ -532,37 +532,47 @@ const MarketplaceRightMenuContent: FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
-        <div className="flex items-center justify-between rounded-lg">
-          <div className="flex items-center gap-2">
-            <h3 className="text-[19px] font-bold text-white">Calendar</h3>
-          </div>
+      <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+        <div className="flex items-center justify-between">
+          <h3 className="text-[19px] font-bold text-white">Calendar</h3>
           <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
         </div>
-        <div className="flex h-10 items-center rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-2 opacity-80 backdrop-blur-[50px]">
-          <span className="flex-1 text-[15px] font-bold text-white">Upcoming</span>
-          <ChevronDown className="h-6 w-6 rotate-90 text-webGray" />
-        </div>
-        <div className="flex flex-col gap-4 border-t border-[#181B22] pt-4">
-          {calendarEvents.map((event, idx) => (
-            <div key={event.date} className="flex items-start gap-4">
-              <div className="flex w-[50px] flex-col">
-                <span className="text-2xl font-bold text-webGray">{event.date.split(" ")[0]}</span>
-                <span className="text-[31px] font-bold text-white">{event.date.split(" ")[1]}</span>
-              </div>
-              <div className="flex flex-1 items-center gap-2">
-                <div className={cn("h-full w-1 rounded-lg", idx === 0 ? "bg-[#523A83]" : "bg-[#2E2744]")} />
-                <div className="flex flex-1 flex-col gap-2.5">
-                  {event.events.map((ev) => (
-                    <div key={`${event.date}-${ev.symbol}`} className="flex flex-col gap-2">
-                      <span className="text-[15px] font-bold text-white">{ev.symbol}</span>
-                      <span className="text-[15px] font-bold text-webGray">{ev.name}</span>
-                    </div>
-                  ))}
+        <button className="flex h-10 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-semibold text-white/90">
+          <span>Upcoming</span>
+          <ChevronDown className="h-5 w-5 text-webGray" />
+        </button>
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#181B22] to-transparent" />
+        <div className="space-y-6">
+          {calendarEvents.map((event, idx) => {
+            const [month, day] = event.date.split(" ");
+
+            return (
+              <div key={event.date} className="flex gap-4">
+                <div className="flex w-[52px] flex-col leading-none">
+                  <span className="text-2xl font-bold text-webGray">{month}</span>
+                  <span className="text-[31px] font-bold text-white">{day}</span>
+                </div>
+                <div className="relative flex-1">
+                  <span
+                    className={cn(
+                      "pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-full",
+                      idx === 0
+                        ? "bg-gradient-to-b from-[#A06AFF] via-[#563191] to-[#2E2744]"
+                        : "bg-[#2E2744]",
+                    )}
+                  />
+                  <div className="space-y-4 pl-4">
+                    {event.events.map((detail) => (
+                      <div key={`${event.date}-${detail.symbol}`} className="flex flex-col gap-1">
+                        <span className="text-sm font-semibold text-white">{detail.symbol}</span>
+                        <span className="text-sm text-webGray">{detail.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </>
