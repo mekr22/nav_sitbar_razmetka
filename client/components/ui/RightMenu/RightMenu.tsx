@@ -506,7 +506,7 @@ const MarketplaceRightMenuContent: FC = () => {
                         </svg>
                       )}
                     </span>
-                    <span className="text-[15px] font-bold text_white">{option}</span>
+                    <span className="text-[15px] font-bold text-white">{option}</span>
                   </button>
                 );
               })}
