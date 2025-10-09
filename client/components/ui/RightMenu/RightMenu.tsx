@@ -384,10 +384,10 @@ const MarketplaceRightMenuContent: FC = () => {
               key={category}
               onClick={() => setNewsCategory(category.toLowerCase())}
               className={cn(
-                "h-9 rounded-[32px] border px-2 py-3 text-xs font-bold transition-all",
+                "flex h-9 shrink-0 items-center justify-center rounded-full px-3 text-[13px] font-semibold leading-none transition-all",
                 newsCategory === category.toLowerCase()
-                  ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                  : "border-[#181B22] bg-[#0C101480] text-white",
+                  ? "border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+                  : "border border-[#181B22] bg-[#0C101480] text-white",
               )}
             >
               {category}
