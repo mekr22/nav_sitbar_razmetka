@@ -277,21 +277,20 @@ const MarketplaceRightMenuContent: FC = () => {
 
       <div className="flex flex-col gap-6 rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
         <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            <h3 className="text-[19px] font-bold text-white">Sector Mover</h3>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h3 className="text-[19px] font-bold text-white">Sector Mover</h3>
+              <div className="relative flex h-7 w-7 items-center justify-center">
+                <Settings className="h-7 w-7 text-[#B0B0B0]/70" />
+                <span className="absolute text-[11px] font-semibold text-white">?</span>
+              </div>
+            </div>
             <button
               type="button"
-              className="flex h-6 w-6 items-center justify-center rounded-full border border-[#1C1F2A] bg-[#12141C] text-webGray transition-colors hover:text-white"
-              aria-label="About sector mover"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-[#2A2E37] bg-[#12141C] text-[#B0B0B0] transition-colors hover:text-white"
+              aria-label="Close sector mover"
             >
-              <HelpCircle className="h-3.5 w-3.5" />
-            </button>
-            <button
-              type="button"
-              className="flex h-6 w-6 items-center justify-center rounded-full border border-[#1C1F2A] bg-[#12141C] text-webGray transition-colors hover:text-white"
-              aria-label="Sector mover settings"
-            >
-              <Settings className="h-3.5 w-3.5" />
+              <X className="h-4 w-4" />
             </button>
           </div>
           <div className="flex items-center gap-2">
