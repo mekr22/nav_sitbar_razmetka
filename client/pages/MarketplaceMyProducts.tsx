@@ -141,7 +141,7 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
           <TraderPerformanceChart />
         </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[12px] font-bold uppercase text-[#B0B0B0]">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[11px] font-bold uppercase text-[#B0B0B0] sm:text-[12px]">
           <div className="flex items-center gap-1">
             <span>ROI(Month)</span>
             <span className="text-[#2EBD85]">{trader.roiMonth}</span>
