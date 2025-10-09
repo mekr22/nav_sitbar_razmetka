@@ -532,35 +532,80 @@ const MarketplaceRightMenuContent: FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+      <div className="relative flex flex-col gap-5 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
         <div className="flex items-center justify-between">
           <h3 className="text-[19px] font-bold text-white">Calendar</h3>
           <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
         </div>
-        <div className="flex h-10 items-center rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-2 opacity-80 backdrop-blur-[50px]">
-          <span className="flex-1 text-[15px] font-bold text-white">Upcoming</span>
-          <ChevronDown className="h-6 w-6 rotate-90 text-webGray" />
+        <div className="flex items-center justify-between gap-3">
+          <button className="flex items-center gap-2 rounded-full border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-xs font-semibold text-white shadow-[0_0_0_1px_rgba(160,106,255,0.4)]">
+            <span>Upcoming</span>
+            <ChevronDown className="h-4 w-4" />
+          </button>
+          <button
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#181B22] text-webGray transition-colors hover:text-white"
+            aria-label="Refresh calendar"
+          >
+            <RefreshCw className="h-4 w-4" />
+          </button>
         </div>
-        <div className="flex flex-col gap-4 border-t border-[#181B22] pt-4">
-          {calendarEvents.map((event, idx) => (
-            <div key={event.date} className="flex items-start gap-4">
-              <div className="flex w-[50px] flex-col">
-                <span className="text-2xl font-bold text-webGray">{event.date.split(" ")[0]}</span>
-                <span className="text-[31px] font-bold text-white">{event.date.split(" ")[1]}</span>
-              </div>
-              <div className="flex flex-1 items-center gap-2">
-                <div className={cn("h-full w-1 rounded-lg", idx === 0 ? "bg-[#523A83]" : "bg-[#2E2744]")} />
-                <div className="flex flex-1 flex-col gap-2.5">
-                  {event.events.map((ev) => (
-                    <div key={`${event.date}-${ev.symbol}`} className="flex flex-col gap-2">
-                      <span className="text-[15px] font-bold text-white">{ev.symbol}</span>
-                      <span className="text-[15px] font-bold text-webGray">{ev.name}</span>
-                    </div>
-                  ))}
+        <div className="space-y-6">
+          {calendarEvents.map((event, groupIndex) => {
+            const [month, day] = event.date.split(" ");
+
+            return (
+              <div key={event.date} className="flex gap-3">
+                <div className="flex flex-col items-center gap-1">
+                  <span className="rounded-full bg-[#2E2744]/70 px-2 text-[11px] font-semibold uppercase text-webGray">{month}</span>
+                  <span className="text-2xl font-bold text-white">{day}</span>
+                </div>
+                <div className="relative flex-1 pl-4">
+                  <span
+                    className={cn(
+                      "pointer-events-none absolute left-[2px] top-1 bottom-1 w-[2px] rounded-full",
+                      groupIndex === 0
+                        ? "bg-gradient-to-b from-[#A06AFF] via-[#523A83]/40 to-transparent"
+                        : "bg-[#2E2744]",
+                    )}
+                  />
+                  <div className="space-y-3">
+                    {event.events.map((calendarItem, itemIndex) => (
+                      <div
+                        key={`${event.date}-${calendarItem.symbol}`}
+                        className={cn(
+                          "flex items-center justify-between gap-4 rounded-2xl border px-4 py-3 backdrop-blur-[50px]",
+                          groupIndex === 0 && itemIndex === 0
+                            ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_35px_rgba(160,106,255,0.18)]"
+                            : "border-[#181B22] bg-[#0C101480]",
+                        )}
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#2E2744] text-sm font-bold text-white">
+                            {calendarItem.symbol.slice(0, 2)}
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-sm font-bold text-white">{calendarItem.symbol}</span>
+                            <span className="text-xs text-webGray">{calendarItem.name}</span>
+                          </div>
+                        </div>
+                        <div
+                          className={cn(
+                            "flex items-center gap-2 text-xs font-semibold uppercase",
+                            groupIndex === 0 && itemIndex === 0 ? "text-white" : "text-webGray",
+                          )}
+                        >
+                          <span className="rounded-full border border-[#523A83] px-3 py-1 text-[11px] uppercase tracking-wide text-white/80">
+                            Earnings
+                          </span>
+                          <ChevronRight className="h-4 w-4" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </>
