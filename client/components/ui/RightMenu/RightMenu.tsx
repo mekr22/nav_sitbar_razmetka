@@ -127,6 +127,7 @@ const MarketplaceRightMenuContent: FC = () => {
   const [sectorFilter, setSectorFilter] = useState<"domination" | "24hour">("24hour");
   const [newsCategory, setNewsCategory] = useState("earnings");
   const [watchlistSettingsOpen, setWatchlistSettingsOpen] = useState(false);
+  const [isTradingCollapsed, setIsTradingCollapsed] = useState(false);
   const [isSectorCollapsed, setIsSectorCollapsed] = useState(false);
   const [isPortfolioCollapsed, setIsPortfolioCollapsed] = useState(false);
   const [isNewsCollapsed, setIsNewsCollapsed] = useState(false);
