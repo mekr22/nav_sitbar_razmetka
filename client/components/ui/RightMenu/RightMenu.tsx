@@ -285,10 +285,10 @@ const MarketplaceRightMenuContent: FC = () => {
             <button
               onClick={() => setSectorFilter("domination")}
               className={cn(
-                "flex-1 rounded-[32px] border border-[#181B22] px-4 py-3 text-[15px] font-bold backdrop-blur-[58px] transition-all",
+                "flex-1 rounded-[32px] border px-4 py-3 text-[15px] font-semibold transition-all",
                 sectorFilter === "domination"
-                  ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                  : "bg-[#0C101480] text-webGray",
+                  ? "border-transparent bg-gradient-to-r from-[#3D2B6C] to-[#171924] text-white shadow-[0_4px_18px_rgba(21,14,47,0.45)]"
+                  : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
               Domination
@@ -296,10 +296,10 @@ const MarketplaceRightMenuContent: FC = () => {
             <button
               onClick={() => setSectorFilter("24hour")}
               className={cn(
-                "flex-1 rounded-[32px] border border-[#181B22] px-4 py-3 text-[15px] font-bold backdrop-blur-[58px] transition-all",
+                "flex-1 rounded-[32px] border px-4 py-3 text-[15px] font-semibold transition-all",
                 sectorFilter === "24hour"
-                  ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                  : "bg-[#0C101480] text-webGray",
+                  ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_6px_24px_rgba(160,106,255,0.35)]"
+                  : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
               24 Hour %
