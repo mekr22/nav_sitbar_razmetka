@@ -155,11 +155,11 @@ textarea::-webkit-scrollbar-track {
 
 .custom-scroll::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: linear-gradient(270deg, #a06aff 0%, #482090 100%);
+  background: transparent;
 }
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(270deg, #b27bff 0%, #5b2db1 100%);
+  background: transparent;
 }
 
 .news-filter-scroll {
