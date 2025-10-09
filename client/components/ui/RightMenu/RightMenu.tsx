@@ -97,6 +97,11 @@ const watchlistItems = [
   { symbol: "BTC", last: "$1.46", chg: "3.66", chgPercent: "+1.15%" },
 ];
 
+const watchlistGroups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"].map((name) => ({
+  name,
+  items: watchlistItems,
+}));
+
 const newsItems = [
   { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
   { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
