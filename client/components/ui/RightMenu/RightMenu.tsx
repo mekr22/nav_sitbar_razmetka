@@ -245,6 +245,12 @@ const MarketplaceRightMenuContent: FC = () => {
     };
   }, [endNewsFilterDrag, handleNewsPointerMove, updateNewsFilterShadows]);
 
+  useEffect(() => {
+    if (!isNewsCollapsed) {
+      updateNewsFilterShadows();
+    }
+  }, [isNewsCollapsed, updateNewsFilterShadows]);
+
   return (
     <>
       <div className="flex items-center gap-4">
