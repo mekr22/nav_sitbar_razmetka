@@ -279,7 +279,20 @@ const MarketplaceRightMenuContent: FC = () => {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <h3 className="text-[19px] font-bold text-white">Sector Mover</h3>
-            <HelpCircle className="h-6 w-6 text-webGray" />
+            <button
+              type="button"
+              className="flex h-6 w-6 items-center justify-center rounded-full border border-[#1C1F2A] bg-[#12141C] text-webGray transition-colors hover:text-white"
+              aria-label="About sector mover"
+            >
+              <HelpCircle className="h-3.5 w-3.5" />
+            </button>
+            <button
+              type="button"
+              className="flex h-6 w-6 items-center justify-center rounded-full border border-[#1C1F2A] bg-[#12141C] text-webGray transition-colors hover:text-white"
+              aria-label="Sector mover settings"
+            >
+              <Settings className="h-3.5 w-3.5" />
+            </button>
           </div>
           <div className="flex items-center gap-2">
             <button
