@@ -85,97 +85,121 @@ const TraderPerformanceChart: FC = () => (
   </svg>
 );
 
-const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featured }) => (
-  <div
-    className={cn(
-      "mx-auto w-full max-w-[526px] rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] sm:p-6",
-      featured ? "border-[#A06AFF]" : "border-[#181B22]",
-    )}
-  >
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-4">
-        <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-lg">
-          <img src={trader.avatar} alt={trader.name} className="h-full w-full object-cover" />
-          <div className="absolute bottom-1 left-1 flex items-center gap-1">
-            <span className="rounded bg-[#A06AFF] px-2 text-[12px] font-extrabold uppercase tracking-[0.02em] text-white">PRO</span>
-            <span className="flex items-center gap-1 rounded bg-[#1C3430] px-2 text-[12px] font-bold uppercase tracking-[0.02em] text-[#2EBD85]">
-              {trader.rating}
-            </span>
-          </div>
-        </div>
+const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featured }) => {
+  const uppercaseBadge = trader.badge.toUpperCase();
+  const experienceValue = trader.experience.toUpperCase();
 
-        <div className="flex flex-1 flex-col gap-3">
-          <div className="flex items-start justify-between gap-3">
-            <div className="space-y-2">
-              <h3 className="text-[15px] font-bold leading-none text-white sm:text-lg">{trader.name}</h3>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="rounded bg-[#3E321D] px-2 py-[2px] text-[11px] font-extrabold uppercase tracking-[0.02em] text-[#FFA800]">
-                  {trader.badge}
+  const primaryDetails = [
+    { label: "Number of trades in 30 days", value: trader.trades30Days },
+    { label: "Experience", value: experienceValue },
+  ];
+
+  const performanceMetrics = [
+    { label: "ROI (Month)", value: trader.roiMonth },
+    { label: "ROI (3 Months)", value: trader.roiQuarter },
+    { label: "Average trade profitability", value: trader.avgProfitability },
+    { label: "Trades accuracy", value: trader.accuracy },
+  ];
+
+  return (
+    <div className="mx-auto w-full max-w-[560px]">
+      <div
+        className={cn(
+          "rounded-[28px] p-[1px]",
+          featured ? "bg-gradient-to-r from-[#A06AFF] via-[#8257FF] to-[#482090]" : "bg-[#1A1D24]",
+        )}
+      >
+        <div
+          className={cn(
+            "flex h-full flex-col gap-6 rounded-[26px] bg-[#0B0F15]/90 p-5 shadow-[0_24px_72px_rgba(5,8,15,0.55)] backdrop-blur-[60px] sm:p-6",
+            featured ? "border border-transparent" : "border border-[#181B22]",
+          )}
+        >
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+            <div className="relative mx-auto h-[116px] w-[116px] flex-shrink-0 overflow-hidden rounded-2xl border border-[#2F2243] bg-[#161C2A] sm:mx-0">
+              <img src={trader.avatar} alt={trader.name} className="h-full w-full object-cover" />
+              <div className="absolute bottom-3 left-3 flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-[#7A4BFF] px-3 py-[3px] text-[11px] font-black uppercase tracking-[0.18em] text-white">
+                  PRO
                 </span>
-                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-[2px] text-[11px] font-bold text-white">
-                  <Users className="h-4 w-4 text-[#B0B0B0]" />
-                  {trader.followers}
-                </span>
-                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-[2px] text-[11px] font-bold text-white">
-                  <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
-                  {trader.publications}
+                <span className="rounded-full bg-[#1C3B32] px-3 py-[3px] text-[11px] font-black text-[#2EBD85]">
+                  {trader.rating}
                 </span>
               </div>
             </div>
-            <Star className="h-6 w-6 text-[#B0B0B0]" />
+
+            <div className="flex flex-1 flex-col gap-4">
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-semibold leading-tight text-white sm:text-2xl">{trader.name}</h3>
+                    <span className="inline-flex items-center rounded-full border border-[#3D2A5E] bg-[#201636]/80 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#FFB860] sm:text-xs">
+                      {uppercaseBadge}
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="rounded-full border border-[#241B36] bg-[#151827]/70 p-1 text-[#C7CAD6]">
+                      <Star className="h-5 w-5" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#BCC0CC] sm:text-sm">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[#181226]/90 px-3 py-1">
+                    <Users className="h-4 w-4 text-[#8F94A3]" />
+                    {trader.followers}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[#181226]/90 px-3 py-1">
+                    <FileEdit className="h-4 w-4 text-[#8F94A3]" />
+                    {trader.publications}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B7BBC8] sm:text-xs">
+                {primaryDetails.map((item) => (
+                  <div key={item.label} className="flex flex-wrap items-center gap-1">
+                    <span>{item.label}:</span>
+                    <span className="text-[#2EBD85]">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="space-y-1 text-[11px] font-bold uppercase tracking-[0.02em] text-[#B0B0B0] sm:text-[12px]">
-            <div className="flex flex-wrap items-center gap-1">
-              <span>Number of trades in 30 days:</span>
-              <span className="text-[#2EBD85]">{trader.trades30Days}</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-1">
-              <span>Experience:</span>
-              <span className="text-[#2EBD85]">{trader.experience}</span>
+          <div className="relative h-[92px] w-full overflow-hidden rounded-2xl border border-[#1F1A2D] bg-gradient-to-br from-[#1A1430] via-[#121323] to-[#0B1016]">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#A06AFF1A] via-transparent to-transparent" />
+            <div className="relative h-full w-full">
+              <TraderPerformanceChart />
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="h-14 w-full overflow-hidden rounded-md border border-[#181B22] bg-gradient-to-t from-[#A06AFF1A] to-transparent">
-        <TraderPerformanceChart />
-      </div>
+          <div className="grid gap-x-10 gap-y-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#B7BBC8] sm:grid-cols-2 sm:text-sm">
+            {performanceMetrics.map((metric) => (
+              <div key={metric.label} className="flex flex-wrap items-center gap-1">
+                <span>{metric.label}</span>
+                <span className="text-[#2EBD85]">{metric.value}</span>
+              </div>
+            ))}
+          </div>
 
-      <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[11px] font-bold uppercase tracking-[0.02em] text-[#B0B0B0] sm:text-[12px]">
-        <div className="flex items-center gap-1">
-          <span>ROI(Month)</span>
-          <span className="text-[#2EBD85]">{trader.roiMonth}</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span>ROI(3 Months)</span>
-          <span className="text-[#2EBD85]">{trader.roiQuarter}</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span>Average trade profitability:</span>
-          <span className="text-[#2EBD85]">{trader.avgProfitability}</span>
-        </div>
-        <div className="flex items-center gap-1">
-          <span>Trades accuracy</span>
-          <span className="text-[#2EBD85]">{trader.accuracy}</span>
-        </div>
-      </div>
+          <div className="text-sm font-semibold text-white sm:text-base">{trader.certification}</div>
 
-      <div className="text-[11px] font-bold uppercase tracking-[0.02em] text-white sm:text-[12px]">{trader.certification}</div>
-
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-2 text-[12px] font-bold uppercase tracking-[0.02em] text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-          <BookOpen className="h-4 w-4" />
-          Learn More
-        </button>
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-[12px] font-bold uppercase tracking-[0.02em] text-white transition-opacity hover:opacity-90">
-          <Mail className="h-4 w-4" />
-          Contact/Hire
-        </button>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#272B3A] bg-[#11141E]/80 px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:border-[#383E52] sm:text-sm">
+              <BookOpen className="h-4 w-4" />
+              Learn More
+            </button>
+            <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] via-[#8257FF] to-[#482090] px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-opacity hover:opacity-90 sm:text-sm">
+              <Mail className="h-4 w-4" />
+              Contact/Hire
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
