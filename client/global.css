@@ -137,7 +137,7 @@ textarea::-webkit-scrollbar-track {
 .custom-scroll {
   cursor: grab;
   scrollbar-width: thin;
-  scrollbar-color: #5b2db1 rgba(72, 32, 144, 0.18);
+  scrollbar-color: #5b2db1 rgba(72, 32, 144, 0.14);
 }
 
 .custom-scroll.is-dragging {
@@ -145,12 +145,12 @@ textarea::-webkit-scrollbar-track {
 }
 
 .custom-scroll::-webkit-scrollbar {
-  height: 4px;
+  height: 2px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
   border-radius: 999px;
-  background: rgba(72, 32, 144, 0.18);
+  background: rgba(72, 32, 144, 0.12);
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
@@ -160,6 +160,31 @@ textarea::-webkit-scrollbar-track {
 
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(270deg, #b27bff 0%, #5b2db1 100%);
+}
+
+.news-filter-scroll {
+  position: relative;
+}
+
+.news-filter-scroll::before,
+.news-filter-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.news-filter-scroll::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(12, 16, 20, 0.9) 0%, rgba(12, 16, 20, 0) 100%);
+}
+
+.news-filter-scroll::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(12, 16, 20, 0.9) 0%, rgba(12, 16, 20, 0) 100%);
 }
 
 @layer components {
