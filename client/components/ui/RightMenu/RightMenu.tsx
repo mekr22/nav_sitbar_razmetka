@@ -70,7 +70,7 @@ export const RightMenu: FC<Props> = ({ isCollapsed }) => {
         "flex flex-col gap-6 min-h-full overflow-hidden transition-all duration-500 ease-in-out",
         {
           "h-0 w-0 p-0 opacity-0": !isCollapsed,
-          "min-w-[312px] pr-6 opacity-100": isCollapsed,
+          "min-w-[312px] w-[312px] pr-6 opacity-100": isCollapsed,
         },
       )}
     >
