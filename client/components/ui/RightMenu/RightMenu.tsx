@@ -363,14 +363,23 @@ const MarketplaceRightMenuContent: FC = () => {
       >
         <div className="flex items-center justify-between">
           <h3 className="text-[19px] font-bold text-white">Portfolio</h3>
-          <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
-        </div>
-        <div className="flex flex-col items-center gap-4">
-          <p className="text-center text-[15px] font-bold text-white">Sign in to access your portfolio</p>
-          <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-3 backdrop-blur-[58px]">
-            <span className="text-[15px] font-bold text-white">Sign In</span>
+          <button
+            type="button"
+            onClick={() => setIsPortfolioCollapsed((prev) => !prev)}
+            className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
+            aria-label={isPortfolioCollapsed ? "Expand portfolio" : "Close portfolio"}
+          >
+            {isPortfolioCollapsed ? <Plus className="h-4 w-4" /> : <X className="h-4 w-4" />}
           </button>
         </div>
+        {!isPortfolioCollapsed && (
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-center text-[15px] font-bold text-white">Sign in to access your portfolio</p>
+            <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-3 backdrop-blur-[58px]">
+              <span className="text-[15px] font-bold text-white">Sign In</span>
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="relative flex flex-col rounded-xl border border-[#181B22] bg-[#0B0E1180] p-4 backdrop-blur-[50px]">
