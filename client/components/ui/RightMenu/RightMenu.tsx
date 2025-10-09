@@ -528,45 +528,56 @@ const MarketplaceRightMenuContent: FC = () => {
       >
         <div className="flex items-center justify-between">
           <h3 className="text-[19px] font-bold text-white">News</h3>
-          <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
+          <button
+            type="button"
+            onClick={() => setIsNewsCollapsed((prev) => !prev)}
+            className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
+            aria-label={isNewsCollapsed ? "Expand news" : "Close news"}
+          >
+            {isNewsCollapsed ? <Plus className="h-4 w-4" /> : <X className="h-4 w-4" />}
+          </button>
         </div>
-        <div
-          ref={newsFilterScrollRef}
-          className="news-filter-scroll custom-scroll -mx-1 overflow-x-auto pb-1"
-          onPointerDown={handleNewsPointerDown}
-          onPointerUp={handleNewsPointerCancel}
-          onPointerCancel={handleNewsPointerCancel}
-          onClickCapture={handleNewsClickCapture}
-          onScroll={handleNewsScroll}
-        >
-          <div className="flex min-w-max items-center gap-2 px-1">
-            {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
-              <button
-                key={category}
-                onClick={() => setNewsCategory(category.toLowerCase())}
-                className={cn(
-                  "flex h-9 shrink-0 items-center justify-center rounded-full px-4 text-xs font-semibold leading-none whitespace-nowrap transition-all",
-                  newsCategory === category.toLowerCase()
-                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.45)]"
-                    : "border border-[#181B22] bg-[#0C101480] text-white",
-                )}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          {newsItems.map((item, idx) => (
+        {!isNewsCollapsed && (
+          <>
             <div
-              key={`${item.title}-${idx}`}
-              className={cn("flex flex-col gap-1 pb-1", idx < newsItems.length - 1 && "border-b border-[#181B22]")}
+              ref={newsFilterScrollRef}
+              className="news-filter-scroll custom-scroll -mx-1 overflow-x-auto pb-1"
+              onPointerDown={handleNewsPointerDown}
+              onPointerUp={handleNewsPointerCancel}
+              onPointerCancel={handleNewsPointerCancel}
+              onClickCapture={handleNewsClickCapture}
+              onScroll={handleNewsScroll}
             >
-              <span className="text-xs font-bold text-webGray">{item.date}</span>
-              <p className="pb-1 text-[15px] font-bold text-white">{item.title}</p>
+              <div className="flex min-w-max items-center gap-2 px-1">
+                {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setNewsCategory(category.toLowerCase())}
+                    className={cn(
+                      "flex h-9 shrink-0 items-center justify-center rounded-full px-4 text-xs font-semibold leading-none whitespace-nowrap transition-all",
+                      newsCategory === category.toLowerCase()
+                        ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.45)]"
+                        : "border border-[#181B22] bg-[#0C101480] text-white",
+                    )}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
+            <div className="flex flex-col gap-4">
+              {newsItems.map((item, idx) => (
+                <div
+                  key={`${item.title}-${idx}`}
+                  className={cn("flex flex-col gap-1 pb-1", idx < newsItems.length - 1 && "border-b border-[#181B22]")}
+                >
+                  <span className="text-xs font-bold text-webGray">{item.date}</span>
+                  <p className="pb-1 text-[15px] font-bold text-white">{item.title}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
