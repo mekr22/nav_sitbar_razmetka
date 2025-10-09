@@ -278,16 +278,13 @@ const MarketplaceRightMenuContent: FC = () => {
       <div className="flex flex-col gap-6 rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <h3 className="text-[19px] font-bold text-white">Sector Mover</h3>
-              <div className="relative flex h-7 w-7 items-center justify-center">
-                <Settings className="h-7 w-7 text-[#B0B0B0]/70" />
-                <span className="absolute text-[11px] font-semibold text-white">?</span>
-              </div>
+              <BadgeHelp className="h-6 w-6 text-[#B0B0B0]" aria-hidden="true" />
             </div>
             <button
               type="button"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-[#2A2E37] bg-[#12141C] text-[#B0B0B0] transition-colors hover:text-white"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-[#2D3140] bg-[#11131A] text-[#B0B0B0] transition-colors hover:border-[#3D4152] hover:text-white"
               aria-label="Close sector mover"
             >
               <X className="h-4 w-4" />
@@ -297,9 +294,9 @@ const MarketplaceRightMenuContent: FC = () => {
             <button
               onClick={() => setSectorFilter("domination")}
               className={cn(
-                "flex-1 rounded-[32px] border px-4 py-3 text-[15px] font-semibold transition-all",
+                "flex-1 rounded-full border px-5 py-2.5 text-[15px] font-semibold transition-[color,background,box-shadow,border-color]",
                 sectorFilter === "domination"
-                  ? "border-transparent bg-gradient-to-r from-[#3D2B6C] to-[#171924] text-white shadow-[0_4px_18px_rgba(21,14,47,0.45)]"
+                  ? "border border-[#222533] bg-[#141720] text-white"
                   : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
@@ -308,9 +305,9 @@ const MarketplaceRightMenuContent: FC = () => {
             <button
               onClick={() => setSectorFilter("24hour")}
               className={cn(
-                "flex-1 rounded-[32px] border px-4 py-3 text-[15px] font-semibold transition-all",
+                "flex-1 rounded-full border px-5 py-2.5 text-[15px] font-semibold transition-[color,background,box-shadow,border-color]",
                 sectorFilter === "24hour"
-                  ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_6px_24px_rgba(160,106,255,0.35)]"
+                  ? "border border-transparent bg-[linear-gradient(104deg,#7C4DFF_0%,#996CFF_50%,#5A38FF_100%)] text-white"
                   : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
