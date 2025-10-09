@@ -139,6 +139,16 @@ const MarketplaceRightMenuContent: FC = () => {
   const [isPortfolioCollapsed, setIsPortfolioCollapsed] = useState(false);
   const [isNewsCollapsed, setIsNewsCollapsed] = useState(false);
   const [isCalendarCollapsed, setIsCalendarCollapsed] = useState(false);
+  const [tableViewEnabled, setTableViewEnabled] = useState(true);
+  const [selectedColumns, setSelectedColumns] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(customizeColumnsOptions.map((option) => [option, true])),
+  );
+  const [selectedSavedViews, setSelectedSavedViews] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(savedViewsOptions.map((option, index) => [`${option}-${index}`, index === 0])),
+  );
+  const [selectedSymbolDisplays, setSelectedSymbolDisplays] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(symbolDisplayOptions.map((option, index) => [option, index === 0])),
+  );
   const [collapsedWatchlistGroups, setCollapsedWatchlistGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(watchlistGroups.map((group, index) => [group.name, index !== 0])),
   );
@@ -147,6 +157,27 @@ const MarketplaceRightMenuContent: FC = () => {
     setCollapsedWatchlistGroups((prev) => ({
       ...prev,
       [groupName]: !prev[groupName],
+    }));
+  }, []);
+
+  const toggleColumnOption = useCallback((option: string) => {
+    setSelectedColumns((prev) => ({
+      ...prev,
+      [option]: !prev[option],
+    }));
+  }, []);
+
+  const toggleSavedView = useCallback((key: string) => {
+    setSelectedSavedViews((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  }, []);
+
+  const toggleSymbolDisplay = useCallback((option: string) => {
+    setSelectedSymbolDisplays((prev) => ({
+      ...prev,
+      [option]: !prev[option],
     }));
   }, []);
 
