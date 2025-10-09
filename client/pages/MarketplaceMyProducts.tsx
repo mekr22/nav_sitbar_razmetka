@@ -23,7 +23,7 @@ const MarketplaceMyProducts: FC = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
+      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 xl:min-w-[1075px]">
         <div className="flex flex-col gap-6 border-b border-[#181B22] pb-6">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex flex-col gap-5">
@@ -65,7 +65,7 @@ const MarketplaceMyProducts: FC = () => {
               </div>
             </div>
 
-            <div className="flex h-[170px] w-full items-center justify-center rounded-xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px] sm:h-[194px] lg:w-[300px] xl:w-[344px]">
+            <div className="flex h-[170px] w-full items-center justify-center rounded-xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px] sm:h-[194px] lg:w-[280px] xl:w-[320px]">
               <span className="text-lg font-bold text-[#808283] sm:text-2xl">Advertising Banner</span>
             </div>
           </div>
