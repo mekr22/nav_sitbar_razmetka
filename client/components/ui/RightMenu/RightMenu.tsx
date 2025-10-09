@@ -12,6 +12,7 @@ import {
   MoreHorizontal,
   X,
   BadgeHelp,
+  ChevronUp,
 } from "lucide-react";
 
 interface Props {
