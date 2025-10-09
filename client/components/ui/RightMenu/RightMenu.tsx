@@ -231,7 +231,6 @@ const MarketplaceRightMenuContent: FC = () => {
   }, []);
 
   useEffect(() => {
-    const container = newsFilterScrollRef.current;
     updateNewsFilterShadows();
 
     window.addEventListener("resize", updateNewsFilterShadows);
