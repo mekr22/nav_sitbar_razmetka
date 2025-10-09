@@ -378,13 +378,13 @@ const MarketplaceRightMenuContent: FC = () => {
           <h3 className="text-[19px] font-bold text-white">News</h3>
           <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
         </div>
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="flex items-center gap-1.5">
           {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
             <button
               key={category}
               onClick={() => setNewsCategory(category.toLowerCase())}
               className={cn(
-                "rounded-[32px] border px-2 py-3 text-xs font-bold backdrop-blur-[58px] transition-all",
+                "h-9 rounded-[32px] border px-2 py-3 text-xs font-bold transition-all",
                 newsCategory === category.toLowerCase()
                   ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
                   : "border-[#181B22] bg-[#0C101480] text-white",
