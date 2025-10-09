@@ -136,6 +136,16 @@ const MarketplaceRightMenuContent: FC = () => {
   const [isPortfolioCollapsed, setIsPortfolioCollapsed] = useState(false);
   const [isNewsCollapsed, setIsNewsCollapsed] = useState(false);
   const [isCalendarCollapsed, setIsCalendarCollapsed] = useState(false);
+  const [collapsedWatchlistGroups, setCollapsedWatchlistGroups] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(watchlistGroups.map((group, index) => [group.name, index !== 0])),
+  );
+
+  const toggleWatchlistGroup = useCallback((groupName: string) => {
+    setCollapsedWatchlistGroups((prev) => ({
+      ...prev,
+      [groupName]: !prev[groupName],
+    }));
+  }, []);
 
   const newsFilterScrollRef = useRef<HTMLDivElement | null>(null);
   const newsFilterDragRef = useRef({
