@@ -282,28 +282,28 @@ const MarketplaceMyProducts: FC = () => {
               <div
                 key={i}
                 className={cn(
-                  "relative flex flex-col gap-3 rounded-2xl border bg-[#0C1014]/60 p-4 backdrop-blur-[48px]",
+                  "relative flex flex-col gap-3 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px]",
                   i === 1 ? "border-[#A06AFF]" : "border-[#181B22]",
                 )}
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-start justify-between">
+                  <div className="flex gap-3">
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192"
                       alt="Sarah Lee"
-                      className="h-16 w-16 rounded-full object-cover shadow-[0_6px_16px_rgba(0,0,0,0.35)]"
+                      className="h-24 w-24 flex-shrink-0 rounded-full object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
                     />
-                    <div className="space-y-1">
+                    <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-2xl font-bold leading-tight text-white">Sarah Lee</h3>
+                        <h3 className="text-2xl font-bold leading-none text-white">Sarah Lee</h3>
                         <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
                       </div>
-                      <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">
+                      <div className="text-xs font-bold uppercase tracking-wide text-[#B0B0B0]">
                         Berkshire Hathaway
                       </div>
                     </div>
                   </div>
-                  <Star className="h-5 w-5 text-[#B0B0B0]" />
+                  <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
                 </div>
 
                 <div className="relative h-[76px] overflow-hidden rounded-xl border border-[#1F1A2D] bg-gradient-to-br from-[#1A1430] via-[#121323] to-[#0B1016]">
@@ -335,16 +335,16 @@ const MarketplaceMyProducts: FC = () => {
                   </span>
                 </div>
 
-                <div className="grid gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-                  <div className="flex items-center gap-1 whitespace-nowrap">
+                <div className="flex flex-col gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
+                  <div className="flex items-center gap-1">
                     <span>Markets:</span>
                     <span className="text-white">Binance, NASDAQ</span>
                   </div>
-                  <div className="flex items-center gap-1 whitespace-nowrap">
+                  <div className="flex items-center gap-1">
                     <span>Assets:</span>
                     <span className="text-white">BTC, ETH, Tesla, Gold</span>
                   </div>
-                  <div className="flex items-center gap-1 whitespace-nowrap">
+                  <div className="flex items-center gap-1">
                     <span>Analysis:</span>
                     <span className="text-white">Technical & Fundamental Analysis</span>
                   </div>
