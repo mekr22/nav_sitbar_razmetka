@@ -5,7 +5,6 @@ import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent }
 import {
   Search,
   Settings,
-  ChevronRight,
   ChevronDown,
   Plus,
   RefreshCw,
