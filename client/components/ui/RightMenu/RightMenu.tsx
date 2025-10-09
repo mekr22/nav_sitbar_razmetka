@@ -294,9 +294,9 @@ const MarketplaceRightMenuContent: FC = () => {
             <button
               onClick={() => setSectorFilter("domination")}
               className={cn(
-                "flex-1 rounded-full border px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
+                "flex-1 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
                 sectorFilter === "domination"
-                  ? "border border-transparent bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
+                  ? "border-0 bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
                   : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
@@ -305,9 +305,9 @@ const MarketplaceRightMenuContent: FC = () => {
             <button
               onClick={() => setSectorFilter("24hour")}
               className={cn(
-                "flex-1 rounded-full border px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
+                "flex-1 rounded-full px-5 py-2.5 text-[15px] font-semibold transition-[color,background,border-color]",
                 sectorFilter === "24hour"
-                  ? "border border-transparent bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
+                  ? "border-0 bg-[linear-gradient(103deg,#A06AFF_0%,#482090_100%)] text-white"
                   : "border border-[#181B22] bg-[#0C101480] text-white/70",
               )}
             >
