@@ -466,50 +466,107 @@ const MarketplaceRightMenuContent: FC = () => {
         </div>
 
         {watchlistSettingsOpen && (
-          <div className="absolute right-4 top-16 z-10 flex w-[180px] flex-col gap-4 rounded-lg border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
-            <div className="flex items-center justify-between">
-              <span className="text-[15px] font-bold text-white">Table View</span>
-              <div className="flex h-5 w-[38px] items-center justify-end rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] p-[2px]">
-                <div className="h-4 w-4 rounded-full bg-white" />
-              </div>
-            </div>
+          <div className="absolute right-4 top-16 z-10 flex w-[200px] flex-col gap-4 rounded-lg border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+            <button
+              type="button"
+              onClick={() => setTableViewEnabled((prev) => !prev)}
+              className="flex items-center justify-between gap-3 text-left text-[15px] font-bold text-white"
+            >
+              <span>Table View</span>
+              <span
+                className={cn(
+                  "flex h-5 w-[38px] items-center rounded-full p-[2px] transition-all",
+                  tableViewEnabled ? "justify-end border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]" : "justify-start border border-[#181B22] bg-[#0C101480]",
+                )}
+              >
+                <span className="h-4 w-4 rounded-full bg-white" />
+              </span>
+            </button>
             <div className="h-px bg-[#181B22]" />
             <div className="text-xs font-bold uppercase text-webGray">Customize Columns</div>
-            {["Alphabetical", "Creation Date", "By Integration"].map((option) => (
-              <div key={option} className="flex items-center gap-2">
-                <div className="flex h-[18px] w-[18px] items-center justify-center rounded-[3px] bg-gradient-to-r from-[#A06AFF] to-[#482090]">
-                  <svg className="h-[6px] w-[10px]" viewBox="0 0 12 8" fill="none">
-                    <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-[15px] font-bold text-white">{option}</span>
-              </div>
-            ))}
-            {["Default", "Default"].map((option, idx) => (
-              <div key={`${option}-${idx}`} className="flex items-center gap-2">
-                <div className="h-[18px] w-[18px] rounded-[3px] border border-[#523A83]" />
-                <span className="text-[15px] font-bold text-white">{option}</span>
-              </div>
-            ))}
+            <div className="flex flex-col gap-3">
+              {customizeColumnsOptions.map((option) => {
+                const isSelected = selectedColumns[option];
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => toggleColumnOption(option)}
+                    className="flex items-center gap-2 text-left"
+                  >
+                    <span
+                      className={cn(
+                        "flex h-[18px] w-[18px] items-center justify-center rounded-[3px] border border-[#523A83]/70 transition-colors",
+                        isSelected && "border-0 bg-gradient-to-r from-[#A06AFF] to-[#482090]",
+                      )}
+                    >
+                      {isSelected && (
+                        <svg className="h-[6px] w-[10px]" viewBox="0 0 12 8" fill="none">
+                          <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </span>
+                    <span className="text-[15px] font-bold text_white">{option}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <div className="h-px bg-[#181B22]" />
+            <div className="text-xs font-bold uppercase text-webGray">Saved Views</div>
+            <div className="flex flex-col gap-3">
+              {savedViewsOptions.map((option, idx) => {
+                const key = `${option}-${idx}`;
+                const isSelected = selectedSavedViews[key];
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => toggleSavedView(key)}
+                    className="flex items-center gap-2 text-left"
+                  >
+                    <span
+                      className={cn(
+                        "flex h-[18px] w-[18px] items-center justify-center rounded-[3px] border border-[#523A83]/70 transition-colors",
+                        isSelected && "border-0 bg-gradient-to-r from-[#A06AFF] to-[#482090]",
+                      )}
+                    >
+                      {isSelected && (
+                        <svg className="h-[6px] w-[10px]" viewBox="0 0 12 8" fill="none">
+                          <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </span>
+                    <span className="text-[15px] font-bold text-white">{option}</span>
+                  </button>
+                );
+              })}
+            </div>
             <div className="h-px bg-[#181B22]" />
             <div className="text-xs font-bold uppercase text-webGray">Symbol Display</div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-[18px] w-[18px] items-center justify-center rounded-[3px] bg-gradient-to-r from-[#A06AFF] to-[#482090]">
-                <svg className="h-[6px] w-[10px]" viewBox="0 0 12 8" fill="none">
-                  <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <span className="text-[15px] font-bold text-white">Logo</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="flex h-4 w-4 items-center justify-center rounded-full border border-[#A06AFF] p-[2px]">
-                <div className="h-3 w-3 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090]" />
-              </div>
-              <span className="text-[15px] font-bold text-white">Ticker</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded-full border border-[#A06AFF]" />
-              <span className="text-[15px] font-bold text-white">Description</span>
+            <div className="flex flex-col gap-3">
+              {symbolDisplayOptions.map((option) => {
+                const isSelected = selectedSymbolDisplays[option];
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => toggleSymbolDisplay(option)}
+                    className="flex items-center gap-2 text-left"
+                  >
+                    <span
+                      className={cn(
+                        "flex h-4 w-4 items-center justify-center rounded-full border border-[#A06AFF]/60 transition-colors",
+                        isSelected && "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]",
+                      )}
+                    >
+                      {isSelected && (
+                        <span className="h-2 w-2 rounded-full bg-white" />
+                      )}
+                    </span>
+                    <span className="text-[15px] font-bold text-white">{option}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
