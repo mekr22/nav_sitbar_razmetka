@@ -128,6 +128,21 @@ const calendarEvents = [
       { symbol: "AVGO", name: "Broadcom Inc" },
     ],
   },
+  {
+    date: "Jun 07",
+    events: [
+      { symbol: "DOCU", name: "DocuSign Inc" },
+      { symbol: "OKTA", name: "Okta Inc" },
+      { symbol: "ASAN", name: "Asana Inc" },
+    ],
+  },
+  {
+    date: "Jun 10",
+    events: [
+      { symbol: "TSLA", name: "Tesla Inc" },
+      { symbol: "AAPL", name: "Apple Inc" },
+    ],
+  },
 ];
 
 const MarketplaceRightMenuContent: FC = () => {
@@ -139,6 +154,11 @@ const MarketplaceRightMenuContent: FC = () => {
   const [isPortfolioCollapsed, setIsPortfolioCollapsed] = useState(false);
   const [isNewsCollapsed, setIsNewsCollapsed] = useState(false);
   const [isCalendarCollapsed, setIsCalendarCollapsed] = useState(false);
+  const [selectedCalendarEvent, setSelectedCalendarEvent] = useState<string | null>(() => {
+    const firstGroup = calendarEvents[0];
+    const firstDetail = firstGroup?.events[0];
+    return firstGroup && firstDetail ? `${firstGroup.date}-${firstDetail.symbol}` : null;
+  });
   const [tableViewEnabled, setTableViewEnabled] = useState(true);
   const [selectedColumns, setSelectedColumns] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(customizeColumnsOptions.map((option) => [option, true])),
@@ -744,8 +764,11 @@ const MarketplaceRightMenuContent: FC = () => {
             </button>
             <div className="h-px w-full bg-gradient-to-r from-transparent via-[#181B22] to-transparent" />
             <div className="space-y-6">
-              {calendarEvents.map((event, idx) => {
+              {calendarEvents.map((event) => {
                 const [month, day] = event.date.split(" ");
+                const isGroupSelected = event.events.some(
+                  (detail) => selectedCalendarEvent === `${event.date}-${detail.symbol}`,
+                );
 
                 return (
                   <div key={event.date} className="flex gap-4">
@@ -757,18 +780,36 @@ const MarketplaceRightMenuContent: FC = () => {
                       <span
                         className={cn(
                           "pointer-events-none absolute left-0 top-0 h-full w-[3px] rounded-full",
-                          idx === 0
+                          isGroupSelected
                             ? "bg-gradient-to-b from-[#A06AFF] via-[#563191] to-[#2E2744]"
                             : "bg-[#2E2744]",
                         )}
                       />
                       <div className="space-y-4 pl-4">
-                        {event.events.map((detail) => (
-                          <div key={`${event.date}-${detail.symbol}`} className="flex flex-col gap-1">
-                            <span className="text-sm font-semibold text-white">{detail.symbol}</span>
-                            <span className="text-sm text-webGray">{detail.name}</span>
-                          </div>
-                        ))}
+                        {event.events.map((detail) => {
+                          const eventKey = `${event.date}-${detail.symbol}`;
+                          const isSelected = selectedCalendarEvent === eventKey;
+
+                          return (
+                            <button
+                              key={eventKey}
+                              type="button"
+                              aria-pressed={isSelected}
+                              onClick={() => setSelectedCalendarEvent(eventKey)}
+                              className={cn(
+                                "flex w-full flex-col gap-1 rounded-lg border border-transparent px-3 py-2 text-left transition-[background,border-color]",
+                                isSelected
+                                  ? "border-[#A06AFF]/60 bg-[#2E2744]"
+                                  : "hover:border-[#1F2230] hover:bg-[#141821]",
+                              )}
+                            >
+                              <span className="text-sm font-semibold text-white">{detail.symbol}</span>
+                              <span className={cn("text-sm", isSelected ? "text-white/80" : "text-webGray")}>
+                                {detail.name}
+                              </span>
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
