@@ -124,7 +124,6 @@ const calendarEvents = [
 
 const MarketplaceRightMenuContent: FC = () => {
   const [sectorFilter, setSectorFilter] = useState<"domination" | "24hour">("24hour");
-  const [tradingPsychologyOpen, setTradingPsychologyOpen] = useState(false);
   const [newsCategory, setNewsCategory] = useState("earnings");
   const [watchlistSettingsOpen, setWatchlistSettingsOpen] = useState(false);
 
