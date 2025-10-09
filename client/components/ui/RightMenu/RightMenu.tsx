@@ -101,6 +101,10 @@ const watchlistGroups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"].
   items: watchlistItems,
 }));
 
+const customizeColumnsOptions = ["Alphabetical", "Creation Date", "By Integration"] as const;
+const savedViewsOptions = ["Default", "Default"] as const;
+const symbolDisplayOptions = ["Logo", "Ticker", "Description"] as const;
+
 const newsItems = [
   { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
   { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
