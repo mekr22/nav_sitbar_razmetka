@@ -135,17 +135,22 @@ textarea::-webkit-scrollbar-track {
 }
 
 .custom-scroll {
+  cursor: grab;
   scrollbar-width: thin;
-  scrollbar-color: #482090 rgba(72, 32, 144, 0.2);
+  scrollbar-color: #5b2db1 rgba(72, 32, 144, 0.18);
+}
+
+.custom-scroll.is-dragging {
+  cursor: grabbing;
 }
 
 .custom-scroll::-webkit-scrollbar {
-  height: 6px;
+  height: 4px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
   border-radius: 999px;
-  background: rgba(72, 32, 144, 0.2);
+  background: rgba(72, 32, 144, 0.18);
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
