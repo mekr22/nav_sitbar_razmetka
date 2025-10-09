@@ -284,7 +284,7 @@ const MarketplaceRightMenuContent: FC = () => {
             </div>
             <button
               type="button"
-              className="flex h-7 w-7 items-center justify-center rounded-full border border-[#2D3140] bg-[#11131A] text-[#B0B0B0] transition-colors hover:border-[#3D4152] hover:text-white"
+              className="text-[#B0B0B0] transition-colors hover:text-white"
               aria-label="Close sector mover"
             >
               <X className="h-4 w-4" />
