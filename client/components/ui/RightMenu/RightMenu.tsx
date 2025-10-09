@@ -580,7 +580,12 @@ const MarketplaceRightMenuContent: FC = () => {
         )}
       </div>
 
-      <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+      <div
+        className={cn(
+          "flex flex-col rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]",
+          isCalendarCollapsed ? "gap-0" : "gap-4",
+        )}
+      >
         <div className="flex items-center justify-between">
           <h3 className="text-[19px] font-bold text-white">Calendar</h3>
           <X className="h-6 w-6 cursor-pointer text-webGray transition-colors hover:text-white" />
