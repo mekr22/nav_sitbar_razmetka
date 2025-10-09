@@ -1,6 +1,7 @@
 import { FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from "react";
 import {
   Search,
   Settings,
