@@ -145,6 +145,8 @@ const calendarEvents = [
   },
 ];
 
+const calendarFilters = ["Upcoming", "This Month", "Last Month"] as const;
+
 const MarketplaceRightMenuContent: FC = () => {
   const [sectorFilter, setSectorFilter] = useState<"domination" | "24hour">("24hour");
   const [newsCategory, setNewsCategory] = useState("earnings");
@@ -159,6 +161,8 @@ const MarketplaceRightMenuContent: FC = () => {
     const firstDetail = firstGroup?.events[0];
     return firstGroup && firstDetail ? `${firstGroup.date}-${firstDetail.symbol}` : null;
   });
+  const [selectedCalendarFilter, setSelectedCalendarFilter] = useState<(typeof calendarFilters)[number]>("Upcoming");
+  const [isCalendarFilterOpen, setIsCalendarFilterOpen] = useState(false);
   const [tableViewEnabled, setTableViewEnabled] = useState(true);
   const [selectedColumns, setSelectedColumns] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(customizeColumnsOptions.map((option) => [option, true])),
@@ -172,6 +176,12 @@ const MarketplaceRightMenuContent: FC = () => {
   const [collapsedWatchlistGroups, setCollapsedWatchlistGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(watchlistGroups.map((group, index) => [group.name, index !== 0])),
   );
+
+  useEffect(() => {
+    if (isCalendarCollapsed) {
+      setIsCalendarFilterOpen(false);
+    }
+  }, [isCalendarCollapsed]);
 
   const toggleWatchlistGroup = useCallback((groupName: string) => {
     setCollapsedWatchlistGroups((prev) => ({
@@ -758,10 +768,46 @@ const MarketplaceRightMenuContent: FC = () => {
         </div>
         {!isCalendarCollapsed && (
           <>
-            <button className="flex h-10 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-semibold text-white/90">
-              <span>Upcoming</span>
-              <ChevronDown className="h-5 w-5 text-webGray" />
-            </button>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsCalendarFilterOpen((prev) => !prev)}
+                aria-haspopup="listbox"
+                aria-expanded={isCalendarFilterOpen}
+                className="flex h-10 w-full items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-semibold text-white/90 transition-colors hover:border-[#1F2230]"
+              >
+                <span>{selectedCalendarFilter}</span>
+                <ChevronDown
+                  className={cn("h-5 w-5 text-webGray transition-transform", isCalendarFilterOpen && "-scale-y-100")}
+                />
+              </button>
+              {isCalendarFilterOpen && (
+                <div className="absolute left-0 right-0 top-full z-20 mt-2 rounded-lg border border-[#181B22] bg-[#0C1014] py-1 shadow-lg">
+                  {calendarFilters.map((filter) => {
+                    const isSelected = selectedCalendarFilter === filter;
+                    return (
+                      <button
+                        key={filter}
+                        type="button"
+                        role="option"
+                        aria-selected={isSelected}
+                        onClick={() => {
+                          setSelectedCalendarFilter(filter);
+                          setIsCalendarFilterOpen(false);
+                        }}
+                        className={cn(
+                          "flex w-full items-center justify-between px-4 py-2 text-left text-sm transition-colors",
+                          isSelected ? "text-white" : "text-white/80 hover:text-white",
+                        )}
+                      >
+                        <span>{filter}</span>
+                        {isSelected && <span className="text-xs font-semibold text-[#A06AFF]">Selected</span>}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
             <div className="h-px w-full bg-gradient-to-r from-transparent via-[#181B22] to-transparent" />
             <div className="space-y-6">
               {calendarEvents.map((event) => {
@@ -772,7 +818,7 @@ const MarketplaceRightMenuContent: FC = () => {
 
                 return (
                   <div key={event.date} className="flex gap-4">
-                    <div className="flex w-[52px] flex-col leading-none">
+                    <div className="flex w-[52px] flex-col items-end justify-center gap-1 leading-none">
                       <span className="text-2xl font-bold text-webGray">{month}</span>
                       <span className="text-[31px] font-bold text-white">{day}</span>
                     </div>
