@@ -142,19 +142,19 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
         </div>
 
         <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-bold uppercase text-[#B0B0B0] sm:gap-y-3 sm:text-[12px]">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 whitespace-nowrap">
             <span>ROI(Month)</span>
             <span className="text-[#2EBD85]">{trader.roiMonth}</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 whitespace-nowrap">
             <span>ROI(3 Months)</span>
             <span className="text-[#2EBD85]">{trader.roiQuarter}</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 whitespace-nowrap">
             <span>Average trade profitability:</span>
             <span className="text-[#2EBD85]">{trader.avgProfitability}</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 whitespace-nowrap">
             <span>Trades accuracy</span>
             <span className="text-[#2EBD85]">{trader.accuracy}</span>
           </div>
