@@ -778,7 +778,7 @@ const MarketplaceRightMenuContent: FC = () => {
               >
                 <span>{selectedCalendarFilter}</span>
                 <ChevronDown
-                  className={cn("h-5 w-5 text-webGray transition-transform", isCalendarFilterOpen && "-scale-y-100")}
+                  className={cn("h-5 w-5 text-webGray transition-transform", isCalendarFilterOpen && "rotate-180")}
                 />
               </button>
               {isCalendarFilterOpen && (
