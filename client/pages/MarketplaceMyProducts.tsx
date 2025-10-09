@@ -18,6 +18,165 @@ const categories = [
   "Others",
 ] as const;
 
+type Trader = {
+  id: string;
+  name: string;
+  avatar: string;
+  badge: string;
+  followers: string;
+  publications: string;
+  trades30Days: string;
+  experience: string;
+  roiMonth: string;
+  roiQuarter: string;
+  avgProfitability: string;
+  accuracy: string;
+  certification: string;
+  rating: string;
+};
+
+const traders: Trader[] = [
+  {
+    id: "sarah-lee-1",
+    name: "Sarah Lee",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/d83ddcd1551e722a63cd2e617b3a356762dc989a?width=240",
+    badge: "Securities trading (USA)",
+    followers: "15,054",
+    publications: "983",
+    trades30Days: "45",
+    experience: "5 years",
+    roiMonth: "+28.4%",
+    roiQuarter: "+28.4%",
+    avgProfitability: "+4.2%",
+    accuracy: "74%",
+    certification: "Series 7 (General Securities Representative)",
+    rating: "5.0",
+  },
+  {
+    id: "sarah-lee-2",
+    name: "Sarah Lee",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/d83ddcd1551e722a63cd2e617b3a356762dc989a?width=240",
+    badge: "Securities trading (USA)",
+    followers: "12,903",
+    publications: "742",
+    trades30Days: "39",
+    experience: "5 years",
+    roiMonth: "+24.1%",
+    roiQuarter: "+31.7%",
+    avgProfitability: "+3.8%",
+    accuracy: "71%",
+    certification: "Series 7 (General Securities Representative)",
+    rating: "4.9",
+  },
+];
+
+const TraderPerformanceChart: FC = () => (
+  <svg className="h-full w-full" viewBox="0 0 360 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M3.67163 36.9779L1 38.9593V57H359V3.39853L350.317 6.21419L344.306 11.0113L337.627 10.6984L334.287 11.7412L326.272 2.04284L323.601 3.39853L318.925 2.77283L308.907 3.91995L303.563 8.92557L299.556 7.67417C297.997 8.82129 294.881 11.0947 294.881 11.0113C294.881 10.9278 292.209 9.37747 290.873 8.61272L286.866 11.1155L281.522 8.50844L274.843 7.77845L271.504 1L261.485 4.33708H258.145L255.474 5.06707L253.47 3.81566L247.459 9.86413L245.455 8.19559L238.776 7.77845L234.769 9.55128L233.433 5.79706L230.093 7.77845L225.418 5.06707L221.41 6.52705L219.407 5.79706L217.403 6.21419L213.395 2.56426L210.056 10.3855L204.713 7.04846L199.369 6.21419L194.026 11.637L185.343 14.7655L178.664 14.1398L177.996 16.7469L174.657 14.6612L169.313 17.4769L165.306 23.8382L160.631 24.151L155.955 24.5682L153.284 28.6352L149.944 29.1566L141.929 28.6352L131.91 26.341L128.571 29.4695L119.888 30.6166L116.548 30.1995L115.213 31.2423L106.53 29.4695L105.194 30.3038L95.8432 29.7824L87.8283 31.9723L87.1605 33.5366L83.153 33.1194L78.4775 34.6837L75.138 33.5366H67.1231L65.7873 34.058H63.1157L58.4403 35.3094L50.4253 34.2666L46.4179 32.0766L41.7425 32.1809L37.0672 34.6837L33.7276 33.8494L31.7238 34.9965L28.3843 34.2666L17.0298 34.9965L11.6865 37.7079L3.67163 36.9779Z"
+      fill="url(#traderGradient)"
+    />
+    <defs>
+      <linearGradient id="traderGradient" x1="-152.286" y1="1" x2="-152.286" y2="57" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#A06AFF" stopOpacity="0.32" />
+        <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featured }) => (
+  <div
+    className={cn(
+      "mx-auto w-full max-w-[526px] rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] sm:p-6",
+      featured ? "border-[#A06AFF]" : "border-[#181B22]",
+    )}
+  >
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4">
+        <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-lg">
+          <img src={trader.avatar} alt={trader.name} className="h-full w-full object-cover" />
+          <div className="absolute bottom-1 left-1 flex items-center gap-1">
+            <span className="rounded bg-[#A06AFF] px-2 text-[12px] font-extrabold uppercase tracking-[0.02em] text-white">PRO</span>
+            <span className="flex items-center gap-1 rounded bg-[#1C3430] px-2 text-[12px] font-bold uppercase tracking-[0.02em] text-[#2EBD85]">
+              {trader.rating}
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-1 flex-col gap-3">
+          <div className="flex items-start justify-between gap-3">
+            <div className="space-y-2">
+              <h3 className="text-[15px] font-bold leading-none text-white sm:text-lg">{trader.name}</h3>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded bg-[#3E321D] px-2 py-[2px] text-[11px] font-extrabold uppercase tracking-[0.02em] text-[#FFA800]">
+                  {trader.badge}
+                </span>
+                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-[2px] text-[11px] font-bold text-white">
+                  <Users className="h-4 w-4 text-[#B0B0B0]" />
+                  {trader.followers}
+                </span>
+                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-[2px] text-[11px] font-bold text-white">
+                  <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
+                  {trader.publications}
+                </span>
+              </div>
+            </div>
+            <Star className="h-6 w-6 text-[#B0B0B0]" />
+          </div>
+
+          <div className="space-y-1 text-[11px] font-bold uppercase tracking-[0.02em] text-[#B0B0B0] sm:text-[12px]">
+            <div className="flex flex-wrap items-center gap-1">
+              <span>Number of trades in 30 days:</span>
+              <span className="text-[#2EBD85]">{trader.trades30Days}</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1">
+              <span>Experience:</span>
+              <span className="text-[#2EBD85]">{trader.experience}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="h-14 w-full overflow-hidden rounded-md border border-[#181B22] bg-gradient-to-t from-[#A06AFF1A] to-transparent">
+        <TraderPerformanceChart />
+      </div>
+
+      <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[11px] font-bold uppercase tracking-[0.02em] text-[#B0B0B0] sm:text-[12px]">
+        <div className="flex items-center gap-1">
+          <span>ROI(Month)</span>
+          <span className="text-[#2EBD85]">{trader.roiMonth}</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span>ROI(3 Months)</span>
+          <span className="text-[#2EBD85]">{trader.roiQuarter}</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span>Average trade profitability:</span>
+          <span className="text-[#2EBD85]">{trader.avgProfitability}</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span>Trades accuracy</span>
+          <span className="text-[#2EBD85]">{trader.accuracy}</span>
+        </div>
+      </div>
+
+      <div className="text-[11px] font-bold uppercase tracking-[0.02em] text-white sm:text-[12px]">{trader.certification}</div>
+
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-2 text-[12px] font-bold uppercase tracking-[0.02em] text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+          <BookOpen className="h-4 w-4" />
+          Learn More
+        </button>
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-[12px] font-bold uppercase tracking-[0.02em] text-white transition-opacity hover:opacity-90">
+          <Mail className="h-4 w-4" />
+          Contact/Hire
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
