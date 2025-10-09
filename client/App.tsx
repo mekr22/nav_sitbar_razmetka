@@ -15,6 +15,7 @@ import Pricing from "./pages/Pricing";
 import Profile from "./pages/Profile";
 import ProfileNew from "./pages/ProfileNew";
 import Billing from "./pages/Billing";
+import Stock from "./pages/Stock";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
@@ -41,6 +42,7 @@ const App = () => (
                   <Route path="/profile" element={<ProfileNew />} />
                   <Route path="/profile-old" element={<Profile />} />
                   <Route path="/billing" element={<Billing />} />
+                  <Route path="/stock" element={<Stock />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
