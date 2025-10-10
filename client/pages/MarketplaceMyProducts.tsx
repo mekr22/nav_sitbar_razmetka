@@ -1398,7 +1398,7 @@ const MarketplaceMyProducts: FC = () => {
                     <div>
                       <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
                       <div className="mt-1 flex flex-wrap items-center gap-1">
-                        <span className="flex items-center gap-0.5 rounded bg-[#2EBD85]/16 px-1 text-xs font-bold text-[#2EBD85]">4.8</span>
+                        <span className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">4.8</span>
                         <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
                           <Users className="h-4 w-4 text-[#B0B0B0]" />
                           1,748
@@ -1429,14 +1429,14 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
-                    <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-1.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:text-[15px]">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230]">
                       <BookOpen className="h-4 w-4" />
-                      Details
+                      DETAILS
                     </button>
-                    <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-1.5 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:text-[15px]">
+                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
                       <ShoppingCart className="h-4 w-4" />
-                      Add to cart
+                      ADD TO CART
                     </button>
                   </div>
                 </div>
