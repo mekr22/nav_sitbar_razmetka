@@ -738,7 +738,7 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
 
 const CourseCard: FC<{ course: Course }> = ({ course }) => (
   <div className="w-full">
-    <div className="relative flex flex-col gap-4 overflow-hidden rounded-2xl bg-[#0C1014]/60 p-4 backdrop-blur-[50px] md:flex-row md:items-stretch md:gap-6">
+    <div className="relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4 backdrop-blur-[50px] md:flex-row md:items-stretch md:gap-6">
       {/* Course Image */}
       <img
         src={course.image}
@@ -749,13 +749,13 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
       {/* Content */}
       <div className="flex flex-1 flex-col gap-4 md:gap-3 md:justify-between">
         {/* Title and Star */}
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-4 pr-6 md:pr-8">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold text-white sm:text-[19px]">{course.title}</h3>
             <p className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">{course.subtitle}</p>
           </div>
-          <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
         </div>
+        <Star className="absolute right-4 top-4 h-6 w-6 text-[#B0B0B0]" />
 
         {/* Host and Details */}
         <div className="flex flex-col gap-2">
