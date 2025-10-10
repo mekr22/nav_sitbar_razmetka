@@ -177,38 +177,51 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
   </div>
 );
 
-const analysts: Trader[] = [
+type Analyst = {
+  id: string;
+  name: string;
+  avatar: string;
+  company: string;
+  role: string;
+  rating: string;
+  followers: string;
+  publications: string;
+  markets: string;
+  assets: string;
+  analysis: string;
+  forecastAccuracy: string;
+  featured?: boolean;
+};
+
+const analysts: Analyst[] = [
   {
     id: "analyst-sarah-lee",
     name: "Sarah Lee",
     avatar: "https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192",
-    badge: "Hedge fund manager",
+    company: "BERKSHIRE HATHAWAY",
+    role: "HEDGE FUND MANAGER",
+    rating: "5.0",
     followers: "15,054",
     publications: "983",
-    trades30Days: "48",
-    experience: "8 years",
-    roiMonth: "+28.4%",
-    roiQuarter: "+32.6%",
-    avgProfitability: "+4.2%",
-    accuracy: "68%",
-    certification: "Berkshire Hathaway · Technical & Fundamental Analysis",
-    rating: "5.0",
+    markets: "BINANCE, NASDAQ",
+    assets: "BTC, ETH, TESLA, GOLD",
+    analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
+    forecastAccuracy: "68%",
+    featured: true,
   },
   {
     id: "analyst-alex-morgan",
     name: "Alex Morgan",
     avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
-    badge: "Investment strategist",
+    company: "SONMORE FINANCIAL",
+    role: "INVESTMENT STRATEGIST",
+    rating: "4.9",
     followers: "12,678",
     publications: "742",
-    trades30Days: "36",
-    experience: "6 years",
-    roiMonth: "+24.2%",
-    roiQuarter: "+30.5%",
-    avgProfitability: "+3.6%",
-    accuracy: "65%",
-    certification: "Sonmore Financial · Technical & Fundamental Analysis",
-    rating: "4.9",
+    markets: "NYSE, NASDAQ",
+    assets: "AAPL, NVDA, GOLD, BTC",
+    analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
+    forecastAccuracy: "65%",
   },
 ];
 
@@ -314,7 +327,7 @@ const MarketplaceMyProducts: FC = () => {
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {analysts.map((analyst, index) => (
-              <TraderCard key={analyst.id} trader={analyst} featured={index === 0} />
+              <AnalystCard key={analyst.id} analyst={analyst} featured={index === 0} />
             ))}
           </div>
         </div>
