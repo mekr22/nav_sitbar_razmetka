@@ -96,7 +96,11 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
       <div className="relative flex flex-col gap-4">
         <div className="flex gap-4">
           <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-lg shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
-            <img src={trader.avatar} alt={trader.name} className="block h-full w-full object-cover" />
+            <img
+              src={trader.avatar}
+              alt={trader.name}
+              className="block h-full w-full object-cover object-center [transform:scale(1.08)]"
+            />
             <div className="absolute bottom-1 left-1 flex items-center gap-1">
               <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">PRO</span>
               <span className="rounded bg-[#1C3430] px-1 text-[12px] font-bold text-[#2EBD85]">{trader.rating}</span>
