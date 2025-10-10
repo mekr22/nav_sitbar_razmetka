@@ -1269,10 +1269,37 @@ const MarketplaceMyProducts: FC = () => {
                 </div>
 
                 <div className="mt-3 flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-[url('https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=025')] bg-cover" />
-                  <div className="h-8 w-8 rounded-full bg-[url('https://cryptologos.cc/logos/binance-coin-bnb-logo.svg?v=025')] bg-cover" />
-                  <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5 p-1">
-                    <div className="h-full w-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=')] bg-cover" />
+                  <div className="h-8 w-8 rounded-full overflow-hidden bg-gradient-to-b from-[#627EEA] to-[#627EEA]/80 flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 256 417" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" fill="#fff" fillOpacity="0.6"/>
+                      <path d="M127.962 0L0 212.32l127.962 75.639V154.158z" fill="#fff"/>
+                      <path d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.6L256 236.587z" fill="#fff" fillOpacity="0.6"/>
+                      <path d="M127.962 416.905v-104.72L0 236.585z" fill="#fff"/>
+                      <path d="M127.961 287.958l127.96-75.637-127.96-58.162z" fill="#fff" fillOpacity="0.2"/>
+                      <path d="M0 212.32l127.96 75.638v-133.8z" fill="#fff" fillOpacity="0.6"/>
+                    </svg>
+                  </div>
+                  <div className="h-8 w-8 rounded-full overflow-hidden bg-[#F3BA2F] flex items-center justify-center">
+                    <svg width="18" height="18" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M38.171 53.203L62.998 28.375L87.829 53.203L101.289 39.742L62.998 1.451L24.711 39.742L38.171 53.203Z" fill="white"/>
+                      <path d="M1.45 63.004L14.91 49.543L28.371 63.004L14.91 76.464L1.45 63.004Z" fill="white"/>
+                      <path d="M38.171 72.804L62.998 97.631L87.829 72.804L101.289 86.265L62.998 124.551L24.711 86.265L38.171 72.804Z" fill="white"/>
+                      <path d="M97.625 63.004L111.086 49.543L124.546 63.004L111.086 76.464L97.625 63.004Z" fill="white"/>
+                      <path d="M77.88 63.003H77.879L63.001 48.124L52.287 58.838L51.654 59.471L48.12 63.005L63.001 77.881L77.879 63.004L77.88 63.003Z" fill="white"/>
+                    </svg>
+                  </div>
+                  <div className="h-8 w-8 rounded-full overflow-hidden bg-white/10 border border-white/20 flex items-center justify-center">
+                    <div className="grid grid-cols-3 gap-[1px] w-4 h-4">
+                      <div className="bg-white w-1 h-1"></div>
+                      <div className="bg-transparent w-1 h-1"></div>
+                      <div className="bg-white w-1 h-1"></div>
+                      <div className="bg-transparent w-1 h-1"></div>
+                      <div className="bg-white w-1 h-1"></div>
+                      <div className="bg-transparent w-1 h-1"></div>
+                      <div className="bg-white w-1 h-1"></div>
+                      <div className="bg-transparent w-1 h-1"></div>
+                      <div className="bg-white w-1 h-1"></div>
+                    </div>
                   </div>
                 </div>
 
