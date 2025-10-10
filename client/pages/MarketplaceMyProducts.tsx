@@ -1102,50 +1102,47 @@ const MarketplaceMyProducts: FC = () => {
           </div>
         </div>
 
-        {/* Scripts/Products Section */}
+        {/* Scripts and Software Section */}
         <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Scripts and Software</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
 
-          <div className="rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+          <div className="rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-6 backdrop-blur-[50px]">
             <div className="flex flex-col gap-6 lg:flex-row">
+              {/* Left side - Image and Type Details */}
               <div className="flex w-full flex-col gap-4 lg:w-80">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640"
-                  alt="Product"
+                  alt="RiskMaster - Trading risk calculation script"
                   className="h-80 w-full rounded-lg object-cover"
                 />
-                <div className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl border border-[#181B22] bg-[#0C1014]/60 p-4 sm:grid-cols-4">
-                  <div className="flex flex-col justify-center gap-1">
-                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Type:</span>
-                    <div className="inline-flex">
-                      <span className="rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">Script</span>
-                    </div>
+
+                {/* Type details arranged horizontally */}
+                <div className="flex flex-wrap gap-4 text-xs font-bold">
+                  <div className="flex flex-col gap-1">
+                    <span className="uppercase text-[#B0B0B0]">Type:</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Script</span>
                   </div>
-                  <div className="flex flex-col justify-center gap-1">
-                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Industry</span>
-                    <div className="inline-flex">
-                      <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Trading and Finance</span>
-                    </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="uppercase text-[#B0B0B0]">Industry</span>
+                    <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 uppercase text-[#6AA5FF]">Trading and Finance</span>
                   </div>
-                  <div className="flex flex-col justify-center gap-1">
-                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Publication Date</span>
-                    <div className="inline-flex">
-                      <span className="rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">2 years ago</span>
-                    </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="uppercase text-[#B0B0B0]">Publication Date</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">2 years ago</span>
                   </div>
-                  <div className="flex flex-col justify-center gap-1">
-                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Revenue</span>
-                    <div className="inline-flex">
-                      <span className="rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">USD $15,000/Month</span>
-                    </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="uppercase text-[#B0B0B0]">Revenue</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">USD $15,000/Month</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-1 flex-col gap-4">
+              {/* Right side - Content */}
+              <div className="relative flex flex-1 flex-col gap-4">
+                {/* Author info and star */}
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <img
@@ -1170,7 +1167,8 @@ const MarketplaceMyProducts: FC = () => {
 
                 <div className="border-t border-[#181B22]" />
 
-                <div>
+                {/* Product details */}
+                <div className="flex-1">
                   <h4 className="mb-2 text-lg font-bold text-white sm:text-[19px]">RiskMaster - Trading risk calculation script</h4>
                   <div className="mb-3 flex flex-wrap items-center gap-2">
                     <span className="rounded bg-[#A06AFF]/16 px-1 text-xs font-bold uppercase text-[#A06AFF]">Verified Listing</span>
@@ -1194,27 +1192,28 @@ const MarketplaceMyProducts: FC = () => {
                       <span className="rounded bg-[#2E2744] px-1 uppercase text-white">pandas</span>
                     </div>
                   </div>
+                </div>
 
-                  <div className="mt-auto flex flex-col gap-3">
-                    <div className="flex items-center gap-2">
-                      <div className="flex items-center gap-0.5">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
-                        ))}
-                      </div>
-                      <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
+                {/* Rating and buttons at bottom */}
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
+                      ))}
                     </div>
+                    <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
+                  </div>
 
-                    <div className="mt-1 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 lg:ml-auto">
-                      <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-                        <BookOpen className="h-4 w-4" />
-                        Details
-                      </button>
-                      <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
-                        <ShoppingCart className="h-4 w-4" />
-                        Buy
-                      </button>
-                    </div>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+                      <BookOpen className="h-4 w-4" />
+                      Details
+                    </button>
+                    <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+                      <ShoppingCart className="h-4 w-4" />
+                      Buy
+                    </button>
                   </div>
                 </div>
               </div>
