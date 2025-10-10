@@ -753,8 +753,8 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
         {/* Title and Star */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
-            <h3 className="text-xl font-bold text-white sm:text-2xl">{course.title}</h3>
-            <p className="text-lg font-bold text-[#B0B0B0] sm:text-[19px]">{course.subtitle}</p>
+            <h3 className="text-lg font-bold text-white sm:text-[19px]">{course.title}</h3>
+            <p className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">{course.subtitle}</p>
           </div>
           <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
         </div>
