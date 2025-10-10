@@ -1117,22 +1117,30 @@ const MarketplaceMyProducts: FC = () => {
                   alt="Product"
                   className="h-80 w-full rounded-lg object-cover"
                 />
-                <div className="grid gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/60 p-3 text-xs font-bold uppercase text-[#B0B0B0] sm:grid-cols-2">
-                  <div className="flex flex-col gap-1">
-                    <span>Type:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Script</span>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-xl border border-[#181B22] bg-[#0C1014]/60 p-4 sm:grid-cols-4">
+                  <div className="flex flex-col justify-center gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Type:</span>
+                    <div className="inline-flex">
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">Script</span>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span>Industry:</span>
-                    <span className="rounded bg-[#6AA5FF]/16 px-1 uppercase text-[#6AA5FF]">Trading and Finance</span>
+                  <div className="flex flex-col justify-center gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Industry</span>
+                    <div className="inline-flex">
+                      <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Trading and Finance</span>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span>Publication Date:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">2 years ago</span>
+                  <div className="flex flex-col justify-center gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Publication Date</span>
+                    <div className="inline-flex">
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">2 years ago</span>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span>Revenue:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">USD $15,000/Month</span>
+                  <div className="flex flex-col justify-center gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Revenue</span>
+                    <div className="inline-flex">
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">USD $15,000/Month</span>
+                    </div>
                   </div>
                 </div>
               </div>
