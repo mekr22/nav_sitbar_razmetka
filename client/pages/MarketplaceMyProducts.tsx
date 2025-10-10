@@ -1258,7 +1258,7 @@ const MarketplaceMyProducts: FC = () => {
                       <Star className="h-6 w-6 text-[#B0B0B0]" />
                     </div>
                     <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
-                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-1 text-white">
+                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
                         <Users className="h-4 w-4 text-[#B0B0B0]" />
                         315
                       </span>
