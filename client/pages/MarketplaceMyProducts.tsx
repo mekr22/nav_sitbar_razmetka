@@ -1167,43 +1167,47 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                   </div>
 
-                  <div className="mb-4 grid grid-cols-2 gap-3 text-xs font-bold sm:grid-cols-4">
-                    <div>
-                      <div className="uppercase text-[#B0B0B0]">Type:</div>
-                      <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Script</span>
+                  <div className="mt-auto flex flex-col gap-4">
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-0.5">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
+                        ))}
+                      </div>
+                      <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                     </div>
-                    <div>
-                      <div className="uppercase text-[#B0B0B0]">Industry:</div>
-                      <span className="rounded bg-[#6AA5FF]/16 px-1 uppercase text-[#6AA5FF]">Trading and Finance</span>
-                    </div>
-                    <div>
-                      <div className="uppercase text-[#B0B0B0]">Publication Date:</div>
-                      <span className="rounded bg-[#2E2744] px-1 uppercase text-white">2 years ago</span>
-                    </div>
-                    <div>
-                      <div className="uppercase text-[#B0B0B0]">Revenue:</div>
-                      <span className="rounded bg-[#2E2744] px-1 uppercase text-white">USD $15,000/Month</span>
-                    </div>
-                  </div>
 
-                  <div className="mb-4 flex items-center gap-2">
-                    <div className="flex items-center gap-0.5">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
-                      ))}
-                    </div>
-                    <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
-                  </div>
+                    <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                      <div className="grid w-full max-w-[520px] grid-cols-2 gap-3 text-xs font-bold sm:grid-cols-4">
+                        <div>
+                          <div className="uppercase text-[#B0B0B0]">Type:</div>
+                          <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Script</span>
+                        </div>
+                        <div>
+                          <div className="uppercase text-[#B0B0B0]">Industry:</div>
+                          <span className="rounded bg-[#6AA5FF]/16 px-1 uppercase text-[#6AA5FF]">Trading and Finance</span>
+                        </div>
+                        <div>
+                          <div className="uppercase text-[#B0B0B0]">Publication Date:</div>
+                          <span className="rounded bg-[#2E2744] px-1 uppercase text-white">2 years ago</span>
+                        </div>
+                        <div>
+                          <div className="uppercase text-[#B0B0B0]">Revenue:</div>
+                          <span className="rounded bg-[#2E2744] px-1 uppercase text-white">USD $15,000/Month</span>
+                        </div>
+                      </div>
 
-                  <div className="flex flex-col gap-2 sm:flex-row">
-                    <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-                      <BookOpen className="h-4 w-4" />
-                      Details
-                    </button>
-                    <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
-                      <ShoppingCart className="h-4 w-4" />
-                      Buy
-                    </button>
+                      <div className="flex flex-col gap-2 sm:flex-row">
+                        <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+                          <BookOpen className="h-4 w-4" />
+                          Details
+                        </button>
+                        <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+                          <ShoppingCart className="h-4 w-4" />
+                          Buy
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
