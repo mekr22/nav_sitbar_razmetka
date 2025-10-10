@@ -1088,6 +1088,20 @@ const MarketplaceMyProducts: FC = () => {
           </div>
         </div>
 
+        {/* Courses and Training materials Section */}
+        <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Courses and Training materials</h2>
+            <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            {courses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </div>
+
         {/* Scripts/Products Section */}
         <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
           <div className="flex items-center justify-between">
