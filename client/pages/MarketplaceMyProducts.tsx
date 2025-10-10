@@ -1109,7 +1109,8 @@ const MarketplaceMyProducts: FC = () => {
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
 
-          <div className="rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-6 backdrop-blur-[50px]">
+          <div className="relative rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-6 backdrop-blur-[50px]">
+            <Star className="absolute right-6 top-6 h-6 w-6 text-[#B0B0B0]" />
             <div className="flex flex-col gap-6 lg:flex-row">
               {/* Left side - Image and Type Details */}
               <div className="flex w-full flex-col gap-4 lg:w-80">
@@ -1164,8 +1165,7 @@ const MarketplaceMyProducts: FC = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-end gap-3">
-                      <Star className="h-6 w-6 text-[#B0B0B0]" />
+                    <div className="flex flex-col items-end gap-2">
                       <div className="flex items-center gap-3 text-xs font-bold uppercase text-white">
                         <div className="flex items-center gap-1">
                           <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
