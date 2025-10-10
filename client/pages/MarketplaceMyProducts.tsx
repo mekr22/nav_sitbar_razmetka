@@ -1119,17 +1119,22 @@ const MarketplaceMyProducts: FC = () => {
 
               <div className="flex flex-1 flex-col gap-4">
                 <div className="flex items-start justify-between">
-                  <div>
-                    <div className="mb-2 flex items-center gap-2">
-                      <h3 className="text-lg font-bold text-white sm:text-[19px]">Sarah Lee</h3>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-1">
-                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
-                        <Users className="h-4 w-4 text-[#B0B0B0]" />
-                        1,748
-                      </span>
-                      <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Windows/Mac</span>
-                      <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Top Seller</span>
+                  <div className="flex items-center gap-3">
+                    <img
+                      src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
+                      alt="Sarah Lee"
+                      className="h-16 w-16 rounded-lg object-cover"
+                    />
+                    <div>
+                      <h3 className="mb-2 text-lg font-bold text-white sm:text-[19px]">Sarah Lee</h3>
+                      <div className="flex flex-wrap items-center gap-1">
+                        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
+                          <Users className="h-4 w-4 text-[#B0B0B0]" />
+                          1,748
+                        </span>
+                        <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Windows/Mac</span>
+                        <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Top Seller</span>
+                      </div>
                     </div>
                   </div>
                   <Star className="h-6 w-6 text-[#B0B0B0]" />
