@@ -747,7 +747,7 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
       />
 
       {/* Content */}
-      <div className="flex flex-1 flex-col gap-4 md:gap-3">
+      <div className="flex flex-1 flex-col gap-4 md:gap-3 md:justify-between">
         {/* Title and Star */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
