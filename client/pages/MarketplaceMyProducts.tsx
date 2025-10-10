@@ -1134,8 +1134,8 @@ const MarketplaceMyProducts: FC = () => {
 
                 <div className="flex flex-wrap items-start gap-x-3 gap-y-2 text-xs font-bold uppercase text-[#B0B0B0]">
                   <div className="flex flex-col gap-1 whitespace-nowrap">
-                    <span>Type:</span>
-                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">Script</span>
+                    <span>Type</span>
+                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">Script2</span>
                   </div>
                   <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Industry</span>
@@ -1143,11 +1143,11 @@ const MarketplaceMyProducts: FC = () => {
                   </div>
                   <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Publication Date</span>
-                    <span className="inline-flex items-center rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">2 YEARS AGO</span>
+                    <span className="inline-flex items-center rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">SCRIPT2</span>
                   </div>
                   <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Revenue</span>
-                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">SD $15,000/Mo</span>
+                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">USD $15,000/Month</span>
                   </div>
                 </div>
               </div>
