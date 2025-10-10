@@ -197,7 +197,7 @@ const analysts: Analyst[] = [
   {
     id: "analyst-sarah-lee",
     name: "Sarah Lee",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/d83ddcd1551e722a63cd2e617b3a356762dc989a?width=240",
     company: "BERKSHIRE HATHAWAY",
     role: "HEDGE FUND MANAGER",
     rating: "5.0",
@@ -212,7 +212,7 @@ const analysts: Analyst[] = [
   {
     id: "analyst-alex-morgan",
     name: "Alex Morgan",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/3b5e315209450ddcdf1e2d4c061e7ce5a5fc7db2?width=240",
     company: "SONMORE FINANCIAL",
     role: "INVESTMENT STRATEGIST",
     rating: "4.9",
