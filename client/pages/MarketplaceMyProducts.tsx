@@ -285,6 +285,13 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
             <span>Risk Level:</span>
             <span className="text-white">{analyst.riskLevel}</span>
           </div>
+          <div className="flex items-center gap-1">
+            <span>Rating:</span>
+            <span className="flex items-center gap-1 text-white">
+              <Star className="h-4 w-4 text-[#FFA800]" />
+              {analyst.rating}
+            </span>
+          </div>
         </div>
 
         <button className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
