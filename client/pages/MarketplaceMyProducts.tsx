@@ -1350,6 +1350,8 @@ const MarketplaceMyProducts: FC = () => {
                   <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.04]" />
                 </div>
 
+                <div className="mt-3 border-t border-[#181B22]" />
+
                 <div className="mt-4">
                   <div className="flex items-center gap-1.5 text-xs font-bold">
                     <span className="uppercase text-[#B0B0B0]">Calc. Apy</span>
