@@ -521,7 +521,7 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; featured?
         <div className="mb-2 h-px w-full bg-[#181B22]" />
 
         {/* AUM */}
-        <div className="mb-4 flex items-center gap-0.5 text-sm font-bold sm:text-[15px]">
+        <div className="mb-2 flex items-center gap-0.5 text-sm font-bold sm:text-[15px]">
           <span className="text-white">Assets Under Management (AUM)</span>
           <span className="text-[#16C784]">{consultant.aum}</span>
         </div>
