@@ -1204,10 +1204,7 @@ const MarketplaceMyProducts: FC = () => {
                       <span className="rounded bg-[#2E2744] px-1 uppercase text-white">pandas</span>
                     </div>
                   </div>
-                </div>
 
-                {/* Rating and buttons at bottom */}
-                <div className="mt-auto flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-0.5">
                       {[1, 2, 3, 4, 5].map((star) => (
@@ -1216,17 +1213,18 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                     <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                   </div>
+                </div>
 
-                  <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
-                    <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-                      <BookOpen className="h-4 w-4" />
-                      Details
-                    </button>
-                    <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
-                      <ShoppingCart className="h-4 w-4" />
-                      Buy
-                    </button>
-                  </div>
+                {/* Buttons at bottom */}
+                <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                  <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+                    <BookOpen className="h-4 w-4" />
+                    Details
+                  </button>
+                  <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+                    <ShoppingCart className="h-4 w-4" />
+                    Buy
+                  </button>
                 </div>
               </div>
             </div>
