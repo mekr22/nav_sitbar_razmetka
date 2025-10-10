@@ -1262,9 +1262,9 @@ const MarketplaceMyProducts: FC = () => {
                         <Users className="h-4 w-4 text-[#B0B0B0]" />
                         315
                       </span>
-                      <span className="inline-flex rounded bg-[#FFA800]/16 px-2 py-1 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+                      <span className="inline-flex rounded bg-[#2A1C0E] px-2 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
                     </div>
-                    <span className="inline-flex w-fit rounded bg-[#2EBD85]/16 px-2 py-1 text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
+                    <span className="inline-flex w-fit rounded bg-[#1C3430] px-2 py-0.5 text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
                   </div>
                 </div>
 
