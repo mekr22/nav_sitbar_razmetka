@@ -1237,8 +1237,8 @@ const MarketplaceMyProducts: FC = () => {
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+            {[1, 2].map((i) => (
               <div
                 key={i}
                 className={cn(
