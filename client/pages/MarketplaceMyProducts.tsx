@@ -180,139 +180,137 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
 type Analyst = {
   id: string;
   name: string;
-  badge?: string;
-  firm: string;
   avatar: string;
-  location: string;
-  coverage: string;
-  description: string;
-  clients: string;
-  riskLevel: string;
-  aum: string;
-  avgReturn: string;
+  company: string;
+  role: string;
   rating: string;
+  followers: string;
+  publications: string;
+  markets: string;
+  assets: string;
+  analysis: string;
+  forecastAccuracy: string;
+  featured?: boolean;
 };
 
 const analysts: Analyst[] = [
   {
-    id: "sarah-lee-cfp",
-    name: "Sarah Lee, CFP®",
-    badge: "CFP®",
-    firm: "Sonmore Financial",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
-    location: "Chandler, AZ",
-    coverage: "Nationwide",
-    description: "Helping retirees and professionals in aerospace and tech minimize taxes.",
-    clients: "232",
-    riskLevel: "Moderate",
-    aum: "$4.2M",
-    avgReturn: "+0.00%",
+    id: "analyst-primary",
+    name: "Sarah Lee",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192",
+    company: "Berkshire Hathaway",
+    role: "Hedge fund manager",
     rating: "5.0",
+    followers: "15,054",
+    publications: "983",
+    markets: "Binance, NASDAQ",
+    assets: "BTC, ETH, Tesla, Gold",
+    analysis: "Technical & Fundamental Analysis",
+    forecastAccuracy: "68%",
+    featured: true,
   },
   {
-    id: "alex-morgan-cfa",
-    name: "Alex Morgan, CFA",
-    badge: "CFA",
-    firm: "Fiscal Insights",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192",
-    location: "San Francisco, CA",
-    coverage: "Global",
-    description: "Guiding founders and executives with holistic portfolio strategies.",
-    clients: "189",
-    riskLevel: "Balanced",
-    aum: "$3.8M",
-    avgReturn: "+0.12%",
+    id: "analyst-secondary",
+    name: "Alex Morgan",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
+    company: "Sonmore Financial",
+    role: "Investment strategist",
     rating: "4.9",
+    followers: "12,678",
+    publications: "742",
+    markets: "NYSE, NASDAQ",
+    assets: "AAPL, NVDA, Gold, BTC",
+    analysis: "Technical & Fundamental Analysis",
+    forecastAccuracy: "65%",
   },
 ];
 
-const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, featured }) => (
+const AnalystCard: FC<{ analyst: Analyst }> = ({ analyst }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       className={cn(
-        "relative overflow-hidden rounded-2xl border bg-[#0C1014]/60 px-4 pb-6 pt-28 backdrop-blur-[50px]",
-        featured ? "border-[#A06AFF]" : "border-[#181B22]",
+        "relative flex flex-col gap-3 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px]",
+        analyst.featured ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-br from-[#2B1750] via-[#141626] to-[#090C16]" />
-      <div className="pointer-events-none absolute inset-x-[-35%] top-[-25%] h-[220px] rounded-full bg-[#A06AFF]/20 blur-3xl" />
-      <img
-        src={analyst.avatar}
-        alt={analyst.name}
-        className="absolute left-4 top-5 h-24 w-24 rounded-lg object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
-      />
-      <button
-        type="button"
-        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-md transition-colors hover:border-white/30"
-        aria-label="Add to favourites"
-      >
-        <Star className="h-5 w-5 text-[#B0B0B0]" />
-      </button>
-
-      <div className="relative z-10 flex flex-col gap-3">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-xl font-bold text-white">{analyst.name}</h3>
-            {analyst.badge ? (
-              <span className="flex items-center gap-1 rounded-full bg-[#2E2744] px-2 py-0.5 text-xs font-semibold uppercase text-white">
-                <ShieldCheck className="h-4 w-4 text-[#A06AFF]" />
-                {analyst.badge}
-              </span>
-            ) : null}
-          </div>
-          <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{analyst.firm}</div>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-4 text-[11px] font-bold uppercase text-white">
-          <span className="flex items-center gap-1">
-            <MapPin className="h-4 w-4 text-[#B0B0B0]" />
-            {analyst.location}
-          </span>
-          <span className="flex items-center gap-1">
-            <Globe className="h-4 w-4 text-[#B0B0B0]" />
-            {analyst.coverage}
-          </span>
-        </div>
-
-        <p className="text-sm font-medium text-white">{analyst.description}</p>
-
-        <div className="grid gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-          <div className="flex items-center gap-1">
-            <span>Number of Clients:</span>
-            <span className="text-white">{analyst.clients}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Risk Level:</span>
-            <span className="text-white">{analyst.riskLevel}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Rating:</span>
-            <span className="flex items-center gap-1 text-white">
-              <Star className="h-4 w-4 text-[#FFA800]" />
-              {analyst.rating}
-            </span>
+      <div className="flex items-start justify-between">
+        <div className="flex gap-3">
+          <img
+            src={analyst.avatar}
+            alt={analyst.name}
+            className="h-24 w-24 flex-shrink-0 rounded-full object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
+          />
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2">
+              <h3 className="text-2xl font-bold leading-none text-white">{analyst.name}</h3>
+              <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
+            </div>
+            <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{analyst.company}</div>
           </div>
         </div>
+        <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
+      </div>
 
-        <button className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
+      <div className="relative h-[76px] overflow-hidden rounded-xl border border-[#1F1A2D] bg-gradient-to-br from-[#1A1430] via-[#121323] to-[#0B1016]">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#A06AFF1A] via-transparent to-transparent" />
+        <svg className="relative h-full w-full" viewBox="0 0 312 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.31342 74.8833L1 78.9522V116H311V5.92555L303.481 11.7077L298.276 21.5588L292.492 20.9164L289.601 23.0579L282.66 3.14154L280.347 5.92555L276.298 4.64063L267.623 6.99632L262.996 17.2757L259.526 14.7059C258.177 17.0616 255.478 21.7301 255.478 21.5588C255.478 21.3875 253.164 18.2037 252.007 16.6333L248.537 21.773L243.91 16.4191L238.127 14.92L235.235 1L226.56 7.85294H223.668L221.354 9.35202L219.619 6.78217L214.414 19.2031L212.679 15.7767L206.896 14.92L203.425 18.5607L202.269 10.8511L199.377 14.92L195.328 9.35202L191.858 12.3502L190.123 10.8511L188.388 11.7077L184.918 4.21232L182.026 20.2739L177.399 13.421L172.772 11.7077L168.145 22.8438L160.627 29.2684L154.843 27.9835L154.265 33.3373L151.373 29.0542L146.746 34.8364L143.276 47.8998L139.228 48.5423L135.179 49.3989L132.866 57.7509L129.974 58.8217L123.033 57.7509L114.358 53.0395L111.466 59.4642L103.948 61.8199L101.056 60.9632L99.8992 63.1048L92.3806 59.4642L91.2239 61.1774L83.1268 60.1066L76.1865 64.6039L75.6082 67.8162L72.1381 66.9596L68.0895 70.1719L65.1977 67.8162H58.2575L57.1008 68.8869H54.7873L50.7388 71.4568L43.7985 69.3153L40.3283 64.818L36.2798 65.0322L32.2313 70.1719L29.3395 68.4586L27.6045 70.8143L24.7127 69.3153L14.8806 70.8143L10.2537 76.3823L3.31342 74.8833Z" fill="url(#paint0_analyst_${analyst.id})" />
+          <path d="M1 77.6667L3.31346 73.6648L10.2537 75.1392L14.8806 69.663L24.7127 68.1886L27.6045 69.663L29.3396 67.3462L32.2314 69.0311L36.2798 63.9762L40.3284 63.7656L43.7985 68.1886L50.7388 70.2949L54.7873 67.7674H57.1007L58.2575 66.7143H65.1978L68.0896 69.0311L72.138 65.8718L75.6082 66.7143L76.1866 63.5549L83.1268 59.1319L91.2239 60.185L92.3805 58.5L99.8992 62.0806L101.056 59.9744L103.948 60.8169L111.466 58.5L114.358 52.1813L123.034 56.815L129.974 57.8681L132.866 56.815L135.179 48.6007L139.228 47.7582L143.276 47.1264L146.746 34.2784L151.373 28.5916L154.265 32.804L154.843 27.5385L160.627 28.8022L168.146 22.4835L172.772 11.5311L177.399 13.2161L182.026 19.956L184.918 4.15934L188.388 11.5311L190.123 10.6886L191.858 12.163L195.328 9.21429L199.377 14.6905L202.269 10.6886L203.425 18.2711L206.896 14.6905L212.679 15.533L214.414 18.9029L219.619 6.68681L221.354 9.21429L223.668 7.73993H226.56L235.235 1L238.127 14.6905L243.91 16.1648L248.537 21.4304L252.007 16.3755C253.164 17.92 255.478 21.0513 255.478 21.2198C255.478 21.3883 258.177 16.7967 259.526 14.4799L262.996 17.0073L267.623 6.89744L276.298 4.58059L280.347 5.84432L282.66 3.10623L289.601 22.6941L292.493 20.5879L298.276 21.2198L303.481 11.5311L311 5.84432" stroke="#523A83" strokeWidth="1.00667" strokeLinecap="round" />
+          <defs>
+            <linearGradient id="paint0_analyst_${analyst.id}" x1="-131.734" y1="1" x2="-131.734" y2="116" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#A06AFF" stopOpacity="0.32" />
+              <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div className="flex flex-wrap items-center gap-1">
+        <span className="rounded bg-[#3E321D] px-1 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
+          {analyst.role}
+        </span>
+        <span className="rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">{analyst.rating}</span>
+        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold text-white">
+          <Users className="h-4 w-4 text-[#B0B0B0]" />
+          {analyst.followers}
+        </span>
+        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold text-white">
+          <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
+          {analyst.publications}
+        </span>
+      </div>
+
+      <div className="grid gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
+        <div className="flex items-center gap-1">
+          <span>Markets:</span>
+          <span className="text-white">{analyst.markets}</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span>Assets:</span>
+          <span className="text-white">{analyst.assets}</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span>Analysis:</span>
+          <span className="text-white">{analyst.analysis}</span>
+        </div>
+      </div>
+
+      <div className="h-px w-full bg-[#181B22]" />
+
+      <div className="flex items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Forecast Accuracy:</span>
+        <span className="text-[#2EBD85]">{analyst.forecastAccuracy}</span>
+      </div>
+
+      <div className="flex gap-2">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#523A83] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#6A4A9F]">
+          <BookOpen className="h-4 w-4" />
+          Learn More
+        </button>
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90">
           <Mail className="h-4 w-4" />
           Contact/Hire
         </button>
-
-        <div className="h-px w-full bg-[#181B22]" />
-
-        <div className="grid gap-3">
-          <div>
-            <div className="text-xs font-bold uppercase text-[#B0B0B0]">Assets Under Management (AUM)</div>
-            <div className="text-lg font-bold text-white">{analyst.aum}</div>
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <div className="text-xs font-bold uppercase text-[#B0B0B0]">Average Portfolio Return</div>
-            <span className="rounded-full bg-[#2EBD85]/16 px-3 py-0.5 text-xs font-extrabold uppercase text-[#2EBD85]">
-              {analyst.avgReturn}
-            </span>
-          </div>
-        </div>
       </div>
     </div>
   </div>
