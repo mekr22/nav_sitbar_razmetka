@@ -219,7 +219,7 @@ const analysts: Analyst[] = [
     followers: "12,678",
     publications: "742",
     markets: "NYSE, NASDAQ",
-    assets: "AAPL, NVDA, Gold, BTC",
+    assets: "AAPL, NVDA, GOLD, BTC",
     analysis: "Technical & Fundamental Analysis",
     forecastAccuracy: "65%",
   },
