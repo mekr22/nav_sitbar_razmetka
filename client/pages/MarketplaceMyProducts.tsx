@@ -1132,7 +1132,7 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                <div className="flex flex-wrap items-start gap-x-4 gap-y-2 text-xs font-bold uppercase text-[#B0B0B0]">
+                <div className="flex flex-wrap items-start gap-x-2.5 gap-y-2 text-xs font-bold uppercase text-[#B0B0B0]">
                   <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Type:</span>
                     <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">Script</span>
