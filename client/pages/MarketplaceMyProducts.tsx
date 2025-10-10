@@ -212,7 +212,7 @@ const analysts: Analyst[] = [
   {
     id: "analyst-alex-morgan",
     name: "Alex Morgan",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/3b5e315209450ddcdf1e2d4c061e7ce5a5fc7db2?width=240",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/d83ddcd1551e722a63cd2e617b3a356762dc989a?width=240",
     company: "SONMORE FINANCIAL",
     role: "INVESTMENT STRATEGIST",
     rating: "4.9",
