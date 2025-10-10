@@ -234,7 +234,7 @@ const AnalystCard: FC<{ analyst: Analyst }> = ({ analyst }) => (
       )}
     >
       <div className="flex items-start justify-between">
-        <div className="flex gap-3">
+        <div className="flex items-start gap-3">
           <img
             src={analyst.avatar}
             alt={analyst.name}
