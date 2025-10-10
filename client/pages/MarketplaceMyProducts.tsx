@@ -39,7 +39,7 @@ const traders: Trader[] = [
   {
     id: "sarah-lee-primary",
     name: "Sarah Lee",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/d83ddcd1551e722a63cd2e617b3a356762dc989a?width=240",
+    avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=800",
     badge: "Securities trading (USA)",
     followers: "15,054",
     publications: "983",
