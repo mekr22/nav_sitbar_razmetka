@@ -1143,7 +1143,7 @@ const MarketplaceMyProducts: FC = () => {
                   </div>
                   <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Publication Date</span>
-                    <span className="inline-flex items-center rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold uppercase text-white">2 YEARS AGO</span>
+                    <span className="inline-flex items-center rounded bg-[#2E2744] px-[2px] py-0.5 text-[11px] font-semibold uppercase tracking-tight text-white">2 YEARS AGO</span>
                   </div>
                   <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Revenue</span>
