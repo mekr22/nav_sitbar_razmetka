@@ -708,6 +708,14 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
   </div>
 );
 
+const exchangeLogos = [
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5812aa6cc56f419ca24acdce705cca81?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F31262df0fdbe4b649612c82741a80ce2?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F757765515d584eee8550efa4011da550?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Ffdb76a79e3714022a31f6ce34d69a80a?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F46bbf20463b949229b2fa9f4e5301083?format=webp&width=800",
+];
+
 const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
   const getRiskColor = (level: string) => {
     switch (level) {
@@ -757,8 +765,8 @@ const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
 
         {/* Exchange Logos */}
         <div className="flex items-center gap-2">
-          {strategy.exchanges.slice(0, 5).map((exchange, idx) => (
-            <div key={idx} className="h-8 w-8 rounded-full bg-[#2E2744]" />
+          {exchangeLogos.map((logo, idx) => (
+            <img key={idx} src={logo} alt="" className="h-8 w-8 rounded-full object-cover" />
           ))}
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2E2744]">
             <span className="text-xs font-bold text-white">+{strategy.exchangesCount}</span>
