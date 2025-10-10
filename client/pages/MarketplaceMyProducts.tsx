@@ -1111,7 +1111,6 @@ const MarketplaceMyProducts: FC = () => {
 
           <div className="relative rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-6 backdrop-blur-[50px]">
             <div className="absolute right-6 top-6 flex items-center gap-4 text-xs font-bold uppercase text-white">
-              <Star className="h-6 w-6 text-[#B0B0B0]" />
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
@@ -1122,6 +1121,7 @@ const MarketplaceMyProducts: FC = () => {
                   <span>563</span>
                 </div>
               </div>
+              <Star className="h-6 w-6 text-[#B0B0B0]" />
             </div>
             <div className="flex flex-col gap-6 lg:flex-row">
               {/* Left side - Image and Type Details */}
