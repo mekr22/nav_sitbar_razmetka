@@ -1132,22 +1132,22 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                <div className="grid grid-cols-2 gap-4 text-xs font-bold sm:grid-cols-4">
-                  <div className="flex flex-col gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Type:</span>
-                    <span className="w-fit rounded bg-[#2E2744] px-2 py-0.5 uppercase text-white">Script</span>
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0]">
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <span>Type:</span>
+                    <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">Script</span>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Industry</span>
-                    <span className="w-fit rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5 uppercase text-[#6AA5FF]">Trading and Finance</span>
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <span>Industry</span>
+                    <span className="rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5 text-[#6AA5FF]">Trading and Finance</span>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Publication Date</span>
-                    <span className="w-fit rounded bg-[#2E2744] px-2 py-0.5 uppercase text-white">2 years ago</span>
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <span>Publication Date</span>
+                    <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">2 years ago</span>
                   </div>
-                  <div className="flex flex-col gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Revenue</span>
-                    <span className="w-fit rounded bg-[#2E2744] px-2 py-0.5 uppercase text-white">USD $15,000/Month</span>
+                  <div className="flex items-center gap-2 whitespace-nowrap">
+                    <span>Revenue</span>
+                    <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">USD $15,000/Month</span>
                   </div>
                 </div>
               </div>
