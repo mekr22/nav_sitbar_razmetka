@@ -1132,22 +1132,22 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0]">
-                  <div className="flex flex-col gap-1">
+                <div className="flex flex-wrap items-start gap-x-3 gap-y-2 text-xs font-bold uppercase text-[#B0B0B0]">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Type:</span>
-                    <span className="inline-flex rounded bg-[#2E2744] px-2 py-0.5 text-white">SCRIPT</span>
+                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">Script</span>
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Industry</span>
-                    <span className="inline-flex rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5 text-[#6AA5FF]">TRADING AND FINANCE</span>
+                    <span className="inline-flex rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF]">Trading and Finance</span>
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Publication Date</span>
-                    <span className="inline-flex rounded bg-[#2E2744] px-2 py-0.5 text-white">2 YEARS AGO</span>
+                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">2 years ago</span>
                   </div>
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Revenue</span>
-                    <span className="inline-flex rounded bg-[#2E2744] px-2 py-0.5 text-white">SD $15,000/MO</span>
+                    <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white">SD $15,000/Mo</span>
                   </div>
                 </div>
               </div>
