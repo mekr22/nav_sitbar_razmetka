@@ -738,14 +738,12 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
 
 const CourseCard: FC<{ course: Course }> = ({ course }) => (
   <div className="w-full">
-    <div className="relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#A06AFF] bg-[#0C1014]/60 p-4 backdrop-blur-[50px] md:flex-row md:items-center md:gap-6">
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#482090]/60 via-[#201933]/40 to-transparent" />
-
+    <div className="relative flex flex-col gap-4 overflow-hidden rounded-2xl bg-[#0C1014]/60 p-4 backdrop-blur-[50px] md:flex-row md:items-stretch md:gap-6">
       {/* Course Image */}
       <img
         src={course.image}
         alt={course.title}
-        className="h-[133px] w-full rounded-lg object-cover md:w-[231px]"
+        className="h-[133px] w-full rounded-lg object-cover md:h-full md:w-[231px]"
       />
 
       {/* Content */}
