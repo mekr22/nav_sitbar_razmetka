@@ -1114,11 +1114,11 @@ const MarketplaceMyProducts: FC = () => {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
-                  <span>1.5K</span>
+                  <span className="text-[#FFA800]">1.5K</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Eye className="h-4 w-4 text-[#B0B0B0]" />
-                  <span>563</span>
+                  <Eye className="h-4 w-4 text-[#FFA800]" />
+                  <span className="text-[#FFA800]">563</span>
                 </div>
               </div>
               <Star className="h-6 w-6 text-[#B0B0B0]" />
@@ -1154,9 +1154,7 @@ const MarketplaceMyProducts: FC = () => {
 
               {/* Right side - Content */}
               <div className="relative flex flex-1 flex-col gap-5">
-                <div className="flex flex-col gap-4">
-                  <span className="w-fit rounded-full bg-[#141821] px-3 py-1 text-xs font-extrabold uppercase text-white">Risk Master</span>
-
+                <div className="flex flex-col gap-4 border-b border-[#181B22] pb-4">
                   <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                     <div className="flex items-center gap-3">
                       <img
