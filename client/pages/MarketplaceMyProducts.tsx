@@ -419,8 +419,12 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; featured?
         {/* Avatar and Header */}
         <div className="mb-3 flex items-start justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
-              <img src={consultant.avatar} alt={consultant.name} className="h-full w-full object-cover" />
+            <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
+              <img
+                src={consultant.avatar}
+                alt={consultant.name}
+                className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
+              />
             </div>
             <div className="flex h-24 flex-col justify-center gap-1">
               <div className="flex items-center gap-1">
