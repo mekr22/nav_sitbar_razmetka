@@ -220,7 +220,7 @@ const analysts: Analyst[] = [
     publications: "742",
     markets: "NYSE, NASDAQ",
     assets: "AAPL, NVDA, GOLD, BTC",
-    analysis: "Technical & Fundamental Analysis",
+    analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
     forecastAccuracy: "65%",
   },
 ];
