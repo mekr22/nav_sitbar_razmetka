@@ -214,7 +214,7 @@ const analysts: Analyst[] = [
     name: "Alex Morgan",
     avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
     company: "Sonmore Financial",
-    role: "Investment strategist",
+    role: "INVESTMENT STRATEGIST",
     rating: "4.9",
     followers: "12,678",
     publications: "742",
