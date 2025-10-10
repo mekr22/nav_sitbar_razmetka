@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useState } from "react";
-import { Eye, ChevronRight, Package, Plus, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe, ShieldCheck } from "lucide-react";
+import { Eye, ChevronRight, Package, Plus, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const categories = [
