@@ -755,6 +755,20 @@ const MarketplaceMyProducts: FC = () => {
           </div>
         </div>
 
+        {/* Signals and Technical Indicators Section */}
+        <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals and Technical indicators</h2>
+            <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
+            {signals.map((signal) => (
+              <SignalCard key={signal.id} signal={signal} />
+            ))}
+          </div>
+        </div>
+
         {/* Scripts/Products Section */}
         <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
           <div className="flex items-center justify-between">
