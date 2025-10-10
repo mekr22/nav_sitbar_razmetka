@@ -145,7 +145,7 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
               alt={trader.name}
               className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
             />
-            <div className="absolute bottom-1 left-1 flex items-center gap-1">
+            <div className="absolute bottom-2 left-2 flex items-center gap-1">
               <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">PRO</span>
               <span className="rounded bg-[#1C3430] px-1 text-[12px] font-bold text-[#2EBD85]">{trader.rating}</span>
             </div>
