@@ -736,6 +736,73 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
   </div>
 );
 
+const CourseCard: FC<{ course: Course }> = ({ course }) => (
+  <div className="w-full">
+    <div className="relative flex flex-col gap-4 rounded-2xl border border-[#A06AFF] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] md:flex-row md:items-center md:gap-6">
+      {/* Course Image */}
+      <img
+        src={course.image}
+        alt={course.title}
+        className="h-[133px] w-full rounded-lg object-cover md:w-[231px]"
+      />
+
+      {/* Content */}
+      <div className="flex flex-1 flex-col gap-4">
+        {/* Title and Star */}
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-0.5">
+            <h3 className="text-xl font-bold text-white sm:text-2xl">{course.title}</h3>
+            <p className="text-lg font-bold text-[#B0B0B0] sm:text-[19px]">{course.subtitle}</p>
+          </div>
+          <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
+        </div>
+
+        {/* Host and Details */}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap items-baseline gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">HOST:</span>
+            <span className="text-sm font-bold text-white sm:text-[15px]">{course.host}</span>
+            <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                <Users className="h-4 w-4 text-[#B0B0B0]" />
+                <span className="text-xs font-bold text-white">{course.students}</span>
+              </div>
+              <div className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5">
+                <span className="text-xs font-bold text-[#2EBD85]">{course.rating}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">TOTAL:</span>
+            <div className="rounded bg-[#2E2744] px-1 py-0.5">
+              <span className="text-white">{course.duration}</span>
+            </div>
+            <div className="rounded bg-[#2E2744] px-1 py-0.5">
+              <span className="text-white">{course.lectures}</span>
+            </div>
+            <div className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5">
+              <span className="text-[#6AA5FF]">{course.level}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex flex-col gap-2 md:flex-row md:items-center">
+        <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] md:w-[180px]">
+          <BookOpen className="h-4 w-4" />
+          Details
+        </button>
+        <button className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 md:w-[180px]">
+          <ShoppingCart className="h-4 w-4" />
+          Add to cart
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 const exchangeLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5812aa6cc56f419ca24acdce705cca81?format=webp&width=800",
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F31262df0fdbe4b649612c82741a80ce2?format=webp&width=800",
