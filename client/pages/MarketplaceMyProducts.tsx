@@ -1263,8 +1263,8 @@ const MarketplaceMyProducts: FC = () => {
                         315
                       </span>
                       <span className="rounded bg-[#FFA800]/16 px-1 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
-                      <span className="rounded bg-[#2EBD85]/16 px-1 py-0.5 font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
                     </div>
+                    <span className="inline-flex w-fit rounded bg-[#2EBD85]/16 px-1 py-0.5 text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
                   </div>
                 </div>
 
