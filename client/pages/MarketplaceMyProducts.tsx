@@ -1127,13 +1127,13 @@ const MarketplaceMyProducts: FC = () => {
                     />
                     <div>
                       <h3 className="mb-2 text-lg font-bold text-white sm:text-[19px]">Sarah Lee</h3>
-                      <div className="flex flex-wrap items-center gap-1">
-                        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="flex items-center gap-1 rounded-full bg-[#2E2744] px-2 py-0.5 text-[11px] font-bold text-white">
                           <Users className="h-4 w-4 text-[#B0B0B0]" />
                           1,748
                         </span>
-                        <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Windows/Mac</span>
-                        <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Top Seller</span>
+                        <span className="rounded-full bg-[#2A1C0E] px-3 py-0.5 text-[11px] font-extrabold uppercase text-[#FFA800]">Windows/Mac</span>
+                        <span className="rounded-full bg-[#2A1C0E] px-3 py-0.5 text-[11px] font-extrabold uppercase text-[#FFA800]">Top Seller</span>
                       </div>
                     </div>
                   </div>
