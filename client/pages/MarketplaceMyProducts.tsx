@@ -88,13 +88,24 @@ const TraderPerformanceChart: FC = () => (
 const AnalystPerformanceChart: FC = () => (
   <svg className="h-full w-full" viewBox="0 0 360 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path
-      d="M3 55V34L17 18L31 28L44 9L58 32L71 6L86 27L101 5L116 36L130 14L145 43L160 20L174 47L189 16L204 41L219 8L233 37L248 22L262 48L277 26L292 49L307 30L321 46L336 24L351 34L357 27V55H3Z"
+      d="M3 55V32L12 20L20 34L32 12L45 40L58 8L72 37L86 6L101 42L116 18L130 45L145 16L159 50L174 14L188 47L203 10L217 43L232 19L246 52L261 24L275 48L290 22L304 46L319 25L333 44L348 27L357 35V55H3Z"
       fill="url(#analystGradient)"
+    />
+    <path
+      d="M3 32L12 20L20 34L32 12L45 40L58 8L72 37L86 6L101 42L116 18L130 45L145 16L159 50L174 14L188 47L203 10L217 43L232 19L246 52L261 24L275 48L290 22L304 46L319 25L333 44L348 27L357 35"
+      stroke="url(#analystStroke)"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <defs>
       <linearGradient id="analystGradient" x1="3" y1="6" x2="3" y2="55" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#6AC3FF" stopOpacity="0.4" />
+        <stop stopColor="#A06AFF" stopOpacity="0.38" />
         <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+      </linearGradient>
+      <linearGradient id="analystStroke" x1="3" y1="6" x2="3" y2="55" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#C6A6FF" />
+        <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
       </linearGradient>
     </defs>
   </svg>
