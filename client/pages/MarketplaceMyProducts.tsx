@@ -215,10 +215,10 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
             <BookOpen className="h-4 w-4" />
             Learn More
           </button>
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
-            <Mail className="h-4 w-4" />
-            Contact/Hire
-          </button>
+          <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
+          <Mail className="h-4 w-4" />
+          Contact/Hire
+        </button>
         </div>
       </div>
     </div>
@@ -421,7 +421,7 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
           <BookOpen className="h-4 w-4" />
           Learn More
         </button>
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
           <Mail className="h-4 w-4" />
           Contact/Hire
         </button>
