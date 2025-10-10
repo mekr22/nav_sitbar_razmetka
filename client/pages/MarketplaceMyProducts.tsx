@@ -1132,7 +1132,7 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                <div className="grid grid-cols-2 gap-x-10 gap-y-2 text-xs font-bold uppercase text-[#B0B0B0] sm:grid-cols-4 sm:gap-x-16">
+                <div className="grid grid-cols-2 gap-x-20 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0] sm:grid-cols-4 sm:gap-x-32">
                   <div className="flex flex-col gap-1">
                     <span>Type:</span>
                     <div className="flex items-center gap-1">
