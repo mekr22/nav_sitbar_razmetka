@@ -85,6 +85,21 @@ const TraderPerformanceChart: FC = () => (
   </svg>
 );
 
+const AnalystPerformanceChart: FC = () => (
+  <svg className="h-full w-full" viewBox="0 0 360 57" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path
+      d="M3 55V34L17 18L31 28L44 9L58 32L71 6L86 27L101 5L116 36L130 14L145 43L160 20L174 47L189 16L204 41L219 8L233 37L248 22L262 48L277 26L292 49L307 30L321 46L336 24L351 34L357 27V55H3Z"
+      fill="url(#analystGradient)"
+    />
+    <defs>
+      <linearGradient id="analystGradient" x1="3" y1="6" x2="3" y2="55" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#6AC3FF" stopOpacity="0.4" />
+        <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
 const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featured }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
