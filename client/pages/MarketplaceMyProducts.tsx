@@ -235,7 +235,7 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-lg shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
+          <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-full shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
             <img src={analyst.avatar} alt={analyst.name} className="h-full w-full object-cover" />
           </div>
           <div className="flex h-[120px] flex-col justify-center gap-1">
