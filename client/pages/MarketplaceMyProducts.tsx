@@ -199,7 +199,7 @@ const analysts: Analyst[] = [
     name: "Sarah Lee",
     avatar: "https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192",
     company: "Berkshire Hathaway",
-    role: "Hedge fund manager",
+    role: "HEDGE FUND MANAGER",
     rating: "5.0",
     followers: "15,054",
     publications: "983",
