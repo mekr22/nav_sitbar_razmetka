@@ -229,7 +229,7 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
   <div className="mx-auto w-full max-w-[525px]">
     <div
       className={cn(
-        "relative flex flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px]",
+        "relative flex flex-col gap-3 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px]",
         featured ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
