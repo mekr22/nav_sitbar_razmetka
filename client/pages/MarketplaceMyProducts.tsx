@@ -1172,7 +1172,7 @@ const MarketplaceMyProducts: FC = () => {
                           <span>1.5K</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Users className="h-4 w-4 text-[#B0B0B0]" />
+                          <Eye className="h-4 w-4 text-[#B0B0B0]" />
                           <span>563</span>
                         </div>
                       </div>
