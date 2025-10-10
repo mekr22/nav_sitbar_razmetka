@@ -1119,59 +1119,72 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                {/* Type details arranged horizontally */}
-                <div className="flex flex-wrap gap-4 text-xs font-bold">
+                <div className="grid grid-cols-2 gap-4 text-xs font-bold sm:grid-cols-4">
                   <div className="flex flex-col gap-1">
                     <span className="uppercase text-[#B0B0B0]">Type:</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Script</span>
+                    <span className="w-fit rounded bg-[#2E2744] px-2 py-0.5 uppercase text-white">Script</span>
                   </div>
                   <div className="flex flex-col gap-1">
                     <span className="uppercase text-[#B0B0B0]">Industry</span>
-                    <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 uppercase text-[#6AA5FF]">Trading and Finance</span>
+                    <span className="w-fit rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5 uppercase text-[#6AA5FF]">Trading and Finance</span>
                   </div>
                   <div className="flex flex-col gap-1">
                     <span className="uppercase text-[#B0B0B0]">Publication Date</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">2 years ago</span>
+                    <span className="w-fit rounded bg-[#2E2744] px-2 py-0.5 uppercase text-white">2 years ago</span>
                   </div>
                   <div className="flex flex-col gap-1">
                     <span className="uppercase text-[#B0B0B0]">Revenue</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">USD $15,000/Month</span>
+                    <span className="w-fit rounded bg-[#2E2744] px-2 py-0.5 uppercase text-white">USD $15,000/Month</span>
                   </div>
                 </div>
               </div>
 
               {/* Right side - Content */}
-              <div className="relative flex flex-1 flex-col gap-4">
-                {/* Author info and star */}
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
-                      alt="Sarah Lee"
-                      className="h-16 w-16 rounded-lg object-cover"
-                    />
-                    <div>
-                      <h3 className="mb-2 text-lg font-bold text-white sm:text-[19px]">Sarah Lee</h3>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold text-white">
+              <div className="relative flex flex-1 flex-col gap-5">
+                <div className="flex flex-col gap-4">
+                  <span className="w-fit rounded-full bg-[#141821] px-3 py-1 text-xs font-extrabold uppercase text-white">Risk Master</span>
+
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
+                        alt="Sarah Lee"
+                        className="h-16 w-16 rounded-lg object-cover"
+                      />
+                      <div>
+                        <h3 className="mb-2 text-lg font-bold text-white sm:text-[19px]">Sarah Lee</h3>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold text-white">
+                            <Users className="h-4 w-4 text-[#B0B0B0]" />
+                            1,748
+                          </span>
+                          <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Windows/Mac</span>
+                          <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Top Seller</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-end gap-3">
+                      <Star className="h-6 w-6 text-[#B0B0B0]" />
+                      <div className="flex items-center gap-3 text-xs font-bold uppercase text-white">
+                        <div className="flex items-center gap-1">
+                          <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
+                          <span>1.5K</span>
+                        </div>
+                        <div className="flex items-center gap-1">
                           <Users className="h-4 w-4 text-[#B0B0B0]" />
-                          1,748
-                        </span>
-                        <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Windows/Mac</span>
-                        <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Top Seller</span>
+                          <span>563</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <Star className="h-6 w-6 text-[#B0B0B0]" />
                 </div>
-
-                <div className="border-t border-[#181B22]" />
 
                 {/* Product details */}
                 <div className="flex-1">
                   <h4 className="mb-2 text-lg font-bold text-white sm:text-[19px]">RiskMaster - Trading risk calculation script</h4>
                   <div className="mb-3 flex flex-wrap items-center gap-2">
-                    <span className="rounded bg-[#A06AFF]/16 px-1 text-xs font-bold uppercase text-[#A06AFF]">Verified Listing</span>
+                    <span className="rounded bg-[#A06AFF]/16 px-2 py-0.5 text-xs font-bold uppercase text-[#A06AFF]">Verified Listing</span>
                     <span className="text-xs font-bold uppercase text-white">🌍 Australia</span>
                   </div>
                   <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
@@ -1195,7 +1208,7 @@ const MarketplaceMyProducts: FC = () => {
                 </div>
 
                 {/* Rating and buttons at bottom */}
-                <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+                <div className="mt-auto flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-0.5">
                       {[1, 2, 3, 4, 5].map((star) => (
@@ -1205,7 +1218,7 @@ const MarketplaceMyProducts: FC = () => {
                     <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                   </div>
 
-                  <div className="flex flex-col gap-2 sm:flex-row">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
                     <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
                       <BookOpen className="h-4 w-4" />
                       Details
