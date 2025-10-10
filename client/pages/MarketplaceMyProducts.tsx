@@ -1132,14 +1132,14 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                <div className="grid grid-cols-2 gap-x-[9rem] gap-y-3 text-xs font-bold uppercase text-[#B0B0B0] sm:grid-cols-4 sm:gap-x-[12rem] sm:gap-y-0">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0] sm:flex sm:flex-nowrap sm:items-center sm:gap-10">
                   <div className="flex flex-col gap-1 sm:gap-2">
                     <span className="whitespace-nowrap">Type:</span>
                     <div className="flex items-center gap-1 sm:gap-2">
                       <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">SCRIPT</span>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-1 sm:gap-2 sm:-ml-12">
+                  <div className="flex flex-col gap-1 sm:gap-2">
                     <span className="whitespace-nowrap">Industry</span>
                     <div className="flex items-center gap-1 sm:gap-2">
                       <span className="inline-flex rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF] whitespace-nowrap">TRADING AND FINANCE</span>
