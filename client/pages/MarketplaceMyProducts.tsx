@@ -99,7 +99,7 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
             <img
               src={trader.avatar}
               alt={trader.name}
-              className="block h-full w-full object-cover object-center [transform:scale(1.08)]"
+              className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
             />
             <div className="absolute bottom-1 left-1 flex items-center gap-1">
               <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">PRO</span>
