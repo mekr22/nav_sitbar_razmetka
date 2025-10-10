@@ -251,7 +251,7 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
         <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
       </div>
 
-      <div className="h-14 w-full overflow-hidden">
+      <div className="-mt-2 h-14 w-full overflow-hidden">
         <TraderPerformanceChart />
       </div>
 
