@@ -1305,8 +1305,6 @@ const MarketplaceMyProducts: FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-3 border-t border-[#181B22]" />
-
                 <div className="mt-3 space-y-2 text-xs font-bold">
                   <div className="flex items-center gap-1">
                     <span className="uppercase text-[#B0B0B0]">PAIR:</span>
