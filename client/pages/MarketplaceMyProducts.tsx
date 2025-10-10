@@ -657,18 +657,6 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
         <span className="text-[#B0B0B0]">Product Accuracy:</span>
         <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
       </div>
-
-      {/* Buttons */}
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 text-xs font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-          <BookOpen className="h-4 w-4" />
-          Learn More
-        </button>
-        <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 text-xs font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-          <ShoppingCart className="h-4 w-4" />
-          Buy
-        </button>
-      </div>
     </div>
   </div>
 );
