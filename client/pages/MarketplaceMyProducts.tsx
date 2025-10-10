@@ -791,12 +791,12 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-col gap-2 md:w-[240px]">
-        <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
           <BookOpen className="h-4 w-4" />
           DETAILS
         </button>
-        <button className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
           <ShoppingCart className="h-4 w-4" />
           ADD TO CART
         </button>
