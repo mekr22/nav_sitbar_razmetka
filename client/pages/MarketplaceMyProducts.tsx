@@ -237,7 +237,7 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
         featured ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
           <div className="relative h-[86px] w-[86px] flex-shrink-0 overflow-hidden rounded-full shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
             <img src={analyst.avatar} alt={analyst.name} className="h-full w-full transform object-cover object-center scale-[1.3]" />
