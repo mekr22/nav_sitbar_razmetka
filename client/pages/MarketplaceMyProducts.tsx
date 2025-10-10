@@ -1252,83 +1252,91 @@ const MarketplaceMyProducts: FC = () => {
                     alt="Product"
                     className="h-[72px] w-[72px] rounded-lg object-cover"
                   />
-                  <div className="flex flex-1 items-start justify-between">
-                    <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
-                    <Star className="h-6 w-6 text-[#B0B0B0]" />
+                  <div className="flex flex-1 flex-col gap-2">
+                    <div className="flex items-start justify-between">
+                      <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
+                      <Star className="h-6 w-6 text-[#B0B0B0]" />
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
+                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-white">
+                        <Users className="h-4 w-4 text-[#B0B0B0]" />
+                        315
+                      </span>
+                      <span className="rounded bg-[#FFA800]/16 px-1 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+                      <span className="rounded bg-[#2EBD85]/16 px-1 py-0.5 font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
+                    </div>
                   </div>
                 </div>
 
                 <div className="mt-3 flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full bg-gray-600" />
-                  <div className="h-8 w-8 rounded-full bg-gray-600" />
-                  <div className="h-8 w-8 rounded-full bg-gray-600" />
+                  <div className="h-8 w-8 rounded-full bg-[url('https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=025')] bg-cover" />
+                  <div className="h-8 w-8 rounded-full bg-[url('https://cryptologos.cc/logos/binance-coin-bnb-logo.svg?v=025')] bg-cover" />
+                  <div className="h-8 w-8 rounded-full border border-white/10 bg-white/5 p-1">
+                    <div className="h-full w-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=')] bg-cover" />
+                  </div>
                 </div>
 
                 <div className="mt-3 border-t border-[#181B22]" />
 
                 <div className="mt-3 space-y-2 text-xs font-bold">
-                  <div className="flex items-center gap-2">
-                    <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-white">
-                      <Users className="h-4 w-4 text-[#B0B0B0]" />
-                      315
-                    </span>
-                    <span className="rounded bg-[#FFA800]/16 px-1 uppercase text-[#FFA800]">Medium Accuracy</span>
-                    <span className="rounded bg-[#2EBD85]/16 px-1 uppercase text-[#2EBD85]">20% Profit Sharing</span>
-                  </div>
-
                   <div className="flex items-center gap-1">
                     <span className="uppercase text-[#B0B0B0]">PAIR:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">BTC/USDT</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">BTC/USDT</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="uppercase text-[#B0B0B0]">MAX DRAWDOWN:</span>
-                    <span className="rounded bg-[#1C3430] px-1 uppercase text-[#2EBD85]">-8.2%</span>
+                    <span className="rounded bg-[#1C3430] px-1 py-0.5 uppercase text-[#2EBD85]">-8.2%</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Market type:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Futures (x10 LEVERAGE)</span>
+                    <span className="uppercase text-[#B0B0B0]">MArket type:</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">FuTures (x10 LEVERAGE)</span>
                   </div>
                   <div className="flex flex-wrap items-center gap-1">
                     <span className="uppercase text-[#B0B0B0]">Type:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Stocks</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Futures</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Stocks</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">FUtures</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Strategy:</span>
-                    <span className="rounded bg-[#2E2744] px-1 uppercase text-white">Tech Analysis (MA, RSI)</span>
+                    <span className="uppercase text-[#B0B0B0]">sTRATEGY:</span>
+                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Tech Analysis (MA, RSI)</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="uppercase text-[#B0B0B0]">Settings:</span>
-                    <span className="rounded bg-[#6AA5FF]/16 px-1 uppercase text-[#6AA5FF]">Custom Indicators</span>
+                    <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 uppercase text-[#6AA5FF]">Custom Indicators</span>
                   </div>
                 </div>
 
                 <div className="mt-4 relative h-[54px] w-full">
                   <svg className="absolute inset-0 h-full w-full" viewBox="0 0 312 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.31342 34.9377L1 36.8068V53.8244H311V3.26252L303.481 5.91851L298.276 10.4435L292.492 10.1484L289.601 11.1321L282.66 1.9837L280.347 3.26252L276.298 2.67229L267.623 3.75437L262.996 8.47614L259.526 7.2957C258.177 8.37777 255.478 10.5222 255.478 10.4435C255.478 10.3648 253.164 8.90241 252.007 8.18103L248.537 10.5419L243.91 8.08266L238.127 7.39407L235.235 1L226.56 4.14785H223.668L221.354 4.83644L219.619 3.656L214.414 9.36147L212.679 7.78755L206.895 7.39407L203.425 9.06636L202.269 5.52503L199.377 7.39407L195.328 4.83644L191.858 6.21362L190.123 5.52503L188.388 5.91851L184.918 2.47555L182.026 9.85332L177.399 6.70547L172.772 5.91851L168.145 11.0338L160.627 13.9849L154.843 13.3947L154.265 15.8539L151.373 13.8865L146.746 16.5425L143.276 22.5431L139.228 22.8382L135.179 23.2317L132.866 27.0681L129.974 27.56L123.033 27.0681L114.358 24.904L111.466 27.8551L103.948 28.9371L101.056 28.5437L99.8992 29.5274L92.3806 27.8551L91.2239 28.642L83.1268 28.1502L76.1865 30.216L75.6082 31.6915L72.1381 31.298L68.0895 32.7736L65.1977 31.6915H58.2575L57.1008 32.1834H54.7873L50.7388 33.3638L43.7985 32.3801L40.3283 30.3143L36.2798 30.4127L32.2313 32.7736L29.3395 31.9866L27.6044 33.0687L24.7127 32.3801L14.8806 33.0687L10.2537 35.6263L3.31342 34.9377Z" fill="url(#paint0_robot)" />
+                    <path d="M3.31342 34.9377L1 36.8068V53.8244H311V3.26252L303.481 5.91851L298.276 10.4435L292.492 10.1484L289.601 11.1321L282.66 1.9837L280.347 3.26252L276.298 2.67229L267.623 3.75437L262.996 8.47614L259.526 7.2957C258.177 8.37777 255.478 10.5222 255.478 10.4435C255.478 10.3648 253.164 8.90241 252.007 8.18103L248.537 10.5419L243.91 8.08266L238.127 7.39407L235.235 1L226.56 4.14785H223.668L221.354 4.83644L219.619 3.656L214.414 9.36147L212.679 7.78755L206.895 7.39407L203.425 9.06636L202.269 5.52503L199.377 7.39407L195.328 4.83644L191.858 6.21362L190.123 5.52503L188.388 5.91851L184.918 2.47555L182.026 9.85332L177.399 6.70547L172.772 5.91851L168.145 11.0338L160.627 13.9849L154.843 13.3947L154.265 15.8539L151.373 13.8865L146.746 16.5425L143.276 22.5431L139.228 22.8382L135.179 23.2317L132.866 27.0681L129.974 27.56L123.033 27.0681L114.358 24.904L111.466 27.8551L103.948 28.9371L101.056 28.5437L99.8992 29.5274L92.3806 27.8551L91.2239 28.642L83.1268 28.1502L76.1865 30.216L75.6082 31.6915L72.1381 31.298L68.0895 32.7736L65.1977 31.6915H58.2575L57.1008 32.1834H54.7873L50.7388 33.3638L43.7985 32.3801L40.3283 30.3143L36.2798 30.4127L32.2313 32.7736L29.3395 31.9866L27.6044 33.0687L24.7127 32.3801L14.8806 33.0687L10.2537 35.6263L3.31342 34.9377Z" fill="url(#paint0_linear_1111_1176)" />
+                    <path d="M1 36.2163L3.31346 34.3781L10.2537 35.0553L14.8806 32.5398L24.7127 31.8626L27.6045 32.5398L29.3396 31.4756L32.2314 32.2496L36.2798 29.9277L40.3284 29.8309L43.7985 31.8626L50.7388 32.8301L54.7873 31.6691H57.1007L58.2575 31.1854H65.1978L68.0896 32.2496L72.138 30.7984L75.6082 31.1854L76.1866 29.7342L83.1268 27.7024L91.2239 28.1862L92.3805 27.4122L99.8992 29.0569L101.056 28.0894L103.948 28.4764L111.466 27.4122L114.358 24.5098L123.034 26.6382L129.974 27.122L132.866 26.6382L135.179 22.865L139.228 22.4781L143.276 22.1878L146.746 16.2862L151.373 13.674L154.265 15.6089L154.843 13.1902L160.627 13.7707L168.146 10.8683L172.772 5.8374L177.399 6.61138L182.026 9.70732L184.918 2.45122L188.388 5.8374L190.123 5.45041L191.858 6.12764L195.328 4.77317L199.377 7.28862L202.269 5.45041L203.425 8.93334L206.896 7.28862L212.679 7.67561L214.414 9.22358L219.619 3.6122L221.354 4.77317L223.668 4.09594H226.56L235.235 1L238.127 7.28862L243.91 7.96586L248.537 10.3846L252.007 8.0626C253.164 8.77209 255.478 10.2104 255.478 10.2878C255.478 10.3652 258.177 8.2561 259.526 7.19187L262.996 8.35285L267.623 3.70894L276.298 2.64472L280.347 3.2252L282.66 1.96748L289.601 10.965L292.493 9.99756L298.276 10.2878L303.481 5.8374L311 3.2252" stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" />
                     <defs>
-                      <linearGradient id="paint0_robot" x1="-131.734" y1="1" x2="-131.734" y2="53.8244" gradientUnits="userSpaceOnUse">
+                      <linearGradient id="paint0_linear_1111_1176" x1="-131.734" y1="1" x2="-131.734" y2="53.8244" gradientUnits="userSpaceOnUse">
                         <stop stopColor="#A06AFF" stopOpacity="0.32" />
                         <stop offset="1" stopColor="#181A20" stopOpacity="0" />
                       </linearGradient>
                     </defs>
                   </svg>
+                  <div className="absolute inset-0 flex items-center justify-between px-0 py-2">
+                    <div className="h-px flex-1 bg-white/[0.04]" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-white/[0.04]" />
                 </div>
 
                 <div className="mt-4">
-                  <div className="flex items-center gap-1 text-xs font-bold">
-                    <span className="uppercase text-[#B0B0B0]">Calc. APY</span>
-                    <span className="rounded border border-[#B0B0B0] px-1.5 uppercase text-[#B0B0B0]">30D</span>
+                  <div className="flex items-center gap-1.5 text-xs font-bold">
+                    <span className="uppercase text-[#B0B0B0]">Calc. Apy</span>
+                    <div className="inline-flex items-center justify-center rounded border border-[#B0B0B0] px-1.5 py-0 text-xs font-bold uppercase text-[#B0B0B0]">30D</div>
                   </div>
-                  <div className="mt-1 text-xl font-bold text-[#2EBD85] sm:text-2xl">+120.33%</div>
+                  <div className="mt-0.5 text-2xl font-bold text-[#2EBD85]">+120.33%</div>
                 </div>
 
-                <div className="mt-4 flex gap-4">
-                  <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-1.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:text-[15px]">
+                <div className="mt-4 flex items-center gap-4">
+                  <button className="flex h-[26px] flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:text-[15px]">
                     <BookOpen className="h-4 w-4" />
                     Learn More
                   </button>
-                  <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-1.5 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:text-[15px]">
+                  <button className="flex h-[26px] flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:text-[15px]">
                     <Check className="h-4 w-4" />
                     Subscribe
                   </button>
