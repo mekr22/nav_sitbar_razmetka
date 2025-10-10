@@ -1177,16 +1177,6 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 text-xs font-bold uppercase text-white md:pt-2">
-                    <div className="flex items-center gap-1">
-                      <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
-                      <span>1.5K</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Eye className="h-4 w-4 text-[#B0B0B0]" />
-                      <span>563</span>
-                    </div>
-                  </div>
                 </div>
                 </div>
 
