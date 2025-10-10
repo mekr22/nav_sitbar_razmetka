@@ -177,6 +177,140 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
   </div>
 );
 
+type Analyst = {
+  id: string;
+  name: string;
+  badge?: string;
+  firm: string;
+  avatar: string;
+  location: string;
+  coverage: string;
+  description: string;
+  clients: string;
+  riskLevel: string;
+  aum: string;
+  avgReturn: string;
+  rating: string;
+};
+
+const analysts: Analyst[] = [
+  {
+    id: "sarah-lee-cfp",
+    name: "Sarah Lee, CFP®",
+    badge: "CFP®",
+    firm: "Sonmore Financial",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
+    location: "Chandler, AZ",
+    coverage: "Nationwide",
+    description: "Helping retirees and professionals in aerospace and tech minimize taxes.",
+    clients: "232",
+    riskLevel: "Moderate",
+    aum: "$4.2M",
+    avgReturn: "+0.00%",
+    rating: "5.0",
+  },
+  {
+    id: "alex-morgan-cfa",
+    name: "Alex Morgan, CFA",
+    badge: "CFA",
+    firm: "Fiscal Insights",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/77e4df4a83a9976526d548c7af09c284d52a5034?width=192",
+    location: "San Francisco, CA",
+    coverage: "Global",
+    description: "Guiding founders and executives with holistic portfolio strategies.",
+    clients: "189",
+    riskLevel: "Balanced",
+    aum: "$3.8M",
+    avgReturn: "+0.12%",
+    rating: "4.9",
+  },
+];
+
+const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, featured }) => (
+  <div className="mx-auto w-full max-w-[525px]">
+    <div
+      className={cn(
+        "relative overflow-hidden rounded-2xl border bg-[#0C1014]/60 px-4 pb-6 pt-28 backdrop-blur-[50px]",
+        featured ? "border-[#A06AFF]" : "border-[#181B22]",
+      )}
+    >
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-br from-[#2B1750] via-[#141626] to-[#090C16]" />
+      <div className="pointer-events-none absolute inset-x-[-35%] top-[-25%] h-[220px] rounded-full bg-[#A06AFF]/20 blur-3xl" />
+      <img
+        src={analyst.avatar}
+        alt={analyst.name}
+        className="absolute left-4 top-5 h-24 w-24 rounded-lg object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
+      />
+      <button
+        type="button"
+        className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-md transition-colors hover:border-white/30"
+        aria-label="Add to favourites"
+      >
+        <Star className="h-5 w-5 text-[#B0B0B0]" />
+      </button>
+
+      <div className="relative z-10 flex flex-col gap-3">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-xl font-bold text-white">{analyst.name}</h3>
+            {analyst.badge ? (
+              <span className="flex items-center gap-1 rounded-full bg-[#2E2744] px-2 py-0.5 text-xs font-semibold uppercase text-white">
+                <ShieldCheck className="h-4 w-4 text-[#A06AFF]" />
+                {analyst.badge}
+              </span>
+            ) : null}
+          </div>
+          <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{analyst.firm}</div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-4 text-[11px] font-bold uppercase text-white">
+          <span className="flex items-center gap-1">
+            <MapPin className="h-4 w-4 text-[#B0B0B0]" />
+            {analyst.location}
+          </span>
+          <span className="flex items-center gap-1">
+            <Globe className="h-4 w-4 text-[#B0B0B0]" />
+            {analyst.coverage}
+          </span>
+        </div>
+
+        <p className="text-sm font-medium text-white">{analyst.description}</p>
+
+        <div className="grid gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
+          <div className="flex items-center gap-1">
+            <span>Number of Clients:</span>
+            <span className="text-white">{analyst.clients}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span>Risk Level:</span>
+            <span className="text-white">{analyst.riskLevel}</span>
+          </div>
+        </div>
+
+        <button className="mt-2 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90">
+          <Mail className="h-4 w-4" />
+          Contact/Hire
+        </button>
+
+        <div className="h-px w-full bg-[#181B22]" />
+
+        <div className="grid gap-3">
+          <div>
+            <div className="text-xs font-bold uppercase text-[#B0B0B0]">Assets Under Management (AUM)</div>
+            <div className="text-lg font-bold text-white">{analyst.aum}</div>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="text-xs font-bold uppercase text-[#B0B0B0]">Average Portfolio Return</div>
+            <span className="rounded-full bg-[#2EBD85]/16 px-3 py-0.5 text-xs font-extrabold uppercase text-[#2EBD85]">
+              {analyst.avgReturn}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
