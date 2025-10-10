@@ -612,6 +612,20 @@ const MarketplaceMyProducts: FC = () => {
           </div>
         </div>
 
+        {/* Investment Consultants Section */}
+        <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Investment consultants</h2>
+            <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
+            {investmentConsultants.map((consultant, index) => (
+              <InvestmentConsultantCard key={consultant.id} consultant={consultant} featured={index === 0} />
+            ))}
+          </div>
+        </div>
+
         {/* Scripts/Products Section */}
         <div className="flex flex-col gap-8 border-t border-[#181B22] py-8">
           <div className="flex items-center justify-between">
