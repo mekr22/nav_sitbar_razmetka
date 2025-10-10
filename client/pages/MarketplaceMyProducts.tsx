@@ -562,7 +562,7 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
                 <Users className="h-4 w-4 text-[#B0B0B0]" />
                 <span className="text-xs font-bold text-white">{signal.users}</span>
               </div>
-              <div className="rounded bg-[#1C3430] px-1 py-0.5">
+              <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
                 <span className="text-xs font-bold uppercase text-[#2EBD85]">Risk: {signal.riskLevel}</span>
               </div>
             </div>
