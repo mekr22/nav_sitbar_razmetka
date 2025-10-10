@@ -1258,15 +1258,17 @@ const MarketplaceMyProducts: FC = () => {
                       <Star className="h-6 w-6 text-[#B0B0B0]" />
                     </div>
                     <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
-                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-white">
+                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-1 text-white">
                         <Users className="h-4 w-4 text-[#B0B0B0]" />
                         315
                       </span>
-                      <span className="rounded bg-[#FFA800]/16 px-1 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+                      <span className="rounded bg-[#FFA800]/20 px-2 py-1 uppercase text-[#FFA800]">Medium Accuracy</span>
                     </div>
-                    <span className="inline-flex w-fit rounded bg-[#2EBD85]/16 px-1 py-0.5 text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
+                    <span className="inline-flex w-fit rounded bg-[#2EBD85]/20 px-2 py-1 text-xs uppercase text-[#2EBD85]">20% Profit Sharing</span>
                   </div>
                 </div>
+
+                <div className="mt-3 border-t border-[#181B22]" />
 
                 <div className="mt-3 flex items-center gap-2">
                   <div className="h-8 w-8 rounded-full overflow-hidden bg-gradient-to-b from-[#627EEA] to-[#627EEA]/80 flex items-center justify-center">
