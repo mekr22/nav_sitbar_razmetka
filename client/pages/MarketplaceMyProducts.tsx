@@ -1195,7 +1195,7 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                   </div>
 
-                  <div className="mt-auto flex flex-col gap-4">
+                  <div className="mt-auto flex flex-col gap-3">
                     <div className="flex items-center gap-2">
                       <div className="flex items-center gap-0.5">
                         {[1, 2, 3, 4, 5].map((star) => (
@@ -1205,12 +1205,12 @@ const MarketplaceMyProducts: FC = () => {
                       <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                     </div>
 
-                    <div className="flex flex-col gap-2 sm:flex-row">
-                      <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+                    <div className="mt-1 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 lg:ml-auto">
+                      <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
                         <BookOpen className="h-4 w-4" />
                         Details
                       </button>
-                      <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+                      <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
                         <ShoppingCart className="h-4 w-4" />
                         Buy
                       </button>
