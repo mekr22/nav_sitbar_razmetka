@@ -708,6 +708,134 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
   </div>
 );
 
+const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
+  const getRiskColor = (level: string) => {
+    switch (level) {
+      case "LOW":
+        return { bg: "bg-[#1C3430]", text: "text-[#2EBD85]" };
+      case "MEDIUM":
+        return { bg: "bg-[rgba(255,168,0,0.16)]", text: "text-[#FFA800]" };
+      case "HIGH":
+        return { bg: "bg-[rgba(234,57,67,0.16)]", text: "text-[#EA3943]" };
+      default:
+        return { bg: "bg-[#2E2744]", text: "text-white" };
+    }
+  };
+
+  const riskColors = getRiskColor(strategy.riskLevel);
+
+  return (
+    <div className="mx-auto w-full max-w-[525px]">
+      <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+        {/* Header */}
+        <div className="flex items-start gap-3">
+          <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
+          <div className="flex flex-1 flex-col gap-0.5">
+            <h3 className="text-lg font-bold text-white sm:text-[19px]">{strategy.name}</h3>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                  <Users className="h-4 w-4 text-[#B0B0B0]" />
+                  <span className="text-xs font-bold text-white">{strategy.users}</span>
+                </div>
+                <div className={`flex items-center gap-1 rounded px-1 py-0.5 ${riskColors.bg}`}>
+                  <span className={`text-xs font-bold uppercase ${riskColors.text}`}>
+                    Risk: {strategy.riskLevel}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 rounded bg-[rgba(46,189,133,0.16)] px-1 py-0.5">
+                <span className="text-xs font-bold uppercase text-[#2EBD85]">{strategy.profitSharing}</span>
+              </div>
+            </div>
+          </div>
+          <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
+        </div>
+
+        {/* Divider */}
+        <div className="h-px w-full bg-[#181B22]" />
+
+        {/* Exchange Logos */}
+        <div className="flex items-center gap-2">
+          {strategy.exchanges.slice(0, 5).map((exchange, idx) => (
+            <div key={idx} className="h-8 w-8 rounded-full bg-[#2E2744]" />
+          ))}
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2E2744]">
+            <span className="text-xs font-bold text-white">+{strategy.exchangesCount}</span>
+          </div>
+        </div>
+
+        {/* Details */}
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">Exchanges:</span>
+            <div className="rounded bg-[#2E2744] px-1 py-0.5">
+              <span className="text-white">ALL</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">Assets:</span>
+            {strategy.assets.map((asset, idx) => (
+              <div key={idx} className="rounded bg-[#2E2744] px-1 py-0.5">
+                <span className="text-white">{asset}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">Strategy:</span>
+            <div className="rounded bg-[#2E2744] px-1 py-0.5">
+              <span className="text-white">{strategy.strategy}</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">Max Drawdown:</span>
+            <div className="rounded bg-[rgba(160,106,255,0.16)] px-1 py-0.5">
+              <span className="text-[#A06AFF]">{strategy.maxDrawdown}</span>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+            <span className="text-[#B0B0B0]">Min. Capital:</span>
+            <div className="rounded bg-[rgba(160,106,255,0.16)] px-1 py-0.5">
+              <span className="text-[#A06AFF]">{strategy.minCapital}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="h-px w-full bg-[#181B22]" />
+
+        {/* ROI */}
+        <div className="flex items-center justify-between text-xs font-bold uppercase">
+          <div className="flex items-center gap-1">
+            <span className="text-[#B0B0B0]">ROI (30D):</span>
+            <span className="text-[#2EBD85]">{strategy.roi30d}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="text-[#B0B0B0]">ROI (1Y):</span>
+            <span className="text-[#2EBD85]">{strategy.roi1y}</span>
+          </div>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+            <BookOpen className="h-4 w-4" />
+            Learn More
+          </button>
+          <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90">
+            <Check className="h-4 w-4" />
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
