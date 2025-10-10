@@ -1190,14 +1190,14 @@ const MarketplaceMyProducts: FC = () => {
                     <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                   </div>
 
-                  <div className="flex gap-4">
-                    <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 py-2 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:text-[15px]">
-                      <BookOpen className="h-5 w-5" />
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+                      <BookOpen className="h-4 w-4" />
                       Details
                     </button>
-                    <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:text-[15px]">
-                      <ShoppingCart className="h-5 w-5" />
-                      Add to cart
+                    <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+                      <ShoppingCart className="h-4 w-4" />
+                      Buy
                     </button>
                   </div>
                 </div>
