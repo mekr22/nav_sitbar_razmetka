@@ -1418,7 +1418,7 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                     <div className="flex items-center gap-1">
                       <span className="uppercase text-[#B0B0B0]">Industry:</span>
-                      <span className="rounded bg-[#6AA5FF]/16 px-1 uppercase text-[#6AA5FF]">Automation</span>
+                      <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 uppercase text-[#6AA5FF]">Automation</span>
                     </div>
                   </div>
 
