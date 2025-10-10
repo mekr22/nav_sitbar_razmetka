@@ -238,7 +238,7 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
           <img
             src={analyst.avatar}
             alt={analyst.name}
-            className="h-24 w-24 flex-shrink-0 rounded-full object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
+            className="h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-lg object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
           />
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
@@ -251,11 +251,8 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
         <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
       </div>
 
-      <div className="relative h-14 w-full overflow-hidden rounded-xl border border-[#1F1A2D] bg-gradient-to-br from-[#1A1430] via-[#121323] to-[#0B1016]">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#A06AFF1A] via-transparent to-transparent" />
-        <div className="relative h-full w-full">
-          <TraderPerformanceChart />
-        </div>
+      <div className="h-14 w-full overflow-hidden">
+        <TraderPerformanceChart />
       </div>
 
       <div className="flex flex-wrap items-center gap-1">
@@ -294,11 +291,11 @@ const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, fe
       </div>
 
       <div className="flex flex-col gap-2 sm:flex-row">
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/60 px-4 py-2.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
           <BookOpen className="h-4 w-4" />
           Learn More
         </button>
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
           <Mail className="h-4 w-4" />
           Contact/Hire
         </button>
