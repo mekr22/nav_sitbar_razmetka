@@ -294,7 +294,7 @@ const investmentConsultants: InvestmentConsultant[] = [
     id: "consultant-sarah-lee",
     name: "Sarah Lee",
     credentials: "CFP®",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
+    avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=800",
     company: "SONMORE FINANCIAL",
     location: "Chandler, AZ",
     nationwide: true,
