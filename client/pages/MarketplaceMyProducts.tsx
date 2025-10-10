@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useState } from "react";
-import { Eye, ChevronRight, Package, Plus, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit } from "lucide-react";
+import { Eye, ChevronRight, Package, Plus, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const categories = [
@@ -241,6 +241,22 @@ type Analyst = {
   featured?: boolean;
 };
 
+type InvestmentConsultant = {
+  id: string;
+  name: string;
+  credentials: string;
+  avatar: string;
+  company: string;
+  location: string;
+  nationwide: boolean;
+  description: string;
+  clients: string;
+  riskLevel: string;
+  aum: string;
+  portfolioReturn: string;
+  featured?: boolean;
+};
+
 const analysts: Analyst[] = [
   {
     id: "analyst-sarah-lee",
@@ -270,6 +286,38 @@ const analysts: Analyst[] = [
     assets: "AAPL, NVDA, GOLD, BTC",
     analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
     forecastAccuracy: "65%",
+  },
+];
+
+const investmentConsultants: InvestmentConsultant[] = [
+  {
+    id: "consultant-sarah-lee",
+    name: "Sarah Lee",
+    credentials: "CFP®",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
+    company: "SONMORE FINANCIAL",
+    location: "Chandler, AZ",
+    nationwide: true,
+    description: "Helping Retirees and Professionals in Aerospace and Tech Minimize Taxes",
+    clients: "232",
+    riskLevel: "Moderate",
+    aum: "$4.2M",
+    portfolioReturn: "+0.00%",
+    featured: true,
+  },
+  {
+    id: "consultant-james-wilson",
+    name: "James Wilson",
+    credentials: "CFA",
+    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/1f1606423069dee859e3b18a25fd04e6a52b96c1?width=192",
+    company: "WEALTH ADVISORS GROUP",
+    location: "New York, NY",
+    nationwide: true,
+    description: "Specialized in High Net Worth Portfolio Management and Estate Planning",
+    clients: "187",
+    riskLevel: "Conservative",
+    aum: "$6.8M",
+    portfolioReturn: "+2.4%",
   },
 ];
 
