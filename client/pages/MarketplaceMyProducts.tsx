@@ -1203,15 +1203,14 @@ const MarketplaceMyProducts: FC = () => {
                       <span className="rounded bg-[#2E2744] px-1 uppercase text-white">numpy</span>
                       <span className="rounded bg-[#2E2744] px-1 uppercase text-white">pandas</span>
                     </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-0.5">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
-                      ))}
+                    <div className="flex items-center gap-2 pt-1">
+                      <div className="flex items-center gap-0.5">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
+                        ))}
+                      </div>
+                      <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                     </div>
-                    <span className="text-sm font-bold text-white sm:text-[15px]">5/5</span>
                   </div>
                 </div>
 
