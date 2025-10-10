@@ -574,29 +574,56 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
       {/* Divider */}
       <div className="h-px w-full bg-[#181B22]" />
 
-      {/* Platforms and Chart */}
-      <div className="flex items-center justify-between">
+      {/* Platforms and Details */}
+      <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2">
           {signal.platforms.map((platform, idx) => (
             <img
               key={idx}
-              src={platformLogos[idx]}
+              src={platformLogos[idx % platformLogos.length]}
               alt={platform}
               className="h-8 w-8 rounded-full object-cover"
             />
           ))}
         </div>
-        <img src={signal.chartImage} alt="Trend chart" className="h-[105px] w-[182px] rounded-2xl object-cover" />
+
+        <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+          <span className="text-[#B0B0B0]">Assets:</span>
+          {signal.assets.map((asset, idx) => (
+            <div key={idx} className="rounded bg-[#2E2744] px-1 py-0.5">
+              <span className="text-white">{asset}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+          <span className="text-[#B0B0B0]">Type:</span>
+          <div className="rounded bg-[#2E2744] px-1 py-0.5">
+            <span className="text-white">{signal.type}</span>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+          <span className="text-[#B0B0B0]">Timeframe:</span>
+          {signal.timeframes.map((tf, idx) => (
+            <div key={idx} className="rounded bg-[#6AA5FF]/16 px-1 py-0.5">
+              <span className="text-[#6AA5FF]">{tf}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+          <span className="text-[#B0B0B0]">Use:</span>
+          <div className="rounded bg-[#2E2744] px-1 py-0.5">
+            <span className="text-white">{signal.use}</span>
+          </div>
+        </div>
       </div>
 
-      {/* Assets */}
-      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
-        <span className="text-[#B0B0B0]">Assets:</span>
-        {signal.assets.map((asset, idx) => (
-          <div key={idx} className="rounded bg-[#2E2744] px-1 py-0.5">
-            <span className="text-white">{asset}</span>
-          </div>
-        ))}
+      {/* Accuracy */}
+      <div className="flex items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Product Accuracy:</span>
+        <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
       </div>
 
       {/* Type */}
