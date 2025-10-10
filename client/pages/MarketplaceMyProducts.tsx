@@ -1329,7 +1329,7 @@ const MarketplaceMyProducts: FC = () => {
                   </div>
                   <div className="flex items-center gap-1">
                     <span className="uppercase text-[#B0B0B0]">Settings:</span>
-                    <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 uppercase text-[#6AA5FF]">Custom Indicator</span>
+                    <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 uppercase text-[#6AA5FF]">CUSTOM INDICATOR</span>
                   </div>
                 </div>
 
