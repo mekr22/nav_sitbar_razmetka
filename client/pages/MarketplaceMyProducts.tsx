@@ -205,7 +205,7 @@ const analysts: Analyst[] = [
     publications: "983",
     markets: "BINANCE, NASDAQ",
     assets: "BTC, ETH, TESLA, GOLD",
-    analysis: "Technical & Fundamental Analysis",
+    analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
     forecastAccuracy: "68%",
     featured: true,
   },
