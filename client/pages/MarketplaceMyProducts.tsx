@@ -738,7 +738,9 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
 
 const CourseCard: FC<{ course: Course }> = ({ course }) => (
   <div className="w-full">
-    <div className="relative flex flex-col gap-4 rounded-2xl border border-[#A06AFF] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] md:flex-row md:items-center md:gap-6">
+    <div className="relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#A06AFF] bg-[#0C1014]/60 p-4 backdrop-blur-[50px] md:flex-row md:items-center md:gap-6">
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-[#482090]/60 via-[#201933]/40 to-transparent" />
+
       {/* Course Image */}
       <img
         src={course.image}
@@ -747,10 +749,10 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
       />
 
       {/* Content */}
-      <div className="flex flex-1 flex-col gap-4">
+      <div className="flex flex-1 flex-col gap-4 md:gap-3">
         {/* Title and Star */}
         <div className="flex items-start justify-between gap-4">
-          <div className="flex flex-col gap-0.5">
+          <div className="flex flex-col gap-1">
             <h3 className="text-xl font-bold text-white sm:text-2xl">{course.title}</h3>
             <p className="text-lg font-bold text-[#B0B0B0] sm:text-[19px]">{course.subtitle}</p>
           </div>
@@ -759,7 +761,7 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
 
         {/* Host and Details */}
         <div className="flex flex-col gap-2">
-          <div className="flex flex-wrap items-baseline gap-1 text-xs font-bold uppercase">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase">
             <span className="text-[#B0B0B0]">HOST:</span>
             <span className="text-sm font-bold text-white sm:text-[15px]">{course.host}</span>
             <div className="flex items-center gap-1">
@@ -789,12 +791,12 @@ const CourseCard: FC<{ course: Course }> = ({ course }) => (
       </div>
 
       {/* Buttons */}
-      <div className="flex flex-col gap-2 md:flex-row md:items-center">
-        <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] md:w-[180px]">
+      <div className="flex flex-col gap-2 md:w-[220px]">
+        <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/60 px-4 py-2.5 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
           <BookOpen className="h-4 w-4" />
           Details
         </button>
-        <button className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90 md:w-[180px]">
+        <button className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-8 py-2.5 text-sm font-bold text-white transition-opacity hover:opacity-90">
           <ShoppingCart className="h-4 w-4" />
           Add to cart
         </button>
