@@ -1132,20 +1132,20 @@ const MarketplaceMyProducts: FC = () => {
                   className="h-80 w-full rounded-lg object-cover"
                 />
 
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0]">
-                  <div className="flex items-center gap-2 whitespace-nowrap">
+                <div className="flex flex-wrap items-start gap-x-8 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0]">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Type:</span>
                     <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">Script</span>
                   </div>
-                  <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Industry</span>
                     <span className="rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5 text-[#6AA5FF]">Trading and Finance</span>
                   </div>
-                  <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Publication Date</span>
                     <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">2 years ago</span>
                   </div>
-                  <div className="flex items-center gap-2 whitespace-nowrap">
+                  <div className="flex flex-col gap-1 whitespace-nowrap">
                     <span>Revenue</span>
                     <span className="rounded bg-[#2E2744] px-2 py-0.5 text-white">USD $15,000/Month</span>
                   </div>
