@@ -1396,7 +1396,7 @@ const MarketplaceMyProducts: FC = () => {
                           <Users className="h-4 w-4 text-[#B0B0B0]" />
                           1,748
                         </span>
-                        <span className="rounded bg-[#FFA800]/16 px-1 text-xs font-bold uppercase text-[#FFA800]">Individual Analyst</span>
+                        <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Individual Analyst</span>
                       </div>
                     </div>
                   </div>
