@@ -541,6 +541,99 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; featured?
   </div>
 );
 
+const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
+  <div className="mx-auto w-full max-w-[525px]">
+    <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+      {/* Header with icon, name, users, risk */}
+      <div className="flex items-start justify-between">
+        <div className="flex items-center gap-3">
+          <img src={signal.icon} alt={signal.name} className="h-16 w-16 rounded-lg" />
+          <div className="flex flex-col gap-0.5">
+            <h3 className="text-lg font-bold text-white sm:text-[19px]">{signal.name}</h3>
+            <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                <Users className="h-4 w-4 text-[#B0B0B0]" />
+                <span className="text-xs font-bold text-white">{signal.users}</span>
+              </div>
+              <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <span className="text-xs font-bold uppercase text-[#2EBD85]">Risk: {signal.riskLevel}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Star className="h-6 w-6 text-[#B0B0B0]" />
+      </div>
+
+      {/* Divider */}
+      <div className="h-px w-full bg-[#181B22]" />
+
+      {/* Platforms and Chart */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {signal.platforms.map((platform, idx) => (
+            <div key={idx} className="h-8 w-8 rounded-full bg-[#EBEBEB]" />
+          ))}
+        </div>
+        <img src={signal.chartImage} alt="Trend chart" className="h-[105px] w-[182px] rounded-2xl object-cover" />
+      </div>
+
+      {/* Assets */}
+      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Assets:</span>
+        {signal.assets.map((asset, idx) => (
+          <div key={idx} className="rounded bg-[#2E2744] px-1 py-0.5">
+            <span className="text-white">{asset}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Type */}
+      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Type:</span>
+        <div className="rounded bg-[#2E2744] px-1 py-0.5">
+          <span className="text-white">{signal.type}</span>
+        </div>
+      </div>
+
+      {/* Timeframe */}
+      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Timeframe:</span>
+        {signal.timeframes.map((tf, idx) => (
+          <div key={idx} className="rounded bg-[#6AA5FF]/16 px-1 py-0.5">
+            <span className="text-[#6AA5FF]">{tf}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Use */}
+      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Use:</span>
+        <div className="rounded bg-[#2E2744] px-1 py-0.5">
+          <span className="text-white">{signal.use}</span>
+        </div>
+      </div>
+
+      {/* Accuracy */}
+      <div className="flex items-center gap-1 text-xs font-bold uppercase">
+        <span className="text-[#B0B0B0]">Product Accuracy:</span>
+        <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 text-xs font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+          <BookOpen className="h-4 w-4" />
+          Learn More
+        </button>
+        <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 text-xs font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+          <ShoppingCart className="h-4 w-4" />
+          Buy
+        </button>
+      </div>
+    </div>
+  </div>
+);
+
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
