@@ -541,6 +541,13 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; featured?
   </div>
 );
 
+const platformLogos = [
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1d90fdad8fa945dc9d0b417f6bb84c17?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fff6cd09eeae445f2bcc6ca0b891f197c?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F59711ad87739493eaa7a0b6857960587?format=webp&width=800",
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F59dfc5c913eb4f6d845cfb34003ed89b?format=webp&width=800",
+];
+
 const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
@@ -571,7 +578,12 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           {signal.platforms.map((platform, idx) => (
-            <div key={idx} className="h-8 w-8 rounded-full bg-[#EBEBEB]" />
+            <img
+              key={idx}
+              src={platformLogos[idx]}
+              alt={platform}
+              className="h-8 w-8 rounded-full object-cover"
+            />
           ))}
         </div>
         <img src={signal.chartImage} alt="Trend chart" className="h-[105px] w-[182px] rounded-2xl object-cover" />
