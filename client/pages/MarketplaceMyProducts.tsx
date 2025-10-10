@@ -163,11 +163,11 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
         <div className="text-[12px] font-extrabold text-white">{trader.certification}</div>
 
         <div className="flex flex-col gap-2 sm:flex-row">
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+          <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2.5 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
             <BookOpen className="h-4 w-4" />
             Learn More
           </button>
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
+          <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
             <Mail className="h-4 w-4" />
             Contact/Hire
           </button>
