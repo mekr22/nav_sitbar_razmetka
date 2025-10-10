@@ -606,7 +606,7 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
         <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
           <span className="text-[#B0B0B0]">Timeframe:</span>
           {signal.timeframes.map((tf, idx) => (
-            <div key={idx} className="rounded bg-[#6AA5FF]/16 px-1 py-0.5">
+            <div key={idx} className="flex h-8 min-w-[46px] items-center justify-center rounded-lg bg-[#20263A]">
               <span className="text-[#6AA5FF]">{tf}</span>
             </div>
           ))}
