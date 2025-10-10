@@ -626,37 +626,6 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
         <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
       </div>
 
-      {/* Type */}
-      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
-        <span className="text-[#B0B0B0]">Type:</span>
-        <div className="rounded bg-[#2E2744] px-1 py-0.5">
-          <span className="text-white">{signal.type}</span>
-        </div>
-      </div>
-
-      {/* Timeframe */}
-      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
-        <span className="text-[#B0B0B0]">Timeframe:</span>
-        {signal.timeframes.map((tf, idx) => (
-          <div key={idx} className="rounded bg-[#6AA5FF]/16 px-1 py-0.5">
-            <span className="text-[#6AA5FF]">{tf}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Use */}
-      <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
-        <span className="text-[#B0B0B0]">Use:</span>
-        <div className="rounded bg-[#2E2744] px-1 py-0.5">
-          <span className="text-white">{signal.use}</span>
-        </div>
-      </div>
-
-      {/* Accuracy */}
-      <div className="flex items-center gap-1 text-xs font-bold uppercase">
-        <span className="text-[#B0B0B0]">Product Accuracy:</span>
-        <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
-      </div>
 
       {/* Buttons */}
       <div className="flex flex-col gap-2 sm:flex-row">
