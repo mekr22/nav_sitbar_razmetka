@@ -1146,12 +1146,6 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                   </div>
                   <div className="flex flex-col gap-1 sm:gap-2">
-                    <span className="whitespace-nowrap">Publication Date</span>
-                    <div className="flex items-center gap-1 sm:gap-2">
-                      <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">2 YEARS AGO</span>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-1 sm:gap-2">
                     <span className="whitespace-nowrap">Revenue</span>
                     <div className="flex items-center gap-1 sm:gap-2">
                       <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">USD $15,000/MONTH</span>
