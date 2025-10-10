@@ -1110,7 +1110,19 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="relative rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-6 backdrop-blur-[50px]">
-            <Star className="absolute right-6 top-6 h-6 w-6 text-[#B0B0B0]" />
+            <div className="absolute right-6 top-6 flex items-center gap-4 text-xs font-bold uppercase text-white">
+              <Star className="h-6 w-6 text-[#B0B0B0]" />
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1">
+                  <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
+                  <span>1.5K</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Eye className="h-4 w-4 text-[#B0B0B0]" />
+                  <span>563</span>
+                </div>
+              </div>
+            </div>
             <div className="flex flex-col gap-6 lg:flex-row">
               {/* Left side - Image and Type Details */}
               <div className="flex w-full flex-col gap-4 lg:w-80">
