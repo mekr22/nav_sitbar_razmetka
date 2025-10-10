@@ -417,12 +417,12 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; featured?
 
       <div className="relative p-4">
         {/* Avatar and Header */}
-        <div className="mb-3 flex items-start justify-between">
-          <div className="flex gap-3">
+        <div className="mb-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
               <img src={consultant.avatar} alt={consultant.name} className="h-full w-full object-cover" />
             </div>
-            <div className="flex flex-col gap-1 pt-2">
+            <div className="flex h-24 flex-col justify-center gap-1">
               <div className="flex items-center gap-1">
                 <h3 className="text-lg font-bold leading-none text-white sm:text-[19px]">
                   {consultant.name}, {consultant.credentials}
