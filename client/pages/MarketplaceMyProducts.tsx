@@ -243,7 +243,7 @@ const AnalystCard: FC<{ analyst: Analyst }> = ({ analyst }) => (
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
               <h3 className="text-2xl font-bold leading-none text-white">{analyst.name}</h3>
-              <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
+              <span className="rounded-md bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
             </div>
             <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{analyst.company}</div>
           </div>
