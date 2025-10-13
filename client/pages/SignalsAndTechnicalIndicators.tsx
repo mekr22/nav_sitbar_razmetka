@@ -138,8 +138,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
-            <div className="flex w-full flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4">
+            <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
+              <div className="flex flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
                 <button
                   type="button"
                   className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
@@ -176,12 +176,12 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
                 </button>
               </div>
-              <div className="ml-auto flex h-9 w-full min-w-[200px] items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[50px] sm:w-auto sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px]">
-                <Search className="h-5 w-5 flex-shrink-0 text-[#B0B0B0]" />
+              <div className="ml-auto flex h-9 w-full min-w-[160px] items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[50px] sm:w-auto sm:min-w-[200px] md:min-w-[240px] lg:min-w-[260px] xl:min-w-[280px]">
+                <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" />
                 <input
                   type="text"
                   placeholder="Find signals & indicator"
-                  className="flex-1 bg-transparent text-xs font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-sm"
+                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm"
                 />
               </div>
             </div>
