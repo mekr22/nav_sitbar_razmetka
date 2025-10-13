@@ -1,5 +1,7 @@
 import { Signal } from "@/components/marketplace/SignalCard";
 
+import type { Signal } from "@/components/marketplace/SignalCard";
+
 export const baseSignals: Signal[] = [
   {
     id: "signal-risk-master",
