@@ -25,11 +25,11 @@ const Footer: FC = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 min-[1601px]:grid min-[1601px]:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,0.75fr)] min-[1601px]:items-start min-[1601px]:gap-x-10 min-[1601px]:gap-y-12 min-[1888px]:grid min-[1888px]:grid-cols-[minmax(0,1.5fr)_minmax(0,1.5fr)_minmax(0,0.8fr)_minmax(0,0.8fr)] min-[1888px]:gap-x-14">
+        <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 min-[1601px]:grid min-[1601px]:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_minmax(0,0.75fr)] min-[1601px]:items-start min-[1601px]:gap-x-10 min-[1601px]:gap-y-12 min-[1888px]:flex min-[1888px]:flex-row min-[1888px]:gap-12">
           {/* Products Section */}
-          <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full min-[1601px]:order-1 min-[1601px]:w-full min-[1601px]:col-start-1 min-[1601px]:col-end-2 min-[1888px]:col-start-1 min-[1888px]:row-start-1">
+          <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full min-[1601px]:order-1 min-[1601px]:w-full min-[1601px]:col-start-1 min-[1601px]:col-end-2 min-[1888px]:flex-1 min-[1888px]:gap-5">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 xl:gap-x-8 xl:gap-y-4 min-[1601px]:grid-cols-2 min-[1601px]:gap-x-12 min-[1601px]:gap-y-6 min-[1888px]:grid-cols-4 min-[1888px]:gap-x-12 min-[1888px]:gap-y-3">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 xl:gap-x-8 xl:gap-y-4 min-[1601px]:grid-cols-2 min-[1601px]:gap-x-12 min-[1601px]:gap-y-6 min-[1888px]:grid-cols-4 min-[1888px]:gap-0">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
                 <Database className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Cryptocurrency</span>
@@ -66,7 +66,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Resources Section */}
-          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1601px]:order-3 min-[1601px]:w-full min-[1601px]:col-start-3 min-[1601px]:col-end-4 min-[1888px]:col-start-4 min-[1888px]:row-start-1">
+          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1601px]:order-3 min-[1601px]:w-full min-[1601px]:col-start-3 min-[1601px]:col-end-4 min-[1888px]:w-[120px] min-[1888px]:flex-shrink-0">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Resources</h4>
             <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
               AI
@@ -74,32 +74,28 @@ const Footer: FC = () => {
           </div>
 
           {/* Social Section */}
-          <div className="flex w-full flex-col gap-2.5 xl:order-2 xl:w-full xl:max-w-none min-[1601px]:order-2 min-[1601px]:w-full min-[1601px]:col-start-2 min-[1601px]:col-end-3 min-[1888px]:col-start-3 min-[1888px]:row-start-1">
+          <div className="flex w-full flex-col gap-2.5 xl:order-2 xl:w-full xl:max-w-none min-[1601px]:order-2 min-[1601px]:w-full min-[1601px]:col-start-2 min-[1601px]:col-end-3 min-[1888px]:w-[120px] min-[1888px]:flex-shrink-0 min-[1888px]:gap-5">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px] min-[1601px]:pl-9 min-[1888px]:pl-0">Social</h4>
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 min-[1601px]:flex-col min-[1601px]:items-start min-[1601px]:gap-2 min-[1888px]:grid min-[1888px]:grid-cols-2 min-[1888px]:items-start min-[1888px]:gap-x-12 min-[1888px]:gap-y-6">
-              <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
-                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:inline-flex min-[1888px]:items-center min-[1888px]:justify-center" aria-hidden="true">
-                  <span className="hidden min-[1888px]:inline">•</span>
-                </span>
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 min-[1601px]:flex-col min-[1601px]:items-start min-[1601px]:gap-2 min-[1888px]:flex min-[1888px]:flex-col min-[1888px]:gap-2">
+              <a href="#" className="flex items-center gap-2.5 rounded text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-2.5 min-[1888px]:py-0">
+                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:hidden" aria-hidden="true"></span>
                 <span>X/Twitter</span>
               </a>
-              <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
-                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:inline-flex min-[1888px]:items-center min-[1888px]:justify-center" aria-hidden="true">
-                  <span className="hidden min-[1888px]:inline">•</span>
-                </span>
+              <a href="#" className="flex items-center gap-2.5 rounded text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-2.5 min-[1888px]:py-0">
+                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:hidden" aria-hidden="true"></span>
                 <span>LinkedIn</span>
               </a>
-              <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
-                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:inline-flex min-[1888px]:items-center min-[1888px]:justify-center" aria-hidden="true">
-                  <span className="hidden min-[1888px]:inline">•</span>
-                </span>
+              <a href="#" className="flex items-center gap-2.5 rounded text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-2.5 min-[1888px]:py-0">
+                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:hidden" aria-hidden="true"></span>
                 <span>Instagram</span>
               </a>
-              <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
-                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:inline-flex min-[1888px]:items-center min-[1888px]:justify-center" aria-hidden="true">
-                  <span className="hidden min-[1888px]:inline">•</span>
-                </span>
+              <a href="#" className="flex items-center gap-2.5 rounded text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-2.5 min-[1888px]:py-0">
+                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:hidden" aria-hidden="true"></span>
                 <span>Youtube</span>
+              </a>
+              <a href="#" className="flex items-center gap-2.5 rounded text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-2.5 min-[1888px]:py-0">
+                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:hidden" aria-hidden="true"></span>
+                <span>Facebook</span>
               </a>
             </div>
           </div>
