@@ -820,6 +820,7 @@ const MarketplaceMyProducts: FC = () => {
     }
     if (category === "Investment consultants") {
       navigate("/marketplace/investment-consultants", { state: { category } });
+      return;
     }
   };
 
