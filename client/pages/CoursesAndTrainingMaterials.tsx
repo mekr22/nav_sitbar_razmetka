@@ -126,7 +126,32 @@ const CoursesAndTrainingMaterials: FC = () => {
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
-  const courses: Course[] = useMemo(() => baseCourses, []);
+  const courses: Course[] = useMemo(() => {
+    const targetCount = 12;
+    const result: Course[] = [];
+    let iteration = 0;
+
+    while (result.length < targetCount) {
+      baseCourses.forEach((course) => {
+        if (result.length >= targetCount) {
+          return;
+        }
+
+        const isFirstBatch = iteration === 0;
+        const idSuffix = isFirstBatch ? "" : `-set-${iteration + 1}`;
+        const titleSuffix = isFirstBatch ? "" : ` (Set ${String.fromCharCode(64 + iteration + 1)})`;
+
+        result.push({
+          ...course,
+          id: `${course.id}${idSuffix}`,
+          title: `${course.title}${titleSuffix}`,
+        });
+      });
+      iteration += 1;
+    }
+
+    return result;
+  }, []);
 
   const filteredCourses = useMemo(() => {
     const normalizedTerm = searchTerm.trim().toLowerCase();
@@ -411,7 +436,7 @@ const CoursesAndTrainingMaterials: FC = () => {
               No courses match your filters yet. Try adjusting the filters or search query.
             </div>
           ) : (
-            <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
+            <div className="flex flex-col gap-6">
               {filteredCourses.map((course) => {
                 const cardKey = buildCardKey("courses-page", course.id);
                 const isFavorited = isFavorite(cardKey);
