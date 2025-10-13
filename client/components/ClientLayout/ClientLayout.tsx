@@ -153,7 +153,7 @@ export const ClientLayout: FC<Props> = ({
             {children}
           </ContentWrapper>
         </main>
-        <RightMenu isCollapsed={rightMenuOpen} />
+        <RightMenu isCollapsed={rightMenuOpen} onClose={() => setRightMenuOpen(false)} />
       </div>
       <Footer />
     </AppBackground>
