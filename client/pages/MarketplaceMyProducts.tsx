@@ -1273,7 +1273,7 @@ const MarketplaceMyProducts: FC = () => {
                 }}
                 onKeyDown={(event) => event.stopPropagation()}
                 className={cn(
-                  "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+                  "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60",
                   scriptsFavorited ? "text-[#A06AFF]" : "text-[#B0B0B0]",
                 )}
               >
