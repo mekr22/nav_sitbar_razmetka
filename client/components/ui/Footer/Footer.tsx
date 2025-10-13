@@ -78,7 +78,9 @@ const Footer: FC = () => {
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px] min-[1601px]:pl-9 min-[1888px]:pl-0">Social</h4>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 min-[1601px]:flex-col min-[1601px]:items-start min-[1601px]:gap-2 min-[1888px]:grid min-[1888px]:grid-cols-2 min-[1888px]:items-start min-[1888px]:gap-x-12 min-[1888px]:gap-y-6">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
-                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:flex min-[1888px]:items-center min-[1888px]:justify-center" aria-hidden="true" />
+                <span className="hidden h-6 w-6 min-[1601px]:block min-[1888px]:inline-flex min-[1888px]:items-center min-[1888px]:justify-center" aria-hidden="true">
+                  <span className="hidden min-[1888px]:inline">•</span>
+                </span>
                 <span>X/Twitter</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
