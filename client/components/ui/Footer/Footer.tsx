@@ -25,7 +25,7 @@ const Footer: FC = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 min-[1601px]:flex-row min-[1601px]:flex-wrap min-[1601px]:justify-between min-[1601px]:gap-12 min-[1888px]:flex-nowrap min-[1888px]:gap-12">
+        <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 min-[1601px]:grid min-[1601px]:grid-cols-3 min-[1601px]:items-start min-[1601px]:gap-12 min-[1888px]:flex min-[1888px]:flex-nowrap min-[1888px]:gap-12">
           {/* Products Section */}
           <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full min-[1601px]:order-1 min-[1601px]:w-auto min-[1601px]:flex-[1.4] min-[1888px]:min-w-[360px] min-[1888px]:flex-[1.5]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
