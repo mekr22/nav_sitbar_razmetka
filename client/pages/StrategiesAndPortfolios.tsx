@@ -103,11 +103,6 @@ const FILTER_CONFIG: FilterConfigMap = {
 
 const FILTER_ORDER: (keyof FilterSelections)[] = ["style", "risk", "capital", "roi", "drawdown"];
 
-const STYLE_CYCLE: StyleOptionValue[] = ["momentum", "income", "macro", "balanced"];
-const CAPITAL_CYCLE: CapitalOptionValue[] = ["starter", "growth", "professional"];
-const ROI_CYCLE: RoiOptionValue[] = ["steady", "growth"];
-const DRAWDOWN_CYCLE: DrawdownOptionValue[] = ["tight", "moderate", "broad"];
-
 const DUPLICATED_PAIRS = 6;
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
