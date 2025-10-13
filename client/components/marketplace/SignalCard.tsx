@@ -45,7 +45,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
 
   return (
     <div className="mx-auto w-full max-w-[525px]">
-    <div
+      <div
       role="button"
       tabIndex={0}
       aria-pressed={isActive}
