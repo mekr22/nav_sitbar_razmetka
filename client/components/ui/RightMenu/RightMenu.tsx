@@ -15,6 +15,7 @@ import {
 
 interface Props {
   isCollapsed: boolean;
+  onClose?: () => void;
 }
 
 const DefaultWidgetCard: FC<{ title: string; children?: ReactNode }> = ({
