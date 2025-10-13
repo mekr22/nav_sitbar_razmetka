@@ -1,4 +1,19 @@
-import type { Strategy } from "@/components/marketplace/StrategyCard";
+export type Strategy = {
+  id: string;
+  name: string;
+  icon: string;
+  users: string;
+  riskLevel: "LOW" | "MEDIUM" | "HIGH";
+  profitSharing: string;
+  exchanges: string[];
+  exchangesCount: number;
+  assets: string[];
+  strategy: string;
+  maxDrawdown: string;
+  minCapital: string;
+  roi30d: string;
+  roi1y: string;
+};
 
 export const baseStrategies: Strategy[] = [
   {
