@@ -243,9 +243,14 @@ const SignalsAndTechnicalIndicators: FC = () => {
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
-    if (category !== "Signals and Technical indicators") {
-      navigate("/marketplace/my-products", { state: { category } });
+    if (category === "Signals and Technical indicators") {
+      return;
     }
+    if (category === "Strategies and Portfolios") {
+      navigate("/marketplace/strategies", { state: { category } });
+      return;
+    }
+    navigate("/marketplace/my-products", { state: { category } });
   };
 
   const handleFilterChange = (key: keyof FilterSelections, value: string) => {
