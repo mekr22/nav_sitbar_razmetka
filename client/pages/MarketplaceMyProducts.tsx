@@ -1188,7 +1188,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Traders Section */}
         <section className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Traders</h2>
             <a
               href="#"
@@ -1218,7 +1218,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Analysts Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Analysts</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1243,7 +1243,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Investment Consultants Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Investment consultants</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1268,7 +1268,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Signals and Technical Indicators Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals and Technical indicators</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1293,7 +1293,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Strategies and Portfolios Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Strategies and Portfolios</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1318,7 +1318,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Courses and Training materials Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Courses and Training materials</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1343,7 +1343,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Scripts and Software Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Scripts and Software</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1488,7 +1488,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Trading Robots Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Trading robots and Algorithms</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
@@ -1640,7 +1640,7 @@ const MarketplaceMyProducts: FC = () => {
 
         {/* Other Section */}
         <div className="flex flex-col gap-6 py-6">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Other</h2>
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
