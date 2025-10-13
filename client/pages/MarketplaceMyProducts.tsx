@@ -1044,7 +1044,7 @@ const MarketplaceMyProducts: FC = () => {
 
                 <button
                   type="button"
-                  className="flex h-9 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-3 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:h-[32px] sm:text-[15px]"
+                  className="flex h-9 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-3 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:h-[32px] sm:text-[15px]"
                 >
                   <Plus className="h-4 w-4" />
                   <span>Add Product</span>
