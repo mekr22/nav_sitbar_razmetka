@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { KeyboardEvent, useId, useState } from "react";
-import { Eye, ChevronRight, Package, Plus, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
+import { Eye, ChevronRight, Package, Plus, X, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
 const categories = [
@@ -1672,6 +1673,72 @@ const MarketplaceMyProducts: FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="flex flex-col gap-6 py-6">
+          <div className="flex flex-col gap-4">
+            <h2 className="text-4xl font-bold text-white sm:text-[56px] sm:leading-[100%]">FAQ</h2>
+            <p className="max-w-[640px] text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
+              We've compiled answers to the most common questions about our affiliate program. If you have additional questions, please contact our{" "}
+              <a href="#" className="text-white underline hover:opacity-80">
+                support team
+              </a>
+              .
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="flex flex-col gap-6">
+            <AccordionItem value="partner" className="border-0">
+              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
+                <span className="text-left text-lg font-bold text-white sm:text-2xl">How can I become a partner?</span>
+                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
+                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
+                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
+                </div>
+              </AccordionTrigger>
+            </AccordionItem>
+
+            <AccordionItem value="percentage" className="border-0">
+              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
+                <span className="text-left text-lg font-bold text-white sm:text-2xl">What percentage will I receive for each referred client?</span>
+                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
+                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
+                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
+                </div>
+              </AccordionTrigger>
+            </AccordionItem>
+
+            <AccordionItem value="payouts" className="border-0">
+              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
+                <span className="text-left text-lg font-bold text-white sm:text-2xl">How often are payouts made?</span>
+                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
+                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
+                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
+                </div>
+              </AccordionTrigger>
+            </AccordionItem>
+
+            <AccordionItem value="tools" className="border-0">
+              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
+                <span className="text-left text-lg font-bold text-white sm:text-2xl">What tools are provided for partners?</span>
+                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
+                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
+                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pt-5 text-sm font-bold leading-normal text-[#B0B0B0] sm:text-[15px]">
+                <p className="mb-3">
+                  We provide a comprehensive set of tools to help you effectively attract clients and grow your earnings. After registering for the affiliate program, you'll gain access to your personal dashboard where you can:
+                </p>
+                <ul className="list-none space-y-1">
+                  <li>- Track client statistics and analytics</li>
+                  <li>- Use ready-made promotional materials (banners, text copies, images)</li>
+                  <li>- Receive a unique referral link for automatic tracking of your referred clients</li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </div>
