@@ -1021,6 +1021,10 @@ const MarketplaceMyProducts: FC = () => {
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
+  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+
+  const balanceValue = "$1,000,000,000.00";
+  const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
   useEffect(() => {
     const state = location.state as { category?: MarketplaceCategory } | null;
