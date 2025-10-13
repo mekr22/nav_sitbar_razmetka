@@ -25,48 +25,48 @@ const Footer: FC = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 2xl:flex-row 2xl:flex-nowrap 2xl:gap-12">
+        <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 min-[1888px]:flex-row min-[1888px]:flex-nowrap min-[1888px]:gap-12">
           {/* Products Section */}
-          <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full 2xl:order-1 2xl:min-w-[360px] 2xl:flex-[1.5]">
+          <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full min-[1888px]:order-1 min-[1888px]:min-w-[360px] min-[1888px]:flex-[1.5]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-12 xl:gap-y-3 2xl:grid-cols-4 2xl:gap-x-6 min-[1888px]:gap-x-12">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 xl:gap-x-8 xl:gap-y-4 min-[1888px]:grid-cols-4 min-[1888px]:gap-x-12 min-[1888px]:gap-y-3">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Database className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <Database className="h-6 w-6" />
                 <span>Cryptocurrency</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <TrendingUp className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <TrendingUp className="h-6 w-6" />
                 <span>Trading Terminal</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <MessageCircle className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <MessageCircle className="h-6 w-6" />
                 <span>Social Network</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Video className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <Video className="h-6 w-6" />
                 <span>Live Streaming</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <ShoppingCart className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <ShoppingCart className="h-6 w-6" />
                 <span>Marketplace</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Briefcase className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <Briefcase className="h-6 w-6" />
                 <span>Portfolios</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Sparkles className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <Sparkles className="h-6 w-6" />
                 <span>AI Assistant</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <BarChart3 className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
+                <BarChart3 className="h-6 w-6" />
                 <span>Stock Market</span>
               </a>
             </div>
           </div>
 
           {/* Resources Section */}
-          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none 2xl:order-2 2xl:flex-1 2xl:min-w-[240px] 2xl:max-w-[320px]">
+          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1888px]:order-2 min-[1888px]:flex-1 min-[1888px]:min-w-[240px] min-[1888px]:max-w-[320px]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Resources</h4>
             <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
               AI
@@ -74,7 +74,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Social Section */}
-          <div className="flex w-full flex-col gap-5 xl:order-2 xl:w-full xl:max-w-none 2xl:order-3 2xl:flex-1 2xl:min-w-[240px] 2xl:max-w-[320px]">
+          <div className="flex w-full flex-col gap-5 xl:order-2 xl:w-full xl:max-w-none min-[1888px]:order-3 min-[1888px]:flex-1 min-[1888px]:min-w-[240px] min-[1888px]:max-w-[320px]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Social</h4>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
