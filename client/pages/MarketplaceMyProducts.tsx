@@ -377,21 +377,6 @@ const investmentConsultants: InvestmentConsultant[] = [
   },
 ];
 
-type Signal = {
-  id: string;
-  name: string;
-  icon: string;
-  users: string;
-  riskLevel: string;
-  platforms: string[];
-  assets: string[];
-  type: string;
-  timeframes: string[];
-  use: string;
-  accuracy: string;
-  chartImage: string;
-};
-
 const signals: Signal[] = [
   {
     id: "signal-risk-master",
