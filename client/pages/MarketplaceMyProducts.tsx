@@ -323,37 +323,7 @@ const analysts: Analyst[] = [
   },
 ];
 
-const investmentConsultants: InvestmentConsultant[] = [
-  {
-    id: "consultant-sarah-lee",
-    name: "Sarah Lee",
-    credentials: "CFP®",
-    avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=800",
-    company: "SONMORE FINANCIAL",
-    location: "Chandler, AZ",
-    nationwide: true,
-    description: "Helping Retirees and Professionals in Aerospace and Tech Minimize Taxes",
-    clients: "232",
-    riskLevel: "Moderate",
-    aum: "$4.2M",
-    portfolioReturn: "+0.00%",
-    featured: true,
-  },
-  {
-    id: "consultant-james-wilson",
-    name: "James Wilson",
-    credentials: "CFA",
-    avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=800",
-    company: "WEALTH ADVISORS GROUP",
-    location: "New York, NY",
-    nationwide: true,
-    description: "Specialized in High Net Worth Portfolio Management and Estate Planning",
-    clients: "187",
-    riskLevel: "Conservative",
-    aum: "$6.8M",
-    portfolioReturn: "+2.4%",
-  },
-];
+const investmentConsultants: InvestmentConsultant[] = baseInvestmentConsultants;
 
 const signals: Signal[] = baseSignals;
 const strategies: Strategy[] = baseStrategies;
