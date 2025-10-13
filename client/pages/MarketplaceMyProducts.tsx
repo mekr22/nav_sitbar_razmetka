@@ -506,6 +506,10 @@ const MarketplaceMyProducts: FC = () => {
       navigate("/marketplace/courses", { state: { category } });
       return;
     }
+    if (category === "Scripts and Software") {
+      navigate("/marketplace/scripts", { state: { category } });
+      return;
+    }
   };
 
   const scriptsCardKey = buildCardKey("scripts", "main");
