@@ -1429,6 +1429,9 @@ const MarketplaceMyProducts: FC = () => {
                     isActive ? "border-[#A06AFF]" : "border-[#181B22]",
                   )}
                 >
+                  <div className="absolute right-4 top-4">
+                    <FavoriteStarButton pressed={isFavorite(cardKey)} onToggle={() => toggleFavorite(cardKey)} />
+                  </div>
                   <div className="flex items-center gap-3">
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144"
