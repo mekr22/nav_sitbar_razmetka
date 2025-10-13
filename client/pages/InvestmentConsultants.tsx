@@ -61,6 +61,27 @@ const parsePercentage = (value: string) => {
   return Number.isNaN(numeric) ? 0 : numeric;
 };
 
+const formatClients = (value: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(Math.max(0, Math.round(value)));
+
+const formatAum = (value: number) => {
+  if (value >= 1_000_000_000) {
+    return `$${(value / 1_000_000_000).toFixed(1)}B`;
+  }
+  if (value >= 1_000_000) {
+    return `$${(value / 1_000_000).toFixed(1)}M`;
+  }
+  if (value >= 1_000) {
+    return `$${(value / 1_000).toFixed(1)}K`;
+  }
+  return `$${Math.round(value)}`;
+};
+
+const formatReturn = (value: number) => {
+  const rounded = Math.round(value * 10) / 10;
+  const prefix = rounded >= 0 ? "+" : "";
+  return `${prefix}${rounded.toFixed(1)}%`;
+};
+
 const InvestmentConsultants: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
