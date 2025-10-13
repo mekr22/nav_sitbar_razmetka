@@ -312,13 +312,13 @@ const SignalsAndTechnicalIndicators: FC = () => {
                         <button
                           type="button"
                           className={cn(
-                            "flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
+                            "flex h-9 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
                             isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
                           )}
                           aria-label={`Filter by ${config.label}`}
                         >
-                          <span className="text-xs font-medium sm:text-sm">{selectedOption.buttonLabel}</span>
-                          <ChevronDown className={cn("h-5 w-5", isActive ? "text-white" : "text-[#B0B0B0]")} />
+                          <span className="truncate text-xs font-medium sm:text-sm">{selectedOption.buttonLabel}</span>
+                          <ChevronDown className={cn("h-5 w-5 flex-shrink-0", isActive ? "text-white" : "text-[#B0B0B0]")} />
                         </button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
