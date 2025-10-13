@@ -1547,23 +1547,21 @@ const MarketplaceMyProducts: FC = () => {
               </div>
 
               <div className="flex flex-1 flex-col gap-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
-                      alt="Author"
-                      className="h-16 w-16 rounded-lg object-cover"
-                    />
-                    <div>
-                      <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
-                      <div className="mt-1 flex flex-wrap items-center gap-1">
-                        <span className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">4.8</span>
-                        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
-                          <Users className="h-4 w-4 text-[#B0B0B0]" />
-                          1,748
-                        </span>
-                        <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Individual Analyst</span>
-                      </div>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
+                    alt="Author"
+                    className="h-16 w-16 rounded-lg object-cover"
+                  />
+                  <div>
+                    <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
+                    <div className="mt-1 flex flex-wrap items-center gap-1">
+                      <span className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">4.8</span>
+                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
+                        <Users className="h-4 w-4 text-[#B0B0B0]" />
+                        1,748
+                      </span>
+                      <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">Individual Analyst</span>
                     </div>
                   </div>
                 </div>
