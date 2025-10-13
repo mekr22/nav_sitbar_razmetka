@@ -93,19 +93,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
               </div>
             </div>
 
-            <div className="flex h-[170px] w-full flex-col justify-between rounded-xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px] sm:h-[194px] lg:w-[260px] xl:w-[280px]">
-              <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">Top performer</span>
-                <span className="text-lg font-bold text-white sm:text-2xl">Impulse Hunter</span>
-              </div>
-              <div className="flex items-center justify-between text-xs font-bold text-white">
-                <span>Accuracy</span>
-                <span className="rounded bg-[#2EBD85]/16 px-2 py-0.5 text-[#2EBD85]">72%</span>
-              </div>
-              <div className="flex items-center justify-between text-xs font-bold text-white">
-                <span>Users</span>
-                <span>12,430</span>
-              </div>
+            <div className="flex h-[170px] w-full items-center justify-center rounded-xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px] sm:h-[194px] lg:w-[260px] xl:w-[280px]">
+              <span className="text-lg font-bold text-[#808283] sm:text-2xl">Advertising Banner</span>
             </div>
           </div>
 
@@ -133,7 +122,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
 
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-2">
-            <h2 className="text-2xl font-bold text-white sm:text-[31px]">All Signals</h2>
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
             <p className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
               Discover curated indicators optimized for momentum, mean-reversion, and volatility breakouts across global markets.
             </p>
