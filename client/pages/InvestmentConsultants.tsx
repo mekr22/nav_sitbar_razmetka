@@ -350,53 +350,55 @@ const InvestmentConsultants: FC = () => {
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Investment Consultants</h2>
-            <div className="flex w-full flex-nowrap items-center gap-1 overflow-x-auto pb-1 sm:gap-2 md:gap-3">
-              {filterConfig.map((config) => {
-                const selectedOption =
-                  config.options.find((option) => option.value === filters[config.key]) ?? config.options[0];
-                const isActive = filters[config.key] !== config.options[0].value;
+            <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
+              <div className="hidden min-[1143px]:flex min-[1143px]:w-full min-[1143px]:flex-1 min-[1143px]:items-center min-[1143px]:gap-3">
+                {filterConfig.map((config) => {
+                  const selectedOption =
+                    config.options.find((option) => option.value === filters[config.key]) ?? config.options[0];
+                  const isActive = filters[config.key] !== config.options[0].value;
 
-                return (
-                  <DropdownMenu key={config.key}>
-                    <DropdownMenuTrigger asChild>
-                      <button
-                        type="button"
-                        className={cn(
-                          "flex h-9 min-w-[150px] flex-shrink-0 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
-                          isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
-                        )}
-                        aria-label={`Filter by ${config.label}`}
+                  return (
+                    <DropdownMenu key={config.key}>
+                      <DropdownMenuTrigger asChild>
+                        <button
+                          type="button"
+                          className={cn(
+                            "flex h-9 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
+                            isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
+                          )}
+                          aria-label={`Filter by ${config.label}`}
+                        >
+                          <span className="truncate text-xs font-medium sm:text-sm">{selectedOption.buttonLabel}</span>
+                          <ChevronDown className={cn("h-5 w-5 flex-shrink-0", isActive ? "text-white" : "text-[#B0B0B0]")} />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        align="start"
+                        className="w-60 rounded-xl border border-[#181B22] bg-[#0C1014]/95 p-1 backdrop-blur-xl"
                       >
-                        <span className="truncate text-xs font-medium sm:text-sm">{selectedOption.buttonLabel}</span>
-                        <ChevronDown className={cn("h-5 w-5 flex-shrink-0", isActive ? "text-white" : "text-[#B0B0B0]")} />
-                      </button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      align="start"
-                      className="w-60 rounded-xl border border-[#181B22] bg-[#0C1014]/95 p-1 backdrop-blur-xl"
-                    >
-                      <DropdownMenuRadioGroup
-                        value={filters[config.key]}
-                        onValueChange={(value) =>
-                          handleFilterChange(config.key, value as FilterSelections[typeof config.key])
-                        }
-                      >
-                        {config.options.map((option) => (
-                          <DropdownMenuRadioItem
-                            key={option.value}
-                            value={option.value}
-                            className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[#B0B0B0] outline-none data-[state=checked]:bg-[#1A1F2A] data-[state=checked]:text-white"
-                          >
-                            {option.label}
-                          </DropdownMenuRadioItem>
-                        ))}
-                      </DropdownMenuRadioGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                );
-              })}
+                        <DropdownMenuRadioGroup
+                          value={filters[config.key]}
+                          onValueChange={(value) =>
+                            handleFilterChange(config.key, value as FilterSelections[typeof config.key])
+                          }
+                        >
+                          {config.options.map((option) => (
+                            <DropdownMenuRadioItem
+                              key={option.value}
+                              value={option.value}
+                              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[#B0B0B0] outline-none data-[state=checked]:bg-[#1A1F2A] data-[state=checked]:text-white"
+                            >
+                              {option.label}
+                            </DropdownMenuRadioItem>
+                          ))}
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  );
+                })}
+              </div>
 
-              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px]">
+              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
                 <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
                 <input
                   type="search"
