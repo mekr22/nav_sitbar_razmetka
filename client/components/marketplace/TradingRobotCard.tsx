@@ -97,7 +97,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
   const accuracyStyle = accuracyStyles[robot.accuracyLevel];
 
   return (
-    <div className="mx-auto w-full max-w-[525px]">
+    <div className="mx-auto h-full w-full max-w-[525px]">
       <div
         role="button"
         tabIndex={0}
@@ -110,7 +110,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
           }
         }}
         className={cn(
-          "relative flex cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full cursor-pointer flex-col rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
@@ -121,7 +121,8 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
           />
         </div>
 
-        <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+        <div className="flex flex-1 flex-col gap-4">
+          <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <img
             src={robot.icon}
             alt={robot.name}
@@ -241,8 +242,9 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
             {robot.roi30d}
           </span>
         </div>
+      </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
+        <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
             className={cn(
               actionButtonBaseClass,
