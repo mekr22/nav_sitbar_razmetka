@@ -1234,12 +1234,15 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {strategies.map((strategy) => {
               const cardKey = buildCardKey("strategy", strategy.id);
+              const isFavorited = isFavorite(cardKey);
               return (
                 <StrategyCard
                   key={strategy.id}
                   strategy={strategy}
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
               );
             })}
