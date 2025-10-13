@@ -188,7 +188,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
           </span>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
             className={cn(
               actionButtonBaseClass,
