@@ -1678,9 +1678,9 @@ const MarketplaceMyProducts: FC = () => {
                 <div className="flex flex-col items-start gap-3 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-4 sm:flex-row sm:items-center">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
-                    alt="Author"
-                    className="h-16 w-16 rounded-lg object-cover"
-                  />
+                  alt="Author"
+                  className="h-16 w-16 rounded-lg object-cover max-[640px]:h-20 max-[640px]:w-20"
+                />
                   <div>
                     <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1">
