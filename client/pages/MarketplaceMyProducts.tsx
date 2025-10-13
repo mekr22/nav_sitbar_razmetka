@@ -1297,7 +1297,7 @@ const MarketplaceMyProducts: FC = () => {
               activeCardKey === scriptsCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
-            <div className="absolute right-6 top-6 flex items-center gap-4 text-xs font-bold uppercase text-white">
+            <div className="absolute right-4 top-4 flex items-center gap-4 text-xs font-bold uppercase text-white">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
