@@ -790,7 +790,13 @@ const MarketplaceMyProducts: FC = () => {
         <div className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Scripts and Software</h2>
-            <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
+            <Link
+              to="/marketplace/scripts"
+              state={{ scrollToTop: true, category: "Scripts and Software" }}
+              className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
+            >
+              See all
+            </Link>
           </div>
 
           <div
