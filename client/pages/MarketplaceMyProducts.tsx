@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { KeyboardEvent, useId, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Eye, ChevronRight, Package, Plus, X, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
+import { Eye, ChevronRight, Package, Plus, X, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
