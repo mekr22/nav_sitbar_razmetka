@@ -12,7 +12,7 @@ const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
 const SignalsAndTechnicalIndicators: FC = () => {
   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState<string>("Signals and Technical indicators");
+  const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Signals and Technical indicators");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
 
@@ -42,7 +42,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
 
   const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
     if (category !== "Signals and Technical indicators") {
       navigate("/marketplace/my-products", { state: { category } });
@@ -110,7 +110,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            {categories.map((category) => {
+            {marketplaceCategories.map((category) => {
               const isSelected = selectedCategory === category;
               return (
                 <button
