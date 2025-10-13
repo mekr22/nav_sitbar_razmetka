@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { X } from 'lucide-react';
 import { LayoutVariant } from '../AppBackground/AppBackground';
 import { cn } from '@/lib/utils';
 import { navElements, NavElementProps } from './constants';
