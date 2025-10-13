@@ -136,59 +136,56 @@ const SignalsAndTechnicalIndicators: FC = () => {
         </div>
 
         <section className="flex flex-col gap-6 py-6">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-              >
-                <span className="text-[15px] font-normal text-[#B0B0B0]">All</span>
-                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
-              </button>
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-              >
-                <span className="text-[15px] font-normal text-[#B0B0B0]">Created</span>
-                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
-              </button>
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-              >
-                <span className="text-[15px] font-normal text-[#B0B0B0]">Active Time</span>
-                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
-              </button>
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-              >
-                <span className="text-[15px] font-normal text-[#B0B0B0]">PnL</span>
-                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
-              </button>
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-              >
-                <span className="text-[15px] font-normal text-[#B0B0B0]">Max Drawdown (7d)</span>
-                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
-              </button>
-              <div className="flex h-11 flex-1 min-w-[200px] items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[50px]">
-                <Search className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
-                <input
-                  type="text"
-                  placeholder="Find signals & indicator"
-                  className="flex-1 bg-transparent text-[15px] font-normal text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none"
-                />
+            <div className="flex flex-col gap-2">
+              <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex h-10 w-full max-w-[320px] items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[50px] sm:max-w-[360px] md:max-w-[420px]">
+                  <Search className="h-5 w-5 flex-shrink-0 text-[#B0B0B0]" />
+                  <input
+                    type="text"
+                    placeholder="Find signals & indicator"
+                    className="flex-1 bg-transparent text-xs font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-sm"
+                  />
+                </div>
               </div>
-              <button
-                type="button"
-                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-              >
-                <span className="text-[15px] font-normal text-[#B0B0B0]">Overview</span>
-                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
-              </button>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <button
+                  type="button"
+                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+                >
+                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">All</span>
+                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+                >
+                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">Created</span>
+                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+                >
+                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">Active Time</span>
+                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+                >
+                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">PnL</span>
+                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
+                </button>
+                <button
+                  type="button"
+                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+                >
+                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">Max Drawdown (7d)</span>
+                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
+                </button>
+              </div>
             </div>
           </div>
 
