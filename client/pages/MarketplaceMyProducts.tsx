@@ -1199,9 +1199,17 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="flex flex-col gap-6">
-            {courses.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
+            {courses.map((course) => {
+              const cardKey = buildCardKey("course", course.id);
+              return (
+                <CourseCard
+                  key={course.id}
+                  course={course}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                />
+              );
+            })}
           </div>
         </div>
 
