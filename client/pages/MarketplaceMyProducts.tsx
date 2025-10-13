@@ -1721,57 +1721,57 @@ const MarketplaceMyProducts: FC = () => {
             </p>
           </div>
 
-          <Accordion type="single" collapsible className="flex flex-col gap-6">
-            <AccordionItem value="partner" className="border-0">
-              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
-                <span className="text-left text-lg font-bold text-white sm:text-2xl">How can I become a partner?</span>
-                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
-                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
-                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
+          <div className="flex flex-col gap-6">
+            {faqs.map((faq) => {
+              const isOpen = openFaqId === faq.id;
+              return (
+                <div
+                  key={faq.id}
+                  className={cn(
+                    "rounded-2xl border bg-[#0C101480] backdrop-blur-[50px] transition-colors",
+                    isOpen ? "border-[#A06AFF]" : "border-[#181B22]",
+                  )}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaqId((prev) => (prev === faq.id ? null : faq.id))}
+                    className="group flex w-full items-center justify-between gap-4 px-4 py-6 text-left sm:px-6"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-lg font-bold text-white sm:text-2xl">{faq.question}</span>
+                    <div className="relative flex h-6 w-6 shrink-0 items-center justify-center">
+                      <Plus
+                        className={cn(
+                          "absolute h-6 w-6 text-[#B0B0B0] transition-all",
+                          isOpen ? "rotate-45 opacity-0" : "opacity-100",
+                        )}
+                        strokeWidth={2}
+                      />
+                      <X
+                        className={cn(
+                          "absolute h-6 w-6 text-[#B0B0B0] transition-all",
+                          isOpen ? "opacity-100" : "-rotate-45 opacity-0",
+                        )}
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                  </button>
+                  {isOpen && (faq.description || faq.bullets?.length) ? (
+                    <div className="px-4 pb-6 text-sm font-bold leading-normal text-[#B0B0B0] sm:px-6 sm:text-[15px]">
+                      {faq.description ? <p className="mb-3">{faq.description}</p> : null}
+                      {faq.bullets?.length ? (
+                        <ul className="space-y-1">
+                          {faq.bullets.map((bullet) => (
+                            <li key={bullet}>- {bullet}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  ) : null}
                 </div>
-              </AccordionTrigger>
-            </AccordionItem>
-
-            <AccordionItem value="percentage" className="border-0">
-              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
-                <span className="text-left text-lg font-bold text-white sm:text-2xl">What percentage will I receive for each referred client?</span>
-                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
-                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
-                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
-                </div>
-              </AccordionTrigger>
-            </AccordionItem>
-
-            <AccordionItem value="payouts" className="border-0">
-              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
-                <span className="text-left text-lg font-bold text-white sm:text-2xl">How often are payouts made?</span>
-                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
-                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
-                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
-                </div>
-              </AccordionTrigger>
-            </AccordionItem>
-
-            <AccordionItem value="tools" className="border-0">
-              <AccordionTrigger className="group rounded-2xl border border-[#181B22] bg-[#0C101480] px-4 py-6 backdrop-blur-[50px] transition-colors hover:border-[#A06AFF] hover:no-underline sm:px-6">
-                <span className="text-left text-lg font-bold text-white sm:text-2xl">What tools are provided for partners?</span>
-                <div className="relative ml-4 flex h-6 w-6 shrink-0 items-center justify-center">
-                  <Plus className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=open]:rotate-45 group-data-[state=open]:opacity-0" strokeWidth={2} />
-                  <X className="absolute h-6 w-6 text-[#B0B0B0] transition-all group-data-[state=closed]:rotate-45 group-data-[state=closed]:opacity-0" strokeWidth={1.5} />
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-4 pt-5 text-sm font-bold leading-normal text-[#B0B0B0] sm:text-[15px]">
-                <p className="mb-3">
-                  We provide a comprehensive set of tools to help you effectively attract clients and grow your earnings. After registering for the affiliate program, you'll gain access to your personal dashboard where you can:
-                </p>
-                <ul className="list-none space-y-1">
-                  <li>- Track client statistics and analytics</li>
-                  <li>- Use ready-made promotional materials (banners, text copies, images)</li>
-                  <li>- Receive a unique referral link for automatic tracking of your referred clients</li>
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
