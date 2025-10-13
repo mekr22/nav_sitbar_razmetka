@@ -579,6 +579,9 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive:
       </div>
 
       <div className="relative p-4">
+        <div className="absolute right-4 top-4">
+          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+        </div>
         {/* Avatar and Header */}
         <div className="mb-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
