@@ -1029,6 +1029,7 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
 };
 
 const MarketplaceMyProducts: FC = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
