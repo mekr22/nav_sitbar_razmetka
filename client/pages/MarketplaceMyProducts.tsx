@@ -117,7 +117,7 @@ const TraderPerformanceChart: FC = () => <PerformanceChart />;
 
 const AnalystPerformanceChart: FC = () => <PerformanceChart />;
 
-const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void }> = ({ trader, isActive, onSelect }) => (
+const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
