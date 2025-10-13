@@ -3,6 +3,7 @@ import { KeyboardEvent, useId, useState } from "react";
 import { Eye, ChevronRight, Package, Plus, X, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 
 const categories = [
   "All",
