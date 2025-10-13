@@ -1003,6 +1003,7 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
 
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
 
   return (
     <div className="flex flex-col gap-6">
