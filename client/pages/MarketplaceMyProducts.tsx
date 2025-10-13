@@ -1036,7 +1036,8 @@ const MarketplaceMyProducts: FC = () => {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals and Technical indicators</h2>
             <Link
-              to={{ pathname: "/marketplace/signals", state: { scrollToTop: true } }}
+              to="/marketplace/signals"
+              state={{ scrollToTop: true }}
               className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
             >
               See all
@@ -1066,7 +1067,8 @@ const MarketplaceMyProducts: FC = () => {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Strategies and Portfolios</h2>
             <Link
-              to={{ pathname: "/marketplace/strategies", state: { scrollToTop: true } }}
+              to="/marketplace/strategies"
+              state={{ scrollToTop: true }}
               className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
             >
               See all
@@ -1276,7 +1278,8 @@ const MarketplaceMyProducts: FC = () => {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Trading robots and Algorithms</h2>
             <Link
-              to={{ pathname: "/marketplace/trading-robots", state: { scrollToTop: true } }}
+              to="/marketplace/trading-robots"
+              state={{ scrollToTop: true }}
               className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
             >
               See all
