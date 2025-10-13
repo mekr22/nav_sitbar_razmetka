@@ -1259,12 +1259,15 @@ const MarketplaceMyProducts: FC = () => {
           <div className="flex flex-col gap-6">
             {courses.map((course) => {
               const cardKey = buildCardKey("course", course.id);
+              const isFavorited = isFavorite(cardKey);
               return (
                 <CourseCard
                   key={course.id}
                   course={course}
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
               );
             })}
