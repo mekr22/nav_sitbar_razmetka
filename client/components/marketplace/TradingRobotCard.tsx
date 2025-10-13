@@ -202,6 +202,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
               "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
             )}
           >
+            <BookOpen className="h-4 w-4" />
             LEARN MORE
           </button>
           <button
@@ -210,6 +211,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
           >
+            <Check className="h-4 w-4" />
             SUBSCRIBE
           </button>
         </div>
