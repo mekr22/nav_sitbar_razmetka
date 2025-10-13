@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { Eye, EyeOff, ChevronRight, ChevronDown, Package, Plus, Search } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
