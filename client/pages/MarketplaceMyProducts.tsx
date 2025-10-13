@@ -551,7 +551,7 @@ const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => voi
   </div>
 );
 
-const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive: boolean; onSelect: () => void }> = ({ consultant, isActive, onSelect }) => (
+const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ consultant, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
