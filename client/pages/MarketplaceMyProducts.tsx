@@ -791,7 +791,7 @@ const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; 
   </div>
 );
 
-const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void }> = ({ course, isActive, onSelect }) => (
+const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ course, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="w-full">
     <div
       role="button"
