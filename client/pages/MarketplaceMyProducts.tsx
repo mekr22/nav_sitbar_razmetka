@@ -1036,6 +1036,13 @@ const MarketplaceMyProducts: FC = () => {
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
+  useEffect(() => {
+    const state = location.state as { category?: string } | null;
+    if (state?.category && categories.includes(state.category as (typeof categories)[number])) {
+      setSelectedCategory(state.category);
+    }
+  }, [location.state]);
+
   const toggleFavorite = (key: string) => {
     setFavoriteCardKeys((prev) => {
       const next = new Set(prev);
