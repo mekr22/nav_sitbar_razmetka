@@ -18,6 +18,8 @@ const categories = [
   "Others",
 ] as const;
 
+const actionButtonBaseClass = "flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white";
+
 const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
@@ -922,12 +924,22 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; 
       </div>
 
       {/* Buttons */}
-      <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 md:ml-auto max-[640px]:w-full">
-        <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230] max-[640px]:h-10 max-[640px]:w-full">
+      <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 md:ml-auto">
+        <button
+          className={cn(
+            actionButtonBaseClass,
+            "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
+          )}
+        >
           <BookOpen className="h-4 w-4" />
           DETAILS
         </button>
-        <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90 max-[640px]:h-10 max-[640px]:w-full">
+        <button
+          className={cn(
+            actionButtonBaseClass,
+            "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+          )}
+        >
           <ShoppingCart className="h-4 w-4" />
           BUY
         </button>
@@ -1471,12 +1483,22 @@ const MarketplaceMyProducts: FC = () => {
                 </div>
 
                 {/* Buttons at bottom */}
-                <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3 max-[640px]:w-full">
-                  <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[640px]:h-12 max-[640px]:w-full">
+                <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                  <button
+                    className={cn(
+                      actionButtonBaseClass,
+                      "border border-[#181B22] bg-[#0C1014]/60 backdrop-blur-[50px] transition-colors hover:border-[#1F2230]",
+                    )}
+                  >
                     <BookOpen className="h-4 w-4" />
                     Details
                   </button>
-                  <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90 max-[640px]:h-12 max-[640px]:w-full">
+                  <button
+                    className={cn(
+                      actionButtonBaseClass,
+                      "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+                    )}
+                  >
                     <ShoppingCart className="h-4 w-4" />
                     Buy
                   </button>
@@ -1622,12 +1644,22 @@ const MarketplaceMyProducts: FC = () => {
                     <div className="mt-0.5 text-2xl font-bold text-[#2EBD85]">+120.33%</div>
                   </div>
 
-                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3 max-[640px]:w-full">
-                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230] max-[640px]:h-12 max-[640px]:w-full">
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                    <button
+                      className={cn(
+                        actionButtonBaseClass,
+                        "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
+                      )}
+                    >
                       <BookOpen className="h-4 w-4" />
                       LEARN MORE
                     </button>
-                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90 max-[640px]:h-12 max-[640px]:w-full">
+                    <button
+                      className={cn(
+                        actionButtonBaseClass,
+                        "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+                      )}
+                    >
                       <Check className="h-4 w-4" />
                       SUBSCRIBE
                     </button>
@@ -1713,12 +1745,22 @@ const MarketplaceMyProducts: FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3 max-[640px]:w-full">
-                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230] max-[640px]:h-12 max-[640px]:w-full">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                    <button
+                      className={cn(
+                        actionButtonBaseClass,
+                        "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
+                      )}
+                    >
                       <BookOpen className="h-4 w-4" />
                       DETAILS
                     </button>
-                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90 max-[640px]:h-12 max-[640px]:w-full">
+                    <button
+                      className={cn(
+                        actionButtonBaseClass,
+                        "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+                      )}
+                    >
                       <ShoppingCart className="h-4 w-4" />
                       ADD TO CART
                     </button>
