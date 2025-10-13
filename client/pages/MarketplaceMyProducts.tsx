@@ -681,7 +681,7 @@ const platformLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F59dfc5c913eb4f6d845cfb34003ed89b?format=webp&width=800",
 ];
 
-const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void }> = ({ signal, isActive, onSelect }) => (
+const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ signal, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
