@@ -1,5 +1,4 @@
-import { FC, KeyboardEvent } from "react";
-import { BookOpen, Mail } from "lucide-react";
+import { Mail, MapPin, Globe } from "lucide-react";
 
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
@@ -29,7 +28,7 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({ consultan
         }
       }}
       className={cn(
-        "relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border bg-[#0C1014]/50 backdrop-blur-[50px] transition-colors",
+        "relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border bg-[#0C1014]/60 backdrop-blur-[50px] transition-colors",
         isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
@@ -41,56 +40,64 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({ consultan
         />
       </div>
 
-      <div className="relative p-4">
-        <div className="absolute right-4 top-4">
+      <div className="relative p-5 sm:p-6">
+        <div className="absolute right-6 top-6">
           <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
         </div>
-        <div className="mb-3 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
-            <img src={consultant.avatar} alt={consultant.name} className="block h-full w-full object-cover object-center [transform:scale(1.2)]" />
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+          <div className="relative h-[116px] w-[116px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)] sm:h-[128px] sm:w-[128px]">
+            <img src={consultant.avatar} alt={consultant.name} className="block h-full w-full object-cover object-center [transform:scale(1.15)]" />
           </div>
-          <div className="flex h-24 flex-col justify-center gap-1">
-            <div className="flex items-center gap-1">
-              <h3 className="text-lg font-bold leading-none text-white sm:text-[19px]">
+          <div className="flex flex-1 flex-col gap-2">
+            <div className="flex flex-wrap items-center gap-2 text-white">
+              <h3 className="text-xl font-bold leading-none sm:text-2xl">
                 {consultant.name}
+                {consultant.credentials ? `, ${consultant.credentials}` : ""}
               </h3>
-              <span className="rounded bg-[#A06AFF] px-1 text-[11px] font-extrabold uppercase text-white">{consultant.credentials}</span>
             </div>
-            <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{consultant.company}</div>
-            <div className="text-[11px] font-bold uppercase text-[#B0B0B0]">{consultant.location}</div>
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#B0B0B0] sm:text-sm">{consultant.company}</div>
+            <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-white">
+              <span className="flex items-center gap-1">
+                <MapPin className="h-4 w-4 text-[#A06AFF]" aria-hidden="true" />
+                {consultant.location}
+              </span>
+              <span className="flex items-center gap-1">
+                <Globe className="h-4 w-4 text-[#A06AFF]" aria-hidden="true" />
+                {consultant.nationwide ? "Nationwide" : "Regional"}
+              </span>
+            </div>
           </div>
         </div>
 
-        <p className="mb-3 text-xs font-semibold text-[#B0B0B0]">{consultant.description}</p>
+        <p className="mt-5 text-sm font-semibold leading-relaxed text-white sm:mt-6">
+          {consultant.description}
+        </p>
 
-        <div className="grid gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-          <div className="flex items-center gap-1">
-            <span>Clients:</span>
+        <div className="mt-5 grid gap-2 text-sm font-semibold text-[#B0B0B0]">
+          <div className="flex items-center gap-2">
+            <span className="uppercase tracking-wide">Number of Clients</span>
             <span className="text-white">{consultant.clients}</span>
           </div>
-          <div className="flex items-center gap-1">
-            <span>Risk Profile:</span>
+          <div className="flex items-center gap-2">
+            <span className="uppercase tracking-wide">Risk Level</span>
             <span className="text-white">{consultant.riskLevel}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>AUM:</span>
-            <span className="text-white">{consultant.aum}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Portfolio Return:</span>
-            <span className="text-[#2EBD85]">{consultant.portfolioReturn}</span>
           </div>
         </div>
 
-        <div className="mt-4 flex flex-col gap-2 sm:flex-row">
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-            <BookOpen className="h-4 w-4" />
-            Learn More
-          </button>
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
-            <Mail className="h-4 w-4" />
-            Contact
-          </button>
+        <button className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-3 text-sm font-bold uppercase text-white transition-opacity hover:opacity-90">
+          <Mail className="h-4 w-4" />
+          Contact
+        </button>
+
+        <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-[#181B22] bg-[#0B0F13]/80 px-5 py-4 text-sm font-semibold text-[#B0B0B0] sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="flex flex-col gap-1">
+            <span className="uppercase tracking-wide">Assets Under Management (AUM)</span>
+            <span className="text-base font-bold text-[#2EBD85]">{consultant.aum}</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <span className="uppercase tracking-wide">Average Portfolio Return</span>
+            <span className="text-base font-bold text-[#2EBD85]">{consultant.portfolioReturn}</span>
+          </div>
         </div>
       </div>
     </div>
