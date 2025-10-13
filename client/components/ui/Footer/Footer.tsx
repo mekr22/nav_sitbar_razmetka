@@ -66,7 +66,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Resources Section */}
-          <div className="flex w-full flex-col gap-5 lg:w-[120px]">
+          <div className="flex w-full flex-col gap-5 xl:min-w-[220px]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Resources</h4>
             <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
               AI
