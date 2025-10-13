@@ -1428,6 +1428,7 @@ const MarketplaceMyProducts: FC = () => {
             {[1, 2].map((i) => {
               const cardKey = buildCardKey("trading-robot", `${i}`);
               const isActive = activeCardKey === cardKey;
+              const isFavorited = isFavorite(cardKey);
 
               return (
                 <div
