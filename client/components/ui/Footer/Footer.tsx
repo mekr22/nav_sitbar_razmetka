@@ -27,7 +27,7 @@ const Footer: FC = () => {
         {/* Main Content Grid */}
         <div className="flex flex-col gap-12 xl:grid xl:grid-cols-[minmax(0,2fr)_minmax(220px,1fr)_minmax(220px,1fr)] xl:items-start xl:gap-12">
           {/* Products Section */}
-          <div className="flex min-w-full flex-col gap-2.5 xl:min-w-[360px] xl:flex-[1.5]">
+          <div className="flex w-full flex-col gap-2.5 xl:min-w-[360px] xl:flex-[1.5]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
             <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
