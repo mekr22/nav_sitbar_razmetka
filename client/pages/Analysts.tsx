@@ -414,6 +414,44 @@ const Analysts: FC = () => {
               })}
             </div>
           )}
+
+          <div className="mt-6 mb-10 flex w-full justify-center sm:mb-16">
+            <nav aria-label="Analysts pagination placeholder">
+              <div className="flex items-center gap-1" aria-hidden="true">
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.6585 15L15.8335 13.825L12.0168 10L15.8335 6.175L14.6585 5L9.6585 10L14.6585 15Z" fill="#B0B0B0" />
+                    <path d="M9.1668 15L10.3418 13.825L6.52513 10L10.3418 6.175L9.1668 5L4.1668 10L9.1668 15Z" fill="#B0B0B0" />
+                  </svg>
+                </div>
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.575 15L13.75 13.825L9.93333 10L13.75 6.175L12.575 5L7.575 10L12.575 15Z" fill="#B0B0B0" />
+                  </svg>
+                </div>
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg bg-[linear-gradient(270deg,#A06AFF_0%,#482090_100%)]">
+                  <span className="text-[15px] font-bold text-white">1</span>
+                </div>
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <span className="text-[15px] font-bold text-[#B0B0B0]">2</span>
+                </div>
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <span className="text-[15px] font-bold text-[#B0B0B0]">3</span>
+                </div>
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.675 5L7.5 6.175L11.3167 10L7.5 13.825L8.675 15L13.675 10L8.675 5Z" fill="#B0B0B0" />
+                  </svg>
+                </div>
+                <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.3415 5L4.1665 6.175L7.98317 10L4.1665 13.825L5.3415 15L10.3415 10L5.3415 5Z" fill="#B0B0B0" />
+                    <path d="M10.8332 5L9.6582 6.175L13.4749 10L9.6582 13.825L10.8332 15L15.8332 10L10.8332 5Z" fill="#B0B0B0" />
+                  </svg>
+                </div>
+              </div>
+            </nav>
+          </div>
         </section>
       </div>
     </div>
