@@ -24,23 +24,6 @@ const isActivationKey = (key: string) => key === "Enter" || key === " " || key =
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
-type Trader = {
-  id: string;
-  name: string;
-  avatar: string;
-  badge: string;
-  followers: string;
-  publications: string;
-  trades30Days: string;
-  experience: string;
-  roiMonth: string;
-  roiQuarter: string;
-  avgProfitability: string;
-  accuracy: string;
-  certification: string;
-  rating: string;
-};
-
 type FaqItem = {
   id: string;
   question: string;
