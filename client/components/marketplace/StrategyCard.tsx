@@ -155,7 +155,7 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, isActive, onSelect, isF
             )}
           >
             <BookOpen className="h-4 w-4" />
-            Learn More
+            LEARN MORE
           </button>
           <button
             className={cn(
@@ -164,7 +164,7 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, isActive, onSelect, isF
             )}
           >
             <Check className="h-4 w-4" />
-            Subscribe
+            SUBSCRIBE
           </button>
         </div>
       </div>
