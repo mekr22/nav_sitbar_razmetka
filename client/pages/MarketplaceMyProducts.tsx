@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useId, useState } from "react";
+import { KeyboardEvent, useId, useState } from "react";
 import { Eye, ChevronRight, Package, Plus, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
