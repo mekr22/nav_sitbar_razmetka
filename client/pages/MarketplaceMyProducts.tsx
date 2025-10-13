@@ -4,6 +4,7 @@ import { Eye, ChevronRight, Package, Plus, X, BookOpen, Mail, Check, ShoppingCar
 import { cn } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
+import { baseSignals } from "@/data/marketplaceSignals";
 
 export const categories = [
   "All",
