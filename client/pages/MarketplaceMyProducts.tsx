@@ -445,12 +445,22 @@ const courses: Course[] = [
   },
 ];
 
-const AnalystCard: FC<{ analyst: Analyst; featured?: boolean }> = ({ analyst, featured }) => (
+const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => void }> = ({ analyst, isActive, onSelect }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onClick={onSelect}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isActivationKey(event.key)) {
+          event.preventDefault();
+          onSelect();
+        }
+      }}
       className={cn(
-        "relative flex flex-col gap-3 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px]",
-        featured ? "border-[#A06AFF]" : "border-[#181B22]",
+        "relative flex cursor-pointer flex-col gap-3 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+        isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
       <div className="flex items-start justify-between">
