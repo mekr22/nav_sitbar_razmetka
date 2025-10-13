@@ -1449,7 +1449,7 @@ const MarketplaceMyProducts: FC = () => {
                   )}
                 >
                   <div className="absolute right-4 top-4">
-                    <FavoriteStarButton pressed={isFavorite(cardKey)} onToggle={() => toggleFavorite(cardKey)} />
+                    <FavoriteStarButton pressed={isFavorited} onToggle={() => toggleFavorite(cardKey)} />
                   </div>
                   <div className="flex items-center gap-3">
                     <img
