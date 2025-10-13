@@ -213,6 +213,10 @@ const Traders: FC = () => {
       navigate("/marketplace/trading-robots", { state: { category } });
       return;
     }
+    if (category === "Courses and Training materials") {
+      navigate("/marketplace/courses", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
