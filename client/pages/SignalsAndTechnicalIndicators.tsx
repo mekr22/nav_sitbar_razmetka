@@ -1,7 +1,6 @@
 import { FC, useMemo, useState } from "react";
 import { Eye, ChevronRight, Package, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { categories } from "@/pages/MarketplaceMyProducts";
