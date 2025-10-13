@@ -613,10 +613,9 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive:
               <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{consultant.company}</div>
             </div>
           </div>
-          <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
-        </div>
+      </div>
 
-        {/* Location and Nationwide */}
+      {/* Location and Nationwide */}
         <div className="mb-3 flex items-center gap-4 text-xs font-bold text-white">
           <div className="flex items-center gap-0.5">
             <MapPin className="h-3 w-3" />
