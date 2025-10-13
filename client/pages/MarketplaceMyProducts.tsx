@@ -18,6 +18,10 @@ const categories = [
   "Others",
 ] as const;
 
+const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+
+const buildCardKey = (section: string, id: string) => `${section}:${id}`;
+
 type Trader = {
   id: string;
   name: string;
