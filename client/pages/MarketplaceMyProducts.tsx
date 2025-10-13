@@ -1159,12 +1159,15 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {analysts.map((analyst) => {
               const cardKey = buildCardKey("analyst", analyst.id);
+              const isFavorited = isFavorite(cardKey);
               return (
                 <AnalystCard
                   key={analyst.id}
                   analyst={analyst}
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
               );
             })}
@@ -1356,7 +1359,7 @@ const MarketplaceMyProducts: FC = () => {
                   <h4 className="mb-2 text-lg font-bold text-white sm:text-[19px]">RiskMaster - Trading risk calculation script</h4>
                   <div className="mb-3 flex flex-wrap items-center gap-2">
                     <span className="inline-flex items-center gap-1 rounded bg-[rgba(160,106,255,0.16)] px-2 py-0.5 text-xs font-extrabold uppercase text-[#A06AFF]">Verified Listing</span>
-                    <span className="text-xs font-bold uppercase text-white">���� Australia</span>
+                    <span className="text-xs font-bold uppercase text-white">🌍 Australia</span>
                   </div>
                   <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
                     RiskMaster – powerful tool for traders, automatically calculates trade risks. Optimize trading and minimize losses!
