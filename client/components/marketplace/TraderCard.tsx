@@ -80,8 +80,8 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex flex-col gap-2">
               <h3 className="text-[15px] font-bold leading-tight text-white">{trader.name}</h3>
-              <div className="flex flex-col gap-1">
-                <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800]">
+              <div className="flex flex-col items-start gap-1">
+                <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800] self-start">
                   {trader.badge}
                 </span>
                 <div className="flex items-center gap-1">
