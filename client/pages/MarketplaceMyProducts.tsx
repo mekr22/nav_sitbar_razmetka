@@ -1622,7 +1622,7 @@ const MarketplaceMyProducts: FC = () => {
                     <div className="mt-0.5 text-2xl font-bold text-[#2EBD85]">+120.33%</div>
                   </div>
 
-                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3 max-[640px]:w-full">
                     <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230] max-[640px]:h-12 max-[640px]:w-full">
                       <BookOpen className="h-4 w-4" />
                       LEARN MORE
