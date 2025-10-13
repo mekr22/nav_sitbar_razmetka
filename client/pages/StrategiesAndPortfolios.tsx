@@ -107,6 +107,52 @@ const DUPLICATED_PAIRS = 6;
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
+const parsePercentage = (value: string) => {
+  const numeric = parseFloat(value.replace(/[^0-9.-]/g, ""));
+  return Number.isNaN(numeric) ? 0 : Math.abs(numeric);
+};
+
+const parseCurrency = (value: string) => {
+  const numeric = parseFloat(value.replace(/[^0-9.]/g, ""));
+  return Number.isNaN(numeric) ? 0 : numeric;
+};
+
+const resolveStyle = (strategy: Strategy): StyleOptionValue => {
+  const normalized = strategy.strategy.toLowerCase();
+  if (normalized.includes("income")) {
+    return "income";
+  }
+  if (normalized.includes("macro")) {
+    return "macro";
+  }
+  if (normalized.includes("balance")) {
+    return "balanced";
+  }
+  return "momentum";
+};
+
+const resolveCapitalBucket = (amount: number): CapitalOptionValue => {
+  if (amount < 5000) {
+    return "starter";
+  }
+  if (amount <= 10000) {
+    return "growth";
+  }
+  return "professional";
+};
+
+const resolveDrawdownBucket = (drawdown: number): DrawdownOptionValue => {
+  if (drawdown < 10) {
+    return "tight";
+  }
+  if (drawdown <= 20) {
+    return "moderate";
+  }
+  return "broad";
+};
+
+const resolveRoiBucket = (roi: number): RoiOptionValue => (roi < 10 ? "steady" : "growth");
+
 const StrategiesAndPortfolios: FC = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Strategies and Portfolios");
