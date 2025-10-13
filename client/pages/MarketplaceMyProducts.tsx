@@ -1,7 +1,8 @@
 import type { FC } from "react";
 import { KeyboardEvent, useId, useState } from "react";
-import { Eye, ChevronRight, Package, Plus, X, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
+import { Eye, ChevronRight, Package, Plus, X, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
+import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 
 const categories = [
   "All",
