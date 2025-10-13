@@ -657,7 +657,7 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive:
   </div>
 );
 
-const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ signal, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+const SignalCardLegacy: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ signal, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
