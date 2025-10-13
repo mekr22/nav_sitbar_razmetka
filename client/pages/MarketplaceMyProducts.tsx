@@ -1072,6 +1072,7 @@ const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
+  const [openFaqId, setOpenFaqId] = useState<string | null>("tools");
 
   const toggleFavorite = (key: string) => {
     setFavoriteCardKeys((prev) => {
