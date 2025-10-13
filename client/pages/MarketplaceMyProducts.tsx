@@ -383,6 +383,10 @@ const MarketplaceMyProducts: FC = () => {
       navigate("/marketplace/traders", { state: { category } });
       return;
     }
+    if (category === "Courses and Training materials") {
+      navigate("/marketplace/courses", { state: { category } });
+      return;
+    }
   };
 
   const scriptsCardKey = buildCardKey("scripts", "main");
