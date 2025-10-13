@@ -184,17 +184,6 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
           <span className="text-[#2EBD85]">{robot.roi30d}</span>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 text-[11px] font-bold uppercase text-[#B0B0B0] sm:text-xs">
-          <div className="flex items-center gap-1">
-            <span>ROI 90D:</span>
-            <span className="text-[#2EBD85]">{robot.roi90d}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>ROI 1Y:</span>
-            <span className="text-[#2EBD85]">{robot.roi1y}</span>
-          </div>
-        </div>
-
         <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
           <button
             className={cn(
