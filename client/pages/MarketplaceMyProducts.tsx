@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
+import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 
 export const categories = [
   "All",
