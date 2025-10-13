@@ -246,6 +246,18 @@ const InvestmentConsultants: FC = () => {
     return items;
   }, [filters.sort, normalizedConsultants]);
 
+  useEffect(() => {
+    if (!activeCardKey) {
+      return;
+    }
+    const isActiveVisible = sortedConsultants.some(
+      (consultant) => buildCardKey("consultants-page", consultant.id) === activeCardKey,
+    );
+    if (!isActiveVisible) {
+      setActiveCardKey(null);
+    }
+  }, [activeCardKey, sortedConsultants]);
+
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
