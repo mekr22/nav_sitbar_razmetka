@@ -923,11 +923,11 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; 
 
       {/* Buttons */}
       <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 md:ml-auto max-[640px]:w-full">
-        <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230] max-[640px]:h-12 max-[640px]:w-full">
+        <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230] max-[640px]:h-10 max-[640px]:w-full">
           <BookOpen className="h-4 w-4" />
           DETAILS
         </button>
-        <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90 max-[640px]:h-12 max-[640px]:w-full">
+        <button className="flex h-10 min-w-[130px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90 max-[640px]:h-10 max-[640px]:w-full">
           <ShoppingCart className="h-4 w-4" />
           BUY
         </button>
