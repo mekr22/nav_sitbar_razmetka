@@ -138,14 +138,12 @@ const CoursesAndTrainingMaterials: FC = () => {
           return;
         }
 
-        const isFirstBatch = iteration === 0;
-        const idSuffix = isFirstBatch ? "" : `-set-${iteration + 1}`;
-        const titleSuffix = isFirstBatch ? "" : ` (Set ${String.fromCharCode(64 + iteration + 1)})`;
+        const idSuffix = iteration === 0 ? "" : `-set-${iteration + 1}`;
 
         result.push({
           ...course,
           id: `${course.id}${idSuffix}`,
-          title: `${course.title}${titleSuffix}`,
+          title: course.title,
           image: myProductsImage,
         });
       });
