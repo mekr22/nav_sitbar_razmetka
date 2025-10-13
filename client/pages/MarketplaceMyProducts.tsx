@@ -1566,7 +1566,26 @@ const MarketplaceMyProducts: FC = () => {
             )}
           >
             <div className="absolute right-6 top-6">
-              <Star className="h-6 w-6 text-[#B0B0B0]" />
+              <button
+                type="button"
+                aria-pressed={otherFavorited}
+                aria-label="Toggle favorite"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  toggleFavorite(otherCardKey);
+                }}
+                onKeyDown={(event) => event.stopPropagation()}
+                className={cn(
+                  "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60",
+                  otherFavorited ? "text-[#A06AFF]" : "text-[#B0B0B0]",
+                )}
+              >
+                <Star
+                  className="h-6 w-6"
+                  strokeWidth={otherFavorited ? 1.5 : 1.4}
+                  fill={otherFavorited ? "#A06AFF" : "none"}
+                />
+              </button>
             </div>
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
               <div className="relative h-[264px] w-full overflow-hidden rounded-lg lg:w-[451px]">
