@@ -76,19 +76,44 @@ const InvestmentConsultants: FC = () => {
     sort: "default",
   });
 
-  const consultants = useMemo<ConsultantWithMeta[]>(
-    () =>
-      baseInvestmentConsultants.map((consultant, index) => ({
-        ...consultant,
-        sortIndex: index,
-        normalizedRisk: consultant.riskLevel.trim().toLowerCase(),
-        clientsCount: parseClients(consultant.clients),
-        aumValue: parseAum(consultant.aum),
-        returnValue: parsePercentage(consultant.portfolioReturn),
-        availability: consultant.nationwide ? "nationwide" : "regional",
-      })),
-    [],
-  );
+  const consultants = useMemo<ConsultantWithMeta[]>(() => {
+    const targetCount = 24;
+    const base = baseInvestmentConsultants;
+
+    return Array.from({ length: targetCount }, (_, index) => {
+      const baseConsultant = base[index % base.length];
+      const variantMultiplier = Math.floor(index / base.length);
+      const sequence = index + 1;
+
+      const baseClients = parseClients(baseConsultant.clients);
+      const baseAum = parseAum(baseConsultant.aum);
+      const baseReturn = parsePercentage(baseConsultant.portfolioReturn);
+
+      const clientsAdjusted = baseClients + variantMultiplier * 37 + (index % base.length) * 5;
+      const aumAdjusted = baseAum + (variantMultiplier * 0.8 + (index % base.length) * 0.15) * 1_000_000;
+      const returnAdjusted = baseReturn + variantMultiplier * 0.5 + (index % 4) * 0.2;
+
+      const isNationwide = variantMultiplier % 2 === 0 ? baseConsultant.nationwide : !baseConsultant.nationwide;
+
+      return {
+        ...baseConsultant,
+        id: `${baseConsultant.id}-${sequence}`,
+        name: variantMultiplier === 0 ? baseConsultant.name : `${baseConsultant.name} ${sequence}`,
+        company:
+          variantMultiplier === 0 ? baseConsultant.company : `${baseConsultant.company} Group ${variantMultiplier + 1}`,
+        clients: formatClients(clientsAdjusted),
+        aum: formatAum(aumAdjusted),
+        portfolioReturn: formatReturn(returnAdjusted),
+        nationwide: isNationwide,
+        sortIndex: sequence,
+        normalizedRisk: baseConsultant.riskLevel.trim().toLowerCase(),
+        clientsCount: clientsAdjusted,
+        aumValue: aumAdjusted,
+        returnValue: returnAdjusted,
+        availability: isNationwide ? "nationwide" : "regional",
+      };
+    });
+  }, []);
 
   const riskOptions = useMemo(
     () => {
