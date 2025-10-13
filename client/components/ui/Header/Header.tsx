@@ -1,5 +1,5 @@
 import { FC, Dispatch, SetStateAction } from "react";
-import { Link } from "react-router-dom";
+import { Menu } from "lucide-react";
 import RightBarButton from "../RightBar/RightBarButton";
 import { AnimatedLogo } from "../AnimatedLogo/AnimatedLogo";
 import { AvatarDropdown } from "../AvatarDropdown/AvatarDropdown";
@@ -7,21 +7,37 @@ import { AvatarDropdown } from "../AvatarDropdown/AvatarDropdown";
 interface HeaderProps {
   rightMenuOpen?: boolean;
   setRightMenuOpen?: Dispatch<SetStateAction<boolean>>;
+  onMobileNavToggle?: () => void;
+  mobileNavOpen?: boolean;
 }
 
 export const Header: FC<HeaderProps> = ({
   rightMenuOpen = false,
   setRightMenuOpen,
+  onMobileNavToggle,
+  mobileNavOpen = false,
 }) => {
   return (
     <header className="mb-6 flex w-full items-center justify-between gap-2 bg-background pb-1 pl-5 pr-5 pt-3 sm:pl-6 sm:pr-6 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:justify-between md:pl-[30px] md:pr-[24px]">
       {/* Brand */}
-      <div className="shrink md:min-w-[230px] md:justify-self-start">
-        <AnimatedLogo />
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={onMobileNavToggle}
+          aria-label="Open navigation"
+          aria-expanded={mobileNavOpen}
+          aria-controls="mobile-navigation"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/60 text-white transition-colors hover:border-[#1F2230] md:hidden"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+        <div className="shrink md:min-w-[230px] md:justify-self-start">
+          <AnimatedLogo />
+        </div>
       </div>
 
       {/* Center: Search + Assistant (desktop) */}
-      <div className="hidden md:flex items-center gap-4 justify-self-center">
+      <div className="hidden items-center gap-4 justify-self-center md:flex">
         <div className="flex items-center gap-2 h-10 px-4 rounded-3xl border border-[#A06AFFCC] backdrop-blur-[50px] w-full max-w-[256px]">
           <svg
             className="w-6 h-6 flex-shrink-0"
