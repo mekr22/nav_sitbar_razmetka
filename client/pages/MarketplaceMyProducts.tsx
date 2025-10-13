@@ -1118,7 +1118,7 @@ const MarketplaceMyProducts: FC = () => {
                 <button
                   key={category}
                   type="button"
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => handleCategoryClick(category)}
                   className={cn(
                     "flex h-8 items-center justify-center rounded-full px-3 text-xs font-bold text-white backdrop-blur-[58px] transition-colors sm:gap-2 sm:text-sm md:px-4 md:text-[15px]",
                     isSelected
