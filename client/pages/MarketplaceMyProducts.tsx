@@ -371,6 +371,7 @@ const investmentConsultants: InvestmentConsultant[] = [
 
 const signals: Signal[] = baseSignals;
 const strategies: Strategy[] = baseStrategies;
+const tradingRobots: TradingRobot[] = baseTradingRobots;
 
 type Course = {
   id: string;
