@@ -107,6 +107,14 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const [filters, setFilters] = useState<FilterSelections>({
+    category: FILTER_CONFIG.category.options[0].value,
+    created: FILTER_CONFIG.created.options[0].value,
+    activeTime: FILTER_CONFIG.activeTime.options[0].value,
+    pnl: FILTER_CONFIG.pnl.options[0].value,
+    drawdown: FILTER_CONFIG.drawdown.options[0].value,
+  });
+  const [searchTerm, setSearchTerm] = useState("");
 
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
