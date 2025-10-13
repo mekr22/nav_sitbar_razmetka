@@ -311,6 +311,10 @@ const StrategiesAndPortfolios: FC = () => {
       navigate("/marketplace/trading-robots", { state: { category } });
       return;
     }
+    if (category === "Investment consultants") {
+      navigate("/marketplace/investment-consultants", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
