@@ -1236,19 +1236,23 @@ const MarketplaceMyProducts: FC = () => {
                     alt="Product"
                     className="h-[72px] w-[72px] rounded-lg object-cover"
                   />
-                  <div className="flex flex-1 flex-col gap-2">
-                    <div className="flex items-start justify-between">
+                  <div className="flex flex-1 flex-col gap-1">
+                    <div className="flex items-start justify-between gap-3">
                       <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
                       <Star className="h-6 w-6 text-[#B0B0B0]" />
                     </div>
-                    <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
-                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
-                        <Users className="h-4 w-4 text-[#B0B0B0]" />
-                        315
-                      </span>
-                      <span className="inline-flex rounded bg-[#2A1C0E] px-2 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+                    <div className="flex flex-col gap-1">
+                      <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
+                        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
+                          <Users className="h-4 w-4 text-[#B0B0B0]" />
+                          315
+                        </span>
+                        <span className="inline-flex rounded bg-[#2A1C0E] px-2 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+                      </div>
+                      <div className="flex items-center self-start rounded bg-[#1C3430] px-2 py-0.5">
+                        <span className="text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
+                      </div>
                     </div>
-                    <span className="inline-flex w-fit rounded bg-[#1C3430] px-2 py-0.5 text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
                   </div>
                 </div>
 
