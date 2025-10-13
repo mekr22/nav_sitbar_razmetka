@@ -61,27 +61,6 @@ const parsePercentage = (value: string) => {
   return Number.isNaN(numeric) ? 0 : numeric;
 };
 
-const formatClients = (value: number) => new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(Math.max(0, Math.round(value)));
-
-const formatAum = (value: number) => {
-  if (value >= 1_000_000_000) {
-    return `$${(value / 1_000_000_000).toFixed(1)}B`;
-  }
-  if (value >= 1_000_000) {
-    return `$${(value / 1_000_000).toFixed(1)}M`;
-  }
-  if (value >= 1_000) {
-    return `$${(value / 1_000).toFixed(1)}K`;
-  }
-  return `$${Math.round(value)}`;
-};
-
-const formatReturn = (value: number) => {
-  const rounded = Math.round(value * 10) / 10;
-  const prefix = rounded >= 0 ? "+" : "";
-  return `${prefix}${rounded.toFixed(1)}%`;
-};
-
 const InvestmentConsultants: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -103,35 +82,17 @@ const InvestmentConsultants: FC = () => {
 
     return Array.from({ length: targetCount }, (_, index) => {
       const baseConsultant = base[index % base.length];
-      const variantMultiplier = Math.floor(index / base.length);
-      const sequence = index + 1;
-
-      const baseClients = parseClients(baseConsultant.clients);
-      const baseAum = parseAum(baseConsultant.aum);
-      const baseReturn = parsePercentage(baseConsultant.portfolioReturn);
-
-      const clientsAdjusted = baseClients + variantMultiplier * 37 + (index % base.length) * 5;
-      const aumAdjusted = baseAum + (variantMultiplier * 0.8 + (index % base.length) * 0.15) * 1_000_000;
-      const returnAdjusted = baseReturn + variantMultiplier * 0.5 + (index % 4) * 0.2;
-
-      const isNationwide = variantMultiplier % 2 === 0 ? baseConsultant.nationwide : !baseConsultant.nationwide;
+      const uniqueId = `${baseConsultant.id}-variant-${index}`;
 
       return {
         ...baseConsultant,
-        id: `${baseConsultant.id}-${sequence}`,
-        name: variantMultiplier === 0 ? baseConsultant.name : `${baseConsultant.name} ${sequence}`,
-        company:
-          variantMultiplier === 0 ? baseConsultant.company : `${baseConsultant.company} Group ${variantMultiplier + 1}`,
-        clients: formatClients(clientsAdjusted),
-        aum: formatAum(aumAdjusted),
-        portfolioReturn: formatReturn(returnAdjusted),
-        nationwide: isNationwide,
-        sortIndex: sequence,
+        id: uniqueId,
+        sortIndex: index,
         normalizedRisk: baseConsultant.riskLevel.trim().toLowerCase(),
-        clientsCount: clientsAdjusted,
-        aumValue: aumAdjusted,
-        returnValue: returnAdjusted,
-        availability: isNationwide ? "nationwide" : "regional",
+        clientsCount: parseClients(baseConsultant.clients),
+        aumValue: parseAum(baseConsultant.aum),
+        returnValue: parsePercentage(baseConsultant.portfolioReturn),
+        availability: baseConsultant.nationwide ? "nationwide" : "regional",
       };
     });
   }, []);
