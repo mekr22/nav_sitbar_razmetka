@@ -1520,7 +1520,7 @@ const MarketplaceMyProducts: FC = () => {
                   <div className="absolute right-4 top-4">
                     <FavoriteStarButton pressed={isFavorited} onToggle={() => toggleFavorite(cardKey)} />
                   </div>
-                  <div className="flex flex-col items-start gap-3 max-[640px]:items-start max-[640px]:gap-3 sm:flex-row sm:items-center">
+                  <div className="flex flex-col items-start gap-3 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-3 sm:flex-row sm:items-center">
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144"
                       alt="Product"
@@ -1675,7 +1675,7 @@ const MarketplaceMyProducts: FC = () => {
               </div>
 
               <div className="flex flex-1 flex-col gap-4">
-                <div className="flex flex-col items-start gap-3 max-[640px]:items-start max-[640px]:gap-3 sm:flex-row sm:items-center">
+                <div className="flex flex-col items-start gap-3 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-3 sm:flex-row sm:items-center">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
                     alt="Author"
