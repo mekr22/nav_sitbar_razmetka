@@ -8,21 +8,6 @@ import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 
-export const categories = [
-  "All",
-  "Popular",
-  "Favourites",
-  "Signals and Technical indicators",
-  "Strategies and Portfolios",
-  "Trading robots and Algorithms",
-  "Investment consultants",
-  "Analysts",
-  "Traders",
-  "Scripts and Software",
-  "Courses and Training materials",
-  "Others",
-] as const;
-
 const actionButtonBaseClass = "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
 
 const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
