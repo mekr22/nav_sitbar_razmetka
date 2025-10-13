@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { KeyboardEvent, useId, useState, useEffect } from "react";
+import { KeyboardEvent, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Eye, EyeOff, ChevronRight, Package, Plus, X, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe, Star } from "lucide-react";
 import { cn, maskNonWhitespace } from "@/lib/utils";
@@ -7,6 +7,7 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import StrategyCard from "@/components/marketplace/StrategyCard";
 import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
+import TraderCard from "@/components/marketplace/TraderCard";
 import AnalystCard from "@/components/marketplace/AnalystCard";
 import InvestmentConsultantCard from "@/components/marketplace/InvestmentConsultantCard";
 import { baseSignals } from "@/data/marketplaceSignals";
@@ -14,6 +15,7 @@ import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";
 import { baseTradingRobots, TradingRobot, RISK_MASTER_ICON } from "@/data/marketplaceTradingRobots";
 import { baseInvestmentConsultants, InvestmentConsultant } from "@/data/marketplaceInvestmentConsultants";
 import { baseAnalysts, Analyst } from "@/data/marketplaceAnalysts";
+import { baseTraders, Trader } from "@/data/marketplaceTraders";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 
 const actionButtonBaseClass = "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
