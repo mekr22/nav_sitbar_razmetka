@@ -36,7 +36,14 @@ interface SignalCardProps {
   onToggleFavorite: () => void;
 }
 
-export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, isFavorite, onToggleFavorite }) => {
+  const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
+  const assets = Array.isArray(signal.assets) ? signal.assets : [];
+  const timeframes = Array.isArray(signal.timeframes) ? signal.timeframes : [];
+  const useLabel = signal.use ?? "";
+  const accuracyLabel = signal.accuracy ?? "";
+
+  return (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
@@ -79,7 +86,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
 
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2">
-          {signal.platforms.map((platform, idx) => (
+          {platforms.map((platform, idx) => (
             <img
               key={`${signal.id}-platform-${platform}-${idx}`}
               src={platformLogos[idx % platformLogos.length]}
@@ -91,7 +98,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
 
         <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
           <span className="text-[#B0B0B0]">Assets:</span>
-          {signal.assets.map((asset, idx) => (
+          {assets.map((asset, idx) => (
             <div key={`${signal.id}-asset-${asset}-${idx}`} className="rounded bg-[#2E2744] px-1 py-0.5">
               <span className="text-white">{asset}</span>
             </div>
@@ -107,7 +114,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
 
         <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
           <span className="text-[#B0B0B0]">Timeframe:</span>
-          {signal.timeframes.map((tf, idx) => (
+          {timeframes.map((tf, idx) => (
             <div key={`${signal.id}-tf-${tf}-${idx}`} className="rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5">
               <span className="text-[#6AA5FF]">{tf}</span>
             </div>
@@ -117,14 +124,14 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
         <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
           <span className="text-[#B0B0B0]">Use:</span>
           <div className="rounded bg-[#2E2744] px-1 py-0.5">
-            <span className="text-white">{signal.use}</span>
+            <span className="text-white">{useLabel}</span>
           </div>
         </div>
       </div>
 
       <div className="flex items-center gap-1 text-xs font-bold uppercase">
         <span className="text-[#B0B0B0]">Product Accuracy:</span>
-        <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
+        <span className="text-[15px] text-[#2EBD85]">{accuracyLabel}</span>
       </div>
 
       <div className="flex flex-col gap-2 sm:flex-row">
@@ -139,6 +146,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default SignalCard;
