@@ -1035,7 +1035,12 @@ const MarketplaceMyProducts: FC = () => {
         <div className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals and Technical indicators</h2>
-            <Link to="/marketplace/signals" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</Link>
+            <Link
+              to={{ pathname: "/marketplace/signals", state: { scrollToTop: true } }}
+              className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
+            >
+              See all
+            </Link>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
@@ -1060,7 +1065,12 @@ const MarketplaceMyProducts: FC = () => {
         <div className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Strategies and Portfolios</h2>
-            <Link to="/marketplace/strategies" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</Link>
+            <Link
+              to={{ pathname: "/marketplace/strategies", state: { scrollToTop: true } }}
+              className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
+            >
+              See all
+            </Link>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
@@ -1265,7 +1275,10 @@ const MarketplaceMyProducts: FC = () => {
         <div className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Trading robots and Algorithms</h2>
-            <Link to="/marketplace/trading-robots" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">
+            <Link
+              to={{ pathname: "/marketplace/trading-robots", state: { scrollToTop: true } }}
+              className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
+            >
               See all
             </Link>
           </div>
