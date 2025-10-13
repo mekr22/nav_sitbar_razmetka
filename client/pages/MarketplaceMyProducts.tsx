@@ -10,14 +10,12 @@ import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
 import TraderCard from "@/components/marketplace/TraderCard";
 import AnalystCard from "@/components/marketplace/AnalystCard";
 import InvestmentConsultantCard from "@/components/marketplace/InvestmentConsultantCard";
-import CourseCard from "@/components/marketplace/CourseCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";
 import { baseTradingRobots, TradingRobot, RISK_MASTER_ICON } from "@/data/marketplaceTradingRobots";
 import { baseInvestmentConsultants, InvestmentConsultant } from "@/data/marketplaceInvestmentConsultants";
 import { baseAnalysts, Analyst } from "@/data/marketplaceAnalysts";
 import { baseTraders, Trader } from "@/data/marketplaceTraders";
-import { baseCourses } from "@/data/marketplaceCourses";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 
 const actionButtonBaseClass = "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
