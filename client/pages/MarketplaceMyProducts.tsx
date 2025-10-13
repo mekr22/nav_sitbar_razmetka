@@ -1155,9 +1155,17 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
-            {signals.map((signal) => (
-              <SignalCard key={signal.id} signal={signal} />
-            ))}
+            {signals.map((signal) => {
+              const cardKey = buildCardKey("signal", signal.id);
+              return (
+                <SignalCard
+                  key={signal.id}
+                  signal={signal}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                />
+              );
+            })}
           </div>
         </div>
 
