@@ -13,6 +13,90 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+type CategoryOptionValue = "signals" | "indicators";
+type CreatedOptionValue = "24h" | "7d";
+type ActiveTimeOptionValue = "intraday" | "swing";
+type PnlOptionValue = "positive" | "negative";
+type DrawdownOptionValue = "low" | "high";
+
+type CategoryFilterValue = "all" | CategoryOptionValue;
+type CreatedFilterValue = "any" | CreatedOptionValue;
+type ActiveTimeFilterValue = "any" | ActiveTimeOptionValue;
+type PnlFilterValue = "any" | PnlOptionValue;
+type DrawdownFilterValue = "any" | DrawdownOptionValue;
+
+type FilterSelections = {
+  category: CategoryFilterValue;
+  created: CreatedFilterValue;
+  activeTime: ActiveTimeFilterValue;
+  pnl: PnlFilterValue;
+  drawdown: DrawdownFilterValue;
+};
+
+type FilterConfigMap = {
+  [K in keyof FilterSelections]: {
+    label: string;
+    options: {
+      value: FilterSelections[K];
+      label: string;
+      buttonLabel: string;
+    }[];
+  };
+};
+
+type SignalWithMeta = Signal & {
+  category: CategoryOptionValue;
+  createdWindow: CreatedOptionValue;
+  activeTimeBucket: ActiveTimeOptionValue;
+  pnlBucket: PnlOptionValue;
+  drawdownBucket: DrawdownOptionValue;
+};
+
+const FILTER_CONFIG: FilterConfigMap = {
+  category: {
+    label: "All",
+    options: [
+      { value: "all", label: "All signal types", buttonLabel: "All" },
+      { value: "signals", label: "Momentum trading signals", buttonLabel: "Signals" },
+      { value: "indicators", label: "Technical indicators", buttonLabel: "Indicators" },
+    ],
+  },
+  created: {
+    label: "Created",
+    options: [
+      { value: "any", label: "Any creation date", buttonLabel: "Created" },
+      { value: "24h", label: "Last 24 hours", buttonLabel: "24h" },
+      { value: "7d", label: "Last 7 days", buttonLabel: "7d" },
+    ],
+  },
+  activeTime: {
+    label: "Active Time",
+    options: [
+      { value: "any", label: "Any active duration", buttonLabel: "Active Time" },
+      { value: "intraday", label: "Intraday (M1 - H1)", buttonLabel: "Intraday" },
+      { value: "swing", label: "Swing (H4 - D1)", buttonLabel: "Swing" },
+    ],
+  },
+  pnl: {
+    label: "PnL",
+    options: [
+      { value: "any", label: "Any performance", buttonLabel: "PnL" },
+      { value: "positive", label: "Positive (> +5%)", buttonLabel: "Positive" },
+      { value: "negative", label: "Negative (< -5%)", buttonLabel: "Negative" },
+    ],
+  },
+  drawdown: {
+    label: "Max Drawdown (7d)",
+    options: [
+      { value: "any", label: "Any drawdown", buttonLabel: "Max Drawdown (7d)" },
+      { value: "low", label: "Low (< 5%)", buttonLabel: "Low DD" },
+      { value: "high", label: "High (> 10%)", buttonLabel: "High DD" },
+    ],
+  },
+};
+
+const FILTER_ORDER: (keyof FilterSelections)[] = ["category", "created", "activeTime", "pnl", "drawdown"];
+
 const DUPLICATED_PAIRS = 6;
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
