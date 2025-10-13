@@ -532,12 +532,22 @@ const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => voi
   </div>
 );
 
-const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; featured?: boolean }> = ({ consultant, featured }) => (
+const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive: boolean; onSelect: () => void }> = ({ consultant, isActive, onSelect }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onClick={onSelect}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isActivationKey(event.key)) {
+          event.preventDefault();
+          onSelect();
+        }
+      }}
       className={cn(
-        "relative flex flex-col overflow-hidden rounded-2xl border bg-[#0C1014]/50 backdrop-blur-[50px]",
-        featured ? "border-[#A06AFF]" : "border-[#181B22]",
+        "relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border bg-[#0C1014]/50 backdrop-blur-[50px] transition-colors",
+        isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
       {/* Decorative ribbon background */}
