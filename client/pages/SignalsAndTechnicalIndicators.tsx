@@ -109,6 +109,7 @@ const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
 const SignalsAndTechnicalIndicators: FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Signals and Technical indicators");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
