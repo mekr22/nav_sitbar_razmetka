@@ -49,27 +49,54 @@ const App = () => (
               element={
                 <ClientLayout>
                   <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/profile" element={<ProfileNew />} />
-                  <Route path="/profile-old" element={<Profile />} />
-                  <Route path="/billing" element={<Billing />} />
-                  <Route path="/stock" element={<Stock />} />
-                  <Route path="/marketplace/my-products" element={<MarketplaceMyProducts />} />
-                  <Route path="/marketplace/traders" element={<Traders />} />
-                  <Route path="/marketplace/analysts" element={<Analysts />} />
-                  <Route path="/marketplace/investment-consultants" element={<InvestmentConsultants />} />
-                  <Route path="/marketplace/signals" element={<SignalsAndTechnicalIndicators />} />
-                  <Route path="/marketplace/strategies" element={<StrategiesAndPortfolios />} />
-                  <Route path="/marketplace/trading-robots" element={<TradingRobotsAndAlgorithms />} />
-                  <Route path="/marketplace/courses" element={<CoursesAndTrainingMaterials />} />
-                  <Route path="/marketplace/scripts" element={<ScriptsAndSoftware />} />
-                  <Route path="/marketplace/others" element={<Others />} />
-                  <Route path="/marketplace/popular" element={<Popular />} />
-                  <Route path="/marketplace/favourites" element={<Favourites />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/profile" element={<ProfileNew />} />
+                    <Route path="/profile-old" element={<Profile />} />
+                    <Route path="/billing" element={<Billing />} />
+                    <Route path="/stock" element={<Stock />} />
+                    <Route
+                      path="/marketplace/my-products"
+                      element={<MarketplaceMyProducts />}
+                    />
+                    <Route path="/marketplace/traders" element={<Traders />} />
+                    <Route
+                      path="/marketplace/analysts"
+                      element={<Analysts />}
+                    />
+                    <Route
+                      path="/marketplace/investment-consultants"
+                      element={<InvestmentConsultants />}
+                    />
+                    <Route
+                      path="/marketplace/signals"
+                      element={<SignalsAndTechnicalIndicators />}
+                    />
+                    <Route
+                      path="/marketplace/strategies"
+                      element={<StrategiesAndPortfolios />}
+                    />
+                    <Route
+                      path="/marketplace/trading-robots"
+                      element={<TradingRobotsAndAlgorithms />}
+                    />
+                    <Route
+                      path="/marketplace/courses"
+                      element={<CoursesAndTrainingMaterials />}
+                    />
+                    <Route
+                      path="/marketplace/scripts"
+                      element={<ScriptsAndSoftware />}
+                    />
+                    <Route path="/marketplace/others" element={<Others />} />
+                    <Route path="/marketplace/popular" element={<Popular />} />
+                    <Route
+                      path="/marketplace/favourites"
+                      element={<Favourites />}
+                    />
+                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
                 </ClientLayout>
               }
             />

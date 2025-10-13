@@ -16,7 +16,8 @@ const exchangeLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F46bbf20463b949229b2fa9f4e5301083?format=webp&width=800",
 ];
 
-const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+const isActivationKey = (key: string) =>
+  key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
 export interface StrategyCardProps {
   strategy: Strategy;
@@ -26,7 +27,13 @@ export interface StrategyCardProps {
   onToggleFavorite: () => void;
 }
 
-const StrategyCard: FC<StrategyCardProps> = ({ strategy, isActive, onSelect, isFavorite, onToggleFavorite }) => {
+const StrategyCard: FC<StrategyCardProps> = ({
+  strategy,
+  isActive,
+  onSelect,
+  isFavorite,
+  onToggleFavorite,
+}) => {
   const getRiskColor = (level: Strategy["riskLevel"]) => {
     switch (level) {
       case "LOW":
@@ -61,24 +68,43 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, isActive, onSelect, isF
         )}
       >
         <div className="absolute right-4 top-4">
-          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+          <FavoriteStarButton
+            pressed={isFavorite}
+            onToggle={onToggleFavorite}
+          />
         </div>
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
+          <img
+            src={strategy.icon}
+            alt={strategy.name}
+            className="h-[72px] w-[72px] rounded-lg object-cover"
+          />
           <div className="flex flex-1 flex-col gap-0.5">
-            <h3 className="text-lg font-bold text-white sm:text-[19px]">{strategy.name}</h3>
+            <h3 className="text-lg font-bold text-white sm:text-[19px]">
+              {strategy.name}
+            </h3>
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-1">
                 <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
                   <Users className="h-4 w-4 text-[#B0B0B0]" />
-                  <span className="text-xs font-bold text-white">{strategy.users}</span>
+                  <span className="text-xs font-bold text-white">
+                    {strategy.users}
+                  </span>
                 </div>
-                <div className={`flex items-center gap-1 rounded px-1 py-0.5 ${riskColors.bg}`}>
-                  <span className={`text-xs font-bold uppercase ${riskColors.text}`}>Risk: {strategy.riskLevel}</span>
+                <div
+                  className={`flex items-center gap-1 rounded px-1 py-0.5 ${riskColors.bg}`}
+                >
+                  <span
+                    className={`text-xs font-bold uppercase ${riskColors.text}`}
+                  >
+                    Risk: {strategy.riskLevel}
+                  </span>
                 </div>
               </div>
               <div className="self-start flex items-center rounded bg-[rgba(46,189,133,0.16)] px-1 py-0.5">
-                <span className="text-xs font-bold uppercase text-[#2EBD85]">{strategy.profitSharing}</span>
+                <span className="text-xs font-bold uppercase text-[#2EBD85]">
+                  {strategy.profitSharing}
+                </span>
               </div>
             </div>
           </div>
@@ -88,10 +114,17 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, isActive, onSelect, isF
 
         <div className="flex items-center gap-2">
           {exchangeLogos.map((logo, index) => (
-            <img key={index} src={logo} alt="" className="h-8 w-8 rounded-full object-cover" />
+            <img
+              key={index}
+              src={logo}
+              alt=""
+              className="h-8 w-8 rounded-full object-cover"
+            />
           ))}
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2E2744]">
-            <span className="text-xs font-bold text-white">+{strategy.exchangesCount}</span>
+            <span className="text-xs font-bold text-white">
+              +{strategy.exchangesCount}
+            </span>
           </div>
         </div>
 
@@ -106,7 +139,10 @@ const StrategyCard: FC<StrategyCardProps> = ({ strategy, isActive, onSelect, isF
           <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
             <span className="text-[#B0B0B0]">Assets:</span>
             {strategy.assets.map((asset, index) => (
-              <div key={asset + index} className="rounded bg-[#2E2744] px-1 py-0.5">
+              <div
+                key={asset + index}
+                className="rounded bg-[#2E2744] px-1 py-0.5"
+              >
                 <span className="text-white">{asset}</span>
               </div>
             ))}

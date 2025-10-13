@@ -22,7 +22,8 @@ export const baseCourses: Course[] = [
     id: "course-1",
     title: "Expert Futures Trading",
     subtitle: "Build consistency in volatile markets",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fc4d375990625491cbf0ce5ac8cb81645?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fc4d375990625491cbf0ce5ac8cb81645?format=webp&width=800",
     host: "Sarah Lee",
     students: "1,748",
     rating: "4.8",
@@ -40,7 +41,8 @@ export const baseCourses: Course[] = [
     id: "course-2",
     title: "Options Income Blueprint",
     subtitle: "Weekly premium selling playbook",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fb699a7ffabca4ecdbd7051f1da5b9321?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fb699a7ffabca4ecdbd7051f1da5b9321?format=webp&width=800",
     host: "Michael Chan",
     students: "2,305",
     rating: "4.6",
@@ -58,7 +60,8 @@ export const baseCourses: Course[] = [
     id: "course-3",
     title: "Forex Macro Playbook",
     subtitle: "Macro-driven intraday setups",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fdfa4397afa7146c4bbe1f6be9d69b7e4?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fdfa4397afa7146c4bbe1f6be9d69b7e4?format=webp&width=800",
     host: "Lina Ortega",
     students: "986",
     rating: "4.4",
@@ -76,7 +79,8 @@ export const baseCourses: Course[] = [
     id: "course-4",
     title: "Crypto Yield Strategies",
     subtitle: "Automated DeFi income systems",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fe70635b6ce174eea914fb7820e519196?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fe70635b6ce174eea914fb7820e519196?format=webp&width=800",
     host: "Nina Patel",
     students: "1,126",
     rating: "4.7",
@@ -94,7 +98,8 @@ export const baseCourses: Course[] = [
     id: "course-5",
     title: "Institutional Equity Research",
     subtitle: "From idea generation to pitch decks",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F6226fa0080ea4af2a249ec8a3f3a8f2d?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F6226fa0080ea4af2a249ec8a3f3a8f2d?format=webp&width=800",
     host: "David Romero",
     students: "613",
     rating: "4.9",
@@ -112,7 +117,8 @@ export const baseCourses: Course[] = [
     id: "course-6",
     title: "Algo Builder Workshop",
     subtitle: "Python-first automation templates",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F8b3da9c46b26408ba87e729a4c24c5bd?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F8b3da9c46b26408ba87e729a4c24c5bd?format=webp&width=800",
     host: "Omar Singh",
     students: "2,012",
     rating: "4.5",
@@ -130,7 +136,8 @@ export const baseCourses: Course[] = [
     id: "course-7",
     title: "Swing Trading Lab",
     subtitle: "Rule-based swing frameworks",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4bc3d61b0a90495395466ad5cfa4b49d?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4bc3d61b0a90495395466ad5cfa4b49d?format=webp&width=800",
     host: "Elena Markov",
     students: "1,412",
     rating: "4.2",
@@ -148,7 +155,8 @@ export const baseCourses: Course[] = [
     id: "course-8",
     title: "Quant Portfolio Intensive",
     subtitle: "Stress-tested portfolio design",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F354c0d6e89e44a5b88013eeaccbb7714?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F354c0d6e89e44a5b88013eeaccbb7714?format=webp&width=800",
     host: "Priya Desai",
     students: "847",
     rating: "4.7",
@@ -166,7 +174,8 @@ export const baseCourses: Course[] = [
     id: "course-9",
     title: "Global Macro Bootcamp",
     subtitle: "Frameworks for cross-asset positioning",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5d0b0cf9137a4c5d88d133cf8f995408?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5d0b0cf9137a4c5d88d133cf8f995408?format=webp&width=800",
     host: "Isabella Meyer",
     students: "1,058",
     rating: "4.8",
@@ -184,7 +193,8 @@ export const baseCourses: Course[] = [
     id: "course-10",
     title: "Options Risk Control Clinic",
     subtitle: "Advanced hedging and adjustment tactics",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Ff63d715ed77e487a830cff2e022aee5c?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Ff63d715ed77e487a830cff2e022aee5c?format=webp&width=800",
     host: "Jordan Blake",
     students: "1,932",
     rating: "4.6",
@@ -202,7 +212,8 @@ export const baseCourses: Course[] = [
     id: "course-11",
     title: "Crypto Quant Playbook",
     subtitle: "On-chain factors and automated rotation",
-    image: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fa82ef7d78c6048ebbf62e91605184338?format=webp&width=800",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fa82ef7d78c6048ebbf62e91605184338?format=webp&width=800",
     host: "Mateo Ruiz",
     students: "1,274",
     rating: "4.7",

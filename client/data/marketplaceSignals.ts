@@ -15,7 +15,8 @@ export const baseSignals: Signal[] = [
     timeframes: ["M15", "H4", "W1"],
     use: "TREND/REVERSAL",
     accuracy: "30%",
-    chartImage: "https://api.builder.io/api/v1/image/assets/TEMP/4c44ba7909f1536707cd404c67a6dbf2a7eddc6c?width=364",
+    chartImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4c44ba7909f1536707cd404c67a6dbf2a7eddc6c?width=364",
   },
   {
     id: "signal-risk-master-2",
@@ -29,6 +30,7 @@ export const baseSignals: Signal[] = [
     timeframes: ["M15", "H4", "W1"],
     use: "TREND/REVERSAL",
     accuracy: "30%",
-    chartImage: "https://api.builder.io/api/v1/image/assets/TEMP/4c44ba7909f1536707cd404c67a6dbf2a7eddc6c?width=364",
+    chartImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4c44ba7909f1536707cd404c67a6dbf2a7eddc6c?width=364",
   },
 ];

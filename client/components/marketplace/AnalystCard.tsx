@@ -5,7 +5,8 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
 import type { Analyst } from "@/data/marketplaceAnalysts";
 
-const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+const isActivationKey = (key: string) =>
+  key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
 const PerformanceChart: FC = () => {
   const id = useId();
@@ -33,11 +34,25 @@ const PerformanceChart: FC = () => {
         strokeLinejoin="round"
       />
       <defs>
-        <linearGradient id={gradientId} x1="1" y1="1" x2="1" y2="79" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={gradientId}
+          x1="1"
+          y1="1"
+          x2="1"
+          y2="79"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#A06AFF" stopOpacity="0.32" />
           <stop offset="1" stopColor="#181A20" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id={strokeId} x1="1" y1="1" x2="1" y2="79" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={strokeId}
+          x1="1"
+          y1="1"
+          x2="1"
+          y2="79"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#C6A6FF" />
           <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
         </linearGradient>
@@ -46,7 +61,13 @@ const PerformanceChart: FC = () => {
   );
 };
 
-const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ analyst, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+const AnalystCard: FC<{
+  analyst: Analyst;
+  isActive: boolean;
+  onSelect: () => void;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
+}> = ({ analyst, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
@@ -69,14 +90,24 @@ const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => voi
       </div>
       <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
         <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
-          <img src={analyst.avatar} alt={analyst.name} className="block h-full w-full object-cover object-center [transform:scale(1.2)]" />
+          <img
+            src={analyst.avatar}
+            alt={analyst.name}
+            className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
+          />
         </div>
         <div className="flex h-[120px] flex-col justify-center gap-1">
           <div className="flex items-center gap-2">
-            <h3 className="text-2xl font-bold leading-none text-white">{analyst.name}</h3>
-            <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
+            <h3 className="text-2xl font-bold leading-none text-white">
+              {analyst.name}
+            </h3>
+            <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">
+              PRO
+            </span>
           </div>
-          <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">{analyst.company}</div>
+          <div className="text-xs font-bold uppercase tracking-[0.16em] text-[#B0B0B0]">
+            {analyst.company}
+          </div>
         </div>
       </div>
 
@@ -85,8 +116,12 @@ const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => voi
       </div>
 
       <div className="flex flex-wrap items-center gap-1">
-        <span className="rounded bg-[#3E321D] px-1 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">{analyst.role}</span>
-        <span className="rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">{analyst.rating}</span>
+        <span className="rounded bg-[#3E321D] px-1 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
+          {analyst.role}
+        </span>
+        <span className="rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">
+          {analyst.rating}
+        </span>
         <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-xs font-bold text-white">
           <Users className="h-4 w-4 text-[#B0B0B0]" />
           {analyst.followers}

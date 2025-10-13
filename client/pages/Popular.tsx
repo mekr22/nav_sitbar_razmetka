@@ -2,18 +2,25 @@ import { FC, useEffect, useMemo, useState } from "react";
 import { Eye, EyeOff, ChevronRight, Package, Plus, Search } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
+import {
+  marketplaceCategories,
+  MarketplaceCategory,
+} from "@/data/marketplaceCategories";
 import { cn, maskNonWhitespace } from "@/lib/utils";
 
 const Popular: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Popular");
+  const [selectedCategory, setSelectedCategory] =
+    useState<MarketplaceCategory>("Popular");
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    if (location.state?.category && marketplaceCategories.includes(location.state.category)) {
+    if (
+      location.state?.category &&
+      marketplaceCategories.includes(location.state.category)
+    ) {
       setSelectedCategory(location.state.category);
     }
   }, [location.state]);
@@ -21,12 +28,18 @@ const Popular: FC = () => {
   useEffect(() => {
     if (location.state?.scrollToTop) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      navigate(location.pathname, { replace: true, state: { ...location.state, scrollToTop: false } });
+      navigate(location.pathname, {
+        replace: true,
+        state: { ...location.state, scrollToTop: false },
+      });
     }
   }, [location.pathname, location.state, navigate]);
 
   const balanceValue = "$1,000,000,000.00";
-  const maskedBalanceValue = useMemo(() => maskNonWhitespace(balanceValue), [balanceValue]);
+  const maskedBalanceValue = useMemo(
+    () => maskNonWhitespace(balanceValue),
+    [balanceValue],
+  );
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
@@ -82,7 +95,9 @@ const Popular: FC = () => {
         <div className="flex flex-col gap-6 border-b border-[#181B22] pb-6">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex flex-col gap-5">
-              <h1 className="text-4xl font-bold leading-tight text-white md:text-[56px] md:leading-[100%]">Marketplace</h1>
+              <h1 className="text-4xl font-bold leading-tight text-white md:text-[56px] md:leading-[100%]">
+                Marketplace
+              </h1>
 
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
@@ -90,17 +105,29 @@ const Popular: FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsBalanceVisible((prev) => !prev)}
-                    aria-label={isBalanceVisible ? "Hide total balance" : "Show total balance"}
+                    aria-label={
+                      isBalanceVisible
+                        ? "Hide total balance"
+                        : "Show total balance"
+                    }
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-transparent text-[#808283] transition-colors hover:border-[#1F2230] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                   >
-                    {isBalanceVisible ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+                    {isBalanceVisible ? (
+                      <Eye className="h-4 w-4" />
+                    ) : (
+                      <EyeOff className="h-4 w-4" />
+                    )}
                   </button>
                 </div>
-                <div className="text-xl font-bold text-white sm:text-2xl">{isBalanceVisible ? balanceValue : maskedBalanceValue}</div>
+                <div className="text-xl font-bold text-white sm:text-2xl">
+                  {isBalanceVisible ? balanceValue : maskedBalanceValue}
+                </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
                   <span>Today&apos;s PnL</span>
                   <div className="flex items-center gap-0.5 rounded bg-[#2EBD85]/16 px-1 py-0.5">
-                    <span className="text-[10px] font-bold uppercase text-[#2EBD85] sm:text-xs">+ $0.00</span>
+                    <span className="text-[10px] font-bold uppercase text-[#2EBD85] sm:text-xs">
+                      + $0.00
+                    </span>
                   </div>
                   <ChevronRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                 </div>
@@ -126,7 +153,9 @@ const Popular: FC = () => {
             </div>
 
             <div className="flex h-[170px] w-full items-center justify-center rounded-xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px] sm:h-[194px] lg:w-[260px] xl:w-[280px]">
-              <span className="text-lg font-bold text-[#808283] sm:text-2xl">Advertising Banner</span>
+              <span className="text-lg font-bold text-[#808283] sm:text-2xl">
+                Advertising Banner
+              </span>
             </div>
           </div>
 
@@ -154,9 +183,14 @@ const Popular: FC = () => {
 
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Popular</h2>
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">
+              Popular
+            </h2>
             <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
-              <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
+              <Search
+                className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
+                aria-hidden="true"
+              />
               <input
                 type="search"
                 value={searchTerm}
@@ -168,7 +202,10 @@ const Popular: FC = () => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-6" aria-label="Popular listings canvas" />
+          <div
+            className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-6"
+            aria-label="Popular listings canvas"
+          />
         </section>
       </div>
     </div>

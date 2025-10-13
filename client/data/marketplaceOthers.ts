@@ -20,7 +20,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "Auto Script - Automation",
     description:
       "Auto Script orchestrates multi-broker automation with granular execution control, built for multi-asset desks managing complex workflows.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Windows/MAC",
     location: "🌍 Australia",
@@ -36,7 +37,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "EventFlow - Research collaboration",
     description:
       "Centralize qualitative research, approvals, and compliance workflows with secure permissioning suited for boutique advisory teams.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Web Platform",
     location: "🇬🇧 United Kingdom",
@@ -52,7 +54,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "SignalForge - Strategy marketplace",
     description:
       "Curate high-conviction trading ideas with integrated billing, client analytics, and gated content delivery in one branded space.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Brand Ready",
     location: "🇸🇬 Singapore",
@@ -68,7 +71,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "CapitalSuite - Investor relations hub",
     description:
       "CapitalSuite streamlines LP communication with live updates, document rooms, and analytics for venture, hedge, and private equity funds.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Enterprise",
     location: "🇺🇸 United States",
@@ -84,7 +88,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "QuantDocs - Policy automation",
     description:
       "QuantDocs automates documentation, risk attestations, and compliance reporting for systematic trading firms and emerging managers.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Policy Engine",
     location: "🇨🇦 Canada",
@@ -100,7 +105,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "EdgeBoard - Execution analytics",
     description:
       "EdgeBoard gives execution desks granular metrics across brokers, venues, and algorithms, surfacing slippage and routing insights.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Broker Neutral",
     location: "🇩🇪 Germany",
@@ -116,7 +122,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "AtlasSync - Multi-desk coordination",
     description:
       "AtlasSync unifies portfolio, risk, and compliance teams with shared dashboards, staged approvals, and live escalation workflows.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Cloud Native",
     location: "🇨🇭 Switzerland",
@@ -132,7 +139,8 @@ export const baseOtherProducts: OtherProduct[] = [
     title: "DataVigil - Vendor oversight",
     description:
       "DataVigil monitors third-party data vendors, benchmarks SLAs, and alerts procurement teams to anomalies in feed quality or latency.",
-    image: "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
+    image:
+      "https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902",
     imageAlt: "Automation script dashboard",
     label: "Managed Service",
     location: "🇯🇵 Japan",

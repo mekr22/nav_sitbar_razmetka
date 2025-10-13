@@ -8,7 +8,10 @@ import type { TradingRobot } from "@/data/marketplaceTradingRobots";
 const actionButtonBaseClass =
   "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
 
-const accuracyStyles: Record<TradingRobot["accuracyLevel"], { container: string; text: string }> = {
+const accuracyStyles: Record<
+  TradingRobot["accuracyLevel"],
+  { container: string; text: string }
+> = {
   LOW: { container: "bg-[rgba(234,57,67,0.16)]", text: "text-[#EA3943]" },
   MEDIUM: { container: "bg-[#2A1C0E]", text: "text-[#FFA800]" },
   HIGH: { container: "bg-[rgba(46,189,133,0.16)]", text: "text-[#2EBD85]" },
@@ -20,7 +23,8 @@ const leverageBadges: Record<TradingRobot["leverageCategory"], string> = {
   high: "LEV x15+",
 };
 
-const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+const isActivationKey = (key: string) =>
+  key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
 const TradingRobotSparkline: FC = () => {
   const id = useId();
@@ -48,11 +52,25 @@ const TradingRobotSparkline: FC = () => {
         strokeLinejoin="round"
       />
       <defs>
-        <linearGradient id={gradientId} x1="1" y1="1" x2="1" y2="79" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={gradientId}
+          x1="1"
+          y1="1"
+          x2="1"
+          y2="79"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#A06AFF" stopOpacity="0.32" />
           <stop offset="1" stopColor="#181A20" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id={strokeId} x1="1" y1="1" x2="1" y2="79" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={strokeId}
+          x1="1"
+          y1="1"
+          x2="1"
+          y2="79"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#C6A6FF" />
           <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
         </linearGradient>
@@ -69,7 +87,13 @@ export interface TradingRobotCardProps {
   onToggleFavorite: () => void;
 }
 
-const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect, isFavorite, onToggleFavorite }) => {
+const TradingRobotCard: FC<TradingRobotCardProps> = ({
+  robot,
+  isActive,
+  onSelect,
+  isFavorite,
+  onToggleFavorite,
+}) => {
   const accuracyStyle = accuracyStyles[robot.accuracyLevel];
 
   return (
@@ -91,20 +115,35 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
         )}
       >
         <div className="absolute right-4 top-4">
-          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+          <FavoriteStarButton
+            pressed={isFavorite}
+            onToggle={onToggleFavorite}
+          />
         </div>
 
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <img src={robot.icon} alt={robot.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
+          <img
+            src={robot.icon}
+            alt={robot.name}
+            className="h-[72px] w-[72px] rounded-lg object-cover"
+          />
           <div className="flex flex-1 flex-col gap-1">
-            <h3 className="text-lg font-bold text-white sm:text-[19px]">{robot.name}</h3>
+            <h3 className="text-lg font-bold text-white sm:text-[19px]">
+              {robot.name}
+            </h3>
             <div className="flex flex-col gap-1">
               <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
                 <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
                   <Users className="h-4 w-4 text-[#B0B0B0]" />
                   {robot.users}
                 </span>
-                <span className={cn("inline-flex rounded px-2 py-0.5 font-extrabold uppercase", accuracyStyle.container, accuracyStyle.text)}>
+                <span
+                  className={cn(
+                    "inline-flex rounded px-2 py-0.5 font-extrabold uppercase",
+                    accuracyStyle.container,
+                    accuracyStyle.text,
+                  )}
+                >
                   {robot.accuracyLabel}
                 </span>
                 <span className="inline-flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-[#B0B0B0]">
@@ -113,7 +152,9 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
                 </span>
               </div>
               <div className="flex items-center self-start rounded bg-[#1C3430] px-2 py-0.5">
-                <span className="text-xs font-extrabold uppercase text-[#2EBD85]">{robot.profitSharing}</span>
+                <span className="text-xs font-extrabold uppercase text-[#2EBD85]">
+                  {robot.profitSharing}
+                </span>
               </div>
             </div>
           </div>
@@ -132,7 +173,9 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
           ))}
           {robot.exchanges.length > 3 && (
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2E2744]">
-              <span className="text-xs font-bold text-white">+{robot.exchanges.length - 3}</span>
+              <span className="text-xs font-bold text-white">
+                +{robot.exchanges.length - 3}
+              </span>
             </div>
           )}
         </div>
@@ -140,31 +183,44 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
         <div className="flex flex-col gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
           <div className="flex items-center gap-1 text-white">
             <span className="text-[#B0B0B0]">Pair:</span>
-            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">{robot.pair}</span>
+            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+              {robot.pair}
+            </span>
           </div>
           <div className="flex items-center gap-1">
             <span>Max Drawdown:</span>
-            <span className="rounded bg-[#1C3430] px-1 py-0.5 text-[#2EBD85]">{robot.maxDrawdown}</span>
+            <span className="rounded bg-[#1C3430] px-1 py-0.5 text-[#2EBD85]">
+              {robot.maxDrawdown}
+            </span>
           </div>
           <div className="flex items-center gap-1 text-white">
             <span className="text-[#B0B0B0]">Market Type:</span>
-            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">{robot.market}</span>
+            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+              {robot.market}
+            </span>
           </div>
           <div className="flex flex-wrap items-center gap-1 text-white">
             <span className="text-[#B0B0B0]">Type:</span>
             {robot.assetTags.map((tag) => (
-              <span key={tag} className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+              <span
+                key={tag}
+                className="rounded bg-[#2E2744] px-1 py-0.5 text-white"
+              >
                 {tag}
               </span>
             ))}
           </div>
           <div className="flex items-center gap-1 text-white">
             <span className="text-[#B0B0B0]">Strategy:</span>
-            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">{robot.strategy}</span>
+            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+              {robot.strategy}
+            </span>
           </div>
           <div className="flex items-center gap-1 text-white">
             <span className="text-[#B0B0B0]">Settings:</span>
-            <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF]">{robot.settingsTag}</span>
+            <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF]">
+              {robot.settingsTag}
+            </span>
           </div>
         </div>
 

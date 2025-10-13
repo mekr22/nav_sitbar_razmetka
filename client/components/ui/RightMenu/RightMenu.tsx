@@ -1,7 +1,10 @@
 import { FC, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import type { MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from "react";
+import type {
+  MouseEvent as ReactMouseEvent,
+  PointerEvent as ReactPointerEvent,
+} from "react";
 import {
   Search,
   Settings,
@@ -24,7 +27,11 @@ const DefaultWidgetCard: FC<{ title: string; children?: ReactNode }> = ({
 }) => (
   <div className="container-card rounded-[16px] p-4">
     <h3 className="mb-3 text-[15px] font-semibold text-white">{title}</h3>
-    {children ?? <span className="text-sm text-webGray">Widget content coming soon...</span>}
+    {children ?? (
+      <span className="text-sm text-webGray">
+        Widget content coming soon...
+      </span>
+    )}
   </div>
 );
 
@@ -50,7 +57,10 @@ const DefaultRightMenuContent: FC = () => (
     <DefaultWidgetCard title="Sector Movers">
       <div className="flex flex-col gap-2">
         {["Technology", "Healthcare", "Finance"].map((sector) => (
-          <div key={sector} className="flex items-center justify-between text-sm">
+          <div
+            key={sector}
+            className="flex items-center justify-between text-sm"
+          >
             <span className="text-white">{sector}</span>
             <span className="text-green">+2.4%</span>
           </div>
@@ -97,21 +107,46 @@ const watchlistItems = [
   { symbol: "BTC", last: "$1.46", chg: "3.66", chgPercent: "+1.15%" },
 ];
 
-const watchlistGroups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"].map((name) => ({
+const watchlistGroups = [
+  "Group 1",
+  "Group 2",
+  "Group 3",
+  "Group 4",
+  "Group 5",
+].map((name) => ({
   name,
   items: watchlistItems,
 }));
 
-const customizeColumnsOptions = ["Alphabetical", "Creation Date", "By Integration"] as const;
+const customizeColumnsOptions = [
+  "Alphabetical",
+  "Creation Date",
+  "By Integration",
+] as const;
 const savedViewsOptions = ["Default", "Default"] as const;
 const symbolDisplayOptions = ["Logo", "Ticker", "Description"] as const;
 
 const newsItems = [
-  { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
-  { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
-  { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
-  { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
-  { date: "January 31, 5:10 PM", title: "The Future of Crypto-currency Trading" },
+  {
+    date: "January 31, 5:10 PM",
+    title: "The Future of Crypto-currency Trading",
+  },
+  {
+    date: "January 31, 5:10 PM",
+    title: "The Future of Crypto-currency Trading",
+  },
+  {
+    date: "January 31, 5:10 PM",
+    title: "The Future of Crypto-currency Trading",
+  },
+  {
+    date: "January 31, 5:10 PM",
+    title: "The Future of Crypto-currency Trading",
+  },
+  {
+    date: "January 31, 5:10 PM",
+    title: "The Future of Crypto-currency Trading",
+  },
 ];
 
 const calendarEvents = [
@@ -149,7 +184,9 @@ const calendarEvents = [
 const calendarFilters = ["Upcoming", "This Month", "Last Month"] as const;
 
 const MarketplaceRightMenuContent: FC = () => {
-  const [sectorFilter, setSectorFilter] = useState<"domination" | "24hour">("24hour");
+  const [sectorFilter, setSectorFilter] = useState<"domination" | "24hour">(
+    "24hour",
+  );
   const [newsCategory, setNewsCategory] = useState("earnings");
   const [watchlistSettingsOpen, setWatchlistSettingsOpen] = useState(false);
   const [isTradingCollapsed, setIsTradingCollapsed] = useState(false);
@@ -157,25 +194,47 @@ const MarketplaceRightMenuContent: FC = () => {
   const [isPortfolioCollapsed, setIsPortfolioCollapsed] = useState(false);
   const [isNewsCollapsed, setIsNewsCollapsed] = useState(false);
   const [isCalendarCollapsed, setIsCalendarCollapsed] = useState(false);
-  const [selectedCalendarEvent, setSelectedCalendarEvent] = useState<string | null>(() => {
+  const [selectedCalendarEvent, setSelectedCalendarEvent] = useState<
+    string | null
+  >(() => {
     const firstGroup = calendarEvents[0];
     const firstDetail = firstGroup?.events[0];
-    return firstGroup && firstDetail ? `${firstGroup.date}-${firstDetail.symbol}` : null;
+    return firstGroup && firstDetail
+      ? `${firstGroup.date}-${firstDetail.symbol}`
+      : null;
   });
-  const [selectedCalendarFilter, setSelectedCalendarFilter] = useState<(typeof calendarFilters)[number]>("Upcoming");
+  const [selectedCalendarFilter, setSelectedCalendarFilter] =
+    useState<(typeof calendarFilters)[number]>("Upcoming");
   const [isCalendarFilterOpen, setIsCalendarFilterOpen] = useState(false);
   const [tableViewEnabled, setTableViewEnabled] = useState(true);
-  const [selectedColumns, setSelectedColumns] = useState<Record<string, boolean>>(() =>
+  const [selectedColumns, setSelectedColumns] = useState<
+    Record<string, boolean>
+  >(() =>
     Object.fromEntries(customizeColumnsOptions.map((option) => [option, true])),
   );
-  const [selectedSavedViews, setSelectedSavedViews] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(savedViewsOptions.map((option, index) => [`${option}-${index}`, index === 0])),
+  const [selectedSavedViews, setSelectedSavedViews] = useState<
+    Record<string, boolean>
+  >(() =>
+    Object.fromEntries(
+      savedViewsOptions.map((option, index) => [
+        `${option}-${index}`,
+        index === 0,
+      ]),
+    ),
   );
-  const [selectedSymbolDisplays, setSelectedSymbolDisplays] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(symbolDisplayOptions.map((option, index) => [option, index === 0])),
+  const [selectedSymbolDisplays, setSelectedSymbolDisplays] = useState<
+    Record<string, boolean>
+  >(() =>
+    Object.fromEntries(
+      symbolDisplayOptions.map((option, index) => [option, index === 0]),
+    ),
   );
-  const [collapsedWatchlistGroups, setCollapsedWatchlistGroups] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(watchlistGroups.map((group, index) => [group.name, index !== 0])),
+  const [collapsedWatchlistGroups, setCollapsedWatchlistGroups] = useState<
+    Record<string, boolean>
+  >(() =>
+    Object.fromEntries(
+      watchlistGroups.map((group, index) => [group.name, index !== 0]),
+    ),
   );
 
   useEffect(() => {
@@ -229,7 +288,10 @@ const MarketplaceRightMenuContent: FC = () => {
     const { scrollLeft, scrollWidth, clientWidth } = container;
     const maxScrollLeft = scrollWidth - clientWidth;
     container.classList.toggle("has-left-shadow", scrollLeft > 1);
-    container.classList.toggle("has-right-shadow", scrollLeft < maxScrollLeft - 1);
+    container.classList.toggle(
+      "has-right-shadow",
+      scrollLeft < maxScrollLeft - 1,
+    );
   }, []);
 
   const handleNewsPointerMove = useCallback(
@@ -291,7 +353,9 @@ const MarketplaceRightMenuContent: FC = () => {
       container.classList.add("is-dragging");
       updateNewsFilterShadows();
 
-      window.addEventListener("pointermove", handleNewsPointerMove, { passive: false });
+      window.addEventListener("pointermove", handleNewsPointerMove, {
+        passive: false,
+      });
       window.addEventListener("pointerup", endNewsFilterDrag);
       window.addEventListener("pointercancel", endNewsFilterDrag);
     },
@@ -306,13 +370,16 @@ const MarketplaceRightMenuContent: FC = () => {
     updateNewsFilterShadows();
   }, [updateNewsFilterShadows]);
 
-  const handleNewsClickCapture = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
-    if (newsFilterDragRef.current.moved) {
-      event.preventDefault();
-      event.stopPropagation();
-      newsFilterDragRef.current.moved = false;
-    }
-  }, []);
+  const handleNewsClickCapture = useCallback(
+    (event: ReactMouseEvent<HTMLDivElement>) => {
+      if (newsFilterDragRef.current.moved) {
+        event.preventDefault();
+        event.stopPropagation();
+        newsFilterDragRef.current.moved = false;
+      }
+    },
+    [],
+  );
 
   useEffect(() => {
     updateNewsFilterShadows();
@@ -342,7 +409,10 @@ const MarketplaceRightMenuContent: FC = () => {
             placeholder="Quote Lookup"
           />
         </div>
-        <button className="h-6 w-6 text-webGray transition-colors hover:text-white" aria-label="Settings">
+        <button
+          className="h-6 w-6 text-webGray transition-colors hover:text-white"
+          aria-label="Settings"
+        >
           <Settings className="h-6 w-6" />
         </button>
       </div>
@@ -354,20 +424,31 @@ const MarketplaceRightMenuContent: FC = () => {
         )}
       >
         <div className="flex items-center justify-between px-4 pb-2">
-          <h3 className="text-[19px] font-bold text-white">Trading Psychology</h3>
+          <h3 className="text-[19px] font-bold text-white">
+            Trading Psychology
+          </h3>
           <button
             type="button"
             onClick={() => setIsTradingCollapsed((prev) => !prev)}
             className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
-            aria-label={isTradingCollapsed ? "Expand trading psychology" : "Close trading psychology"}
+            aria-label={
+              isTradingCollapsed
+                ? "Expand trading psychology"
+                : "Close trading psychology"
+            }
           >
-            {isTradingCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+            {isTradingCollapsed ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <X className="h-4 w-4" />
+            )}
           </button>
         </div>
         {!isTradingCollapsed && (
           <p className="px-4 text-[15px] font-normal leading-normal text-webGray">
-            You can trade if all factors of your strategy are met, you are confident in the trade, ready to accept a loss,
-            without emotions, and fully concentrated.
+            You can trade if all factors of your strategy are met, you are
+            confident in the trade, ready to accept a loss, without emotions,
+            and fully concentrated.
           </p>
         )}
       </div>
@@ -378,19 +459,30 @@ const MarketplaceRightMenuContent: FC = () => {
           isSectorCollapsed ? "gap-0" : "gap-6",
         )}
       >
-        <div className={cn("flex flex-col", isSectorCollapsed ? "gap-0" : "gap-4")}>
+        <div
+          className={cn("flex flex-col", isSectorCollapsed ? "gap-0" : "gap-4")}
+        >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <h3 className="text-[19px] font-bold text-white">Sector Mover</h3>
-              <BadgeHelp className="h-6 w-6 text-[#B0B0B0]" aria-hidden="true" />
+              <BadgeHelp
+                className="h-6 w-6 text-[#B0B0B0]"
+                aria-hidden="true"
+              />
             </div>
             <button
               type="button"
               onClick={() => setIsSectorCollapsed((prev) => !prev)}
               className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
-              aria-label={isSectorCollapsed ? "Expand sector mover" : "Close sector mover"}
+              aria-label={
+                isSectorCollapsed ? "Expand sector mover" : "Close sector mover"
+              }
             >
-              {isSectorCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+              {isSectorCollapsed ? (
+                <ChevronDown className="h-4 w-4" />
+              ) : (
+                <X className="h-4 w-4" />
+              )}
             </button>
           </div>
           {!isSectorCollapsed && (
@@ -432,8 +524,12 @@ const MarketplaceRightMenuContent: FC = () => {
                 )}
               >
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-[13px] text-webGray">{sector.percentage}</span>
-                  <span className="text-sm font-bold text-white">{sector.name}</span>
+                  <span className="text-[13px] text-webGray">
+                    {sector.percentage}
+                  </span>
+                  <span className="text-sm font-bold text-white">
+                    {sector.name}
+                  </span>
                 </div>
                 <span
                   className={cn(
@@ -462,14 +558,22 @@ const MarketplaceRightMenuContent: FC = () => {
             type="button"
             onClick={() => setIsPortfolioCollapsed((prev) => !prev)}
             className="flex h-6 w-6 items-center justify_center text-[#B0B0B0] transition-colors hover:text-white"
-            aria-label={isPortfolioCollapsed ? "Expand portfolio" : "Close portfolio"}
+            aria-label={
+              isPortfolioCollapsed ? "Expand portfolio" : "Close portfolio"
+            }
           >
-            {isPortfolioCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+            {isPortfolioCollapsed ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <X className="h-4 w-4" />
+            )}
           </button>
         </div>
         {!isPortfolioCollapsed && (
           <div className="flex flex-col items-center gap-4">
-            <p className="text-center text-[15px] font-bold text-white">Sign in to access your portfolio</p>
+            <p className="text-center text-[15px] font-bold text-white">
+              Sign in to access your portfolio
+            </p>
             <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-3 backdrop-blur-[58px]">
               <span className="text-[15px] font-bold text-white">Sign In</span>
             </button>
@@ -507,14 +611,18 @@ const MarketplaceRightMenuContent: FC = () => {
               <span
                 className={cn(
                   "flex h-5 w-[38px] items-center rounded-full p-[2px] transition-all",
-                  tableViewEnabled ? "justify-end border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]" : "justify-start border border-[#181B22] bg-[#0C101480]",
+                  tableViewEnabled
+                    ? "justify-end border border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]"
+                    : "justify-start border border-[#181B22] bg-[#0C101480]",
                 )}
               >
                 <span className="h-4 w-4 rounded-full bg-white" />
               </span>
             </button>
             <div className="h-px bg-[#181B22]" />
-            <div className="text-xs font-bold uppercase text-webGray">Customize Columns</div>
+            <div className="text-xs font-bold uppercase text-webGray">
+              Customize Columns
+            </div>
             <div className="flex flex-col gap-3">
               {customizeColumnsOptions.map((option) => {
                 const isSelected = selectedColumns[option];
@@ -528,22 +636,37 @@ const MarketplaceRightMenuContent: FC = () => {
                     <span
                       className={cn(
                         "flex h-[18px] w-[18px] items-center justify-center rounded-[3px] border border-[#523A83]/70 transition-colors",
-                        isSelected && "border-0 bg-gradient-to-r from-[#A06AFF] to-[#482090]",
+                        isSelected &&
+                          "border-0 bg-gradient-to-r from-[#A06AFF] to-[#482090]",
                       )}
                     >
                       {isSelected && (
-                        <svg className="h-[6px] w-[10px]" viewBox="0 0 12 8" fill="none">
-                          <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg
+                          className="h-[6px] w-[10px]"
+                          viewBox="0 0 12 8"
+                          fill="none"
+                        >
+                          <path
+                            d="M1 2.5L5 6.5L10.5 1"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
                         </svg>
                       )}
                     </span>
-                    <span className="text-[15px] font-bold text-white">{option}</span>
+                    <span className="text-[15px] font-bold text-white">
+                      {option}
+                    </span>
                   </button>
                 );
               })}
             </div>
             <div className="h-px bg-[#181B22]" />
-            <div className="text-xs font-bold uppercase text-webGray">Saved Views</div>
+            <div className="text-xs font-bold uppercase text-webGray">
+              Saved Views
+            </div>
             <div className="flex flex-col gap-3">
               {savedViewsOptions.map((option, idx) => {
                 const key = `${option}-${idx}`;
@@ -558,22 +681,37 @@ const MarketplaceRightMenuContent: FC = () => {
                     <span
                       className={cn(
                         "flex h-[18px] w-[18px] items-center justify-center rounded-[3px] border border-[#523A83]/70 transition-colors",
-                        isSelected && "border-0 bg-gradient-to-r from-[#A06AFF] to-[#482090]",
+                        isSelected &&
+                          "border-0 bg-gradient-to-r from-[#A06AFF] to-[#482090]",
                       )}
                     >
                       {isSelected && (
-                        <svg className="h-[6px] w-[10px]" viewBox="0 0 12 8" fill="none">
-                          <path d="M1 2.5L5 6.5L10.5 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <svg
+                          className="h-[6px] w-[10px]"
+                          viewBox="0 0 12 8"
+                          fill="none"
+                        >
+                          <path
+                            d="M1 2.5L5 6.5L10.5 1"
+                            stroke="white"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
                         </svg>
                       )}
                     </span>
-                    <span className="text-[15px] font-bold text-white">{option}</span>
+                    <span className="text-[15px] font-bold text-white">
+                      {option}
+                    </span>
                   </button>
                 );
               })}
             </div>
             <div className="h-px bg-[#181B22]" />
-            <div className="text-xs font-bold uppercase text-webGray">Symbol Display</div>
+            <div className="text-xs font-bold uppercase text-webGray">
+              Symbol Display
+            </div>
             <div className="flex flex-col gap-3">
               {symbolDisplayOptions.map((option) => {
                 const isSelected = selectedSymbolDisplays[option];
@@ -587,14 +725,17 @@ const MarketplaceRightMenuContent: FC = () => {
                     <span
                       className={cn(
                         "flex h-4 w-4 items-center justify-center rounded-full border border-[#A06AFF]/60 transition-colors",
-                        isSelected && "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]",
+                        isSelected &&
+                          "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]",
                       )}
                     >
                       {isSelected && (
                         <span className="h-2 w-2 rounded-full bg-white" />
                       )}
                     </span>
-                    <span className="text-[15px] font-bold text-white">{option}</span>
+                    <span className="text-[15px] font-bold text-white">
+                      {option}
+                    </span>
                   </button>
                 );
               })}
@@ -604,16 +745,24 @@ const MarketplaceRightMenuContent: FC = () => {
 
         <div className="flex items-center border-b border-[#181B22] py-3">
           <div className="flex-1">
-            <span className="text-xs font-bold uppercase text-webGray">Symbol</span>
+            <span className="text-xs font-bold uppercase text-webGray">
+              Symbol
+            </span>
           </div>
           <div className="flex-1 text-right">
-            <span className="text-xs font-bold uppercase text-webGray">Last</span>
+            <span className="text-xs font-bold uppercase text-webGray">
+              Last
+            </span>
           </div>
           <div className="flex-1 text-right">
-            <span className="text-xs font-bold uppercase text-webGray">ChG</span>
+            <span className="text-xs font-bold uppercase text-webGray">
+              ChG
+            </span>
           </div>
           <div className="flex-1 text-right">
-            <span className="text-xs font-bold uppercase text-webGray">CHG,%</span>
+            <span className="text-xs font-bold uppercase text-webGray">
+              CHG,%
+            </span>
           </div>
         </div>
 
@@ -632,12 +781,23 @@ const MarketplaceRightMenuContent: FC = () => {
                   type="button"
                   onClick={() => toggleWatchlistGroup(group.name)}
                   className="mr-2 flex h-6 w-6 items-center justify-center rounded-full text-[#B0B0B0] transition-colors hover:text-white"
-                  aria-label={isCollapsed ? `Expand ${group.name}` : `Close ${group.name}`}
+                  aria-label={
+                    isCollapsed ? `Expand ${group.name}` : `Close ${group.name}`
+                  }
                 >
-                  {isCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+                  {isCollapsed ? (
+                    <ChevronDown className="h-4 w-4" />
+                  ) : (
+                    <X className="h-4 w-4" />
+                  )}
                 </button>
-                <span className="flex-1 text-xs font-bold text-webGray">{group.name}</span>
-                <button className="text-webGray transition-colors hover:text-white" aria-label={`Delete ${group.name}`}>
+                <span className="flex-1 text-xs font-bold text-webGray">
+                  {group.name}
+                </span>
+                <button
+                  className="text-webGray transition-colors hover:text-white"
+                  aria-label={`Delete ${group.name}`}
+                >
                   <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
                     <path
                       d="M13 3.66663L12.5869 10.35C12.4813 12.0576 12.4285 12.9114 12.0005 13.5252C11.7889 13.8287 11.5165 14.0848 11.2005 14.2773C10.5614 14.6666 9.706 14.6666 7.99513 14.6666C6.28208 14.6666 5.42553 14.6666 4.78603 14.2766C4.46987 14.0838 4.19733 13.8272 3.98579 13.5232C3.55792 12.9084 3.5063 12.0534 3.40307 10.3434L3 3.66663"
@@ -651,8 +811,18 @@ const MarketplaceRightMenuContent: FC = () => {
                       strokeWidth="1.5"
                       strokeLinecap="round"
                     />
-                    <path d="M6.3335 11V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                    <path d="M9.6665 11V7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    <path
+                      d="M6.3335 11V7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M9.6665 11V7"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </button>
               </div>
@@ -664,27 +834,41 @@ const MarketplaceRightMenuContent: FC = () => {
                       <div className="flex items-center px-4 py-1">
                         <div className="flex flex-1 items-center gap-2">
                           <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#F5B300]">
-                            <span className="text-xs font-bold text-white">₿</span>
+                            <span className="text-xs font-bold text-white">
+                              ₿
+                            </span>
                           </div>
-                          <span className="text-xs font-bold uppercase text-white">{item.symbol}</span>
+                          <span className="text-xs font-bold uppercase text-white">
+                            {item.symbol}
+                          </span>
                         </div>
                         <div className="flex-1 text-right">
-                          <span className="text-xs font-bold text-white">{item.last}</span>
+                          <span className="text-xs font-bold text-white">
+                            {item.last}
+                          </span>
                         </div>
                         <div className="flex-1 text-right">
-                          <span className="text-xs font-bold text-green">{item.chg}</span>
+                          <span className="text-xs font-bold text-green">
+                            {item.chg}
+                          </span>
                         </div>
                         <div className="flex-1 text-right">
-                          <span className="text-xs font-bold text-green">{item.chgPercent}</span>
+                          <span className="text-xs font-bold text-green">
+                            {item.chgPercent}
+                          </span>
                         </div>
                       </div>
-                      {itemIdx < group.items.length - 1 && <div className="h-px bg-[#181B22]" />}
+                      {itemIdx < group.items.length - 1 && (
+                        <div className="h-px bg-[#181B22]" />
+                      )}
                     </div>
                   ))}
                 </div>
               )}
 
-              {index < watchlistGroups.length - 1 && <div className="mt-1 h-px bg-[#181B22]" />}
+              {index < watchlistGroups.length - 1 && (
+                <div className="mt-1 h-px bg-[#181B22]" />
+              )}
             </div>
           );
         })}
@@ -704,7 +888,11 @@ const MarketplaceRightMenuContent: FC = () => {
             className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
             aria-label={isNewsCollapsed ? "Expand news" : "Close news"}
           >
-            {isNewsCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+            {isNewsCollapsed ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <X className="h-4 w-4" />
+            )}
           </button>
         </div>
         {!isNewsCollapsed && (
@@ -719,30 +907,39 @@ const MarketplaceRightMenuContent: FC = () => {
               onScroll={handleNewsScroll}
             >
               <div className="flex min-w-max items-center gap-2 px-1">
-                {["Earnings", "Macro", "Crypto", "Stock Market"].map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setNewsCategory(category.toLowerCase())}
-                    className={cn(
-                      "flex h-9 shrink-0 items-center justify-center rounded-full px-4 text-xs font-semibold leading-none whitespace-nowrap transition-all",
-                      newsCategory === category.toLowerCase()
-                        ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.45)]"
-                        : "border border-[#181B22] bg-[#0C101480] text-white",
-                    )}
-                  >
-                    {category}
-                  </button>
-                ))}
+                {["Earnings", "Macro", "Crypto", "Stock Market"].map(
+                  (category) => (
+                    <button
+                      key={category}
+                      onClick={() => setNewsCategory(category.toLowerCase())}
+                      className={cn(
+                        "flex h-9 shrink-0 items-center justify-center rounded-full px-4 text-xs font-semibold leading-none whitespace-nowrap transition-all",
+                        newsCategory === category.toLowerCase()
+                          ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_0_1px_rgba(160,106,255,0.45)]"
+                          : "border border-[#181B22] bg-[#0C101480] text-white",
+                      )}
+                    >
+                      {category}
+                    </button>
+                  ),
+                )}
               </div>
             </div>
             <div className="flex flex-col gap-4">
               {newsItems.map((item, idx) => (
                 <div
                   key={`${item.title}-${idx}`}
-                  className={cn("flex flex-col gap-1 pb-1", idx < newsItems.length - 1 && "border-b border-[#181B22]")}
+                  className={cn(
+                    "flex flex-col gap-1 pb-1",
+                    idx < newsItems.length - 1 && "border-b border-[#181B22]",
+                  )}
                 >
-                  <span className="text-xs font-bold text-webGray">{item.date}</span>
-                  <p className="pb-1 text-[15px] font-bold text-white">{item.title}</p>
+                  <span className="text-xs font-bold text-webGray">
+                    {item.date}
+                  </span>
+                  <p className="pb-1 text-[15px] font-bold text-white">
+                    {item.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -762,9 +959,15 @@ const MarketplaceRightMenuContent: FC = () => {
             type="button"
             onClick={() => setIsCalendarCollapsed((prev) => !prev)}
             className="flex h-6 w-6 items-center justify-center text-[#B0B0B0] transition-colors hover:text-white"
-            aria-label={isCalendarCollapsed ? "Expand calendar" : "Close calendar"}
+            aria-label={
+              isCalendarCollapsed ? "Expand calendar" : "Close calendar"
+            }
           >
-            {isCalendarCollapsed ? <ChevronDown className="h-4 w-4" /> : <X className="h-4 w-4" />}
+            {isCalendarCollapsed ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <X className="h-4 w-4" />
+            )}
           </button>
         </div>
         {!isCalendarCollapsed && (
@@ -779,7 +982,10 @@ const MarketplaceRightMenuContent: FC = () => {
               >
                 <span>{selectedCalendarFilter}</span>
                 <ChevronDown
-                  className={cn("h-5 w-5 text-webGray transition-transform", isCalendarFilterOpen && "rotate-180")}
+                  className={cn(
+                    "h-5 w-5 text-webGray transition-transform",
+                    isCalendarFilterOpen && "rotate-180",
+                  )}
                 />
               </button>
               {isCalendarFilterOpen && (
@@ -798,11 +1004,17 @@ const MarketplaceRightMenuContent: FC = () => {
                         }}
                         className={cn(
                           "flex w-full items-center justify-between px-4 py-2 text-left text-sm transition-colors",
-                          isSelected ? "text-white" : "text-white/80 hover:text-white",
+                          isSelected
+                            ? "text-white"
+                            : "text-white/80 hover:text-white",
                         )}
                       >
                         <span>{filter}</span>
-                        {isSelected && <span className="text-xs font-semibold text-[#A06AFF]">Selected</span>}
+                        {isSelected && (
+                          <span className="text-xs font-semibold text-[#A06AFF]">
+                            Selected
+                          </span>
+                        )}
                       </button>
                     );
                   })}
@@ -814,14 +1026,19 @@ const MarketplaceRightMenuContent: FC = () => {
               {calendarEvents.map((event) => {
                 const [month, day] = event.date.split(" ");
                 const isGroupSelected = event.events.some(
-                  (detail) => selectedCalendarEvent === `${event.date}-${detail.symbol}`,
+                  (detail) =>
+                    selectedCalendarEvent === `${event.date}-${detail.symbol}`,
                 );
 
                 return (
                   <div key={event.date} className="flex gap-4">
                     <div className="flex w-[52px] flex-col items-end justify-center gap-1 leading-none">
-                      <span className="text-2xl font-bold text-webGray">{month}</span>
-                      <span className="text-[31px] font-bold text-white">{day}</span>
+                      <span className="text-2xl font-bold text-webGray">
+                        {month}
+                      </span>
+                      <span className="text-[31px] font-bold text-white">
+                        {day}
+                      </span>
                     </div>
                     <div className="relative flex-1">
                       <span
@@ -850,8 +1067,15 @@ const MarketplaceRightMenuContent: FC = () => {
                                   : "hover:border-[#1F2230] hover:bg-[#141821]",
                               )}
                             >
-                              <span className="text-sm font-semibold text-white">{detail.symbol}</span>
-                              <span className={cn("text-sm", isSelected ? "text-white/80" : "text-webGray")}>
+                              <span className="text-sm font-semibold text-white">
+                                {detail.symbol}
+                              </span>
+                              <span
+                                className={cn(
+                                  "text-sm",
+                                  isSelected ? "text-white/80" : "text-webGray",
+                                )}
+                              >
                                 {detail.name}
                               </span>
                             </button>
@@ -876,7 +1100,11 @@ export const RightMenu: FC<Props> = ({ isCollapsed, onClose }) => {
 
   const renderMenuContent = () => (
     <div className="flex flex-col gap-6 pb-6">
-      {isMarketplaceRoute ? <MarketplaceRightMenuContent /> : <DefaultRightMenuContent />}
+      {isMarketplaceRoute ? (
+        <MarketplaceRightMenuContent />
+      ) : (
+        <DefaultRightMenuContent />
+      )}
     </div>
   );
 
@@ -919,7 +1147,9 @@ export const RightMenu: FC<Props> = ({ isCollapsed, onClose }) => {
           aria-label="Right menu"
         >
           <div className="flex items-center justify-between">
-            <span className="text-sm font-bold uppercase text-[#B0B0B0]">Insights</span>
+            <span className="text-sm font-bold uppercase text-[#B0B0B0]">
+              Insights
+            </span>
             <button
               type="button"
               onClick={onClose}
@@ -930,7 +1160,9 @@ export const RightMenu: FC<Props> = ({ isCollapsed, onClose }) => {
             </button>
           </div>
           <div className="h-px w-full bg-[#181B22]" />
-          <div className="flex-1 overflow-y-auto pr-2">{renderMenuContent()}</div>
+          <div className="flex-1 overflow-y-auto pr-2">
+            {renderMenuContent()}
+          </div>
         </div>
       </div>
     </>

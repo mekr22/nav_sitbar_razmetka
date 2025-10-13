@@ -8,7 +8,11 @@ interface FavoriteStarButtonProps {
   className?: string;
 }
 
-export const FavoriteStarButton: FC<FavoriteStarButtonProps> = ({ pressed, onToggle, className }) => (
+export const FavoriteStarButton: FC<FavoriteStarButtonProps> = ({
+  pressed,
+  onToggle,
+  className,
+}) => (
   <button
     type="button"
     aria-pressed={pressed}
@@ -31,7 +35,11 @@ export const FavoriteStarButton: FC<FavoriteStarButtonProps> = ({ pressed, onTog
       className,
     )}
   >
-    <Star className="h-6 w-6" strokeWidth={pressed ? 1.5 : 1.4} fill={pressed ? "#A06AFF" : "none"} />
+    <Star
+      className="h-6 w-6"
+      strokeWidth={pressed ? 1.5 : 1.4}
+      fill={pressed ? "#A06AFF" : "none"}
+    />
   </button>
 );
 

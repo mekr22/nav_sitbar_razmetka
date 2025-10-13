@@ -5,7 +5,8 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
 import type { Trader } from "@/data/marketplaceTraders";
 
-const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+const isActivationKey = (key: string) =>
+  key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
 const PerformanceChart: FC = () => {
   const id = useId();
@@ -33,11 +34,25 @@ const PerformanceChart: FC = () => {
         strokeLinejoin="round"
       />
       <defs>
-        <linearGradient id={gradientId} x1="1" y1="1" x2="1" y2="79" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={gradientId}
+          x1="1"
+          y1="1"
+          x2="1"
+          y2="79"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#A06AFF" stopOpacity="0.32" />
           <stop offset="1" stopColor="#181A20" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id={strokeId} x1="1" y1="1" x2="1" y2="79" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id={strokeId}
+          x1="1"
+          y1="1"
+          x2="1"
+          y2="79"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#C6A6FF" />
           <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
         </linearGradient>
@@ -46,7 +61,13 @@ const PerformanceChart: FC = () => {
   );
 };
 
-const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+const TraderCard: FC<{
+  trader: Trader;
+  isActive: boolean;
+  onSelect: () => void;
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
+}> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
@@ -70,16 +91,26 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
       <div className="relative flex flex-col gap-4">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
-            <img src={trader.avatar} alt={trader.name} className="block h-full w-full object-cover object-center [transform:scale(1.2)]" />
+            <img
+              src={trader.avatar}
+              alt={trader.name}
+              className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
+            />
             <div className="absolute bottom-2 left-2 flex items-center gap-1">
-              <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">PRO</span>
-              <span className="rounded bg-[#1C3430] px-1 text-[12px] font-bold text-[#2EBD85]">{trader.rating}</span>
+              <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">
+                PRO
+              </span>
+              <span className="rounded bg-[#1C3430] px-1 text-[12px] font-bold text-[#2EBD85]">
+                {trader.rating}
+              </span>
             </div>
           </div>
 
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex flex-col gap-2">
-              <h3 className="text-[15px] font-bold leading-tight text-white">{trader.name}</h3>
+              <h3 className="text-[15px] font-bold leading-tight text-white">
+                {trader.name}
+              </h3>
               <div className="flex flex-col items-start gap-1">
                 <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800] self-start">
                   {trader.badge}
@@ -133,7 +164,9 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
           </div>
         </div>
 
-        <div className="text-[12px] font-extrabold text-white">{trader.certification}</div>
+        <div className="text-[12px] font-extrabold text-white">
+          {trader.certification}
+        </div>
 
         <div className="flex flex-col gap-2 sm:flex-row">
           <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">

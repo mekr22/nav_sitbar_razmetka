@@ -28,7 +28,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "RiskMaster - Trading risk calculation script",
     description:
       "RiskMaster automatically computes optimal position sizes, stop-loss levels, and capital at risk for every trade. Reduce losses and keep sizing consistent across your portfolio.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Script",
     industryLabel: "Trading and Finance",
@@ -37,7 +38,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "563",
     creator: {
       name: "Sarah Lee",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,748",
       tags: ["Windows/Mac", "Top Seller"],
     },
@@ -52,7 +54,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "AutoPilot Scalper - High frequency toolkit",
     description:
       "AutoPilot Scalper streams low-latency market data to execute predefined scalping strategies with built-in risk parameters and broker integrations.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Software",
     industryLabel: "Quantitative Trading",
@@ -61,7 +64,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "742",
     creator: {
       name: "Marcus Boyd",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "2,304",
       tags: ["Windows/Linux", "Broker Certified"],
     },
@@ -76,7 +80,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "SentimentPulse - News analytics engine",
     description:
       "SentimentPulse pulls global headlines and social chatter to score sentiment shifts, triggering alerts when probabilities cross configurable thresholds.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Platform",
     industryLabel: "Analytics",
@@ -85,7 +90,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "412",
     creator: {
       name: "Lina Ortega",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,105",
       tags: ["Web App", "Real-time"],
     },
@@ -100,7 +106,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "GridGuru - Automated grid trading suite",
     description:
       "GridGuru deploys adaptive grid strategies with risk caps, market regime detection, and automated rollover management across FX pairs.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Script",
     industryLabel: "Forex",
@@ -109,7 +116,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "503",
     creator: {
       name: "Priya Desai",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,689",
       tags: ["MetaTrader", "Top Seller"],
     },
@@ -124,7 +132,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "VolatilityVault - Options hedging toolkit",
     description:
       "VolatilityVault automates delta-hedging and volatility arbitrage strategies with broker integrations and customizable hedging rules.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Software",
     industryLabel: "Derivatives",
@@ -133,7 +142,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "689",
     creator: {
       name: "Omar Singh",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "2,421",
       tags: ["Mac/Windows", "Option Desk"],
     },
@@ -148,7 +158,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "AlgoFabric - Strategy deployment pipeline",
     description:
       "AlgoFabric packages, backtests, and deploys algorithmic strategies with CI/CD integrations and parameter sweeps for quant teams.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Platform",
     industryLabel: "Quant DevOps",
@@ -157,7 +168,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "544",
     creator: {
       name: "Elena Markov",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,312",
       tags: ["Kubernetes", "CI/CD"],
     },
@@ -172,7 +184,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "MacroSpark - Macro event playbook",
     description:
       "MacroSpark aggregates macro calendars and runs scenario backtests. Alerts traders with playbooks and risk guidelines ahead of each major event.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Toolkit",
     industryLabel: "Macro Strategy",
@@ -181,7 +194,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "333",
     creator: {
       name: "Nina Patel",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,028",
       tags: ["Calendar", "Live Alerts"],
     },
@@ -196,7 +210,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     title: "CryptoGuardian - DeFi risk assessor",
     description:
       "CryptoGuardian monitors smart contracts, calculates protocol risk, and pushes emergency alerts with recommended hedges for treasury managers.",
-    heroImage: "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
+    heroImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=640",
     heroAlt: "RiskMaster script dashboard preview",
     typeLabel: "Software",
     industryLabel: "Crypto",
@@ -205,7 +220,8 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "476",
     creator: {
       name: "David Romero",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
+      avatar:
+        "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,564",
       tags: ["DeFi", "Security"],
     },

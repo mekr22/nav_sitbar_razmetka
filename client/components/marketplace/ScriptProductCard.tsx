@@ -5,9 +5,11 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
 
-const actionButtonBaseClass = "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
+const actionButtonBaseClass =
+  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
 
-const isActivationKey = (key: string) => key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+const isActivationKey = (key: string) =>
+  key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
 type ScriptProductCardProps = {
   product: ScriptProduct;
@@ -17,7 +19,13 @@ type ScriptProductCardProps = {
   onToggleFavorite: () => void;
 };
 
-const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+const ScriptProductCard: FC<ScriptProductCardProps> = ({
+  product,
+  isActive,
+  onSelect,
+  isFavorite,
+  onToggleFavorite,
+}) => (
   <div
     role="button"
     tabIndex={0}
@@ -49,24 +57,34 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
     </div>
     <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
       <div className="flex w-full flex-col gap-4 lg:w-80">
-        <img src={product.heroImage} alt={product.heroAlt} className="h-80 w-full rounded-lg object-cover" />
+        <img
+          src={product.heroImage}
+          alt={product.heroAlt}
+          className="h-80 w-full rounded-lg object-cover"
+        />
         <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0] sm:flex sm:flex-nowrap sm:items-center sm:gap-6">
           <div className="flex flex-col gap-1 sm:gap-2">
             <span className="whitespace-nowrap">Type:</span>
             <div className="flex items-center gap-1 sm:gap-2">
-              <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">{product.typeLabel}</span>
+              <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">
+                {product.typeLabel}
+              </span>
             </div>
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
             <span className="whitespace-nowrap">Industry</span>
             <div className="flex items-center gap-1 sm:gap-2">
-              <span className="inline-flex rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF] whitespace-nowrap">{product.industryLabel}</span>
+              <span className="inline-flex rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF] whitespace-nowrap">
+                {product.industryLabel}
+              </span>
             </div>
           </div>
           <div className="flex flex-col gap-1 sm:gap-2">
             <span className="whitespace-nowrap">Revenue</span>
             <div className="flex items-center gap-1 sm:gap-2">
-              <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">{product.revenueLabel}</span>
+              <span className="inline-flex rounded bg-[#2E2744] px-1 py-0.5 text-white whitespace-nowrap">
+                {product.revenueLabel}
+              </span>
             </div>
           </div>
         </div>
@@ -77,17 +95,26 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <div className="h-20 w-20 overflow-hidden rounded-lg">
-                <img src={product.creator.avatar} alt={product.creator.name} className="h-full w-full object-cover" />
+                <img
+                  src={product.creator.avatar}
+                  alt={product.creator.name}
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div>
-                <h3 className="mb-2 text-lg font-bold text-white sm:text-[19px]">{product.creator.name}</h3>
+                <h3 className="mb-2 text-lg font-bold text-white sm:text-[19px]">
+                  {product.creator.name}
+                </h3>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold text-white">
                     <Users className="h-4 w-4 text-[#B0B0B0]" />
                     {product.creator.followers}
                   </span>
                   {product.creator.tags.map((tag) => (
-                    <span key={tag} className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
+                    <span
+                      key={tag}
+                      className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]"
+                    >
                       {tag}
                     </span>
                   ))}
@@ -98,20 +125,29 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
         </div>
 
         <div className="flex-1">
-          <h4 className="mb-2 text-lg font-bold text-white sm:text-[19px]">{product.title}</h4>
+          <h4 className="mb-2 text-lg font-bold text-white sm:text-[19px]">
+            {product.title}
+          </h4>
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-1 rounded bg-[rgba(160,106,255,0.16)] px-2 py-0.5 text-xs font-extrabold uppercase text-[#A06AFF]">
               {product.verificationLabel}
             </span>
-            <span className="text-xs font-bold uppercase text-white">{product.location}</span>
+            <span className="text-xs font-bold uppercase text-white">
+              {product.location}
+            </span>
           </div>
-          <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">{product.description}</p>
+          <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
+            {product.description}
+          </p>
 
           <div className="mb-4 space-y-2 text-xs font-bold">
             <div className="flex flex-wrap items-center gap-2">
               <span className="uppercase text-[#B0B0B0]">Compatibility:</span>
               {product.compatibility.map((item) => (
-                <span key={item} className="rounded bg-[#2E2744] px-1 uppercase text-white">
+                <span
+                  key={item}
+                  className="rounded bg-[#2E2744] px-1 uppercase text-white"
+                >
                   {item}
                 </span>
               ))}
@@ -119,7 +155,10 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
             <div className="flex flex-wrap items-center gap-2">
               <span className="uppercase text-[#B0B0B0]">Requirements:</span>
               {product.requirements.map((item) => (
-                <span key={item} className="rounded bg-[#2E2744] px-1 uppercase text-white">
+                <span
+                  key={item}
+                  className="rounded bg-[#2E2744] px-1 uppercase text-white"
+                >
                   {item}
                 </span>
               ))}
@@ -127,10 +166,15 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
             <div className="flex items-center gap-2 pt-1">
               <div className="flex items-center gap-0.5">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="h-4 w-4 fill-[#FFA800] text-[#FFA800]" />
+                  <Star
+                    key={star}
+                    className="h-4 w-4 fill-[#FFA800] text-[#FFA800]"
+                  />
                 ))}
               </div>
-              <span className="text-sm font-bold text-white sm:text-[15px]">{product.ratingScore}</span>
+              <span className="text-sm font-bold text-white sm:text-[15px]">
+                {product.ratingScore}
+              </span>
             </div>
           </div>
         </div>
@@ -146,7 +190,10 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
             Details
           </button>
           <button
-            className={cn(actionButtonBaseClass, "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90")}
+            className={cn(
+              actionButtonBaseClass,
+              "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+            )}
           >
             <ShoppingCart className="h-4 w-4" />
             Buy

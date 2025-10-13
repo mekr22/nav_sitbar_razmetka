@@ -47,7 +47,8 @@ export const ClientLayout: FC<Props> = ({
       return;
     }
 
-    const shouldLockScroll = window.innerWidth < 1024 && (mobileNavOpen || rightMenuOpen);
+    const shouldLockScroll =
+      window.innerWidth < 1024 && (mobileNavOpen || rightMenuOpen);
     document.body.style.overflow = shouldLockScroll ? "hidden" : "";
 
     return () => {
@@ -153,7 +154,10 @@ export const ClientLayout: FC<Props> = ({
             {children}
           </ContentWrapper>
         </main>
-        <RightMenu isCollapsed={rightMenuOpen} onClose={() => setRightMenuOpen(false)} />
+        <RightMenu
+          isCollapsed={rightMenuOpen}
+          onClose={() => setRightMenuOpen(false)}
+        />
       </div>
       <Footer />
     </AppBackground>

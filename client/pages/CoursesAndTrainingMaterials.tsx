@@ -1,10 +1,21 @@
 import { FC, useEffect, useMemo, useState } from "react";
-import { Eye, EyeOff, ChevronRight, ChevronDown, Package, Plus, Search } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  ChevronRight,
+  ChevronDown,
+  Package,
+  Plus,
+  Search,
+} from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import CourseCard from "@/components/marketplace/CourseCard";
 import { baseCourses, Course } from "@/data/marketplaceCourses";
-import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
+import {
+  marketplaceCategories,
+  MarketplaceCategory,
+} from "@/data/marketplaceCategories";
 import { cn, maskNonWhitespace } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -18,7 +29,13 @@ type MaterialTypeOptionValue = "course" | "training";
 type ReleaseWindowOptionValue = "24h" | "7d" | "30d";
 type LevelOptionValue = "beginner" | "intermediate" | "advanced" | "all";
 type FormatOptionValue = "video" | "ebook" | "live";
-type FocusOptionValue = "stocks" | "forex" | "crypto" | "options" | "macro" | "futures";
+type FocusOptionValue =
+  | "stocks"
+  | "forex"
+  | "crypto"
+  | "options"
+  | "macro"
+  | "futures";
 
 type MaterialTypeFilterValue = "all" | MaterialTypeOptionValue;
 type ReleaseFilterValue = "any" | ReleaseWindowOptionValue;
@@ -50,8 +67,16 @@ const FILTER_CONFIG: FilterConfigMap = {
     label: "Material type",
     options: [
       { value: "all", label: "Show all formats", buttonLabel: "All materials" },
-      { value: "course", label: "On-demand video courses", buttonLabel: "Courses" },
-      { value: "training", label: "Live & cohort training", buttonLabel: "Training" },
+      {
+        value: "course",
+        label: "On-demand video courses",
+        buttonLabel: "Courses",
+      },
+      {
+        value: "training",
+        label: "Live & cohort training",
+        buttonLabel: "Training",
+      },
     ],
   },
   release: {
@@ -67,9 +92,21 @@ const FILTER_CONFIG: FilterConfigMap = {
     label: "Level",
     options: [
       { value: "any", label: "Any experience level", buttonLabel: "Level" },
-      { value: "beginner", label: "Beginner friendly", buttonLabel: "Beginner" },
-      { value: "intermediate", label: "Intermediate traders", buttonLabel: "Intermediate" },
-      { value: "advanced", label: "Advanced professionals", buttonLabel: "Advanced" },
+      {
+        value: "beginner",
+        label: "Beginner friendly",
+        buttonLabel: "Beginner",
+      },
+      {
+        value: "intermediate",
+        label: "Intermediate traders",
+        buttonLabel: "Intermediate",
+      },
+      {
+        value: "advanced",
+        label: "Advanced professionals",
+        buttonLabel: "Advanced",
+      },
       { value: "all", label: "All levels", buttonLabel: "All Levels" },
     ],
   },
@@ -78,7 +115,11 @@ const FILTER_CONFIG: FilterConfigMap = {
     options: [
       { value: "any", label: "Any lesson format", buttonLabel: "Format" },
       { value: "video", label: "Video-first", buttonLabel: "Video" },
-      { value: "ebook", label: "Downloadable workbooks", buttonLabel: "Guides" },
+      {
+        value: "ebook",
+        label: "Downloadable workbooks",
+        buttonLabel: "Guides",
+      },
       { value: "live", label: "Live cohorts & workshops", buttonLabel: "Live" },
     ],
   },
@@ -86,26 +127,48 @@ const FILTER_CONFIG: FilterConfigMap = {
     label: "Focus",
     options: [
       { value: "any", label: "Any trading focus", buttonLabel: "Focus" },
-      { value: "stocks", label: "Equities & portfolios", buttonLabel: "Stocks" },
+      {
+        value: "stocks",
+        label: "Equities & portfolios",
+        buttonLabel: "Stocks",
+      },
       { value: "forex", label: "FX & currency", buttonLabel: "Forex" },
       { value: "crypto", label: "Digital assets", buttonLabel: "Crypto" },
-      { value: "options", label: "Options & derivatives", buttonLabel: "Options" },
+      {
+        value: "options",
+        label: "Options & derivatives",
+        buttonLabel: "Options",
+      },
       { value: "macro", label: "Macro strategy", buttonLabel: "Macro" },
-      { value: "futures", label: "Futures & commodities", buttonLabel: "Futures" },
+      {
+        value: "futures",
+        label: "Futures & commodities",
+        buttonLabel: "Futures",
+      },
     ],
   },
 };
 
-const FILTER_ORDER: (keyof FilterSelections)[] = ["materialType", "release", "level", "format", "focus"];
+const FILTER_ORDER: (keyof FilterSelections)[] = [
+  "materialType",
+  "release",
+  "level",
+  "format",
+  "focus",
+];
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
 const CoursesAndTrainingMaterials: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Courses and Training materials");
+  const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>(
+    "Courses and Training materials",
+  );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
+  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
+    new Set(),
+  );
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [filters, setFilters] = useState<FilterSelections>({
     materialType: FILTER_CONFIG.materialType.options[0].value,
@@ -119,7 +182,10 @@ const CoursesAndTrainingMaterials: FC = () => {
   useEffect(() => {
     if (location.state?.scrollToTop) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      navigate(location.pathname, { replace: true, state: { ...location.state, scrollToTop: false } });
+      navigate(location.pathname, {
+        replace: true,
+        state: { ...location.state, scrollToTop: false },
+      });
     }
   }, [location.pathname, location.state, navigate]);
 
@@ -130,7 +196,8 @@ const CoursesAndTrainingMaterials: FC = () => {
     const targetCount = 12;
     const result: Course[] = [];
     let iteration = 0;
-    const myProductsImage = "https://api.builder.io/api/v1/image/assets/TEMP/785c3faa6d149a1cf74053c6eee68a561cfcead4?width=463";
+    const myProductsImage =
+      "https://api.builder.io/api/v1/image/assets/TEMP/785c3faa6d149a1cf74053c6eee68a561cfcead4?width=463";
 
     while (result.length < targetCount) {
       baseCourses.forEach((course) => {
@@ -157,10 +224,16 @@ const CoursesAndTrainingMaterials: FC = () => {
     const normalizedTerm = searchTerm.trim().toLowerCase();
 
     return courses.filter((course) => {
-      if (filters.materialType !== "all" && course.materialType !== filters.materialType) {
+      if (
+        filters.materialType !== "all" &&
+        course.materialType !== filters.materialType
+      ) {
         return false;
       }
-      if (filters.release !== "any" && course.releaseWindow !== filters.release) {
+      if (
+        filters.release !== "any" &&
+        course.releaseWindow !== filters.release
+      ) {
         return false;
       }
       if (filters.level !== "any" && course.levelCategory !== filters.level) {
@@ -173,7 +246,8 @@ const CoursesAndTrainingMaterials: FC = () => {
         return false;
       }
       if (normalizedTerm) {
-        const haystack = `${course.title} ${course.subtitle} ${course.host} ${course.focusArea} ${course.language}`.toLowerCase();
+        const haystack =
+          `${course.title} ${course.subtitle} ${course.host} ${course.focusArea} ${course.language}`.toLowerCase();
         return haystack.includes(normalizedTerm);
       }
 
@@ -186,7 +260,9 @@ const CoursesAndTrainingMaterials: FC = () => {
       return;
     }
 
-    const isActiveVisible = filteredCourses.some((course) => buildCardKey("courses-page", course.id) === activeCardKey);
+    const isActiveVisible = filteredCourses.some(
+      (course) => buildCardKey("courses-page", course.id) === activeCardKey,
+    );
 
     if (!isActiveVisible) {
       setActiveCardKey(null);
@@ -269,14 +345,33 @@ const CoursesAndTrainingMaterials: FC = () => {
     return (
       <div className="flex items-center gap-1" aria-hidden="true">
         <div className={controlClassName}>
-          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.6585 15L15.8335 13.825L12.0168 10L15.8335 6.175L14.6585 5L9.6585 10L14.6585 15Z" fill="#B0B0B0" />
-            <path d="M9.1668 15L10.3418 13.825L6.52513 10L10.3418 6.175L9.1668 5L4.1668 10L9.1668 15Z" fill="#B0B0B0" />
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.6585 15L15.8335 13.825L12.0168 10L15.8335 6.175L14.6585 5L9.6585 10L14.6585 15Z"
+              fill="#B0B0B0"
+            />
+            <path
+              d="M9.1668 15L10.3418 13.825L6.52513 10L10.3418 6.175L9.1668 5L4.1668 10L9.1668 15Z"
+              fill="#B0B0B0"
+            />
           </svg>
         </div>
         <div className={controlClassName}>
-          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.575 15L13.75 13.825L9.93333 10L13.75 6.175L12.575 5L7.575 10L12.575 15Z" fill="#B0B0B0" />
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12.575 15L13.75 13.825L9.93333 10L13.75 6.175L12.575 5L7.575 10L12.575 15Z"
+              fill="#B0B0B0"
+            />
           </svg>
         </div>
         <div className="flex h-[26px] w-[26px] items-center justify-center rounded-lg bg-[linear-gradient(270deg,#A06AFF_0%,#482090_100%)]">
@@ -289,14 +384,33 @@ const CoursesAndTrainingMaterials: FC = () => {
           <span className="text-[15px] font-bold text-[#B0B0B0]">3</span>
         </div>
         <div className={controlClassName}>
-          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8.675 5L7.5 6.175L11.3167 10L7.5 13.825L8.675 15L13.675 10L8.675 5Z" fill="#B0B0B0" />
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.675 5L7.5 6.175L11.3167 10L7.5 13.825L8.675 15L13.675 10L8.675 5Z"
+              fill="#B0B0B0"
+            />
           </svg>
         </div>
         <div className={controlClassName}>
-          <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.3415 5L4.1665 6.175L7.98317 10L4.1665 13.825L5.3415 15L10.3415 10L5.3415 5Z" fill="#B0B0B0" />
-            <path d="M10.8332 5L9.6582 6.175L13.4749 10L9.6582 13.825L10.8332 15L15.8332 10L10.8332 5Z" fill="#B0B0B0" />
+          <svg
+            className="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.3415 5L4.1665 6.175L7.98317 10L4.1665 13.825L5.3415 15L10.3415 10L5.3415 5Z"
+              fill="#B0B0B0"
+            />
+            <path
+              d="M10.8332 5L9.6582 6.175L13.4749 10L9.6582 13.825L10.8332 15L15.8332 10L10.8332 5Z"
+              fill="#B0B0B0"
+            />
           </svg>
         </div>
       </div>
@@ -319,7 +433,11 @@ const CoursesAndTrainingMaterials: FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsBalanceVisible((prev) => !prev)}
-                    aria-label={isBalanceVisible ? "Hide total balance" : "Show total balance"}
+                    aria-label={
+                      isBalanceVisible
+                        ? "Hide total balance"
+                        : "Show total balance"
+                    }
                     className="flex h-8 w-8 items-center justify-center rounded-full border border-transparent text-[#808283] transition-colors hover:border-[#1F2230] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                   >
                     {isBalanceVisible ? (
@@ -329,11 +447,15 @@ const CoursesAndTrainingMaterials: FC = () => {
                     )}
                   </button>
                 </div>
-                <div className="text-xl font-bold text-white sm:text-2xl">{isBalanceVisible ? balanceValue : maskedBalanceValue}</div>
+                <div className="text-xl font-bold text-white sm:text-2xl">
+                  {isBalanceVisible ? balanceValue : maskedBalanceValue}
+                </div>
                 <div className="flex flex-wrap items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
                   <span>Today's PnL</span>
                   <div className="flex items-center gap-0.5 rounded bg-[#2EBD85]/16 px-1 py-0.5">
-                    <span className="text-[10px] font-bold uppercase text-[#2EBD85] sm:text-xs">+ $0.00</span>
+                    <span className="text-[10px] font-bold uppercase text-[#2EBD85] sm:text-xs">
+                      + $0.00
+                    </span>
                   </div>
                   <ChevronRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                 </div>
@@ -359,7 +481,9 @@ const CoursesAndTrainingMaterials: FC = () => {
             </div>
 
             <div className="flex h-[170px] w-full items-center justify-center rounded-xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px] sm:h-[194px] lg:w-[260px] xl:w-[280px]">
-              <span className="text-lg font-bold text-[#808283] sm:text-2xl">Advertising Banner</span>
+              <span className="text-lg font-bold text-[#808283] sm:text-2xl">
+                Advertising Banner
+              </span>
             </div>
           </div>
 
@@ -387,13 +511,19 @@ const CoursesAndTrainingMaterials: FC = () => {
 
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Courses & Training Materials</h2>
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">
+              Courses & Training Materials
+            </h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
               <div className="hidden min-[1143px]:flex min-[1143px]:w-full min-[1143px]:flex-1 min-[1143px]:items-center min-[1143px]:gap-3">
                 {FILTER_ORDER.map((filterKey) => {
                   const config = FILTER_CONFIG[filterKey];
-                  const selectedOption = config.options.find((option) => option.value === filters[filterKey]) ?? config.options[0];
-                  const isActive = filters[filterKey] !== config.options[0].value;
+                  const selectedOption =
+                    config.options.find(
+                      (option) => option.value === filters[filterKey],
+                    ) ?? config.options[0];
+                  const isActive =
+                    filters[filterKey] !== config.options[0].value;
 
                   return (
                     <DropdownMenu key={filterKey}>
@@ -402,12 +532,21 @@ const CoursesAndTrainingMaterials: FC = () => {
                           type="button"
                           className={cn(
                             "flex h-9 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
-                            isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
+                            isActive
+                              ? "border-[#A06AFF] text-white"
+                              : "text-[#B0B0B0]",
                           )}
                           aria-label={`Filter by ${config.label}`}
                         >
-                          <span className="truncate text-xs font-medium sm:text-sm">{selectedOption.buttonLabel}</span>
-                          <ChevronDown className={cn("h-5 w-5 flex-shrink-0", isActive ? "text-white" : "text-[#B0B0B0]")} />
+                          <span className="truncate text-xs font-medium sm:text-sm">
+                            {selectedOption.buttonLabel}
+                          </span>
+                          <ChevronDown
+                            className={cn(
+                              "h-5 w-5 flex-shrink-0",
+                              isActive ? "text-white" : "text-[#B0B0B0]",
+                            )}
+                          />
                         </button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent
@@ -416,7 +555,9 @@ const CoursesAndTrainingMaterials: FC = () => {
                       >
                         <DropdownMenuRadioGroup
                           value={filters[filterKey]}
-                          onValueChange={(value) => handleFilterChange(filterKey, value)}
+                          onValueChange={(value) =>
+                            handleFilterChange(filterKey, value)
+                          }
                         >
                           {config.options.map((option) => (
                             <DropdownMenuRadioItem
@@ -434,7 +575,10 @@ const CoursesAndTrainingMaterials: FC = () => {
                 })}
               </div>
               <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
-                <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
+                <Search
+                  className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
+                  aria-hidden="true"
+                />
                 <input
                   type="search"
                   value={searchTerm}
@@ -449,7 +593,8 @@ const CoursesAndTrainingMaterials: FC = () => {
 
           {filteredCourses.length === 0 ? (
             <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-6 text-center text-sm font-semibold text-[#B0B0B0]">
-              No courses match your filters yet. Try adjusting the filters or search query.
+              No courses match your filters yet. Try adjusting the filters or
+              search query.
             </div>
           ) : (
             <div className="flex flex-col gap-6">

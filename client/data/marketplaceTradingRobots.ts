@@ -21,7 +21,8 @@ export type TradingRobot = {
   leverageCategory: "low" | "moderate" | "high";
 };
 
-export const RISK_MASTER_ICON = "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144";
+export const RISK_MASTER_ICON =
+  "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144";
 
 const exchangeIcons = {
   binance:
