@@ -156,6 +156,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
             ...robot,
             id: `${robot.id}-pair-${pairIndex}-${cardIndex}`,
             name: pairIndex === 0 ? robot.name : `${robot.name} ${metaIndex + 1}`,
+            icon: RISK_MASTER_ICON,
             automationBucket: robot.automationStyle,
             accuracyBucket: robot.accuracyLevel.toLowerCase() as AccuracyOptionValue,
             marketBucket: robot.marketCategory,
