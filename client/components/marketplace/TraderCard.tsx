@@ -84,7 +84,7 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
                 <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800]">
                   {trader.badge}
                 </span>
-                <div className="flex flex-wrap items-center gap-1">
+                <div className="flex items-center gap-1">
                   <span className="flex items-center gap-1 whitespace-nowrap rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
                     <Users className="h-4 w-4 text-[#B0B0B0]" />
                     {trader.followers}
