@@ -768,9 +768,24 @@ const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void }
   </div>
 );
 
-const CourseCard: FC<{ course: Course }> = ({ course }) => (
+const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void }> = ({ course, isActive, onSelect }) => (
   <div className="w-full">
-    <div className="relative flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4 backdrop-blur-[50px] md:flex-row md:items-stretch md:gap-6">
+    <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onClick={onSelect}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isActivationKey(event.key)) {
+          event.preventDefault();
+          onSelect();
+        }
+      }}
+      className={cn(
+        "relative flex cursor-pointer flex-col gap-4 overflow-hidden rounded-2xl border bg-[#0C1014]/60 p-4 backdrop-blur-[50px] transition-colors md:flex-row md:items-stretch md:gap-6",
+        isActive ? "border-[#A06AFF]" : "border-[#181B22]",
+      )}
+    >
       {/* Course Image */}
       <img
         src={course.image}
