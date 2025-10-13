@@ -510,6 +510,10 @@ const MarketplaceMyProducts: FC = () => {
       navigate("/marketplace/scripts", { state: { category } });
       return;
     }
+    if (category === "Others") {
+      navigate("/marketplace/others", { state: { category } });
+      return;
+    }
   };
 
   const scriptsCardKey = buildCardKey("scripts", "main");
