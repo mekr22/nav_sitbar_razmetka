@@ -44,7 +44,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
   const accuracyLabel = signal.accuracy ?? "";
 
   return (
-  <div className="mx-auto w-full max-w-[525px]">
+    <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
       tabIndex={0}
@@ -145,7 +145,7 @@ export const SignalCard: FC<SignalCardProps> = ({ signal, isActive, onSelect, is
         </button>
       </div>
     </div>
-  </div>
+    </div>
   );
 };
 
