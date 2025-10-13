@@ -7,11 +7,13 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import StrategyCard from "@/components/marketplace/StrategyCard";
 import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
+import AnalystCard from "@/components/marketplace/AnalystCard";
 import InvestmentConsultantCard from "@/components/marketplace/InvestmentConsultantCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";
 import { baseTradingRobots, TradingRobot, RISK_MASTER_ICON } from "@/data/marketplaceTradingRobots";
 import { baseInvestmentConsultants, InvestmentConsultant } from "@/data/marketplaceInvestmentConsultants";
+import { baseAnalysts, Analyst } from "@/data/marketplaceAnalysts";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 
 const actionButtonBaseClass = "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
@@ -167,8 +169,6 @@ const PerformanceChart: FC = () => {
 
 const TraderPerformanceChart: FC = () => <PerformanceChart />;
 
-const AnalystPerformanceChart: FC = () => <PerformanceChart />;
-
 const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
@@ -275,53 +275,7 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
   </div>
 );
 
-type Analyst = {
-  id: string;
-  name: string;
-  avatar: string;
-  company: string;
-  role: string;
-  rating: string;
-  followers: string;
-  publications: string;
-  markets: string;
-  assets: string;
-  analysis: string;
-  forecastAccuracy: string;
-  featured?: boolean;
-};
-
-const analysts: Analyst[] = [
-  {
-    id: "analyst-sarah-lee",
-    name: "Sarah Lee",
-    avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=800",
-    company: "BERKSHIRE HATHAWAY",
-    role: "HEDGE FUND MANAGER",
-    rating: "5.0",
-    followers: "15,054",
-    publications: "983",
-    markets: "BINANCE, NASDAQ",
-    assets: "BTC, ETH, TESLA, GOLD",
-    analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
-    forecastAccuracy: "68%",
-    featured: true,
-  },
-  {
-    id: "analyst-alex-morgan",
-    name: "Alex Morgan",
-    avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=800",
-    company: "SONMORE FINANCIAL",
-    role: "INVESTMENT STRATEGIST",
-    rating: "4.9",
-    followers: "12,678",
-    publications: "742",
-    markets: "NYSE, NASDAQ",
-    assets: "AAPL, NVDA, GOLD, BTC",
-    analysis: "TECHNICAL & FUNDAMENTAL ANALYSIS",
-    forecastAccuracy: "65%",
-  },
-];
+const analysts: Analyst[] = baseAnalysts;
 
 const investmentConsultants: InvestmentConsultant[] = baseInvestmentConsultants.slice(0, 2);
 
@@ -946,7 +900,13 @@ const MarketplaceMyProducts: FC = () => {
         <div className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Analysts</h2>
-            <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
+            <Link
+              to="/marketplace/analysts"
+              state={{ scrollToTop: true, category: "Analysts" }}
+              className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]"
+            >
+              See all
+            </Link>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
