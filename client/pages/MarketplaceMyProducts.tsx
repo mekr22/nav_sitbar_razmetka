@@ -1036,7 +1036,7 @@ const MarketplaceMyProducts: FC = () => {
               <div className="flex flex-wrap items-center gap-3 sm:gap-6">
                 <button
                   type="button"
-                  className="flex h-9 items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:h-[32px] sm:px-8 sm:text-[15px]"
+                  className="flex h-9 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:h-[32px] sm:px-8 sm:text-[15px]"
                 >
                   <Package className="h-4 w-4" />
                   <span>My Products</span>
