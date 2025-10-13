@@ -61,7 +61,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "742",
     creator: {
       name: "Marcus Boyd",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1360404856214d8bb8f52af8e17826d4?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "2,304",
       tags: ["Windows/Linux", "Broker Certified"],
     },
@@ -85,7 +85,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "412",
     creator: {
       name: "Lina Ortega",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fd21757861c5e4dba872f4c3bbcbc54ce?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,105",
       tags: ["Web App", "Real-time"],
     },
@@ -109,7 +109,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "503",
     creator: {
       name: "Priya Desai",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F9541eb0bad6048628c81c4ff80a736f8?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,689",
       tags: ["MetaTrader", "Top Seller"],
     },
@@ -133,7 +133,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "689",
     creator: {
       name: "Omar Singh",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F3fd3fb23ae994d01abe69bbd1dc62164?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "2,421",
       tags: ["Mac/Windows", "Option Desk"],
     },
@@ -157,7 +157,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "544",
     creator: {
       name: "Elena Markov",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F86d719d160f04d789c8777324569a25f?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,312",
       tags: ["Kubernetes", "CI/CD"],
     },
@@ -181,7 +181,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "333",
     creator: {
       name: "Nina Patel",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F3f582bb4062345dba9d3a58f06d2760a?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,028",
       tags: ["Calendar", "Live Alerts"],
     },
@@ -205,7 +205,7 @@ export const baseScriptProducts: ScriptProduct[] = [
     views: "476",
     creator: {
       name: "David Romero",
-      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4f4fd74771f24b32b74ffc1adc177a5f?format=webp&width=400",
+      avatar: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800",
       followers: "1,564",
       tags: ["DeFi", "Security"],
     },
