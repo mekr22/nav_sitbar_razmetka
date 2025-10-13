@@ -825,7 +825,9 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; 
             <p className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">{course.subtitle}</p>
           </div>
         </div>
-        <Star className="absolute right-4 top-4 h-6 w-6 text-[#B0B0B0]" />
+        <div className="absolute right-4 top-4">
+          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+        </div>
 
         {/* Host and Details */}
         <div className="flex flex-col gap-2">
