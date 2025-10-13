@@ -831,7 +831,7 @@ const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
                   </span>
                 </div>
               </div>
-              <div className="self-start rounded bg-[rgba(46,189,133,0.16)] px-1 py-0.5">
+              <div className="self-start flex items-center rounded bg-[rgba(46,189,133,0.16)] px-1 py-0.5">
                 <span className="text-xs font-bold uppercase text-[#2EBD85]">{strategy.profitSharing}</span>
               </div>
             </div>
