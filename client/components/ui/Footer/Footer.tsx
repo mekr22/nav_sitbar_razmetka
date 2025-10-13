@@ -35,31 +35,31 @@ const Footer: FC = () => {
                 <span>Cryptocurrency</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <TrendingUp className="h-6 w-6" />
+                <TrendingUp className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Trading Terminal</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <MessageCircle className="h-6 w-6" />
+                <MessageCircle className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Social Network</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Video className="h-6 w-6" />
+                <Video className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Live Streaming</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <ShoppingCart className="h-6 w-6" />
+                <ShoppingCart className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Marketplace</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Briefcase className="h-6 w-6" />
+                <Briefcase className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Portfolios</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Sparkles className="h-6 w-6" />
+                <Sparkles className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>AI Assistant</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <BarChart3 className="h-6 w-6" />
+                <BarChart3 className="h-6 w-6 min-[1601px]:hidden min-[1888px]:block" />
                 <span>Stock Market</span>
               </a>
             </div>
