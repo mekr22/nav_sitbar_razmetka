@@ -39,6 +39,39 @@ type Trader = {
   rating: string;
 };
 
+type FaqItem = {
+  id: string;
+  question: string;
+  description?: string;
+  bullets?: string[];
+};
+
+const faqs: FaqItem[] = [
+  {
+    id: "partner",
+    question: "How can I become a partner?",
+  },
+  {
+    id: "percentage",
+    question: "What percentage will I receive for each referred client?",
+  },
+  {
+    id: "payouts",
+    question: "How often are payouts made?",
+  },
+  {
+    id: "tools",
+    question: "What tools are provided for partners?",
+    description:
+      "We provide a comprehensive set of tools to help you effectively attract clients and grow your earnings. After registering for the affiliate program, you'll gain access to your personal dashboard where you can:",
+    bullets: [
+      "Track client statistics and analytics",
+      "Use ready-made promotional materials (banners, text copies, images)",
+      "Receive a unique referral link for automatic tracking of your referred clients",
+    ],
+  },
+];
+
 const traders: Trader[] = [
   {
     id: "sarah-lee-primary",
