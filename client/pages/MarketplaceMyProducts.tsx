@@ -51,44 +51,44 @@ const faqs: FaqItem[] = [
     id: "partner",
     question: "How can I become a partner?",
     description:
-      "Register for the affiliate program using your verified trading account and submit an application describing your audience and expertise. Our team will review it within two business days and send onboarding instructions.",
+      "Apply with your verified trading account. We review requests within two business days and share onboarding steps.",
     bullets: [
-      "Complete the quick partner application",
-      "Verify your contact and payout details",
-      "Receive onboarding materials to launch your campaign",
+      "Submit the partner form",
+      "Confirm contact and payout info",
+      "Receive the onboarding kit",
     ],
   },
   {
     id: "percentage",
     question: "What percentage will I receive for each referred client?",
     description:
-      "Your commission depends on the performance tier you unlock. The more active clients you attract, the higher the rate becomes, with rewards recalculated every month.",
+      "Commission tiers scale with the activity of your referred clients and are recalculated every month.",
     bullets: [
       "Base tier starts at 20% of platform fees",
-      "Unlock 30% by referring 10 active clients monthly",
-      "Reach 40% with premium tier by maintaining top retention",
+      "Refer 10 active clients monthly to unlock 30%",
+      "Maintain top retention to reach the 40% premium tier",
     ],
   },
   {
     id: "payouts",
     question: "How often are payouts made?",
     description:
-      "Affiliate rewards are processed automatically every Monday. You can choose the payout method that suits you best and monitor payment status inside your dashboard.",
+      "Affiliate rewards are processed automatically every Monday, with status tracking inside your dashboard.",
     bullets: [
-      "Weekly transfers in USD or USDT",
+      "Weekly transfers available in USD or USDT",
       "Minimum withdrawal amount is $50",
-      "Detailed payout history stored in your dashboard",
+      "Payment history stored in your dashboard",
     ],
   },
   {
     id: "tools",
     question: "What tools are provided for partners?",
     description:
-      "We provide a comprehensive set of tools to help you effectively attract clients and grow your earnings. After registering for the affiliate program, you'll gain access to your personal dashboard where you can:",
+      "After registration you'll access a dashboard with everything needed to promote Tyrian Trade efficiently.",
     bullets: [
-      "Track client statistics and analytics",
-      "Use ready-made promotional materials (banners, text copies, images)",
-      "Receive a unique referral link for automatic tracking of your referred clients",
+      "Monitor client stats and analytics",
+      "Use ready-made promotional materials",
+      "Share your unique referral link",
     ],
   },
 ];
