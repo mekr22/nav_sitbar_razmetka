@@ -299,8 +299,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
-            <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
-              <div className="flex flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
+            <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3 md:flex-nowrap">
+              <div className="flex flex-1 flex-wrap items-center gap-1 sm:gap-2 md:gap-3 md:min-w-0">
                 {FILTER_ORDER.map((filterKey) => {
                   const config = FILTER_CONFIG[filterKey];
                   const selectedOption = config.options.find((option) => option.value === filters[filterKey]) ?? config.options[0];
