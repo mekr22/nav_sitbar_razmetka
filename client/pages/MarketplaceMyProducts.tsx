@@ -818,7 +818,7 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; 
 
       {/* Content */}
       <div className="flex flex-1 flex-col gap-4 md:gap-3 md:justify-between">
-        {/* Title and Star */}
+        {/* Title */}
         <div className="flex items-start gap-4 pr-6 md:pr-8">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold text-white sm:text-[19px]">{course.title}</h3>
