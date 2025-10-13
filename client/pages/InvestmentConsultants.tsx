@@ -209,6 +209,10 @@ const InvestmentConsultants: FC = () => {
       navigate("/marketplace/courses", { state: { category } });
       return;
     }
+    if (category === "Scripts and Software") {
+      navigate("/marketplace/scripts", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
