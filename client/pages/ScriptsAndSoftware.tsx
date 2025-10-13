@@ -278,6 +278,10 @@ const ScriptsAndSoftware: FC = () => {
       navigate("/marketplace/courses", { state: { category } });
       return;
     }
+    if (category === "Trading robots and Algorithms") {
+      navigate("/marketplace/trading-robots", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
