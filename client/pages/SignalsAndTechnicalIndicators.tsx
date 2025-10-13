@@ -301,48 +301,58 @@ const SignalsAndTechnicalIndicators: FC = () => {
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
               <div className="flex flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
-                <button
-                  type="button"
-                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-                >
-                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">All</span>
-                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
-                </button>
-                <button
-                  type="button"
-                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-                >
-                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">Created</span>
-                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
-                </button>
-                <button
-                  type="button"
-                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-                >
-                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">Active Time</span>
-                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
-                </button>
-                <button
-                  type="button"
-                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-                >
-                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">PnL</span>
-                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
-                </button>
-                <button
-                  type="button"
-                  className="flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
-                >
-                  <span className="text-xs font-medium text-[#B0B0B0] sm:text-sm">Max Drawdown (7d)</span>
-                  <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
-                </button>
+                {FILTER_ORDER.map((filterKey) => {
+                  const config = FILTER_CONFIG[filterKey];
+                  const selectedOption = config.options.find((option) => option.value === filters[filterKey]) ?? config.options[0];
+                  const isActive = filters[filterKey] !== config.options[0].value;
+
+                  return (
+                    <DropdownMenu key={filterKey}>
+                      <DropdownMenuTrigger asChild>
+                        <button
+                          type="button"
+                          className={cn(
+                            "flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]",
+                            isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
+                          )}
+                          aria-label={`Filter by ${config.label}`}
+                        >
+                          <span className="text-xs font-medium sm:text-sm">{selectedOption.buttonLabel}</span>
+                          <ChevronDown className={cn("h-5 w-5", isActive ? "text-white" : "text-[#B0B0B0]")} />
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent
+                        align="start"
+                        className="w-60 rounded-xl border border-[#181B22] bg-[#0C1014]/95 p-1 backdrop-blur-xl"
+                      >
+                        <DropdownMenuRadioGroup
+                          value={filters[filterKey]}
+                          onValueChange={(value) => handleFilterChange(filterKey, value)}
+                        >
+                          {config.options.map((option) => (
+                            <DropdownMenuRadioItem
+                              key={option.value}
+                              value={option.value}
+                              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[#B0B0B0] data-[state=checked]:bg-[#1A1F2A] data-[state=checked]:text-white"
+                            >
+                              {option.label}
+                            </DropdownMenuRadioItem>
+                          ))}
+                        </DropdownMenuRadioGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  );
+                })}
               </div>
               <div className="flex h-9 w-full max-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] sm:w-[235px] md:w-[235px] lg:w-[235px]">
                 <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
                 <input
-                  type="text"
+                  type="search"
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Find signals & indicator"
                   className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm leading-none"
+                  aria-label="Find signals and indicators"
                 />
               </div>
             </div>
