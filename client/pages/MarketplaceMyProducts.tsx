@@ -856,6 +856,10 @@ const MarketplaceMyProducts: FC = () => {
     }
     if (category === "Strategies and Portfolios") {
       navigate("/marketplace/strategies", { state: { category } });
+      return;
+    }
+    if (category === "Trading robots and Algorithms") {
+      navigate("/marketplace/trading-robots", { state: { category } });
     }
   };
 
