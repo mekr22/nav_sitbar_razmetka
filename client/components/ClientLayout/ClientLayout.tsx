@@ -43,16 +43,17 @@ export const ClientLayout: FC<Props> = ({
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
-    if (mobileNavOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    if (typeof window === "undefined") {
+      return;
     }
+
+    const shouldLockScroll = window.innerWidth < 1024 && (mobileNavOpen || rightMenuOpen);
+    document.body.style.overflow = shouldLockScroll ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileNavOpen]);
+  }, [mobileNavOpen, rightMenuOpen]);
 
   useEffect(() => {
     const handleTouchStart = (event: TouchEvent) => {
