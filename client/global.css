@@ -177,12 +177,20 @@ textarea::-webkit-scrollbar-track {
 
 .news-filter-scroll::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(12, 16, 20, 0.2) 0%, rgba(12, 16, 20, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(12, 16, 20, 0.2) 0%,
+    rgba(12, 16, 20, 0) 100%
+  );
 }
 
 .news-filter-scroll::after {
   right: 0;
-  background: linear-gradient(270deg, rgba(12, 16, 20, 0.2) 0%, rgba(12, 16, 20, 0) 100%);
+  background: linear-gradient(
+    270deg,
+    rgba(12, 16, 20, 0.2) 0%,
+    rgba(12, 16, 20, 0) 100%
+  );
 }
 
 .news-filter-scroll.has-left-shadow::before {
