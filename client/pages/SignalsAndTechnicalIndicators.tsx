@@ -312,7 +312,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                         <button
                           type="button"
                           className={cn(
-                            "flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]",
+                            "flex h-9 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
                             isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
                           )}
                           aria-label={`Filter by ${config.label}`}
@@ -333,7 +333,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                             <DropdownMenuRadioItem
                               key={option.value}
                               value={option.value}
-                              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[#B0B0B0] data-[state=checked]:bg-[#1A1F2A] data-[state=checked]:text-white"
+                              className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-[#B0B0B0] outline-none data-[state=checked]:bg-[#1A1F2A] data-[state=checked]:text-white"
                             >
                               {option.label}
                             </DropdownMenuRadioItem>
