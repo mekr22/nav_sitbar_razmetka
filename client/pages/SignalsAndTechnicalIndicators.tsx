@@ -358,22 +358,28 @@ const SignalsAndTechnicalIndicators: FC = () => {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
-            {signals.map((signal) => {
-              const cardKey = buildCardKey("signals-page", signal.id);
-              const isFavorited = isFavorite(cardKey);
-              return (
-                <SignalCard
-                  key={signal.id}
-                  signal={signal}
-                  isActive={activeCardKey === cardKey}
-                  onSelect={() => setActiveCardKey(cardKey)}
-                  isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
-                />
-              );
-            })}
-          </div>
+          {filteredSignals.length === 0 ? (
+            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-6 text-center text-sm font-semibold text-[#B0B0B0]">
+              No signals match your filters yet. Try adjusting the filters or search query.
+            </div>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
+              {filteredSignals.map((signal) => {
+                const cardKey = buildCardKey("signals-page", signal.id);
+                const isFavorited = isFavorite(cardKey);
+                return (
+                  <SignalCard
+                    key={signal.id}
+                    signal={signal}
+                    isActive={activeCardKey === cardKey}
+                    onSelect={() => setActiveCardKey(cardKey)}
+                    isFavorite={isFavorited}
+                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                  />
+                );
+              })}
+            </div>
+          )}
         </section>
       </div>
     </div>
