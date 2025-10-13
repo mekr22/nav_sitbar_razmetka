@@ -464,7 +464,7 @@ const courses: Course[] = [
   },
 ];
 
-const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => void }> = ({ analyst, isActive, onSelect }) => (
+const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ analyst, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
