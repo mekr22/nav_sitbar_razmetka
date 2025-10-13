@@ -1730,7 +1730,7 @@ const MarketplaceMyProducts: FC = () => {
         </div>
 
         {/* FAQ Section */}
-        <div className="flex flex-col gap-6 py-6">
+        <div className="mt-10 flex flex-col gap-6 py-6 sm:mt-16">
           <div className="flex flex-col gap-4">
             <h2 className="text-4xl font-bold text-white sm:text-[56px] sm:leading-[100%]">FAQ</h2>
             <p className="max-w-[640px] text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
