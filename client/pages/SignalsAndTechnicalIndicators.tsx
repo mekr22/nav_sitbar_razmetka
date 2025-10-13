@@ -282,6 +282,10 @@ const SignalsAndTechnicalIndicators: FC = () => {
       navigate("/marketplace/scripts", { state: { category } });
       return;
     }
+    if (category === "Others") {
+      navigate("/marketplace/others", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
