@@ -103,7 +103,7 @@ const ACTIVE_TIME_CYCLE: ActiveTimeOptionValue[] = ["intraday", "swing"];
 const PNL_CYCLE: PnlOptionValue[] = ["positive", "negative"];
 const DRAWDOWN_CYCLE: DrawdownOptionValue[] = ["low", "high"];
 
-const DUPLICATED_PAIRS = 6;
+const DUPLICATED_PAIRS = 12;
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
