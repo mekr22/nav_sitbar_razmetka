@@ -27,7 +27,7 @@ const Footer: FC = () => {
         {/* Main Content Grid */}
         <div className="flex flex-col gap-12 xl:flex-col xl:gap-10 min-[1601px]:grid min-[1601px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)] min-[1601px]:items-start min-[1601px]:gap-12 min-[1888px]:grid min-[1888px]:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] min-[1888px]:gap-12">
           {/* Products Section */}
-          <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full min-[1601px]:order-1 min-[1601px]:w-full min-[1601px]:justify-self-start min-[1888px]:order-1">
+          <div className="flex w-full flex-col gap-2.5 xl:order-1 xl:w-full min-[1601px]:order-1 min-[1601px]:w-full min-[1601px]:col-start-1 min-[1601px]:col-end-2 min-[1888px]:col-start-1 min-[1888px]:row-start-1">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
             <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 xl:gap-x-8 xl:gap-y-4 min-[1601px]:grid-cols-2 min-[1601px]:gap-x-12 min-[1601px]:gap-y-6 min-[1888px]:grid-cols-4 min-[1888px]:gap-x-12 min-[1888px]:gap-y-3">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
@@ -66,7 +66,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Resources Section */}
-          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1601px]:order-3 min-[1601px]:w-full min-[1601px]:justify-self-end min-[1888px]:order-3">
+          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1601px]:order-3 min-[1601px]:w-full min-[1601px]:col-start-3 min-[1601px]:col-end-4 min-[1888px]:col-start-2 min-[1888px]:row-start-1">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Resources</h4>
             <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
               AI
@@ -74,7 +74,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Social Section */}
-          <div className="flex w-full flex-col gap-2.5 xl:order-2 xl:w-full xl:max-w-none min-[1601px]:order-2 min-[1601px]:w-full min-[1601px]:justify-self-center min-[1888px]:order-2">
+          <div className="flex w-full flex-col gap-2.5 xl:order-2 xl:w-full xl:max-w-none min-[1601px]:order-2 min-[1601px]:w-full min-[1601px]:col-start-2 min-[1601px]:col-end-3 min-[1888px]:col-start-1 min-[1888px]:row-start-2 min-[1888px]:mt-6">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px] min-[1601px]:pl-9 min-[1888px]:pl-0">Social</h4>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 min-[1601px]:flex-col min-[1601px]:items-start min-[1601px]:gap-2 min-[1888px]:grid min-[1888px]:grid-cols-2 min-[1888px]:items-start min-[1888px]:gap-x-12 min-[1888px]:gap-y-6">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1888px]:gap-3">
