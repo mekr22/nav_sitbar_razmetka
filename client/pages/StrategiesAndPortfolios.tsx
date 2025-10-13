@@ -176,18 +176,19 @@ const StrategiesAndPortfolios: FC = () => {
       Array.from({ length: DUPLICATED_PAIRS }, (_, pairIndex) =>
         baseStrategies.map((strategy, cardIndex) => {
           const metaIndex = pairIndex * baseStrategies.length + cardIndex;
-
-          const riskBucket = strategy.riskLevel.toLowerCase() as RiskOptionValue;
+          const minCapitalValue = parseCurrency(strategy.minCapital);
+          const drawdownValue = parsePercentage(strategy.maxDrawdown);
+          const roiValue = parsePercentage(strategy.roi30d);
 
           return {
             ...strategy,
             id: `${strategy.id}-pair-${pairIndex}-${cardIndex}`,
-            name: `${strategy.name} ${metaIndex + 1}`,
-            style: STYLE_CYCLE[metaIndex % STYLE_CYCLE.length],
-            riskBucket,
-            capitalBucket: CAPITAL_CYCLE[metaIndex % CAPITAL_CYCLE.length],
-            roiBucket: ROI_CYCLE[metaIndex % ROI_CYCLE.length],
-            drawdownBucket: DRAWDOWN_CYCLE[metaIndex % DRAWDOWN_CYCLE.length],
+            name: pairIndex === 0 ? strategy.name : `${strategy.name} ${metaIndex + 1}`,
+            style: resolveStyle(strategy),
+            riskBucket: strategy.riskLevel.toLowerCase() as RiskOptionValue,
+            capitalBucket: resolveCapitalBucket(minCapitalValue),
+            roiBucket: resolveRoiBucket(roiValue),
+            drawdownBucket: resolveDrawdownBucket(drawdownValue),
           };
         }),
       ).flat(),
