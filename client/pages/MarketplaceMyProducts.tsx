@@ -219,7 +219,7 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
         <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
       </div>
       <div className="relative flex flex-col gap-4">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
             <img
               src={trader.avatar}
