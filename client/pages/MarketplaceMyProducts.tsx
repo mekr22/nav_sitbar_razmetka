@@ -135,6 +135,24 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
         isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
+      <div className="absolute right-4 top-4">
+        <button
+          type="button"
+          aria-pressed={isFavorite}
+          aria-label="Toggle favorite"
+          onClick={(event) => {
+            event.stopPropagation();
+            onToggleFavorite();
+          }}
+          onKeyDown={(event) => event.stopPropagation()}
+          className={cn(
+            "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60",
+            isFavorite ? "text-[#A06AFF]" : "text-[#B0B0B0]",
+          )}
+        >
+          <Star className="h-6 w-6" strokeWidth={isFavorite ? 1.5 : 1.4} fill={isFavorite ? "#A06AFF" : "none"} />
+        </button>
+      </div>
       <div className="relative flex flex-col gap-4">
         <div className="flex items-center gap-4">
           <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
