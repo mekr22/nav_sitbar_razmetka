@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AppBackground } from "../ui/AppBackground/AppBackground";
 import { Header } from "../ui/Header/Header";
@@ -39,15 +39,94 @@ export const ClientLayout: FC<Props> = ({
     ? "secondary"
     : "primal";
   const [rightMenuOpen, setRightMenuOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    if (mobileNavOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileNavOpen]);
+
+  useEffect(() => {
+    const handleTouchStart = (event: TouchEvent) => {
+      if (window.innerWidth > 640 || event.touches.length !== 1) {
+        touchStartRef.current = null;
+        return;
+      }
+
+      const touch = event.touches[0];
+
+      if (!mobileNavOpen && touch.clientX > 32) {
+        touchStartRef.current = null;
+        return;
+      }
+
+      touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+    };
+
+    const handleTouchMove = (event: TouchEvent) => {
+      if (window.innerWidth > 640 || event.touches.length !== 1) {
+        return;
+      }
+
+      if (!touchStartRef.current) {
+        return;
+      }
+
+      const touch = event.touches[0];
+      const deltaX = touch.clientX - touchStartRef.current.x;
+      const deltaY = Math.abs(touch.clientY - touchStartRef.current.y);
+
+      if (deltaY > 40) {
+        touchStartRef.current = null;
+        return;
+      }
+
+      if (!mobileNavOpen && touchStartRef.current.x <= 32 && deltaX > 70) {
+        setMobileNavOpen(true);
+        touchStartRef.current = null;
+      } else if (mobileNavOpen && deltaX < -70) {
+        setMobileNavOpen(false);
+        touchStartRef.current = null;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      touchStartRef.current = null;
+    };
+
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [mobileNavOpen]);
 
   return (
     <AppBackground variant={layoutVariant}>
       <Header
         rightMenuOpen={rightMenuOpen}
         setRightMenuOpen={setRightMenuOpen}
+        onMobileNavToggle={() => setMobileNavOpen(true)}
+        mobileNavOpen={mobileNavOpen}
       />
       <div className="flex justify-start">
-        <NewNavBar variant={layoutVariant} />
+        <NewNavBar
+          variant={layoutVariant}
+          mobileOpen={mobileNavOpen}
+          onMobileClose={() => setMobileNavOpen(false)}
+        />
         <main className="flex-1">
           <ContentWrapper className={contentWrapperClassname}>
             {children}
