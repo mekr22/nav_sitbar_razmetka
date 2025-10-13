@@ -870,21 +870,69 @@ const MarketplaceRightMenuContent: FC = () => {
   );
 };
 
-export const RightMenu: FC<Props> = ({ isCollapsed }) => {
+export const RightMenu: FC<Props> = ({ isCollapsed, onClose }) => {
   const location = useLocation();
   const isMarketplaceRoute = location.pathname.startsWith("/marketplace");
 
-  return (
-    <section
-      className={cn(
-        "flex flex-col gap-6 min-h-full overflow-hidden transition-all duration-500 ease-in-out",
-        {
-          "h-0 w-0 p-0 opacity-0": !isCollapsed,
-          "min-w-[312px] w-[312px] pr-6 opacity-100": isCollapsed,
-        },
-      )}
-    >
+  const renderMenuContent = () => (
+    <div className="flex flex-col gap-6 pb-6">
       {isMarketplaceRoute ? <MarketplaceRightMenuContent /> : <DefaultRightMenuContent />}
-    </section>
+    </div>
+  );
+
+  return (
+    <>
+      <section
+        className={cn(
+          "hidden lg:flex flex-col gap-6 min-h-full overflow-hidden transition-all duration-500 ease-in-out",
+          {
+            "h-0 w-0 p-0 opacity-0": !isCollapsed,
+            "min-w-[312px] w-[312px] pr-6 opacity-100": isCollapsed,
+          },
+        )}
+        aria-hidden={!isCollapsed}
+      >
+        {renderMenuContent()}
+      </section>
+
+      <div
+        className={cn(
+          "fixed inset-0 z-40 flex lg:hidden",
+          isCollapsed ? "pointer-events-auto" : "pointer-events-none",
+        )}
+      >
+        <div
+          className={cn(
+            "absolute inset-0 bg-black/60 transition-opacity",
+            isCollapsed ? "opacity-100" : "opacity-0",
+          )}
+          onClick={onClose}
+          aria-hidden="true"
+        />
+        <div
+          className={cn(
+            "relative z-10 ml-auto flex h-full w-[320px] max-w-[90%] flex-col gap-5 bg-[#0C1014]/95 p-5 backdrop-blur-xl transition-transform duration-300 ease-in-out",
+            isCollapsed ? "translate-x-0" : "translate-x-full",
+          )}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Right menu"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-bold uppercase text-[#B0B0B0]">Insights</span>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close right menu"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/60 text-white transition-colors hover:border-[#1F2230]"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="h-px w-full bg-[#181B22]" />
+          <div className="flex-1 overflow-y-auto pr-2">{renderMenuContent()}</div>
+        </div>
+      </div>
+    </>
   );
 };
