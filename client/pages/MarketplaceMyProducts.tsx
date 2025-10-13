@@ -1796,10 +1796,6 @@ const MarketplaceMyProducts: FC = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-12 sm:mt-18">
-          <Footer />
-        </div>
       </div>
     </div>
   );
