@@ -67,7 +67,7 @@ export const baseTradingRobots: TradingRobot[] = [
   {
     id: "grid-flow",
     name: "Grid Flow Pro",
-    icon: exchangeIcons.binance,
+    icon: RISK_MASTER_ICON,
     users: "428",
     accuracyLabel: "High Accuracy",
     accuracyLevel: "HIGH",
@@ -93,7 +93,7 @@ export const baseTradingRobots: TradingRobot[] = [
   {
     id: "arb-scout",
     name: "Arb Scout X",
-    icon: exchangeIcons.okx,
+    icon: RISK_MASTER_ICON,
     users: "189",
     accuracyLabel: "High Accuracy",
     accuracyLevel: "HIGH",
@@ -119,7 +119,7 @@ export const baseTradingRobots: TradingRobot[] = [
   {
     id: "pulse-scalper",
     name: "Pulse Scalper",
-    icon: exchangeIcons.bybit,
+    icon: RISK_MASTER_ICON,
     users: "502",
     accuracyLabel: "Medium Accuracy",
     accuracyLevel: "MEDIUM",
