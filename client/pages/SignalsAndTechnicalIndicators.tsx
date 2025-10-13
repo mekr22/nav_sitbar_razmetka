@@ -300,7 +300,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3 min-[1143px]:flex-nowrap">
-              <div className="flex flex-1 flex-wrap items-center gap-1 sm:gap-2 md:gap-3 md:min-w-0">
+              <div className="flex flex-1 flex-wrap items-center gap-1 sm:gap-2 md:gap-3 md:min-w-0 max-[1142px]:w-full">
                 {FILTER_ORDER.map((filterKey) => {
                   const config = FILTER_CONFIG[filterKey];
                   const selectedOption = config.options.find((option) => option.value === filters[filterKey]) ?? config.options[0];
