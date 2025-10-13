@@ -117,12 +117,22 @@ const TraderPerformanceChart: FC = () => <PerformanceChart />;
 
 const AnalystPerformanceChart: FC = () => <PerformanceChart />;
 
-const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featured }) => (
+const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void }> = ({ trader, isActive, onSelect }) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onClick={onSelect}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isActivationKey(event.key)) {
+          event.preventDefault();
+          onSelect();
+        }
+      }}
       className={cn(
-        "relative rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px]",
-        featured ? "border-[#A06AFF]" : "border-[#181B22]",
+        "relative cursor-pointer rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+        isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
       <div className="relative flex flex-col gap-4">
@@ -204,9 +214,9 @@ const TraderCard: FC<{ trader: Trader; featured?: boolean }> = ({ trader, featur
             Learn More
           </button>
           <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
-          <Mail className="h-4 w-4" />
-          Contact
-        </button>
+            <Mail className="h-4 w-4" />
+            Contact
+          </button>
         </div>
       </div>
     </div>
