@@ -1049,6 +1049,13 @@ const MarketplaceMyProducts: FC = () => {
 
   const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    if (category === "Signals and Technical indicators") {
+      navigate("/marketplace/signals");
+    }
+  };
+
   const scriptsCardKey = buildCardKey("scripts", "main");
   const otherCardKey = buildCardKey("other", "main");
 
