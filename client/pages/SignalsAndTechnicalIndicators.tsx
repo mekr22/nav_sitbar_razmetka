@@ -176,7 +176,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
                 </button>
               </div>
-              <div className="flex h-9 w-full max-w-[240px] flex-shrink-0 items-center gap-1 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] sm:w-[260px] md:w-[280px] lg:w-[300px]">
+              <div className="flex h-9 w-full max-w-[230px] flex-shrink-0 items-center gap-1 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] sm:w-[230px] md:w-[230px] lg:w-[230px]">
                 <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
                 <input
                   type="text"
