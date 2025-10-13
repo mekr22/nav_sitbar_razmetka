@@ -130,6 +130,7 @@ const CoursesAndTrainingMaterials: FC = () => {
     const targetCount = 12;
     const result: Course[] = [];
     let iteration = 0;
+    const myProductsImage = "https://api.builder.io/api/v1/image/assets/TEMP/785c3faa6d149a1cf74053c6eee68a561cfcead4?width=463";
 
     while (result.length < targetCount) {
       baseCourses.forEach((course) => {
@@ -145,6 +146,7 @@ const CoursesAndTrainingMaterials: FC = () => {
           ...course,
           id: `${course.id}${idSuffix}`,
           title: `${course.title}${titleSuffix}`,
+          image: myProductsImage,
         });
       });
       iteration += 1;
