@@ -1252,7 +1252,7 @@ const MarketplaceMyProducts: FC = () => {
               </div>
               <Star className="h-6 w-6 text-[#B0B0B0]" />
             </div>
-            <div className="flex flex-col gap-6 lg:flex-row">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
               {/* Left side - Image and Type Details */}
               <div className="flex w-full flex-col gap-4 lg:w-80">
                 <img
