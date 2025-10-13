@@ -815,36 +815,28 @@ const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
     <div className="mx-auto w-full max-w-[525px]">
       <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
         {/* Header */}
-        <div className="flex items-center gap-4">
-          <div className="flex flex-1 flex-col gap-2">
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex flex-col gap-1">
-                <h3 className="text-lg font-bold text-white sm:text-[19px]">{strategy.name}</h3>
-                <div className="flex flex-col gap-1">
-                  <div className="flex flex-wrap items-center gap-1">
-                    <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
-                      <Users className="h-4 w-4 text-[#B0B0B0]" />
-                      <span className="text-xs font-bold text-white">{strategy.users}</span>
-                    </div>
-                    <div className={`flex items-center gap-1 rounded px-1 py-0.5 ${riskColors.bg}`}>
-                      <span className={`text-xs font-bold uppercase ${riskColors.text}`}>
-                        Risk: {strategy.riskLevel}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center self-start rounded bg-[rgba(46,189,133,0.16)] px-2 py-0.5">
-                    <span className="whitespace-nowrap text-xs font-bold uppercase text-[#2EBD85]">{strategy.profitSharing}</span>
-                  </div>
+        <div className="flex items-start gap-3">
+          <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
+          <div className="flex flex-1 flex-col gap-0.5">
+            <h3 className="text-lg font-bold text-white sm:text-[19px]">{strategy.name}</h3>
+            <div className="flex flex-col gap-1">
+              <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                  <Users className="h-4 w-4 text-[#B0B0B0]" />
+                  <span className="text-xs font-bold text-white">{strategy.users}</span>
+                </div>
+                <div className={`flex items-center gap-1 rounded px-1 py-0.5 ${riskColors.bg}`}>
+                  <span className={`text-xs font-bold uppercase ${riskColors.text}`}>
+                    Risk: {strategy.riskLevel}
+                  </span>
                 </div>
               </div>
-              <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
+              <div className="self-start rounded bg-[rgba(46,189,133,0.16)] px-1 py-0.5">
+                <span className="text-xs font-bold uppercase text-[#2EBD85]">{strategy.profitSharing}</span>
+              </div>
             </div>
           </div>
-          <img
-            src={strategy.icon}
-            alt={strategy.name}
-            className="h-[72px] w-[72px] flex-shrink-0 rounded-lg object-cover"
-          />
+          <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
         </div>
 
         {/* Divider */}
