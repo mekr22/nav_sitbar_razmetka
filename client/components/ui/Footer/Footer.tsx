@@ -74,9 +74,9 @@ const Footer: FC = () => {
           </div>
 
           {/* Social Section */}
-          <div className="flex w-full flex-col gap-5 lg:w-[120px]">
+          <div className="flex w-full flex-col gap-5 lg:w-auto">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Social</h4>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
                 X/Twitter
               </a>
@@ -88,9 +88,6 @@ const Footer: FC = () => {
               </a>
               <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
                 Youtube
-              </a>
-              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                Facebook
               </a>
             </div>
           </div>
