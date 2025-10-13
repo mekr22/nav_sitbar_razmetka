@@ -940,7 +940,6 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
               </div>
             </div>
           </div>
-          <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
         </div>
 
         {/* Divider */}
