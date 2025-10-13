@@ -254,6 +254,14 @@ const SignalsAndTechnicalIndicators: FC = () => {
     if (category === "Signals and Technical indicators") {
       return;
     }
+    if (category === "Popular") {
+      navigate("/marketplace/popular", { state: { category } });
+      return;
+    }
+    if (category === "Favourites") {
+      navigate("/marketplace/favourites", { state: { category } });
+      return;
+    }
     if (category === "Strategies and Portfolios") {
       navigate("/marketplace/strategies", { state: { category } });
       return;
