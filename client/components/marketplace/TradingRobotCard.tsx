@@ -123,126 +123,126 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
 
         <div className="flex flex-1 flex-col gap-4">
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <img
-            src={robot.icon}
-            alt={robot.name}
-            className="h-[72px] w-[72px] rounded-lg object-cover"
-          />
-          <div className="flex flex-1 flex-col gap-1">
-            <h3 className="text-lg font-bold text-white sm:text-[19px]">
-              {robot.name}
-            </h3>
-            <div className="flex flex-col gap-1">
-              <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
-                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
-                  <Users className="h-4 w-4 text-[#B0B0B0]" />
-                  {robot.users}
-                </span>
-                <span
-                  className={cn(
-                    "inline-flex rounded px-2 py-0.5 font-extrabold uppercase",
-                    accuracyStyle.container,
-                    accuracyStyle.text,
-                  )}
-                >
-                  {robot.accuracyLabel}
-                </span>
-                <span className="inline-flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-[#B0B0B0]">
-                  <Rocket className="h-3.5 w-3.5" />
-                  {leverageBadges[robot.leverageCategory]}
-                </span>
-              </div>
-              <div className="flex items-center self-start rounded bg-[#1C3430] px-2 py-0.5">
-                <span className="text-xs font-extrabold uppercase text-[#2EBD85]">
-                  {robot.profitSharing}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="h-px w-full bg-[#181B22]" />
-
-        <div className="flex items-center gap-2">
-          {robot.exchanges.slice(0, 3).map((exchange) => (
             <img
-              key={exchange.id}
-              src={exchange.icon}
-              alt={exchange.name}
-              className="h-8 w-8 rounded-full object-cover"
+              src={robot.icon}
+              alt={robot.name}
+              className="h-[72px] w-[72px] rounded-lg object-cover"
             />
-          ))}
-          {robot.exchanges.length > 3 && (
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2E2744]">
-              <span className="text-xs font-bold text-white">
-                +{robot.exchanges.length - 3}
-              </span>
+            <div className="flex flex-1 flex-col gap-1">
+              <h3 className="text-lg font-bold text-white sm:text-[19px]">
+                {robot.name}
+              </h3>
+              <div className="flex flex-col gap-1">
+                <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
+                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
+                    <Users className="h-4 w-4 text-[#B0B0B0]" />
+                    {robot.users}
+                  </span>
+                  <span
+                    className={cn(
+                      "inline-flex rounded px-2 py-0.5 font-extrabold uppercase",
+                      accuracyStyle.container,
+                      accuracyStyle.text,
+                    )}
+                  >
+                    {robot.accuracyLabel}
+                  </span>
+                  <span className="inline-flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-[#B0B0B0]">
+                    <Rocket className="h-3.5 w-3.5" />
+                    {leverageBadges[robot.leverageCategory]}
+                  </span>
+                </div>
+                <div className="flex items-center self-start rounded bg-[#1C3430] px-2 py-0.5">
+                  <span className="text-xs font-extrabold uppercase text-[#2EBD85]">
+                    {robot.profitSharing}
+                  </span>
+                </div>
+              </div>
             </div>
-          )}
-        </div>
+          </div>
 
-        <div className="flex flex-col gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-          <div className="flex items-center gap-1 text-white">
-            <span className="text-[#B0B0B0]">Pair:</span>
-            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
-              {robot.pair}
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Max Drawdown:</span>
-            <span className="rounded bg-[#1C3430] px-1 py-0.5 text-[#2EBD85]">
-              {robot.maxDrawdown}
-            </span>
-          </div>
-          <div className="flex items-center gap-1 text-white">
-            <span className="text-[#B0B0B0]">Market Type:</span>
-            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
-              {robot.market}
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center gap-1 text-white">
-            <span className="text-[#B0B0B0]">Type:</span>
-            {robot.assetTags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded bg-[#2E2744] px-1 py-0.5 text-white"
-              >
-                {tag}
-              </span>
+          <div className="h-px w-full bg-[#181B22]" />
+
+          <div className="flex items-center gap-2">
+            {robot.exchanges.slice(0, 3).map((exchange) => (
+              <img
+                key={exchange.id}
+                src={exchange.icon}
+                alt={exchange.name}
+                className="h-8 w-8 rounded-full object-cover"
+              />
             ))}
+            {robot.exchanges.length > 3 && (
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#2E2744]">
+                <span className="text-xs font-bold text-white">
+                  +{robot.exchanges.length - 3}
+                </span>
+              </div>
+            )}
           </div>
-          <div className="flex items-center gap-1 text-white">
-            <span className="text-[#B0B0B0]">Strategy:</span>
-            <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
-              {robot.strategy}
-            </span>
-          </div>
-          <div className="flex items-center gap-1 text-white">
-            <span className="text-[#B0B0B0]">Settings:</span>
-            <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF]">
-              {robot.settingsTag}
-            </span>
-          </div>
-        </div>
 
-        <div className="h-14 w-full overflow-hidden">
-          <TradingRobotSparkline />
-        </div>
-
-        <div className="h-px w-full bg-[#181B22]" />
-
-        <div className="flex flex-col items-start gap-1">
-          <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-[#B0B0B0] sm:text-xs">
-            <span>Calc. APY</span>
-            <div className="inline-flex items-center justify-center rounded border border-[#B0B0B0] px-1.5 py-0 text-[10px] text-[#B0B0B0]">
-              30D
+          <div className="flex flex-col gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
+            <div className="flex items-center gap-1 text-white">
+              <span className="text-[#B0B0B0]">Pair:</span>
+              <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+                {robot.pair}
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span>Max Drawdown:</span>
+              <span className="rounded bg-[#1C3430] px-1 py-0.5 text-[#2EBD85]">
+                {robot.maxDrawdown}
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-white">
+              <span className="text-[#B0B0B0]">Market Type:</span>
+              <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+                {robot.market}
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1 text-white">
+              <span className="text-[#B0B0B0]">Type:</span>
+              {robot.assetTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded bg-[#2E2744] px-1 py-0.5 text-white"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex items-center gap-1 text-white">
+              <span className="text-[#B0B0B0]">Strategy:</span>
+              <span className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+                {robot.strategy}
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-white">
+              <span className="text-[#B0B0B0]">Settings:</span>
+              <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 text-[#6AA5FF]">
+                {robot.settingsTag}
+              </span>
             </div>
           </div>
-          <span className="text-2xl font-bold leading-none text-[#2EBD85] sm:text-[26px]">
-            {robot.roi30d}
-          </span>
+
+          <div className="h-14 w-full overflow-hidden">
+            <TradingRobotSparkline />
+          </div>
+
+          <div className="h-px w-full bg-[#181B22]" />
+
+          <div className="flex flex-col items-start gap-1">
+            <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-[#B0B0B0] sm:text-xs">
+              <span>Calc. APY</span>
+              <div className="inline-flex items-center justify-center rounded border border-[#B0B0B0] px-1.5 py-0 text-[10px] text-[#B0B0B0]">
+                30D
+              </div>
+            </div>
+            <span className="text-2xl font-bold leading-none text-[#2EBD85] sm:text-[26px]">
+              {robot.roi30d}
+            </span>
+          </div>
         </div>
-      </div>
 
         <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
