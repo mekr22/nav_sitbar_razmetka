@@ -1286,7 +1286,7 @@ const MarketplaceMyProducts: FC = () => {
               {/* Right side - Content */}
               <div className="relative flex flex-1 flex-col gap-5">
                 <div className="flex flex-col gap-4 border-b border-[#181B22] pb-4">
-                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="flex items-center gap-3">
                       <img
                         src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
