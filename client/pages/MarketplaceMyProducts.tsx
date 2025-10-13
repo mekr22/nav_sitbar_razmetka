@@ -849,6 +849,10 @@ const MarketplaceMyProducts: FC = () => {
     setSelectedCategory(category);
     if (category === "Signals and Technical indicators") {
       navigate("/marketplace/signals", { state: { category } });
+      return;
+    }
+    if (category === "Strategies and Portfolios") {
+      navigate("/marketplace/strategies", { state: { category } });
     }
   };
 
