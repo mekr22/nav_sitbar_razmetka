@@ -1209,12 +1209,15 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {signals.map((signal) => {
               const cardKey = buildCardKey("signal", signal.id);
+              const isFavorited = isFavorite(cardKey);
               return (
                 <SignalCard
                   key={signal.id}
                   signal={signal}
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
               );
             })}
