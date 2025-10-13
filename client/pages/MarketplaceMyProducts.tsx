@@ -1349,131 +1349,146 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            {[1, 2].map((i) => (
-              <div
-                key={i}
-                className={cn(
-                  "relative overflow-hidden rounded-2xl bg-[#0C101480] p-4 backdrop-blur-[50px]",
-                  i === 1 ? "border border-[#A06AFF]" : "border border-[#181B22]",
-                )}
-              >
-                <div className="flex items-start gap-3">
-                  <img
-                    src="https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144"
-                    alt="Product"
-                    className="h-[72px] w-[72px] rounded-lg object-cover"
-                  />
-                  <div className="flex flex-1 flex-col gap-1">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
-                      <Star className="h-6 w-6 text-[#B0B0B0]" />
-                    </div>
-                    <div className="flex flex-col gap-1">
-                      <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
-                        <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
-                          <Users className="h-4 w-4 text-[#B0B0B0]" />
-                          315
-                        </span>
-                        <span className="inline-flex rounded bg-[#2A1C0E] px-2 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+            {[1, 2].map((i) => {
+              const cardKey = buildCardKey("trading-robot", `${i}`);
+              const isActive = activeCardKey === cardKey;
+
+              return (
+                <div
+                  key={i}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={isActive}
+                  onClick={() => setActiveCardKey(cardKey)}
+                  onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+                    if (isActivationKey(event.key)) {
+                      event.preventDefault();
+                      setActiveCardKey(cardKey);
+                    }
+                  }}
+                  className={cn(
+                    "relative cursor-pointer overflow-hidden rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] transition-colors",
+                    isActive ? "border-[#A06AFF]" : "border-[#181B22]",
+                  )}
+                >
+                  <div className="flex items-start gap-3">
+                    <img
+                      src="https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144"
+                      alt="Product"
+                      className="h-[72px] w-[72px] rounded-lg object-cover"
+                    />
+                    <div className="flex flex-1 flex-col gap-1">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
+                        <Star className="h-6 w-6 text-[#B0B0B0]" />
                       </div>
-                      <div className="flex items-center self-start rounded bg-[#1C3430] px-2 py-0.5">
-                        <span className="text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
+                      <div className="flex flex-col gap-1">
+                        <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
+                          <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
+                            <Users className="h-4 w-4 text-[#B0B0B0]" />
+                            315
+                          </span>
+                          <span className="inline-flex rounded bg-[#2A1C0E] px-2 py-0.5 font-extrabold uppercase text-[#FFA800]">Medium Accuracy</span>
+                        </div>
+                        <div className="flex items-center self-start rounded bg-[#1C3430] px-2 py-0.5">
+                          <span className="text-xs font-extrabold uppercase text-[#2EBD85]">20% Profit Sharing</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-3 border-t border-[#181B22]" />
+                  <div className="mt-3 border-t border-[#181B22]" />
 
-                <div className="mt-3 flex items-center gap-2">
-                  <div className="h-8 w-8 rounded-full overflow-hidden bg-gradient-to-b from-[#627EEA] to-[#627EEA]/80 flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 256 417" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" fill="#fff" fillOpacity="0.6"/>
-                      <path d="M127.962 0L0 212.32l127.962 75.639V154.158z" fill="#fff"/>
-                      <path d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.6L256 236.587z" fill="#fff" fillOpacity="0.6"/>
-                      <path d="M127.962 416.905v-104.72L0 236.585z" fill="#fff"/>
-                      <path d="M127.961 287.958l127.96-75.637-127.96-58.162z" fill="#fff" fillOpacity="0.2"/>
-                      <path d="M0 212.32l127.96 75.638v-133.8z" fill="#fff" fillOpacity="0.6"/>
-                    </svg>
-                  </div>
-                  <div className="h-8 w-8 rounded-full overflow-hidden bg-[#F3BA2F] flex items-center justify-center">
-                    <svg width="18" height="18" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M38.171 53.203L62.998 28.375L87.829 53.203L101.289 39.742L62.998 1.451L24.711 39.742L38.171 53.203Z" fill="white"/>
-                      <path d="M1.45 63.004L14.91 49.543L28.371 63.004L14.91 76.464L1.45 63.004Z" fill="white"/>
-                      <path d="M38.171 72.804L62.998 97.631L87.829 72.804L101.289 86.265L62.998 124.551L24.711 86.265L38.171 72.804Z" fill="white"/>
-                      <path d="M97.625 63.004L111.086 49.543L124.546 63.004L111.086 76.464L97.625 63.004Z" fill="white"/>
-                      <path d="M77.88 63.003H77.879L63.001 48.124L52.287 58.838L51.654 59.471L48.12 63.005L63.001 77.881L77.879 63.004L77.88 63.003Z" fill="white"/>
-                    </svg>
-                  </div>
-                  <div className="h-8 w-8 rounded-full overflow-hidden bg-white/10 border border-white/20 flex items-center justify-center">
-                    <div className="grid grid-cols-3 gap-[1px] w-4 h-4">
-                      <div className="bg-white w-1 h-1"></div>
-                      <div className="bg-transparent w-1 h-1"></div>
-                      <div className="bg-white w-1 h-1"></div>
-                      <div className="bg-transparent w-1 h-1"></div>
-                      <div className="bg-white w-1 h-1"></div>
-                      <div className="bg-transparent w-1 h-1"></div>
-                      <div className="bg-white w-1 h-1"></div>
-                      <div className="bg-transparent w-1 h-1"></div>
-                      <div className="bg-white w-1 h-1"></div>
+                  <div className="mt-3 flex items-center gap-2">
+                    <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gradient-to-b from-[#627EEA] to-[#627EEA]/80">
+                      <svg width="20" height="20" viewBox="0 0 256 417" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" fill="#fff" fillOpacity="0.6"/>
+                        <path d="M127.962 0L0 212.32l127.962 75.639V154.158z" fill="#fff"/>
+                        <path d="M127.961 312.187l-1.575 1.92v98.199l1.575 4.6L256 236.587z" fill="#fff" fillOpacity="0.6"/>
+                        <path d="M127.962 416.905v-104.72L0 236.585z" fill="#fff"/>
+                        <path d="M127.961 287.958l127.96-75.637-127.96-58.162z" fill="#fff" fillOpacity="0.2"/>
+                        <path d="M0 212.32l127.96 75.638v-133.8z" fill="#fff" fillOpacity="0.6"/>
+                      </svg>
+                    </div>
+                    <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-[#F3BA2F]">
+                      <svg width="18" height="18" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M38.171 53.203L62.998 28.375L87.829 53.203L101.289 39.742L62.998 1.451L24.711 39.742L38.171 53.203Z" fill="white"/>
+                        <path d="M1.45 63.004L14.91 49.543L28.371 63.004L14.91 76.464L1.45 63.004Z" fill="white"/>
+                        <path d="M38.171 72.804L62.998 97.631L87.829 72.804L101.289 86.265L62.998 124.551L24.711 86.265L38.171 72.804Z" fill="white"/>
+                        <path d="M97.625 63.004L111.086 49.543L124.546 63.004L111.086 76.464L97.625 63.004Z" fill="white"/>
+                        <path d="M77.88 63.003H77.879L63.001 48.124L52.287 58.838L51.654 59.471L48.12 63.005L63.001 77.881L77.879 63.004L77.88 63.003Z" fill="white"/>
+                      </svg>
+                    </div>
+                    <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-white/20 bg-white/10">
+                      <div className="grid h-4 w-4 grid-cols-3 gap-[1px]">
+                        <div className="h-1 w-1 bg-white"></div>
+                        <div className="h-1 w-1 bg-transparent"></div>
+                        <div className="h-1 w-1 bg-white"></div>
+                        <div className="h-1 w-1 bg-transparent"></div>
+                        <div className="h-1 w-1 bg-white"></div>
+                        <div className="h-1 w-1 bg-transparent"></div>
+                        <div className="h-1 w-1 bg-white"></div>
+                        <div className="h-1 w-1 bg-transparent"></div>
+                        <div className="h-1 w-1 bg-white"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="mt-3 space-y-2 text-xs font-bold">
-                  <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">PAIR:</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">BTC/USDT</span>
+                  <div className="mt-3 space-y-2 text-xs font-bold">
+                    <div className="flex items-center gap-1">
+                      <span className="uppercase text-[#B0B0B0]">PAIR:</span>
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">BTC/USDT</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="uppercase text-[#B0B0B0]">MAX DRAWDOWN:</span>
+                      <span className="rounded bg-[#1C3430] px-1 py-0.5 uppercase text-[#2EBD85]">-8.2%</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="uppercase text-[#B0B0B0]">MArket type:</span>
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">FuTures (x10 LEVERAGE)</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1">
+                      <span className="uppercase text-[#B0B0B0]">Type:</span>
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Stocks</span>
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">FUtures</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="uppercase text-[#B0B0B0]">sTRATEGY:</span>
+                      <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Tech Analysis (MA, RSI)</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="uppercase text-[#B0B0B0]">Settings:</span>
+                      <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 uppercase text-[#6AA5FF]">CUSTOM INDICATOR</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">MAX DRAWDOWN:</span>
-                    <span className="rounded bg-[#1C3430] px-1 py-0.5 uppercase text-[#2EBD85]">-8.2%</span>
+
+                  <div className="mt-4 h-14 w-full overflow-hidden">
+                    <TraderPerformanceChart />
                   </div>
-                  <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">MArket type:</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">FuTures (x10 LEVERAGE)</span>
+
+                  <div className="mt-3 border-t border-[#181B22]" />
+
+                  <div className="mt-4">
+                    <div className="flex items-center gap-1.5 text-xs font-bold">
+                      <span className="uppercase text-[#B0B0B0]">Calc. Apy</span>
+                      <div className="inline-flex items-center justify-center rounded border border-[#B0B0B0] px-1.5 py-0 text-xs font-bold uppercase text-[#B0B0B0]">30D</div>
+                    </div>
+                    <div className="mt-0.5 text-2xl font-bold text-[#2EBD85]">+120.33%</div>
                   </div>
-                  <div className="flex flex-wrap items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Type:</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Stocks</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">FUtures</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">sTRATEGY:</span>
-                    <span className="rounded bg-[#2E2744] px-1 py-0.5 uppercase text-white">Tech Analysis (MA, RSI)</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span className="uppercase text-[#B0B0B0]">Settings:</span>
-                    <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5 uppercase text-[#6AA5FF]">CUSTOM INDICATOR</span>
+
+                  <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
+                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230]">
+                      <BookOpen className="h-4 w-4" />
+                      LEARN MORE
+                    </button>
+                    <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+                      <Check className="h-4 w-4" />
+                      SUBSCRIBE
+                    </button>
                   </div>
                 </div>
-
-                <div className="mt-4 h-14 w-full overflow-hidden">
-                  <TraderPerformanceChart />
-                </div>
-
-                <div className="mt-3 border-t border-[#181B22]" />
-
-                <div className="mt-4">
-                  <div className="flex items-center gap-1.5 text-xs font-bold">
-                    <span className="uppercase text-[#B0B0B0]">Calc. Apy</span>
-                    <div className="inline-flex items-center justify-center rounded border border-[#B0B0B0] px-1.5 py-0 text-xs font-bold uppercase text-[#B0B0B0]">30D</div>
-                  </div>
-                  <div className="mt-0.5 text-2xl font-bold text-[#2EBD85]">+120.33%</div>
-                </div>
-
-                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
-                  <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#141821] px-5 text-xs font-bold uppercase text-white transition-colors hover:border-[#1F2230]">
-                    <BookOpen className="h-4 w-4" />
-                    LEARN MORE
-                  </button>
-                  <button className="flex h-10 min-w-[130px] flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
-                    <Check className="h-4 w-4" />
-                    SUBSCRIBE
-                  </button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
