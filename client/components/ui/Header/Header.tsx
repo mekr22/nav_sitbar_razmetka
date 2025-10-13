@@ -58,7 +58,7 @@ export const Header: FC<HeaderProps> = ({
           className="flex gap-[6px] items-center"
           aria-label="Open AI Assistant"
         >
-          <div className="p-[1px] rounded-[4px] bg-gradient-to-r from-[#A06AFF] via-[#A06AFF] to-transparent size-[32px] flex items-center justify-center">
+          <div className="p-[1px] rounded-[4px] bg-gradient-to-r from-[#A06AFF] via-[#9155FF] to-[#482090] size-[32px] flex items-center justify-center">
             <div className="bg-black rounded-[4px] size-[30px] flex items-center justify-center">
               <div className="rounded-[3px] bg-background text-white flex items-center justify-center text-sm font-bold w-full h-full">
                 AI
