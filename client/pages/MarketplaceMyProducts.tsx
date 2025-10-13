@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { KeyboardEvent, useId, useState } from "react";
 import { Eye, ChevronRight, Package, Plus, X, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
+import Footer from "@/components/ui/Footer/Footer";
 import { cn } from "@/lib/utils";
 
 const categories = [
@@ -1793,6 +1794,11 @@ const MarketplaceMyProducts: FC = () => {
               );
             })}
           </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-12 sm:mt-18">
+          <Footer />
         </div>
       </div>
     </div>
