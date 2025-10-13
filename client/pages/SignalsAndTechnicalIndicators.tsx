@@ -56,7 +56,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
           <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="flex flex-col gap-5">
               <h1 className="text-4xl font-bold leading-tight text-white md:text-[56px] md:leading-[100%]">
-                Signals & Technical Indicators
+                Marketplace
               </h1>
 
               <div className="flex flex-col gap-3">
