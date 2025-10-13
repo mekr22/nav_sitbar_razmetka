@@ -1271,13 +1271,14 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
-            {tradingRobots.slice(0, 2).map((robot) => {
-              const cardKey = buildCardKey("trading-robot", robot.id);
+            {tradingRobots.slice(0, 2).map((robot, index) => {
+              const adjustedRobot = index === 1 ? { ...robot, icon: "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144" } : robot;
+              const cardKey = buildCardKey("trading-robot", adjustedRobot.id);
               const isFavorited = isFavorite(cardKey);
               return (
                 <TradingRobotCard
-                  key={robot.id}
-                  robot={robot}
+                  key={adjustedRobot.id}
+                  robot={adjustedRobot}
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
