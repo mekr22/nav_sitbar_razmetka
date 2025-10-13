@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from "react";
-import { Eye, EyeOff, ChevronRight, Package, Plus } from "lucide-react";
+import { Eye, EyeOff, ChevronRight, ChevronDown, Package, Plus, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
@@ -138,9 +138,58 @@ const SignalsAndTechnicalIndicators: FC = () => {
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-2">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
-            <p className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
-              Discover curated indicators optimized for momentum, mean-reversion, and volatility breakouts across global markets.
-            </p>
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+              >
+                <span className="text-[15px] font-normal text-[#B0B0B0]">All</span>
+                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
+              </button>
+              <button
+                type="button"
+                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+              >
+                <span className="text-[15px] font-normal text-[#B0B0B0]">Created</span>
+                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
+              </button>
+              <button
+                type="button"
+                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+              >
+                <span className="text-[15px] font-normal text-[#B0B0B0]">Active Time</span>
+                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
+              </button>
+              <button
+                type="button"
+                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+              >
+                <span className="text-[15px] font-normal text-[#B0B0B0]">PnL</span>
+                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
+              </button>
+              <button
+                type="button"
+                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+              >
+                <span className="text-[15px] font-normal text-[#B0B0B0]">Max Drawdown (7d)</span>
+                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
+              </button>
+              <div className="flex h-11 flex-1 min-w-[200px] items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[50px]">
+                <Search className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
+                <input
+                  type="text"
+                  placeholder="Find signals & indicator"
+                  className="flex-1 bg-transparent text-[15px] font-normal text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none"
+                />
+              </div>
+              <button
+                type="button"
+                className="flex h-11 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 backdrop-blur-[58px] transition-colors hover:border-[#1F2230]"
+              >
+                <span className="text-[15px] font-normal text-[#B0B0B0]">Overview</span>
+                <ChevronDown className="h-6 w-6 text-[#B0B0B0]" />
+              </button>
+            </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
