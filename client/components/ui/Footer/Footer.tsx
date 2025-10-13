@@ -109,19 +109,19 @@ const Footer: FC = () => {
             © 2025 - TTYRIAN TRADE - FZCO. All Rights Reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a href="#" className="hidden min-[1655px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
+            <a href="#" className="hidden min-[1656px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
               House Rules
             </a>
-            <div className="hidden h-5 w-px bg-[#313338] min-[1655px]:block" />
-            <a href="#" className="hidden min-[1655px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
+            <div className="hidden h-5 w-px bg-[#313338] min-[1656px]:block" />
+            <a href="#" className="hidden min-[1656px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
               Terms and Conditions
             </a>
-            <div className="hidden h-5 w-px bg-[#313338] min-[1655px]:block" />
-            <a href="#" className="hidden min-[1655px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
+            <div className="hidden h-5 w-px bg-[#313338] min-[1656px]:block" />
+            <a href="#" className="hidden min-[1656px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
               Privacy Policy
             </a>
-            <div className="hidden h-5 w-px bg-[#313338] min-[1655px]:block" />
-            <a href="#" className="hidden min-[1655px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
+            <div className="hidden h-5 w-px bg-[#313338] min-[1656px]:block" />
+            <a href="#" className="hidden min-[1656px]:inline text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]">
               Risk Warning
             </a>
           </div>
