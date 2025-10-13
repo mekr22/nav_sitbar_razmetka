@@ -1732,9 +1732,9 @@ const MarketplaceMyProducts: FC = () => {
         {/* FAQ Section */}
         <div className="mt-10 mb-10 flex flex-col gap-6 py-6 sm:mt-16 sm:mb-16">
           <div className="flex flex-col gap-4">
-            <h2 className="text-4xl font-bold text-white sm:text-[56px] sm:leading-[100%]">FAQ</h2>
+            <h2 className="text-3xl font-bold text-white sm:text-[56px] sm:leading-[100%]">FAQ</h2>
             <p className="max-w-[640px] text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
-              We've compiled answers to the most common questions about our affiliate program. If you have additional questions, please contact our{" "}
+              Find quick answers about our affiliate program. Need more help? Contact our{" "}
               <a href="#" className="text-white underline hover:opacity-80">
                 support team
               </a>
@@ -1781,9 +1781,9 @@ const MarketplaceMyProducts: FC = () => {
                     <div className="px-4 pb-6 text-sm font-bold leading-normal text-[#B0B0B0] sm:px-6 sm:text-[15px]">
                       {faq.description ? <p className="mb-3">{faq.description}</p> : null}
                       {faq.bullets?.length ? (
-                        <ul className="space-y-1">
+                        <ul className="list-disc space-y-1 pl-4">
                           {faq.bullets.map((bullet) => (
-                            <li key={bullet}>- {bullet}</li>
+                            <li key={bullet}>{bullet}</li>
                           ))}
                         </ul>
                       ) : null}
