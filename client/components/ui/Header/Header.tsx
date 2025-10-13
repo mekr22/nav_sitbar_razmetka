@@ -14,9 +14,9 @@ export const Header: FC<HeaderProps> = ({
   setRightMenuOpen,
 }) => {
   return (
-    <header className="pb-1 pt-3 w-full pl-[30px] pr-[24px] grid grid-cols-[1fr_auto_1fr] bg-background items-center gap-2 mb-6">
+    <header className="mb-6 flex w-full items-center justify-between gap-2 bg-background pb-1 pl-5 pr-5 pt-3 sm:pl-6 sm:pr-6 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:justify-between md:pl-[30px] md:pr-[24px]">
       {/* Brand */}
-      <div className="min-w-[230px] justify-self-start">
+      <div className="shrink md:min-w-[230px] md:justify-self-start">
         <AnimatedLogo />
       </div>
 
@@ -70,7 +70,7 @@ export const Header: FC<HeaderProps> = ({
       </div>
 
       {/* Right actions */}
-      <div className="flex items-center justify-end max-w-[350px] gap-4 justify-self-end">
+      <div className="ml-auto flex items-center gap-4 justify-end md:ml-0 md:max-w-[350px] md:justify-self-end">
         <AvatarDropdown />
         {setRightMenuOpen && (
           <RightBarButton
