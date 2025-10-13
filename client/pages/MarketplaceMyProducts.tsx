@@ -915,6 +915,9 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
+        <div className="absolute right-4 top-4">
+          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+        </div>
         {/* Header */}
         <div className="flex items-center gap-3">
           <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
