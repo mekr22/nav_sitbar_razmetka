@@ -1,4 +1,5 @@
 import { FC, KeyboardEvent } from "react";
+import { FC, KeyboardEvent } from "react";
 import { BookOpen, ShoppingCart, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
