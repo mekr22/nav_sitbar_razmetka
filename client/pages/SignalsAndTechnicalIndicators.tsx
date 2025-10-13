@@ -97,6 +97,12 @@ const FILTER_CONFIG: FilterConfigMap = {
 
 const FILTER_ORDER: (keyof FilterSelections)[] = ["category", "created", "activeTime", "pnl", "drawdown"];
 
+const CATEGORY_CYCLE: CategoryOptionValue[] = ["signals", "indicators"];
+const CREATED_CYCLE: CreatedOptionValue[] = ["24h", "7d"];
+const ACTIVE_TIME_CYCLE: ActiveTimeOptionValue[] = ["intraday", "swing"];
+const PNL_CYCLE: PnlOptionValue[] = ["positive", "negative"];
+const DRAWDOWN_CYCLE: DrawdownOptionValue[] = ["low", "high"];
+
 const DUPLICATED_PAIRS = 6;
 
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
