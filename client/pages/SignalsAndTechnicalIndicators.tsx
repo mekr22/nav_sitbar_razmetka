@@ -45,7 +45,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
     if (category !== "Signals and Technical indicators") {
-      navigate("/marketplace/my-products");
+      navigate("/marketplace/my-products", { state: { category } });
     }
   };
 
