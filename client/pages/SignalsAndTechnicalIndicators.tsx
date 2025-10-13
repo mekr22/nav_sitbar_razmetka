@@ -125,14 +125,23 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
-  const signals: Signal[] = useMemo(
+  const signals: SignalWithMeta[] = useMemo(
     () =>
       Array.from({ length: DUPLICATED_PAIRS }, (_, pairIndex) =>
-        baseSignals.map((signal, cardIndex) => ({
-          ...signal,
-          id: `${signal.id}-pair-${pairIndex}-${cardIndex}`,
-          name: `${signal.name} ${pairIndex * baseSignals.length + cardIndex + 1}`,
-        })),
+        baseSignals.map((signal, cardIndex) => {
+          const metaIndex = pairIndex * baseSignals.length + cardIndex;
+
+          return {
+            ...signal,
+            id: `${signal.id}-pair-${pairIndex}-${cardIndex}`,
+            name: `${signal.name} ${metaIndex + 1}`,
+            category: CATEGORY_CYCLE[metaIndex % CATEGORY_CYCLE.length],
+            createdWindow: CREATED_CYCLE[metaIndex % CREATED_CYCLE.length],
+            activeTimeBucket: ACTIVE_TIME_CYCLE[metaIndex % ACTIVE_TIME_CYCLE.length],
+            pnlBucket: PNL_CYCLE[metaIndex % PNL_CYCLE.length],
+            drawdownBucket: DRAWDOWN_CYCLE[metaIndex % DRAWDOWN_CYCLE.length],
+          };
+        }),
       ).flat(),
     [],
   );
