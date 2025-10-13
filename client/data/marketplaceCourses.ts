@@ -13,7 +13,7 @@ export type Course = {
   materialType: "course" | "training";
   releaseWindow: "24h" | "7d" | "30d";
   format: "video" | "ebook" | "live";
-  focusArea: "stocks" | "forex" | "crypto" | "options" | "macro";
+  focusArea: "stocks" | "forex" | "crypto" | "options" | "macro" | "futures";
   language: "english" | "spanish" | "german";
 };
 
