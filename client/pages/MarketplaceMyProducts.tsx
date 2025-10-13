@@ -89,6 +89,7 @@ const investmentConsultants: InvestmentConsultant[] = baseInvestmentConsultants.
 const signals: Signal[] = baseSignals;
 const strategies: Strategy[] = baseStrategies.slice(0, 2);
 const tradingRobots: TradingRobot[] = baseTradingRobots;
+const courses = baseCourses.slice(0, 3);
 
 const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ consultant, isActive, onSelect, isFavorite, onToggleFavorite }) => (
   <div className="mx-auto w-full max-w-[525px]">
