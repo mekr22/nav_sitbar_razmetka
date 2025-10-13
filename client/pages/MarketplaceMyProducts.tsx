@@ -122,7 +122,9 @@ const FavoriteStarButton: FC<{ pressed: boolean; onToggle: () => void }> = ({ pr
     type="button"
     aria-pressed={pressed}
     aria-label="Toggle favorite"
+    onPointerDown={(event) => event.stopPropagation()}
     onClick={(event) => {
+      event.preventDefault();
       event.stopPropagation();
       onToggle();
     }}
