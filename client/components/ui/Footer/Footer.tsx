@@ -31,35 +31,35 @@ const Footer: FC = () => {
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
             <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-16 xl:gap-y-4 2xl:grid-cols-4 2xl:gap-x-6">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Database className="h-6 w-6" />
+                <Database className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Cryptocurrency</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <TrendingUp className="h-6 w-6" />
+                <TrendingUp className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Trading Terminal</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <MessageCircle className="h-6 w-6" />
+                <MessageCircle className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Social Network</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Video className="h-6 w-6" />
+                <Video className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Live Streaming</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <ShoppingCart className="h-6 w-6" />
+                <ShoppingCart className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Marketplace</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Briefcase className="h-6 w-6" />
+                <Briefcase className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Portfolios</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <Sparkles className="h-6 w-6" />
+                <Sparkles className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>AI Assistant</span>
               </a>
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
-                <BarChart3 className="h-6 w-6" />
+                <BarChart3 className="h-6 w-6 2xl:hidden min-[2000px]:inline" />
                 <span>Stock Market</span>
               </a>
             </div>
