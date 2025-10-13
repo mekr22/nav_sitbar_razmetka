@@ -123,6 +123,11 @@ const FavoriteStarButton: FC<{ pressed: boolean; onToggle: () => void }> = ({ pr
     aria-pressed={pressed}
     aria-label="Toggle favorite"
     onPointerDown={(event) => event.stopPropagation()}
+    onPointerUp={(event) => event.stopPropagation()}
+    onMouseDown={(event) => event.stopPropagation()}
+    onMouseUp={(event) => event.stopPropagation()}
+    onTouchStart={(event) => event.stopPropagation()}
+    onTouchEnd={(event) => event.stopPropagation()}
     onClick={(event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -130,7 +135,7 @@ const FavoriteStarButton: FC<{ pressed: boolean; onToggle: () => void }> = ({ pr
     }}
     onKeyDown={(event) => event.stopPropagation()}
     className={cn(
-      "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60",
+      "relative z-10 rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60",
       pressed ? "text-[#A06AFF]" : "text-[#B0B0B0]",
     )}
   >
