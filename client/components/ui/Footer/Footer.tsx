@@ -66,7 +66,7 @@ const Footer: FC = () => {
           </div>
 
           {/* Resources Section */}
-          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1601px]:order-3 min-[1601px]:w-full min-[1888px]:order-2 min-[1888px]:flex-1 min-[1888px]:min-w-[240px] min-[1888px]:max-w-[320px]">
+          <div className="flex w-full flex-col gap-5 xl:order-3 xl:w-full xl:max-w-none min-[1601px]:order-3 min-[1601px]:w-full min-[1888px]:order-3">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Resources</h4>
             <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
               AI
