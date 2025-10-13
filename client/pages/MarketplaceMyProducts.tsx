@@ -1346,7 +1346,7 @@ const MarketplaceMyProducts: FC = () => {
                 <div className="flex flex-col gap-4 border-b border-[#181B22] pb-4">
                   <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="h-16 w-16 overflow-hidden rounded-lg">
+                      <div className="h-20 w-20 overflow-hidden rounded-lg">
                       <img
                         src="https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=800"
                         alt="Sarah Lee"
