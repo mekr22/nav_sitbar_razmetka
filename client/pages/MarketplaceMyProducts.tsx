@@ -790,7 +790,7 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void }
       <img
         src={course.image}
         alt={course.title}
-        className="h-[133px] w-full rounded-lg object-cover md:h-full md:w-[231px]"
+        className="h-[133px] w-full rounded-lg object-cover md:h-auto md:w-[231px] md:self-center"
       />
 
       {/* Content */}
