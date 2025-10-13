@@ -106,41 +106,42 @@ const InvestmentConsultants: FC = () => {
   );
 
   const filterConfig = useMemo(
-    () => [
-      {
-        key: "availability" as const,
-        label: "Availability",
-        options: [
-          { value: "all" as AvailabilityFilterValue, label: "All service areas", buttonLabel: "Availability" },
-          { value: "nationwide" as AvailabilityFilterValue, label: "Nationwide coverage", buttonLabel: "Nationwide" },
-          { value: "regional" as AvailabilityFilterValue, label: "Regional coverage", buttonLabel: "Regional" },
-        ],
-      },
-      {
-        key: "risk" as const,
-        label: "Risk profile",
-        options: riskOptions,
-      },
-      {
-        key: "featured" as const,
-        label: "Featured",
-        options: [
-          { value: "all" as FeaturedFilterValue, label: "All consultants", buttonLabel: "Featured" },
-          { value: "featured" as FeaturedFilterValue, label: "Featured only", buttonLabel: "Featured only" },
-          { value: "notFeatured" as FeaturedFilterValue, label: "Exclude featured", buttonLabel: "Non-featured" },
-        ],
-      },
-      {
-        key: "sort" as const,
-        label: "Sort",
-        options: [
-          { value: "default" as SortFilterValue, label: "Recommended order", buttonLabel: "Sort" },
-          { value: "clients" as SortFilterValue, label: "Most clients", buttonLabel: "Clients" },
-          { value: "aum" as SortFilterValue, label: "Highest AUM", buttonLabel: "AUM" },
-          { value: "return" as SortFilterValue, label: "Best returns", buttonLabel: "Return" },
-        ],
-      },
-    ],
+    () =>
+      [
+        {
+          key: "availability" as const,
+          label: "Availability",
+          options: [
+            { value: "all" as AvailabilityFilterValue, label: "All service areas", buttonLabel: "Availability" },
+            { value: "nationwide" as AvailabilityFilterValue, label: "Nationwide coverage", buttonLabel: "Nationwide" },
+            { value: "regional" as AvailabilityFilterValue, label: "Regional coverage", buttonLabel: "Regional" },
+          ],
+        },
+        {
+          key: "risk" as const,
+          label: "Risk profile",
+          options: riskOptions,
+        },
+        {
+          key: "featured" as const,
+          label: "Featured",
+          options: [
+            { value: "all" as FeaturedFilterValue, label: "All consultants", buttonLabel: "Featured" },
+            { value: "featured" as FeaturedFilterValue, label: "Featured only", buttonLabel: "Featured only" },
+            { value: "notFeatured" as FeaturedFilterValue, label: "Exclude featured", buttonLabel: "Non-featured" },
+          ],
+        },
+        {
+          key: "sort" as const,
+          label: "Sort",
+          options: [
+            { value: "default" as SortFilterValue, label: "Recommended order", buttonLabel: "Sort" },
+            { value: "clients" as SortFilterValue, label: "Most clients", buttonLabel: "Clients" },
+            { value: "aum" as SortFilterValue, label: "Highest AUM", buttonLabel: "AUM" },
+            { value: "return" as SortFilterValue, label: "Best returns", buttonLabel: "Return" },
+          ],
+        },
+      ] as const,
     [riskOptions],
   );
 
