@@ -155,22 +155,7 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
       )}
     >
       <div className="absolute right-4 top-4">
-        <button
-          type="button"
-          aria-pressed={isFavorite}
-          aria-label="Toggle favorite"
-          onClick={(event) => {
-            event.stopPropagation();
-            onToggleFavorite();
-          }}
-          onKeyDown={(event) => event.stopPropagation()}
-          className={cn(
-            "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60",
-            isFavorite ? "text-[#A06AFF]" : "text-[#B0B0B0]",
-          )}
-        >
-          <Star className="h-6 w-6" strokeWidth={isFavorite ? 1.5 : 1.4} fill={isFavorite ? "#A06AFF" : "none"} />
-        </button>
+        <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
       </div>
       <div className="relative flex flex-col gap-4">
         <div className="flex items-center gap-4">
