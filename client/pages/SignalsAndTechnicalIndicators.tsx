@@ -61,14 +61,14 @@ const SignalsAndTechnicalIndicators: FC = () => {
 
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
-                  <span>Total Subscriptions</span>
+                  <span>Total Balance</span>
                   <Eye className="h-4 w-4 text-[#808283] sm:h-5 sm:w-5" />
                 </div>
-                <div className="text-xl font-bold text-white sm:text-2xl">87,540 Active Licenses</div>
+                <div className="text-xl font-bold text-white sm:text-2xl">$1,000,000,000.00</div>
                 <div className="flex flex-wrap items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
-                  <span>Average Accuracy</span>
+                  <span>Today&apos;s PnL</span>
                   <div className="flex items-center gap-0.5 rounded bg-[#2EBD85]/16 px-1 py-0.5">
-                    <span className="text-[10px] font-bold uppercase text-[#2EBD85] sm:text-xs">+ 38.2%</span>
+                    <span className="text-[10px] font-bold uppercase text-[#2EBD85] sm:text-xs">+ $0.00</span>
                   </div>
                   <ChevronRight className="h-5 w-5 text-white sm:h-6 sm:w-6" />
                 </div>
@@ -80,7 +80,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   className="flex h-9 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:h-[32px] sm:px-8 sm:text-[15px]"
                 >
                   <Package className="h-4 w-4" />
-                  <span>My Signals</span>
+                  <span>My Products</span>
                 </button>
 
                 <button
@@ -88,7 +88,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   className="flex h-9 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:h-[32px] sm:px-8 sm:text-[15px]"
                 >
                   <Plus className="h-4 w-4" />
-                  <span>Add Signal</span>
+                  <span>Add Product</span>
                 </button>
               </div>
             </div>
