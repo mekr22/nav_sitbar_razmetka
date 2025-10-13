@@ -1566,7 +1566,6 @@ const MarketplaceMyProducts: FC = () => {
                       </div>
                     </div>
                   </div>
-                  <Star className="h-6 w-6 text-[#B0B0B0]" />
                 </div>
 
                 <div className="border-t border-[#181B22]" />
