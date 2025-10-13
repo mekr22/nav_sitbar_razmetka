@@ -764,7 +764,7 @@ const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; 
         <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
       </div>
       {/* Header with icon, name, users, risk */}
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
         <div className="flex items-center gap-3">
           <img src={signal.icon} alt={signal.name} className="h-16 w-16 rounded-lg" />
           <div className="flex flex-col gap-0.5">
