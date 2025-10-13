@@ -1263,7 +1263,26 @@ const MarketplaceMyProducts: FC = () => {
                   <span className="text-[#FFA800]">563</span>
                 </div>
               </div>
-              <Star className="h-6 w-6 text-[#B0B0B0]" />
+              <button
+                type="button"
+                aria-pressed={scriptsFavorited}
+                aria-label="Toggle favorite"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  toggleFavorite(scriptsCardKey);
+                }}
+                onKeyDown={(event) => event.stopPropagation()}
+                className={cn(
+                  "rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+                  scriptsFavorited ? "text-[#A06AFF]" : "text-[#B0B0B0]",
+                )}
+              >
+                <Star
+                  className="h-6 w-6"
+                  strokeWidth={scriptsFavorited ? 1.5 : 1.4}
+                  fill={scriptsFavorited ? "#A06AFF" : "none"}
+                />
+              </button>
             </div>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
               {/* Left side - Image and Type Details */}
