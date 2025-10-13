@@ -46,7 +46,7 @@ export const ClientLayout: FC<Props> = ({
         rightMenuOpen={rightMenuOpen}
         setRightMenuOpen={setRightMenuOpen}
       />
-      <div className="flex justify-start mb-60">
+      <div className="flex justify-start">
         <NewNavBar variant={layoutVariant} />
         <main className="flex-1">
           <ContentWrapper className={contentWrapperClassname}>
