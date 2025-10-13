@@ -25,7 +25,7 @@ const Footer: FC = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="flex flex-col gap-12 lg:flex-row lg:gap-12">
+        <div className="flex flex-col gap-12 xl:grid xl:grid-cols-[minmax(0,2fr)_minmax(220px,1fr)_minmax(220px,1fr)] xl:items-start xl:gap-12">
           {/* Products Section */}
           <div className="flex flex-1 flex-col gap-2.5">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
