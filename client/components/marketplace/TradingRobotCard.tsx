@@ -168,8 +168,6 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({ robot, isActive, onSelect
           </div>
         </div>
 
-        <div className="h-px w-full bg-[#181B22]" />
-
         <div className="h-14 w-full overflow-hidden">
           <TradingRobotSparkline />
         </div>
