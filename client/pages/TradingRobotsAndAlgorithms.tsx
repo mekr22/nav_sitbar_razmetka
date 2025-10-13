@@ -288,6 +288,10 @@ const TradingRobotsAndAlgorithms: FC = () => {
       navigate("/marketplace/analysts", { state: { category } });
       return;
     }
+    if (category === "Traders") {
+      navigate("/marketplace/traders", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
