@@ -819,7 +819,7 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; 
       {/* Content */}
       <div className="flex flex-1 flex-col gap-4 md:gap-3 md:justify-between">
         {/* Title and Star */}
-        <div className="flex items-start justify-between gap-4 pr-6 md:pr-8">
+        <div className="flex items-start gap-4 pr-6 md:pr-8">
           <div className="flex flex-col gap-1">
             <h3 className="text-lg font-bold text-white sm:text-[19px]">{course.title}</h3>
             <p className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">{course.subtitle}</p>
