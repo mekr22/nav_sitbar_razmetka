@@ -1004,6 +1004,16 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
 const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
+  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Record<string, boolean>>({});
+
+  const toggleFavorite = (key: string) => {
+    setFavoriteCardKeys((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
+  };
+
+  const isFavorite = (key: string) => !!favoriteCardKeys[key];
 
   const scriptsCardKey = buildCardKey("scripts", "main");
   const otherCardKey = buildCardKey("other", "main");
