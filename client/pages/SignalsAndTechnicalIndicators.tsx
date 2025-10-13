@@ -176,12 +176,12 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   <ChevronDown className="h-5 w-5 text-[#B0B0B0]" />
                 </button>
               </div>
-              <div className="ml-auto flex h-9 w-full min-w-[160px] items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[50px] sm:w-auto sm:min-w-[200px] md:min-w-[240px] lg:min-w-[260px] xl:min-w-[280px]">
-                <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" />
+              <div className="ml-auto flex h-9 w-full min-w-[160px] items-center gap-1 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] sm:w-auto sm:min-w-[200px] md:min-w-[240px] lg:min-w-[260px] xl:min-w-[280px]">
+                <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
                 <input
                   type="text"
                   placeholder="Find signals & indicator"
-                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm"
+                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm leading-none"
                 />
               </div>
             </div>
