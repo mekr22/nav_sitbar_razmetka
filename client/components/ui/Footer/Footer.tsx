@@ -97,8 +97,8 @@ const Footer: FC = () => {
         </div>
 
         {/* Disclaimer */}
-        <div className="flex items-center justify-center">
-          <p className="text-center text-sm font-normal leading-normal text-[#B0B0B0] sm:text-[15px]">
+        <div className="flex items-start justify-start">
+          <p className="text-left text-sm font-normal leading-normal text-[#B0B0B0] sm:text-[15px]">
             Trading cryptocurrencies and financial instruments involves high risk and may result in losses exceeding your initial investment. All content on this website is for informational and educational purposes only and does not constitute financial advice. Prices and data may be inaccurate or delayed. TTYRIAN TRADE and its partners are not liable for any losses from using this website. Always do your own research and consult a professional if needed. Past performance is not a guarantee of future results. Trading on margin increases risk. Use of site content is prohibited without prior written consent. TTYRIAN TRADE may receive compensation from advertisers.
           </p>
         </div>
