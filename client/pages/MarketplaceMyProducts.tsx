@@ -367,58 +367,6 @@ const investmentConsultants: InvestmentConsultant[] = [
 
 const signals: Signal[] = baseSignals;
 
-type Strategy = {
-  id: string;
-  name: string;
-  icon: string;
-  users: string;
-  riskLevel: "LOW" | "MEDIUM" | "HIGH";
-  profitSharing: string;
-  exchanges: string[];
-  exchangesCount: number;
-  assets: string[];
-  strategy: string;
-  maxDrawdown: string;
-  minCapital: string;
-  roi30d: string;
-  roi1y: string;
-};
-
-const strategies: Strategy[] = [
-  {
-    id: "strategy-1",
-    name: "Prodcut Name",
-    icon: "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144",
-    users: "315",
-    riskLevel: "MEDIUM",
-    profitSharing: "20% Profit Sharing",
-    exchanges: ["bitcoin", "ripple", "tron", "dogecoin", "meta"],
-    exchangesCount: 30,
-    assets: ["STOCKS", "BONDS", "ETFS", "CRYPTO"],
-    strategy: "MOMENTUM BREAKOUT",
-    maxDrawdown: "15%",
-    minCapital: "$1000",
-    roi30d: "+60.33%",
-    roi1y: "+60.33%",
-  },
-  {
-    id: "strategy-2",
-    name: "Prodcut Name",
-    icon: "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144",
-    users: "315",
-    riskLevel: "MEDIUM",
-    profitSharing: "20% Profit Sharing",
-    exchanges: ["bitcoin", "ripple", "tron", "dogecoin", "meta"],
-    exchangesCount: 30,
-    assets: ["STOCKS", "BONDS", "ETFS", "CRYPTO"],
-    strategy: "MOMENTUM BREAKOUT",
-    maxDrawdown: "15%",
-    minCapital: "$1000",
-    roi30d: "+60.33%",
-    roi1y: "+60.33%",
-  },
-];
-
 type Course = {
   id: string;
   title: string;
