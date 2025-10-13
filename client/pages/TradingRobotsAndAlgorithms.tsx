@@ -140,8 +140,11 @@ const TradingRobotsAndAlgorithms: FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
+    if (location.state?.scrollToTop) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      navigate(location.pathname, { replace: true, state: { ...location.state, scrollToTop: false } });
+    }
+  }, [location.pathname, location.state, navigate]);
 
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
