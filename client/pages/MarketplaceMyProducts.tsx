@@ -1533,7 +1533,7 @@ const MarketplaceMyProducts: FC = () => {
               activeCardKey === otherCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
-            <div className="flex flex-col gap-4 lg:flex-row">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
               <div className="relative h-[264px] w-full overflow-hidden rounded-lg lg:w-[451px]">
                 <img
                   src="https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902"
