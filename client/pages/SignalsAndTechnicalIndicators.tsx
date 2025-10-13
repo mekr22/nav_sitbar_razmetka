@@ -274,6 +274,10 @@ const SignalsAndTechnicalIndicators: FC = () => {
       navigate("/marketplace/traders", { state: { category } });
       return;
     }
+    if (category === "Courses and Training materials") {
+      navigate("/marketplace/courses", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
