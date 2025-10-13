@@ -156,8 +156,8 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void; 
 
         {/* Host and Details */}
         <div className="flex flex-col gap-2">
-          <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase">
-            <span className="text-[#B0B0B0]">HOST:</span>
+          <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
+            <span className="uppercase text-[#B0B0B0]">HOST:</span>
             <span className="text-sm font-bold text-white sm:text-[15px]">{course.host}</span>
             <div className="flex items-center gap-1">
               <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
