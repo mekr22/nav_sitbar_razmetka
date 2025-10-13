@@ -21,6 +21,8 @@ export type TradingRobot = {
   leverageCategory: "low" | "moderate" | "high";
 };
 
+export const RISK_MASTER_ICON = "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144";
+
 const exchangeIcons = {
   binance:
     "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F31262df0fdbe4b649612c82741a80ce2?format=webp&width=512",
@@ -31,15 +33,13 @@ const exchangeIcons = {
   huobi:
     "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5812aa6cc56f419ca24acdce705cca81?format=webp&width=512",
   okx: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F757765515d584eee8550efa4011da550?format=webp&width=512",
-  riskMaster:
-    "https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144",
 } as const;
 
 export const baseTradingRobots: TradingRobot[] = [
   {
     id: "quant-vertex",
     name: "Quant Vertex",
-    icon: exchangeIcons.riskMaster,
+    icon: RISK_MASTER_ICON,
     users: "315",
     accuracyLabel: "Medium Accuracy",
     accuracyLevel: "MEDIUM",
