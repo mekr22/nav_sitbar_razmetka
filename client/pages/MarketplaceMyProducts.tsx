@@ -323,7 +323,7 @@ const analysts: Analyst[] = [
   },
 ];
 
-const investmentConsultants: InvestmentConsultant[] = baseInvestmentConsultants;
+const investmentConsultants: InvestmentConsultant[] = baseInvestmentConsultants.slice(0, 2);
 
 const signals: Signal[] = baseSignals;
 const strategies: Strategy[] = baseStrategies;
