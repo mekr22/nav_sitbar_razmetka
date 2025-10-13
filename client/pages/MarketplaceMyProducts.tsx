@@ -1524,7 +1524,7 @@ const MarketplaceMyProducts: FC = () => {
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144"
                       alt="Product"
-                      className="h-[72px] w-[72px] rounded-lg object-cover"
+                      className="h-[72px] w-[72px] rounded-lg object-cover max-[640px]:h-24 max-[640px]:w-24"
                     />
                     <div className="flex flex-1 flex-col gap-1">
                       <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
@@ -1545,7 +1545,7 @@ const MarketplaceMyProducts: FC = () => {
 
                   <div className="mt-3 border-t border-[#181B22]" />
 
-                  <div className="mt-3 flex items-center gap-2">
+                  <div className="mt-3 flex items-center gap-2 max-[640px]:flex-wrap max-[640px]:gap-3">
                     <div className="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gradient-to-b from-[#627EEA] to-[#627EEA]/80">
                       <svg width="20" height="20" viewBox="0 0 256 417" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M127.961 0l-2.795 9.5v275.668l2.795 2.79 127.962-75.638z" fill="#fff" fillOpacity="0.6"/>
