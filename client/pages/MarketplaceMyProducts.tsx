@@ -1106,7 +1106,7 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            {categories.map((category) => {
+            {marketplaceCategories.map((category) => {
               const isSelected = selectedCategory === category;
               return (
                 <button
