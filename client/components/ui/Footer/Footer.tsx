@@ -77,16 +77,16 @@ const Footer: FC = () => {
           <div className="flex w-full flex-col gap-5 xl:order-2 xl:w-full xl:max-w-none min-[1601px]:order-2 min-[1601px]:w-auto min-[1601px]:flex-[0.8] min-[1888px]:order-3 min-[1888px]:flex-1 min-[1888px]:min-w-[240px] min-[1888px]:max-w-[320px]">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Social</h4>
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 min-[1601px]:flex-col min-[1601px]:items-start min-[1601px]:gap-6">
-              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
+              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1601px]:block min-[1601px]:pl-9 min-[1601px]:leading-[26px]">
                 X/Twitter
               </a>
-              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
+              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1601px]:block min-[1601px]:pl-9 min-[1601px]:leading-[26px]">
                 LinkedIn
               </a>
-              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
+              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1601px]:block min-[1601px]:pl-9 min-[1601px]:leading-[26px]">
                 Instagram
               </a>
-              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
+              <a href="#" className="text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px] min-[1601px]:block min-[1601px]:pl-9 min-[1601px]:leading-[26px]">
                 Youtube
               </a>
             </div>
