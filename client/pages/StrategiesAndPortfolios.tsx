@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { Eye, EyeOff, ChevronRight, ChevronDown, Package, Plus, Search } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import StrategyCard from "@/components/marketplace/StrategyCard";
 import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";
