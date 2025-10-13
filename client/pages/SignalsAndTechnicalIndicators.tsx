@@ -1,10 +1,10 @@
 import { FC, useMemo, useState } from "react";
-import { Eye, ChevronRight, Package, Plus } from "lucide-react";
+import { Eye, EyeOff, ChevronRight, Package, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
-import { cn } from "@/lib/utils";
+import { cn, maskNonWhitespace } from "@/lib/utils";
 
 const DUPLICATED_PAIRS = 6;
 
@@ -15,6 +15,10 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Signals and Technical indicators");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
+  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+
+  const balanceValue = "$1,000,000,000.00";
+  const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
   const signals: Signal[] = useMemo(
     () =>
@@ -62,9 +66,20 @@ const SignalsAndTechnicalIndicators: FC = () => {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
                   <span>Total Balance</span>
-                  <Eye className="h-4 w-4 text-[#808283] sm:h-5 sm:w-5" />
+                  <button
+                    type="button"
+                    onClick={() => setIsBalanceVisible((prev) => !prev)}
+                    aria-label={isBalanceVisible ? "Hide total balance" : "Show total balance"}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-transparent text-[#808283] transition-colors hover:border-[#1F2230] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                  >
+                    {isBalanceVisible ? (
+                      <Eye className="h-4 w-4" />
+                    ) : (
+                      <EyeOff className="h-4 w-4" />
+                    )}
+                  </button>
                 </div>
-                <div className="text-xl font-bold text-white sm:text-2xl">$1,000,000,000.00</div>
+                <div className="text-xl font-bold text-white sm:text-2xl">{isBalanceVisible ? balanceValue : maskedBalanceValue}</div>
                 <div className="flex flex-wrap items-center gap-2 text-sm font-bold text-white sm:text-[15px]">
                   <span>Today&apos;s PnL</span>
                   <div className="flex items-center gap-0.5 rounded bg-[#2EBD85]/16 px-1 py-0.5">
