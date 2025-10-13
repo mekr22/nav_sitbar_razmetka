@@ -843,7 +843,7 @@ const exchangeLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F46bbf20463b949229b2fa9f4e5301083?format=webp&width=800",
 ];
 
-const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
+const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => void }> = ({ strategy, isActive, onSelect }) => {
   const getRiskColor = (level: string) => {
     switch (level) {
       case "LOW":
@@ -861,7 +861,22 @@ const StrategyCard: FC<{ strategy: Strategy }> = ({ strategy }) => {
 
   return (
     <div className="mx-auto w-full max-w-[525px]">
-      <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+      <div
+        role="button"
+        tabIndex={0}
+        aria-pressed={isActive}
+        onClick={onSelect}
+        onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+          if (isActivationKey(event.key)) {
+            event.preventDefault();
+            onSelect();
+          }
+        }}
+        className={cn(
+          "relative flex cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          isActive ? "border-[#A06AFF]" : "border-[#181B22]",
+        )}
+      >
         {/* Header */}
         <div className="flex items-start gap-3">
           <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
