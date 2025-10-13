@@ -719,7 +719,6 @@ const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; 
             </div>
           </div>
         </div>
-        <Star className="h-6 w-6 text-[#B0B0B0]" />
       </div>
 
       {/* Divider */}
