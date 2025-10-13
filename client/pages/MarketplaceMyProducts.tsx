@@ -1184,12 +1184,15 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {investmentConsultants.map((consultant) => {
               const cardKey = buildCardKey("consultant", consultant.id);
+              const isFavorited = isFavorite(cardKey);
               return (
                 <InvestmentConsultantCard
                   key={consultant.id}
                   consultant={consultant}
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
               );
             })}
