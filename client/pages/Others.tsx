@@ -374,7 +374,7 @@ const Others: FC = () => {
                   type="button"
                   onClick={() => handleCategoryClick(category)}
                   className={cn(
-                    "flex h-8 items-center justify-center rounded-full px-3 text-xs font-bold text-white backdrop-blur-[58px] transition-colors sm:gap-2 sm:text-sm md:px-4 md:text=[15px]",
+                    "flex h-8 items-center justify-center rounded-full px-3 text-xs font-bold text-white backdrop-blur-[58px] transition-colors sm:gap-2 sm:text-sm md:px-4 md:text-[15px]",
                     isSelected
                       ? "bg-gradient-to-r from-[#A06AFF] to-[#482090]"
                       : "border border-[#181B22] bg-[#0C101480] hover:border-[#1F2230]",
