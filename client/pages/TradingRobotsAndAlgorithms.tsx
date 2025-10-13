@@ -3,7 +3,7 @@ import { Eye, EyeOff, ChevronRight, ChevronDown, Package, Plus, Search } from "l
 import { useNavigate } from "react-router-dom";
 
 import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
-import { baseTradingRobots, TradingRobot } from "@/data/marketplaceTradingRobots";
+import { baseTradingRobots, TradingRobot, RISK_MASTER_ICON } from "@/data/marketplaceTradingRobots";
 import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 import { cn, maskNonWhitespace } from "@/lib/utils";
 import {
