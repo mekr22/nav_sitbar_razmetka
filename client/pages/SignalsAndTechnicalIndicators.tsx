@@ -146,6 +146,46 @@ const SignalsAndTechnicalIndicators: FC = () => {
     [],
   );
 
+  const filteredSignals = useMemo(() => {
+    const normalizedTerm = searchTerm.trim().toLowerCase();
+
+    return signals.filter((signal) => {
+      if (filters.category !== "all" && signal.category !== filters.category) {
+        return false;
+      }
+      if (filters.created !== "any" && signal.createdWindow !== filters.created) {
+        return false;
+      }
+      if (filters.activeTime !== "any" && signal.activeTimeBucket !== filters.activeTime) {
+        return false;
+      }
+      if (filters.pnl !== "any" && signal.pnlBucket !== filters.pnl) {
+        return false;
+      }
+      if (filters.drawdown !== "any" && signal.drawdownBucket !== filters.drawdown) {
+        return false;
+      }
+      if (normalizedTerm) {
+        const haystack = `${signal.name} ${signal.type} ${signal.use}`.toLowerCase();
+        return haystack.includes(normalizedTerm);
+      }
+
+      return true;
+    });
+  }, [filters, searchTerm, signals]);
+
+  useEffect(() => {
+    if (!activeCardKey) {
+      return;
+    }
+
+    const isActiveVisible = filteredSignals.some((signal) => buildCardKey("signals-page", signal.id) === activeCardKey);
+
+    if (!isActiveVisible) {
+      setActiveCardKey(null);
+    }
+  }, [activeCardKey, filteredSignals]);
+
   const toggleFavorite = (key: string) => {
     setFavoriteCardKeys((prev) => {
       const next = new Set(prev);
