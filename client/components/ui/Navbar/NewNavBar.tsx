@@ -18,7 +18,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal', mobileOpen = false, onMobile
 
   const toggleGroup = (title: string) => setOpenGroup(openGroup === title ? null : title);
 
-  const renderElement = (el: NavElementProps) => {
+  const renderElement = (el: NavElementProps, options?: { onNavigate?: () => void }) => {
     if (el.children && el.children.length > 0) {
       const isOpen = openGroup === el.title;
       return (
@@ -51,7 +51,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal', mobileOpen = false, onMobile
           {isOpen && !isCollapsed && (
             <div id={`${el.title}-submenu`} className='ml-6 flex flex-col gap-1'>
               {el.children.map((child) => (
-                <NavLink key={child.title} to={child.route ?? '#'} className={cn('px-3')}>
+                <NavLink key={child.title} to={child.route ?? '#'} className={cn('px-3')} onClick={options?.onNavigate}>
                   {({ isActive }) => (
                     <div className={cn('flex items-center gap-2 pl-2 py-2 hover:custom-bg-blur hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
                       <div className='size-5 flex-shrink-0'>{child.icon}</div>
@@ -75,7 +75,7 @@ const NewNavBar: FC<Props> = ({ variant = 'primal', mobileOpen = false, onMobile
 
     if (el.route) {
       return (
-        <NavLink key={el.title} to={el.route} className={cn('px-3 py-[14px]', { 'ml-[5px]': isCollapsed })}>
+        <NavLink key={el.title} to={el.route} className={cn('px-3 py-[14px]', { 'ml-[5px]': isCollapsed })} onClick={options?.onNavigate}>
           {({ isActive }) => (
             <div className={cn('flex items-center gap-2 pl-2 transition hover:text-white hover:border-l-[2px] hover:border-purple overflow-hidden', isActive ? 'text-white' : 'text-[#B0B0B0]')}>
               <div className='size-5 flex-shrink-0'>{el.icon}</div>
