@@ -168,24 +168,21 @@ const TraderCard: FC<{ trader: Trader; isActive: boolean; onSelect: () => void; 
           </div>
 
           <div className="flex flex-1 flex-col gap-3">
-            <div className="flex items-start justify-between gap-2">
-              <div className="flex flex-col gap-2">
-                <h3 className="text-[15px] font-bold leading-tight text-white">{trader.name}</h3>
-                <div className="flex flex-wrap items-center gap-1">
-                  <span className="rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800]">
-                    {trader.badge}
-                  </span>
-                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
-                    <Users className="h-4 w-4 text-[#B0B0B0]" />
-                    {trader.followers}
-                  </span>
-                  <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
-                    <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
-                    {trader.publications}
-                  </span>
-                </div>
+            <div className="flex flex-col gap-2">
+              <h3 className="text-[15px] font-bold leading-tight text-white">{trader.name}</h3>
+              <div className="flex flex-wrap items-center gap-1">
+                <span className="rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800]">
+                  {trader.badge}
+                </span>
+                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
+                  <Users className="h-4 w-4 text-[#B0B0B0]" />
+                  {trader.followers}
+                </span>
+                <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
+                  <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
+                  {trader.publications}
+                </span>
               </div>
-              <Star className="h-6 w-6 flex-shrink-0 text-[#B0B0B0]" />
             </div>
 
             <div className="space-y-1 text-[12px] font-bold uppercase text-[#B0B0B0]">
