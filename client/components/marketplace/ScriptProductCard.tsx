@@ -50,7 +50,7 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({ product, isActive, onSe
     <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
       <div className="flex w-full flex-col gap-4 lg:w-80">
         <img src={product.heroImage} alt={product.heroAlt} className="h-80 w-full rounded-lg object-cover" />
-        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs inner font-bold uppercase text-[#B0B0B0] sm:flex sm:flex-nowrap sm:items-center sm:gap-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs font-bold uppercase text-[#B0B0B0] sm:flex sm:flex-nowrap sm:items-center sm:gap-6">
           <div className="flex flex-col gap-1 sm:gap-2">
             <span className="whitespace-nowrap">Type:</span>
             <div className="flex items-center gap-1 sm:gap-2">
