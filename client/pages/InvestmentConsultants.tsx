@@ -197,6 +197,10 @@ const InvestmentConsultants: FC = () => {
       navigate("/marketplace/trading-robots", { state: { category } });
       return;
     }
+    if (category === "Analysts") {
+      navigate("/marketplace/analysts", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
