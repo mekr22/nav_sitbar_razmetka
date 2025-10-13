@@ -881,7 +881,7 @@ const exchangeLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F46bbf20463b949229b2fa9f4e5301083?format=webp&width=800",
 ];
 
-const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => void }> = ({ strategy, isActive, onSelect }) => {
+const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => void; isFavorite: boolean; onToggleFavorite: () => void }> = ({ strategy, isActive, onSelect, isFavorite, onToggleFavorite }) => {
   const getRiskColor = (level: string) => {
     switch (level) {
       case "LOW":
