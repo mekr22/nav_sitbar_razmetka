@@ -56,6 +56,26 @@ export const ClientLayout: FC<Props> = ({
   }, [mobileNavOpen, rightMenuOpen]);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (rightMenuOpen && window.innerWidth < 1024) {
+      setMobileNavOpen(false);
+    }
+  }, [rightMenuOpen]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    if (mobileNavOpen && window.innerWidth < 1024) {
+      setRightMenuOpen(false);
+    }
+  }, [mobileNavOpen]);
+
+  useEffect(() => {
     const handleTouchStart = (event: TouchEvent) => {
       if (window.innerWidth > 640 || event.touches.length !== 1) {
         touchStartRef.current = null;
