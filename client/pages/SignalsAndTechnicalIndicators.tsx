@@ -299,8 +299,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">Signals & Technical Indicators</h2>
-            <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3 min-[1143px]:flex-nowrap">
-              <div className="flex flex-1 flex-wrap items-center gap-1 sm:gap-2 md:gap-3 md:min-w-0 max-[1142px]:w-full">
+            <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
+              <div className="hidden min-[1143px]:flex min-[1143px]:w-full min-[1143px]:flex-1 min-[1143px]:items-center min-[1143px]:gap-3">
                 {FILTER_ORDER.map((filterKey) => {
                   const config = FILTER_CONFIG[filterKey];
                   const selectedOption = config.options.find((option) => option.value === filters[filterKey]) ?? config.options[0];
@@ -312,7 +312,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                         <button
                           type="button"
                           className={cn(
-                            "flex h-9 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0 max-[1142px]:basis-[calc(50%-0.25rem)] max-[1142px]:flex-none max-[1142px]:justify-between max-[640px]:basis-full",
+                            "flex h-9 min-w-0 flex-1 items-center justify-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 backdrop-blur-[58px] transition-colors focus-visible:outline-none focus-visible:ring-0",
                             isActive ? "border-[#A06AFF] text-white" : "text-[#B0B0B0]",
                           )}
                           aria-label={`Filter by ${config.label}`}
@@ -344,7 +344,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   );
                 })}
               </div>
-              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-2 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
+              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
                 <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
                 <input
                   type="search"
