@@ -207,8 +207,11 @@ const SignalsAndTechnicalIndicators: FC = () => {
     }
   };
 
-  const handleFilterChange = <K extends keyof FilterSelections>(key: K, value: FilterSelections[K]) => {
-    setFilters((prev) => ({ ...prev, [key]: value }));
+  const handleFilterChange = (key: keyof FilterSelections, value: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      [key]: value as FilterSelections[keyof FilterSelections],
+    }));
   };
 
   return (
