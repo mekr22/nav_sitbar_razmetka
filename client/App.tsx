@@ -23,6 +23,7 @@ import TradingRobotsAndAlgorithms from "./pages/TradingRobotsAndAlgorithms";
 import InvestmentConsultants from "./pages/InvestmentConsultants";
 import CoursesAndTrainingMaterials from "./pages/CoursesAndTrainingMaterials";
 import ScriptsAndSoftware from "./pages/ScriptsAndSoftware";
+import Others from "./pages/Others";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
@@ -61,6 +62,7 @@ const App = () => (
                   <Route path="/marketplace/trading-robots" element={<TradingRobotsAndAlgorithms />} />
                   <Route path="/marketplace/courses" element={<CoursesAndTrainingMaterials />} />
                   <Route path="/marketplace/scripts" element={<ScriptsAndSoftware />} />
+                  <Route path="/marketplace/others" element={<Others />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
