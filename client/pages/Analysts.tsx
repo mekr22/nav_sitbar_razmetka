@@ -108,6 +108,14 @@ const Analysts: FC = () => {
     if (category === "Analysts") {
       return;
     }
+    if (category === "Popular") {
+      navigate("/marketplace/popular", { state: { category } });
+      return;
+    }
+    if (category === "Favourites") {
+      navigate("/marketplace/favourites", { state: { category } });
+      return;
+    }
     if (category === "Signals and Technical indicators") {
       navigate("/marketplace/signals", { state: { category } });
       return;
