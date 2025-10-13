@@ -782,7 +782,7 @@ const CourseCard: FC<{ course: Course; isActive: boolean; onSelect: () => void }
         }
       }}
       className={cn(
-        "relative flex cursor-pointer flex-col gap-4 overflow-hidden rounded-2xl border bg-[#0C1014]/60 p-4 backdrop-blur-[50px] transition-colors md:flex-row md:items-stretch md:gap-6",
+        "relative flex cursor-pointer flex-col gap-4 overflow-hidden rounded-2xl border bg-[#0C1014]/60 p-4 backdrop-blur-[50px] transition-colors md:flex-row md:items-center md:gap-6",
         isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
