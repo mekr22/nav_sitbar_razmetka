@@ -282,6 +282,10 @@ const ScriptsAndSoftware: FC = () => {
       navigate("/marketplace/trading-robots", { state: { category } });
       return;
     }
+    if (category === "Others") {
+      navigate("/marketplace/others", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
