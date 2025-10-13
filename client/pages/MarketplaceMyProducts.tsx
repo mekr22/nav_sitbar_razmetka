@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { KeyboardEvent, useId, useState } from "react";
 import { Eye, ChevronRight, Package, Plus, X, Star, BookOpen, Mail, Check, ShoppingCart, Users, FileEdit, MapPin, Globe } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
 const categories = [
