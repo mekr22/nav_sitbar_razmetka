@@ -29,7 +29,7 @@ export const baseOtherProducts: OtherProduct[] = [
     typeLabel: "Script",
     industryLabel: "Automation",
     compatibility: ["MetaTrader 4", "MetaTrader 5"],
-    requirements: ["Python 3.8+", "numpy", "pandas"],
+    requirements: ["Python 3.8+", "numpy"],
   },
   {
     id: "other-2",
@@ -44,8 +44,8 @@ export const baseOtherProducts: OtherProduct[] = [
     ratingTag: "Research Collective",
     typeLabel: "Workspace",
     industryLabel: "Operations",
-    compatibility: ["Slack", "Notion", "Google Drive"],
-    requirements: ["OAuth Access", "SAML", "REST API"],
+    compatibility: ["Slack", "Notion"],
+    requirements: ["OAuth Access", "SAML"],
   },
   {
     id: "other-3",
@@ -60,8 +60,8 @@ export const baseOtherProducts: OtherProduct[] = [
     ratingTag: "Creator Vault",
     typeLabel: "Platform",
     industryLabel: "Content",
-    compatibility: ["Stripe", "Zapier", "Discord"],
-    requirements: ["Custom Domain", "Webhooks", "Analytics"],
+    compatibility: ["Stripe", "Zapier"],
+    requirements: ["Custom Domain", "Webhooks"],
   },
   {
     id: "other-4",
@@ -76,8 +76,8 @@ export const baseOtherProducts: OtherProduct[] = [
     ratingTag: "Investor Suite",
     typeLabel: "Portal",
     industryLabel: "Investor Relations",
-    compatibility: ["DocuSign", "Snowflake", "Salesforce"],
-    requirements: ["SSO", "Audit Logs", "Compliance"],
+    compatibility: ["DocuSign", "Snowflake"],
+    requirements: ["SSO", "Audit Logs"],
   },
   {
     id: "other-5",
@@ -92,8 +92,8 @@ export const baseOtherProducts: OtherProduct[] = [
     ratingTag: "Compliance Ready",
     typeLabel: "Automation",
     industryLabel: "Compliance",
-    compatibility: ["Slack", "Teams", "Email"],
-    requirements: ["Templates", "Legal Review", "SFTP"],
+    compatibility: ["Slack", "Teams"],
+    requirements: ["Templates", "Legal Review"],
   },
   {
     id: "other-6",
@@ -108,7 +108,7 @@ export const baseOtherProducts: OtherProduct[] = [
     ratingTag: "Desk Intelligence",
     typeLabel: "Analytics",
     industryLabel: "Execution",
-    compatibility: ["FIX Logs", "CSV Upload", "REST"],
-    requirements: ["Data Warehouse", "ETL", "Permissions"],
+    compatibility: ["FIX Logs", "CSV Upload"],
+    requirements: ["Data Warehouse", "ETL"],
   },
 ];
