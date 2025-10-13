@@ -463,7 +463,7 @@ const AnalystCard: FC<{ analyst: Analyst; isActive: boolean; onSelect: () => voi
         isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
-      <div className="flex items-start justify-between">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
             <img src={analyst.avatar} alt={analyst.name} className="block h-full w-full object-cover object-center [transform:scale(1.2)]" />
@@ -561,7 +561,7 @@ const InvestmentConsultantCard: FC<{ consultant: InvestmentConsultant; isActive:
 
       <div className="relative p-4">
         {/* Avatar and Header */}
-        <div className="mb-3 flex items-start justify-between">
+        <div className="mb-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
               <img
@@ -679,7 +679,7 @@ const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void }
       )}
     >
       {/* Header with icon, name, users, risk */}
-      <div className="flex items-start justify-between">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <img src={signal.icon} alt={signal.name} className="h-16 w-16 rounded-lg" />
           <div className="flex flex-col gap-0.5">
@@ -893,7 +893,7 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
         )}
       >
         {/* Header */}
-        <div className="flex items-start gap-3">
+        <div className="flex items-center gap-3">
           <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
           <div className="flex flex-1 flex-col gap-0.5">
             <h3 className="text-lg font-bold text-white sm:text-[19px]">{strategy.name}</h3>
@@ -1389,7 +1389,7 @@ const MarketplaceMyProducts: FC = () => {
                     isActive ? "border-[#A06AFF]" : "border-[#181B22]",
                   )}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-center gap-3">
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/daa27cffb99d482ad1e74982407438de65d54b84?width=144"
                       alt="Product"
@@ -1544,7 +1544,7 @@ const MarketplaceMyProducts: FC = () => {
               </div>
 
               <div className="flex flex-1 flex-col gap-4">
-                <div className="flex items-start justify-between">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
