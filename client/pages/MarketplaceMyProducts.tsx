@@ -1111,9 +1111,17 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
-            {analysts.map((analyst, index) => (
-              <AnalystCard key={analyst.id} analyst={analyst} featured={index === 0} />
-            ))}
+            {analysts.map((analyst) => {
+              const cardKey = buildCardKey("analyst", analyst.id);
+              return (
+                <AnalystCard
+                  key={analyst.id}
+                  analyst={analyst}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                />
+              );
+            })}
           </div>
         </div>
 
