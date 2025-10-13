@@ -3,8 +3,8 @@ import { Database, TrendingUp, MessageCircle, Video, ShoppingCart, Briefcase, Sp
 
 const Footer: FC = () => {
   return (
-    <footer className="rounded-t-[48px] border-t-2 border-r-2 border-l-2 border-[#181B22] bg-[#0C101480] px-6 py-12 backdrop-blur-[32px] sm:px-12 lg:px-[310px]">
-      <div className="flex flex-col gap-6">
+    <footer className="rounded-t-[48px] border-t-2 border-r-2 border-l-2 border-[#181B22] bg-[#0C101480] px-6 py-12 backdrop-blur-[32px] sm:px-12">
+      <div className="mx-auto flex w-full max-w-[calc(100%-76px)] flex-col gap-6" style={{ maxWidth: "min(1600px, calc(100% - 76px))" }}>
         {/* Logo and Title */}
         <div className="flex items-center gap-2">
           <svg width="28" height="33" viewBox="0 0 28 33" fill="none" xmlns="http://www.w3.org/2000/svg">
