@@ -1271,8 +1271,8 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
-            {tradingRobots.slice(0, 2).map((robot, index) => {
-              const adjustedRobot = index === 1 ? { ...robot, icon: RISK_MASTER_ICON } : robot;
+            {tradingRobots.slice(0, 2).map((robot) => {
+              const adjustedRobot = { ...robot, icon: RISK_MASTER_ICON };
               const cardKey = buildCardKey("trading-robot", adjustedRobot.id);
               const isFavorited = isFavorite(cardKey);
               return (
