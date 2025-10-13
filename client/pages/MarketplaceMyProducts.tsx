@@ -1235,7 +1235,7 @@ const MarketplaceMyProducts: FC = () => {
               }
             }}
             className={cn(
-              "relative flex cursor-pointer flex-col gap-6 rounded-2xl border bg-[#0C101480] p-6 backdrop-blur-[50px] lg:flex-row",
+              "relative cursor-pointer rounded-2xl border bg-[#0C101480] p-6 backdrop-blur-[50px] transition-colors",
               activeCardKey === scriptsCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
