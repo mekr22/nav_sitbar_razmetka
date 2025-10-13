@@ -55,7 +55,6 @@ export const ClientLayout: FC<Props> = ({
         </main>
         <RightMenu isCollapsed={rightMenuOpen} />
       </div>
-      <Footer />
     </AppBackground>
   );
 };
