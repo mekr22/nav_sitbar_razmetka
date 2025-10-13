@@ -50,14 +50,35 @@ const faqs: FaqItem[] = [
   {
     id: "partner",
     question: "How can I become a partner?",
+    description:
+      "Register for the affiliate program using your verified trading account and submit an application describing your audience and expertise. Our team will review it within two business days and send onboarding instructions.",
+    bullets: [
+      "Complete the quick partner application",
+      "Verify your contact and payout details",
+      "Receive onboarding materials to launch your campaign",
+    ],
   },
   {
     id: "percentage",
     question: "What percentage will I receive for each referred client?",
+    description:
+      "Your commission depends on the performance tier you unlock. The more active clients you attract, the higher the rate becomes, with rewards recalculated every month.",
+    bullets: [
+      "Base tier starts at 20% of platform fees",
+      "Unlock 30% by referring 10 active clients monthly",
+      "Reach 40% with premium tier by maintaining top retention",
+    ],
   },
   {
     id: "payouts",
     question: "How often are payouts made?",
+    description:
+      "Affiliate rewards are processed automatically every Monday. You can choose the payout method that suits you best and monitor payment status inside your dashboard.",
+    bullets: [
+      "Weekly transfers in USD or USDT",
+      "Minimum withdrawal amount is $50",
+      "Detailed payout history stored in your dashboard",
+    ],
   },
   {
     id: "tools",
