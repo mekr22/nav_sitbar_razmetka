@@ -1439,10 +1439,7 @@ const MarketplaceMyProducts: FC = () => {
                       className="h-[72px] w-[72px] rounded-lg object-cover"
                     />
                     <div className="flex flex-1 flex-col gap-1">
-                      <div className="flex items-center justify-between gap-3">
-                        <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
-                        <Star className="h-6 w-6 text-[#B0B0B0]" />
-                      </div>
+                      <h3 className="text-lg font-bold text-white sm:text-[19px]">Product Name</h3>
                       <div className="flex flex-col gap-1">
                         <div className="flex flex-wrap items-center gap-1 text-xs font-bold">
                           <span className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-white">
