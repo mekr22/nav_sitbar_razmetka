@@ -1312,7 +1312,7 @@ const MarketplaceMyProducts: FC = () => {
                 <div className="flex-1">
                   <h4 className="mb-2 text-lg font-bold text-white sm:text-[19px]">RiskMaster - Trading risk calculation script</h4>
                   <div className="mb-3 flex flex-wrap items-center gap-2">
-                    <span className="rounded bg-[#A06AFF]/16 px-2 py-0.5 text-xs font-bold uppercase text-[#A06AFF]">Verified Listing</span>
+                    <span className="inline-flex items-center gap-1 rounded bg-[rgba(160,106,255,0.16)] px-2 py-0.5 text-xs font-extrabold uppercase text-[#A06AFF]">Verified Listing</span>
                     <span className="text-xs font-bold uppercase text-white">🌍 Australia</span>
                   </div>
                   <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
