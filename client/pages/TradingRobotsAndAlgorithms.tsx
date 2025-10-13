@@ -125,6 +125,7 @@ const resolveRoiBucket = (roi: number): RoiOptionValue => {
 
 const TradingRobotsAndAlgorithms: FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Trading robots and Algorithms");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
