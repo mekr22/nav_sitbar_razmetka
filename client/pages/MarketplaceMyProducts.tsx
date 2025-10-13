@@ -326,7 +326,7 @@ const analysts: Analyst[] = [
 const investmentConsultants: InvestmentConsultant[] = baseInvestmentConsultants.slice(0, 2);
 
 const signals: Signal[] = baseSignals;
-const strategies: Strategy[] = baseStrategies;
+const strategies: Strategy[] = baseStrategies.slice(0, 2);
 const tradingRobots: TradingRobot[] = baseTradingRobots;
 
 type Course = {
