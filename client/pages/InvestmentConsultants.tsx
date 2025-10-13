@@ -158,18 +158,6 @@ const InvestmentConsultants: FC = () => {
     }
   }, [location.pathname, location.state, navigate]);
 
-  useEffect(() => {
-    if (!activeCardKey) {
-      return;
-    }
-    const isActiveVisible = consultants.some(
-      (consultant) => buildCardKey("consultants-page", consultant.id) === activeCardKey,
-    );
-    if (!isActiveVisible) {
-      setActiveCardKey(null);
-    }
-  }, [activeCardKey, consultants]);
-
   const toggleFavorite = (key: string) => {
     setFavoriteCardKeys((prev) => {
       const next = new Set(prev);
