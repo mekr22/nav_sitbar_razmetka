@@ -1517,7 +1517,22 @@ const MarketplaceMyProducts: FC = () => {
             <a href="#" className="text-sm font-bold text-[#A06AFF] underline hover:opacity-80 sm:text-[15px]">See all</a>
           </div>
 
-          <div className="rounded-2xl border border-[#A06AFF] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+          <div
+            role="button"
+            tabIndex={0}
+            aria-pressed={activeCardKey === otherCardKey}
+            onClick={() => setActiveCardKey(otherCardKey)}
+            onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+              if (isActivationKey(event.key)) {
+                event.preventDefault();
+                setActiveCardKey(otherCardKey);
+              }
+            }}
+            className={cn(
+              "rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px]",
+              activeCardKey === otherCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
+            )}
+          >
             <div className="flex flex-col gap-4 lg:flex-row">
               <div className="relative h-[264px] w-full overflow-hidden rounded-lg lg:w-[451px]">
                 <img
