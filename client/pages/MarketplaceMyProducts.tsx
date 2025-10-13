@@ -1297,7 +1297,7 @@ const MarketplaceMyProducts: FC = () => {
             <h2 className="text-3xl font-bold text-white sm:text-[56px] sm:leading-[100%]">
               FAQ
             </h2>
-            <p className="max-w-[640px] text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
+            <p className="whitespace-nowrap text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
               Find quick answers about our affiliate program. Need more help?
               Contact our{" "}
               <a href="#" className="text-white underline hover:opacity-80">
