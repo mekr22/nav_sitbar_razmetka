@@ -254,6 +254,10 @@ const SignalsAndTechnicalIndicators: FC = () => {
       navigate("/marketplace/strategies", { state: { category } });
       return;
     }
+    if (category === "Trading robots and Algorithms") {
+      navigate("/marketplace/trading-robots", { state: { category } });
+      return;
+    }
     navigate("/marketplace/my-products", { state: { category } });
   };
 
