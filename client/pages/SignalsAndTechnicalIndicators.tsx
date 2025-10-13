@@ -344,7 +344,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   );
                 })}
               </div>
-              <div className="flex h-9 w-full max-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] sm:w-[235px] md:w-[235px] lg:w-[235px]">
+              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px]">
                 <Search className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]" aria-hidden="true" />
                 <input
                   type="search"
