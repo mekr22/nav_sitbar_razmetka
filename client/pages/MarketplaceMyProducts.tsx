@@ -1089,9 +1089,17 @@ const MarketplaceMyProducts: FC = () => {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
-            {traders.map((trader, index) => (
-              <TraderCard key={trader.id} trader={trader} featured={index === 0} />
-            ))}
+            {traders.map((trader) => {
+              const cardKey = buildCardKey("trader", trader.id);
+              return (
+                <TraderCard
+                  key={trader.id}
+                  trader={trader}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                />
+              );
+            })}
           </div>
         </section>
 
