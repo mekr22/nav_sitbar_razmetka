@@ -1533,6 +1533,9 @@ const MarketplaceMyProducts: FC = () => {
               activeCardKey === otherCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
+            <div className="absolute right-6 top-6">
+              <Star className="h-6 w-6 text-[#B0B0B0]" />
+            </div>
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
               <div className="relative h-[264px] w-full overflow-hidden rounded-lg lg:w-[451px]">
                 <img
