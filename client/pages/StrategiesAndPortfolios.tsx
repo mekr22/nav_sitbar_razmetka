@@ -155,6 +155,7 @@ const resolveRoiBucket = (roi: number): RoiOptionValue => (roi < 10 ? "steady" :
 
 const StrategiesAndPortfolios: FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState<MarketplaceCategory>("Strategies and Portfolios");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(new Set());
