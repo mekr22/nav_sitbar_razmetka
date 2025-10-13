@@ -1023,8 +1023,8 @@ const MarketplaceMyProducts: FC = () => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
   useEffect(() => {
-    const state = location.state as { category?: string } | null;
-    if (state?.category && categories.includes(state.category as (typeof categories)[number])) {
+    const state = location.state as { category?: MarketplaceCategory } | null;
+    if (state?.category && marketplaceCategories.includes(state.category)) {
       setSelectedCategory(state.category);
     }
   }, [location.state]);
