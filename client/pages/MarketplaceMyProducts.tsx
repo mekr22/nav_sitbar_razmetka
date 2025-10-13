@@ -982,7 +982,7 @@ const StrategyCard: FC<{ strategy: Strategy; isActive: boolean; onSelect: () => 
           <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
         </div>
         {/* Header */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <img src={strategy.icon} alt={strategy.name} className="h-[72px] w-[72px] rounded-lg object-cover" />
           <div className="flex flex-1 flex-col gap-0.5">
             <h3 className="text-lg font-bold text-white sm:text-[19px]">{strategy.name}</h3>
