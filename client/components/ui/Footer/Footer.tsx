@@ -29,7 +29,7 @@ const Footer: FC = () => {
           {/* Products Section */}
           <div className="flex flex-1 flex-col gap-2.5">
             <h4 className="text-lg font-bold text-[#A06AFF] sm:text-[19px]">Products</h4>
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
               <a href="#" className="flex items-center gap-2.5 rounded py-2 text-sm font-bold text-white transition-colors hover:text-[#A06AFF] sm:text-[15px]">
                 <Database className="h-6 w-6" />
                 <span>Cryptocurrency</span>
