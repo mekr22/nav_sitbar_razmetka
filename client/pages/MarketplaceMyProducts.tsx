@@ -1513,7 +1513,7 @@ const MarketplaceMyProducts: FC = () => {
                     }
                   }}
                   className={cn(
-                    "relative cursor-pointer overflow-hidden rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] transition-colors",
+                    "relative w-full cursor-pointer overflow-hidden rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] transition-colors max-[640px]:p-6",
                     isActive ? "border-[#A06AFF]" : "border-[#181B22]",
                   )}
                 >
@@ -1657,7 +1657,7 @@ const MarketplaceMyProducts: FC = () => {
               }
             }}
             className={cn(
-              "relative cursor-pointer rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] transition-colors",
+              "relative w-full cursor-pointer rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] transition-colors max-[640px]:p-6",
               activeCardKey === otherCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
