@@ -291,22 +291,6 @@ type Analyst = {
   featured?: boolean;
 };
 
-type InvestmentConsultant = {
-  id: string;
-  name: string;
-  credentials: string;
-  avatar: string;
-  company: string;
-  location: string;
-  nationwide: boolean;
-  description: string;
-  clients: string;
-  riskLevel: string;
-  aum: string;
-  portfolioReturn: string;
-  featured?: boolean;
-};
-
 const analysts: Analyst[] = [
   {
     id: "analyst-sarah-lee",
