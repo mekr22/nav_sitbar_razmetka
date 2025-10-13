@@ -3,7 +3,7 @@ import { Eye, ChevronRight, Package, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
-import { categories } from "@/pages/MarketplaceMyProducts";
+import { marketplaceCategories, MarketplaceCategory } from "@/data/marketplaceCategories";
 import { cn } from "@/lib/utils";
 
 const DUPLICATED_PAIRS = 6;
