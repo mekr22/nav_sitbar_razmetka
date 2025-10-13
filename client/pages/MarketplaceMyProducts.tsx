@@ -498,6 +498,10 @@ const MarketplaceMyProducts: FC = () => {
       navigate("/marketplace/analysts", { state: { category } });
       return;
     }
+    if (category === "Traders") {
+      navigate("/marketplace/traders", { state: { category } });
+      return;
+    }
   };
 
   const scriptsCardKey = buildCardKey("scripts", "main");
