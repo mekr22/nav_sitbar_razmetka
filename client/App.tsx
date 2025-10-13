@@ -17,6 +17,7 @@ import ProfileNew from "./pages/ProfileNew";
 import Billing from "./pages/Billing";
 import Stock from "./pages/Stock";
 import MarketplaceMyProducts from "./pages/MarketplaceMyProducts";
+import SignalsAndTechnicalIndicators from "./pages/SignalsAndTechnicalIndicators";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
@@ -45,6 +46,7 @@ const App = () => (
                   <Route path="/billing" element={<Billing />} />
                   <Route path="/stock" element={<Stock />} />
                   <Route path="/marketplace/my-products" element={<MarketplaceMyProducts />} />
+                  <Route path="/marketplace/signals" element={<SignalsAndTechnicalIndicators />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
