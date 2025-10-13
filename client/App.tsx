@@ -22,6 +22,7 @@ import StrategiesAndPortfolios from "./pages/StrategiesAndPortfolios";
 import TradingRobotsAndAlgorithms from "./pages/TradingRobotsAndAlgorithms";
 import InvestmentConsultants from "./pages/InvestmentConsultants";
 import Analysts from "./pages/Analysts";
+import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
