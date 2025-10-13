@@ -27,7 +27,7 @@ export const Header: FC<HeaderProps> = ({
           aria-label="Open navigation"
           aria-expanded={mobileNavOpen}
           aria-controls="mobile-navigation"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/60 text-white transition-colors hover:border-[#1F2230] md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/60 text-white transition-colors hover:border-[#1F2230] lg:hidden"
         >
           <Menu className="h-5 w-5" />
         </button>
