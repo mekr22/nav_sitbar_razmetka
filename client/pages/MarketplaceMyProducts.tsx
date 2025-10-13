@@ -1592,7 +1592,7 @@ const MarketplaceMyProducts: FC = () => {
               activeCardKey === otherCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
-            <div className="absolute right-6 top-6">
+            <div className="absolute right-4 top-4">
               <FavoriteStarButton pressed={otherFavorited} onToggle={() => toggleFavorite(otherCardKey)} />
             </div>
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
