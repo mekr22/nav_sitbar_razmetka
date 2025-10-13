@@ -660,9 +660,24 @@ const platformLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F59dfc5c913eb4f6d845cfb34003ed89b?format=webp&width=800",
 ];
 
-const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
+const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void }> = ({ signal, isActive, onSelect }) => (
   <div className="mx-auto w-full max-w-[525px]">
-    <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+    <div
+      role="button"
+      tabIndex={0}
+      aria-pressed={isActive}
+      onClick={onSelect}
+      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        if (isActivationKey(event.key)) {
+          event.preventDefault();
+          onSelect();
+        }
+      }}
+      className={cn(
+        "relative flex cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+        isActive ? "border-[#A06AFF]" : "border-[#181B22]",
+      )}
+    >
       {/* Header with icon, name, users, risk */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
@@ -737,7 +752,6 @@ const SignalCard: FC<{ signal: Signal }> = ({ signal }) => (
         <span className="text-[#B0B0B0]">Product Accuracy:</span>
         <span className="text-[15px] text-[#2EBD85]">{signal.accuracy}</span>
       </div>
-
 
       {/* Buttons */}
       <div className="flex flex-col gap-2 sm:flex-row">
