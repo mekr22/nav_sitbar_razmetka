@@ -8,9 +8,11 @@ import { ChevronDown, DoubleArrow } from './icons';
 
 interface Props {
   variant?: LayoutVariant;
+  mobileOpen?: boolean;
+  onMobileClose?: () => void;
 }
 
-const NewNavBar: FC<Props> = ({ variant = 'primal' }) => {
+const NewNavBar: FC<Props> = ({ variant = 'primal', mobileOpen = false, onMobileClose }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
 
