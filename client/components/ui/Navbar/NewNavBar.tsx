@@ -111,38 +111,80 @@ const NewNavBar: FC<Props> = ({ variant = 'primal', mobileOpen = false, onMobile
   };
 
   return (
-    <div className='relative mt-8 ml-8 hidden lg:block'>
-      <div
-        className={cn(
-          'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
-          `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
-        )}
-      >
-        <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
-          <div className='absolute right-[-12px] top-[14px]'>
-            <button
-              className='w-[26px] h-[26px] rounded-[12px] border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md z-20'
-              onClick={() => setIsCollapsed(!isCollapsed)}
-              aria-label='Toggle compact menu'
-              aria-pressed={isCollapsed}
-            >
-              <DoubleArrow className={cn('h-4 w-4 transition-transform duration-300', isCollapsed ? '' : 'rotate-180')} />
-            </button>
-          </div>
+    <>
+      <div className='relative mt-8 ml-8 hidden lg:block'>
+        <div
+          className={cn(
+            'bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit',
+            `bg-[linear-gradient(170.22deg,#523A83_0.01%,rgba(82,58,131,0)_8.28%),linear-gradient(350.89deg,#523A83_0%,rgba(82,58,131,0)_8.04%)]`
+          )}
+        >
+          <div className={cn('flex flex-col py-4 transition-all duration-300 custom-bg-blur rounded-[12px]', isCollapsed ? 'w-[72px]' : 'w-[222px]')}>
+            <div className='absolute right-[-12px] top-[14px]'>
+              <button
+                className='w-[26px] h-[26px] rounded-[12px] border border-[#181B22] custom-bg-blur hover:bg-[#1E1E1E] flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md z-20'
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                aria-label='Toggle compact menu'
+                aria-pressed={isCollapsed}
+              >
+                <DoubleArrow className={cn('h-4 w-4 transition-transform duration-300', isCollapsed ? '' : 'rotate-180')} />
+              </button>
+            </div>
 
-          <div className='flex flex-col gap-1'>
-            {navElements.slice(0, 1).map((el) => renderElement(el))}
-            <div
-              className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px] transition-all duration-300', {
-                'w-[190px]': !isCollapsed,
-                'w-[40px]': isCollapsed,
-              })}
-            />
-            {navElements.slice(1).map((el) => renderElement(el))}
+            <div className='flex flex-col gap-1'>
+              {navElements.slice(0, 1).map((el) => renderElement(el))}
+              <div
+                className={cn('my-[14px] bg-[linear-gradient(90deg,rgba(82,58,131,0)_0%,#523A83_50%,rgba(82,58,131,0)_100%)] mx-auto h-[2px] transition-all duration-300', {
+                  'w-[190px]': !isCollapsed,
+                  'w-[40px]': isCollapsed,
+                })}
+              />
+              {navElements.slice(1).map((el) => renderElement(el))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <div
+        className={cn(
+          'fixed inset-0 z-40 flex lg:hidden',
+          mobileOpen ? 'pointer-events-auto' : 'pointer-events-none',
+        )}
+      >
+        <div
+          className={cn(
+            'absolute inset-0 bg-black/60 transition-opacity',
+            mobileOpen ? 'opacity-100' : 'opacity-0',
+          )}
+          onClick={onMobileClose}
+        />
+        <div
+          id='mobile-navigation'
+          className={cn(
+            'relative z-10 flex h-full w-[280px] max-w-[85%] flex-col gap-5 bg-[#0C1014]/95 p-5 backdrop-blur-xl transition-transform duration-300 ease-in-out',
+            mobileOpen ? 'translate-x-0' : '-translate-x-full',
+          )}
+        >
+          <div className='flex items-center justify-between'>
+            <span className='text-sm font-bold uppercase text-[#B0B0B0]'>Menu</span>
+            <button
+              type='button'
+              onClick={onMobileClose}
+              aria-label='Close navigation'
+              className='flex h-10 w-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/60 text-white transition-colors hover:border-[#1F2230]'
+            >
+              <X className='h-5 w-5' />
+            </button>
+          </div>
+          <div className='h-px w-full bg-[#181B22]' />
+          <div className='flex-1 overflow-y-auto pr-2'>
+            <div className='flex flex-col gap-1'>
+              {navElements.map((el) => renderElement(el, { onNavigate: onMobileClose }))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
