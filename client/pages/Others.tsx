@@ -389,7 +389,7 @@ const Others: FC = () => {
 
         <section className="flex flex-col gap-6 py-6">
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-bold text-white sm:text=[31px]">Other Products</h2>
+            <h2 className="text-2xl font-bold text-white sm:text-[31px]">Other Products</h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
               <div className="hidden min-[1143px]:flex min-[1143px]:w-full min-[1143px]:flex-1 min-[1143px]:items-center min-[1143px]:gap-3">
                 {FILTER_ORDER.map((filterKey) => {
