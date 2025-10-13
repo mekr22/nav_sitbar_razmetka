@@ -1005,6 +1005,9 @@ const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
 
+  const scriptsCardKey = buildCardKey("scripts", "main");
+  const otherCardKey = buildCardKey("other", "main");
+
   return (
     <div className="flex flex-col gap-6">
       <div className="mx-auto w-full max-w-[880px] px-3 sm:px-4 xl:min-w-[880px]">
