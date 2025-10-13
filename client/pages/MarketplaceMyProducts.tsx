@@ -1529,7 +1529,7 @@ const MarketplaceMyProducts: FC = () => {
               }
             }}
             className={cn(
-              "rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px]",
+              "rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] cursor-pointer transition-colors",
               activeCardKey === otherCardKey ? "border-[#A06AFF]" : "border-[#181B22]",
             )}
           >
