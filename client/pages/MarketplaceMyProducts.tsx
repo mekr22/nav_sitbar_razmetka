@@ -699,8 +699,11 @@ const SignalCard: FC<{ signal: Signal; isActive: boolean; onSelect: () => void; 
         isActive ? "border-[#A06AFF]" : "border-[#181B22]",
       )}
     >
+      <div className="absolute right-4 top-4">
+        <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+      </div>
       {/* Header with icon, name, users, risk */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3">
         <div className="flex items-center gap-3">
           <img src={signal.icon} alt={signal.name} className="h-16 w-16 rounded-lg" />
           <div className="flex flex-col gap-0.5">
