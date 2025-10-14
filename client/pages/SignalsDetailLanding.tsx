@@ -339,10 +339,10 @@ const SignalsDetailLanding: FC = () => {
                     </defs>
                   </svg>
                 </button>
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-white" />
-                  <span className="h-2 w-2 rounded-full bg-[#B0B0B0]" />
-                  <span className="h-2 w-2 rounded-full bg-[#B0B0B0]" />
+                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
+                  <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+                  <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+                  <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
                 </div>
               </div>
             )}
