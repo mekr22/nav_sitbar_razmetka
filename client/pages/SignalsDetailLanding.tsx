@@ -248,56 +248,71 @@ const SignalsDetailLanding: FC = () => {
 
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-4">
-          <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] lg:flex-[2] lg:min-w-0">
-            <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-5 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] lg:flex-[2] lg:min-w-0">
+            <div className="flex flex-wrap items-start justify-between gap-3">
               <h1 className="text-2xl font-bold text-white sm:text-[31px]">
                 {signal.name}
               </h1>
               <button
                 type="button"
-                className="text-[#B0B0B0] transition-colors hover:text-white"
+                className="text-[#B0B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                 aria-label="Add to favourites"
               >
                 <Star className="h-6 w-6" />
               </button>
             </div>
 
-            {author && (
-              <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-6 text-center">
+            {chartImage && (
+              <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
                 <img
-                  src={author.avatar}
-                  alt={author.name}
-                  className="h-24 w-24 rounded-full border-2 border-[#181B22] object-cover"
+                  src={chartImage}
+                  alt={`${signal.name} chart`}
+                  className="h-full w-full object-cover"
                 />
-                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Author
-                </span>
-                <span className="text-[15px] font-bold text-white">{author.name}</span>
+                <button
+                  type="button"
+                  className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_20px_rgba(160,106,255,0.35)] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                  aria-label="Previous chart"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button
+                  type="button"
+                  className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_0_20px_rgba(160,106,255,0.35)] transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                  aria-label="Next chart"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-white" />
+                  <span className="h-2 w-2 rounded-full bg-[#B0B0B0]" />
+                  <span className="h-2 w-2 rounded-full bg-[#B0B0B0]" />
+                </div>
               </div>
             )}
 
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                <div className="flex items-center gap-1.5">
+              <div className="flex flex-wrap items-center gap-5 sm:gap-6">
+                <div className="flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-[#B0B0B0]" />
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">
                     Use on chart
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <Users className="h-5 w-5 text-[#B0B0B0]" />
                   <span className="text-xs font-bold text-[#B0B0B0]">
                     {signal.users}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <MessageCircle className="h-5 w-5 text-[#B0B0B0]" />
                   <span className="text-xs font-bold text-[#B0B0B0]">
                     {reviews.length > 0 ? reviews.length : "87"}
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <Eye className="h-5 w-5 text-[#B0B0B0]" />
                 <span className="text-xs font-bold text-[#B0B0B0]">11,299</span>
               </div>
