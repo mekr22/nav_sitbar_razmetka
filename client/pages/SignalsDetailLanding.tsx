@@ -185,7 +185,7 @@ const SignalsDetailLanding: FC = () => {
   const totalReviews = signal.totalReviews ?? FALLBACK_SIGNAL.totalReviews ?? 0;
   const chartImage =
     signal.productImage ?? signal.chartImage ?? DEFAULT_CHART_IMAGE;
-  const displayChartImage = chartImage || DEFAULT_CHART_IMAGE;
+  const displayChartImage = DEFAULT_CHART_IMAGE;
   const authorAvatar = author?.avatar ?? FALLBACK_SIGNAL.author?.avatar ?? "";
 
   const renderStars = (rating: number) => {
