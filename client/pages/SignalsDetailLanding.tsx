@@ -3,11 +3,13 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
+  Eye,
   MessageCircle,
   Play,
   ShieldCheck,
   Star,
   Timer,
+  TrendingUp,
   Users,
 } from "lucide-react";
 import { FC, useEffect, useMemo, useState } from "react";
