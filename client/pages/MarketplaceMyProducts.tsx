@@ -850,6 +850,7 @@ const MarketplaceMyProducts: FC = () => {
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onOpenDetails={openSignalDetails}
                 />
               );
             })}
