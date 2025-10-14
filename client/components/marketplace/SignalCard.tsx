@@ -35,6 +35,7 @@ interface SignalCardProps {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onOpenDetails?: () => void;
 }
 
 export const SignalCard: FC<SignalCardProps> = ({
@@ -43,6 +44,7 @@ export const SignalCard: FC<SignalCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
+  onOpenDetails,
 }) => {
   const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
   const assets = Array.isArray(signal.assets) ? signal.assets : [];
@@ -57,7 +59,10 @@ export const SignalCard: FC<SignalCardProps> = ({
         tabIndex={0}
         aria-pressed={isActive}
         onClick={onSelect}
-        onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+        onDoubleClick={() => {
+          onOpenDetails?.();
+        }}
+        onKeyDown={(event: KeyboardEvent<HTMLDivDiv>) => {
           if (isActivationKey(event.key)) {
             event.preventDefault();
             onSelect();
