@@ -380,8 +380,8 @@ const SignalsDetailLanding: FC = () => {
 
               <div className="h-px w-full bg-[#181B22]" />
 
-              <div className="relative flex flex-col gap-6">
-                <div className="flex flex-col gap-6">
+              <div className="relative flex flex-col gap-5">
+                <div className="flex flex-col gap-5">
                   {["$500K", "$100K", "$10K", "$100", "$1", "$0.01"].map((value, index) => (
                     <div key={value} className="flex items-center gap-0.5">
                       <div className={`h-px flex-1 ${index === 5 ? "bg-[#523A83]" : "bg-[#2E2744]"}`} />
