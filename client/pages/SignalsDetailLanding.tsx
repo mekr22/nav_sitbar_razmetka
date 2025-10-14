@@ -270,7 +270,7 @@ const SignalsDetailLanding: FC = () => {
             {chartImage && (
               <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
                 <img
-                  src={chartImage}
+                  src={displayChartImage}
                   alt={`${signal.name} chart`}
                   className="h-full w-full object-cover"
                 />
