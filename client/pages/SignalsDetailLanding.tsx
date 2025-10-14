@@ -378,7 +378,7 @@ const SignalsDetailLanding: FC = () => {
 
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
             <div className="flex flex-col overflow-hidden rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              {chartImage && (
+              {chartImage ? (
                 <div className="relative">
                   <img
                     src={chartImage}
@@ -395,6 +395,16 @@ const SignalsDetailLanding: FC = () => {
                     </div>
                   )}
                 </div>
+              ) : (
+                authorAvatar && (
+                  <div className="flex items-center justify-center border-b border-[#181B22] bg-[#0C1014] py-10">
+                    <img
+                      src={authorAvatar}
+                      alt={author?.name ?? "Author"}
+                      className="h-20 w-20 rounded-full border-4 border-[#181B22] object-cover"
+                    />
+                  </div>
+                )
               )}
 
               <div className="flex items-center gap-3 p-4">
