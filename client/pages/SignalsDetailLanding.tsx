@@ -49,6 +49,9 @@ type ExtendedSignal = Signal & {
   totalReviews?: number;
 };
 
+const DEFAULT_CHART_IMAGE =
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fe406955c384c49af9277d65283062ad7?format=webp&width=800";
+
 const resolveFallbackSignal = (): ExtendedSignal => {
   const first = baseSignals[0] as ExtendedSignal | undefined;
   if (first) {
