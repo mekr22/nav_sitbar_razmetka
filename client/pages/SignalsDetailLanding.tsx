@@ -11,7 +11,7 @@ import {
   Users,
   Youtube,
 } from "lucide-react";
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { MarketplaceCategory } from "@/data/marketplaceCategories";
 import type { Signal } from "@/components/marketplace/SignalCard";
