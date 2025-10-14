@@ -234,7 +234,11 @@ const SignalsDetailLanding: FC = () => {
       ].filter((item) => item.trim().length > 0);
 
   const reviews = (signal.reviews ?? []).filter(
-    (review) => review.author.trim().length > 0 && review.message.trim().length > 0,
+    (review) =>
+      typeof review.author === "string" &&
+      review.author.trim().length > 0 &&
+      typeof review.message === "string" &&
+      review.message.trim().length > 0,
   );
 
   const author = signal.author ?? {
