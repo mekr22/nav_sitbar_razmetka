@@ -376,14 +376,17 @@ const SignalsDetailLanding: FC = () => {
           </div>
 
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
-            <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="flex items-center gap-3 p-4">
+            <div className="flex flex-col overflow-hidden rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+              {chartImage && (
                 <img
-                  src={signal.icon}
+                  src={chartImage}
                   alt={signal.name}
-                  className="h-16 w-16 rounded-lg object-cover"
+                  className="h-[332px] w-full border-b border-[#181B22] object-cover"
                 />
-                <div className="flex flex-1 flex-col gap-0.5">
+              )}
+
+              <div className="flex items-center gap-3 p-4">
+                <div className="flex flex-col gap-0.5">
                   <h3 className="text-[19px] font-bold text-white">{signal.name}</h3>
                   <div className="flex items-center gap-1">
                     <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
@@ -423,7 +426,7 @@ const SignalsDetailLanding: FC = () => {
                     {assets.map((asset, idx) => (
                       <div
                         key={`${signal.id}-asset-${idx}`}
-                        className="rounded bg-[#2E2744] px-1 py-0.5"
+                        className="rounded px-1 py-0.5 bg-[#2E2744]"
                       >
                         <span className="text-white">{asset}</span>
                       </div>
@@ -444,7 +447,7 @@ const SignalsDetailLanding: FC = () => {
                     {timeframes.map((tf, idx) => (
                       <div
                         key={`${signal.id}-tf-${idx}`}
-                        className="rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5"
+                        className="rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5"
                       >
                         <span className="text-[#6AA5FF]">{tf}</span>
                       </div>
@@ -467,30 +470,30 @@ const SignalsDetailLanding: FC = () => {
                 </div>
               </div>
 
-              <div className="px-4 pb-2">
+              <div className="flex flex-col justify-center gap-2 px-4 py-2">
                 <p className="text-2xl font-bold text-white">
                   {signal.price ?? "$10 / month"}
                 </p>
               </div>
 
-              <div className="flex flex-col gap-3 p-4">
+              <div className="flex flex-col gap-4 p-4">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90"
+                  className="flex h-[46px] w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
                 >
                   <Check className="h-4 w-4" />
                   Subscribe
                 </button>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  className="flex h-[46px] w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
                   <MessageCircle className="h-4 w-4" />
                   Chat
                 </button>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  className="flex h-[46px] w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
                   <Play className="h-4 w-4" />
                   Demo
