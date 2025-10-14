@@ -125,6 +125,13 @@ const SignalsDetailLanding: FC = () => {
     ? signal.timeframes.filter((item) => item && item.trim().length > 0)
     : [];
 
+  const assetsText = assets.length ? assets.join(", ") : "diverse assets";
+  const timeframesText = timeframes.length
+    ? timeframes.join(", ")
+    : "multiple timeframes";
+  const useLabelLower = signal.use ? signal.use.toLowerCase() : "";
+  const riskLabelLower = signal.riskLevel ? signal.riskLevel.toLowerCase() : "";
+
   const gallery = useMemo(() => {
     const additional = Array.isArray(signal.gallery)
       ? signal.gallery.filter((item) => item && item.trim().length > 0)
