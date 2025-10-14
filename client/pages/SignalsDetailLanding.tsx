@@ -302,14 +302,6 @@ const SignalsDetailLanding: FC = () => {
 
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              {productImage && (
-                <img
-                  src={productImage}
-                  alt={signal.name}
-                  className="h-auto w-full rounded-t-3xl border-b border-[#181B22] object-cover"
-                />
-              )}
-
               <div className="flex items-center gap-3 p-4">
                 <img
                   src={signal.icon}
