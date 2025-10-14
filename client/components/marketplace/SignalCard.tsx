@@ -60,7 +60,7 @@ export const SignalCard: FC<SignalCardProps> = ({
         aria-pressed={isActive}
         onClick={onSelect}
         onDoubleClick={() => {
-          onOpenDetails?.();
+          onOpenDetails?.(signal);
         }}
         onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
           if (isActivationKey(event.key)) {
