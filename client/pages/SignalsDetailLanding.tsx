@@ -392,7 +392,7 @@ const SignalsDetailLanding: FC = () => {
                   ))}
                 </div>
 
-                <div className="absolute left-[18px] top-0 h-[203px] w-[calc(100%-52px)]">
+                <div className="absolute left-[18px] top-0 h-[188px] w-[calc(100%-52px)]">
                   <svg
                     className="h-full w-full"
                     viewBox="0 0 652 221"
@@ -427,7 +427,7 @@ const SignalsDetailLanding: FC = () => {
                   <span className="text-center text-xs font-bold uppercase text-white">$507K</span>
                 </div>
 
-                <div className="flex items-start justify-between gap-2 pt-[216px]">
+                <div className="flex items-start justify-between gap-2 pt-[188px]">
                   {["APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR"].map((month) => (
                     <div key={month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
