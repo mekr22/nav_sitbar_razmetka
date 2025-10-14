@@ -191,7 +191,11 @@ const SignalsDetailLanding: FC = () => {
 
   const specificationItems = (signal.specifications && signal.specifications.length)
     ? signal.specifications.filter(
-        (item) => item.label.trim().length > 0 && item.value.trim().length > 0,
+        (item) =>
+          typeof item.label === "string" &&
+          item.label.trim().length > 0 &&
+          typeof item.value === "string" &&
+          item.value.trim().length > 0,
       )
     : (
         [
