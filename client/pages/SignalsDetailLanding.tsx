@@ -185,6 +185,9 @@ const SignalsDetailLanding: FC = () => {
   const description =
     signal.description ??
     `${signal.name} focuses on ${(useLabelLower || signal.use).trim()} setups across ${assetsText}. It performs best on ${timeframesText} and maintains a ${(riskLabelLower || signal.riskLevel).trim()} risk profile with ${signal.users} subscribers.`;
+  const methodologyText =
+    signal.description ??
+    `${signal.name} applies ${signal.type ? signal.type.toLowerCase() : signal.type} logic while operating with a ${(riskLabelLower || signal.riskLevel).trim()} risk profile.`;
 
   const specificationItems = (signal.specifications && signal.specifications.length)
     ? signal.specifications.filter(
