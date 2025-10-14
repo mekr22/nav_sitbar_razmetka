@@ -173,14 +173,18 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
-  const openSignalDetails = useCallback(() => {
-    navigate("/marketplace/signals-details", {
-      state: {
-        scrollToTop: true,
-        category: "Signals and Technical indicators",
-      },
-    });
-  }, [navigate]);
+  const openSignalDetails = useCallback(
+    (selectedSignal: Signal) => {
+      navigate("/marketplace/signals-details", {
+        state: {
+          scrollToTop: true,
+          category: "Signals and Technical indicators",
+          signal: selectedSignal,
+        },
+      });
+    },
+    [navigate],
+  );
 
   const signals: SignalWithMeta[] = useMemo(
     () =>
