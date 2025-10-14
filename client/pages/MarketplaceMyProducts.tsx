@@ -621,6 +621,15 @@ const MarketplaceMyProducts: FC = () => {
   const scriptsFavorited = isFavorite(scriptsCardKey);
   const otherFavorited = isFavorite(otherCardKey);
 
+  const openSignalDetails = useCallback(() => {
+    navigate("/marketplace/signals-details", {
+      state: {
+        scrollToTop: true,
+        category: "Signals and Technical indicators",
+      },
+    });
+  }, [navigate]);
+
   return (
     <div className="flex flex-col gap-6">
       <div className="mx-auto w-full max-w-[880px] px-3 sm:px-4 xl:min-w-[880px]">
