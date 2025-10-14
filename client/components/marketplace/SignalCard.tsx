@@ -35,7 +35,7 @@ interface SignalCardProps {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-  onOpenDetails?: () => void;
+  onOpenDetails?: (signal: Signal) => void;
 }
 
 export const SignalCard: FC<SignalCardProps> = ({
