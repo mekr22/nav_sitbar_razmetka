@@ -267,90 +267,88 @@ const SignalsDetailLanding: FC = () => {
               </button>
             </div>
 
-            {chartImage && (
-              <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
-                <img
-                  src={displayChartImage}
-                  alt={`${signal.name} chart`}
-                  className="h-full w-full object-cover"
-                />
-                <button
-                  type="button"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                  aria-label="Previous chart"
+            <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
+              <img
+                src={displayChartImage}
+                alt={`${signal.name} chart`}
+                className="h-full w-full object-cover"
+              />
+              <button
+                type="button"
+                className="absolute left-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                aria-label="Previous chart"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#paint0_linear_left)" />
-                    <path
-                      d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="paint0_linear_left"
-                        x1="23.9815"
-                        y1="11.9907"
-                        x2="0"
-                        y2="11.9907"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#A06AFF" />
-                        <stop offset="1" stopColor="#482090" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                  aria-label="Next chart"
+                  <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#paint0_linear_left)" />
+                  <path
+                    d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_left"
+                      x1="23.9815"
+                      y1="11.9907"
+                      x2="0"
+                      y2="11.9907"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#A06AFF" />
+                      <stop offset="1" stopColor="#482090" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </button>
+              <button
+                type="button"
+                className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                aria-label="Next chart"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#paint0_linear_right)" />
-                    <path
-                      d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="paint0_linear_right"
-                        x1="23.9815"
-                        y1="11.9907"
-                        x2="0"
-                        y2="11.9907"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#A06AFF" />
-                        <stop offset="1" stopColor="#482090" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </button>
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
-                  <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
-                  <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
-                  <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
-                </div>
+                  <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#paint0_linear_right)" />
+                  <path
+                    d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_right"
+                      x1="23.9815"
+                      y1="11.9907"
+                      x2="0"
+                      y2="11.9907"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#A06AFF" />
+                      <stop offset="1" stopColor="#482090" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </button>
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
+                <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+                <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+                <span className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
               </div>
-            )}
+            </div>
 
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-5 sm:gap-6">
