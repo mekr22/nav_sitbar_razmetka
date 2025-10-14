@@ -590,13 +590,14 @@ const SignalsAndTechnicalIndicators: FC = () => {
                 const isFavorited = isFavorite(cardKey);
                 return (
                   <SignalCard
-                    key={signal.id}
-                    signal={signal}
-                    isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
-                    isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
-                  />
+                  key={signal.id}
+                  signal={signal}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onOpenDetails={openSignalDetails}
+                />
                 );
               })}
             </div>
