@@ -180,6 +180,8 @@ const SignalsDetailLanding: FC = () => {
   const author = signal.author ?? FALLBACK_SIGNAL.author;
   const averageRating = signal.averageRating ?? FALLBACK_SIGNAL.averageRating ?? 0;
   const totalReviews = signal.totalReviews ?? FALLBACK_SIGNAL.totalReviews ?? 0;
+  const chartImage =
+    signal.productImage ?? signal.chartImage ?? FALLBACK_SIGNAL.chartImage ?? "";
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => {
