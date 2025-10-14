@@ -182,12 +182,9 @@ const SignalsDetailLanding: FC = () => {
         unsuccessful: Number.parseFloat((100 - accuracyValue).toFixed(1)),
       };
 
-  const description = signal.description
-    ?? `${signal.name} focuses on ${signal.use.toLowerCase?.() ?? signal.use} setups across ${
-      assets.length ? assets.join(", ") : "diverse assets"
-    }. It performs best on ${
-      timeframes.length ? timeframes.join(", ") : "multiple timeframes"
-    } and maintains a ${signal.riskLevel.toLowerCase?.() ?? signal.riskLevel} risk profile with ${signal.users} subscribers.`;
+  const description =
+    signal.description ??
+    `${signal.name} focuses on ${(useLabelLower || signal.use).trim()} setups across ${assetsText}. It performs best on ${timeframesText} and maintains a ${(riskLabelLower || signal.riskLevel).trim()} risk profile with ${signal.users} subscribers.`;
 
   const specificationItems = (signal.specifications && signal.specifications.length)
     ? signal.specifications.filter(
