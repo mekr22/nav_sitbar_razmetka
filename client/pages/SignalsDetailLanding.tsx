@@ -418,20 +418,25 @@ const SignalsDetailLanding: FC = () => {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-3 text-[15px] font-normal text-white">
-                    <p>
-                      {signal.description ??
-                        `${signal.name} applies ${signal.type.toLowerCase?.() ?? signal.type} logic with a ${
-                          signal.riskLevel.toLowerCase?.() ?? signal.riskLevel
-                        } risk profile.`}
-                    </p>
+                    <p>{methodologyText}</p>
                     <ul className="list-disc space-y-2 pl-5 text-[#B0B0B0]">
                       {timeframes.map((frame) => (
                         <li key={`${signal.id}-frame-${frame}`}>
                           Optimized configuration for timeframe {frame}
                         </li>
                       ))}
+                      {platforms.map((platform) => (
+                        <li key={`${signal.id}-methodology-platform-${platform}`}>
+                          Deployment available on {platform}
+                        </li>
+                      ))}
                       {platforms.length === 0 && (
                         <li>Platform agnostic deployment supported</li>
+                      )}
+                      {accuracyValue != null && (
+                        <li>
+                          Historical accuracy recorded at {accuracyValue.toFixed(1)}%
+                        </li>
                       )}
                     </ul>
                   </div>
