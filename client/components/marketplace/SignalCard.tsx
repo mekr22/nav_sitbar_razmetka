@@ -62,7 +62,7 @@ export const SignalCard: FC<SignalCardProps> = ({
         onDoubleClick={() => {
           onOpenDetails?.();
         }}
-        onKeyDown={(event: KeyboardEvent<HTMLDivDiv>) => {
+        onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
           if (isActivationKey(event.key)) {
             event.preventDefault();
             onSelect();
