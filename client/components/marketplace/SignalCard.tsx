@@ -170,7 +170,7 @@ export const SignalCard: FC<SignalCardProps> = ({
             type="button"
             onClick={(event) => {
               event.stopPropagation();
-              onOpenDetails?.();
+              onOpenDetails?.(signal);
             }}
             className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
           >
