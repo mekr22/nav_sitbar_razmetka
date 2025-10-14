@@ -308,6 +308,98 @@ const SignalsDetailLanding: FC = () => {
       </div>
 
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
+        <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold text-white sm:text-[31px]">
+              {signal.name}
+            </h1>
+            <button
+              type="button"
+              className="text-[#B0B0B0] transition-colors hover:text-white"
+              aria-label="Add to favourites"
+            >
+              <Star className="h-6 w-6" />
+            </button>
+          </div>
+
+          <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
+            {currentGalleryImage ? (
+              <img
+                src={currentGalleryImage}
+                alt={`${signal.name} chart preview`}
+                className="h-auto w-full object-cover"
+              />
+            ) : (
+              <div className="flex h-64 items-center justify-center text-[15px] font-semibold text-[#B0B0B0]">
+                Chart not available
+              </div>
+            )}
+
+            {canNavigateGallery && (
+              <>
+                <button
+                  type="button"
+                  onClick={handlePreviousImage}
+                  className="absolute left-4 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-4 w-4 text-white" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNextImage}
+                  className="absolute right-4 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-4 w-4 text-white" />
+                </button>
+              </>
+            )}
+
+            {gallery.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
+                {gallery.map((_, index) => (
+                  <div
+                    key={`${signal.id}-featured-dot-${index}`}
+                    className={`h-1 w-1 rounded-full transition-colors ${
+                      index === galleryIndex ? "bg-white" : "bg-[#B0B0B0]"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+              <div className="flex items-center gap-1.5">
+                <TrendingUp className="h-5 w-5 text-[#B0B0B0]" />
+                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Use on chart
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Users className="h-5 w-5 text-[#B0B0B0]" />
+                <span className="text-xs font-bold text-[#B0B0B0]">
+                  {signal.users}
+                </span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <MessageCircle className="h-5 w-5 text-[#B0B0B0]" />
+                <span className="text-xs font-bold text-[#B0B0B0]">
+                  {reviews.length > 0 ? reviews.length : "87"}
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Eye className="h-5 w-5 text-[#B0B0B0]" />
+              <span className="text-xs font-bold text-[#B0B0B0]">11,299</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
           <div className="flex flex-1 flex-col gap-6">
             <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
