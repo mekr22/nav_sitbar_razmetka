@@ -1,7 +1,5 @@
 import {
   Check,
-  ChevronLeft,
-  ChevronRight,
   Eye,
   Instagram,
   MessageCircle,
@@ -130,7 +128,6 @@ const SignalsDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
-  const [galleryIndex, setGalleryIndex] = useState(0);
 
   const locationState =
     (location.state as SignalDetailsLocationState | null) ?? null;
@@ -150,28 +147,6 @@ const SignalsDetailLanding: FC = () => {
     return provided ?? FALLBACK_SIGNAL;
   }, [locationState]);
 
-  const gallery = useMemo(() => {
-    const additional = Array.isArray(signal.gallery)
-      ? signal.gallery.filter((src) => typeof src === "string" && src.trim().length > 0)
-      : [];
-
-    if (signal.chartImage) {
-      return [
-        signal.chartImage,
-        ...additional.filter((src) => src !== signal.chartImage),
-      ];
-    }
-
-    return additional;
-  }, [signal.chartImage, signal.gallery]);
-
-  useEffect(() => {
-    setGalleryIndex(0);
-  }, [signal.id, gallery.length]);
-
-  const currentGalleryImage =
-    gallery[galleryIndex] ?? signal.chartImage ?? "";
-  const canNavigateGallery = gallery.length > 1;
 
   const reviews = useMemo(() => {
     if (!Array.isArray(signal.reviews)) {
@@ -195,20 +170,6 @@ const SignalsDetailLanding: FC = () => {
       state: { scrollToTop: true, category: categoryLabel },
     });
   }, [categoryLabel, navigate]);
-
-  const handlePreviousImage = () => {
-    if (!canNavigateGallery) {
-      return;
-    }
-    setGalleryIndex((prev) => (prev - 1 + gallery.length) % gallery.length);
-  };
-
-  const handleNextImage = () => {
-    if (!canNavigateGallery) {
-      return;
-    }
-    setGalleryIndex((prev) => (prev + 1) % gallery.length);
-  };
 
   const assets = Array.isArray(signal.assets) ? signal.assets : [];
   const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
