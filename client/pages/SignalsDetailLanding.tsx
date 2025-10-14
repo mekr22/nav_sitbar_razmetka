@@ -217,7 +217,6 @@ const SignalsDetailLanding: FC = () => {
   const author = signal.author ?? FALLBACK_SIGNAL.author;
   const averageRating = signal.averageRating ?? FALLBACK_SIGNAL.averageRating ?? 0;
   const totalReviews = signal.totalReviews ?? FALLBACK_SIGNAL.totalReviews ?? 0;
-  const productImage = signal.productImage ?? signal.chartImage ?? signal.icon;
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => {
@@ -298,53 +297,19 @@ const SignalsDetailLanding: FC = () => {
               </button>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
-              {currentGalleryImage ? (
+            {author && (
+              <div className="flex flex-col items-center gap-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-6 text-center">
                 <img
-                  src={currentGalleryImage}
-                  alt={`${signal.name} chart preview`}
-                  className="h-auto w-full object-cover"
+                  src={author.avatar}
+                  alt={author.name}
+                  className="h-24 w-24 rounded-full border-2 border-[#181B22] object-cover"
                 />
-              ) : (
-                <div className="flex h-64 items-center justify-center text-[15px] font-semibold text-[#B0B0B0]">
-                  Chart not available
-                </div>
-              )}
-
-              {canNavigateGallery && (
-                <>
-                  <button
-                    type="button"
-                    onClick={handlePreviousImage}
-                    className="absolute left-4 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="h-4 w-4 text-white" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNextImage}
-                    className="absolute right-4 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="h-4 w-4 text-white" />
-                  </button>
-                </>
-              )}
-
-              {gallery.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
-                  {gallery.map((_, index) => (
-                    <div
-                      key={`${signal.id}-featured-dot-${index}`}
-                      className={`h-1 w-1 rounded-full transition-colors ${
-                        index === galleryIndex ? "bg-white" : "bg-[#B0B0B0]"
-                      }`}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
+                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Author
+                </span>
+                <span className="text-[15px] font-bold text-white">{author.name}</span>
+              </div>
+            )}
 
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
@@ -507,23 +472,14 @@ const SignalsDetailLanding: FC = () => {
 
             {author && (
               <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-                <div className="flex items-center gap-2 p-4">
-                  <img
-                    src={author.avatar}
-                    alt={author.name}
-                    className="h-20 w-20 rounded-full object-cover"
-                  />
-                  <div className="flex flex-1 flex-col gap-2">
-                    <h3 className="text-[15px] font-bold text-white">
-                      {author.name}
-                    </h3>
-                    <button
-                      type="button"
-                      className="flex h-[26px] w-20 items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90"
-                    >
-                      Follow
-                    </button>
-                  </div>
+                <div className="flex items-center justify-between gap-4 p-4">
+                  <h3 className="text-[15px] font-bold text-white">{author.name}</h3>
+                  <button
+                    type="button"
+                    className="flex h-[26px] w-20 items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90"
+                  >
+                    Follow
+                  </button>
                 </div>
 
                 {author.communityLink && (
