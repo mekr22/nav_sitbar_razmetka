@@ -26,6 +26,7 @@ import ScriptsAndSoftware from "./pages/ScriptsAndSoftware";
 import Others from "./pages/Others";
 import Popular from "./pages/Popular";
 import Favourites from "./pages/Favourites";
+import SignalsDetailLanding from "./pages/SignalsDetailLanding";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
@@ -90,6 +91,10 @@ const App = () => (
                     />
                     <Route path="/marketplace/others" element={<Others />} />
                     <Route path="/marketplace/popular" element={<Popular />} />
+                    <Route
+                      path="/marketplace/signals-details"
+                      element={<SignalsDetailLanding />}
+                    />
                     <Route
                       path="/marketplace/favourites"
                       element={<Favourites />}
