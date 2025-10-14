@@ -480,24 +480,24 @@ const SignalsDetailLanding: FC = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-4 p-4">
+              <div className="flex flex-col gap-3 p-4">
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] py-2.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90"
                 >
                   <Check className="h-4 w-4" />
                   Subscribe
                 </button>
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
                   <MessageCircle className="h-4 w-4" />
                   Chat
                 </button>
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
                   <Play className="h-4 w-4" />
                   Demo
