@@ -190,6 +190,12 @@ const SignalsDetailLanding: FC = () => {
   const categoryLabel =
     locationState?.category ?? "Signals and Technical indicators";
 
+  const handleNavigateToCategory = useCallback(() => {
+    navigate("/marketplace/signals", {
+      state: { scrollToTop: true, category: categoryLabel },
+    });
+  }, [categoryLabel, navigate]);
+
   const handlePreviousImage = () => {
     if (!canNavigateGallery) {
       return;
@@ -237,7 +243,13 @@ const SignalsDetailLanding: FC = () => {
     <div className="flex flex-col gap-6">
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
         <div className="flex items-center gap-2 text-[15px]">
-          <span className="font-normal text-[#B0B0B0]">{categoryLabel}</span>
+          <button
+            type="button"
+            onClick={handleNavigateToCategory}
+            className="font-normal text-[#B0B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+          >
+            {categoryLabel}
+          </button>
           <span className="font-bold text-[#B0B0B0]">/</span>
           <span className="font-bold text-white">{signal.name}</span>
         </div>
