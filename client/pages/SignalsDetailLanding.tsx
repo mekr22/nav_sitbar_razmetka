@@ -380,19 +380,23 @@ const SignalsDetailLanding: FC = () => {
 
               <div className="h-px w-full bg-[#181B22]" />
 
-              <div className="relative flex flex-col gap-5">
-                <div className="flex flex-col gap-5">
-                  {["$500K", "$100K", "$10K", "$100", "$1", "$0.01"].map((value, index) => (
-                    <div key={value} className="flex items-center gap-0.5">
-                      <div className={`h-px flex-1 ${index === 5 ? "bg-[#523A83]" : "bg-[#2E2744]"}`} />
-                      <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
-                        {value}
-                      </span>
-                    </div>
-                  ))}
+              <div className="relative">
+                <div className="flex flex-col gap-10">
+                  <div className="flex items-center gap-0.5">
+                    <div className="h-px flex-1 bg-[#2E2744]" />
+                    <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                      $100
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-0.5">
+                    <div className="h-px flex-1 bg-[#2E2744]" />
+                    <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                      $1
+                    </span>
+                  </div>
                 </div>
 
-                <div className="absolute left-[18px] top-0 h-[188px] w-[calc(100%-52px)]">
+                <div className="absolute left-0.5 top-0 h-[203px] w-[calc(100%-42px)]">
                   <svg
                     className="h-full w-full"
                     viewBox="0 0 652 221"
@@ -423,17 +427,22 @@ const SignalsDetailLanding: FC = () => {
                   </svg>
                 </div>
 
-                <div className="absolute right-4 top-0 inline-flex items-center justify-center rounded bg-[#A06AFF] px-1 py-0.5">
-                  <span className="text-center text-xs font-bold uppercase text-white">$507K</span>
-                </div>
+                <div className="mt-8 flex flex-col gap-2.5">
+                  <div className="flex items-center gap-0.5">
+                    <div className="h-px flex-1 bg-[#523A83]" />
+                    <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                      $0.01
+                    </span>
+                  </div>
 
-                <div className="flex items-start justify-between gap-2 pt-[188px]">
-                  {["APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR"].map((month) => (
-                    <div key={month} className="flex flex-col items-center gap-1">
-                      <div className="h-2 w-px bg-[#523A83]" />
-                      <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">{month}</span>
-                    </div>
-                  ))}
+                  <div className="flex items-start justify-between gap-2">
+                    {["APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC", "JAN", "FEB", "MAR"].map((month) => (
+                      <div key={month} className="flex flex-col items-center gap-1">
+                        <div className="h-2 w-px bg-[#523A83]" />
+                        <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">{month}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
