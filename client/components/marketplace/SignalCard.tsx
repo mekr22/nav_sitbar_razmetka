@@ -166,7 +166,14 @@ export const SignalCard: FC<SignalCardProps> = ({
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row">
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onOpenDetails?.();
+            }}
+            className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+          >
             <BookOpen className="h-4 w-4" />
             Learn More
           </button>
