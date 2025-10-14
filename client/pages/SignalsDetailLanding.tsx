@@ -283,8 +283,8 @@ const SignalsDetailLanding: FC = () => {
       </div>
 
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-          <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] lg:flex-1">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-4">
+          <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] lg:flex-[2] lg:min-w-0">
             <div className="flex items-center justify-between">
               <h1 className="text-2xl font-bold text-white sm:text-[31px]">
                 {signal.name}
@@ -374,7 +374,7 @@ const SignalsDetailLanding: FC = () => {
             </div>
           </div>
 
-          <div className="flex w-full flex-col gap-6 lg:w-[339px]">
+          <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               {productImage && (
                 <img
