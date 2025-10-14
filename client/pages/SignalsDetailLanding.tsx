@@ -182,6 +182,7 @@ const SignalsDetailLanding: FC = () => {
   const totalReviews = signal.totalReviews ?? FALLBACK_SIGNAL.totalReviews ?? 0;
   const chartImage =
     signal.productImage ?? signal.chartImage ?? FALLBACK_SIGNAL.chartImage ?? "";
+  const authorAvatar = author?.avatar ?? FALLBACK_SIGNAL.author?.avatar ?? "";
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => {
