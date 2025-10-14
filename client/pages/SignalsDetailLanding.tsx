@@ -260,24 +260,24 @@ const SignalsDetailLanding: FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab("chart")}
-            className={`flex h-[26px] items-center justify-center gap-1.5 rounded-lg px-4 text-[15px] font-bold transition-colors ${
+            className={`flex h-[26px] items-center justify-center rounded-lg px-4 text-[15px] font-bold transition-colors ${
               activeTab === "chart"
                 ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                : "border border-[#181B22] bg-[#0C101480] text-white backdrop-blur-[50px]"
+                : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px]"
             }`}
           >
-            Chart view
+            Chart
           </button>
           <button
             type="button"
             onClick={() => setActiveTab("source")}
-            className={`flex h-[26px] items-center justify-center gap-1.5 rounded-lg px-4 text-[15px] font-bold transition-colors ${
+            className={`flex h-[26px] items-center justify-center rounded-lg px-4 text-[15px] font-bold transition-colors ${
               activeTab === "source"
                 ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                : "border border-[#181B22] bg-[#0C101480] text-white backdrop-blur-[50px]"
+                : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px]"
             }`}
           >
-            Methodology
+            Source code
           </button>
         </div>
       </div>
