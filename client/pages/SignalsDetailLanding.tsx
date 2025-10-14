@@ -220,7 +220,9 @@ const SignalsDetailLanding: FC = () => {
       ).filter((item) => item.value && item.value.trim().length > 0);
 
   const featureItems = (signal.features && signal.features.length)
-    ? signal.features.filter((item) => item.trim().length > 0)
+    ? signal.features.filter(
+        (item): item is string => typeof item === "string" && item.trim().length > 0,
+      )
     : [
         platforms.length ? `Accessible on ${platforms.join(", ")}` : "",
         timeframes.length ? `Calibrated for ${timeframes.join(", ")}` : "",
