@@ -380,13 +380,11 @@ const SignalsDetailLanding: FC = () => {
 
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
             <div className="flex flex-col overflow-hidden rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              {(authorAvatar || displayChartImage) && (
-                <img
-                  src={authorAvatar || displayChartImage}
-                  alt={author?.name ?? signal.name}
-                  className="h-[332px] w-full border-b border-[#181B22] object-cover"
-                />
-              )}
+              <img
+                src={heroImage}
+                alt={author?.name ?? signal.name}
+                className="h-[332px] w-full border-b border-[#181B22] object-cover"
+              />
 
               <div className="flex items-center gap-3 p-4">
                 <div className="flex flex-col gap-0.5">
