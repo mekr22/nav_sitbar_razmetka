@@ -890,7 +890,7 @@ const SignalsDetailLanding: FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-center justify-center gap-4">
+              <div className="flex items-center justify-center gap-4 max-[360px]:gap-3">
                 <div className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
                   <span className="text-xs font-bold uppercase text-[#808283]">Successful</span>
