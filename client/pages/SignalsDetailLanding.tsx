@@ -763,7 +763,7 @@ const SignalsDetailLanding: FC = () => {
               </div>
             </div>
 
-            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 max-[360px]:gap-3 max-[360px]:p-3 backdrop-blur-[50px]">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Performance</h2>
 
               <div className="h-px w-full bg-[#181B22]" />
@@ -830,7 +830,7 @@ const SignalsDetailLanding: FC = () => {
               </div>
             </div>
 
-            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 max-[360px]:gap-3 max-[360px]:p-3 backdrop-blur-[50px]">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Accuracy</h2>
 
               <div className="h-px w-full bg-[#181B22]" />
