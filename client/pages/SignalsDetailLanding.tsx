@@ -368,7 +368,7 @@ const SignalsDetailLanding: FC = () => {
     return (
       <div
         key={comment.id}
-        className="relative flex flex-col gap-4"
+        className="relative flex flex-col gap-4 max-[360px]:gap-3"
         style={{ marginLeft: indent }}
       >
         {depth > 0 && (
