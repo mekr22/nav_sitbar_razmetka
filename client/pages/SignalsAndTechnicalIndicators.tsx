@@ -174,12 +174,13 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
 
   const openSignalDetails = useCallback(
-    (selectedSignal: Signal) => {
+    (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/signals-details", {
         state: {
           scrollToTop: true,
           category: "Signals and Technical indicators",
           signal: selectedSignal,
+          isFavorite: Boolean(meta?.isFavorite),
         },
       });
     },
