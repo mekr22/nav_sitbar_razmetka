@@ -398,7 +398,7 @@ const SignalsDetailLanding: FC = () => {
         <button
           type="button"
           onClick={() => handleToggleLike(comment.id)}
-          className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${likeButtonClasses} max-[360px]:px-2`}
+          className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${likeButtonClasses} max-[360px]:gap-1 max-[360px]:px-2`}
           aria-pressed={comment.liked}
           aria-label={likeAriaLabel}
           style={{ color: displayLikeColor }}
