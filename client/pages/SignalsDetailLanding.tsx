@@ -597,7 +597,7 @@ const SignalsDetailLanding: FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 max-[360px]:gap-4">
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
         <div className="flex items-center gap-2 text-[15px]">
           <button
