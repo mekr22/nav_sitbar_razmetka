@@ -448,7 +448,7 @@ const SignalsDetailLanding: FC = () => {
                         <div
                           className={`h-px flex-1 ${level.accent ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
                         />
-                        <span className="w-12 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
                           {level.label}
                         </span>
                       </div>
