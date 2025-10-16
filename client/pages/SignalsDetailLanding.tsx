@@ -374,7 +374,7 @@ const SignalsDetailLanding: FC = () => {
         {depth > 0 && (
           <div
             className="absolute top-0 h-8 w-5 rounded-bl-lg border-b border-l border-[#181B22]"
-            style={{ left: -24 }}
+            style={{ left: -indentStep }}
           />
         )}
 
