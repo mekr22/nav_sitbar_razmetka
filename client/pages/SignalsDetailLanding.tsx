@@ -484,17 +484,18 @@ const SignalsDetailLanding: FC = () => {
   }, [favoriteSignalIds]);
 
   useEffect(() => {
-    if (!locationState?.signal?.id || !locationState.isFavorite) {
+    const id = locationState?.signal?.id;
+    if (!id || !locationState?.isFavorite) {
       return;
     }
 
     setFavoriteSignalIds((prev) => {
-      if (prev.has(locationState.signal!.id)) {
+      if (prev.has(id)) {
         return prev;
       }
 
       const next = new Set(prev);
-      next.add(locationState.signal!.id);
+      next.add(id);
       return next;
     });
   }, [locationState]);
