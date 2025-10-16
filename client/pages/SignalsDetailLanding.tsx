@@ -194,7 +194,6 @@ type CommentNode = {
   likeColor?: string;
   timeColor?: string;
   canHide?: boolean;
-  replyCountLabel?: string;
   replies?: CommentNode[];
   liked?: boolean;
   hidden?: boolean;
