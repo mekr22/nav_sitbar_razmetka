@@ -1110,18 +1110,18 @@ const SignalsDetailLanding: FC = () => {
             </div>
 
             {author && (
-              <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-                <div className="flex items-center gap-2 p-4">
+              <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] max-[360px]:gap-3">
+                <div className="flex items-center gap-2 p-4 max-[360px]:gap-2 max-[360px]:p-3">
                   <img
                     src={author.avatar}
                     alt={author.name}
-                    className="h-20 w-20 flex-shrink-0 rounded-full object-cover"
+                    className="h-20 w-20 flex-shrink-0 rounded-full object-cover max-[360px]:h-16 max-[360px]:w-16"
                   />
-                  <div className="flex flex-1 flex-col gap-2">
-                    <h3 className="text-[15px] font-bold text-white">{author.name}</h3>
+                  <div className="flex flex-1 flex-col gap-2 max-[360px]:gap-1.5">
+                    <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">{author.name}</h3>
                     <button
                       type="button"
-                      className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90"
+                      className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90 max-[360px]:w-16 max-[360px]:text-[11px]"
                     >
                       Follow
                     </button>
@@ -1129,8 +1129,8 @@ const SignalsDetailLanding: FC = () => {
                 </div>
 
                 {author.communityLink && (
-                  <div className="px-4 pb-4">
-                    <p className="text-[15px] font-medium text-[#B0B0B0]">
+                  <div className="px-4 pb-4 max-[360px]:px-3 max-[360px]:pb-3">
+                    <p className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">
                       Join our 10k+ community:{" "}
                       <a
                         href={author.communityLink}
@@ -1145,16 +1145,16 @@ const SignalsDetailLanding: FC = () => {
                 )}
 
                 {author.bio && (
-                  <div className="px-4">
-                    <p className="text-[15px] font-medium text-[#B0B0B0]">
+                  <div className="px-4 max-[360px]:px-3">
+                    <p className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">
                       {author.bio}
                     </p>
                   </div>
                 )}
 
                 {author.socials && author.socials.length > 0 && (
-                  <div className="flex items-center gap-3 px-4 pt-4">
-                    <span className="text-[15px] font-medium text-[#B0B0B0]">
+                  <div className="flex items-center gap-3 px-4 pt-4 max-[360px]:gap-2 max-[360px]:px-3 max-[360px]:pt-3">
+                    <span className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">
                       Also on:
                     </span>
                     <div className="flex items-center gap-3">
@@ -1206,7 +1206,7 @@ const SignalsDetailLanding: FC = () => {
                 )}
 
                 {tags.length > 0 && (
-                  <div className="flex flex-wrap items-center gap-2 p-4">
+                  <div className="flex flex-wrap items-center gap-2 p-4 max-[360px]:gap-1.5 max-[360px]:p-3">
                     {tags.map((tag, idx) => (
                       <div
                         key={`${signal.id}-tag-${idx}`}
