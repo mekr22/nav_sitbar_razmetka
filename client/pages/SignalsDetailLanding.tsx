@@ -886,11 +886,16 @@ const SignalsDetailLanding: FC = () => {
               </div>
 
               <div className="flex flex-col items-end gap-4">
-                <div className="flex h-[88px] w-full flex-col gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
-                  <span className="text-[15px] font-medium text-[#B0B0B0]">Comment...</span>
-                </div>
-                <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5">
-                  <span className="text-center text-[15px] font-bold text-white">Send</span>
+                <textarea
+                  className="h-[88px] w-full resize-none rounded-2xl border border-[#181B22] bg-[#0C1014]/30 px-4 py-3 text-[15px] font-medium text-white placeholder-[#B0B0B0] focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40"
+                  placeholder="Comment..."
+                  aria-label="Add a comment"
+                />
+                <button
+                  type="button"
+                  className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
+                >
+                  Send
                 </button>
               </div>
 
