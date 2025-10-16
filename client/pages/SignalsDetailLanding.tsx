@@ -286,6 +286,15 @@ const SignalsDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
+  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+
+  const handleToggleLike = useCallback((id: string) => {
+    setComments((prev) => toggleLikeInTree(prev, id));
+  }, []);
+
+  const handleToggleHidden = useCallback((id: string) => {
+    setComments((prev) => toggleHiddenInTree(prev, id));
+  }, []);
 
   const locationState =
     (location.state as SignalDetailsLocationState | null) ?? null;
