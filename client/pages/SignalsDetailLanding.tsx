@@ -409,7 +409,7 @@ const SignalsDetailLanding: FC = () => {
 
               <div className="h-px w-full bg-[#181B22]" />
 
-              <div className="relative pb-10">
+              <div className="relative">
                 <div className="relative h-[220px]">
                   <div className="absolute left-0.5 top-0 h-full w-[calc(100%-52px)]">
                     <svg
@@ -460,7 +460,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-[52px] z-20 flex items-start justify-between gap-2">
+                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-52px)] items-start justify-between gap-2">
                   {PERFORMANCE_MONTHS.map((month) => (
                     <div key={month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
