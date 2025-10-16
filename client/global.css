@@ -43,6 +43,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-y: scroll;
+  overflow-x: hidden;
   font-family:
     "Nunito Sans",
     ui-sans-serif,
