@@ -1081,7 +1081,7 @@ const SignalsDetailLanding: FC = () => {
               </div>
 
               <div className="flex flex-col justify-center gap-2 px-4 py-2">
-                <p className="text-2xl font-bold text-white">
+                <p className="text-2xl font-bold text-white max-[360px]:text-xl">
                   {signal.price ?? "$10 / month"}
                 </p>
               </div>
