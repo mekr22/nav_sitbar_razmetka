@@ -850,7 +850,7 @@ const SignalsDetailLanding: FC = () => {
             <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-bold text-white">20 comments</h2>
-                <div className="flex items-center gap-1 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
+                <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
                   <button
                     type="button"
                     aria-label="Sort comments"
@@ -1041,7 +1041,7 @@ const SignalsDetailLanding: FC = () => {
                     <h3 className="text-[15px] font-bold text-white">{author.name}</h3>
                     <button
                       type="button"
-                      className="flex h-[26px] w-20 items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90"
+                      className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90"
                     >
                       Follow
                     </button>
@@ -1204,7 +1204,7 @@ const SignalsDetailLanding: FC = () => {
               <div className="p-4">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
                   Show More Reviews
                 </button>
