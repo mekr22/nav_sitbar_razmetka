@@ -496,6 +496,99 @@ const SignalsDetailLanding: FC = () => {
                 </div>
               </div>
             </div>
+
+            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Accuracy</h2>
+
+              <div className="h-px w-full bg-[#181B22]" />
+
+              <div className="relative">
+                <div className="relative h-[216px]">
+                  <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
+                    {ACCURACY_LEVELS.map((level, index) => (
+                      <div key={level} className="flex items-center gap-0.5">
+                        <div
+                          className={`h-px flex-1 ${index === ACCURACY_LEVELS.length - 1 ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
+                        />
+                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                          {level}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-[42px] z-20 flex items-end justify-between gap-[2px]">
+                    {ACCURACY_DATA.map((data) => {
+                      const maxHeight = 181;
+                      const successfulHeight = (data.successful / 250) * maxHeight;
+                      const unsuccessfulHeight = (data.unsuccessful / 250) * maxHeight;
+
+                      return (
+                        <div key={data.month} className="flex flex-1 items-end gap-px">
+                          <div
+                            className="w-full rounded-t-lg bg-gradient-to-t from-[#181A20] to-[#A06AFF]"
+                            style={{ height: `${successfulHeight}px` }}
+                          />
+                          <div
+                            className="w-full rounded-t-lg bg-gradient-to-t from-[#181A20] to-[#FFA800]"
+                            style={{ height: `${unsuccessfulHeight}px` }}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] items-start justify-between gap-2">
+                  {ACCURACY_DATA.map((data) => (
+                    <div key={data.month} className="flex flex-col items-center gap-1">
+                      <div className="h-2 w-px bg-[#523A83]" />
+                      <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">
+                        {data.month}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
+                  <span className="text-xs font-bold uppercase text-[#808283]">Successful</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-3 w-3 rounded-full bg-[#FFA800]" />
+                  <span className="text-xs font-bold uppercase text-[#808283]">Unsuccessful</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+              <div className="border-b border-[#181B22] p-4">
+                <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
+              </div>
+              <div className="p-4">
+                <p className="text-[15px] font-medium text-white">
+                  Catches breakouts on M5–D1 for crypto, stocks, and forex. Suitable for accounts starting from $500.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+              <div className="border-b border-[#181B22] p-4">
+                <h2 className="text-[19px] font-bold text-[#A06AFF]">Specifications</h2>
+              </div>
+              <div className="flex flex-col gap-4 p-4">
+                {SPECIFICATIONS.map((spec, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <div className="flex h-4 w-4 items-center justify-center">
+                      <div className="h-1 w-1 rounded-full bg-[#A06AFF]" />
+                    </div>
+                    <p className="flex-1 text-[15px] font-medium text-white">{spec}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
