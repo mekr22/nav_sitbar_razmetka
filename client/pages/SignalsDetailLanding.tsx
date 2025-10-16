@@ -379,7 +379,7 @@ const SignalsDetailLanding: FC = () => {
         )}
 
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 max-[360px]:items-start max-[360px]:gap-1.5">
             <img
               src={COMMENT_AVATAR}
               alt={`${comment.author} avatar`}
