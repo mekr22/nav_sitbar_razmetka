@@ -182,6 +182,9 @@ const SPECIFICATIONS = [
   "Stats: ROI chart, 311 subscribers, 4.5/5 rating, latest signals available",
 ] as const;
 
+const COMMENT_AVATAR =
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
+
 const SignalsDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
