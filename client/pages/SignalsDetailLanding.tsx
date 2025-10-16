@@ -599,7 +599,7 @@ const SignalsDetailLanding: FC = () => {
   return (
     <div className="flex flex-col gap-6 max-[360px]:gap-4">
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
-        <div className="flex items-center gap-2 text-[15px]">
+        <div className="flex items-center gap-2 text-[15px] max-[360px]:gap-1.5 max-[360px]:text-sm">
           <button
             type="button"
             onClick={handleNavigateToCategory}
