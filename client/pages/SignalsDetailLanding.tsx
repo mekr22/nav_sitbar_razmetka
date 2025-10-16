@@ -633,7 +633,7 @@ const SignalsDetailLanding: FC = () => {
       </div>
 
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
-        <div className="inline-flex items-center gap-3 max-[360px]:gap-2">
+        <div className="flex flex-wrap items-center gap-3 max-[360px]:gap-2 max-[360px]:justify-between">
           <button
             type="button"
             onClick={() => setActiveTab("chart")}
