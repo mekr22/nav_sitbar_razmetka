@@ -306,7 +306,7 @@ const SignalsDetailLanding: FC = () => {
       ? "border-[#A06AFF] bg-[#2C1F4A]/40"
       : "border-[#181B22] hover:border-[#A06AFF]/30";
     const likeAriaLabel = comment.liked ? "Unlike comment" : "Like comment";
-    const hideLabel = hasReplies ? "Hide thread" : "Hide comment";
+    const hideLabel = "Hide";
     const showLabel = hasReplies ? "Show thread" : "Show comment";
     const hiddenLabel = hasReplies ? "Thread hidden" : "Comment hidden";
 
