@@ -637,7 +637,11 @@ const SignalsDetailLanding: FC = () => {
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
-                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-pink-500 to-purple-600" />
+                      <img
+                        src={COMMENT_AVATAR}
+                        alt="John Smith avatar"
+                        className="h-11 w-11 rounded-full object-cover"
+                      />
                       <div className="flex flex-1 flex-col gap-0.5">
                         <span className="text-[15px] font-bold text-white">John Smith</span>
                         <span className="text-xs font-bold text-[#B0B0B0]">6 hours ago</span>
@@ -674,7 +678,11 @@ const SignalsDetailLanding: FC = () => {
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
-                        <div className="h-11 w-11 rounded-full bg-gradient-to-br from-pink-500 to-purple-600" />
+                        <img
+                        src={COMMENT_AVATAR}
+                        alt="John Smith avatar"
+                        className="h-11 w-11 rounded-full object-cover"
+                      />
                         <div className="flex flex-1 flex-col gap-0.5">
                           <span className="text-[15px] font-bold text-white">John Smith</span>
                           <span className="text-xs font-bold text-[#B0B0B0]">6 hours ago</span>
@@ -710,7 +718,11 @@ const SignalsDetailLanding: FC = () => {
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center gap-2">
-                        <div className="h-11 w-11 rounded-full bg-gradient-to-br from-pink-500 to-purple-600" />
+                        <img
+                        src={COMMENT_AVATAR}
+                        alt="John Smith avatar"
+                        className="h-11 w-11 rounded-full object-cover"
+                      />
                         <div className="flex flex-1 flex-col gap-0.5">
                           <span className="text-[15px] font-bold text-white">John Smith</span>
                           <span className="text-xs font-bold text-[#B0B0B0]">6 hours ago</span>
@@ -742,7 +754,11 @@ const SignalsDetailLanding: FC = () => {
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex items-center gap-2 self-stretch">
-                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-pink-500 to-purple-600" />
+                      <img
+                        src={COMMENT_AVATAR}
+                        alt="John Smith avatar"
+                        className="h-11 w-11 rounded-full object-cover"
+                      />
                       <div className="flex flex-1 flex-col gap-0.5">
                         <span className="text-[15px] font-bold text-white">John Smith</span>
                         <span className="text-xs font-bold text-[#808283]">6 hours ago</span>
