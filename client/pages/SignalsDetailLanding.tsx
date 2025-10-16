@@ -856,7 +856,7 @@ const SignalsDetailLanding: FC = () => {
               <div className="h-px w-full bg-[#181B22]" />
 
               <div className="relative">
-                <div className="relative h-[216px] max-[360px]:h-[160px]">
+                <div className="relative h-[216px] max-[360px]:h-[140px]">
                   <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
                     {ACCURACY_LEVELS.map((level, index) => (
                       <div key={level} className="flex items-center gap-0.5">
