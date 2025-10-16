@@ -444,6 +444,61 @@ const SignalsDetailLanding: FC = () => {
   const locationState =
     (location.state as SignalDetailsLocationState | null) ?? null;
 
+  const [favoriteSignalIds, setFavoriteSignalIds] = useState<Set<string>>(() => {
+    const storedIds = new Set<string>();
+
+    if (typeof window !== "undefined") {
+      const raw = window.localStorage.getItem(FAVORITE_STORAGE_KEY);
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            parsed.forEach((value) => {
+              if (typeof value === "string" && value.trim().length > 0) {
+                storedIds.add(value);
+              }
+            });
+          }
+        } catch {
+          // ignore malformed storage values
+        }
+      }
+    }
+
+    if (locationState?.signal?.id && locationState.isFavorite) {
+      storedIds.add(locationState.signal.id);
+    }
+
+    return storedIds;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    window.localStorage.setItem(
+      FAVORITE_STORAGE_KEY,
+      JSON.stringify(Array.from(favoriteSignalIds)),
+    );
+  }, [favoriteSignalIds]);
+
+  useEffect(() => {
+    if (!locationState?.signal?.id || !locationState.isFavorite) {
+      return;
+    }
+
+    setFavoriteSignalIds((prev) => {
+      if (prev.has(locationState.signal!.id)) {
+        return prev;
+      }
+
+      const next = new Set(prev);
+      next.add(locationState.signal!.id);
+      return next;
+    });
+  }, [locationState]);
+
   useEffect(() => {
     if (locationState?.scrollToTop) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
