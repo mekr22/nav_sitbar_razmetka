@@ -156,6 +156,32 @@ const PERFORMANCE_MONTHS = [
   "MAR",
 ] as const;
 
+const ACCURACY_LEVELS = [250, 200, 150, 100, 50, 0] as const;
+
+const ACCURACY_DATA = [
+  { month: "APR", successful: 37, unsuccessful: 14 },
+  { month: "MAY", successful: 17, unsuccessful: 25 },
+  { month: "JUN", successful: 37, unsuccessful: 29 },
+  { month: "JUL", successful: 57, unsuccessful: 8 },
+  { month: "AUG", successful: 37, unsuccessful: 6 },
+  { month: "SEP", successful: 27, unsuccessful: 22 },
+  { month: "OCT", successful: 27, unsuccessful: 16 },
+  { month: "NOV", successful: 57, unsuccessful: 27 },
+  { month: "DEC", successful: 181, unsuccessful: 6 },
+  { month: "JAN", successful: 27, unsuccessful: 6 },
+  { month: "FEB", successful: 181, unsuccessful: 47 },
+  { month: "MAR", successful: 57, unsuccessful: 15 },
+] as const;
+
+const SPECIFICATIONS = [
+  "Strategy: RSI, Bollinger Bands",
+  "Exchanges: Binance, NYSE",
+  "Assets: BTC, AAPL, EUR/USD",
+  "Risk: Low, drawdown up to 10%",
+  "Signals: 5–10 per week",
+  "Stats: ROI chart, 311 subscribers, 4.5/5 rating, latest signals available",
+] as const;
+
 const SignalsDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
