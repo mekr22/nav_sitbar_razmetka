@@ -234,7 +234,6 @@ const INITIAL_COMMENTS: CommentNode[] = [
     time: "6 hours ago",
     text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
     likes: 25,
-    replyCountLabel: "1 reply",
     likeColor: "#808283",
     timeColor: "#808283",
   },
