@@ -399,13 +399,7 @@ const SignalsDetailLanding: FC = () => {
             {hideLabel}
           </button>
 
-          {comment.replyCountLabel && (
-            <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]">
-              {comment.replyCountLabel}
-            </button>
-          )}
-
-          <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-white">
+            <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-white">
             Reply
           </button>
 
