@@ -383,7 +383,7 @@ const SignalsDetailLanding: FC = () => {
             <img
               src={COMMENT_AVATAR}
               alt={`${comment.author} avatar`}
-              className="h-11 w-11 rounded-full object-cover"
+              className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
             />
             <div className="flex flex-1 flex-col gap-0.5">
               <span className="text-[15px] font-bold text-white">{comment.author}</span>
