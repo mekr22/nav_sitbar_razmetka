@@ -764,7 +764,7 @@ const SignalsDetailLanding: FC = () => {
             </div>
 
             <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 max-[360px]:gap-3 max-[360px]:p-3 backdrop-blur-[50px]">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Performance</h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Performance</h2>
 
               <div className="h-px w-full bg-[#181B22]" />
 
@@ -831,7 +831,7 @@ const SignalsDetailLanding: FC = () => {
             </div>
 
             <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 max-[360px]:gap-3 max-[360px]:p-3 backdrop-blur-[50px]">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Accuracy</h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Accuracy</h2>
 
               <div className="h-px w-full bg-[#181B22]" />
 
@@ -904,7 +904,7 @@ const SignalsDetailLanding: FC = () => {
 
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4">
-                <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Description</h2>
               </div>
               <div className="p-4">
                 <p className="text-[15px] font-medium text-white">
@@ -915,7 +915,7 @@ const SignalsDetailLanding: FC = () => {
 
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4">
-                <h2 className="text-[19px] font-bold text-[#A06AFF]">Specifications</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Specifications</h2>
               </div>
               <div className="flex flex-col gap-4 p-4">
                 {SPECIFICATIONS.map((spec, index) => (
@@ -1224,7 +1224,7 @@ const SignalsDetailLanding: FC = () => {
 
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4">
-                <h2 className="text-[19px] font-bold text-[#A06AFF]">Reviews</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Reviews</h2>
               </div>
 
               <div className="flex flex-col gap-2.5 p-4">
@@ -1293,7 +1293,7 @@ const SignalsDetailLanding: FC = () => {
 
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4">
-                <h2 className="text-[19px] font-bold text-[#A06AFF]">Disclaimer</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Disclaimer</h2>
               </div>
               <div className="p-4">
                 <p className="text-[15px] font-medium text-[#B0B0B0]">
