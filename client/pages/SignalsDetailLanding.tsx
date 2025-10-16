@@ -598,7 +598,7 @@ const SignalsDetailLanding: FC = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
+      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
         <div className="flex items-center gap-2 text-[15px]">
           <button
             type="button"
@@ -612,7 +612,7 @@ const SignalsDetailLanding: FC = () => {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
+      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
         <div className="inline-flex items-center gap-3">
           <button
             type="button"
@@ -639,7 +639,7 @@ const SignalsDetailLanding: FC = () => {
         </div>
       </div>
 
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
+      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-4">
           <div className="flex flex-col gap-5 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] lg:flex-[2] lg:min-w-0">
             <div className="flex flex-wrap items-start justify-between gap-3">
