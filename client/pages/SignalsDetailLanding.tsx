@@ -903,36 +903,36 @@ const SignalsDetailLanding: FC = () => {
             </div>
 
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="border-b border-[#181B22] p-4">
+              <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Description</h2>
               </div>
-              <div className="p-4">
-                <p className="text-[15px] font-medium text-white">
+              <div className="p-4 max-[360px]:p-3">
+                <p className="text-[15px] font-medium text-white max-[360px]:text-sm">
                   Catches breakouts on M5–D1 for crypto, stocks, and forex. Suitable for accounts starting from $500.
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="border-b border-[#181B22] p-4">
+              <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Specifications</h2>
               </div>
-              <div className="flex flex-col gap-4 p-4">
+              <div className="flex flex-col gap-4 p-4 max-[360px]:gap-3 max-[360px]:p-3">
                 {SPECIFICATIONS.map((spec, index) => (
                   <div key={index} className="flex items-center gap-2">
                     <div className="flex h-4 w-4 items-center justify-center">
                       <div className="h-1 w-1 rounded-full bg-[#A06AFF]" />
                     </div>
-                    <p className="flex-1 text-[15px] font-medium text-white">{spec}</p>
+                    <p className="flex-1 text-[15px] font-medium text-white max-[360px]:text-sm">{spec}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+            <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-white">20 comments</h2>
-                <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
+                <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">20 comments</h2>
+                <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px] max-[360px]:p-0.5">
                   <button
                     type="button"
                     aria-label="Sort comments"
