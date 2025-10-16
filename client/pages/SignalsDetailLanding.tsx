@@ -789,8 +789,8 @@ const SignalsDetailLanding: FC = () => {
               <div className="h-px w-full bg-[#181B22]" />
 
               <div className="relative">
-                <div className="relative h-[220px] max-[360px]:h-[160px]">
-                  <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)] max-[360px]:w-[calc(100%-28px)]">
+                <div className="relative h-[220px] max-[360px]:h-[140px]">
+                  <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)]">
                     <svg
                       className="h-full w-full"
                       viewBox="0 0 652 221"
