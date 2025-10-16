@@ -962,25 +962,25 @@ const SignalsDetailLanding: FC = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col items-end gap-4">
+              <div className="flex flex-col items-end gap-4 max-[360px]:gap-3">
                 <textarea
-                  className="h-[88px] w-full resize-none rounded-2xl border border-[#181B22] bg-[#0C1014]/30 px-4 py-3 text-[15px] font-medium text-white placeholder-[#B0B0B0] focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40"
+                  className="h-[88px] w-full resize-none rounded-2xl border border-[#181B22] bg-[#0C1014]/30 px-4 py-3 text-[15px] font-medium text-white placeholder-[#B0B0B0] focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40 max-[360px]:h-[72px] max-[360px]:px-3 max-[360px]:py-2 max-[360px]:text-sm"
                   placeholder="Comment..."
                   aria-label="Add a comment"
                 />
                 <button
                   type="button"
-                  className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
+                  className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02] max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm"
                 >
                   Send
                 </button>
               </div>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 max-[360px]:gap-3">
                 {comments.map((comment) => renderComment(comment))}
                 <div className="flex justify-center">
-                  <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5">
-                    <span className="text-center text-[15px] font-bold text-white">16 more comments</span>
+                  <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 max-[360px]:px-4 max-[360px]:py-2">
+                    <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">16 more comments</span>
                   </button>
                 </div>
               </div>
