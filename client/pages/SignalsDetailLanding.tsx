@@ -127,14 +127,19 @@ const platformLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F59dfc5c913eb4f6d845cfb34003ed89b?format=webp&width=64",
 ];
 
-const PERFORMANCE_LEVELS = [
+type PerformanceLevel = {
+  label: string;
+  accent?: boolean;
+};
+
+const PERFORMANCE_LEVELS: readonly PerformanceLevel[] = [
   { label: "$500K" },
   { label: "$100K" },
   { label: "$10K" },
   { label: "$100" },
   { label: "$1" },
   { label: "$0.01", accent: true },
-] as const;
+];
 
 const PERFORMANCE_MONTHS = [
   "APR",
