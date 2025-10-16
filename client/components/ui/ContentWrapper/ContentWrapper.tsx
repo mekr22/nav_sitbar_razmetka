@@ -8,7 +8,7 @@ interface Props {
 
 const ContentWrapper: FC<Props> = ({ children, className }) => {
   return (
-    <div className={cn('container mx-auto px-4 py-6', className)}>
+    <div className={cn('container mx-auto px-4 py-6 max-[360px]:px-3 max-[360px]:py-5', className)}>
       {children}
     </div>
   );
