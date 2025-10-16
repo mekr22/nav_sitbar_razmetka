@@ -53,6 +53,14 @@ const DEFAULT_CHART_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fe406955c384c49af9277d65283062ad7?format=webp&width=800";
 const FAVORITE_STORAGE_KEY = "signals-detail-favorites";
 
+const PRODUCT_ACTIONS = [
+  { key: "subscribe", label: "Subscribe", icon: Check },
+  { key: "chat", label: "Chat", icon: MessageCircle },
+  { key: "demo", label: "Demo", icon: Play },
+] as const;
+
+type ProductActionKey = (typeof PRODUCT_ACTIONS)[number]["key"];
+
 const resolveFallbackSignal = (): ExtendedSignal => {
   const first = baseSignals[0] as ExtendedSignal | undefined;
   if (first) {
@@ -288,6 +296,7 @@ const SignalsDetailLanding: FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
 
   const handleToggleLike = useCallback((id: string) => {
     setComments((prev) => toggleLikeInTree(prev, id));
@@ -1078,27 +1087,25 @@ const SignalsDetailLanding: FC = () => {
               </div>
 
               <div className="flex flex-col gap-3 p-4">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90"
-                >
-                  <Check className="h-4 w-4" />
-                  Subscribe
-                </button>
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Chat
-                </button>
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  <Play className="h-4 w-4" />
-                  Demo
-                </button>
+                {PRODUCT_ACTIONS.map(({ key, label, icon: Icon }) => {
+                  const isActive = activeAction === key;
+                  const baseClasses = isActive
+                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+                    : "border border-[#181B22] bg-[#0C1014]/60 text-white backdrop-blur-[50px] hover:border-[#1F2230]";
+
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      aria-pressed={isActive}
+                      onClick={() => setActiveAction(key)}
+                      className={`flex w-full items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase transition-colors ${baseClasses}`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
