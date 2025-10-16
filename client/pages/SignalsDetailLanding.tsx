@@ -898,7 +898,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
                 </div>
 
-                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-28px)] items-start justify-between gap-2">
+                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
                   {ACCURACY_DATA.map((data) => (
                     <div key={data.month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
