@@ -185,6 +185,103 @@ const SPECIFICATIONS = [
 const COMMENT_AVATAR =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
 
+type CommentNode = {
+  id: string;
+  author: string;
+  time: string;
+  text: string;
+  likes: number;
+  likeColor?: string;
+  timeColor?: string;
+  canHide?: boolean;
+  replyCountLabel?: string;
+  replies?: CommentNode[];
+  liked?: boolean;
+  hidden?: boolean;
+};
+
+const INITIAL_COMMENTS: CommentNode[] = [
+  {
+    id: "comment-1",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+    canHide: true,
+    replies: [
+      {
+        id: "comment-1-1",
+        author: "John Smith",
+        time: "6 hours ago",
+        text: "Thank you, John Smith!",
+        likes: 25,
+        canHide: true,
+        replies: [
+          {
+            id: "comment-1-1-1",
+            author: "John Smith",
+            time: "6 hours ago",
+            text: "At your service, John Smith!",
+            likes: 25,
+            likeColor: "#B0B0B0",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "comment-2",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+    replyCountLabel: "1 reply",
+    likeColor: "#808283",
+    timeColor: "#808283",
+  },
+  {
+    id: "comment-3",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+    likeColor: "#808283",
+    timeColor: "#808283",
+  },
+];
+
+const toggleLikeInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
+  nodes.map((node) => {
+    if (node.id === id) {
+      const liked = !node.liked;
+      return {
+        ...node,
+        liked,
+        likes: liked ? node.likes + 1 : Math.max(node.likes - 1, 0),
+      };
+    }
+
+    return {
+      ...node,
+      replies: node.replies ? toggleLikeInTree(node.replies, id) : undefined,
+    };
+  });
+
+const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
+  nodes.map((node) => {
+    if (node.id === id) {
+      return {
+        ...node,
+        hidden: !node.hidden,
+      };
+    }
+
+    return {
+      ...node,
+      replies: node.replies ? toggleHiddenInTree(node.replies, id) : undefined,
+    };
+  });
+
 const SignalsDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
