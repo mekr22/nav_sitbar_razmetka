@@ -390,7 +390,7 @@ const SignalsDetailLanding: FC = () => {
           <span className="text-xs font-bold">{comment.likes}</span>
         </button>
 
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
