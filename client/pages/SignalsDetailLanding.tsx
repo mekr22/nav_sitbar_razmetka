@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import type { MarketplaceCategory } from "@/data/marketplaceCategories";
 import type { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
@@ -19,6 +20,7 @@ interface SignalDetailsLocationState {
   signal?: Signal;
   category?: MarketplaceCategory;
   scrollToTop?: boolean;
+  isFavorite?: boolean;
 }
 
 type ExtendedSignal = Signal & {
@@ -49,6 +51,7 @@ type ExtendedSignal = Signal & {
 
 const DEFAULT_CHART_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2Fe406955c384c49af9277d65283062ad7?format=webp&width=800";
+const FAVORITE_STORAGE_KEY = "signals-detail-favorites";
 
 const resolveFallbackSignal = (): ExtendedSignal => {
   const first = baseSignals[0] as ExtendedSignal | undefined;
