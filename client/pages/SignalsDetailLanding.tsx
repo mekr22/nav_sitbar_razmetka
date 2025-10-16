@@ -326,7 +326,8 @@ const SignalsDetailLanding: FC = () => {
   }, []);
 
   const renderComment = (comment: CommentNode, depth = 0): JSX.Element => {
-    const indent = depth * 24;
+    const indentStep = isCompactLayout ? 16 : 24;
+    const indent = depth * indentStep;
     const timeColor = comment.timeColor ?? "#B0B0B0";
     const hasReplies = Array.isArray(comment.replies) && comment.replies.length > 0;
     const baseLikeColor = comment.likeColor ?? "#B0B0B0";
