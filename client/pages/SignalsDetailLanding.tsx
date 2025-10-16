@@ -460,7 +460,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-6 flex items-start justify-between gap-2 pr-[52px]">
+                <div className="mt-6 pt-3 flex items-start justify-between gap-2 pr-[52px]">
                   {PERFORMANCE_MONTHS.map((month) => (
                     <div key={month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
