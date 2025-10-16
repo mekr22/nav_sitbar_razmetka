@@ -515,6 +515,19 @@ const SignalsDetailLanding: FC = () => {
     return provided ?? FALLBACK_SIGNAL;
   }, [locationState]);
 
+  const isSignalFavorite = favoriteSignalIds.has(signal.id);
+
+  const handleToggleFavoriteSignal = useCallback(() => {
+    setFavoriteSignalIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(signal.id)) {
+        next.delete(signal.id);
+      } else {
+        next.add(signal.id);
+      }
+      return next;
+    });
+  }, [signal.id]);
 
   const reviews = useMemo(() => {
     if (!Array.isArray(signal.reviews)) {
