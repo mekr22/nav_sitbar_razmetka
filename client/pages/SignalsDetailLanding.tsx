@@ -637,13 +637,11 @@ const SignalsDetailLanding: FC = () => {
               <h1 className="text-2xl font-bold text-white sm:text-[31px]">
                 {signal.name}
               </h1>
-              <button
-                type="button"
-                className="text-[#B0B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                aria-label="Add to favourites"
-              >
-                <Star className="h-6 w-6" />
-              </button>
+              <FavoriteStarButton
+                pressed={isSignalFavorite}
+                onToggle={handleToggleFavoriteSignal}
+                className={favoriteStarButtonClassName}
+              />
             </div>
 
             <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
