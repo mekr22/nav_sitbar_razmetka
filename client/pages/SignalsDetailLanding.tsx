@@ -660,7 +660,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <button className="text-[15px] font-bold text-[#A06AFF]">Hide</button>
+                    <button className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]">Hide</button>
                     <button className="text-[15px] font-bold text-white">Reply</button>
                     <button className="rotate-90">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -699,7 +699,7 @@ const SignalsDetailLanding: FC = () => {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <button className="text-[15px] font-bold text-[#A06AFF]">Hide</button>
+                      <button className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]">Hide</button>
                       <button className="text-[15px] font-bold text-white">Reply</button>
                       <button className="rotate-90">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -777,7 +777,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <button className="text-[15px] font-bold text-[#A06AFF]">1 reply</button>
+                    <button className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]">1 reply</button>
                     <button className="text-[15px] font-bold text-white">Reply</button>
                     <button className="rotate-90">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
