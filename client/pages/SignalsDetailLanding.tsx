@@ -770,7 +770,7 @@ const SignalsDetailLanding: FC = () => {
 
               <div className="relative">
                 <div className="relative h-[220px] max-[360px]:h-[160px]">
-                  <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)]">
+                  <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)] max-[360px]:w-[calc(100%-28px)]">
                     <svg
                       className="h-full w-full"
                       viewBox="0 0 652 221"
@@ -819,7 +819,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
                 </div>
 
-                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] items-start justify-between gap-2">
+                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-28px)] items-start justify-between gap-2">
                   {PERFORMANCE_MONTHS.map((month) => (
                     <div key={month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
@@ -878,7 +878,7 @@ const SignalsDetailLanding: FC = () => {
                   </div>
                 </div>
 
-                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] items-start justify-between gap-2">
+                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-28px)] items-start justify-between gap-2">
                   {ACCURACY_DATA.map((data) => (
                     <div key={data.month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
