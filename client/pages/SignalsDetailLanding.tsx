@@ -526,11 +526,11 @@ const SignalsDetailLanding: FC = () => {
                       return (
                         <div key={data.month} className="flex flex-1 items-end gap-px">
                           <div
-                            className="w-full rounded-t-lg bg-gradient-to-t from-[#181A20] to-[#A06AFF]"
+                            className="w-full rounded-t-full bg-gradient-to-t from-[#181A20] to-[#A06AFF]"
                             style={{ height: `${successfulHeight}px` }}
                           />
                           <div
-                            className="w-full rounded-t-lg bg-gradient-to-t from-[#181A20] to-[#FFA800]"
+                            className="w-full rounded-t-full bg-gradient-to-t from-[#181A20] to-[#FFA800]"
                             style={{ height: `${unsuccessfulHeight}px` }}
                           />
                         </div>
