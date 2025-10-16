@@ -1099,9 +1099,9 @@ const SignalsDetailLanding: FC = () => {
                       type="button"
                       aria-pressed={isActive}
                       onClick={() => setActiveAction(key)}
-                      className={`flex w-full items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase transition-colors ${baseClasses}`}
+                      className={`flex w-full items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase transition-colors ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-[11px]`}
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon className="h-4 w-4 max-[360px]:h-3.5 max-[360px]:w-3.5" />
                       {label}
                     </button>
                   );
