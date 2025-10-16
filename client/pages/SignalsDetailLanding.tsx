@@ -372,13 +372,13 @@ const SignalsDetailLanding: FC = () => {
               </span>
             </div>
           </div>
-          <p className="text-[15px] font-medium text-white">{comment.text}</p>
+          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
         </div>
 
         <button
           type="button"
           onClick={() => handleToggleLike(comment.id)}
-          className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${likeButtonClasses}`}
+          className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${likeButtonClasses} max-[360px]:px-2`}
           aria-pressed={comment.liked}
           aria-label={likeAriaLabel}
           style={{ color: displayLikeColor }}
@@ -400,15 +400,15 @@ const SignalsDetailLanding: FC = () => {
           <span className="text-xs font-bold">{comment.likes}</span>
         </button>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2 max-[360px]:gap-1.5">
           <button
             type="button"
-            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF] max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
             onClick={() => handleToggleHidden(comment.id)}
           >
             {hideLabel}
           </button>
-          <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-white">
+          <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-white max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm">
             Reply
           </button>
           <button type="button" className="rounded-full p-1 text-[#B0B0B0]">
