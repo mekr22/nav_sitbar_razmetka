@@ -745,20 +745,20 @@ const SignalsDetailLanding: FC = () => {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-[#B0B0B0]" />
+                <Users className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                   <span className="text-xs font-bold text-[#B0B0B0]">
                     {signal.users}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5 text-[#B0B0B0]" />
+                <MessageCircle className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                   <span className="text-xs font-bold text-[#B0B0B0]">
                     {reviews.length > 0 ? reviews.length : "87"}
                   </span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <Eye className="h-5 w-5 text-[#B0B0B0]" />
+                <Eye className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                 <span className="text-xs font-bold text-[#B0B0B0]">11,299</span>
               </div>
             </div>
