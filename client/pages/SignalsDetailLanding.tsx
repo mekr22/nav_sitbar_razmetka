@@ -736,7 +736,7 @@ const SignalsDetailLanding: FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 max-[360px]:gap-3">
               <div className="flex flex-wrap items-center gap-5 sm:gap-6">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="h-5 w-5 text-[#B0B0B0]" />
