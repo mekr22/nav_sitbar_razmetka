@@ -739,7 +739,7 @@ const SignalsDetailLanding: FC = () => {
             <div className="flex flex-wrap items-center justify-between gap-4 max-[360px]:gap-3">
               <div className="flex flex-wrap items-center gap-5 sm:gap-6 max-[360px]:gap-3">
                 <div className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-[#B0B0B0]" />
+                <TrendingUp className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">
                     Use on chart
                   </span>
