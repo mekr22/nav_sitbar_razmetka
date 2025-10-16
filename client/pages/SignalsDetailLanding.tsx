@@ -1012,7 +1012,7 @@ const SignalsDetailLanding: FC = () => {
               <img
                 src={heroImage}
                 alt={author?.name ?? signal.name}
-                className="h-[332px] w-full border-b border-[#181B22] object-cover max-[360px]:h-[240px]"
+                className="h-[332px] w-full border-b border-[#181B22] object-cover max-[360px]:h-[200px]"
               />
 
               <div className="flex items-center gap-3 p-4 max-[360px]:gap-2 max-[360px]:p-3">
