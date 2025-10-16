@@ -299,7 +299,16 @@ const SignalsDetailLanding: FC = () => {
   const renderComment = (comment: CommentNode, depth = 0): JSX.Element => {
     const indent = depth * 24;
     const timeColor = comment.timeColor ?? "#B0B0B0";
-    const likeColor = comment.liked ? "#A06AFF" : comment.likeColor ?? "#B0B0B0";
+    const hasReplies = Array.isArray(comment.replies) && comment.replies.length > 0;
+    const baseLikeColor = comment.likeColor ?? "#B0B0B0";
+    const displayLikeColor = comment.liked ? "#A06AFF" : baseLikeColor;
+    const likeButtonClasses = comment.liked
+      ? "border-[#A06AFF] bg-[#2C1F4A]/40"
+      : "border-[#181B22] hover:border-[#A06AFF]/30";
+    const likeAriaLabel = comment.liked ? "Unlike comment" : "Like comment";
+    const hideLabel = hasReplies ? "Hide thread" : "Hide comment";
+    const showLabel = hasReplies ? "Show thread" : "Show comment";
+    const hiddenLabel = hasReplies ? "Thread hidden" : "Comment hidden";
 
     if (comment.hidden) {
       return (
@@ -314,13 +323,13 @@ const SignalsDetailLanding: FC = () => {
               style={{ left: -24 }}
             />
           )}
-          <span className="text-sm font-bold text-[#B0B0B0]">Thread hidden</span>
+          <span className="text-sm font-bold text-[#B0B0B0]">{hiddenLabel}</span>
           <button
             type="button"
             onClick={() => handleToggleHidden(comment.id)}
             className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
           >
-            Show
+            {showLabel}
           </button>
         </div>
       );
@@ -359,40 +368,36 @@ const SignalsDetailLanding: FC = () => {
         <button
           type="button"
           onClick={() => handleToggleLike(comment.id)}
-          className={`flex w-fit items-center gap-1.5 rounded-full border border-transparent px-3 py-1 transition-colors ${
-            comment.liked ? "bg-[#A06AFF]/10 border-[#A06AFF]/40" : "hover:border-[#A06AFF]/30"
-          }`}
+          className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${likeButtonClasses}`}
           aria-pressed={comment.liked}
+          aria-label={likeAriaLabel}
+          style={{ color: displayLikeColor }}
         >
           <svg
             width="20"
             height="20"
             viewBox="0 0 20 20"
-            fill={comment.liked ? "#A06AFF" : "none"}
+            fill={comment.liked ? displayLikeColor : "none"}
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               d="M16.2189 3.32846C13.9842 1.95769 12.0337 2.51009 10.8621 3.39001C10.3816 3.7508 10.1414 3.93119 10.0001 3.93119C9.85875 3.93119 9.61858 3.7508 9.13808 3.39001C7.96643 2.51009 6.01599 1.95769 3.78128 3.32846C0.848472 5.12745 0.184848 11.0624 6.94969 16.0695C8.23818 17.0232 8.88241 17.5 10.0001 17.5C11.1177 17.5 11.762 17.0232 13.0505 16.0695C19.8153 11.0624 19.1517 5.12745 16.2189 3.32846Z"
-              stroke={comment.liked ? "#A06AFF" : likeColor}
+              stroke={displayLikeColor}
               strokeWidth="1.5"
               strokeLinecap="round"
             />
           </svg>
-          <span className="text-xs font-bold" style={{ color: comment.liked ? "#A06AFF" : likeColor }}>
-            {comment.likes}
-          </span>
+          <span className="text-xs font-bold">{comment.likes}</span>
         </button>
 
         <div className="flex flex-wrap items-center gap-4">
-          {comment.canHide && (
-            <button
-              type="button"
-              className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
-              onClick={() => handleToggleHidden(comment.id)}
-            >
-              Hide
-            </button>
-          )}
+          <button
+            type="button"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
+            onClick={() => handleToggleHidden(comment.id)}
+          >
+            {hideLabel}
+          </button>
 
           {comment.replyCountLabel && (
             <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]">
