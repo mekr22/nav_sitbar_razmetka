@@ -344,20 +344,20 @@ const SignalsDetailLanding: FC = () => {
       return (
         <div
           key={comment.id}
-          className="relative flex items-center justify-between rounded-2xl border border-[#181B22] bg-[#0C1014]/50 px-4 py-3"
+          className="relative flex items-center justify-between rounded-2xl border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 max-[360px]:flex-col max-[360px]:items-start max-[360px]:gap-2 max-[360px]:px-3 max-[360px]:py-2.5"
           style={{ marginLeft: indent }}
         >
           {depth > 0 && (
             <div
               className="absolute top-0 h-8 w-5 rounded-bl-lg border-b border-l border-[#181B22]"
-              style={{ left: -24 }}
+              style={{ left: -indentStep }}
             />
           )}
-          <span className="text-sm font-bold text-[#B0B0B0]">{hiddenLabel}</span>
+          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">{hiddenLabel}</span>
           <button
             type="button"
             onClick={() => handleToggleHidden(comment.id)}
-            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF] max-[360px]:self-end max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
           >
             {showLabel}
           </button>
