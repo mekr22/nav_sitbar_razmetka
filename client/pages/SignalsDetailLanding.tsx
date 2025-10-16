@@ -987,20 +987,20 @@ const SignalsDetailLanding: FC = () => {
             </div>
           </div>
 
-          <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0">
+          <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0 max-[360px]:gap-4">
             <div className="flex flex-col overflow-hidden rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <img
                 src={heroImage}
                 alt={author?.name ?? signal.name}
-                className="h-[332px] w-full border-b border-[#181B22] object-cover"
+                className="h-[332px] w-full border-b border-[#181B22] object-cover max-[360px]:h-[240px]"
               />
 
-              <div className="flex items-center gap-3 p-4">
+              <div className="flex items-center gap-3 p-4 max-[360px]:gap-2 max-[360px]:p-3">
                 <div className="flex flex-col gap-0.5">
-                  <h3 className="text-[19px] font-bold text-white">{signal.name}</h3>
+                  <h3 className="text-[19px] font-bold text-white max-[360px]:text-base">{signal.name}</h3>
                   <div className="flex items-center gap-1">
                     <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
-                      <Users className="h-4 w-4 text-[#B0B0B0]" />
+                      <Users className="h-4 w-4 text-[#B0B0B0] max-[360px]:h-3.5 max-[360px]:w-3.5" />
                       <span className="text-xs font-bold text-white">
                         {signal.users}
                       </span>
@@ -1017,19 +1017,19 @@ const SignalsDetailLanding: FC = () => {
               <div className="h-px bg-[#181B22]" />
 
               {platforms.length > 0 && (
-                <div className="flex items-center gap-2 p-4">
+                <div className="flex items-center gap-2 p-4 max-[360px]:gap-1.5 max-[360px]:p-3">
                   {platforms.slice(0, 4).map((platform, idx) => (
                     <img
                       key={`${signal.id}-platform-${idx}`}
                       src={platformLogos[idx % platformLogos.length]}
                       alt={platform}
-                      className="h-8 w-8 rounded-full object-cover"
+                      className="h-8 w-8 rounded-full object-cover max-[360px]:h-7 max-[360px]:w-7"
                     />
                   ))}
                 </div>
               )}
 
-              <div className="flex flex-col gap-2 p-4">
+              <div className="flex flex-col gap-2 p-4 max-[360px]:gap-1.5 max-[360px]:p-3">
                 {assets.length > 0 && (
                   <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">Assets:</span>
