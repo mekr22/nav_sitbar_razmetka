@@ -516,6 +516,9 @@ const SignalsDetailLanding: FC = () => {
   }, [locationState]);
 
   const isSignalFavorite = favoriteSignalIds.has(signal.id);
+  const favoriteStarButtonClassName = isSignalFavorite
+    ? "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+    : "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] hover:text-white";
 
   const handleToggleFavoriteSignal = useCallback(() => {
     setFavoriteSignalIds((prev) => {
