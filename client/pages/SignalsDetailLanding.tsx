@@ -807,7 +807,7 @@ const SignalsDetailLanding: FC = () => {
                         <div
                           className={`h-px flex-1 ${level.accent ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
                         />
-                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0] max-[360px]:w-8">
                           {level.label}
                         </span>
                       </div>
@@ -843,7 +843,7 @@ const SignalsDetailLanding: FC = () => {
                         <div
                           className={`h-px flex-1 ${index === ACCURACY_LEVELS.length - 1 ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
                         />
-                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0]">
+                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0] max-[360px]:w-8">
                           {level}
                         </span>
                       </div>
