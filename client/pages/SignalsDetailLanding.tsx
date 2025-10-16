@@ -297,6 +297,25 @@ const SignalsDetailLanding: FC = () => {
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const updateLayout = () => {
+      setIsCompactLayout(window.innerWidth <= 360);
+    };
+
+    updateLayout();
+
+    window.addEventListener("resize", updateLayout);
+
+    return () => {
+      window.removeEventListener("resize", updateLayout);
+    };
+  }, []);
 
   const handleToggleLike = useCallback((id: string) => {
     setComments((prev) => toggleLikeInTree(prev, id));
