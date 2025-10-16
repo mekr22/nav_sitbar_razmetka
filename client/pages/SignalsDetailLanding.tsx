@@ -870,7 +870,7 @@ const SignalsDetailLanding: FC = () => {
                     ))}
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-[42px] z-20 flex items-end justify-between gap-[2px]">
+                  <div className="absolute bottom-0 left-0 right-[42px] z-20 flex items-end justify-between gap-[2px] max-[360px]:right-[28px]">
                     {ACCURACY_DATA.map((data) => {
                       const maxHeight = 181;
                       const successfulHeight = (data.successful / 250) * maxHeight;
