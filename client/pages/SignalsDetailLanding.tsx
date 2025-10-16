@@ -617,7 +617,7 @@ const SignalsDetailLanding: FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab("chart")}
-            className={`flex h-[26px] items-center justify-center rounded-full px-4 text-[15px] font-bold transition-colors ${
+            className={`flex h-[26px] items-center justify-center rounded-full px-4 text-[15px] font-bold transition-colors max-[360px]:h-6 max-[360px]:px-3 max-[360px]:text-sm ${
               activeTab === "chart"
                 ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
                 : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px]"
