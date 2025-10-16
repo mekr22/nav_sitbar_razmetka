@@ -673,11 +673,11 @@ const SignalsDetailLanding: FC = () => {
               />
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
+            <div className="relative overflow-hidden rounded-2xl border border-[#181B22] max-[360px]:h-[220px] max-[360px]:rounded-xl">
               <img
                 src={displayChartImage}
                 alt={`${signal.name} chart`}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover max-[360px]:h-full"
               />
               <button
                 type="button"
