@@ -599,18 +599,20 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   }, [signal.id]);
 
   const reviews = useMemo(() => {
-    if (!Array.isArray(signal.reviews)) {
-      return [];
-    }
+    const sourceReviews = Array.isArray(signal.reviews) && signal.reviews.length > 0
+      ? signal.reviews
+      : Array.isArray(fallbackSignal.reviews)
+        ? fallbackSignal.reviews
+        : [];
 
-    return signal.reviews.filter(
+    return sourceReviews.filter(
       (review) =>
         typeof review?.author === "string" &&
         review.author.trim().length > 0 &&
         typeof review?.message === "string" &&
         review.message.trim().length > 0,
     );
-  }, [signal.reviews]);
+  }, [signal.reviews, fallbackSignal.reviews]);
 
   const categoryLabel =
     locationState?.category ??
