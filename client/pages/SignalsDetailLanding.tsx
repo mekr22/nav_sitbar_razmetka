@@ -320,6 +320,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
   const [isCompactLayout, setIsCompactLayout] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") {
