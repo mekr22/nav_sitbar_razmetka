@@ -1257,7 +1257,7 @@ const TradingRobotDetailLanding: FC = () => {
               <div className="flex items-start gap-3 p-4 max-[360px]:gap-2 max-[360px]:p-3">
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <h3 className="text-[19px] font-bold text-white max-[360px]:text-base">
-                    Product Name
+                    {robot.name}
                   </h3>
                   <div className="flex flex-wrap items-center gap-1">
                     <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
