@@ -538,7 +538,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
     }
 
     window.localStorage.setItem(
-      FAVORITE_STORAGE_KEY,
+      favoritesStorageKey,
       JSON.stringify(Array.from(favoriteSignalIds)),
     );
   }, [favoriteSignalIds, favoritesStorageKey]);
