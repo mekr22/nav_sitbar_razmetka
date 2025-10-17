@@ -302,6 +302,8 @@ const TradingRobotDetailLanding: FC = () => {
   const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [showOriginalDescription, setShowOriginalDescription] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") {
