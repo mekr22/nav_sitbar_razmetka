@@ -955,10 +955,12 @@ const TradingRobotDetailLanding: FC = () => {
                 </div>
 
                 <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
-                  {ACCURACY_MONTHS.map((month) => (
-                    <div key={month} className="flex flex-col items-center gap-1">
+                  {ACCURACY_DATA.map((data) => (
+                    <div key={data.month} className="flex flex-col items-center gap-1">
                       <div className="h-2 w-px bg-[#523A83]" />
-                      <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">{month}</span>
+                      <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">
+                        {data.month}
+                      </span>
                     </div>
                   ))}
                 </div>
