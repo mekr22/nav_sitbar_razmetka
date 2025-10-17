@@ -176,7 +176,20 @@ const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
     };
   });
 
-const PERFORMANCE_LEVELS = ["100%", "80%", "60%", "40%", "20%", "0%"] as const;
+type PerformanceLevel = {
+  label: string;
+  accent?: boolean;
+};
+
+const PERFORMANCE_LEVELS: readonly PerformanceLevel[] = [
+  { label: "$500K" },
+  { label: "$100K" },
+  { label: "$10K" },
+  { label: "$100" },
+  { label: "$1" },
+  { label: "$0.01", accent: true },
+];
+
 const PERFORMANCE_MONTHS = [
   "APR",
   "MAY",
@@ -193,7 +206,6 @@ const PERFORMANCE_MONTHS = [
 ] as const;
 
 const ACCURACY_LEVELS = [250, 200, 150, 100, 50, 0] as const;
-const ACCURACY_MONTHS = PERFORMANCE_MONTHS;
 
 const ACCURACY_DATA = [
   { month: "APR", successful: 37, unsuccessful: 14 },
