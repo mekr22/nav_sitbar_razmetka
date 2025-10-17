@@ -576,9 +576,8 @@ const TradingRobotDetailLanding: FC = () => {
       price: "$10 / month",
       productImage: DEFAULT_CHART_IMAGE,
       author: {
-        name: "John Smith",
+        name: "Sarah Lee",
         avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=160",
-        role: "PRO",
         bio: "Professional trader with 8+ years of experience in momentum strategies and technical analysis.",
         communityLink: "https://example.com",
         socials: ["twitter", "youtube", "instagram", "web"],
