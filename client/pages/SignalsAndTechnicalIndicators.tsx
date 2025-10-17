@@ -566,7 +566,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   );
                 })}
               </div>
-              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
+              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-1 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1 max-[1142px]:basis-full">
                 <Search
                   className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
                   aria-hidden="true"
