@@ -1600,7 +1600,7 @@ const TradingRobotDetailLanding: FC = () => {
                   <button
                     type="button"
                     onClick={() => setShowAllReviews(!showAllReviews)}
-                    className="flex h-[26px] w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 text-center text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:text-sm"
+                    className="flex h-[26px] w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 text-center text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:text-sm"
                   >
                     {showAllReviews ? "Show Less Reviews" : "Show More Reviews"}
                   </button>
