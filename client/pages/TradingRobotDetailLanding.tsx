@@ -822,19 +822,19 @@ const TradingRobotDetailLanding: FC = () => {
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">ROI APY for 1 year</span>
                   <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
-                    {robot.roiApy1y}
+                    {robot.roiApy1y ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">Subscribers</span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {robot.subscribers}
+                    {robot.subscribers ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">Sector</span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {robot.sector}
+                    {robot.sector ?? "—"}
                   </span>
                 </div>
               </div>
