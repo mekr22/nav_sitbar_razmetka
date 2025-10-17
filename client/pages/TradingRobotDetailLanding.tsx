@@ -842,7 +842,7 @@ const TradingRobotDetailLanding: FC = () => {
             </div>
 
             {/* Performance Chart */}
-            <div className="relative flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-3 max-[360px]:p-3">
+            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-3 max-[360px]:p-3">
               <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Performance</h2>
               <div className="h-px w-full bg-[#181B22]" />
               <div className="relative">
