@@ -942,7 +942,7 @@ const TradingRobotDetailLanding: FC = () => {
                             }}
                           />
                           <div
-                            className="w-full rounded-t-lg bg-gradient-to-t from-[#181A20] to-[#FFA800]"
+                            className="w-full rounded-t-full bg-gradient-to-t from-[#181A20] to-[#FFA800]"
                             style={{
                               height: `${unsuccessfulHeight}px`,
                               minHeight: unsuccessfulHeight > 0 ? "8px" : "0px",
