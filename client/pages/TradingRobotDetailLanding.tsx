@@ -1,14 +1,4 @@
-import {
-  Check,
-  Eye,
-  Instagram,
-  MessageCircle,
-  Play,
-  Star,
-  TrendingUp,
-  Users,
-  Youtube,
-} from "lucide-react";
+import { Check, MessageCircle, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
