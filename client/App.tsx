@@ -27,6 +27,7 @@ import Others from "./pages/Others";
 import Popular from "./pages/Popular";
 import Favourites from "./pages/Favourites";
 import SignalsDetailLanding from "./pages/SignalsDetailLanding";
+import IndicatorsDetailLanding from "./pages/IndicatorsDetailLanding";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
@@ -94,6 +95,10 @@ const App = () => (
                     <Route
                       path="/marketplace/signals-details"
                       element={<SignalsDetailLanding />}
+                    />
+                    <Route
+                      path="/marketplace/indicators-details"
+                      element={<IndicatorsDetailLanding />}
                     />
                     <Route
                       path="/marketplace/favourites"
