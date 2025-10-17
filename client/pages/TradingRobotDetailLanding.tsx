@@ -619,8 +619,35 @@ const TradingRobotDetailLanding: FC = () => {
       ],
     };
 
-    const provided = locationState?.robot as ExtendedRobot | undefined;
-    return provided ?? fallback;
+    const provided = locationState?.robot as Partial<ExtendedRobot> | undefined;
+    if (!provided) {
+      return fallback;
+    }
+
+    const mergedAuthor = {
+      ...fallback.author,
+      ...(provided.author ?? {}),
+    };
+
+    return {
+      ...fallback,
+      ...provided,
+      author: mergedAuthor,
+      tags: Array.isArray(provided.tags) && provided.tags.length > 0 ? provided.tags : fallback.tags,
+      reviews:
+        Array.isArray(provided.reviews) && provided.reviews.length > 0
+          ? (provided.reviews as ExtendedRobot["reviews"])
+          : fallback.reviews,
+      productImage: provided.productImage ?? fallback.productImage,
+      description:
+        typeof provided.description === "string" && provided.description.trim().length > 0
+          ? provided.description
+          : fallback.description,
+      originalDescription:
+        typeof provided.originalDescription === "string" && provided.originalDescription.trim().length > 0
+          ? provided.originalDescription
+          : fallback.originalDescription,
+    };
   }, [locationState]);
 
   const isRobotFavorite = favoriteRobotIds.has(robot.id);
