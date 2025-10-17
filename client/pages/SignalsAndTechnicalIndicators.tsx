@@ -522,7 +522,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
               Signals & Technical Indicators
             </h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
-              <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1 overflow-x-auto sm:gap-2 md:gap-3 lg:flex-nowrap lg:overflow-visible">
+              <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1 overflow-x-auto sm:gap-2 md:gap-3 lg:flex-nowrap lg:overflow-visible max-[1156px]:hidden">
                 {FILTER_ORDER.map((filterKey) => {
                   const config = FILTER_CONFIG[filterKey];
                   const selectedOption =
@@ -581,7 +581,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   );
                 })}
               </div>
-              <div className="ml-auto flex h-9 w-[235px] min-w-[200px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px]">
+              <div className="ml-auto flex h-9 w-[235px] min-w-[200px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1156px]:ml-0 max-[1156px]:w-full max-[1156px]:min-w-0">
                 <Search
                   className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
                   aria-hidden="true"
@@ -591,7 +591,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Find signals & indicator"
-                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm leading-none"
+                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none leading-none sm:text-xs md:text-sm"
                   aria-label="Find signals and indicators"
                 />
               </div>
