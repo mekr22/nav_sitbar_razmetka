@@ -9,7 +9,7 @@ import {
   Users,
   Youtube,
 } from "lucide-react";
-import { FC, useCallback, useEffect, useMemo, useState } from "use";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 
