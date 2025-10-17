@@ -583,6 +583,8 @@ const TradingRobotDetailLanding: FC = () => {
       averageRating: 4.5,
       totalReviews: 28,
       description: "Automates swaps between Ethereum (ETH) and Bitcoin (BTC) based on price divergence. When ETH outperforms BTC the bot sells a slice of ETH for BTC; when BTC regains strength the cycle reverse. No manual action required.",
+      originalDescription:
+        "Automates swaps between Ethereum (ETH) and Bitcoin (BTC) based on price divergence. When ETH outperforms BTC the bot sells a slice of ETH for BTC; when BTC regains strength the cycle reverse. No manual action required.",
       reviews: [
         {
           id: "1",
