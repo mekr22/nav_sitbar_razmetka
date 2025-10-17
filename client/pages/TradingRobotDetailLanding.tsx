@@ -1610,10 +1610,10 @@ const TradingRobotDetailLanding: FC = () => {
 
             {/* Disclaimer */}
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
+              <div className="border-b border-[#181B22] p-4">
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Disclaimer</h2>
               </div>
-              <div className="p-4 max-[360px]:p-3">
+              <div className="p-4">
                 <p className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">
                   The information and publications are not meant to be, and do not
                   constitute, financial, investment, trading, or other types of advice
