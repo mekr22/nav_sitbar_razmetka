@@ -21,6 +21,7 @@ interface SignalDetailsLocationState {
   category?: MarketplaceCategory;
   scrollToTop?: boolean;
   isFavorite?: boolean;
+  detailType?: "signals" | "indicators";
 }
 
 type ExtendedSignal = Signal & {
@@ -61,8 +62,18 @@ const PRODUCT_ACTIONS = [
 
 type ProductActionKey = (typeof PRODUCT_ACTIONS)[number]["key"];
 
-const resolveFallbackSignal = (): ExtendedSignal => {
-  const first = baseSignals[0] as ExtendedSignal | undefined;
+const resolveFallbackSignal = (
+  detailType: "signals" | "indicators",
+): ExtendedSignal => {
+  const preferredEntry = baseSignals.find((entry) => {
+    if (detailType === "indicators") {
+      return entry.type.toLowerCase().includes("indicator");
+    }
+
+    return true;
+  }) as ExtendedSignal | undefined;
+  const first = preferredEntry ?? (baseSignals[0] as ExtendedSignal | undefined);
+
   if (first) {
     return {
       ...first,
@@ -107,19 +118,26 @@ const resolveFallbackSignal = (): ExtendedSignal => {
           message: "I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.",
         },
       ],
+      name:
+        detailType === "indicators"
+          ? `${first.name} Indicator`
+          : first.name,
     };
   }
 
+  const defaultName =
+    detailType === "indicators" ? "Indicators Overview" : "Signals Overview";
+
   return {
-    id: "default-signal",
-    name: "Signals Overview",
+    id: detailType === "indicators" ? "default-indicator" : "default-signal",
+    name: defaultName,
     icon:
       "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1d90fdad8fa945dc9d0b417f6bb84c17?format=webp&width=256",
     users: "0",
     riskLevel: "UNSPECIFIED",
     platforms: [],
     assets: [],
-    type: "N/A",
+    type: detailType === "indicators" ? "INDICATOR" : "N/A",
     timeframes: [],
     use: "N/A",
     accuracy: "0%",
@@ -128,8 +146,6 @@ const resolveFallbackSignal = (): ExtendedSignal => {
     price: "$10 / month",
   };
 };
-
-const FALLBACK_SIGNAL = resolveFallbackSignal();
 
 const platformLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1d90fdad8fa945dc9d0b417f6bb84c17?format=webp&width=64",
@@ -291,7 +307,13 @@ const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
     };
   });
 
-const SignalsDetailLanding: FC = () => {
+interface SignalsDetailLandingProps {
+  detailType?: "signals" | "indicators";
+}
+
+const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
+  detailType = "signals",
+}) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
@@ -473,11 +495,20 @@ const SignalsDetailLanding: FC = () => {
   const locationState =
     (location.state as SignalDetailsLocationState | null) ?? null;
 
+  const resolvedDetailType =
+    locationState?.detailType === "indicators" || detailType === "indicators"
+      ? "indicators"
+      : "signals";
+  const isIndicator = resolvedDetailType === "indicators";
+  const favoritesStorageKey = isIndicator
+    ? "indicators-detail-favorites"
+    : FAVORITE_STORAGE_KEY;
+
   const [favoriteSignalIds, setFavoriteSignalIds] = useState<Set<string>>(() => {
     const storedIds = new Set<string>();
 
     if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(FAVORITE_STORAGE_KEY);
+      const raw = window.localStorage.getItem(favoritesStorageKey);
       if (raw) {
         try {
           const parsed = JSON.parse(raw);
@@ -510,7 +541,7 @@ const SignalsDetailLanding: FC = () => {
       FAVORITE_STORAGE_KEY,
       JSON.stringify(Array.from(favoriteSignalIds)),
     );
-  }, [favoriteSignalIds]);
+  }, [favoriteSignalIds, favoritesStorageKey]);
 
   useEffect(() => {
     const id = locationState?.signal?.id;
@@ -541,8 +572,9 @@ const SignalsDetailLanding: FC = () => {
 
   const signal = useMemo<ExtendedSignal>(() => {
     const provided = locationState?.signal as ExtendedSignal | undefined;
-    return provided ?? FALLBACK_SIGNAL;
-  }, [locationState]);
+    const fallback = resolveFallbackSignal(resolvedDetailType);
+    return provided ?? fallback;
+  }, [locationState, resolvedDetailType]);
 
   const isSignalFavorite = favoriteSignalIds.has(signal.id);
   const favoriteStarButtonClassName = isSignalFavorite
@@ -576,13 +608,18 @@ const SignalsDetailLanding: FC = () => {
   }, [signal.reviews]);
 
   const categoryLabel =
-    locationState?.category ?? "Signals and Technical indicators";
+    locationState?.category ??
+    (isIndicator ? "Indicators" : "Signals and Technical indicators");
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/signals", {
-      state: { scrollToTop: true, category: categoryLabel },
+      state: {
+        scrollToTop: true,
+        category: categoryLabel,
+        detailType: resolvedDetailType,
+      },
     });
-  }, [categoryLabel, navigate]);
+  }, [categoryLabel, navigate, resolvedDetailType]);
 
   const assets = Array.isArray(signal.assets) ? signal.assets : [];
   const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
