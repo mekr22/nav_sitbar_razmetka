@@ -628,13 +628,14 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const assets = Array.isArray(signal.assets) ? signal.assets : [];
   const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
   const timeframes = Array.isArray(signal.timeframes) ? signal.timeframes : [];
-  const tags = Array.isArray(signal.tags) ? signal.tags : FALLBACK_SIGNAL.tags ?? [];
-  const author = signal.author ?? FALLBACK_SIGNAL.author;
-  const averageRating = signal.averageRating ?? FALLBACK_SIGNAL.averageRating ?? 0;
-  const totalReviews = signal.totalReviews ?? FALLBACK_SIGNAL.totalReviews ?? 0;
-  const baseChartImage = signal.productImage ?? signal.chartImage ?? "";
-  const displayChartImage = DEFAULT_CHART_IMAGE;
-  const authorAvatar = author?.avatar ?? FALLBACK_SIGNAL.author?.avatar ?? "";
+  const tags = Array.isArray(signal.tags) ? signal.tags : fallbackSignal.tags ?? [];
+  const author = signal.author ?? fallbackSignal.author;
+  const averageRating = signal.averageRating ?? fallbackSignal.averageRating ?? 0;
+  const totalReviews = signal.totalReviews ?? fallbackSignal.totalReviews ?? 0;
+  const baseChartImage =
+    signal.productImage ?? signal.chartImage ?? fallbackSignal.productImage ?? fallbackSignal.chartImage ?? "";
+  const displayChartImage = baseChartImage || DEFAULT_CHART_IMAGE;
+  const authorAvatar = author?.avatar ?? fallbackSignal.author?.avatar ?? "";
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
 
   const renderStars = (rating: number) => {
