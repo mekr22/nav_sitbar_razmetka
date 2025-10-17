@@ -735,29 +735,26 @@ const TradingRobotDetailLanding: FC = () => {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6 max-[360px]:gap-4">
           <div className="flex flex-col gap-6 lg:flex-[2] lg:min-w-0 max-[360px]:gap-4">
             {/* Grid-Bot HODL Description */}
-            <div className="flex flex-col rounded-xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Grid-Bot HODL</h2>
               </div>
-              <div className="flex flex-col justify-center p-4 max-[360px]:p-3">
+              <div className="p-4 max-[360px]:p-3">
                 <div
-                  className={`relative text-[15px] font-normal leading-normal max-[360px]:text-sm ${
+                  className={`relative text-[15px] font-medium leading-relaxed text-white/90 max-[360px]:text-sm ${
                     isDescriptionExpanded ? "" : "max-h-[176px] overflow-hidden pr-1"
                   }`}
-                  style={{
-                    background: "linear-gradient(180deg, #FFF 59.38%, rgba(255, 255, 255, 0.00) 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
                 >
                   <p className="whitespace-pre-line">{descriptionToDisplay}</p>
+                  {!isDescriptionExpanded && (
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-b from-transparent to-[#0C1014]" />
+                  )}
                 </div>
-                <div className="flex items-center gap-6 max-[360px]:gap-4">
+                <div className="mt-4 flex flex-wrap items-center gap-6 text-[15px] font-medium max-[360px]:gap-4">
                   <button
                     type="button"
                     onClick={() => setIsDescriptionExpanded((prev) => !prev)}
-                    className="text-[15px] font-normal text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] max-[360px]:text-sm"
+                    className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                   >
                     {isDescriptionExpanded ? "Collapse" : "Expand"}
                   </button>
@@ -765,7 +762,7 @@ const TradingRobotDetailLanding: FC = () => {
                     <button
                       type="button"
                       onClick={() => setShowOriginalDescription((prev) => !prev)}
-                      className="text-[15px] font-normal text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] max-[360px]:text-sm"
+                      className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                     >
                       {showOriginalDescription ? "Show Translation" : "Show Original"}
                     </button>
