@@ -186,7 +186,7 @@ const Favourites: FC = () => {
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">
               Favourites
             </h2>
-            <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
+            <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1156px]:ml-0 max-[1156px]:mt-0 max-[1156px]:w-full max-[1156px]:min-w-0 max-[1156px]:flex-1">
               <Search
                 className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
                 aria-hidden="true"
@@ -196,7 +196,7 @@ const Favourites: FC = () => {
                 value={searchTerm}
                 onChange={(event) => setSearchTerm(event.target.value)}
                 placeholder="Find favourite listings"
-                className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm leading-none"
+                className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none leading-none sm:text-xs md:text-sm"
                 aria-label="Find favourite listings"
               />
             </div>
