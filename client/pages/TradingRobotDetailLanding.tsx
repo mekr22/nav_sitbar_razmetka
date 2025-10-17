@@ -794,7 +794,7 @@ const TradingRobotDetailLanding: FC = () => {
                 <div className="flex flex-col gap-1 text-left sm:text-right">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">Running time</span>
                   <span className="text-[15px] font-medium text-[#A06AFF] max-[360px]:text-sm">
-                    {robot.runningTime}
+                    {robot.runningTime ?? "—"}
                   </span>
                 </div>
               </div>
@@ -802,19 +802,19 @@ const TradingRobotDetailLanding: FC = () => {
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">ROI APY for 30 days</span>
                   <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
-                    {robot.roiApy30d}
+                    {robot.roiApy30d ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">AUM (USDT)</span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {robot.aum}
+                    {robot.aum ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">Platform</span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {robot.platform}
+                    {robot.platform ?? "—"}
                   </span>
                 </div>
               </div>
