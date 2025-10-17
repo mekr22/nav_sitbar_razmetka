@@ -507,7 +507,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
               Signals & Technical Indicators
             </h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
-              <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1 sm:gap-2 md:gap-3 lg:flex-nowrap">
+              <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1 overflow-x-auto sm:gap-2 md:gap-3 lg:flex-nowrap lg:overflow-visible">
                 {FILTER_ORDER.map((filterKey) => {
                   const config = FILTER_CONFIG[filterKey];
                   const selectedOption =
