@@ -612,7 +612,15 @@ const TradingRobotsAndAlgorithms: FC = () => {
                     key={robot.id}
                     robot={robot}
                     isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
+                    onSelect={() => {
+                      navigate("/marketplace/trading-robot-details", {
+                        state: {
+                          robot,
+                          isFavorite: isFavorited,
+                          scrollToTop: true,
+                        },
+                      });
+                    }}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggleFavorite(cardKey)}
                   />
