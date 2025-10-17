@@ -1286,13 +1286,11 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
             )}
 
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="border-b border-[#181B22] p-4">
+              <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 max-[360px]:gap-3 max-[360px]:p-3">
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Reviews</h2>
-              </div>
 
-              <div className="flex flex-col gap-2.5 p-4">
-                <div className="flex items-center gap-4">
-                  <span className="text-[31px] font-bold text-[#A06AFF]">
+                <div className="flex items-center gap-4 max-[360px]:gap-3">
+                  <span className="text-[31px] font-bold leading-none text-[#A06AFF] max-[360px]:text-2xl">
                     {averageRating.toFixed(1)}
                   </span>
                   <div className="flex flex-col gap-0.5">
@@ -1306,21 +1304,24 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                 </div>
               </div>
 
-              {reviews.slice(0, 3).map((review) => (
-                <div key={review.id} className="flex flex-col">
-                  <div className="px-4 py-2">
-                    <div className="h-px bg-[#181B22]" />
-                  </div>
-                  <div className="flex flex-col gap-2 px-4 pb-4">
-                    <div className="flex items-start justify-between">
+              <div className="flex flex-col">
+                {(showAllReviews ? reviews : reviews.slice(0, 3)).map((review, index) => (
+                  <div key={review.id} className="flex flex-col">
+                    {index > 0 && (
+                      <div className="px-4 py-2 max-[360px]:px-3">
+                        <div className="h-px bg-[#181B22]" />
+                      </div>
+                    )}
+
+                    <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
                       <div className="flex items-center gap-2">
                         <img
                           src={review.avatar}
                           alt={review.author}
-                          className="h-11 w-11 rounded-full object-cover"
+                          className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
                         />
                         <div className="flex flex-col gap-1">
-                          <span className="text-[15px] font-bold text-white">
+                          <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
                             {review.author}
                           </span>
                           <span className="text-xs font-bold text-[#B0B0B0]">
@@ -1332,24 +1333,26 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                         {renderStars(review.rating)}
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <h4 className="text-[15px] font-bold text-white">
+
+                    <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
+                      <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">
                         {review.title}
                       </h4>
-                      <p className="text-[15px] font-medium text-[#B0B0B0]">
+                      <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">
                         {review.message}
                       </p>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
 
-              <div className="p-4">
+              <div className="p-4 max-[360px]:p-3">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  onClick={() => setShowAllReviews(!showAllReviews)}
+                  className="flex h-[26px] w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:text-sm"
                 >
-                  Show More Reviews
+                  {showAllReviews ? "Show Less Reviews" : "Show More Reviews"}
                 </button>
               </div>
             </div>
