@@ -1423,19 +1423,10 @@ const TradingRobotDetailLanding: FC = () => {
                     className="h-20 w-20 flex-shrink-0 rounded-full object-cover max-[360px]:h-16 max-[360px]:w-16"
                   />
                   <div className="flex flex-1 flex-col gap-2 max-[360px]:gap-1.5">
-                    <div className="flex items-center gap-1">
-                      <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                        {author.name}
-                      </h3>
-                      {author.role && (
-                        <div className="rounded bg-gradient-to-r from-[#A06AFF] to-[#482090] px-1 py-0.5">
-                          <span className="text-xs font-extrabold text-white">{author.role}</span>
-                        </div>
-                      )}
-                    </div>
+                    <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">{author.name}</h3>
                     <button
                       type="button"
-                      className="flex h-[26px] w-20 items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-extrabold text-white transition-opacity hover:opacity-90 max-[360px]:w-16 max-[360px]:text-[11px]"
+                      className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90 max-[360px]:w-16 max-[360px]:text-[11px]"
                     >
                       Follow
                     </button>
