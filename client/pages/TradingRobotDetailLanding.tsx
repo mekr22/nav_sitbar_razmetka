@@ -879,16 +879,20 @@ const TradingRobotDetailLanding: FC = () => {
                   </div>
 
                   <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
-                    {PERFORMANCE_LEVELS.map((level, idx) => (
-                      <div key={level} className="flex items-center gap-0.5">
+                    {PERFORMANCE_LEVELS.map((level) => (
+                      <div key={level.label} className="flex items-center gap-0.5">
                         <div
-                          className={`h-px flex-1 ${idx === PERFORMANCE_LEVELS.length - 1 ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
+                          className={`h-px flex-1 ${level.accent ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
                         />
                         <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0] max-[360px]:w-8">
-                          {level}
+                          {level.label}
                         </span>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="absolute right-4 top-0 z-20 inline-flex items-center justify-center rounded bg-[#A06AFF] px-1 py-0.5">
+                    <span className="text-center text-xs font-bold uppercase text-white">$507K</span>
                   </div>
                 </div>
 
