@@ -110,7 +110,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
           }
         }}
         className={cn(
-          "relative flex h-full cursor-pointer flex-col rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
