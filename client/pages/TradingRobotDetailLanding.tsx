@@ -1050,8 +1050,8 @@ const TradingRobotDetailLanding: FC = () => {
                         </div>
                       </div>
                       <div className="flex flex-col items-end gap-1 max-[360px]:w-full max-[360px]:items-start">
-                        <div className="rounded bg-[#1C3430] px-2 py-0.5">
-                          <span className="text-xs font-bold uppercase text-[#2EBD85]">
+                        <div className="flex h-6 items-center rounded-full bg-[#1C3430] px-3">
+                          <span className="text-xs font-bold text-[#2EBD85]">
                             {subscriber.roi}
                           </span>
                         </div>
