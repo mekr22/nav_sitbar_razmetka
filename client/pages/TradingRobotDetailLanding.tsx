@@ -1415,7 +1415,7 @@ const TradingRobotDetailLanding: FC = () => {
 
             {/* Author Card */}
             {author && (
-              <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+              <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] max-[360px]:gap-3">
                 <div className="flex items-center gap-2 p-4 max-[360px]:gap-2 max-[360px]:p-3">
                   <img
                     src={author.avatar}
