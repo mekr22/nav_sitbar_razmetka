@@ -175,12 +175,27 @@ const SignalsAndTechnicalIndicators: FC = () => {
 
   const openSignalDetails = useCallback(
     (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
-      navigate("/marketplace/signals-details", {
+      const extended = selectedSignal as SignalWithMeta | (Signal & {
+        category?: string;
+      });
+      const detailType =
+        extended?.category === "indicators" ? "indicators" : "signals";
+      const targetPath =
+        detailType === "indicators"
+          ? "/marketplace/indicators-details"
+          : "/marketplace/signals-details";
+      const categoryLabel =
+        detailType === "indicators"
+          ? "Indicators"
+          : "Signals and Technical indicators";
+
+      navigate(targetPath, {
         state: {
           scrollToTop: true,
-          category: "Signals and Technical indicators",
+          category: categoryLabel,
           signal: selectedSignal,
           isFavorite: Boolean(meta?.isFavorite),
+          detailType,
         },
       });
     },
