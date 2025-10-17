@@ -633,8 +633,14 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const timeframes = Array.isArray(signal.timeframes) ? signal.timeframes : [];
   const tags = Array.isArray(signal.tags) ? signal.tags : fallbackSignal.tags ?? [];
   const author = signal.author ?? fallbackSignal.author;
-  const averageRating = signal.averageRating ?? fallbackSignal.averageRating ?? 0;
-  const totalReviews = signal.totalReviews ?? fallbackSignal.totalReviews ?? 0;
+  const averageRating =
+    typeof signal.averageRating === "number" && signal.averageRating > 0
+      ? signal.averageRating
+      : fallbackSignal.averageRating ?? 0;
+  const totalReviews =
+    typeof signal.totalReviews === "number" && signal.totalReviews > 0
+      ? signal.totalReviews
+      : fallbackSignal.totalReviews ?? 0;
   const baseChartImage =
     signal.productImage ?? signal.chartImage ?? fallbackSignal.productImage ?? fallbackSignal.chartImage ?? "";
   const displayChartImage = baseChartImage || DEFAULT_CHART_IMAGE;
