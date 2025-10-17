@@ -382,7 +382,7 @@ const Analysts: FC = () => {
               Analysts
             </h2>
             <div className="flex w-full flex-wrap items-center gap-1 sm:gap-2 md:gap-3">
-              <div className="hidden min-[1143px]:flex min-[1143px]:w-full min-[1143px]:flex-1 min-[1143px]:items-center min-[1143px]:gap-3">
+              <div className="hidden min-[1157px]:flex min-[1157px]:w-full min-[1157px]:flex-1 min-[1157px]:items-center min-[1157px]:gap-3">
                 {FILTER_ORDER.map((filterKey) => {
                   const options = (() => {
                     switch (filterKey) {
@@ -493,7 +493,7 @@ const Analysts: FC = () => {
                   );
                 })}
               </div>
-              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1142px]:ml-0 max-[1142px]:mt-0 max-[1142px]:w-full max-[1142px]:min-w-0 max-[1142px]:flex-1">
+              <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1156px]:ml-0 max-[1156px]:mt-0 max-[1156px]:w-full max-[1156px]:min-w-0 max-[1156px]:flex-1">
                 <Search
                   className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
                   aria-hidden="true"
@@ -503,7 +503,7 @@ const Analysts: FC = () => {
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
                   placeholder="Find analyst"
-                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none sm:text-xs md:text-sm leading-none"
+                  className="flex-1 bg-transparent text-[11px] font-medium text-[#B0B0B0] placeholder:text-[#B0B0B0] outline-none leading-none sm:text-xs md:text-sm"
                   aria-label="Find analyst"
                 />
               </div>
