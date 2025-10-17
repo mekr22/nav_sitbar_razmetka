@@ -775,8 +775,8 @@ const TradingRobotDetailLanding: FC = () => {
               <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Details</h2>
               </div>
-              <div className="flex flex-col gap-0 border-b border-[#181B22] sm:flex-row">
-                <div className="flex flex-1 items-center gap-2 border-b border-[#181B22] p-4 sm:border-b-0 sm:border-r max-[360px]:p-3">
+              <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 sm:flex-row sm:items-center sm:justify-between max-[360px]:p-3">
+                <div className="flex items-center gap-3">
                   <img
                     src={author?.avatar ?? ""}
                     alt={author?.name ?? "Author"}
@@ -791,13 +791,11 @@ const TradingRobotDetailLanding: FC = () => {
                     </span>
                   </div>
                 </div>
-                <div className="flex flex-1 items-center p-4 max-[360px]:p-3">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Running time</span>
-                    <span className="text-[15px] font-medium text-[#A06AFF] max-[360px]:text-sm">
-                      {robot.runningTime}
-                    </span>
-                  </div>
+                <div className="flex flex-col gap-1 text-left sm:text-right">
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Running time</span>
+                  <span className="text-[15px] font-medium text-[#A06AFF] max-[360px]:text-sm">
+                    {robot.runningTime}
+                  </span>
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 max-[360px]:gap-3 max-[360px]:p-3">
