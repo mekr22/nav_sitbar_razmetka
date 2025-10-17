@@ -28,6 +28,7 @@ import Popular from "./pages/Popular";
 import Favourites from "./pages/Favourites";
 import SignalsDetailLanding from "./pages/SignalsDetailLanding";
 import IndicatorsDetailLanding from "./pages/IndicatorsDetailLanding";
+import TradingRobotDetailLanding from "./pages/TradingRobotDetailLanding";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
@@ -99,6 +100,10 @@ const App = () => (
                     <Route
                       path="/marketplace/indicators-details"
                       element={<IndicatorsDetailLanding />}
+                    />
+                    <Route
+                      path="/marketplace/trading-robot-details"
+                      element={<TradingRobotDetailLanding />}
                     />
                     <Route
                       path="/marketplace/favourites"
