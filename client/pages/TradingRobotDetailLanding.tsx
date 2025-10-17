@@ -739,9 +739,34 @@ const TradingRobotDetailLanding: FC = () => {
                 <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Grid-Bot HODL</h2>
               </div>
               <div className="p-4 max-[360px]:p-3">
-                <p className="text-[15px] font-medium text-white/90 max-[360px]:text-sm">
-                  {robot.description}
-                </p>
+                <div
+                  className={`relative text-[15px] font-medium leading-relaxed text-white/90 max-[360px]:text-sm ${
+                    isDescriptionExpanded ? "" : "max-h-[176px] overflow-hidden pr-1"
+                  }`}
+                >
+                  <p className="whitespace-pre-line">{descriptionToDisplay}</p>
+                  {!isDescriptionExpanded && (
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-b from-transparent to-[#0C1014]" />
+                  )}
+                </div>
+                <div className="mt-4 flex flex-wrap items-center gap-6 text-[15px] font-medium max-[360px]:gap-4">
+                  <button
+                    type="button"
+                    onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+                    className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                  >
+                    {isDescriptionExpanded ? "Collapse" : "Expand"}
+                  </button>
+                  {hasOriginalDescription && (
+                    <button
+                      type="button"
+                      onClick={() => setShowOriginalDescription((prev) => !prev)}
+                      className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                    >
+                      {showOriginalDescription ? "Show Translation" : "Show Original"}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
 
