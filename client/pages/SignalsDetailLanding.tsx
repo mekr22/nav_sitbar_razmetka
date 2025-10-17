@@ -570,11 +570,15 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
     }
   }, [location.pathname, locationState, navigate]);
 
+  const fallbackSignal = useMemo<ExtendedSignal>(
+    () => resolveFallbackSignal(resolvedDetailType),
+    [resolvedDetailType],
+  );
+
   const signal = useMemo<ExtendedSignal>(() => {
     const provided = locationState?.signal as ExtendedSignal | undefined;
-    const fallback = resolveFallbackSignal(resolvedDetailType);
-    return provided ?? fallback;
-  }, [locationState, resolvedDetailType]);
+    return provided ?? fallbackSignal;
+  }, [locationState, fallbackSignal]);
 
   const isSignalFavorite = favoriteSignalIds.has(signal.id);
   const favoriteStarButtonClassName = isSignalFavorite
