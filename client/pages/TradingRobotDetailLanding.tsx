@@ -674,6 +674,13 @@ const TradingRobotDetailLanding: FC = () => {
   const authorAvatar = author?.avatar ?? "";
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
 
+  const translatedDescription = robot.description ?? "";
+  const hasOriginalDescription = Boolean(robot.originalDescription && robot.originalDescription.trim().length > 0);
+  const descriptionToDisplay =
+    showOriginalDescription && hasOriginalDescription
+      ? robot.originalDescription ?? ""
+      : translatedDescription;
+
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => {
       const filled = index < Math.floor(rating);
