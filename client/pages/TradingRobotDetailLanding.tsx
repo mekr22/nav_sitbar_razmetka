@@ -74,6 +74,7 @@ type ExtendedRobot = TradingRobot & {
   averageRating?: number;
   totalReviews?: number;
   description?: string;
+  originalDescription?: string;
 };
 
 const DEFAULT_CHART_IMAGE =
