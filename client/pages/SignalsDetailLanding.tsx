@@ -1354,15 +1354,17 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                 ))}
               </div>
 
-              <div className="p-4 max-[360px]:p-3">
-                <button
-                  type="button"
-                  onClick={() => setShowAllReviews(!showAllReviews)}
-                  className="flex h-[26px] w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-center text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:text-sm"
-                >
-                  {showAllReviews ? "Show Less Reviews" : "Show More Reviews"}
-                </button>
-              </div>
+              {reviews.length > 3 && (
+                <div className="p-4 max-[360px]:p-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllReviews(!showAllReviews)}
+                    className="flex h-[32px] w-full items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 text-center text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:h-[30px] max-[360px]:text-sm"
+                  >
+                    {showAllReviews ? "Show Less Reviews" : "Show More Reviews"}
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
