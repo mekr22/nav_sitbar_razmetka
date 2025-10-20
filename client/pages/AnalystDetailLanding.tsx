@@ -611,7 +611,7 @@ const AnalystDetailLanding: FC = () => {
               <div className="absolute right-5 top-5 z-20">
                 <button
                   type="button"
-                  onClick={handleToggleFavoriteTrader}
+                  onClick={handleToggleFavoriteAnalyst}
                   className="rounded-full p-2 text-[#B0B0B0] transition-colors hover:text-[#A06AFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                   aria-pressed={isAnalystFavorite}
                   aria-label={isAnalystFavorite ? "Remove from favorites" : "Add to favorites"}
