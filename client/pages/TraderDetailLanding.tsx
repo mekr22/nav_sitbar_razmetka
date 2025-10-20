@@ -22,6 +22,22 @@ interface TraderDetailsState {
   isFavorite?: boolean;
 }
 
+type TraderContentFilter = "all" | "trades" | "bots";
+
+const TRAIT_BADGES = [
+  { label: "Stable", backgroundClass: "bg-[#1C3430]", textClass: "text-[#2EBD85]" },
+  { label: "High Frequency", backgroundClass: "bg-[#6AA6FF]/[0.16]", textClass: "text-[#6AA6FF]" },
+  { label: "Long-Term", backgroundClass: "bg-[#6AA6FF]/[0.16]", textClass: "text-[#6AA6FF]" },
+  { label: "Veterans", backgroundClass: "bg-[#6AA6FF]/[0.16]", textClass: "text-[#6AA6FF]" },
+  { label: "Sociable", backgroundClass: "bg-[#6AA6FF]/[0.16]", textClass: "text-[#6AA6FF]" },
+] as const;
+
+const CONTENT_FILTERS: { id: TraderContentFilter; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "trades", label: "Trades" },
+  { id: "bots", label: "Bots" },
+];
+
 const TraderDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
