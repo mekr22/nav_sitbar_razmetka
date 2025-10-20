@@ -374,11 +374,11 @@ const InvestmentConsultantDetailLanding: FC = () => {
             />
           </div>
 
-          <div className="relative flex flex-col gap-6 p-4 lg:flex-row">
+          <div className="relative flex flex-col gap-6 p-4 lg:flex-row lg:items-center">
             <img
               src={consultant.avatar}
               alt={consultant.name}
-              className="h-[312px] w-[312px] flex-shrink-0 rounded-2xl object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]"
+              className="h-[312px] w-[312px] flex-shrink-0 rounded-2xl object-cover shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)] lg:self-center"
             />
 
             <div className="flex flex-1 flex-col justify-between">
