@@ -65,7 +65,7 @@ const PERFORMANCE_MONTHS = [
   "MAR",
 ] as const;
 
-const TRADER_REVIEWS = [
+const ANALYST_REVIEWS = [
   {
     id: "review-1",
     author: "John Smith",
