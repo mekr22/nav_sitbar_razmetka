@@ -2,6 +2,9 @@ import { Check, MessageCircle, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import PerformanceChartCard, {
+  type PerformanceChartLevel,
+} from "@/components/marketplace/PerformanceChartCard";
 
 interface TradingRobot {
   id: string;
@@ -176,12 +179,7 @@ const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
     };
   });
 
-type PerformanceLevel = {
-  label: string;
-  accent?: boolean;
-};
-
-const PERFORMANCE_LEVELS: readonly PerformanceLevel[] = [
+const PERFORMANCE_LEVELS: readonly PerformanceChartLevel[] = [
   { label: "$500K" },
   { label: "$100K" },
   { label: "$10K" },
@@ -869,71 +867,11 @@ const TradingRobotDetailLanding: FC = () => {
             </div>
 
             {/* Performance Chart */}
-            <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-3 max-[360px]:p-3">
-              <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Performance</h2>
-              <div className="h-px w-full bg-[#181B22]" />
-              <div className="relative">
-                <div className="relative h-[220px] max-[360px]:h-[140px]">
-                  <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)]">
-                    <svg
-                      className="h-full w-full"
-                      viewBox="0 0 652 221"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      preserveAspectRatio="none"
-                    >
-                      <g filter="url(#filter0_d_perf)">
-                        <path
-                          d="M9 208.911L16.454 212L21.0091 205.822L25.1502 208.028L26.3926 204.498L29.7054 205.822L33.8465 202.291L37.5735 204.498L49.5826 185.08L51.2391 186.404L56.6225 176.696L58.2789 180.226L60.3494 178.02L62.42 180.226L64.0764 176.696L66.9752 179.343L69.8739 176.696L72.3586 178.02C73.6009 174.048 76.0856 166.016 76.0856 165.663C76.0856 165.31 76.0856 157.278 76.0856 153.307L79.3984 157.278L81.8831 153.307C81.8831 154.189 81.8831 155.601 81.8831 154.189C81.8831 152.777 84.6438 143.009 86.0242 138.302L89.337 151.1L93.8922 140.067L97.2051 139.185L98.4474 131.683L100.932 133.007L102.174 128.593L105.487 136.537L107.144 145.804L108.8 137.42L110.457 142.274L112.113 154.189L114.184 139.185L117.911 149.776L122.88 131.683L127.021 135.213L128.677 130.8L130.748 134.33L134.061 129.917L138.616 144.922L141.101 137.42L144.828 140.067L147.726 129.917L148.555 135.213L151.453 130.8L155.594 147.57L157.665 143.157L158.493 147.57L162.22 144.922L163.462 152.865L165.119 146.687L168.846 143.157L170.502 145.804L171.745 140.067L175.057 147.57L177.542 146.687L181.269 152.865L183.754 146.687L187.067 161.691L190.379 160.367V151.1L192.864 148.452L199.076 157.72L201.975 149.776L203.217 157.72L205.702 156.837L208.186 152.865L209.843 156.837L211.499 144.922L212.741 147.57L214.812 142.274"
-                          stroke="#A06AFF"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </g>
-                      <defs>
-                        <filter id="filter0_d_perf" x="0.249756" y="0.698242" width="651.5" height="220.22" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                          <feOffset />
-                          <feGaussianBlur stdDeviation="4" />
-                          <feComposite in2="hardAlpha" operator="out" />
-                          <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.415686 0 0 0 0 1 0 0 0 0.24 0" />
-                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_perf" />
-                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_perf" result="shape" />
-                        </filter>
-                      </defs>
-                    </svg>
-                  </div>
-
-                  <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
-                    {PERFORMANCE_LEVELS.map((level) => (
-                      <div key={level.label} className="flex items-center gap-0.5">
-                        <div
-                          className={`h-px flex-1 ${level.accent ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
-                        />
-                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0] max-[360px]:w-8">
-                          {level.label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="absolute right-4 top-0 z-20 inline-flex items-center justify-center rounded bg-[#A06AFF] px-1 py-0.5">
-                    <span className="text-center text-xs font-bold uppercase text-white">$507K</span>
-                  </div>
-                </div>
-
-                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
-                  {PERFORMANCE_MONTHS.map((month) => (
-                    <div key={month} className="flex flex-col items-center gap-1">
-                      <div className="h-2 w-px bg-[#523A83]" />
-                      <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">{month}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
+            <PerformanceChartCard
+              levels={PERFORMANCE_LEVELS}
+              months={PERFORMANCE_MONTHS}
+              highlightValue="$507K"
+            />
             {/* Accuracy Chart */}
             <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-3 max-[360px]:p-3">
               <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Accuracy</h2>
