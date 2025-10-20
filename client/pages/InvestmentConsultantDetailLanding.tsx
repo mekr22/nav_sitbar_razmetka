@@ -647,11 +647,9 @@ const InvestmentConsultantDetailLanding: FC = () => {
                     className="h-20 w-20 rounded-full object-cover"
                   />
                   <div className="flex flex-1 flex-col gap-3">
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-2">
                       <span className="text-[15px] font-bold text-white">{consultant.name}</span>
-                      <div className="rounded bg-gradient-to-r from-[#A06AFF] to-[#482090] px-1">
-                        <span className="text-xs font-bold text-white">PRO</span>
-                      </div>
+                      <span className="rounded bg-[#A06AFF] px-1 text-xs font-extrabold text-white">PRO</span>
                     </div>
                     <button className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-1 text-xs font-bold text-white">
                       Follow
