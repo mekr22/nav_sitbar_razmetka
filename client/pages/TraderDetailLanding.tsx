@@ -957,7 +957,7 @@ const TraderDetailLanding: FC = () => {
                   {TRAIT_BADGES.map((badge) => (
                     <span
                       key={badge.label}
-                      className={`rounded px-2 py-0.5 text-xs font-bold uppercase leading-none ${badge.backgroundClass} ${badge.textClass}`}
+                      className={`inline-flex h-7 items-center rounded-full px-3 text-xs font-bold uppercase leading-none ${badge.backgroundClass} ${badge.textClass}`}
                     >
                       {badge.label}
                     </span>
