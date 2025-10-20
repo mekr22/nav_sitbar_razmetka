@@ -1363,32 +1363,32 @@ const TraderDetailLanding: FC = () => {
               </div>
 
               <div className="flex items-center justify-center gap-1 px-4 py-4">
-                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
                   <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
                     <path d="M14.658 15L15.833 13.825L12.0163 10L15.833 6.175L14.658 5L9.65801 10L14.658 15Z" fill="currentColor"/>
                     <path d="M9.1668 15L10.3418 13.825L6.52513 10L10.3418 6.175L9.1668 5L4.1668 10L9.1668 15Z" fill="currentColor"/>
                   </svg>
                 </button>
-                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
                   <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
                     <path d="M12.575 15L13.75 13.825L9.93333 10L13.75 6.175L12.575 5L7.575 10L12.575 15Z" fill="currentColor"/>
                   </svg>
                 </button>
-                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-2">
+                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-2">
                   <span className="text-[15px] font-bold text-white">1</span>
                 </button>
-                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] px-2">
+                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] px-2">
                   <span className="text-[15px] font-bold text-[#B0B0B0]">2</span>
                 </button>
-                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] px-2">
+                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] px-2">
                   <span className="text-[15px] font-bold text-[#B0B0B0]">3</span>
                 </button>
-                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
                   <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
                     <path d="M8.675 5L7.5 6.175L11.3167 10L7.5 13.825L8.675 15L13.675 10L8.675 5Z" fill="currentColor"/>
                   </svg>
                 </button>
-                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
                   <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
                     <path d="M5.34199 5L4.16699 6.175L7.98366 10L4.16699 13.825L5.34199 15L10.342 10L5.34199 5Z" fill="currentColor"/>
                     <path d="M10.8332 5L9.6582 6.175L13.4749 10L9.6582 13.825L10.8332 15L15.8332 10L10.8332 5Z" fill="currentColor"/>
