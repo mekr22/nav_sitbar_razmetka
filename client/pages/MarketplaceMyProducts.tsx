@@ -1165,7 +1165,16 @@ const MarketplaceMyProducts: FC = () => {
                   key={adjustedRobot.id}
                   robot={adjustedRobot}
                   isActive={activeCardKey === cardKey}
-                  onSelect={() => setActiveCardKey(cardKey)}
+                  onSelect={() => {
+                    setActiveCardKey(cardKey);
+                    navigate("/marketplace/trading-robot-details", {
+                      state: {
+                        robot: adjustedRobot,
+                        isFavorite: isFavorited,
+                        scrollToTop: true,
+                      },
+                    });
+                  }}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
