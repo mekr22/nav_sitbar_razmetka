@@ -521,19 +521,6 @@ const TraderDetailLanding: FC = () => {
       </div>
 
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
-        <div className="flex items-center justify-between gap-3 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:flex-col max-[360px]:items-start max-[360px]:gap-2 max-[360px]:rounded-xl max-[360px]:p-3">
-          <h1 className="text-2xl font-bold text-white sm:text-[31px] max-[360px]:text-xl">
-            {trader.name}
-          </h1>
-          <FavoriteStarButton
-            pressed={isTraderFavorite}
-            onToggle={handleToggleFavoriteTrader}
-            className="focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-          />
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6 max-[360px]:gap-4">
           {/* Left Sidebar - Trader Card (Compact) */}
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-shrink-0 max-[360px]:gap-4">
