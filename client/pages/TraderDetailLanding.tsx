@@ -548,7 +548,7 @@ const TraderDetailLanding: FC = () => {
           <button
             type="button"
             onClick={handleNavigateToCategory}
-            className="font-normal text-[#B0B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+            className="rounded-full px-3 py-1 font-normal text-[#B0B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
           >
             Traders
           </button>
@@ -605,7 +605,7 @@ const TraderDetailLanding: FC = () => {
                 <button
                   type="button"
                   onClick={handleToggleFavoriteTrader}
-                  className="text-[#B0B0B0] transition-colors hover:text-[#A06AFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                  className="rounded-full p-2 text-[#B0B0B0] transition-colors hover:text-[#A06AFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                   aria-pressed={isTraderFavorite}
                   aria-label={isTraderFavorite ? "Remove from favorites" : "Add to favorites"}
                 >
