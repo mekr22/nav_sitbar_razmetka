@@ -254,7 +254,7 @@ const AnalystDetailLanding: FC = () => {
       ),
     [],
   );
-  const averageRating = TRADER_AVERAGE_RATING;
+  const averageRating = ANALYST_AVERAGE_RATING;
   const totalReviews = TRADER_TOTAL_REVIEWS;
 
   useEffect(() => {
