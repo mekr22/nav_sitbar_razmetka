@@ -264,9 +264,9 @@ const AnalystDetailLanding: FC = () => {
 
     window.localStorage.setItem(
       FAVORITE_STORAGE_KEY,
-      JSON.stringify(Array.from(favoriteTraderIds)),
+      JSON.stringify(Array.from(favoriteAnalystIds)),
     );
-  }, [favoriteTraderIds]);
+  }, [favoriteAnalystIds]);
 
   useEffect(() => {
     const id = locationState?.trader?.id;
@@ -341,7 +341,7 @@ const AnalystDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const isTraderFavorite = favoriteTraderIds.has(trader.id);
+  const isTraderFavorite = favoriteAnalystIds.has(trader.id);
 
   const handleToggleFavoriteTrader = useCallback(() => {
     setFavoriteTraderIds((prev) => {
