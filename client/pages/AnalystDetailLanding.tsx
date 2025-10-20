@@ -19,8 +19,8 @@ const DEFAULT_CHART_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F2d6d24710ba34771b2ab72e3d53cd2ec?format=webp&width=800";
 const FAVORITE_STORAGE_KEY = "analyst-detail-favorites";
 
-interface TraderDetailsState {
-  trader?: Trader;
+interface AnalystDetailsState {
+  analyst?: Analyst;
   scrollToTop?: boolean;
   isFavorite?: boolean;
 }
