@@ -338,7 +338,7 @@ const TraderDetailLanding: FC = () => {
           <div className="flex flex-1 flex-col gap-6 min-w-0 max-[360px]:gap-4">
             {/* Stats Header */}
             <div className="flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] sm:flex-row sm:items-center">
-              <div className="flex w-full flex-col gap-6 sm:w-auto">
+              <div className="flex w-full flex-col gap-6 sm:w-auto sm:flex-1">
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="flex flex-col gap-1">
                     <span className="text-xs font-bold uppercase text-[#B0B0B0]">Followers</span>
