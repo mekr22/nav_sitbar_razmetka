@@ -1,7 +1,7 @@
 import { ArrowUpDown, Heart, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Heart, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
+import { Heart as HeartIcon, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { baseTraders, type Trader } from "@/data/marketplaceTraders";
 
@@ -402,7 +402,7 @@ const TraderDetailLanding: FC = () => {
                   </button>
                   <div className="h-5 w-px bg-white/24" />
                   <button className="flex items-center gap-1 text-xs font-bold text-white">
-                    <Heart className="h-4 w-4" />
+                    <HeartIcon className="h-4 w-4" />
                     Subscribe
                   </button>
                 </div>
