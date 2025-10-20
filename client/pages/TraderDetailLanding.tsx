@@ -700,7 +700,7 @@ const TraderDetailLanding: FC = () => {
 
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
                 >
                   <ShoppingCartIcon className="h-5 w-5" />
                   Buy
@@ -708,7 +708,7 @@ const TraderDetailLanding: FC = () => {
 
                 <button
                   type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
                   <MessageCircleIcon className="h-4 w-4" />
                   Chat
