@@ -1029,7 +1029,7 @@ const TraderDetailLanding: FC = () => {
                       type="button"
                       onClick={() => setActiveFilter(id)}
                       aria-pressed={isActive}
-                      className={`rounded-[32px] px-4 py-2 text-[15px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] backdrop-blur-[58px] ${
+                      className={`rounded-full px-4 py-2 text-[15px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] backdrop-blur-[58px] ${
                         isActive
                           ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
                           : "border border-[#181B22] bg-[#0C1014]/50 text-white/80 hover:text-white"
