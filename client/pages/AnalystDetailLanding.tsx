@@ -684,15 +684,15 @@ const AnalystDetailLanding: FC = () => {
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">Markets:</span>
-                    <span className="text-white">BINANCE, NASDAQ</span>
+                    <span className="text-white">{analyst.markets}</span>
                   </div>
                   <div className="flex items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">Assets:</span>
-                    <span className="text-white">BTC, ETH, TESLA, GOLD</span>
+                    <span className="text-white">{analyst.assets}</span>
                   </div>
                   <div className="flex items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">Analysis:</span>
-                    <span className="text-white">TECHNICAL & ANALYSIS.</span>
+                    <span className="text-white">{analyst.analysis}</span>
                   </div>
                 </div>
 
