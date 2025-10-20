@@ -353,7 +353,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
           <button
             type="button"
             onClick={handleNavigateToCategory}
-            className="font-normal text-[#B0B0B0] transition-colors hover:text-white"
+            className="rounded-full px-4 py-2 font-normal text-[#B0B0B0] transition-colors hover:text-white"
           >
             Investment consultants and Analysts and Traders
           </button>
@@ -439,7 +439,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
               </div>
 
               <div className="mt-4 flex flex-col gap-2">
-                <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 backdrop-blur-[50px]">
+                <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 backdrop-blur-[50px]">
                   <MessageCircle className="h-4 w-4 text-white" />
                   <span className="text-[15px] font-bold text-white">Chat</span>
                 </button>
@@ -556,7 +556,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
                       </div>
                       <span className="text-[15px] font-bold text-white">{service.price}</span>
                     </div>
-                    <button className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2 backdrop-blur-[50px]">
+                    <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 py-2 backdrop-blur-[50px]">
                       <ShoppingCart className="h-4 w-4 text-white" />
                       <span className="text-[15px] font-bold text-white">Add to Cart</span>
                     </button>
@@ -589,7 +589,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
                   className="h-[88px] w-full resize-none rounded-2xl border border-[#181B22] bg-[#0C1014]/30 px-4 py-3 text-[15px] text-white placeholder-[#B0B0B0]"
                   placeholder="Comment..."
                 />
-                <button className="rounded-lg bg-gradient-to-l from-[#482090] to-[#A06AFF] px-6 py-2 text-[15px] font-bold text-white">
+                <button className="rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] px-6 py-2 text-[15px] font-bold text-white">
                   Send
                 </button>
               </div>
@@ -597,7 +597,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
               <div className="flex flex-col gap-4">
                 {comments.map((comment) => renderComment(comment))}
                 <div className="flex justify-center">
-                  <button className="rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2 text-[15px] font-bold text-white">
+                  <button className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2 text-[15px] font-bold text-white">
                     16 more comments
                   </button>
                 </div>
@@ -641,7 +641,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
                         <span className="text-xs font-bold text-white">PRO</span>
                       </div>
                     </div>
-                    <button className="rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-1 text-xs font-bold text-white">
+                    <button className="rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-1 text-xs font-bold text-white">
                       Follow
                     </button>
                   </div>
@@ -761,7 +761,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
                 ))}
 
                 <div className="p-4">
-                  <button className="w-full rounded-lg border border-[#181B22] bg-[#0C1014]/50 py-2 text-[15px] font-bold text-white backdrop-blur-[50px]">
+                  <button className="w-full rounded-full border border-[#181B22] bg-[#0C1014]/50 py-2 text-[15px] font-bold text-white backdrop-blur-[50px]">
                     Show More Reviews
                   </button>
                 </div>
