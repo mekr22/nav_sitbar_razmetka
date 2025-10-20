@@ -758,31 +758,31 @@ const TraderDetailLanding: FC = () => {
               </div>
               <div className="flex items-center justify-between p-4">
                 <span className="text-[15px] text-[#B0B0B0]">1-Month Return</span>
-                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                   <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
                 </div>
               </div>
               <div className="flex items-center justify-between p-4">
                 <span className="text-[15px] text-[#B0B0B0]">6-Month Return</span>
-                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                   <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
                 </div>
               </div>
               <div className="flex items-center justify-between p-4">
                 <span className="text-[15px] text-[#B0B0B0]">12-Month Return</span>
-                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                   <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
                 </div>
               </div>
               <div className="flex items-center justify-between p-4">
                 <span className="text-[15px] text-[#B0B0B0]">YTD Return</span>
-                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                   <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
                 </div>
               </div>
               <div className="flex items-center justify-between p-4">
                 <span className="text-[15px] text-[#B0B0B0]">Total Return</span>
-                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                   <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
                 </div>
               </div>
@@ -807,7 +807,7 @@ const TraderDetailLanding: FC = () => {
               </div>
               <div className="flex items-center justify-between p-4">
                 <span className="text-[15px] text-[#B0B0B0]">Gain</span>
-                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                   <span className="text-xs font-bold text-[#2EBD85]">+718.00%</span>
                 </div>
               </div>
