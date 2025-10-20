@@ -10,6 +10,7 @@ export interface PerformanceChartCardProps {
   levels: readonly PerformanceChartLevel[];
   months: readonly string[];
   highlightValue: string;
+  title?: string;
   className?: string;
 }
 
@@ -17,6 +18,7 @@ const PerformanceChartCard: FC<PerformanceChartCardProps> = ({
   levels,
   months,
   highlightValue,
+  title,
   className,
 }) => {
   return (
@@ -26,7 +28,9 @@ const PerformanceChartCard: FC<PerformanceChartCardProps> = ({
         className,
       )}
     >
-      <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Performance</h2>
+      <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+        {title ?? "Performance"}
+      </h2>
       <div className="h-px w-full bg-[#181B22]" />
       <div className="relative">
         <div className="relative h-[220px] max-[360px]:h-[140px]">
