@@ -71,6 +71,7 @@ const TraderDetailLanding: FC = () => {
 
     return storedIds;
   });
+  const [activeFilter, setActiveFilter] = useState<TraderContentFilter>("all");
 
   useEffect(() => {
     if (typeof window === "undefined") {
