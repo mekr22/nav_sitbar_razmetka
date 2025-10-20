@@ -245,6 +245,23 @@ const TraderDetailLanding: FC = () => {
   }, [locationState]);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const updateLayout = () => {
+      setIsCompactLayout(window.innerWidth <= 360);
+    };
+
+    updateLayout();
+    window.addEventListener("resize", updateLayout);
+
+    return () => {
+      window.removeEventListener("resize", updateLayout);
+    };
+  }, []);
+
+  useEffect(() => {
     if (locationState?.scrollToTop) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       navigate(location.pathname, {
