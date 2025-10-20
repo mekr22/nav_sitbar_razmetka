@@ -337,7 +337,7 @@ const TraderDetailLanding: FC = () => {
           {/* Right Side - Detailed Information (Figma Design) */}
           <div className="flex flex-1 flex-col gap-6 min-w-0 max-[360px]:gap-4">
             {/* Stats Header */}
-            <div className="flex flex-col items-center justify-between gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] sm:flex-row sm:items-center">
+            <div className="relative flex flex-col items-center justify-between gap-4 overflow-hidden rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] sm:flex-row sm:items-center">
               <div className="flex w-full flex-col gap-6 sm:w-auto sm:flex-1">
                 <div className="flex flex-wrap items-center gap-4">
                   <div className="flex flex-col gap-1">
@@ -395,7 +395,7 @@ const TraderDetailLanding: FC = () => {
                 </div>
               </div>
               <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:items-end sm:self-stretch sm:pr-1">
-                <div className="flex w-full items-center justify-center gap-4 sm:w-full sm:justify-end">
+                <div className="flex w-full items-center justify-center gap-4 self-end sm:w-full sm:justify-end">
                   <button className="flex items-center gap-1 text-xs font-bold text-white transition-colors hover:text-[#A06AFF]">
                     <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
                       <path d="M12.7945 6.29445L11.4843 4.97965C10.5403 4.03232 10.1703 3.52271 9.65907 3.70287C9.02167 3.92751 9.23147 5.34494 9.23147 5.82347C8.24047 5.82347 7.21013 5.73539 6.23323 5.91891C3.00839 6.52475 2 9.14386 2 12.0003C2.91273 11.3538 3.82455 10.665 4.92155 10.3654C6.29091 9.99133 7.82027 10.1698 9.23147 10.1698C9.23147 10.6483 9.02167 12.0658 9.65907 12.2904C10.2383 12.4945 10.5403 11.9609 11.4843 11.0136L12.7945 9.69879C13.5982 8.89233 14 8.48913 14 7.99666C14 7.50419 13.5982 7.10093 12.7945 6.29445Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
