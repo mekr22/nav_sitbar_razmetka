@@ -179,7 +179,7 @@ const TraderDetailLanding: FC = () => {
           <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-shrink-0 max-[360px]:gap-4">
             <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               {/* Background gradient chart */}
-              <div className="relative h-[220px] w-full overflow-hidden border-b border-[#181B22]">
+              <div className="relative w-full overflow-hidden">
                 <svg
                   className="absolute left-0 top-0 h-full w-full"
                   viewBox="0 0 311 116"
