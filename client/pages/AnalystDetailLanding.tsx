@@ -700,7 +700,7 @@ const AnalystDetailLanding: FC = () => {
 
                 <div className="flex items-center gap-1 text-xs font-bold uppercase">
                   <span className="text-[#B0B0B0]">Forecast Accuracy:</span>
-                  <span className="text-[#2EBD85]">{analyst.accuracy}</span>
+                  <span className="text-[#2EBD85]">{analyst.forecastAccuracy}</span>
                 </div>
 
                 <div className="text-2xl font-bold text-white">{analyst.price}</div>
