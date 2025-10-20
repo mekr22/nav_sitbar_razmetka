@@ -613,12 +613,12 @@ const AnalystDetailLanding: FC = () => {
                   type="button"
                   onClick={handleToggleFavoriteTrader}
                   className="rounded-full p-2 text-[#B0B0B0] transition-colors hover:text-[#A06AFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                  aria-pressed={isTraderFavorite}
-                  aria-label={isTraderFavorite ? "Remove from favorites" : "Add to favorites"}
+                  aria-pressed={isAnalystFavorite}
+                  aria-label={isAnalystFavorite ? "Remove from favorites" : "Add to favorites"}
                 >
                   <StarIcon
                     className={`h-6 w-6 ${
-                      isTraderFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "fill-none stroke-current"
+                      isAnalystFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "fill-none stroke-current"
                     }`}
                     strokeWidth="1.00667"
                   />
