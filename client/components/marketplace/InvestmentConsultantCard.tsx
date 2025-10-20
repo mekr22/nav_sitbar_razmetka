@@ -1,4 +1,6 @@
 import { Mail, MapPin, Globe } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { FC, KeyboardEvent } from "react";
 
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
@@ -21,17 +23,31 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
-}) => (
+}) => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    onSelect();
+    navigate("/marketplace/investment-consultant-details", {
+      state: {
+        consultant,
+        isFavorite,
+        scrollToTop: true,
+      },
+    });
+  };
+
+  return (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
       tabIndex={0}
       aria-pressed={isActive}
-      onClick={onSelect}
+      onClick={handleCardClick}
       onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
         if (isActivationKey(event.key)) {
           event.preventDefault();
-          onSelect();
+          handleCardClick();
         }
       }}
       className={cn(
@@ -145,6 +161,7 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default InvestmentConsultantCard;
