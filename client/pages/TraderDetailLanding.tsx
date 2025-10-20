@@ -454,15 +454,25 @@ const TraderDetailLanding: FC = () => {
                 </button>
               </div>
               <div className="flex gap-2 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
-                <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-[15px] font-bold text-white backdrop-blur-[58px]">
-                  All
-                </button>
-                <button className="rounded-[32px] border border-[#181B22] bg-[#0C1014]/50 px-4 py-2 text-[15px] font-bold text-white backdrop-blur-[58px]">
-                  Trades
-                </button>
-                <button className="rounded-[32px] border border-[#181B22] bg-[#0C1014]/50 px-4 py-2 text-[15px] font-bold text-white backdrop-blur-[58px]">
-                  Bots
-                </button>
+                {CONTENT_FILTERS.map(({ id, label }) => {
+                  const isActive = activeFilter === id;
+
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => setActiveFilter(id)}
+                      aria-pressed={isActive}
+                      className={`rounded-[32px] px-4 py-2 text-[15px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] backdrop-blur-[58px] ${
+                        isActive
+                          ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+                          : "border border-[#181B22] bg-[#0C1014]/50 text-white/80 hover:text-white"
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
