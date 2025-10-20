@@ -38,6 +38,141 @@ const CONTENT_FILTERS: { id: TraderContentFilter; label: string }[] = [
   { id: "bots", label: "Bots" },
 ];
 
+const TRADER_REVIEWS = [
+  {
+    id: "review-1",
+    author: "John Smith",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+    postedAt: "2 days ago",
+    rating: 5,
+    title: "Game changer for my trading strategy!",
+    message:
+      "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.",
+  },
+  {
+    id: "review-2",
+    author: "John Smith",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+    postedAt: "1 week ago",
+    rating: 4,
+    title: "Great tool, but could use more features",
+    message:
+      "RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.",
+  },
+  {
+    id: "review-3",
+    author: "John Smith",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+    postedAt: "3 weeks ago",
+    rating: 4.5,
+    title: "Worth every penny",
+    message:
+      "I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.",
+  },
+];
+
+const TRADER_AVERAGE_RATING = 4.5;
+const TRADER_TOTAL_REVIEWS = 28;
+const TOTAL_COMMENTS_COUNT = 20;
+
+type CommentNode = {
+  id: string;
+  author: string;
+  time: string;
+  text: string;
+  likes: number;
+  likeColor?: string;
+  timeColor?: string;
+  canHide?: boolean;
+  replies?: CommentNode[];
+  liked?: boolean;
+  hidden?: boolean;
+};
+
+const INITIAL_COMMENTS: CommentNode[] = [
+  {
+    id: "comment-1",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+    canHide: true,
+    replies: [
+      {
+        id: "comment-1-1",
+        author: "John Smith",
+        time: "6 hours ago",
+        text: "Thank you, John Smith!",
+        likes: 25,
+        canHide: true,
+        replies: [
+          {
+            id: "comment-1-1-1",
+            author: "John Smith",
+            time: "6 hours ago",
+            text: "At your service, John Smith!",
+            likes: 25,
+            likeColor: "#B0B0B0",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "comment-2",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+    likeColor: "#808283",
+    timeColor: "#808283",
+  },
+  {
+    id: "comment-3",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+    likeColor: "#808283",
+    timeColor: "#808283",
+  },
+];
+
+const toggleLikeInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
+  nodes.map((node) => {
+    if (node.id === id) {
+      const liked = !node.liked;
+      return {
+        ...node,
+        liked,
+        likes: liked ? node.likes + 1 : Math.max(node.likes - 1, 0),
+      };
+    }
+
+    return {
+      ...node,
+      replies: node.replies ? toggleLikeInTree(node.replies, id) : undefined,
+    };
+  });
+
+const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
+  nodes.map((node) => {
+    if (node.id === id) {
+      return {
+        ...node,
+        hidden: !node.hidden,
+      };
+    }
+
+    return {
+      ...node,
+      replies: node.replies ? toggleHiddenInTree(node.replies, id) : undefined,
+    };
+  });
+
 const TraderDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
