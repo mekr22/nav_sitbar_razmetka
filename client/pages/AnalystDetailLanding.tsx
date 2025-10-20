@@ -1469,4 +1469,4 @@ const AnalystDetailLanding: FC = () => {
   );
 };
 
-export default TraderDetailLanding;
+export default AnalystDetailLanding;
