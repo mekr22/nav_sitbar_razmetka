@@ -231,7 +231,7 @@ const AnalystDetailLanding: FC = () => {
       }
     }
 
-    if (locationState?.trader?.id && locationState.isFavorite) {
+    if (locationState?.analyst?.id && locationState.isFavorite) {
       storedIds.add(locationState.trader.id);
     }
 
@@ -269,7 +269,7 @@ const AnalystDetailLanding: FC = () => {
   }, [favoriteAnalystIds]);
 
   useEffect(() => {
-    const id = locationState?.trader?.id;
+    const id = locationState?.analyst?.id;
     if (!id || !locationState?.isFavorite) {
       return;
     }
