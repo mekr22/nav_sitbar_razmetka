@@ -634,7 +634,7 @@ const TraderDetailLanding: FC = () => {
                       HEDGE FUND MANAGER
                     </span>
                   </div>
-                  <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
+                  <div className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5">
                     <span className="text-xs font-bold text-[#2EBD85]">{trader.rating}</span>
                   </div>
                   <div className="inline-flex h-7 items-center gap-1 rounded-full bg-[#2E2744] px-3">
