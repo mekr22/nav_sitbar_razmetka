@@ -635,6 +635,20 @@ const MarketplaceMyProducts: FC = () => {
     [navigate],
   );
 
+  const openInvestmentConsultantDetails = useCallback(
+    (consultant: InvestmentConsultant, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/investment-consultant-details", {
+        state: {
+          scrollToTop: true,
+          category: "Investment consultants",
+          consultant,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
+
   return (
     <div className="flex flex-col gap-6">
       <div className="mx-auto w-full max-w-[880px] px-3 sm:px-4 xl:min-w-[880px]">
@@ -819,7 +833,12 @@ const MarketplaceMyProducts: FC = () => {
                   key={consultant.id}
                   consultant={consultant}
                   isActive={activeCardKey === cardKey}
-                  onSelect={() => setActiveCardKey(cardKey)}
+                  onSelect={() => {
+                    setActiveCardKey(cardKey);
+                    openInvestmentConsultantDetails(consultant, {
+                      isFavorite: isFavorited,
+                    });
+                  }}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggleFavorite(cardKey)}
                 />
