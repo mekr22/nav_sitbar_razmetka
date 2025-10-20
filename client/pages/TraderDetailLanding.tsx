@@ -3,6 +3,9 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Heart as HeartIcon, MessageCircle as MessageCircleIcon, Share2 as ShareIcon, ShoppingCart as ShoppingCartIcon, Star as StarIcon, Users as UsersIcon } from "lucide-react";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import PerformanceChartCard, {
+  type PerformanceChartLevel,
+} from "@/components/marketplace/PerformanceChartCard";
 import { baseTraders, type Trader } from "@/data/marketplaceTraders";
 
 type ExtendedTrader = Trader & {
@@ -38,12 +41,7 @@ const CONTENT_FILTERS: { id: TraderContentFilter; label: string }[] = [
   { id: "bots", label: "Bots" },
 ];
 
-type PerformanceLevel = {
-  label: string;
-  accent?: boolean;
-};
-
-const PERFORMANCE_LEVELS: readonly PerformanceLevel[] = [
+const PERFORMANCE_LEVELS: readonly PerformanceChartLevel[] = [
   { label: "$500K" },
   { label: "$100K" },
   { label: "$10K" },
