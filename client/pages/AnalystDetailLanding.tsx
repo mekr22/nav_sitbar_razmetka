@@ -313,15 +313,22 @@ const AnalystDetailLanding: FC = () => {
   }, [location.pathname, locationState, navigate]);
 
   const analyst = useMemo<ExtendedAnalyst>(() => {
-    const fallback: ExtendedTrader = {
-      ...baseTraders[0],
-      price: "$10 / month",
-      chartImage: DEFAULT_CHART_IMAGE,
-      description: "This algorithm is designed to optimize your trading decisions by analyzing market data in real time. It uses a combination of historical patterns and predictive models to identify high-probability entry and exit points. With a focus on risk management, the algorithm adjusts its strategy based on changing market conditions.",
-      originalDescription: "This algorithm is designed to optimize your trading decisions by analyzing market data in real time. It uses a combination of historical patterns and predictive models to identify high-probability entry and exit points. With a focus on risk management, the algorithm adjusts its strategy based on changing market conditions.",
+    const baseEntry = baseAnalysts[0];
+    const fallback: ExtendedAnalyst = {
+      ...baseEntry,
+      price: baseEntry?.price ?? "$10 / month",
+      chartImage: baseEntry?.chartImage ?? DEFAULT_CHART_IMAGE,
+      description:
+        baseEntry && typeof (baseEntry as ExtendedAnalyst).description === "string"
+          ? (baseEntry as ExtendedAnalyst).description
+          : "This analyst provides deep market insights, combining historical research with advanced quantitative models to identify high-probability setups across multiple asset classes.",
+      originalDescription:
+        baseEntry && typeof (baseEntry as ExtendedAnalyst).originalDescription === "string"
+          ? (baseEntry as ExtendedAnalyst).originalDescription
+          : "This analyst provides deep market insights, combining historical research with advanced quantitative models to identify high-probability setups across multiple asset classes.",
     };
 
-    const provided = locationState?.trader as Partial<ExtendedTrader> | undefined;
+    const provided = locationState?.analyst as Partial<ExtendedAnalyst> | undefined;
     if (!provided) {
       return fallback;
     }
