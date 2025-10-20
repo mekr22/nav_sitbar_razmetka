@@ -1349,7 +1349,7 @@ const TraderDetailLanding: FC = () => {
                         </td>
                         <td className="px-4 py-4 text-xs font-bold uppercase text-white">0%</td>
                         <td className="px-4 py-4">
-                          <div className="inline-flex rounded border border-[#181B22] bg-[#1C3430] px-1 py-0.5">
+                          <div className="inline-flex h-7 items-center rounded-full border border-[#181B22] bg-[#1C3430] px-3">
                             <span className="text-xs font-bold text-[#2EBD85]">+15.22 %</span>
                           </div>
                         </td>
