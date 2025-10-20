@@ -557,7 +557,7 @@ const AnalystDetailLanding: FC = () => {
             onClick={handleNavigateToCategory}
             className="rounded-full px-3 py-1 font-normal text-[#B0B0B0] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
           >
-            Traders
+            Analysts
           </button>
           <span className="font-bold text-[#B0B0B0]">/</span>
           <span className="font-bold text-white">{analyst.name}</span>
