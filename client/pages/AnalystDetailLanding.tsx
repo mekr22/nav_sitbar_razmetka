@@ -274,7 +274,7 @@ const AnalystDetailLanding: FC = () => {
       return;
     }
 
-    setFavoriteTraderIds((prev) => {
+    setFavoriteAnalystIds((prev) => {
       if (prev.has(id)) {
         return prev;
       }
@@ -344,7 +344,7 @@ const AnalystDetailLanding: FC = () => {
   const isTraderFavorite = favoriteAnalystIds.has(trader.id);
 
   const handleToggleFavoriteTrader = useCallback(() => {
-    setFavoriteTraderIds((prev) => {
+    setFavoriteAnalystIds((prev) => {
       const next = new Set(prev);
       if (next.has(trader.id)) {
         next.delete(trader.id);
