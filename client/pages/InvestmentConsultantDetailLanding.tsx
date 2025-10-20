@@ -365,11 +365,13 @@ const InvestmentConsultantDetailLanding: FC = () => {
       {/* Hero Section */}
       <div className="mx-auto w-full max-w-[1075px] px-4">
         <div className="relative overflow-hidden rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-          <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/2ade7292b85c05a2ad870071c1db3347a9cc71d0?width=1492"
-            alt=""
-            className="absolute left-[328px] top-[-167px] h-[420px] w-[746px] rounded-t-2xl border border-black mix-blend-lighten"
-          />
+          <div className="absolute inset-0">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/2ade7292b85c05a2ad870071c1db3347a9cc71d0?width=1492"
+              alt=""
+              className="h-full w-full object-cover opacity-60 mix-blend-lighten"
+            />
+          </div>
 
           <div className="relative flex flex-col gap-6 p-4 lg:flex-row">
             <img
