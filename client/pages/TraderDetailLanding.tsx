@@ -710,9 +710,358 @@ const TraderDetailLanding: FC = () => {
               </div>
             </div>
 
-            {/* Placeholder for additional sections */}
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
-              <p className="text-center text-sm text-[#B0B0B0]">Additional sections (Allocation, Performance Charts, Trade Table, Comments) coming soon...</p>
+            {/* Allocation Section */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Allocation</h2>
+              <div className="h-px w-full bg-[#181B22]" />
+
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+                {/* By Stocks */}
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-[15px] font-bold text-white">By Stocks:</h3>
+                  <div className="flex justify-center">
+                    <svg className="h-32 w-32" viewBox="0 0 128 128" fill="none">
+                      <path d="M64 0C99.3462 0 128 28.6538 128 64C128 99.3462 99.3462 128 64 128C28.6538 128 0 99.3462 0 64C0 28.6538 28.6538 0 64 0ZM64 105.6C86.9751 105.6 105.6 86.975 105.6 64C105.6 41.0249 86.9751 22.4 64 22.4C41.025 22.4 22.4 41.0249 22.4 64C22.4 86.975 41.025 105.6 64 105.6Z" fill="#A06AFF"/>
+                      <path d="M64 0C50.7582 0 37.8423 4.10739 27.0329 11.756C16.2234 19.4047 8.05254 30.2179 3.64658 42.7053C-0.759374 55.1926 -1.18348 68.7392 2.43272 81.4777C6.04892 94.2162 13.5274 105.519 23.8372 113.829C34.1471 122.139 46.7807 127.046 59.9966 127.875C73.2125 128.703 86.36 125.412 97.6267 118.454C108.893 111.497 117.725 101.216 122.903 89.0283C128.082 76.841 129.352 63.3475 126.54 50.4078L104.651 55.165C106.479 63.5759 105.653 72.3467 102.287 80.2684C98.9211 88.1901 93.1807 94.8728 85.8574 99.3951C78.534 103.918 69.9881 106.057 61.3978 105.519C52.8074 104.98 44.5956 101.79 37.8942 96.389C31.1928 90.9876 26.3318 83.6405 23.9813 75.3605C21.6307 67.0805 21.9064 58.2752 24.7703 50.1584C27.6342 42.0416 32.9452 35.013 39.9714 30.0414C46.9975 25.0698 55.3928 22.4 64 22.4L64 0Z" fill="#6AA5FF"/>
+                      <path d="M64 0C54.2299 0 44.5895 2.23684 35.8176 6.53912C27.0457 10.8414 19.3753 17.0949 13.3942 24.8203C7.41308 32.5457 3.28008 41.5379 1.31197 51.1077C-0.656141 60.6775 -0.407125 70.5709 2.03993 80.0297C4.48699 89.4884 9.06713 98.2613 15.4293 105.676C21.7915 113.091 29.7668 118.95 38.744 122.806C47.7212 126.661 57.462 128.41 67.2197 127.919C76.9775 127.427 86.4932 124.708 95.0375 119.97L84.1744 100.381C78.6206 103.46 72.4354 105.228 66.0928 105.547C59.7503 105.867 53.4188 104.73 47.5836 102.224C41.7484 99.7177 36.5645 95.9089 32.4291 91.0894C28.2936 86.2698 25.3165 80.5674 23.726 74.4193C22.1354 68.2711 21.9735 61.8404 23.2528 55.62C24.5321 49.3996 27.2185 43.5547 31.1062 38.5332C34.9939 33.5117 39.9797 29.4469 45.6814 26.6504C51.3831 23.854 57.6494 22.4 64 22.4L64 0Z" fill="#FF6A79"/>
+                      <path d="M64 0C50.4163 0 37.1848 4.32198 26.2203 12.3406C15.2558 20.3591 7.127 31.6584 3.01012 44.6032C-1.10676 57.5481 -0.998156 71.4671 3.32023 84.3461C7.63861 97.2252 15.9428 108.396 27.0311 116.243L39.9702 97.9577C32.7628 92.8575 27.3651 85.5963 24.5582 77.225C21.7512 68.8536 21.6806 59.8063 24.3566 51.3921C27.0326 42.9779 32.3163 35.6334 39.4432 30.4214C46.5701 25.2093 55.1706 22.4 64 22.4L64 0Z" fill="#6AFF9C"/>
+                      <path d="M64 0C54.2261 0 44.582 2.23857 35.8075 6.54405C27.033 10.8495 19.3612 17.1075 13.3805 24.838C7.39976 32.5685 3.26906 41.566 1.30521 51.1406C-0.658636 60.7152 -0.403461 70.6124 2.05117 80.073L23.7333 74.4475C22.1378 68.298 21.9719 61.8649 23.2484 55.6414C24.5249 49.4179 27.2098 43.5695 31.0973 38.5447C34.9848 33.5199 39.9715 29.4522 45.6749 26.6536C51.3783 23.8551 57.647 22.4 64 22.4L64 0Z" fill="#FFB46A"/>
+                      <path d="M64 0C50.4845 0 37.316 4.2787 26.3817 12.2229C15.4475 20.1671 7.30889 31.3689 3.13238 44.2229L24.4361 51.1449C27.1508 42.7898 32.4409 35.5086 39.5481 30.3449C46.6554 25.1812 55.215 22.4 64 22.4L64 0Z" fill="#8A3F66"/>
+                    </svg>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
+                      <span className="text-xs font-bold uppercase text-white">IVE</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#6AA5FF]" />
+                      <span className="text-xs font-bold uppercase text-white">BTC-USD</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#FF6A79]" />
+                      <span className="text-xs font-bold uppercase text-white">TSLA</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#6AFF9C]" />
+                      <span className="text-xs font-bold uppercase text-white">SPY</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#FFB56A]" />
+                      <span className="text-xs font-bold uppercase text-white">VOO</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#8A3F66]" />
+                      <span className="text-xs font-bold uppercase text-white">Others</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* By Assets */}
+                <div className="flex flex-col gap-4 border-l-0 lg:border-l-2 lg:border-[#181B22] lg:pl-4">
+                  <h3 className="text-[15px] font-bold text-white">By Assets:</h3>
+                  <div className="flex justify-center">
+                    <svg className="h-32 w-32" viewBox="0 0 128 128" fill="none">
+                      <path d="M64 0C99.3462 0 128 28.6538 128 64C128 99.3462 99.3462 128 64 128C28.6538 128 0 99.3462 0 64C0 28.6538 28.6538 0 64 0ZM64 105.6C86.9751 105.6 105.6 86.975 105.6 64C105.6 41.0249 86.9751 22.4 64 22.4C41.025 22.4 22.4 41.0249 22.4 64C22.4 86.975 41.025 105.6 64 105.6Z" fill="#A06AFF"/>
+                      <path d="M64 0C50.7582 0 37.8423 4.10739 27.0329 11.756C16.2234 19.4047 8.05254 30.2179 3.64658 42.7053C-0.759374 55.1926 -1.18348 68.7392 2.43272 81.4777C6.04892 94.2162 13.5274 105.519 23.8372 113.829C34.1471 122.139 46.7807 127.046 59.9966 127.875C73.2125 128.703 86.36 125.412 97.6267 118.454C108.893 111.497 117.725 101.216 122.903 89.0283C128.082 76.841 129.352 63.3475 126.54 50.4078L104.651 55.165C106.479 63.5759 105.653 72.3467 102.287 80.2684C98.9211 88.1901 93.1807 94.8728 85.8574 99.3951C78.534 103.918 69.9881 106.057 61.3978 105.519C52.8074 104.98 44.5956 101.79 37.8942 96.389C31.1928 90.9876 26.3318 83.6405 23.9813 75.3605C21.6307 67.0805 21.9064 58.2752 24.7703 50.1584C27.6342 42.0416 32.9452 35.013 39.9714 30.0414C46.9975 25.0698 55.3928 22.4 64 22.4L64 0Z" fill="#6AA5FF"/>
+                      <path d="M64 0C54.2299 0 44.5895 2.23684 35.8176 6.53912C27.0457 10.8414 19.3753 17.0949 13.3942 24.8203C7.41308 32.5457 3.28008 41.5379 1.31197 51.1077C-0.656141 60.6775 -0.407125 70.5709 2.03993 80.0297C4.48699 89.4884 9.06713 98.2613 15.4293 105.676C21.7915 113.091 29.7668 118.95 38.744 122.806C47.7212 126.661 57.462 128.41 67.2197 127.919C76.9775 127.427 86.4932 124.708 95.0375 119.97L84.1744 100.381C78.6206 103.46 72.4354 105.228 66.0928 105.547C59.7503 105.867 53.4188 104.73 47.5836 102.224C41.7484 99.7177 36.5645 95.9089 32.4291 91.0894C28.2936 86.2698 25.3165 80.5674 23.726 74.4193C22.1354 68.2711 21.9735 61.8404 23.2528 55.62C24.5321 49.3996 27.2185 43.5547 31.1062 38.5332C34.9939 33.5117 39.9797 29.4469 45.6814 26.6504C51.3831 23.854 57.6494 22.4 64 22.4L64 0Z" fill="#FF6A79"/>
+                      <path d="M64 0C50.4163 0 37.1848 4.32198 26.2203 12.3406C15.2558 20.3591 7.127 31.6584 3.01012 44.6032C-1.10676 57.5481 -0.998156 71.4671 3.32023 84.3461C7.63861 97.2252 15.9428 108.396 27.0311 116.243L39.9702 97.9577C32.7628 92.8575 27.3651 85.5963 24.5582 77.225C21.7512 68.8536 21.6806 59.8063 24.3566 51.3921C27.0326 42.9779 32.3163 35.6334 39.4432 30.4214C46.5701 25.2093 55.1706 22.4 64 22.4L64 0Z" fill="#6AFF9C"/>
+                      <path d="M64 0C54.2261 0 44.582 2.23857 35.8075 6.54405C27.033 10.8495 19.3612 17.1075 13.3805 24.838C7.39976 32.5685 3.26906 41.566 1.30521 51.1406C-0.658636 60.7152 -0.403461 70.6124 2.05117 80.073L23.7333 74.4475C22.1378 68.298 21.9719 61.8649 23.2484 55.6414C24.5249 49.4179 27.2098 43.5695 31.0973 38.5447C34.9848 33.5199 39.9715 29.4522 45.6749 26.6536C51.3783 23.8551 57.647 22.4 64 22.4L64 0Z" fill="#FFB46A"/>
+                    </svg>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
+                      <span className="text-xs font-bold uppercase text-white">ETFs</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#6AA5FF]" />
+                      <span className="text-xs font-bold uppercase text-white">Cash</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#FF6A79]" />
+                      <span className="text-xs font-bold uppercase text-white">Stocks</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#6AFF9C]" />
+                      <span className="text-xs font-bold uppercase text-white">Cryptocurrency</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#FFB56A]" />
+                      <span className="text-xs font-bold uppercase text-white">Funds</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* By Sector */}
+                <div className="flex flex-col gap-4 border-l-0 lg:border-l-2 lg:border-[#181B22] lg:pl-4">
+                  <h3 className="text-[15px] font-bold text-white">By Sector:</h3>
+                  <div className="flex justify-center">
+                    <svg className="h-32 w-32" viewBox="0 0 128 128" fill="none">
+                      <path d="M64 0C99.3462 0 128 28.6538 128 64C128 99.3462 99.3462 128 64 128C28.6538 128 0 99.3462 0 64C0 28.6538 28.6538 0 64 0ZM64 105.6C86.9751 105.6 105.6 86.975 105.6 64C105.6 41.0249 86.9751 22.4 64 22.4C41.025 22.4 22.4 41.0249 22.4 64C22.4 86.975 41.025 105.6 64 105.6Z" fill="#A06AFF"/>
+                      <path d="M64 0C50.7582 0 37.8423 4.10739 27.0329 11.756C16.2234 19.4047 8.05254 30.2179 3.64658 42.7053C-0.759374 55.1926 -1.18348 68.7392 2.43272 81.4777C6.04892 94.2162 13.5274 105.519 23.8372 113.829C34.1471 122.139 46.7807 127.046 59.9966 127.875C73.2125 128.703 86.36 125.412 97.6267 118.454C108.893 111.497 117.725 101.216 122.903 89.0283C128.082 76.841 129.352 63.3475 126.54 50.4078L104.651 55.165C106.479 63.5759 105.653 72.3467 102.287 80.2684C98.9211 88.1901 93.1807 94.8728 85.8574 99.3951C78.534 103.918 69.9881 106.057 61.3978 105.519C52.8074 104.98 44.5956 101.79 37.8942 96.389C31.1928 90.9876 26.3318 83.6405 23.9813 75.3605C21.6307 67.0805 21.9064 58.2752 24.7703 50.1584C27.6342 42.0416 32.9452 35.013 39.9714 30.0414C46.9975 25.0698 55.3928 22.4 64 22.4L64 0Z" fill="#6AA5FF"/>
+                      <path d="M64 0C54.2299 0 44.5895 2.23684 35.8176 6.53912C27.0457 10.8414 19.3753 17.0949 13.3942 24.8203C7.41308 32.5457 3.28008 41.5379 1.31197 51.1077C-0.656141 60.6775 -0.407125 70.5709 2.03993 80.0297C4.48699 89.4884 9.06713 98.2613 15.4293 105.676C21.7915 113.091 29.7668 118.95 38.744 122.806C47.7212 126.661 57.462 128.41 67.2197 127.919C76.9775 127.427 86.4932 124.708 95.0375 119.97L84.1744 100.381C78.6206 103.46 72.4354 105.228 66.0928 105.547C59.7503 105.867 53.4188 104.73 47.5836 102.224C41.7484 99.7177 36.5645 95.9089 32.4291 91.0894C28.2936 86.2698 25.3165 80.5674 23.726 74.4193C22.1354 68.2711 21.9735 61.8404 23.2528 55.62C24.5321 49.3996 27.2185 43.5547 31.1062 38.5332C34.9939 33.5117 39.9797 29.4469 45.6814 26.6504C51.3831 23.854 57.6494 22.4 64 22.4L64 0Z" fill="#FF6A79"/>
+                      <path d="M64 0C50.4163 0 37.1848 4.32198 26.2203 12.3406C15.2558 20.3591 7.127 31.6584 3.01012 44.6032C-1.10676 57.5481 -0.998156 71.4671 3.32023 84.3461C7.63861 97.2252 15.9428 108.396 27.0311 116.243L39.9702 97.9577C32.7628 92.8575 27.3651 85.5963 24.5582 77.225C21.7512 68.8536 21.6806 59.8063 24.3566 51.3921C27.0326 42.9779 32.3163 35.6334 39.4432 30.4214C46.5701 25.2093 55.1706 22.4 64 22.4L64 0Z" fill="#6AFF9C"/>
+                      <path d="M64 0C54.2261 0 44.582 2.23857 35.8075 6.54405C27.033 10.8495 19.3612 17.1075 13.3805 24.838C7.39976 32.5685 3.26906 41.566 1.30521 51.1406C-0.658636 60.7152 -0.403461 70.6124 2.05117 80.073L23.7333 74.4475C22.1378 68.298 21.9719 61.8649 23.2484 55.6414C24.5249 49.4179 27.2098 43.5695 31.0973 38.5447C34.9848 33.5199 39.9715 29.4522 45.6749 26.6536C51.3783 23.8551 57.647 22.4 64 22.4L64 0Z" fill="#FFB46A"/>
+                    </svg>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
+                      <span className="text-xs font-bold uppercase text-white">General</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#6AA5FF]" />
+                      <span className="text-xs font-bold uppercase text-white">Crypto</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#FF6A79]" />
+                      <span className="text-xs font-bold uppercase text-white">Consumer Cyclical</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#6AFF9C]" />
+                      <span className="text-xs font-bold uppercase text-white">Technology</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="h-3 w-3 rounded-full bg-[#FFB56A]" />
+                      <span className="text-xs font-bold uppercase text-white">Other</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Portfolio Performance Chart */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Portfolio Performance</h2>
+              <div className="h-px w-full bg-[#181B22]" />
+
+              <div className="relative h-64 w-full">
+                <svg className="absolute right-0 top-0" width="60" height="20" viewBox="0 0 60 20" fill="none">
+                  <rect width="60" height="20" rx="4" fill="#A06AFF"/>
+                  <text x="30" y="14" fill="white" fontSize="12" fontWeight="700" textAnchor="middle">$507K</text>
+                </svg>
+                <svg className="h-full w-full" viewBox="0 0 680 240" fill="none" preserveAspectRatio="none">
+                  <defs>
+                    <filter id="chartGlow" x="0" y="0" width="100%" height="100%">
+                      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                      <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.24"/>
+                      </feComponentTransfer>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  <path d="M8.75 208.213L16.204 211.302L20.7591 205.123L24.9002 207.33L26.1426 203.8L29.4554 205.123L33.5965 201.593L37.3235 203.8L49.3326 184.382L50.9891 185.706L56.3725 175.997L58.0289 179.528L60.0994 177.321L62.17 179.528L63.8264 175.997L66.7252 178.645L69.6239 175.997L72.1086 177.321C73.3509 173.35 75.8356 165.318 75.8356 164.965C75.8356 164.612 75.8356 156.58 75.8356 152.608L79.1484 156.58L81.6331 152.608C81.6331 153.491 81.6331 154.903 81.6331 153.491C81.6331 152.079 84.3938 142.311 85.7742 137.604L89.087 150.402L93.6422 139.369L96.9551 138.487L98.1974 130.984L100.682 132.308L101.924 127.895L105.237 135.839L106.894 145.106L108.55 136.721L110.207 141.576L111.863 153.491L113.934 138.487L117.661 149.078L122.63 130.984L126.771 134.515L128.427 130.102L130.498 133.632L133.811 129.219L138.366 144.224L140.851 136.721L144.578 139.369L147.476 129.219L148.305 134.515L151.203 130.102L155.344 146.871L157.415 142.458L158.243 146.871L161.97 144.224L163.212 152.167L164.869 145.989L168.596 142.458L170.252 145.106L171.495 139.369L174.807 146.871L177.292 145.989L181.019 152.167L183.504 145.989L186.817 160.993L190.129 159.669V150.402L192.614 147.754L198.826 157.021L201.725 149.078L202.967 157.021L205.452 156.139L207.936 152.167L209.593 156.139L211.249 144.224L212.491 146.871L214.562 141.576C215.942 144.518 218.703 149.872 218.703 147.754C218.703 145.636 219.531 137.163 219.945 133.191L225.329 141.576L227.813 142.458L228.642 140.693H231.126L234.439 144.224L237.338 145.106L238.166 140.693L240.237 143.341L245.62 142.458L248.933 135.839L252.246 142.458H253.902L255.145 139.369L258.457 145.989L260.114 142.458L263.013 149.078L269.638 147.754L272.123 161.876L274.193 154.373L277.92 152.167L281.233 165.406L283.304 160.993L287.859 167.613C289.654 164.523 293.325 158.61 293.657 159.669C293.988 160.728 297.936 168.642 299.868 172.467L302.353 168.937L303.595 174.232H306.08L308.565 169.819L309.807 173.35L316.847 164.523L318.917 152.167L321.816 155.697L323.887 150.402L328.442 145.989C330.65 150.255 335.067 158.698 335.067 158.345C335.067 157.992 336.172 152.902 336.724 150.402H339.209L340.451 149.078L345.006 159.669L346.662 157.021L348.733 165.406L350.804 167.613L353.288 183.5L355.359 177.763L357.843 179.528L359.914 162.758L360.742 165.406L363.227 164.523L364.883 169.819L365.297 162.758L368.61 159.669L371.923 169.819L374.408 163.641L377.307 168.937L379.377 162.758H381.033L382.276 157.021L382.69 159.228L385.175 149.078H390.144L392.214 160.552L393.871 162.317L395.527 160.552L400.497 166.73L402.567 164.082L404.224 172.026L406.294 170.702L409.607 176.88L412.092 176.439L414.162 173.791L417.061 165.406L420.788 168.937L422.444 160.552L427.414 163.641L430.726 152.167L437.766 149.078L439.837 152.167L441.079 147.313L443.15 150.843L446.049 140.252L448.947 139.81L451.432 149.078L456.401 153.491L459.3 148.195H460.956L461.785 145.989H466.754L468.824 150.843L471.723 144.224L474.208 145.989L474.622 139.369L479.591 130.102L485.389 132.308L486.217 128.778L491.6 136.28L492.429 131.867L494.499 133.632L499.883 128.778L501.953 115.539L508.165 125.247L513.134 127.454L515.205 125.247L516.861 108.037L519.76 106.271L522.659 104.947L525.143 78.0278L528.456 66.1126L530.527 74.9387L530.941 63.9061L535.082 66.5539L540.465 53.3148L543.778 30.367L547.091 33.8974L550.404 48.0192L552.474 14.9213L554.959 30.367L556.201 28.6018L557.444 31.6909L559.928 25.5126L562.827 36.9865L564.898 28.6018L565.726 44.4887L568.21 36.9865L572.352 38.7518L573.594 45.8126L577.321 20.217L578.563 25.5126L580.22 22.4235H582.29L588.502 8.30176L590.572 36.9865L594.713 40.0757L598.026 51.1083L600.511 40.517C601.339 43.7532 602.996 50.3139 602.996 50.667C602.996 51.02 604.928 41.3996 605.894 36.5452L608.379 41.8409L611.692 20.6583L617.904 15.8039L620.802 18.4518L622.459 12.7148L627.428 53.7561L629.499 49.3431L633.64 50.667L637.367 30.367L642.75 18.4518"
+                    stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" filter="url(#chartGlow)"/>
+                </svg>
+              </div>
+
+              <div className="flex justify-between text-xs font-bold uppercase text-[#B0B0B0]">
+                <span>'11</span>
+                <span>'12</span>
+                <span>'13</span>
+                <span>'14</span>
+                <span>'15</span>
+                <span>'16</span>
+                <span>'17</span>
+                <span>'18</span>
+                <span>'19</span>
+                <span>'20</span>
+                <span>'21</span>
+                <span>'22</span>
+                <span>'23</span>
+                <span>'24</span>
+                <span>'25</span>
+              </div>
+            </div>
+
+            {/* Index Performance Chart */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Index Performance</h2>
+              <div className="h-px w-full bg-[#2E2744]" />
+
+              <div className="relative h-64 w-full">
+                <svg className="absolute right-0 top-0" width="60" height="20" viewBox="0 0 60 20" fill="none">
+                  <rect width="60" height="20" rx="4" fill="#A06AFF"/>
+                  <text x="30" y="14" fill="white" fontSize="12" fontWeight="700" textAnchor="middle">$507K</text>
+                </svg>
+                <svg className="h-full w-full" viewBox="0 0 680 240" fill="none" preserveAspectRatio="none">
+                  <path d="M8.75 208.213L16.204 211.302L20.7591 205.123L24.9002 207.33L26.1426 203.8L29.4554 205.123L33.5965 201.593L37.3235 203.8L49.3326 184.382L50.9891 185.706L56.3725 175.997L58.0289 179.528L60.0994 177.321L62.17 179.528L63.8264 175.997L66.7252 178.645L69.6239 175.997L72.1086 177.321C73.3509 173.35 75.8356 165.318 75.8356 164.965C75.8356 164.612 75.8356 156.58 75.8356 152.608L79.1484 156.58L81.6331 152.608C81.6331 153.491 81.6331 154.903 81.6331 153.491C81.6331 152.079 84.3938 142.311 85.7742 137.604L89.087 150.402L93.6422 139.369L96.9551 138.487L98.1974 130.984L100.682 132.308L101.924 127.895L105.237 135.839L106.894 145.106L108.55 136.721L110.207 141.576L111.863 153.491L113.934 138.487L117.661 149.078L122.63 130.984L126.771 134.515L128.427 130.102L130.498 133.632L133.811 129.219L138.366 144.224L140.851 136.721L144.578 139.369L147.476 129.219L148.305 134.515L151.203 130.102L155.344 146.871L157.415 142.458L158.243 146.871L161.97 144.224L163.212 152.167L164.869 145.989L168.596 142.458L170.252 145.106L171.495 139.369L174.807 146.871L177.292 145.989L181.019 152.167L183.504 145.989L186.817 160.993L190.129 159.669V150.402L192.614 147.754L198.826 157.021L201.725 149.078L202.967 157.021L205.452 156.139L207.936 152.167L209.593 156.139L211.249 144.224L212.491 146.871L214.562 141.576C215.942 144.518 218.703 149.872 218.703 147.754C218.703 145.636 219.531 137.163 219.945 133.191L225.329 141.576L227.813 142.458L228.642 140.693H231.126L234.439 144.224L237.338 145.106L238.166 140.693L240.237 143.341L245.62 142.458L248.933 135.839L252.246 142.458H253.902L255.145 139.369L258.457 145.989L260.114 142.458L263.013 149.078L269.638 147.754L272.123 161.876L274.193 154.373L277.92 152.167L281.233 165.406L283.304 160.993L287.859 167.613C289.654 164.523 293.325 158.61 293.657 159.669C293.988 160.728 297.936 168.642 299.868 172.467L302.353 168.937L303.595 174.232H306.08L308.565 169.819L309.807 173.35L316.847 164.523L318.917 152.167L321.816 155.697L323.887 150.402L328.442 145.989C330.65 150.255 335.067 158.698 335.067 158.345C335.067 157.992 336.172 152.902 336.724 150.402H339.209L340.451 149.078L345.006 159.669L346.662 157.021L348.733 165.406L350.804 167.613L353.288 183.5L355.359 177.763L357.843 179.528L359.914 162.758L360.742 165.406L363.227 164.523L364.883 169.819L365.297 162.758L368.61 159.669L371.923 169.819L374.408 163.641L377.307 168.937L379.377 162.758H381.033L382.276 157.021L382.69 159.228L385.175 149.078H390.144L392.214 160.552L393.871 162.317L395.527 160.552L400.497 166.73L402.567 164.082L404.224 172.026L406.294 170.702L409.607 176.88L412.092 176.439L414.162 173.791L417.061 165.406L420.788 168.937L422.444 160.552L427.414 163.641L430.726 152.167L437.766 149.078L439.837 152.167L441.079 147.313L443.15 150.843L446.049 140.252L448.947 139.81L451.432 149.078L456.401 153.491L459.3 148.195H460.956L461.785 145.989H466.754L468.824 150.843L471.723 144.224L474.208 145.989L474.622 139.369L479.591 130.102L485.389 132.308L486.217 128.778L491.6 136.28L492.429 131.867L494.499 133.632L499.883 128.778L501.953 115.539L508.165 125.247L513.134 127.454L515.205 125.247L516.861 108.037L519.76 106.271L522.659 104.947L525.143 78.0278L528.456 66.1126L530.527 74.9387L530.941 63.9061L535.082 66.5539L540.465 53.3148L543.778 30.367L547.091 33.8974L550.404 48.0192L552.474 14.9213L554.959 30.367L556.201 28.6018L557.444 31.6909L559.928 25.5126L562.827 36.9865L564.898 28.6018L565.726 44.4887L568.21 36.9865L572.352 38.7518L573.594 45.8126L577.321 20.217L578.563 25.5126L580.22 22.4235H582.29L588.502 8.30176L590.572 36.9865L594.713 40.0757L598.026 51.1083L600.511 40.517C601.339 43.7532 602.996 50.3139 602.996 50.667C602.996 51.02 604.928 41.3996 605.894 36.5452L608.379 41.8409L611.692 20.6583L617.904 15.8039L620.802 18.4518L622.459 12.7148L627.428 53.7561L629.499 49.3431L633.64 50.667L637.367 30.367L642.75 18.4518"
+                    stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" filter="url(#chartGlow)"/>
+                </svg>
+              </div>
+
+              <div className="flex justify-between text-xs font-bold uppercase text-[#B0B0B0]">
+                <span>'11</span>
+                <span>'12</span>
+                <span>'13</span>
+                <span>'14</span>
+                <span>'15</span>
+                <span>'16</span>
+                <span>'17</span>
+                <span>'18</span>
+                <span>'19</span>
+                <span>'20</span>
+                <span>'21</span>
+                <span>'22</span>
+                <span>'23</span>
+                <span>'24</span>
+                <span>'25</span>
+              </div>
+            </div>
+
+            {/* Trade Table */}
+            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] overflow-hidden">
+              <h2 className="px-4 pt-4 text-[19px] font-bold text-[#A06AFF]">John Smith: Stock Buying and Selling in Portfolio</h2>
+
+              <div className="w-full overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-[#181B22]">
+                    <tr>
+                      <th className="px-4 py-3 text-left text-xs font-bold uppercase text-[#B0B0B0]">Company</th>
+                      <th className="px-4 py-3 text-left text-xs font-bold uppercase text-[#B0B0B0]">% Hold</th>
+                      <th className="px-4 py-3 text-left text-xs font-bold uppercase text-[#B0B0B0]">Return</th>
+                      <th className="px-4 py-3 text-left text-xs font-bold uppercase text-[#B0B0B0]">№ of trnx</th>
+                      <th className="px-4 py-3 text-left text-xs font-bold uppercase text-[#B0B0B0]">Last trnx</th>
+                      <th className="px-4 py-3 text-left text-xs font-bold uppercase text-[#B0B0B0]">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[1,2,3,4,5,6,7,8,9].map((i) => (
+                      <tr key={i} className="border-b border-[#181B22]">
+                        <td className="px-4 py-4">
+                          <div className="flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-blue-500" />
+                            <div className="flex flex-col">
+                              <span className="text-[15px] font-bold text-white">LNZL</span>
+                              <span className="text-xs font-bold uppercase text-[#B0B0B0]">Lenzoloto</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-xs font-bold uppercase text-white">0%</td>
+                        <td className="px-4 py-4">
+                          <div className="inline-flex rounded border border-[#181B22] bg-[#1C3430] px-1 py-0.5">
+                            <span className="text-xs font-bold text-[#2EBD85]">+15.22 %</span>
+                          </div>
+                        </td>
+                        <td className="px-4 py-4 text-xs font-bold uppercase text-white">1</td>
+                        <td className="px-4 py-4 text-xs font-bold uppercase text-white">Open</td>
+                        <td className="px-4 py-4 text-xs font-bold uppercase text-white">12.05.25</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div className="flex items-center justify-center gap-1 px-4 py-4">
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
+                    <path d="M14.658 15L15.833 13.825L12.0163 10L15.833 6.175L14.658 5L9.65801 10L14.658 15Z" fill="currentColor"/>
+                    <path d="M9.1668 15L10.3418 13.825L6.52513 10L10.3418 6.175L9.1668 5L4.1668 10L9.1668 15Z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.575 15L13.75 13.825L9.93333 10L13.75 6.175L12.575 5L7.575 10L12.575 15Z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-2">
+                  <span className="text-[15px] font-bold text-white">1</span>
+                </button>
+                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] px-2">
+                  <span className="text-[15px] font-bold text-[#B0B0B0]">2</span>
+                </button>
+                <button className="flex h-[26px] min-w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] px-2">
+                  <span className="text-[15px] font-bold text-[#B0B0B0]">3</span>
+                </button>
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
+                    <path d="M8.675 5L7.5 6.175L11.3167 10L7.5 13.825L8.675 15L13.675 10L8.675 5Z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+                  <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
+                    <path d="M5.34199 5L4.16699 6.175L7.98366 10L4.16699 13.825L5.34199 15L10.342 10L5.34199 5Z" fill="currentColor"/>
+                    <path d="M10.8332 5L9.6582 6.175L13.4749 10L9.6582 13.825L10.8332 15L15.8332 10L10.8332 5Z" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Comments Section */}
+            <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-white">20 comments</h2>
+                <div className="flex items-center gap-1 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
+                  <button className="flex h-[26px] w-[26px] items-center justify-center rounded">
+                    <svg className="h-4 w-4 text-[#B0B0B0]" viewBox="0 0 16 16" fill="none">
+                      <path d="M3.36499 5.73739L1.69157 5.63552C2.89109 2.46952 6.33501 0.666286 9.69274 1.56284C13.269 2.51775 15.3933 6.17372 14.4373 9.72868C13.4815 13.2837 9.80741 15.3914 6.23114 14.4365C3.5758 13.7275 1.72095 11.5294 1.33301 8.98928" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M8 5.33301V7.99967L9.33333 9.33301" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  <button className="flex h-[26px] w-[26px] items-center justify-center rounded bg-gradient-to-r from-[#A06AFF] to-[#482090]">
+                    <svg className="h-4 w-4 text-white" viewBox="0 0 16 16" fill="none">
+                      <path d="M9.23708 14.6663C17.3852 12.6663 12.8222 4.66634 7.28148 1.33301C6.62988 3.66634 5.65193 4.33301 3.69632 6.66634C1.10715 9.75561 2.39268 13.333 5.9778 14.6663C5.43461 13.9997 4.03273 12.6002 4.99968 10.6663C5.33301 9.99967 5.99968 9.33301 5.66634 7.99967C6.3182 8.33301 7.66634 8.66634 7.99968 10.333C8.54288 9.66634 9.10661 8.26634 8.58521 6.66634C12.6663 9.66634 10.9997 12.6663 9.23708 14.6663Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 backdrop-blur-[50px]">
+                  <span className="text-[15px] text-[#B0B0B0]">Comment...</span>
+                </div>
+                <div className="flex justify-end">
+                  <button className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5">
+                    <span className="text-[15px] font-semibold text-white">Send</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-4">
+                {[1,2].map((i) => (
+                  <div key={i} className="flex flex-col gap-3">
+                    <div className="flex items-start gap-2">
+                      <div className="h-11 w-11 flex-shrink-0 rounded-full bg-gradient-to-br from-purple-400 to-blue-500" />
+                      <div className="flex flex-1 flex-col gap-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[15px] font-bold text-white">John Smith</span>
+                            <span className="text-xs font-bold text-[#B0B0B0]">6 hours ago</span>
+                          </div>
+                        </div>
+                        <p className="text-[15px] text-white">Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.</p>
+                        <div className="flex items-center gap-2">
+                          <svg className="h-5 w-5 text-[#B0B0B0]" viewBox="0 0 20 20" fill="none">
+                            <path d="M16.2192 3.32846C13.9844 1.95769 12.034 2.51009 10.8623 3.39001C10.3818 3.7508 10.1417 3.93119 10.0003 3.93119C9.85899 3.93119 9.61882 3.7508 9.13832 3.39001C7.96667 2.51009 6.01623 1.95769 3.78152 3.32846C0.848716 5.12745 0.185092 11.0624 6.94993 16.0695C8.23842 17.0232 8.88266 17.5 10.0003 17.5C11.118 17.5 11.7622 17.0232 13.0507 16.0695C19.8156 11.0624 19.1519 5.12745 16.2192 3.32846Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                          </svg>
+                          <span className="text-xs font-bold text-[#B0B0B0]">25</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <button className="text-[15px] font-bold text-[#A06AFF]">Hide</button>
+                          <button className="text-[15px] font-bold text-white">Reply</button>
+                          <button>
+                            <svg className="h-6 w-6 text-[#B0B0B0]" viewBox="0 0 24 24" fill="none">
+                              <path d="M12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11Z" fill="currentColor" stroke="currentColor" strokeWidth="2"/>
+                              <path d="M5 11C4.73478 11 4.48043 11.1054 4.29289 11.2929C4.10536 11.4804 4 11.7348 4 12C4 12.2652 4.10536 12.5196 4.29289 12.7071C4.48043 12.8946 4.73478 13 5 13C5.26522 13 5.51957 12.8946 5.70711 12.7071C5.89464 12.5196 6 12.2652 6 12C6 11.7348 5.89464 11.4804 5.70711 11.2929C5.51957 11.1054 5.26522 11 5 11Z" fill="currentColor" stroke="currentColor" strokeWidth="2"/>
+                              <path d="M19 11C18.7348 11 18.4804 11.1054 18.2929 11.2929C18.1054 11.4804 18 11.7348 18 12C18 12.2652 18.1054 12.5196 18.2929 12.7071C18.4804 12.8946 18.7348 13 19 13C19.2652 13 19.5196 12.8946 19.7071 12.7071C19.8946 12.5196 20 12.2652 20 12C20 11.7348 19.8946 11.4804 19.7071 11.2929C19.5196 11.1054 19.2652 11 19 11Z" fill="currentColor" stroke="currentColor" strokeWidth="2"/>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="flex justify-center">
+                  <button className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5">
+                    <span className="text-[15px] font-bold text-white">16 more comments</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
