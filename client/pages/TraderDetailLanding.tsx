@@ -637,11 +637,11 @@ const TraderDetailLanding: FC = () => {
                   <div className="inline-flex h-7 items-center rounded-full bg-[#1C3430] px-3">
                     <span className="text-xs font-bold text-[#2EBD85]">{trader.rating}</span>
                   </div>
-                  <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                  <div className="inline-flex h-7 items-center gap-1 rounded-full bg-[#2E2744] px-3">
                     <UsersIcon className="h-4 w-4 text-[#B0B0B0]" />
                     <span className="text-xs font-bold text-white">{trader.followers}</span>
                   </div>
-                  <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                  <div className="inline-flex h-7 items-center gap-1 rounded-full bg-[#2E2744] px-3">
                     <svg
                       className="h-4 w-4 text-[#B0B0B0]"
                       viewBox="0 0 16 16"
