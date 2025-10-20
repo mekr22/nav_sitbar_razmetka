@@ -1,5 +1,6 @@
 import { FC, KeyboardEvent, useId } from "react";
 import { BookOpen, Mail, Users, FileEdit } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
@@ -73,11 +74,11 @@ const TraderCard: FC<{
       role="button"
       tabIndex={0}
       aria-pressed={isActive}
-      onClick={onSelect}
+      onClick={handleClick}
       onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
         if (isActivationKey(event.key)) {
           event.preventDefault();
-          onSelect();
+          handleClick();
         }
       }}
       className={cn(
