@@ -1203,6 +1203,20 @@ const TraderDetailLanding: FC = () => {
               </div>
             </div>
 
+            <PerformanceChartCard
+              levels={PERFORMANCE_LEVELS}
+              months={PERFORMANCE_MONTHS}
+              highlightValue="$507K"
+              title="Performance"
+            />
+
+            <PerformanceChartCard
+              levels={PERFORMANCE_LEVELS}
+              months={PERFORMANCE_MONTHS}
+              highlightValue="$507K"
+              title="Index Performance"
+            />
+
             {/* Portfolio Performance Chart */}
             <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Portfolio Performance</h2>
