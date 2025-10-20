@@ -629,7 +629,7 @@ const TraderDetailLanding: FC = () => {
                 <div className="text-xs font-bold uppercase text-[#B0B0B0]">{trader.badge}</div>
 
                 <div className="flex flex-wrap items-center gap-1">
-                  <div className="inline-flex h-7 items-center gap-1 rounded-full bg-[#3E321D] px-3">
+                  <div className="flex items-center gap-1 rounded bg-[#3E321D] px-1 py-0.5">
                     <span className="text-xs font-extrabold uppercase text-[#FFA800]">
                       HEDGE FUND MANAGER
                     </span>
