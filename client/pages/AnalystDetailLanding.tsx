@@ -245,7 +245,7 @@ const AnalystDetailLanding: FC = () => {
 
   const reviews = useMemo(
     () =>
-      TRADER_REVIEWS.filter(
+      ANALYST_REVIEWS.filter(
         (review) =>
           typeof review?.author === "string" &&
           review.author.trim().length > 0 &&
