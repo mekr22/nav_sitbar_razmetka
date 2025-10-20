@@ -38,6 +38,35 @@ const CONTENT_FILTERS: { id: TraderContentFilter; label: string }[] = [
   { id: "bots", label: "Bots" },
 ];
 
+type PerformanceLevel = {
+  label: string;
+  accent?: boolean;
+};
+
+const PERFORMANCE_LEVELS: readonly PerformanceLevel[] = [
+  { label: "$500K" },
+  { label: "$100K" },
+  { label: "$10K" },
+  { label: "$100" },
+  { label: "$1" },
+  { label: "$0.01", accent: true },
+];
+
+const PERFORMANCE_MONTHS = [
+  "APR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AUG",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DEC",
+  "JAN",
+  "FEB",
+  "MAR",
+] as const;
+
 const TRADER_REVIEWS = [
   {
     id: "review-1",
