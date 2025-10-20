@@ -208,6 +208,13 @@ const TraderDetailLanding: FC = () => {
   });
   const [activeFilter, setActiveFilter] = useState<TraderContentFilter>("all");
   const [activeTab, setActiveTab] = useState<"statistics" | "trades">("trades");
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
+
+  const reviews = useMemo(() => TRADER_REVIEWS, []);
+  const averageRating = TRADER_AVERAGE_RATING;
+  const totalReviews = TRADER_TOTAL_REVIEWS;
 
   useEffect(() => {
     if (typeof window === "undefined") {
