@@ -237,7 +237,7 @@ const AnalystDetailLanding: FC = () => {
 
     return storedIds;
   });
-  const [activeFilter, setActiveFilter] = useState<TraderContentFilter>("all");
+  const [activeFilter, setActiveFilter] = useState<AnalystContentFilter>("all");
   const [activeTab, setActiveTab] = useState<"statistics" | "trades">("trades");
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
