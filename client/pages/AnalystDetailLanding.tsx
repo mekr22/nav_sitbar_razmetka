@@ -75,7 +75,7 @@ const ANALYST_REVIEWS = [
     rating: 5,
     title: "Game changer for my trading strategy!",
     message:
-      "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.",
+      "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious analyst.",
   },
   {
     id: "review-2",
@@ -232,7 +232,7 @@ const AnalystDetailLanding: FC = () => {
     }
 
     if (locationState?.analyst?.id && locationState.isFavorite) {
-      storedIds.add(locationState.trader.id);
+      storedIds.add(locationState.analyst.id);
     }
 
     return storedIds;
@@ -560,7 +560,7 @@ const AnalystDetailLanding: FC = () => {
             Traders
           </button>
           <span className="font-bold text-[#B0B0B0]">/</span>
-          <span className="font-bold text-white">{trader.name}</span>
+          <span className="font-bold text-white">{analyst.name}</span>
         </div>
       </div>
 
@@ -603,8 +603,8 @@ const AnalystDetailLanding: FC = () => {
               </svg>
 
               <img
-                src={trader.avatar}
-                alt={trader.name}
+                src={analyst.avatar}
+                alt={analyst.name}
                 className="absolute left-4 top-4 z-20 h-24 w-24 rounded-full border-2 border-[#0C1014] object-cover shadow-xl"
               />
 
@@ -627,13 +627,13 @@ const AnalystDetailLanding: FC = () => {
 
               <div className="relative z-10 flex flex-col gap-4 px-4 pb-6 pt-[7.25rem] sm:pt-[7.75rem]">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-2xl font-bold text-white">{trader.name}</h3>
+                  <h3 className="text-2xl font-bold text-white">{analyst.name}</h3>
                   <div className="rounded-md bg-[#A06AFF] px-1">
                   <span className="text-xs font-extrabold text-white">PRO</span>
                 </div>
                 </div>
 
-                <div className="text-xs font-bold uppercase text-[#B0B0B0]">{trader.badge}</div>
+                <div className="text-xs font-bold uppercase text-[#B0B0B0]">{analyst.badge}</div>
 
                 <div className="flex flex-wrap items-center gap-1">
                   <div className="flex items-center gap-1 rounded bg-[#3E321D] px-1 py-0.5">
@@ -642,11 +642,11 @@ const AnalystDetailLanding: FC = () => {
                     </span>
                   </div>
                   <div className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5">
-                    <span className="text-xs font-bold text-[#2EBD85]">{trader.rating}</span>
+                    <span className="text-xs font-bold text-[#2EBD85]">{analyst.rating}</span>
                   </div>
                   <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
                     <UsersIcon className="h-4 w-4 text-[#B0B0B0]" />
-                    <span className="text-xs font-bold text-white">{trader.followers}</span>
+                    <span className="text-xs font-bold text-white">{analyst.followers}</span>
                   </div>
                   <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
                     <svg
@@ -675,7 +675,7 @@ const AnalystDetailLanding: FC = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span className="text-xs font-bold text-white">{trader.publications}</span>
+                    <span className="text-xs font-bold text-white">{analyst.publications}</span>
                   </div>
                 </div>
 
@@ -700,10 +700,10 @@ const AnalystDetailLanding: FC = () => {
 
                 <div className="flex items-center gap-1 text-xs font-bold uppercase">
                   <span className="text-[#B0B0B0]">Forecast Accuracy:</span>
-                  <span className="text-[#2EBD85]">{trader.accuracy}</span>
+                  <span className="text-[#2EBD85]">{analyst.accuracy}</span>
                 </div>
 
-                <div className="text-2xl font-bold text-white">{trader.price}</div>
+                <div className="text-2xl font-bold text-white">{analyst.price}</div>
 
                 <button
                   type="button"
@@ -996,7 +996,7 @@ const AnalystDetailLanding: FC = () => {
                 <h2 className="text-[19px] font-bold text-[#A06AFF]">Bio</h2>
               </div>
               <div className="p-4">
-                <p className="text-[15px] font-normal text-white">{trader.description}</p>
+                <p className="text-[15px] font-normal text-white">{analyst.description}</p>
               </div>
             </div>
 
