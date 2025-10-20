@@ -1225,16 +1225,16 @@ const TradingRobotDetailLanding: FC = () => {
                     {robot.name}
                   </h3>
                   <div className="flex flex-wrap items-center gap-1">
-                    <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                    <div className="flex min-h-[24px] items-center gap-1 rounded bg-[#2E2744] px-1">
                       <Users className="h-4 w-4 text-[#B0B0B0] max-[360px]:h-3.5 max-[360px]:w-3.5" />
                       <span className="text-xs font-bold text-white">{robot.users}</span>
                     </div>
-                    <div className="rounded bg-[rgba(255,168,0,0.16)] px-1 py-0.5">
+                    <div className="flex min-h-[24px] items-center rounded bg-[rgba(255,168,0,0.16)] px-1">
                       <span className="text-xs font-extrabold uppercase text-[#FFA800]">
                         {robot.accuracyLabel}
                       </span>
                     </div>
-                    <div className="rounded bg-[rgba(46,189,133,0.16)] px-1 py-0.5">
+                    <div className="flex min-h-[24px] items-center rounded bg-[rgba(46,189,133,0.16)] px-1">
                       <span className="text-xs font-extrabold uppercase text-[#2EBD85]">
                         {robot.profitSharing}
                       </span>
