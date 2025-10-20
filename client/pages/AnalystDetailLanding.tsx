@@ -101,8 +101,8 @@ const ANALYST_REVIEWS = [
   },
 ];
 
-const TRADER_AVERAGE_RATING = 4.5;
-const TRADER_TOTAL_REVIEWS = 28;
+const ANALYST_AVERAGE_RATING = 4.5;
+const ANALYST_TOTAL_REVIEWS = 28;
 const TOTAL_COMMENTS_COUNT = 20;
 const COMMENT_AVATAR =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
