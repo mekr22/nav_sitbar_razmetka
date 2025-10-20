@@ -6,7 +6,7 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import PerformanceChartCard, {
   type PerformanceChartLevel,
 } from "@/components/marketplace/PerformanceChartCard";
-import { baseTraders, type Trader } from "@/data/marketplaceTraders";
+import { baseAnalysts, type Analyst } from "@/data/marketplaceAnalysts";
 
 type ExtendedTrader = Trader & {
   price?: string;
