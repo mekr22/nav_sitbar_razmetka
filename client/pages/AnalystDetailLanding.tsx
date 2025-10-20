@@ -348,22 +348,22 @@ const AnalystDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const isTraderFavorite = favoriteAnalystIds.has(trader.id);
+  const isAnalystFavorite = favoriteAnalystIds.has(analyst.id);
 
-  const handleToggleFavoriteTrader = useCallback(() => {
+  const handleToggleFavoriteAnalyst = useCallback(() => {
     setFavoriteAnalystIds((prev) => {
       const next = new Set(prev);
-      if (next.has(trader.id)) {
-        next.delete(trader.id);
+      if (next.has(analyst.id)) {
+        next.delete(analyst.id);
       } else {
-        next.add(trader.id);
+        next.add(analyst.id);
       }
       return next;
     });
-  }, [trader.id]);
+  }, [analyst.id]);
 
   const handleNavigateToCategory = useCallback(() => {
-    navigate("/marketplace/traders", {
+    navigate("/marketplace/analysts", {
       state: {
         scrollToTop: true,
       },
