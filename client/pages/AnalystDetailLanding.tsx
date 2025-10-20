@@ -629,16 +629,16 @@ const AnalystDetailLanding: FC = () => {
                 <div className="flex items-center gap-2">
                   <h3 className="text-2xl font-bold text-white">{analyst.name}</h3>
                   <div className="rounded-md bg-[#A06AFF] px-1">
-                  <span className="text-xs font-extrabold text-white">PRO</span>
-                </div>
+                    <span className="text-xs font-extrabold text-white">PRO</span>
+                  </div>
                 </div>
 
-                <div className="text-xs font-bold uppercase text-[#B0B0B0]">{analyst.badge}</div>
+                <div className="text-xs font-bold uppercase text-[#B0B0B0]">{analyst.company}</div>
 
                 <div className="flex flex-wrap items-center gap-1">
                   <div className="flex items-center gap-1 rounded bg-[#3E321D] px-1 py-0.5">
                     <span className="text-xs font-extrabold uppercase text-[#FFA800]">
-                      HEDGE FUND MANAGER
+                      {analyst.role}
                     </span>
                   </div>
                   <div className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5">
