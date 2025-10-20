@@ -107,6 +107,10 @@ const App = () => (
                       element={<TradingRobotDetailLanding />}
                     />
                     <Route
+                      path="/marketplace/investment-consultant-details"
+                      element={<InvestmentConsultantDetailLanding />}
+                    />
+                    <Route
                       path="/marketplace/favourites"
                       element={<Favourites />}
                     />
