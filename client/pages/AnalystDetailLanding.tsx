@@ -204,7 +204,7 @@ const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
     };
   });
 
-const TraderDetailLanding: FC = () => {
+const AnalystDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
