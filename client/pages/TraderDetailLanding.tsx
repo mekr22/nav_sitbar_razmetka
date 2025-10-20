@@ -1,7 +1,7 @@
 import { ArrowUpDown, Heart, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Heart as HeartIcon, MessageCircle as MessageCircleIcon, Share2 as ShareIcon, ShoppingCart as ShoppingCartIcon, Star, Users } from "lucide-react";
+import { Heart as HeartIcon, MessageCircle as MessageCircleIcon, Share2 as ShareIcon, ShoppingCart as ShoppingCartIcon, Star as StarIcon, Users } from "lucide-react";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { baseTraders, type Trader } from "@/data/marketplaceTraders";
 
@@ -226,7 +226,7 @@ const TraderDetailLanding: FC = () => {
                   aria-pressed={isTraderFavorite}
                   aria-label={isTraderFavorite ? "Remove from favorites" : "Add to favorites"}
                 >
-                  <Star
+                  <StarIcon
                     className={`h-6 w-6 ${
                       isTraderFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "fill-none stroke-current"
                     }`}
