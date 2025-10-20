@@ -27,7 +27,7 @@ export const baseAnalysts: Analyst[] = [
     publications: "983",
     markets: "BINANCE, NASDAQ",
     assets: "BTC, ETH, TESLA, GOLD",
-    analysis: "TECHNICAL & FUNDAMENTAL & ANALYSIS",
+    analysis: "TECHNICAL & ANALYSIS.",
     forecastAccuracy: "68%",
     featured: true,
   },
@@ -43,7 +43,7 @@ export const baseAnalysts: Analyst[] = [
     publications: "742",
     markets: "NYSE, NASDAQ",
     assets: "AAPL, NVDA, GOLD, BTC",
-    analysis: "TECHNICAL & FUNDAMENTAL & ANALYSIS",
+    analysis: "TECHNICAL & ANALYSIS.",
     forecastAccuracy: "65%",
   },
 ];
