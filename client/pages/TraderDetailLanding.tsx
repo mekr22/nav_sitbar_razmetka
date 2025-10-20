@@ -966,14 +966,14 @@ const TraderDetailLanding: FC = () => {
               </div>
               <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:min-w-[260px] sm:max-w-none sm:items-end sm:self-start sm:px-6">
                 <div className="flex w-full items-center justify-center gap-4 self-end sm:w-full sm:justify-between sm:gap-8">
-                  <button className="flex items-center gap-1 text-xs font-bold text-white transition-colors hover:text-[#A06AFF]">
+                  <button className="flex items-center gap-1 rounded-full px-3 py-2 text-xs font-bold text-white transition-colors hover:text-[#A06AFF]">
                     <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
                       <path d="M12.9747 2.66277C11.1869 1.56615 9.62661 2.00807 8.68927 2.71201C8.30487 3.00064 8.11274 3.14495 7.99967 3.14495C7.88661 3.14495 7.69447 3.00064 7.31007 2.71201C6.37275 2.00807 4.8124 1.56615 3.02463 2.66277C0.678387 4.10196 0.147488 8.84993 5.55936 12.8556C6.59015 13.6185 7.10554 14 7.99967 14C8.89381 14 9.40921 13.6185 10.44 12.8556C15.8519 8.84993 15.3209 4.10196 12.9747 2.66277Z" stroke="white" strokeLinecap="round"/>
                     </svg>
                     Subscribe
                   </button>
                   <div className="h-5 w-px bg-white/24" />
-                  <button className="flex items-center gap-1 text-xs font-bold text-white transition-colors hover:text-[#A06AFF]">
+                  <button className="flex items-center gap-1 rounded-full px-3 py-2 text-xs font-bold text-white transition-colors hover:text-[#A06AFF]">
                     <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
                       <path d="M12.7945 6.29445L11.4843 4.97965C10.5403 4.03232 10.1703 3.52271 9.65907 3.70287C9.02167 3.92751 9.23147 5.34494 9.23147 5.82347C8.24047 5.82347 7.21013 5.73539 6.23323 5.91891C3.00839 6.52475 2 9.14386 2 12.0003C2.91273 11.3538 3.82455 10.665 4.92155 10.3654C6.29091 9.99133 7.82027 10.1698 9.23147 10.1698C9.23147 10.6483 9.02167 12.0658 9.65907 12.2904C10.2383 12.4945 10.5403 11.9609 11.4843 11.0136L12.7945 9.69879C13.5982 8.89233 14 8.48913 14 7.99666C14 7.50419 13.5982 7.10093 12.7945 6.29445Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
