@@ -404,11 +404,14 @@ const TraderDetailLanding: FC = () => {
                   </div>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold uppercase text-[#2EBD85]">Stable</span>
-                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">High Frequency</span>
-                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Long-Term</span>
-                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Veterans</span>
-                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Sociable</span>
+                  {TRAIT_BADGES.map((badge) => (
+                    <span
+                      key={badge.label}
+                      className={`rounded px-2 py-1 text-xs font-bold uppercase leading-none ${badge.backgroundClass} ${badge.textClass}`}
+                    >
+                      {badge.label}
+                    </span>
+                  ))}
                 </div>
               </div>
               <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:min-w-[260px] sm:max-w-none sm:items-end sm:self-start sm:px-6">
