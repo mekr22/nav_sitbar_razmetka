@@ -405,49 +405,93 @@ const TraderDetailLanding: FC = () => {
           />
         )}
 
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-blue-500 text-[15px] font-bold text-white max-[360px]:h-10 max-[360px]:w-10">
-              {comment.author.slice(0, 1)}
-            </div>
-            <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
+          <div className="flex items-center gap-2 max-[360px]:items-start max-[360px]:gap-1.5">
+            <img
+              src={COMMENT_AVATAR}
+              alt={`${comment.author} avatar`}
+              className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
+            />
+            <div className="flex flex-1 flex-col gap-0.5">
               <span className="text-[15px] font-bold text-white max-[360px]:text-sm">{comment.author}</span>
               <span className="text-xs font-bold" style={{ color: timeColor }}>
                 {comment.time}
               </span>
             </div>
           </div>
-
-          <div className="flex items-center gap-3 max-[360px]:gap-2">
-            {comment.canHide && (
-              <button
-                type="button"
-                onClick={() => handleToggleHidden(comment.id)}
-                className="text-[15px] font-bold text-[#A06AFF] transition-colors hover:text-white max-[360px]:text-sm"
-              >
-                {hideLabel}
-              </button>
-            )}
-            <button
-              type="button"
-              onClick={() => handleToggleLike(comment.id)}
-              className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold uppercase text-white transition-colors ${likeButtonClasses}`}
-              aria-label={likeAriaLabel}
-            >
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M16.2193 3.32841C13.9844 1.95764 12.0341 2.51004 10.8624 3.38996C10.3819 3.75075 10.1418 3.93115 10.0003 3.93115C9.85886 3.93115 9.61869 3.75075 9.13819 3.38996C7.96654 2.51004 6.0161 1.95764 3.78139 3.32841C0.848588 5.1274 0.184964 11.0624 6.94981 16.0694C8.2383 17.0231 8.88254 17.4999 10.0003 17.4999C11.118 17.4999 11.7622 17.0231 13.0507 16.0694C19.8156 11.0624 19.1519 5.1274 16.2193 3.32841Z"
-                  stroke={displayLikeColor}
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <span style={{ color: displayLikeColor }}>{comment.likes}</span>
-            </button>
-          </div>
+          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
         </div>
 
-        <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
+        <button
+          type="button"
+          onClick={() => handleToggleLike(comment.id)}
+          className={`flex w-fit items-center gap-1.5 rounded-full px-3 py-1 transition-colors ${likeButtonClasses} max-[360px]:gap-1 max-[360px]:px-2`}
+          aria-pressed={comment.liked}
+          aria-label={likeAriaLabel}
+          style={{ color: displayLikeColor }}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill={comment.liked ? displayLikeColor : "none"}
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.2189 3.32846C13.9842 1.95769 12.0337 2.51009 10.8621 3.39001C10.3816 3.7508 10.1414 3.93119 10.0001 3.93119C9.85875 3.93119 9.61858 3.7508 9.13808 3.39001C7.96643 2.51009 6.01599 1.95769 3.78128 3.32846C0.848472 5.12745 0.184848 11.0624 6.94969 16.0695C8.23818 17.0232 8.88241 17.5 10.0001 17.5C11.1177 17.5 11.762 17.0232 13.0505 16.0695C19.8153 11.0624 19.1517 5.12745 16.2189 3.32846Z"
+              stroke={displayLikeColor}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </svg>
+          <span className="text-xs font-bold" style={{ color: displayLikeColor }}>
+            {comment.likes}
+          </span>
+        </button>
+
+        <div className="flex flex-wrap items-center gap-2 max-[360px]:gap-1.5">
+          <button
+            type="button"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF] max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
+            onClick={() => handleToggleHidden(comment.id)}
+          >
+            {hideLabel}
+          </button>
+          <button
+            type="button"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-white max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
+          >
+            Reply
+          </button>
+          <button type="button" className="rounded-full p-1 text-[#B0B0B0]">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11Z"
+                fill="#B0B0B0"
+                stroke="#B0B0B0"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M5 11C4.73478 11 4.48043 11.1054 4.29289 11.2929C4.10536 11.4804 4 11.7348 4 12C4 12.2652 4.10536 12.5196 4.29289 12.7071C4.48043 12.8946 4.73478 13 5 13C5.26522 13 5.51957 12.8946 5.70711 12.7071C5.89464 12.5196 6 12.2652 6 12C6 11.7348 5.89464 11.4804 5.70711 11.2929C5.51957 11.1054 5.26522 11 5 11Z"
+                fill="#B0B0B0"
+                stroke="#B0B0B0"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M19 11C18.7348 11 18.4804 11.1054 18.2929 11.2929C18.1054 11.4804 18 11.7348 18 12C18 12.2652 18.1054 12.5196 18.2929 12.7071C18.4804 12.8946 18.7348 13 19 13C19.2652 13 19.5196 12.8946 19.7071 12.7071C19.8946 12.5196 20 12.2652 20 12C20 11.7348 19.8946 11.4804 19.7071 11.2929C19.5196 11.1054 19.2652 11 19 11Z"
+                fill="#B0B0B0"
+                stroke="#B0B0B0"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
 
         {comment.replies && comment.replies.length > 0 && (
           <div className="flex flex-col gap-4">
