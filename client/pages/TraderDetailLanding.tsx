@@ -313,7 +313,7 @@ const TraderDetailLanding: FC = () => {
                   </div>
                   <div className="flex items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">Analysis:</span>
-                    <span className="text-white">TECHNICAL & FUNDAMENTAL ANALYSIS</span>
+                    <span className="text-white">TECHNICAL & FUNDAMENTAL & ANALYSIS</span>
                   </div>
                 </div>
 
