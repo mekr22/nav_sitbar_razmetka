@@ -1286,7 +1286,7 @@ const TraderDetailLanding: FC = () => {
             </div>
 
             {/* Index Performance Chart */}
-            <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+            <div className="hidden flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Index Performance</h2>
               <div className="h-px w-full bg-[#2E2744]" />
 
