@@ -8,7 +8,7 @@ import PerformanceChartCard, {
 } from "@/components/marketplace/PerformanceChartCard";
 import { baseAnalysts, type Analyst } from "@/data/marketplaceAnalysts";
 
-type ExtendedTrader = Trader & {
+type ExtendedAnalyst = Analyst & {
   price?: string;
   chartImage?: string;
   description?: string;
