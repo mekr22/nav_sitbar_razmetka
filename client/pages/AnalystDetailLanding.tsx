@@ -208,7 +208,7 @@ const AnalystDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const locationState = (location.state as TraderDetailsState | null) ?? null;
+  const locationState = (location.state as AnalystDetailsState | null) ?? null;
 
   const [favoriteTraderIds, setFavoriteTraderIds] = useState<Set<string>>(() => {
     const storedIds = new Set<string>();
