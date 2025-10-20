@@ -999,7 +999,7 @@ const TraderDetailLanding: FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveTab("statistics")}
-                  className={`rounded-[32px] px-4 py-3 text-[15px] font-bold text-white transition-colors ${
+                  className={`rounded-full px-4 py-3 text-[15px] font-bold text-white transition-colors ${
                     activeTab === "statistics"
                       ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] backdrop-blur-[58px]"
                       : "border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[58px] hover:border-[#1F2230]"
@@ -1010,7 +1010,7 @@ const TraderDetailLanding: FC = () => {
                 <button
                   type="button"
                   onClick={() => setActiveTab("trades")}
-                  className={`rounded-[32px] px-4 py-3 text-[15px] font-bold text-white transition-colors ${
+                  className={`rounded-full px-4 py-3 text-[15px] font-bold text-white transition-colors ${
                     activeTab === "trades"
                       ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] backdrop-blur-[58px]"
                       : "border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[58px] hover:border-[#1F2230]"
