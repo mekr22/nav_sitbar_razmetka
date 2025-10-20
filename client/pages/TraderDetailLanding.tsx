@@ -349,6 +349,240 @@ const TraderDetailLanding: FC = () => {
                 </button>
               </div>
             </div>
+
+            {/* Success Rate & Average Return */}
+            <div className="flex w-full flex-col gap-6 sm:flex-row lg:max-w-[339px]">
+              {/* Success Rate Card */}
+              <div className="flex flex-1 flex-col items-center gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Success Rate</span>
+                  <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path d="M6.97061 1.75975C7.53867 1.19076 8.46067 1.19076 9.02874 1.75975L9.70167 2.43375C9.97467 2.70727 10.3454 2.86082 10.7319 2.8605L11.6843 2.85972C12.4883 2.85907 13.1403 3.51102 13.1396 4.31505L13.1389 5.26745C13.1385 5.65393 13.2921 6.02464 13.5656 6.29771L14.2396 6.97061C14.8086 7.53867 14.8086 8.46067 14.2396 9.02874L13.5656 9.70167C13.2921 9.97467 13.1385 10.3454 13.1389 10.7319L13.1396 11.6843C13.1403 12.4883 12.4883 13.1403 11.6843 13.1396L10.7319 13.1389C10.3454 13.1385 9.97467 13.2921 9.70167 13.5656L9.02874 14.2396C8.46067 14.8086 7.53867 14.8086 6.97061 14.2396L6.29771 13.5656C6.02464 13.2921 5.65393 13.1385 5.26745 13.1389L4.31505 13.1396C3.51102 13.1403 2.85907 12.4883 2.85972 11.6843L2.8605 10.7319C2.86082 10.3454 2.70727 9.97467 2.43375 9.70167L1.75975 9.02874C1.19076 8.46067 1.19076 7.53867 1.75975 6.97061L2.43375 6.29771C2.70727 6.02464 2.86082 5.65393 2.8605 5.26745L2.85972 4.31505C2.85907 3.51102 3.51102 2.85907 4.31505 2.85972L5.26745 2.8605C5.65393 2.86082 6.02464 2.70727 6.29771 2.43375L6.97061 1.75975Z" stroke="#B0B0B0"/>
+                    <path d="M6.66699 6.00033C6.66699 5.26395 7.26393 4.66699 8.00033 4.66699C8.73673 4.66699 9.33366 5.26395 9.33366 6.00033C9.33366 6.26576 9.25613 6.51308 9.12239 6.72086C8.72393 7.34013 8.00033 7.93059 8.00033 8.66699V9.00033" stroke="#B0B0B0" strokeLinecap="round"/>
+                    <path d="M7.99512 11.333H8.00112" stroke="#B0B0B0" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <svg className="h-24 w-24" viewBox="0 0 96 96" fill="none">
+                  <path d="M0 48C0 21.4903 21.4903 0 48 0C74.5097 0 96 21.4903 96 48C96 74.5097 74.5097 96 48 96C21.4903 96 0 74.5097 0 48ZM79.2 48C79.2 30.7687 65.2313 16.8 48 16.8C30.7687 16.8 16.8 30.7687 16.8 48C16.8 65.2313 30.7687 79.2 48 79.2C65.2313 79.2 79.2 65.2313 79.2 48Z" fill="#A06AFF"/>
+                  <path d="M0 48C0 60.2195 4.66032 71.9789 13.0309 80.8811C21.4015 89.7832 32.8522 95.1578 45.0485 95.9092C57.2448 96.6605 69.2686 92.7321 78.6686 84.9247C88.0686 77.1174 94.1371 66.0189 95.637 53.8918L78.9641 51.8297C77.9891 59.7123 74.0446 66.9263 67.9346 72.0011C61.8246 77.0759 54.0092 79.6293 46.0815 79.141C38.1539 78.6526 30.711 75.1591 25.2701 69.3727C19.8292 63.5863 16.8 55.9426 16.8 48H0Z" fill="#6AA5FF"/>
+                  <path d="M0 48C0 55.3304 1.67893 62.5635 4.90804 69.1444C8.13715 75.7252 12.8306 81.4791 18.6285 85.9646C24.4263 90.4502 31.1745 93.5482 38.3555 95.0211C45.5364 96.494 52.9593 96.3026 60.0548 94.4616L55.8356 78.2001C51.2235 79.3967 46.3987 79.5211 41.731 78.5637C37.0634 77.6063 32.6771 75.5926 28.9085 72.677C25.1399 69.7614 22.0891 66.0214 19.9902 61.7438C17.8913 57.4663 16.8 52.7648 16.8 48H0Z" fill="#FFA800"/>
+                </svg>
+                <p className="text-center text-xs font-bold text-white">111 out of 128<br />profitable transactions</p>
+              </div>
+
+              {/* Average Return Card */}
+              <div className="flex flex-1 flex-col items-center justify-between gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Average Return</span>
+                  <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                    <path d="M6.97061 1.75975C7.53867 1.19076 8.46067 1.19076 9.02874 1.75975L9.70167 2.43375C9.97467 2.70727 10.3454 2.86082 10.7319 2.8605L11.6843 2.85972C12.4883 2.85907 13.1403 3.51102 13.1396 4.31505L13.1389 5.26745C13.1385 5.65393 13.2921 6.02464 13.5656 6.29771L14.2396 6.97061C14.8086 7.53867 14.8086 8.46067 14.2396 9.02874L13.5656 9.70167C13.2921 9.97467 13.1385 10.3454 13.1389 10.7319L13.1396 11.6843C13.1403 12.4883 12.4883 13.1403 11.6843 13.1396L10.7319 13.1389C10.3454 13.1385 9.97467 13.2921 9.70167 13.5656L9.02874 14.2396C8.46067 14.8086 7.53867 14.8086 6.97061 14.2396L6.29771 13.5656C6.02464 13.2921 5.65393 13.1385 5.26745 13.1389L4.31505 13.1396C3.51102 13.1403 2.85907 12.4883 2.85972 11.6843L2.8605 10.7319C2.86082 10.3454 2.70727 9.97467 2.43375 9.70167L1.75975 9.02874C1.19076 8.46067 1.19076 7.53867 1.75975 6.97061L2.43375 6.29771C2.70727 6.02464 2.86082 5.65393 2.8605 5.26745L2.85972 4.31505C2.85907 3.51102 3.51102 2.85907 4.31505 2.85972L5.26745 2.8605C5.65393 2.86082 6.02464 2.70727 6.29771 2.43375L6.97061 1.75975Z" stroke="#B0B0B0"/>
+                    <path d="M6.66699 6.00033C6.66699 5.26395 7.26393 4.66699 8.00033 4.66699C8.73673 4.66699 9.33366 5.26395 9.33366 6.00033C9.33366 6.26576 9.25613 6.51308 9.12239 6.72086C8.72393 7.34013 8.00033 7.93059 8.00033 8.66699V9.00033" stroke="#B0B0B0" strokeLinecap="round"/>
+                    <path d="M7.99512 11.333H8.00112" stroke="#B0B0B0" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="text-center text-[31px] font-bold text-[#2EBD85]">111.14%</div>
+                <p className="text-center text-xs font-bold text-white">Average return<br />per transaction</p>
+              </div>
+            </div>
+
+            {/* Portfolio Gain */}
+            <div className="flex w-full flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] lg:max-w-[339px]">
+              <div className="flex items-center border-b border-[#181B22] p-4">
+                <h3 className="text-[19px] font-bold text-[#A06AFF]">Portfolio Gain</h3>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">1-Month Return</span>
+                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                  <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">6-Month Return</span>
+                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                  <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">12-Month Return</span>
+                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                  <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">YTD Return</span>
+                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                  <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">Total Return</span>
+                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                  <span className="text-xs font-bold text-[#2EBD85]">+0.14%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Best Trade */}
+            <div className="flex w-full flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] lg:max-w-[339px]">
+              <div className="flex items-center border-b border-[#181B22] p-4">
+                <h3 className="text-[19px] font-bold text-[#A06AFF]">Best Trade</h3>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">Asset</span>
+                <span className="text-[15px] font-bold text-[#6AA5FF]">Broadcom (AVGO)</span>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">Opened at</span>
+                <span className="text-[15px] font-bold text-white">April 06, 2020</span>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">Closed at</span>
+                <span className="text-[15px] font-bold text-white">-</span>
+              </div>
+              <div className="flex items-center justify-between p-4">
+                <span className="text-[15px] text-[#B0B0B0]">Gain</span>
+                <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                  <span className="text-xs font-bold text-[#2EBD85]">+718.00%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Reviews */}
+            <div className="flex w-full flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] lg:max-w-[339px]">
+              <div className="flex flex-col gap-4 border-b border-[#181B22] p-4">
+                <h3 className="text-[19px] font-bold text-[#A06AFF]">Reviews</h3>
+                <div className="flex items-center gap-8">
+                  <div className="text-[31px] font-bold text-[#A06AFF]">4.5</div>
+                  <div className="flex flex-col gap-0.5">
+                    <div className="flex gap-0.5">
+                      {[1,2,3,4].map((i) => (
+                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
+                        </svg>
+                      ))}
+                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#2E2744"/>
+                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="url(#paint_half_star)"/>
+                        <defs>
+                          <linearGradient id="paint_half_star" x1="14.6663" y1="7.99968" x2="1.33301" y2="7.99968" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.5" stopColor="#A06AFF" stopOpacity="0"/>
+                            <stop offset="0.502929" stopColor="#A06AFF"/>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                    <span className="text-xs font-bold text-[#B0B0B0]">Based on 28 reviews</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Review Items */}
+              <div className="flex flex-col">
+                <div className="flex flex-col border-b border-[#181B22]">
+                  <div className="flex items-start justify-between p-4 pb-2">
+                    <div className="flex items-center gap-2">
+                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-purple-400 to-blue-500" />
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[15px] font-bold text-white">John Smith</span>
+                        <span className="text-xs font-bold text-[#B0B0B0]">2 days ago</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {[1,2,3,4,5].map((i) => (
+                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 px-4 pb-4 pt-2">
+                    <h4 className="text-[15px] font-bold text-white">Game changer for my trading strategy!</h4>
+                    <p className="text-[15px] text-[#B0B0B0]">This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col border-b border-[#181B22]">
+                  <div className="flex items-start justify-between p-4 pb-2">
+                    <div className="flex items-center gap-2">
+                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-green-400 to-teal-500" />
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[15px] font-bold text-white">John Smith</span>
+                        <span className="text-xs font-bold text-[#B0B0B0]">1 week ago</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {[1,2,3,4].map((i) => (
+                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
+                        </svg>
+                      ))}
+                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#2E2744"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 px-4 pb-4 pt-2">
+                    <h4 className="text-[15px] font-bold text-white">Great tool, but could use more features</h4>
+                    <p className="text-[15px] text-[#B0B0B0]">RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col">
+                  <div className="flex items-start justify-between p-4 pb-2">
+                    <div className="flex items-center gap-2">
+                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-orange-400 to-red-500" />
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[15px] font-bold text-white">John Smith</span>
+                        <span className="text-xs font-bold text-[#B0B0B0]">3 weeks ago</span>
+                      </div>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {[1,2,3,4].map((i) => (
+                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
+                        </svg>
+                      ))}
+                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#2E2744"/>
+                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="url(#paint_half_star2)"/>
+                        <defs>
+                          <linearGradient id="paint_half_star2" x1="14.6663" y1="7.99968" x2="1.33301" y2="7.99968" gradientUnits="userSpaceOnUse">
+                            <stop offset="0.5" stopColor="#A06AFF" stopOpacity="0"/>
+                            <stop offset="0.502929" stopColor="#A06AFF"/>
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 px-4 pb-4 pt-2">
+                    <h4 className="text-[15px] font-bold text-white">Worth every penny</h4>
+                    <p className="text-[15px] text-[#B0B0B0]">I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-center p-4">
+                <button
+                  type="button"
+                  className="flex h-[26px] flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                >
+                  Show More Reviews
+                </button>
+              </div>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="flex w-full flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] lg:max-w-[339px]">
+              <div className="flex items-center border-b border-[#181B22] p-4">
+                <h3 className="text-[19px] font-bold text-[#A06AFF]">Disclaimer</h3>
+              </div>
+              <div className="flex flex-col gap-2 p-4">
+                <p className="text-[15px] text-[#B0B0B0]">
+                  The information and publications are not meant to be, and do not constitute, financial, investment, trading, or other types of advice or recommendations supplied or endorsed by TyrianTrade. Read more in the{" "}
+                  <a href="#" className="text-[#A06AFF] underline">Terms of Use</a>.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Right Side - Detailed Information (Figma Design) */}
