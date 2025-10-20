@@ -312,7 +312,7 @@ const AnalystDetailLanding: FC = () => {
     }
   }, [location.pathname, locationState, navigate]);
 
-  const trader = useMemo<ExtendedTrader>(() => {
+  const analyst = useMemo<ExtendedAnalyst>(() => {
     const fallback: ExtendedTrader = {
       ...baseTraders[0],
       price: "$10 / month",
