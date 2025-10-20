@@ -322,6 +322,140 @@ const TraderDetailLanding: FC = () => {
     });
   }, [navigate]);
 
+  const handleToggleLike = useCallback((id: string) => {
+    setComments((prev) => toggleLikeInTree(prev, id));
+  }, []);
+
+  const handleToggleHidden = useCallback((id: string) => {
+    setComments((prev) => toggleHiddenInTree(prev, id));
+  }, []);
+
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, index) => {
+      const filled = index < Math.floor(rating);
+      const halfFilled = !filled && index < rating;
+
+      return (
+        <StarIcon
+          key={index}
+          className={`h-4 w-4 ${
+            filled
+              ? "fill-[#A06AFF] text-[#A06AFF]"
+              : halfFilled
+                ? "fill-[url(#half-star)] text-[#A06AFF]"
+                : "fill-[#2E2744] text-[#2E2744]"
+          }`}
+        />
+      );
+    });
+  };
+
+  const renderComment = (comment: CommentNode, depth = 0): JSX.Element => {
+    const indentStep = isCompactLayout ? 16 : 24;
+    const indent = depth * indentStep;
+    const timeColor = comment.timeColor ?? "#B0B0B0";
+    const hasReplies = Array.isArray(comment.replies) && comment.replies.length > 0;
+    const baseLikeColor = comment.likeColor ?? "#B0B0B0";
+    const displayLikeColor = comment.liked ? "#A06AFF" : baseLikeColor;
+    const likeButtonClasses = comment.liked
+      ? "border-[#A06AFF] bg-[#2C1F4A]/40"
+      : "border-[#181B22] hover:border-[#A06AFF]/30";
+    const likeAriaLabel = comment.liked ? "Unlike comment" : "Like comment";
+    const hideLabel = "Hide";
+    const showLabel = hasReplies ? "Show thread" : "Show comment";
+    const hiddenLabel = hasReplies ? "Thread hidden" : "Comment hidden";
+
+    if (comment.hidden) {
+      return (
+        <div
+          key={comment.id}
+          className="relative flex items-center justify-between rounded-2xl border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 max-[360px]:flex-col max-[360px]:items-start max-[360px]:gap-2 max-[360px]:px-3 max-[360px]:py-2.5"
+          style={{ marginLeft: indent }}
+        >
+          {depth > 0 && (
+            <div
+              className="absolute top-0 h-8 w-5 rounded-bl-lg border-b border-l border-[#181B22]"
+              style={{ left: -indentStep }}
+            />
+          )}
+          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">{hiddenLabel}</span>
+          <button
+            type="button"
+            onClick={() => handleToggleHidden(comment.id)}
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF] max-[360px]:self-end max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
+          >
+            {showLabel}
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        key={comment.id}
+        className="relative flex flex-col gap-4 max-[360px]:gap-3"
+        style={{ marginLeft: indent }}
+      >
+        {depth > 0 && (
+          <div
+            className="absolute top-0 h-8 w-5 rounded-bl-lg border-b border-l border-[#181B22]"
+            style={{ left: -indentStep }}
+          />
+        )}
+
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-purple-400 to-blue-500 text-[15px] font-bold text-white max-[360px]:h-10 max-[360px]:w-10">
+              {comment.author.slice(0, 1)}
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-[15px] font-bold text-white max-[360px]:text-sm">{comment.author}</span>
+              <span className="text-xs font-bold" style={{ color: timeColor }}>
+                {comment.time}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 max-[360px]:gap-2">
+            {comment.canHide && (
+              <button
+                type="button"
+                onClick={() => handleToggleHidden(comment.id)}
+                className="text-[15px] font-bold text-[#A06AFF] transition-colors hover:text-white max-[360px]:text-sm"
+              >
+                {hideLabel}
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => handleToggleLike(comment.id)}
+              className={`flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold uppercase text-white transition-colors ${likeButtonClasses}`}
+              aria-label={likeAriaLabel}
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16.2193 3.32841C13.9844 1.95764 12.0341 2.51004 10.8624 3.38996C10.3819 3.75075 10.1418 3.93115 10.0003 3.93115C9.85886 3.93115 9.61869 3.75075 9.13819 3.38996C7.96654 2.51004 6.0161 1.95764 3.78139 3.32841C0.848588 5.1274 0.184964 11.0624 6.94981 16.0694C8.2383 17.0231 8.88254 17.4999 10.0003 17.4999C11.118 17.4999 11.7622 17.0231 13.0507 16.0694C19.8156 11.0624 19.1519 5.1274 16.2193 3.32841Z"
+                  stroke={displayLikeColor}
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span style={{ color: displayLikeColor }}>{comment.likes}</span>
+            </button>
+          </div>
+        </div>
+
+        <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
+
+        {comment.replies && comment.replies.length > 0 && (
+          <div className="flex flex-col gap-4">
+            {comment.replies.map((reply) => renderComment(reply, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-col gap-6 max-[360px]:gap-4">
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
