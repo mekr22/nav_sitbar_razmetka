@@ -72,6 +72,7 @@ const TraderDetailLanding: FC = () => {
     return storedIds;
   });
   const [activeFilter, setActiveFilter] = useState<TraderContentFilter>("all");
+  const [activeTab, setActiveTab] = useState<"statistics" | "trades">("trades");
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -677,13 +678,29 @@ const TraderDetailLanding: FC = () => {
               </div>
             </div>
 
-            {/* Tab Navigation - Placeholder for now */}
+            {/* Tab Navigation */}
             <div className="flex flex-col gap-4">
               <div className="flex gap-3 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
-                <button className="rounded-[32px] border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("statistics")}
+                  className={`rounded-[32px] px-4 py-3 text-[15px] font-bold text-white transition-colors ${
+                    activeTab === "statistics"
+                      ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] backdrop-blur-[58px]"
+                      : "border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[58px] hover:border-[#1F2230]"
+                  }`}
+                >
                   Statistics
                 </button>
-                <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-3 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("trades")}
+                  className={`rounded-[32px] px-4 py-3 text-[15px] font-bold text-white transition-colors ${
+                    activeTab === "trades"
+                      ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] backdrop-blur-[58px]"
+                      : "border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[58px] hover:border-[#1F2230]"
+                  }`}
+                >
                   Trades
                 </button>
               </div>
@@ -836,14 +853,21 @@ const TraderDetailLanding: FC = () => {
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Portfolio Performance</h2>
               <div className="h-px w-full bg-[#181B22]" />
 
-              <div className="relative h-64 w-full">
-                <svg className="absolute right-0 top-0" width="60" height="20" viewBox="0 0 60 20" fill="none">
-                  <rect width="60" height="20" rx="4" fill="#A06AFF"/>
-                  <text x="30" y="14" fill="white" fontSize="12" fontWeight="700" textAnchor="middle">$507K</text>
-                </svg>
-                <svg className="h-full w-full" viewBox="0 0 680 240" fill="none" preserveAspectRatio="none">
+              <div className="relative h-64 w-full pt-2">
+                {/* Y-axis labels */}
+                <div className="absolute right-0 top-0 flex h-full flex-col justify-between py-2 pr-2 text-right">
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$500K</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$100K</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$10K</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$100</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$1</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$0.01</span>
+                </div>
+
+                {/* Chart with grid lines */}
+                <svg className="h-full w-full pr-16" viewBox="0 0 712 291" fill="none" preserveAspectRatio="none">
                   <defs>
-                    <filter id="chartGlow" x="0" y="0" width="100%" height="100%">
+                    <filter id="chartGlow1" x="0" y="0" width="100%" height="100%">
                       <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                       <feComponentTransfer>
                         <feFuncA type="linear" slope="0.24"/>
@@ -854,12 +878,26 @@ const TraderDetailLanding: FC = () => {
                       </feMerge>
                     </filter>
                   </defs>
+
+                  {/* Grid lines */}
+                  <line x1="16" y1="67" x2="654" y2="67" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="107" x2="654" y2="107" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="147" x2="654" y2="147" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="187" x2="654" y2="187" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="227" x2="654" y2="227" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="267" x2="654" y2="267" stroke="#523A83" strokeWidth="1"/>
+
+                  {/* Value badge */}
+                  <rect x="656" y="57" width="45" height="20" rx="4" fill="#A06AFF"/>
+                  <text x="678" y="71" fill="white" fontSize="12" fontWeight="700" textAnchor="middle">$507K</text>
+
+                  {/* Chart line */}
                   <path d="M8.75 208.213L16.204 211.302L20.7591 205.123L24.9002 207.33L26.1426 203.8L29.4554 205.123L33.5965 201.593L37.3235 203.8L49.3326 184.382L50.9891 185.706L56.3725 175.997L58.0289 179.528L60.0994 177.321L62.17 179.528L63.8264 175.997L66.7252 178.645L69.6239 175.997L72.1086 177.321C73.3509 173.35 75.8356 165.318 75.8356 164.965C75.8356 164.612 75.8356 156.58 75.8356 152.608L79.1484 156.58L81.6331 152.608C81.6331 153.491 81.6331 154.903 81.6331 153.491C81.6331 152.079 84.3938 142.311 85.7742 137.604L89.087 150.402L93.6422 139.369L96.9551 138.487L98.1974 130.984L100.682 132.308L101.924 127.895L105.237 135.839L106.894 145.106L108.55 136.721L110.207 141.576L111.863 153.491L113.934 138.487L117.661 149.078L122.63 130.984L126.771 134.515L128.427 130.102L130.498 133.632L133.811 129.219L138.366 144.224L140.851 136.721L144.578 139.369L147.476 129.219L148.305 134.515L151.203 130.102L155.344 146.871L157.415 142.458L158.243 146.871L161.97 144.224L163.212 152.167L164.869 145.989L168.596 142.458L170.252 145.106L171.495 139.369L174.807 146.871L177.292 145.989L181.019 152.167L183.504 145.989L186.817 160.993L190.129 159.669V150.402L192.614 147.754L198.826 157.021L201.725 149.078L202.967 157.021L205.452 156.139L207.936 152.167L209.593 156.139L211.249 144.224L212.491 146.871L214.562 141.576C215.942 144.518 218.703 149.872 218.703 147.754C218.703 145.636 219.531 137.163 219.945 133.191L225.329 141.576L227.813 142.458L228.642 140.693H231.126L234.439 144.224L237.338 145.106L238.166 140.693L240.237 143.341L245.62 142.458L248.933 135.839L252.246 142.458H253.902L255.145 139.369L258.457 145.989L260.114 142.458L263.013 149.078L269.638 147.754L272.123 161.876L274.193 154.373L277.92 152.167L281.233 165.406L283.304 160.993L287.859 167.613C289.654 164.523 293.325 158.61 293.657 159.669C293.988 160.728 297.936 168.642 299.868 172.467L302.353 168.937L303.595 174.232H306.08L308.565 169.819L309.807 173.35L316.847 164.523L318.917 152.167L321.816 155.697L323.887 150.402L328.442 145.989C330.65 150.255 335.067 158.698 335.067 158.345C335.067 157.992 336.172 152.902 336.724 150.402H339.209L340.451 149.078L345.006 159.669L346.662 157.021L348.733 165.406L350.804 167.613L353.288 183.5L355.359 177.763L357.843 179.528L359.914 162.758L360.742 165.406L363.227 164.523L364.883 169.819L365.297 162.758L368.61 159.669L371.923 169.819L374.408 163.641L377.307 168.937L379.377 162.758H381.033L382.276 157.021L382.69 159.228L385.175 149.078H390.144L392.214 160.552L393.871 162.317L395.527 160.552L400.497 166.73L402.567 164.082L404.224 172.026L406.294 170.702L409.607 176.88L412.092 176.439L414.162 173.791L417.061 165.406L420.788 168.937L422.444 160.552L427.414 163.641L430.726 152.167L437.766 149.078L439.837 152.167L441.079 147.313L443.15 150.843L446.049 140.252L448.947 139.81L451.432 149.078L456.401 153.491L459.3 148.195H460.956L461.785 145.989H466.754L468.824 150.843L471.723 144.224L474.208 145.989L474.622 139.369L479.591 130.102L485.389 132.308L486.217 128.778L491.6 136.28L492.429 131.867L494.499 133.632L499.883 128.778L501.953 115.539L508.165 125.247L513.134 127.454L515.205 125.247L516.861 108.037L519.76 106.271L522.659 104.947L525.143 78.0278L528.456 66.1126L530.527 74.9387L530.941 63.9061L535.082 66.5539L540.465 53.3148L543.778 30.367L547.091 33.8974L550.404 48.0192L552.474 14.9213L554.959 30.367L556.201 28.6018L557.444 31.6909L559.928 25.5126L562.827 36.9865L564.898 28.6018L565.726 44.4887L568.21 36.9865L572.352 38.7518L573.594 45.8126L577.321 20.217L578.563 25.5126L580.22 22.4235H582.29L588.502 8.30176L590.572 36.9865L594.713 40.0757L598.026 51.1083L600.511 40.517C601.339 43.7532 602.996 50.3139 602.996 50.667C602.996 51.02 604.928 41.3996 605.894 36.5452L608.379 41.8409L611.692 20.6583L617.904 15.8039L620.802 18.4518L622.459 12.7148L627.428 53.7561L629.499 49.3431L633.64 50.667L637.367 30.367L642.75 18.4518"
-                    stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" filter="url(#chartGlow)"/>
+                    stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" filter="url(#chartGlow1)" transform="translate(10, 16)"/>
                 </svg>
               </div>
 
-              <div className="flex justify-between text-xs font-bold uppercase text-[#B0B0B0]">
+              <div className="flex justify-between pr-16 text-xs font-bold uppercase text-[#B0B0B0]">
                 <span>'11</span>
                 <span>'12</span>
                 <span>'13</span>
@@ -883,18 +921,51 @@ const TraderDetailLanding: FC = () => {
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Index Performance</h2>
               <div className="h-px w-full bg-[#2E2744]" />
 
-              <div className="relative h-64 w-full">
-                <svg className="absolute right-0 top-0" width="60" height="20" viewBox="0 0 60 20" fill="none">
-                  <rect width="60" height="20" rx="4" fill="#A06AFF"/>
-                  <text x="30" y="14" fill="white" fontSize="12" fontWeight="700" textAnchor="middle">$507K</text>
-                </svg>
-                <svg className="h-full w-full" viewBox="0 0 680 240" fill="none" preserveAspectRatio="none">
+              <div className="relative h-64 w-full pt-2">
+                {/* Y-axis labels */}
+                <div className="absolute right-0 top-0 flex h-full flex-col justify-between py-2 pr-2 text-right">
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$500K</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$100K</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$10K</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$100</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$1</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">$0.01</span>
+                </div>
+
+                {/* Chart with grid lines */}
+                <svg className="h-full w-full pr-16" viewBox="0 0 712 291" fill="none" preserveAspectRatio="none">
+                  <defs>
+                    <filter id="chartGlow2" x="0" y="0" width="100%" height="100%">
+                      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                      <feComponentTransfer>
+                        <feFuncA type="linear" slope="0.24"/>
+                      </feComponentTransfer>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+
+                  {/* Grid lines */}
+                  <line x1="16" y1="67" x2="654" y2="67" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="107" x2="654" y2="107" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="147" x2="654" y2="147" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="187" x2="654" y2="187" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="227" x2="654" y2="227" stroke="#2E2744" strokeWidth="1"/>
+                  <line x1="16" y1="267" x2="654" y2="267" stroke="#523A83" strokeWidth="1"/>
+
+                  {/* Value badge */}
+                  <rect x="656" y="57" width="45" height="20" rx="4" fill="#A06AFF"/>
+                  <text x="678" y="71" fill="white" fontSize="12" fontWeight="700" textAnchor="middle">$507K</text>
+
+                  {/* Chart line */}
                   <path d="M8.75 208.213L16.204 211.302L20.7591 205.123L24.9002 207.33L26.1426 203.8L29.4554 205.123L33.5965 201.593L37.3235 203.8L49.3326 184.382L50.9891 185.706L56.3725 175.997L58.0289 179.528L60.0994 177.321L62.17 179.528L63.8264 175.997L66.7252 178.645L69.6239 175.997L72.1086 177.321C73.3509 173.35 75.8356 165.318 75.8356 164.965C75.8356 164.612 75.8356 156.58 75.8356 152.608L79.1484 156.58L81.6331 152.608C81.6331 153.491 81.6331 154.903 81.6331 153.491C81.6331 152.079 84.3938 142.311 85.7742 137.604L89.087 150.402L93.6422 139.369L96.9551 138.487L98.1974 130.984L100.682 132.308L101.924 127.895L105.237 135.839L106.894 145.106L108.55 136.721L110.207 141.576L111.863 153.491L113.934 138.487L117.661 149.078L122.63 130.984L126.771 134.515L128.427 130.102L130.498 133.632L133.811 129.219L138.366 144.224L140.851 136.721L144.578 139.369L147.476 129.219L148.305 134.515L151.203 130.102L155.344 146.871L157.415 142.458L158.243 146.871L161.97 144.224L163.212 152.167L164.869 145.989L168.596 142.458L170.252 145.106L171.495 139.369L174.807 146.871L177.292 145.989L181.019 152.167L183.504 145.989L186.817 160.993L190.129 159.669V150.402L192.614 147.754L198.826 157.021L201.725 149.078L202.967 157.021L205.452 156.139L207.936 152.167L209.593 156.139L211.249 144.224L212.491 146.871L214.562 141.576C215.942 144.518 218.703 149.872 218.703 147.754C218.703 145.636 219.531 137.163 219.945 133.191L225.329 141.576L227.813 142.458L228.642 140.693H231.126L234.439 144.224L237.338 145.106L238.166 140.693L240.237 143.341L245.62 142.458L248.933 135.839L252.246 142.458H253.902L255.145 139.369L258.457 145.989L260.114 142.458L263.013 149.078L269.638 147.754L272.123 161.876L274.193 154.373L277.92 152.167L281.233 165.406L283.304 160.993L287.859 167.613C289.654 164.523 293.325 158.61 293.657 159.669C293.988 160.728 297.936 168.642 299.868 172.467L302.353 168.937L303.595 174.232H306.08L308.565 169.819L309.807 173.35L316.847 164.523L318.917 152.167L321.816 155.697L323.887 150.402L328.442 145.989C330.65 150.255 335.067 158.698 335.067 158.345C335.067 157.992 336.172 152.902 336.724 150.402H339.209L340.451 149.078L345.006 159.669L346.662 157.021L348.733 165.406L350.804 167.613L353.288 183.5L355.359 177.763L357.843 179.528L359.914 162.758L360.742 165.406L363.227 164.523L364.883 169.819L365.297 162.758L368.61 159.669L371.923 169.819L374.408 163.641L377.307 168.937L379.377 162.758H381.033L382.276 157.021L382.69 159.228L385.175 149.078H390.144L392.214 160.552L393.871 162.317L395.527 160.552L400.497 166.73L402.567 164.082L404.224 172.026L406.294 170.702L409.607 176.88L412.092 176.439L414.162 173.791L417.061 165.406L420.788 168.937L422.444 160.552L427.414 163.641L430.726 152.167L437.766 149.078L439.837 152.167L441.079 147.313L443.15 150.843L446.049 140.252L448.947 139.81L451.432 149.078L456.401 153.491L459.3 148.195H460.956L461.785 145.989H466.754L468.824 150.843L471.723 144.224L474.208 145.989L474.622 139.369L479.591 130.102L485.389 132.308L486.217 128.778L491.6 136.28L492.429 131.867L494.499 133.632L499.883 128.778L501.953 115.539L508.165 125.247L513.134 127.454L515.205 125.247L516.861 108.037L519.76 106.271L522.659 104.947L525.143 78.0278L528.456 66.1126L530.527 74.9387L530.941 63.9061L535.082 66.5539L540.465 53.3148L543.778 30.367L547.091 33.8974L550.404 48.0192L552.474 14.9213L554.959 30.367L556.201 28.6018L557.444 31.6909L559.928 25.5126L562.827 36.9865L564.898 28.6018L565.726 44.4887L568.21 36.9865L572.352 38.7518L573.594 45.8126L577.321 20.217L578.563 25.5126L580.22 22.4235H582.29L588.502 8.30176L590.572 36.9865L594.713 40.0757L598.026 51.1083L600.511 40.517C601.339 43.7532 602.996 50.3139 602.996 50.667C602.996 51.02 604.928 41.3996 605.894 36.5452L608.379 41.8409L611.692 20.6583L617.904 15.8039L620.802 18.4518L622.459 12.7148L627.428 53.7561L629.499 49.3431L633.64 50.667L637.367 30.367L642.75 18.4518"
-                    stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" filter="url(#chartGlow)"/>
+                    stroke="#A06AFF" strokeWidth="1.5" strokeLinecap="round" filter="url(#chartGlow2)" transform="translate(10, 16)"/>
                 </svg>
               </div>
 
-              <div className="flex justify-between text-xs font-bold uppercase text-[#B0B0B0]">
+              <div className="flex justify-between pr-16 text-xs font-bold uppercase text-[#B0B0B0]">
                 <span>'11</span>
                 <span>'12</span>
                 <span>'13</span>
@@ -915,7 +986,9 @@ const TraderDetailLanding: FC = () => {
 
             {/* Trade Table */}
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] overflow-hidden">
-              <h2 className="px-4 pt-4 text-[19px] font-bold text-[#A06AFF]">John Smith: Stock Buying and Selling in Portfolio</h2>
+              <div className="px-4 pt-4 pb-4">
+                <h2 className="text-[19px] font-bold text-[#A06AFF]">John Smith: Stock Buying and Selling in Portfolio</h2>
+              </div>
 
               <div className="w-full overflow-x-auto">
                 <table className="w-full">
