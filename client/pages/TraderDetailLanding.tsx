@@ -1,7 +1,7 @@
 import { ArrowUpDown, Heart, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Heart as HeartIcon, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
+import { Heart as HeartIcon, MessageCircle as MessageCircleIcon, Share2, ShoppingCart, Star, Users } from "lucide-react";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { baseTraders, type Trader } from "@/data/marketplaceTraders";
 
@@ -327,7 +327,7 @@ const TraderDetailLanding: FC = () => {
                   type="button"
                   className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
                 >
-                  <MessageCircle className="h-4 w-4" />
+                  <MessageCircleIcon className="h-4 w-4" />
                   Chat
                 </button>
               </div>
