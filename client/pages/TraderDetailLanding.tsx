@@ -70,7 +70,7 @@ const TRADER_REVIEWS = [
     id: "review-1",
     author: "John Smith",
     avatar:
-      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F0802e48d16264d2788a8df1c96f6be08?format=webp&width=800",
     postedAt: "2 days ago",
     rating: 5,
     title: "Game changer for my trading strategy!",
@@ -81,7 +81,7 @@ const TRADER_REVIEWS = [
     id: "review-2",
     author: "John Smith",
     avatar:
-      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F0802e48d16264d2788a8df1c96f6be08?format=webp&width=800",
     postedAt: "1 week ago",
     rating: 4,
     title: "Great tool, but could use more features",
@@ -92,7 +92,7 @@ const TRADER_REVIEWS = [
     id: "review-3",
     author: "John Smith",
     avatar:
-      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F0802e48d16264d2788a8df1c96f6be08?format=webp&width=800",
     postedAt: "3 weeks ago",
     rating: 4.5,
     title: "Worth every penny",
