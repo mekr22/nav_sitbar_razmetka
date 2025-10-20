@@ -25,7 +25,7 @@ interface AnalystDetailsState {
   isFavorite?: boolean;
 }
 
-type TraderContentFilter = "all" | "trades" | "bots";
+type AnalystContentFilter = "all" | "trades" | "bots";
 
 const TRAIT_BADGES = [
   { label: "Stable", backgroundClass: "bg-[#1C3430]", textClass: "text-[#2EBD85]" },
