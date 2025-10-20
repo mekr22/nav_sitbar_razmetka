@@ -238,114 +238,103 @@ const TraderDetailLanding: FC = () => {
                     />
                   </button>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="flex flex-col gap-4 p-4">
-                {/* Name and PRO badge */}
-                <div className="flex items-center gap-2">
-                  <h3 className="text-2xl font-bold text-white">{trader.name}</h3>
-                  <div className="rounded-md bg-[#A06AFF] px-1">
-                    <span className="text-xs font-extrabold text-white">PRO</span>
+                <div className="relative z-10 flex flex-col gap-4 px-4 pb-6 pt-32">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-2xl font-bold text-white">{trader.name}</h3>
+                    <div className="rounded-md bg-[#A06AFF] px-1">
+                      <span className="text-xs font-extrabold text-white">PRO</span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Badge */}
-                <div className="text-xs font-bold uppercase text-[#B0B0B0]">{trader.badge}</div>
+                  <div className="text-xs font-bold uppercase text-[#B0B0B0]">{trader.badge}</div>
 
-                {/* Badges Row */}
-                <div className="flex flex-wrap items-center gap-1">
-                  <div className="flex items-center gap-1 rounded bg-[#3E321D] px-1 py-0.5">
-                    <span className="text-xs font-extrabold uppercase text-[#FFA800]">
-                      HEDGE FUND MANAGER
-                    </span>
+                  <div className="flex flex-wrap items-center gap-1">
+                    <div className="flex items-center gap-1 rounded bg-[#3E321D] px-1 py-0.5">
+                      <span className="text-xs font-extrabold uppercase text-[#FFA800]">
+                        HEDGE FUND MANAGER
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5">
+                      <span className="text-xs font-bold text-[#2EBD85]">{trader.rating}</span>
+                    </div>
+                    <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                      <Users className="h-4 w-4 text-[#B0B0B0]" />
+                      <span className="text-xs font-bold text-white">{trader.followers}</span>
+                    </div>
+                    <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                      <svg
+                        className="h-4 w-4 text-[#B0B0B0]"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M13.1663 7.33301V6.66634C13.1663 4.15218 13.1663 2.89511 12.3852 2.11405C11.6042 1.33301 10.3471 1.33301 7.83298 1.33301H7.16638C4.65223 1.33301 3.39515 1.33301 2.61411 2.11405C1.83306 2.89509 1.83305 4.15215 1.83303 6.66629L1.83301 9.33301C1.83298 11.8471 1.83297 13.1042 2.61399 13.8853C3.39504 14.6663 4.65216 14.6663 7.16631 14.6663"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M4.83301 4.66699H10.1663M4.83301 8.00033H10.1663"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                        />
+                        <path
+                          d="M8.83301 13.8842V14.6663H9.61527C9.88821 14.6663 10.0247 14.6663 10.1473 14.6155C10.2701 14.5647 10.3665 14.4682 10.5595 14.2753L13.7753 11.0593C13.9573 10.8773 14.0483 10.7863 14.0969 10.6881C14.1895 10.5013 14.1895 10.2821 14.0969 10.0953C14.0483 9.99707 13.9573 9.90607 13.7753 9.72407C13.5932 9.54207 13.5022 9.45107 13.404 9.40241C13.2172 9.30987 12.9979 9.30987 12.8111 9.40241C12.7129 9.45107 12.6219 9.54207 12.4399 9.72407L9.22414 12.9401C9.03114 13.133 8.93467 13.2295 8.88387 13.3521C8.83301 13.4749 8.83301 13.6113 8.83301 13.8842Z"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                      <span className="text-xs font-bold text-white">{trader.publications}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5">
-                    <span className="text-xs font-bold text-[#2EBD85]">{trader.rating}</span>
-                  </div>
-                  <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
-                    <Users className="h-4 w-4 text-[#B0B0B0]" />
-                    <span className="text-xs font-bold text-white">{trader.followers}</span>
-                  </div>
-                  <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
-                    <svg
-                      className="h-4 w-4 text-[#B0B0B0]"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M13.1663 7.33301V6.66634C13.1663 4.15218 13.1663 2.89511 12.3852 2.11405C11.6042 1.33301 10.3471 1.33301 7.83298 1.33301H7.16638C4.65223 1.33301 3.39515 1.33301 2.61411 2.11405C1.83306 2.89509 1.83305 4.15215 1.83303 6.66629L1.83301 9.33301C1.83298 11.8471 1.83297 13.1042 2.61399 13.8853C3.39504 14.6663 4.65216 14.6663 7.16631 14.6663"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M4.83301 4.66699H10.1663M4.83301 8.00033H10.1663"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M8.83301 13.8842V14.6663H9.61527C9.88821 14.6663 10.0247 14.6663 10.1473 14.6155C10.2701 14.5647 10.3665 14.4682 10.5595 14.2753L13.7753 11.0593C13.9573 10.8773 14.0483 10.7863 14.0969 10.6881C14.1895 10.5013 14.1895 10.2821 14.0969 10.0953C14.0483 9.99707 13.9573 9.90607 13.7753 9.72407C13.5932 9.54207 13.5022 9.45107 13.404 9.40241C13.2172 9.30987 12.9979 9.30987 12.8111 9.40241C12.7129 9.45107 12.6219 9.54207 12.4399 9.72407L9.22414 12.9401C9.03114 13.133 8.93467 13.2295 8.88387 13.3521C8.83301 13.4749 8.83301 13.6113 8.83301 13.8842Z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="text-xs font-bold text-white">{trader.publications}</span>
-                  </div>
-                </div>
 
-                {/* Divider */}
-                <div className="h-px w-full bg-[#181B22]" />
+                  <div className="h-px w-full bg-[#181B22]" />
 
-                {/* Markets, Assets Info */}
-                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center gap-1 text-xs font-bold uppercase">
+                      <span className="text-[#B0B0B0]">Markets:</span>
+                      <span className="text-white">BINANCE, NASDAQ</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs font-bold uppercase">
+                      <span className="text-[#B0B0B0]">Assets:</span>
+                      <span className="text-white">BTC, ETH, TESLA, GOLD</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs font-bold uppercase">
+                      <span className="text-[#B0B0B0]">Analysis:</span>
+                      <span className="text-white">TECHNICAL & ANALYSIS.</span>
+                    </div>
+                  </div>
+
+                  <div className="h-px w-full bg-[#181B22]" />
+
                   <div className="flex items-center gap-1 text-xs font-bold uppercase">
-                    <span className="text-[#B0B0B0]">Markets:</span>
-                    <span className="text-white">BINANCE, NASDAQ</span>
+                    <span className="text-[#B0B0B0]">Forecast Accuracy:</span>
+                    <span className="text-[#2EBD85]">{trader.accuracy}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-xs font-bold uppercase">
-                    <span className="text-[#B0B0B0]">Assets:</span>
-                    <span className="text-white">BTC, ETH, TESLA, GOLD</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-xs font-bold uppercase">
-                    <span className="text-[#B0B0B0]">Analysis:</span>
-                    <span className="text-white">TECHNICAL & ANALYSIS.</span>
-                  </div>
+
+                  <div className="text-2xl font-bold text-white">{trader.price}</div>
+
+                  <button
+                    type="button"
+                    className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
+                  >
+                    <ShoppingCart className="h-5 w-5" />
+                    Buy
+                  </button>
+
+                  <button
+                    type="button"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Chat
+                  </button>
                 </div>
-
-                {/* Divider */}
-                <div className="h-px w-full bg-[#181B22]" />
-
-                {/* Forecast Accuracy */}
-                <div className="flex items-center gap-1 text-xs font-bold uppercase">
-                  <span className="text-[#B0B0B0]">Forecast Accuracy:</span>
-                  <span className="text-[#2EBD85]">{trader.accuracy}</span>
-                </div>
-
-                {/* Price */}
-                <div className="text-2xl font-bold text-white">{trader.price}</div>
-
-                {/* Buy Button */}
-                <button
-                  type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
-                >
-                  <ShoppingCart className="h-5 w-5" />
-                  Buy
-                </button>
-
-                {/* Chat Button */}
-                <button
-                  type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-3 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Chat
-                </button>
               </div>
             </div>
           </div>
