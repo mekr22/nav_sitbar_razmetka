@@ -110,6 +110,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [isChatActive, setIsChatActive] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -441,7 +442,16 @@ const InvestmentConsultantDetailLanding: FC = () => {
               </div>
 
               <div className="mt-4 flex flex-col gap-2">
-                <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-3 py-2 backdrop-blur-[50px]">
+                <button
+                  type="button"
+                  aria-pressed={isChatActive}
+                  onClick={() => setIsChatActive((prev) => !prev)}
+                  className={`flex items-center justify-center gap-2 rounded-full px-3 py-2 backdrop-blur-[50px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] ${
+                    isChatActive
+                      ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]"
+                      : "border border-[#181B22] bg-[#0C1014]/50 hover:border-[#1F2230]"
+                  }`}
+                >
                   <MessageCircle className="h-4 w-4 text-white" />
                   <span className="text-[15px] font-bold text-white">Chat</span>
                 </button>
