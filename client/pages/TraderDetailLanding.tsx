@@ -394,7 +394,7 @@ const TraderDetailLanding: FC = () => {
                   <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Sociable</span>
                 </div>
               </div>
-              <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:min-w-[220px] sm:max-w-[280px] sm:items-end sm:self-start sm:pl-6">
+              <div className="flex w-full flex-col items-center gap-4 sm:w-auto sm:min-w-[220px] sm:max-w-[280px] sm:items-end sm:self-start sm:pl-6 sm:pr-4">
                 <div className="flex w-full items-center justify-center gap-4 self-end sm:w-full sm:justify-end sm:gap-6">
                   <button className="flex items-center gap-1 text-xs font-bold text-white transition-colors hover:text-[#A06AFF]">
                     <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
