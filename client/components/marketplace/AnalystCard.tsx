@@ -68,7 +68,15 @@ const AnalystCard: FC<{
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-}> = ({ analyst, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+}> = ({ analyst, isActive, onSelect, isFavorite, onToggleFavorite }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    onSelect();
+    navigate("/marketplace/analyst-details", { state: { analyst } });
+  };
+
+  return (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
@@ -167,6 +175,7 @@ const AnalystCard: FC<{
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default AnalystCard;

@@ -68,7 +68,15 @@ const TraderCard: FC<{
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-}> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+}> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    onSelect();
+    navigate("/marketplace/trader-details", { state: { trader } });
+  };
+
+  return (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
@@ -182,6 +190,7 @@ const TraderCard: FC<{
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default TraderCard;
