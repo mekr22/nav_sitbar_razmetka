@@ -621,7 +621,7 @@ const TraderDetailLanding: FC = () => {
               <div className="relative z-10 flex flex-col gap-4 px-4 pb-6 pt-[7.25rem] sm:pt-[7.75rem]">
                 <div className="flex items-center gap-2">
                   <h3 className="text-2xl font-bold text-white">{trader.name}</h3>
-                  <div className="inline-flex h-7 items-center rounded-full bg-[#A06AFF] px-3">
+                  <div className="rounded-md bg-[#A06AFF] px-1">
                   <span className="text-xs font-extrabold text-white">PRO</span>
                 </div>
                 </div>
