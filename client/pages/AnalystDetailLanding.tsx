@@ -35,7 +35,7 @@ const TRAIT_BADGES = [
   { label: "Sociable", backgroundClass: "bg-[#6AA6FF]/[0.16]", textClass: "text-[#6AA6FF]" },
 ] as const;
 
-const CONTENT_FILTERS: { id: TraderContentFilter; label: string }[] = [
+const CONTENT_FILTERS: { id: AnalystContentFilter; label: string }[] = [
   { id: "all", label: "All" },
   { id: "trades", label: "Trades" },
   { id: "bots", label: "Bots" },
