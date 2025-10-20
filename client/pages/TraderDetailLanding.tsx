@@ -205,7 +205,7 @@ const TraderDetailLanding: FC = () => {
             onClick={handleNavigateToCategory}
             className="font-normal text-[#B0B0B0] transition-colors hover:text-white"
           >
-            Investment consultants and Analysts and Traders
+            Traders
           </button>
           <span className="font-bold text-[#B0B0B0]">/</span>
           <span className="font-bold text-white">{trader.name}</span>
