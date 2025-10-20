@@ -1,4 +1,4 @@
-import { Check, MessageCircle, ShoppingCart, Star, Users } from "lucide-react";
+import { ArrowUpDown, Heart, MessageCircle, Share2, ShoppingCart, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
@@ -15,13 +15,6 @@ const DEFAULT_CHART_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F2d6d24710ba34771b2ab72e3d53cd2ec?format=webp&width=800";
 const FAVORITE_STORAGE_KEY = "trader-detail-favorites";
 
-const PRODUCT_ACTIONS = [
-  { key: "subscribe", label: "Subscribe", icon: Check },
-  { key: "chat", label: "Chat", icon: MessageCircle },
-] as const;
-
-type ProductActionKey = (typeof PRODUCT_ACTIONS)[number]["key"];
-
 interface TraderDetailsState {
   trader?: Trader;
   scrollToTop?: boolean;
@@ -31,9 +24,6 @@ interface TraderDetailsState {
 const TraderDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
-  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
-  const [showOriginalDescription, setShowOriginalDescription] = useState(false);
 
   const locationState = (location.state as TraderDetailsState | null) ?? null;
 
@@ -108,8 +98,8 @@ const TraderDetailLanding: FC = () => {
       ...baseTraders[0],
       price: "$10 / month",
       chartImage: DEFAULT_CHART_IMAGE,
-      description: "Professional trader specializing in securities trading with over 5 years of experience. Focused on momentum strategies and technical analysis with consistent profitability.",
-      originalDescription: "Professional trader specializing in securities trading with over 5 years of experience. Focused on momentum strategies and technical analysis with consistent profitability.",
+      description: "This algorithm is designed to optimize your trading decisions by analyzing market data in real time. It uses a combination of historical patterns and predictive models to identify high-probability entry and exit points. With a focus on risk management, the algorithm adjusts its strategy based on changing market conditions.",
+      originalDescription: "This algorithm is designed to optimize your trading decisions by analyzing market data in real time. It uses a combination of historical patterns and predictive models to identify high-probability entry and exit points. With a focus on risk management, the algorithm adjusts its strategy based on changing market conditions.",
     };
 
     const provided = locationState?.trader as Partial<ExtendedTrader> | undefined;
@@ -154,12 +144,6 @@ const TraderDetailLanding: FC = () => {
     });
   }, [navigate]);
 
-  const hasOriginalDescription = Boolean(trader.originalDescription && trader.originalDescription.trim().length > 0);
-  const descriptionToDisplay =
-    showOriginalDescription && hasOriginalDescription
-      ? trader.originalDescription ?? ""
-      : trader.description ?? "";
-
   return (
     <div className="flex flex-col gap-6 max-[360px]:gap-4">
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
@@ -191,102 +175,8 @@ const TraderDetailLanding: FC = () => {
 
       <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4 max-[360px]:px-2">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-6 max-[360px]:gap-4">
-          <div className="flex flex-col gap-6 lg:flex-[2] lg:min-w-0 max-[360px]:gap-4">
-            {/* Description */}
-            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">About {trader.name}</h2>
-              </div>
-              <div className="p-4 max-[360px]:p-3">
-                <div
-                  className={`relative text-[15px] font-medium leading-relaxed text-white/90 max-[360px]:text-sm ${
-                    isDescriptionExpanded ? "" : "max-h-[176px] overflow-hidden pr-1"
-                  }`}
-                >
-                  <p className="whitespace-pre-line">{descriptionToDisplay}</p>
-                  {!isDescriptionExpanded && (
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-14 bg-gradient-to-b from-transparent to-[#0C1014]" />
-                  )}
-                </div>
-                <div className="mt-4 flex flex-wrap items-center gap-6 text-[15px] font-medium max-[360px]:gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setIsDescriptionExpanded((prev) => !prev)}
-                    className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                  >
-                    {isDescriptionExpanded ? "Collapse" : "Expand"}
-                  </button>
-                  {hasOriginalDescription && (
-                    <button
-                      type="button"
-                      onClick={() => setShowOriginalDescription((prev) => !prev)}
-                      className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                    >
-                      {showOriginalDescription ? "Show Translation" : "Show Original"}
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Details Section */}
-            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
-              <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Trading Details</h2>
-              </div>
-              <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 max-[360px]:gap-3 max-[360px]:p-3">
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">ROI (Month)</span>
-                  <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
-                    {trader.roiMonth}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">ROI (Quarter)</span>
-                  <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
-                    {trader.roiQuarter}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Avg Profitability</span>
-                  <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {trader.avgProfitability}
-                  </span>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-4 border-t border-[#181B22] p-4 sm:grid-cols-3 max-[360px]:gap-3 max-[360px]:p-3">
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Accuracy</span>
-                  <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
-                    {trader.accuracy}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Experience</span>
-                  <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {trader.experience}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Trades (30 Days)</span>
-                  <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {trader.trades30Days}
-                  </span>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-4 border-t border-[#181B22] p-4 max-[360px]:gap-3 max-[360px]:p-3">
-                <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Certification</span>
-                  <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                    {trader.certification}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Sidebar - Trader Card (Figma Design) */}
-          <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-1 lg:min-w-0 max-[360px]:gap-4">
+          {/* Left Sidebar - Trader Card (Compact) */}
+          <div className="flex w-full flex-col gap-6 lg:max-w-[339px] lg:flex-shrink-0 max-[360px]:gap-4">
             <div className="relative flex w-full flex-col overflow-hidden rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               {/* Background gradient chart */}
               <div className="relative h-[220px] w-full overflow-hidden border-b border-[#181B22]">
@@ -457,6 +347,120 @@ const TraderDetailLanding: FC = () => {
                   Chat
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Right Side - Detailed Information (Figma Design) */}
+          <div className="flex flex-1 flex-col gap-6 min-w-0 max-[360px]:gap-4">
+            {/* Stats Header */}
+            <div className="flex items-center justify-between gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Followers</span>
+                    <span className="text-[15px] font-bold text-white">85</span>
+                  </div>
+                  <div className="h-9 w-px bg-[#2E2744]" />
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Trading Days</span>
+                    <span className="text-[15px] font-bold text-white">438</span>
+                  </div>
+                  <div className="h-9 w-px bg-[#2E2744]" />
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Stability Index</span>
+                    <span className="text-[15px] font-bold text-white">5.0/5.0</span>
+                  </div>
+                  <div className="h-9 w-px bg-[#2E2744]" />
+                  <div className="flex flex-col gap-1">
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">Views (7d)</span>
+                    <span className="text-[15px] font-bold text-white">776</span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-4">
+                  <div className="flex items-center gap-1 text-xs font-bold text-white">
+                    <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                      <path d="M2 8C2 8.78793 2.15519 9.56815 2.45672 10.2961C2.75825 11.0241 3.20021 11.6855 3.75736 12.2426C4.31451 12.7998 4.97595 13.2417 5.7039 13.5433C6.43185 13.8448 7.21207 14 8 14C8.78793 14 9.56815 13.8448 10.2961 13.5433C11.0241 13.2417 11.6855 12.7998 12.2426 12.2426C12.7998 11.6855 13.2417 11.0241 13.5433 10.2961C13.8448 9.56815 14 8.78793 14 8C14 7.21207 13.8448 6.43185 13.5433 5.7039C13.2417 4.97595 12.7998 4.31451 12.2426 3.75736C11.6855 3.20021 11.0241 2.75825 10.2961 2.45672C9.56815 2.15519 8.78793 2 8 2C7.21207 2 6.43185 2.15519 5.7039 2.45672C4.97595 2.75825 4.31451 3.20021 3.75736 3.75736C3.20021 4.31451 2.75825 4.97595 2.45672 5.7039C2.15519 6.43185 2 7.21207 2 8Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M9.86667 6.00043C9.7459 5.79094 9.57043 5.61823 9.35905 5.5008C9.14768 5.38337 8.90834 5.32563 8.66667 5.33376H7.33333C6.97971 5.33376 6.64057 5.47424 6.39052 5.72429C6.14048 5.97434 6 6.31347 6 6.6671C6 7.02072 6.14048 7.35986 6.39052 7.6099C6.64057 7.85995 6.97971 8.00043 7.33333 8.00043H8.66667C9.02029 8.00043 9.35943 8.14091 9.60948 8.39095C9.85952 8.641 10 8.98014 10 9.33376C10 9.68738 9.85952 10.0265 9.60948 10.2766C9.35943 10.5266 9.02029 10.6671 8.66667 10.6671H7.33333C7.09166 10.6752 6.85232 10.6175 6.64095 10.5001C6.42957 10.3826 6.2541 10.2099 6.13333 10.0004" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M8 4.66699V11.3337" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    AUM 210,390.40 USDT
+                  </div>
+                  <div className="h-5 w-px bg-[#2E2744]" />
+                  <div className="flex items-center gap-1 text-xs font-bold text-white">
+                    <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                      <path d="M11.3337 5.33366V3.33366C11.3337 3.15685 11.2634 2.98728 11.1384 2.86225C11.0134 2.73723 10.8438 2.66699 10.667 2.66699H4.00033C3.6467 2.66699 3.30756 2.80747 3.05752 3.05752C2.80747 3.30756 2.66699 3.6467 2.66699 4.00033M2.66699 4.00033C2.66699 4.35395 2.80747 4.69309 3.05752 4.94313C3.30756 5.19318 3.6467 5.33366 4.00033 5.33366H12.0003C12.1771 5.33366 12.3467 5.4039 12.4717 5.52892C12.5968 5.65395 12.667 5.82351 12.667 6.00033V8.00033M2.66699 4.00033V12.0003C2.66699 12.3539 2.80747 12.6931 3.05752 12.9431C3.30756 13.1932 3.6467 13.3337 4.00033 13.3337H12.0003C12.1771 13.3337 12.3467 13.2634 12.4717 13.1384C12.5968 13.0134 12.667 12.8438 12.667 12.667V10.667" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M13.333 8V10.6667H10.6663C10.3127 10.6667 9.97358 10.5262 9.72353 10.2761C9.47348 10.0261 9.33301 9.68696 9.33301 9.33333C9.33301 8.97971 9.47348 8.64057 9.72353 8.39052C9.97358 8.14048 10.3127 8 10.6663 8H13.333Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Total Assets: 25,020.85 USDT
+                  </div>
+                  <div className="h-5 w-px bg-[#2E2744]" />
+                  <div className="flex items-center gap-1 text-xs font-bold text-white">
+                    <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 2V8H14" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 8C2 8.78793 2.15519 9.56815 2.45672 10.2961C2.75825 11.0241 3.20021 11.6855 3.75736 12.2426C4.31451 12.7998 4.97595 13.2417 5.7039 13.5433C6.43185 13.8448 7.21207 14 8 14C8.78793 14 9.56815 13.8448 10.2961 13.5433C11.0241 13.2417 11.6855 12.7998 12.2426 12.2426C12.7998 11.6855 13.2417 11.0241 13.5433 10.2961C13.8448 9.56815 14 8.78793 14 8C14 7.21207 13.8448 6.43185 13.5433 5.7039C13.2417 4.97595 12.7998 4.31451 12.2426 3.75736C11.6855 3.20021 11.0241 2.75825 10.2961 2.45672C9.56815 2.15519 8.78793 2 8 2C7.21207 2 6.43185 2.15519 5.7039 2.45672C4.97595 2.75825 4.31451 3.20021 3.75736 3.75736C3.20021 4.31451 2.75825 4.97595 2.45672 5.7039C2.15519 6.43185 2 7.21207 2 8Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Profit Sharing: 10%
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold uppercase text-[#2EBD85]">Stable</span>
+                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">High Frequency</span>
+                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Long-Term</span>
+                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Veterans</span>
+                  <span className="rounded bg-[#6AA5FF]/16 px-1 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">Sociable</span>
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <button className="flex items-center gap-1 text-xs font-bold text-white">
+                    <Share2 className="h-4 w-4" />
+                    Share
+                  </button>
+                  <div className="h-5 w-px bg-white/24" />
+                  <button className="flex items-center gap-1 text-xs font-bold text-white">
+                    <Heart className="h-4 w-4" />
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Bio Section */}
+            <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+              <div className="border-b border-[#181B22] p-4">
+                <h2 className="text-[19px] font-bold text-[#A06AFF]">Bio</h2>
+              </div>
+              <div className="p-4">
+                <p className="text-[15px] font-normal text-white">{trader.description}</p>
+              </div>
+            </div>
+
+            {/* Tab Navigation - Placeholder for now */}
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-3 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
+                <button className="rounded-[32px] border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                  Statistics
+                </button>
+                <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-3 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                  Trades
+                </button>
+              </div>
+              <div className="flex gap-2 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
+                <button className="rounded-[32px] bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 py-2 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                  All
+                </button>
+                <button className="rounded-[32px] border border-[#181B22] bg-[#0C1014]/50 px-4 py-2 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                  Trades
+                </button>
+                <button className="rounded-[32px] border border-[#181B22] bg-[#0C1014]/50 px-4 py-2 text-[15px] font-bold text-white backdrop-blur-[58px]">
+                  Bots
+                </button>
+              </div>
+            </div>
+
+            {/* Placeholder for additional sections */}
+            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+              <p className="text-center text-sm text-[#B0B0B0]">Additional sections (Allocation, Performance Charts, Trade Table, Comments) coming soon...</p>
             </div>
           </div>
         </div>
