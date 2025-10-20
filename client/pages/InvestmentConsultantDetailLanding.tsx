@@ -389,14 +389,14 @@ const InvestmentConsultantDetailLanding: FC = () => {
                 <h1 className="text-[31px] font-bold text-white">{consultant.name}, {consultant.credentials}</h1>
                 
                 <div className="flex flex-wrap items-center gap-4 text-[15px] font-bold">
-                  <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1">
-                    <MapPin className="h-4 w-4 text-white" />
-                    <span className="text-white">{consultant.location}</span>
+                  <div className="flex items-center gap-2 text-white">
+                    <MapPin className="h-4 w-4" />
+                    <span>{consultant.location}</span>
                   </div>
                   <div className="h-6 w-px bg-[#181B22]" />
-                  <div className="flex items-center gap-1">
-                    <Globe className="h-4 w-4 text-white" />
-                    <span className="text-white">Serving Clients Nationwide</span>
+                  <div className="flex items-center gap-2 text-white">
+                    <Globe className="h-4 w-4" />
+                    <span>Serving Clients Nationwide</span>
                   </div>
                 </div>
 
