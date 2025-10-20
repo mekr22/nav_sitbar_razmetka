@@ -243,7 +243,17 @@ const TraderDetailLanding: FC = () => {
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [isCompactLayout, setIsCompactLayout] = useState(false);
 
-  const reviews = useMemo(() => TRADER_REVIEWS, []);
+  const reviews = useMemo(
+    () =>
+      TRADER_REVIEWS.filter(
+        (review) =>
+          typeof review?.author === "string" &&
+          review.author.trim().length > 0 &&
+          typeof review?.message === "string" &&
+          review.message.trim().length > 0,
+      ),
+    [],
+  );
   const averageRating = TRADER_AVERAGE_RATING;
   const totalReviews = TRADER_TOTAL_REVIEWS;
 
@@ -805,126 +815,76 @@ const TraderDetailLanding: FC = () => {
 
             {/* Reviews */}
             <div className="flex w-full flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px] lg:max-w-[339px]">
-              <div className="flex flex-col gap-4 border-b border-[#181B22] p-4">
-                <h3 className="text-[19px] font-bold text-[#A06AFF]">Reviews</h3>
-                <div className="flex items-center gap-8">
-                  <div className="text-[31px] font-bold text-[#A06AFF]">4.5</div>
+              <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 max-[360px]:gap-3 max-[360px]:p-3">
+                <h3 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Reviews</h3>
+                <div className="flex items-center gap-4 max-[360px]:gap-3">
+                  <span className="text-[31px] font-bold leading-none text-[#A06AFF] max-[360px]:text-2xl">
+                    {averageRating.toFixed(1)}
+                  </span>
                   <div className="flex flex-col gap-0.5">
-                    <div className="flex gap-0.5">
-                      {[1,2,3,4].map((i) => (
-                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
-                        </svg>
-                      ))}
-                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#2E2744"/>
-                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="url(#paint_half_star)"/>
-                        <defs>
-                          <linearGradient id="paint_half_star" x1="14.6663" y1="7.99968" x2="1.33301" y2="7.99968" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.5" stopColor="#A06AFF" stopOpacity="0"/>
-                            <stop offset="0.502929" stopColor="#A06AFF"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                    <div className="flex items-center gap-0.5">
+                      {renderStars(averageRating)}
                     </div>
-                    <span className="text-xs font-bold text-[#B0B0B0]">Based on 28 reviews</span>
+                    <p className="text-xs font-bold text-[#B0B0B0]">
+                      Based on {totalReviews} reviews
+                    </p>
                   </div>
                 </div>
               </div>
 
-              {/* Review Items */}
               <div className="flex flex-col">
-                <div className="flex flex-col border-b border-[#181B22]">
-                  <div className="flex items-start justify-between p-4 pb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-purple-400 to-blue-500" />
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[15px] font-bold text-white">John Smith</span>
-                        <span className="text-xs font-bold text-[#B0B0B0]">2 days ago</span>
+                {(showAllReviews ? reviews : reviews.slice(0, 3)).map((review, index) => (
+                  <div key={review.id} className="flex flex-col">
+                    {index > 0 && (
+                      <div className="px-4 py-2 max-[360px]:px-3">
+                        <div className="h-px bg-[#181B22]" />
                       </div>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {[1,2,3,4,5].map((i) => (
-                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
-                        </svg>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-2 px-4 pb-4 pt-2">
-                    <h4 className="text-[15px] font-bold text-white">Game changer for my trading strategy!</h4>
-                    <p className="text-[15px] text-[#B0B0B0]">This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.</p>
-                  </div>
-                </div>
+                    )}
 
-                <div className="flex flex-col border-b border-[#181B22]">
-                  <div className="flex items-start justify-between p-4 pb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-green-400 to-teal-500" />
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[15px] font-bold text-white">John Smith</span>
-                        <span className="text-xs font-bold text-[#B0B0B0]">1 week ago</span>
+                    <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
+                      <div className="flex items-center gap-2">
+                        <img
+                          src={review.avatar}
+                          alt={review.author}
+                          className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
+                        />
+                        <div className="flex flex-col gap-1">
+                          <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                            {review.author}
+                          </span>
+                          <span className="text-xs font-bold text-[#B0B0B0]">
+                            {review.postedAt}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-0.5">
+                        {renderStars(review.rating)}
                       </div>
                     </div>
-                    <div className="flex gap-0.5">
-                      {[1,2,3,4].map((i) => (
-                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
-                        </svg>
-                      ))}
-                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#2E2744"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-2 px-4 pb-4 pt-2">
-                    <h4 className="text-[15px] font-bold text-white">Great tool, but could use more features</h4>
-                    <p className="text-[15px] text-[#B0B0B0]">RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.</p>
-                  </div>
-                </div>
 
-                <div className="flex flex-col">
-                  <div className="flex items-start justify-between p-4 pb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="h-11 w-11 rounded-full bg-gradient-to-br from-orange-400 to-red-500" />
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[15px] font-bold text-white">John Smith</span>
-                        <span className="text-xs font-bold text-[#B0B0B0]">3 weeks ago</span>
-                      </div>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {[1,2,3,4].map((i) => (
-                        <svg key={i} className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                          <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#A06AFF"/>
-                        </svg>
-                      ))}
-                      <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none">
-                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="#2E2744"/>
-                        <path d="M9.15141 2.29579L10.3246 4.66159C10.4846 4.99092 10.9112 5.30681 11.2712 5.36729L13.3976 5.72351C14.7575 5.95203 15.0775 6.94674 14.0975 7.92801L12.4444 9.59481C12.1644 9.87707 12.0111 10.4215 12.0977 10.8113L12.5711 12.8747C12.9443 14.5079 12.0844 15.1397 10.6513 14.2861L8.65814 13.0965C8.29821 12.8814 7.70494 12.8814 7.33827 13.0965L5.34519 14.2861C3.91867 15.1397 3.05211 14.5011 3.4254 12.8747L3.89868 10.8113C3.98533 10.4215 3.83202 9.87707 3.55205 9.59481L1.8989 7.92801C0.925674 6.94674 1.23897 5.95203 2.59882 5.72351L4.72525 5.36729C5.07855 5.30681 5.50517 4.99092 5.66515 4.66159L6.83834 2.29579C7.47827 1.01208 8.51814 1.01208 9.15141 2.29579Z" fill="url(#paint_half_star2)"/>
-                        <defs>
-                          <linearGradient id="paint_half_star2" x1="14.6663" y1="7.99968" x2="1.33301" y2="7.99968" gradientUnits="userSpaceOnUse">
-                            <stop offset="0.5" stopColor="#A06AFF" stopOpacity="0"/>
-                            <stop offset="0.502929" stopColor="#A06AFF"/>
-                          </linearGradient>
-                        </defs>
-                      </svg>
+                    <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
+                      <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                        {review.title}
+                      </h4>
+                      <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">
+                        {review.message}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2 px-4 pb-4 pt-2">
-                    <h4 className="text-[15px] font-bold text-white">Worth every penny</h4>
-                    <p className="text-[15px] text-[#B0B0B0]">I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.</p>
-                  </div>
-                </div>
+                ))}
               </div>
 
-              <div className="flex items-center justify-center p-4">
-                <button
-                  type="button"
-                  className="flex h-[26px] flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-2.5 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  Show More Reviews
-                </button>
-              </div>
+              {reviews.length > 0 && (
+                <div className="p-4 max-[360px]:p-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllReviews(!showAllReviews)}
+                    className="flex h-[26px] w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 text-center text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:text-sm"
+                  >
+                    {showAllReviews ? "Show Less Reviews" : "Show More Reviews"}
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* Disclaimer */}
@@ -1497,6 +1457,14 @@ const TraderDetailLanding: FC = () => {
           </div>
         </div>
       </div>
+      <svg width="0" height="0">
+        <defs>
+          <linearGradient id="half-star" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="50%" stopColor="#A06AFF" />
+            <stop offset="50%" stopColor="#2E2744" />
+          </linearGradient>
+        </defs>
+      </svg>
     </div>
   );
 };
