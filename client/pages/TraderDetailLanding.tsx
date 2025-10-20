@@ -79,6 +79,8 @@ const TRADER_TOTAL_REVIEWS = 28;
 const TOTAL_COMMENTS_COUNT = 20;
 const COMMENT_AVATAR =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
+const PORTFOLIO_COMPANY_AVATAR =
+  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F18521892e3ab461db339a01c3ae506cf?format=webp&width=800";
 
 type CommentNode = {
   id: string;
@@ -1346,7 +1348,11 @@ const TraderDetailLanding: FC = () => {
                       <tr key={i} className="border-b border-[#181B22]">
                         <td className="px-4 py-4">
                           <div className="flex items-center gap-3">
-                            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-blue-500" />
+                            <img
+                              src={PORTFOLIO_COMPANY_AVATAR}
+                              alt="Portfolio company logo"
+                              className="h-10 w-10 rounded-full object-cover"
+                            />
                             <div className="flex flex-col">
                               <span className="text-[15px] font-bold text-white">LNZL</span>
                               <span className="text-xs font-bold uppercase text-[#B0B0B0]">Lenzoloto</span>
