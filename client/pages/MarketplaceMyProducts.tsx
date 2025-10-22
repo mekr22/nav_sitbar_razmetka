@@ -134,7 +134,10 @@ const CourseCard: FC<{
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-  onOpenDetails: (course: MarketplaceCourse, meta?: { isFavorite: boolean }) => void;
+  onOpenDetails: (
+    course: MarketplaceCourse,
+    meta?: { isFavorite: boolean },
+  ) => void;
 }> = ({
   course,
   isActive,
@@ -633,63 +636,63 @@ const MarketplaceMyProducts: FC = () => {
   const featuredScriptProduct = baseScriptProducts[0];
   const featuredOtherProduct = baseOtherProducts[0];
 
-const openStrategyDetails = useCallback(
-  (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
-    navigate("/marketplace/strategy-details", {
-      state: {
-        scrollToTop: true,
-        category: "Strategies and Portfolios" as MarketplaceCategory,
-        strategy: selectedStrategy,
-        isFavorite: Boolean(meta?.isFavorite),
-      },
-    });
-  },
-  [navigate],
-);
+  const openStrategyDetails = useCallback(
+    (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/strategy-details", {
+        state: {
+          scrollToTop: true,
+          category: "Strategies and Portfolios" as MarketplaceCategory,
+          strategy: selectedStrategy,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
-const openCourseDetails = useCallback(
-  (selectedCourse: MarketplaceCourse, meta?: { isFavorite: boolean }) => {
-    navigate("/marketplace/course-details", {
-      state: {
-        scrollToTop: true,
-        category: "Courses and Training materials" as MarketplaceCategory,
-        course: selectedCourse,
-        isFavorite: Boolean(meta?.isFavorite),
-      },
-    });
-  },
-  [navigate],
-);
+  const openCourseDetails = useCallback(
+    (selectedCourse: MarketplaceCourse, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/course-details", {
+        state: {
+          scrollToTop: true,
+          category: "Courses and Training materials" as MarketplaceCategory,
+          course: selectedCourse,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
-const openScriptDetails = useCallback(
-  (product: ScriptProduct, meta?: { isFavorite: boolean }) => {
-    navigate("/marketplace/script-details", {
-      state: {
-        scrollToTop: true,
-        category: "Scripts and Software" as MarketplaceCategory,
-        product,
-        isFavorite: Boolean(meta?.isFavorite),
-      },
-    });
-  },
-  [navigate],
-);
+  const openScriptDetails = useCallback(
+    (product: ScriptProduct, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/script-details", {
+        state: {
+          scrollToTop: true,
+          category: "Scripts and Software" as MarketplaceCategory,
+          product,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
-const openOtherDetails = useCallback(
-  (product: OtherProduct, meta?: { isFavorite: boolean }) => {
-    navigate("/marketplace/other-details", {
-      state: {
-        scrollToTop: true,
-        category: "Others" as MarketplaceCategory,
-        product,
-        isFavorite: Boolean(meta?.isFavorite),
-      },
-    });
-  },
-  [navigate],
-);
+  const openOtherDetails = useCallback(
+    (product: OtherProduct, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/other-details", {
+        state: {
+          scrollToTop: true,
+          category: "Others" as MarketplaceCategory,
+          product,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
-const openSignalDetails = useCallback(
+  const openSignalDetails = useCallback(
     (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/signals-details", {
         state: {
@@ -1304,13 +1307,17 @@ const openSignalDetails = useCallback(
             aria-pressed={activeCardKey === otherCardKey}
             onClick={() => {
               setActiveCardKey(otherCardKey);
-              openOtherDetails(featuredOtherProduct, { isFavorite: otherFavorited });
+              openOtherDetails(featuredOtherProduct, {
+                isFavorite: otherFavorited,
+              });
             }}
             onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
               if (isActivationKey(event.key)) {
                 event.preventDefault();
                 setActiveCardKey(otherCardKey);
-                openOtherDetails(featuredOtherProduct, { isFavorite: otherFavorited });
+                openOtherDetails(featuredOtherProduct, {
+                  isFavorite: otherFavorited,
+                });
               }
             }}
             className={cn(
@@ -1385,13 +1392,17 @@ const openSignalDetails = useCallback(
                       </span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <span className="uppercase text-[#B0B0B0]">Industry:</span>
+                      <span className="uppercase text-[#B0B0B0]">
+                        Industry:
+                      </span>
                       <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 uppercase text-[#6AA5FF]">
                         {featuredOtherProduct.industryLabel}
                       </span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <span className="uppercase text-[#B0B0B0]">Location:</span>
+                      <span className="uppercase text-[#B0B0B0]">
+                        Location:
+                      </span>
                       <span className="rounded bg-[#2E2744] px-1 uppercase text-white">
                         {featuredOtherProduct.location}
                       </span>
@@ -1400,17 +1411,27 @@ const openSignalDetails = useCallback(
 
                   <div className="mb-4 space-y-2 text-xs font-bold text-white">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="uppercase text-[#B0B0B0]">Compatibility:</span>
+                      <span className="uppercase text-[#B0B0B0]">
+                        Compatibility:
+                      </span>
                       {featuredOtherProduct.compatibility.map((item) => (
-                        <span key={item} className="rounded bg-[#2E2744] px-1 uppercase text-white">
+                        <span
+                          key={item}
+                          className="rounded bg-[#2E2744] px-1 uppercase text-white"
+                        >
                           {item}
                         </span>
                       ))}
                     </div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="uppercase text-[#B0B0B0]">Requirements:</span>
+                      <span className="uppercase text-[#B0B0B0]">
+                        Requirements:
+                      </span>
                       {featuredOtherProduct.requirements.map((item) => (
-                        <span key={item} className="rounded bg-[#2E2744] px-1 uppercase text-white">
+                        <span
+                          key={item}
+                          className="rounded bg-[#2E2744] px-1 uppercase text-white"
+                        >
                           {item}
                         </span>
                       ))}
@@ -1425,7 +1446,9 @@ const openSignalDetails = useCallback(
                       )}
                       onClick={(event) => {
                         event.stopPropagation();
-                        openOtherDetails(featuredOtherProduct, { isFavorite: otherFavorited });
+                        openOtherDetails(featuredOtherProduct, {
+                          isFavorite: otherFavorited,
+                        });
                       }}
                     >
                       <BookOpen className="h-4 w-4" />

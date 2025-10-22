@@ -110,15 +110,17 @@ const priceByType: Record<string, string> = {
 const OtherDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const locationState = location.state as
-    | {
-        product?: OtherProduct;
-        isFavorite?: boolean;
-      }
-    | null;
+  const locationState = location.state as {
+    product?: OtherProduct;
+    isFavorite?: boolean;
+  } | null;
 
-  const [isFavorite, setIsFavorite] = useState(Boolean(locationState?.isFavorite));
-  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [isFavorite, setIsFavorite] = useState(
+    Boolean(locationState?.isFavorite),
+  );
+  const [comments, setComments] = useState<CommentNode[]>(
+    () => INITIAL_COMMENTS,
+  );
   const [isCompactLayout, setIsCompactLayout] = useState(false);
 
   const product = useMemo<OtherProduct>(() => {
@@ -179,7 +181,15 @@ const OtherDetailLanding: FC = () => {
       `Built for operators in ${product.location}, it integrates with ${compatibilitySummary}.`,
       `Prerequisites such as ${requirementSummary} ensure fast onboarding and dependable automation.`,
     ];
-  }, [compatibilityItems, product.industryLabel, product.location, product.ratingTag, product.title, product.typeLabel, requirementItems]);
+  }, [
+    compatibilityItems,
+    product.industryLabel,
+    product.location,
+    product.ratingTag,
+    product.title,
+    product.typeLabel,
+    requirementItems,
+  ]);
 
   const metaTags = useMemo(
     () => [product.typeLabel, product.industryLabel, product.label],
@@ -194,7 +204,10 @@ const OtherDetailLanding: FC = () => {
     return Math.min(Math.max(parsed, 0), 5);
   }, [product.rating]);
 
-  const totalReviews = useMemo(() => Math.max(Math.round(ratingValue * 24), 18), [ratingValue]);
+  const totalReviews = useMemo(
+    () => Math.max(Math.round(ratingValue * 24), 18),
+    [ratingValue],
+  );
 
   const normalizedType = product.typeLabel.trim().toLowerCase();
   const priceLabel = priceByType[normalizedType] ?? "$199.00";
@@ -258,7 +271,8 @@ const OtherDetailLanding: FC = () => {
     const indentStep = isCompactLayout ? 16 : 24;
     const indent = depth * indentStep;
     const timeColor = comment.timeColor ?? "#B0B0B0";
-    const hasReplies = Array.isArray(comment.replies) && comment.replies.length > 0;
+    const hasReplies =
+      Array.isArray(comment.replies) && comment.replies.length > 0;
     const baseLikeColor = comment.likeColor ?? "#B0B0B0";
     const displayLikeColor = comment.liked ? "#A06AFF" : baseLikeColor;
     const likeButtonClasses = comment.liked
@@ -282,7 +296,9 @@ const OtherDetailLanding: FC = () => {
               style={{ left: -indentStep }}
             />
           )}
-          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">{hiddenLabel}</span>
+          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">
+            {hiddenLabel}
+          </span>
           <button
             type="button"
             onClick={() => handleToggleHidden(comment.id)}
@@ -315,13 +331,17 @@ const OtherDetailLanding: FC = () => {
               className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
             />
             <div className="flex flex-1 flex-col gap-0.5">
-              <span className="text-[15px] font-bold text-white">{comment.author}</span>
+              <span className="text-[15px] font-bold text-white">
+                {comment.author}
+              </span>
               <span className="text-xs font-bold" style={{ color: timeColor }}>
                 {comment.time}
               </span>
             </div>
           </div>
-          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
+          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">
+            {comment.text}
+          </p>
         </div>
 
         <button
@@ -364,7 +384,13 @@ const OtherDetailLanding: FC = () => {
             Reply
           </button>
           <button type="button" className="rounded-full p-1 text-[#B0B0B0]">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11Z"
                 fill="#B0B0B0"
@@ -413,19 +439,29 @@ const OtherDetailLanding: FC = () => {
           Others
         </button>
         <span className="text-[15px] font-bold text-[#808283]">/</span>
-        <span className="text-[15px] font-bold text-white">{product.title}</span>
+        <span className="text-[15px] font-bold text-white">
+          {product.title}
+        </span>
       </div>
 
       <div className="mb-6 flex items-center justify-between rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
-        <h1 className="flex-1 text-[31px] font-bold text-white">{product.title}</h1>
+        <h1 className="flex-1 text-[31px] font-bold text-white">
+          {product.title}
+        </h1>
         <button
           type="button"
           onClick={() => setIsFavorite((prev) => !prev)}
           className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
           aria-pressed={isFavorite}
-          aria-label={isFavorite ? "Remove product from favourites" : "Add product to favourites"}
+          aria-label={
+            isFavorite
+              ? "Remove product from favourites"
+              : "Add product to favourites"
+          }
         >
-          <Star className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`} />
+          <Star
+            className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`}
+          />
         </button>
       </div>
 
@@ -438,8 +474,12 @@ const OtherDetailLanding: FC = () => {
             <div className="grid grid-cols-2 gap-4 p-4">
               {detailItems.map((item) => (
                 <div key={item.label} className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">{item.label}</span>
-                  <span className="text-[15px] font-bold text-white">{item.value}</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    {item.label}
+                  </span>
+                  <span className="text-[15px] font-bold text-white">
+                    {item.value}
+                  </span>
                 </div>
               ))}
             </div>
@@ -450,21 +490,38 @@ const OtherDetailLanding: FC = () => {
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Overview</h2>
             </div>
             <div className="p-4">
-              <p className="mb-4 text-[15px] font-normal text-white">{product.description}</p>
+              <p className="mb-4 text-[15px] font-normal text-white">
+                {product.description}
+              </p>
               <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium text-white">
                 {highlightItems.map((highlight) => (
                   <li key={highlight}>{highlight}</li>
                 ))}
               </ul>
               <div className="relative mt-6">
-                <img src={product.image} alt={product.imageAlt} className="w-full rounded-lg" />
+                <img
+                  src={product.image}
+                  alt={product.imageAlt}
+                  className="w-full rounded-lg"
+                />
                 <button
                   type="button"
                   aria-label="Previous screenshot"
                   className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#other_prev)" />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="11.9908"
+                      cy="11.9908"
+                      r="11.9908"
+                      fill="url(#other_prev)"
+                    />
                     <path
                       d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
                       stroke="white"
@@ -492,8 +549,19 @@ const OtherDetailLanding: FC = () => {
                   aria-label="Next screenshot"
                   className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                 >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#other_next)" />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="11.9908"
+                      cy="11.9908"
+                      r="11.9908"
+                      fill="url(#other_next)"
+                    />
                     <path
                       d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
                       stroke="white"
@@ -527,17 +595,37 @@ const OtherDetailLanding: FC = () => {
 
           <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">Community discussions</h2>
+              <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">
+                Community discussions
+              </h2>
               <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px] max-[360px]:p-0.5">
                 <button
                   type="button"
                   aria-label="Sort comments"
                   className="flex h-[26px] w-[26px] items-center justify-center rounded-full transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <g clipPath="url(#clip0_other_clock)">
-                      <path d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M8 5.33301V7.99967L9.33333 9.33301" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path
+                        d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928"
+                        stroke="#B0B0B0"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M8 5.33301V7.99967L9.33333 9.33301"
+                        stroke="#B0B0B0"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </g>
                     <defs>
                       <clipPath id="clip0_other_clock">
@@ -551,8 +639,20 @@ const OtherDetailLanding: FC = () => {
                   aria-label="Show highlighted comments"
                   className="flex h-[26px] w-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </button>
               </div>
@@ -576,7 +676,9 @@ const OtherDetailLanding: FC = () => {
               {comments.map((comment) => renderComment(comment))}
               <div className="flex justify-center">
                 <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 max-[360px]:px-4 max-[360px]:py-2">
-                  <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">Load more comments</span>
+                  <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">
+                    Load more comments
+                  </span>
                 </button>
               </div>
             </div>
@@ -591,10 +693,15 @@ const OtherDetailLanding: FC = () => {
               className="h-[332px] w-full rounded-t-3xl border border-[#181B22] object-cover"
             />
             <div className="p-4">
-              <div className="mb-2 text-2xl font-bold text-white">{priceLabel}</div>
+              <div className="mb-2 text-2xl font-bold text-white">
+                {priceLabel}
+              </div>
               <div className="mb-3 flex flex-wrap gap-2">
                 {metaTags.map((tag) => (
-                  <span key={tag} className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">
+                  <span
+                    key={tag}
+                    className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white"
+                  >
                     {tag.toUpperCase()}
                   </span>
                 ))}
@@ -627,26 +734,38 @@ const OtherDetailLanding: FC = () => {
                   className="h-20 w-20 rounded-full"
                 />
                 <div className="flex-1">
-                  <div className="text-[15px] font-bold text-white">Product specialist</div>
+                  <div className="text-[15px] font-bold text-white">
+                    Product specialist
+                  </div>
                   <button className="mt-2 flex h-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-3 text-xs font-bold text-white">
                     Follow
                   </button>
                 </div>
               </div>
               <div className="mb-4 text-[15px] font-normal text-[#B0B0B0]">
-                Teams using {product.title} typically operate across compliance, execution, and research. Join the community and trade notes with other {product.ratingTag.toLowerCase()} leaders.
+                Teams using {product.title} typically operate across compliance,
+                execution, and research. Join the community and trade notes with
+                other {product.ratingTag.toLowerCase()} leaders.
               </div>
               <div className="mb-4 text-[15px] font-normal text-[#B0B0B0]">
-                Weekly office hours cover onboarding shortcuts, new integrations, and roadmap previews tailored to {product.industryLabel.toLowerCase()} use cases.
+                Weekly office hours cover onboarding shortcuts, new
+                integrations, and roadmap previews tailored to{" "}
+                {product.industryLabel.toLowerCase()} use cases.
               </div>
               <div className="flex flex-wrap gap-2">
                 {compatibilityItems.map((item) => (
-                  <span key={item} className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">
+                  <span
+                    key={item}
+                    className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white"
+                  >
                     {item.toUpperCase()}
                   </span>
                 ))}
                 {requirementItems.map((item) => (
-                  <span key={item} className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">
+                  <span
+                    key={item}
+                    className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white"
+                  >
                     {item.toUpperCase()}
                   </span>
                 ))}
@@ -656,12 +775,18 @@ const OtherDetailLanding: FC = () => {
 
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
             <div className="border-b border-[#181B22] p-4">
-              <h2 className="mb-4 text-[19px] font-bold text-[#A06AFF]">Reviews</h2>
+              <h2 className="mb-4 text-[19px] font-bold text-[#A06AFF]">
+                Reviews
+              </h2>
               <div className="flex items-center gap-4">
-                <div className="text-[31px] font-bold text-[#A06AFF]">{ratingValue.toFixed(1)}</div>
+                <div className="text-[31px] font-bold text-[#A06AFF]">
+                  {ratingValue.toFixed(1)}
+                </div>
                 <div>
                   <div className="flex gap-0.5">{renderStars(ratingValue)}</div>
-                  <div className="text-xs font-bold text-[#B0B0B0]">Based on {totalReviews} reviews</div>
+                  <div className="text-xs font-bold text-[#B0B0B0]">
+                    Based on {totalReviews} reviews
+                  </div>
                 </div>
               </div>
             </div>
@@ -670,16 +795,30 @@ const OtherDetailLanding: FC = () => {
                 <div key={`summary-${comment.id}`} className="p-4">
                   <div className="mb-2 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <img src={AVATAR_PLACEHOLDER} alt={comment.author} className="h-11 w-11 rounded-full" />
+                      <img
+                        src={AVATAR_PLACEHOLDER}
+                        alt={comment.author}
+                        className="h-11 w-11 rounded-full"
+                      />
                       <div>
-                        <div className="text-[15px] font-bold text-white">{comment.author}</div>
-                        <div className="text-xs font-bold text-[#B0B0B0]">{comment.time}</div>
+                        <div className="text-[15px] font-bold text-white">
+                          {comment.author}
+                        </div>
+                        <div className="text-xs font-bold text-[#B0B0B0]">
+                          {comment.time}
+                        </div>
                       </div>
                     </div>
-                    <div className="flex gap-0.5">{renderStars(ratingValue)}</div>
+                    <div className="flex gap-0.5">
+                      {renderStars(ratingValue)}
+                    </div>
                   </div>
-                  <div className="text-[15px] font-bold text-white">Great enablement for distributed teams</div>
-                  <div className="text-[15px] font-normal text-[#B0B0B0]">{comment.text}</div>
+                  <div className="text-[15px] font-bold text-white">
+                    Great enablement for distributed teams
+                  </div>
+                  <div className="text-[15px] font-normal text-[#B0B0B0]">
+                    {comment.text}
+                  </div>
                 </div>
               ))}
             </div>
@@ -692,12 +831,20 @@ const OtherDetailLanding: FC = () => {
 
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
             <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Disclaimer</h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">
+                Disclaimer
+              </h2>
             </div>
             <div className="p-4">
               <p className="text-[15px] font-normal text-[#B0B0B0]">
-                Educational content is provided for instructional purposes only and does not constitute financial or investment advice. Review the
-                <a href="#" className="text-[#A06AFF] underline"> Terms of Use</a> for additional details.
+                Educational content is provided for instructional purposes only
+                and does not constitute financial or investment advice. Review
+                the
+                <a href="#" className="text-[#A06AFF] underline">
+                  {" "}
+                  Terms of Use
+                </a>{" "}
+                for additional details.
               </p>
             </div>
           </div>
