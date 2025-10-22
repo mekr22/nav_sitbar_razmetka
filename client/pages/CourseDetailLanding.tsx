@@ -992,9 +992,9 @@ const CourseDetailLanding: FC = () => {
               <div className="mb-4 flex items-center gap-3">
                 <span className="text-[15px] font-normal text-[#B0B0B0]">Course includes:</span>
                 <div className="flex flex-wrap gap-2">
-                  <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">Workbook</span>
-                  <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">Live Q&A</span>
-                  <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">Templates</span>
+                  <span className="inline-flex h-7 items-center rounded bg-[#2E2744] px-2 text-xs font-bold uppercase leading-none text-white">Workbook</span>
+                  <span className="inline-flex h-7 items-center rounded bg-[#2E2744] px-2 text-xs font-bold uppercase leading-none text-white">Live Q&A</span>
+                  <span className="inline-flex h-7 items-center rounded bg-[#2E2744] px-2 text-xs font-bold uppercase leading-none text-white">Templates</span>
                 </div>
               </div>
             </div>
