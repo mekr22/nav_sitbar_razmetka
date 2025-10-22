@@ -19,13 +19,17 @@ const exchangeLogos = [
 const isActivationKey = (key: string) =>
   key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
 
+type StrategyDetailsMeta = {
+  isFavorite: boolean;
+};
+
 export interface StrategyCardProps {
   strategy: Strategy;
   isActive: boolean;
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-  onOpenDetails?: (strategy: Strategy) => void;
+  onOpenDetails?: (strategy: Strategy, meta?: StrategyDetailsMeta) => void;
 }
 
 const StrategyCard: FC<StrategyCardProps> = ({
