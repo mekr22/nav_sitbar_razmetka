@@ -390,6 +390,20 @@ const StrategiesAndPortfolios: FC = () => {
 
   const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
+  const openStrategyDetails = useCallback(
+    (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/strategy-details", {
+        state: {
+          scrollToTop: true,
+          category: "Strategies and Portfolios" as MarketplaceCategory,
+          strategy: selectedStrategy,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
+
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
     if (category === "Strategies and Portfolios") {
