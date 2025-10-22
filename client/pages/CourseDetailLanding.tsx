@@ -926,7 +926,7 @@ const CourseDetailLanding: FC = () => {
               </div>
             </div>
             <div className="flex flex-col gap-4 p-4">
-              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-[#482090] to-[#A06AFF] text-[15px] font-bold text-white">
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] text-[15px] font-bold text-white">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clipPath="url(#clip0_1111_20966)">
                     <path d="M5.19922 10.6667L11.0126 10.1822C12.8316 10.0307 13.24 9.63333 13.4416 7.81927L13.8659 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
