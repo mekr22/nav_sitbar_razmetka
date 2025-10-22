@@ -527,16 +527,16 @@ const ScriptDetailLanding: FC = () => {
                 </button>
               </div>
             </div>
-            <div className="flex gap-4 p-4">
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+            <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-3 sm:gap-4">
+              <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Heart className="h-4 w-4" />
                 Save
               </button>
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Share2 className="h-4 w-4" />
                 Share
               </button>
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Play className="h-4 w-4" />
                 Demo
               </button>
