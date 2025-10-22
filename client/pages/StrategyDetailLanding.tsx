@@ -1035,6 +1035,14 @@ const StrategyDetailLanding: FC = () => {
           </div>
         </aside>
       </div>
+      <svg width="0" height="0">
+        <defs>
+          <linearGradient id="half-star" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="50%" stopColor="#A06AFF" />
+            <stop offset="50%" stopColor="#2E2744" />
+          </linearGradient>
+        </defs>
+      </svg>
     </div>
   );
 };
