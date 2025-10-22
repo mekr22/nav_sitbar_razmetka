@@ -752,21 +752,17 @@ const CourseDetailLanding: FC = () => {
                 <div className="text-2xl font-bold text-white">$39.99</div>
                 <div className="flex items-center gap-2">
                   <div className="text-[15px] font-medium text-[#B0B0B0] line-through">$39.99</div>
-                  <div className="inline-flex h-7 items-center rounded bg-[#1C3430] px-2">
-                    <span className="text-xs font-bold uppercase leading-none text-[#2EBD85]">34% OFF</span>
-                  </div>
+                  <span className="rounded bg-[#1C3430] px-2 py-0.5 text-xs font-bold uppercase text-[#2EBD85]">
+                    34% OFF
+                  </span>
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-1">
-                <div className="inline-flex h-7 items-center justify-center gap-1 rounded bg-[#2E2744] px-2">
-                  <span className="text-xs font-bold uppercase leading-none text-white">4.5H</span>
-                </div>
-                <div className="inline-flex h-7 items-center justify-center gap-1 rounded bg-[#2E2744] px-2">
-                  <span className="text-xs font-bold uppercase leading-none text-white">17 LECTURES</span>
-                </div>
-                <div className="inline-flex h-7 items-center justify-center gap-1 rounded bg-[rgba(106,165,255,0.16)] px-2">
-                  <span className="text-xs font-bold uppercase leading-none text-[#6AA5FF]">ALL LEVELS</span>
-                </div>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">4.5H</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">17 LECTURES</span>
+                <span className="rounded bg-[rgba(106,165,255,0.16)] px-2 py-0.5 text-xs font-bold uppercase text-[#6AA5FF]">
+                  ALL LEVELS
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -867,18 +863,10 @@ const CourseDetailLanding: FC = () => {
               </div>
             </div>
             <div className="flex flex-wrap gap-2 px-4 pb-4">
-              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
-                <span className="text-xs font-bold uppercase leading-none text-white">COURSES</span>
-              </div>
-              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
-                <span className="text-xs font-bold uppercase leading-none text-white">TRADING_MATERIALS</span>
-              </div>
-              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
-                <span className="text-xs font-bold uppercase leading-none text-white">CRYPTOCURRENCY</span>
-              </div>
-              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
-                <span className="text-xs font-bold uppercase leading-none text-white">P2P_TRADING</span>
-              </div>
+              <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">COURSES</span>
+              <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">TRADING_MATERIALS</span>
+              <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">CRYPTOCURRENCY</span>
+              <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">P2P_TRADING</span>
             </div>
             <div className="flex flex-col gap-4 p-4">
               <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] text-[15px] font-bold text-white">
@@ -965,7 +953,7 @@ const CourseDetailLanding: FC = () => {
                 {infoTags.map((tag) => (
                   <span
                     key={tag}
-                    className="inline-flex h-7 items-center rounded bg-[#2E2744] px-2 text-xs font-bold uppercase leading-none text-white"
+                    className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white"
                   >
                     {tag.toUpperCase()}
                   </span>
