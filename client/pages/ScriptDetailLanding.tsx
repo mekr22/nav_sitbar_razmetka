@@ -769,6 +769,47 @@ const ScriptDetailLanding: FC = () => {
 
         {activeTab === "overview" ? (
           <div className="mt-6 flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
+            <div className="grid gap-4 md:grid-cols-2">
+              {product.reviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="flex flex-col gap-3 rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={review.avatar}
+                      alt={`${review.author} avatar`}
+                      className="h-12 w-12 rounded-full object-cover"
+                    />
+                    <div className="flex flex-col">
+                      <span className="text-[15px] font-bold text-white">
+                        {review.author}
+                      </span>
+                      <span className="text-xs font-bold text-[#B0B0B0]">
+                        {review.postedAt}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {renderStars(review.rating)}
+                    <span className="text-sm font-bold text-white">
+                      {review.rating.toFixed(1)}
+                    </span>
+                  </div>
+                  <h3 className="text-sm font-bold text-white sm:text-[15px]">
+                    {review.title}
+                  </h3>
+                  <p className="text-sm font-medium text-white">
+                    {review.message}
+                  </p>
+                  {typeof review.likes === "number" && (
+                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                      {review.likes} helpful votes
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
             <div className="flex flex-col gap-6">
               {comments.map((comment) => renderComment(comment))}
             </div>
