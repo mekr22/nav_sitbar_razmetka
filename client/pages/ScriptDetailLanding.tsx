@@ -1,4 +1,4 @@
-import { Heart, Eye, Star, ShoppingCart, MessageCircle, Share2, Play } from "lucide-react";
+import { Heart, Star, ShoppingCart, MessageCircle, Share2, Play } from "lucide-react";
 import { FC, useState, useCallback, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
@@ -554,10 +554,6 @@ const ScriptDetailLanding: FC = () => {
                 <div className="flex items-center gap-1">
                   <div className="flex gap-0.5">{renderStars(4.5)}</div>
                   <span className="text-[15px] font-normal text-[#B0B0B0]">4.5 (28 reviews)</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Eye className="h-4 w-4 text-[#B0B0B0]" />
-                  <span className="text-[15px] font-normal text-[#B0B0B0]">1.245</span>
                 </div>
               </div>
               <div className="flex flex-col gap-4">
