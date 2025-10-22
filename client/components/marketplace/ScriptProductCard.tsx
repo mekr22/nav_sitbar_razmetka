@@ -17,6 +17,7 @@ type ScriptProductCardProps = {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onOpenDetails?: (product: ScriptProduct, meta?: { isFavorite: boolean }) => void;
 };
 
 const ScriptProductCard: FC<ScriptProductCardProps> = ({
@@ -25,12 +26,16 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
+  onOpenDetails,
 }) => (
   <div
     role="button"
     tabIndex={0}
     aria-pressed={isActive}
     onClick={onSelect}
+    onDoubleClick={() => {
+      onOpenDetails?.(product, { isFavorite });
+    }}
     onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
       if (isActivationKey(event.key)) {
         event.preventDefault();
@@ -181,14 +186,18 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
 
         <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
           <button
-            className={cn(
-              actionButtonBaseClass,
-              "border border-[#181B22] bg-[#0C1014]/60 backdrop-blur-[50px] transition-colors hover:border-[#1F2230]",
-            )}
-          >
-            <BookOpen className="h-4 w-4" />
-            Details
-          </button>
+          className={cn(
+            actionButtonBaseClass,
+            "border border-[#181B22] bg-[#0C1014]/60 backdrop-blur-[50px] transition-colors hover:border-[#1F2230]",
+          )}
+          onClick={(event) => {
+            event.stopPropagation();
+            onOpenDetails?.(product, { isFavorite });
+          }}
+        >
+          <BookOpen className="h-4 w-4" />
+          Details
+        </button>
           <button
             className={cn(
               actionButtonBaseClass,
