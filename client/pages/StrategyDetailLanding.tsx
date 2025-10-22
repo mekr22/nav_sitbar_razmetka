@@ -495,6 +495,7 @@ const StrategyDetailLanding: FC = () => {
   }, [comments]);
 
   const remainingComments = Math.max(commentCount - comments.length, 0);
+  const commentCountLabel = commentCount === 1 ? "1 comment" : `${commentCount} comments`;
 
   const handleToggleFavorite = useCallback(() => {
     setIsFavorite((prev) => !prev);
