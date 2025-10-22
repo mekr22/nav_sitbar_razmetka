@@ -633,7 +633,21 @@ const MarketplaceMyProducts: FC = () => {
   const featuredScriptProduct = baseScriptProducts[0];
   const featuredOtherProduct = baseOtherProducts[0];
 
-  const openCourseDetails = useCallback(
+const openStrategyDetails = useCallback(
+  (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
+    navigate("/marketplace/strategy-details", {
+      state: {
+        scrollToTop: true,
+        category: "Strategies and Portfolios" as MarketplaceCategory,
+        strategy: selectedStrategy,
+        isFavorite: Boolean(meta?.isFavorite),
+      },
+    });
+  },
+  [navigate],
+);
+
+const openCourseDetails = useCallback(
   (selectedCourse: MarketplaceCourse, meta?: { isFavorite: boolean }) => {
     navigate("/marketplace/course-details", {
       state: {
