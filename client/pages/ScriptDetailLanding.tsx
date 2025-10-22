@@ -406,20 +406,64 @@ const ScriptDetailLanding: FC = () => {
                   className="w-full rounded-lg"
                 />
                 {/* Carousel navigation */}
-                <div className="absolute left-8 top-1/2 flex -translate-y-1/2 items-center gap-4">
-                  <button className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090]">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M13.627 8.17578L9.81171 11.991L13.627 15.8063" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" transform="rotate(180 11.7193 12)"/>
-                    </svg>
-                  </button>
-                </div>
-                <div className="absolute right-8 top-1/2 flex -translate-y-1/2 items-center gap-4">
-                  <button className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090]">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <path d="M13.627 8.17578L9.81171 11.991L13.627 15.8063" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" transform="rotate(0 11.7193 12)"/>
-                    </svg>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  aria-label="Previous screenshot"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#script_description_prev)" />
+                    <path
+                      d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="script_description_prev"
+                        x1="23.9815"
+                        y1="11.9907"
+                        x2="0"
+                        y2="11.9907"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#A06AFF" />
+                        <stop offset="1" stopColor="#482090" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next screenshot"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#script_description_next)" />
+                    <path
+                      d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="script_description_next"
+                        x1="23.9815"
+                        y1="11.9907"
+                        x2="0"
+                        y2="11.9907"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#A06AFF" />
+                        <stop offset="1" stopColor="#482090" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </button>
                 <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
                   <div className="h-1 w-1 rounded-full bg-[#B0B0B0]"></div>
                   <div className="h-1 w-1 rounded-full bg-[#B0B0B0]"></div>
