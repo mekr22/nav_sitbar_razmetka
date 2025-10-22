@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Eye,
   EyeOff,
@@ -193,6 +193,20 @@ const Others: FC = () => {
     label: FILTER_CONFIG.label.options[0].value,
   });
   const [searchTerm, setSearchTerm] = useState("");
+
+  const openOtherDetails = useCallback(
+    (selectedProduct: OtherProduct, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/other-details", {
+        state: {
+          scrollToTop: true,
+          category: "Others" as MarketplaceCategory,
+          product: selectedProduct,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
   useEffect(() => {
     if (
@@ -665,7 +679,10 @@ const Others: FC = () => {
                     key={product.id}
                     product={product}
                     isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
+                    onSelect={() => {
+                      setActiveCardKey(cardKey);
+                      openOtherDetails(product, { isFavorite: isFavorited });
+                    }}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggleFavorite(cardKey)}
                   />
