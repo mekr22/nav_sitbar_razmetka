@@ -62,7 +62,7 @@ const INITIAL_COMMENTS: CommentNode[] = [
     id: "comment-3",
     author: "Julian Kraft",
     time: "2 days ago",
-    text: "I’m midway through the case studies. The downloadable cheat sheets make it easy to brief my team before the session.",
+    text: "I'm midway through the case studies. The downloadable cheat sheets make it easy to brief my team before the session.",
     likes: 14,
     likeColor: "#808283",
     timeColor: "#808283",
@@ -133,6 +133,9 @@ const CourseDetailLanding: FC = () => {
   const [isFavorite, setIsFavorite] = useState(Boolean(locationState?.isFavorite));
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [isCompactLayout, setIsCompactLayout] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({
+    whatYouLearn: false,
+  });
 
   const course = useMemo<Course>(() => {
     if (locationState?.course) {
@@ -245,7 +248,7 @@ const CourseDetailLanding: FC = () => {
         time: "1 week ago",
         summary: "Fantastic depth on risk and mindset",
         body:
-          "The module on risk journaling is worth the price alone. I’ve already updated my team’s playbook with the templates provided.",
+          "The module on risk journaling is worth the price alone. I've already updated my team's playbook with the templates provided.",
         rating: 4,
       },
       {
@@ -257,6 +260,33 @@ const CourseDetailLanding: FC = () => {
           "Loved the blend of macro context and tactical entries. Having both recordings and checklists makes it easy to revisit before sessions.",
         rating: 4.5,
       },
+    ],
+    [],
+  );
+
+  const whatYouLearnItems = useMemo(
+    () => [
+      [
+        "What is blockchain and how it works",
+        "Basics of P2P trading",
+        "Risk management",
+        "Trading Automation",
+      ],
+      [
+        "Working with wallets and exchanges",
+        "Arbitrage strategies",
+        "Tax aspects of cryptocurrencies",
+        "Business scaling",
+      ],
+    ],
+    [],
+  );
+
+  const requirementsItems = useMemo(
+    () => [
+      "Basic knowledge of cryptocurreincies",
+      "Computer with interner access",
+      "Willingness to learn and grow in crypto trading",
     ],
     [],
   );
@@ -279,7 +309,7 @@ const CourseDetailLanding: FC = () => {
         >
           <path
             d="M9.15238 2.29579L10.3256 4.66159C10.4856 4.99092 10.9122 5.30681 11.2722 5.36729L13.3986 5.72351C14.7585 5.95203 15.0785 6.94674 14.0985 7.92801L12.4454 9.59481C12.1654 9.87707 12.0121 10.4215 12.0987 10.8113L12.5721 12.8747C12.9453 14.5079 12.0854 15.1397 10.6523 14.2861L8.65912 13.0965C8.29918 12.8814 7.70592 12.8814 7.33925 13.0965L5.34616 14.2861C3.91965 15.1397 3.05308 14.5011 3.42638 12.8747L3.89966 10.8113C3.98631 10.4215 3.833 9.87707 3.55302 9.59481L1.89988 7.92801C0.926651 6.94674 1.23995 5.95203 2.5998 5.72351L4.72623 5.36729C5.07952 5.30681 5.50614 4.99092 5.66612 4.66159L6.83932 2.29579C7.47925 1.01208 8.51912 1.01208 9.15238 2.29579Z"
-            fill={filled ? "#A06AFF" : halfFilled ? "#2E2744" : "#23252D"}
+            fill={filled ? "#A06AFF" : halfFilled ? "#23252D" : "#23252D"}
           />
           {halfFilled && (
             <path
@@ -470,24 +500,199 @@ const CourseDetailLanding: FC = () => {
         <span className="text-[15px] font-bold text-white">{course.title}</span>
       </div>
 
-      <div className="mb-6 flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px] lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-1 flex-col gap-1">
-          <h1 className="text-[31px] font-bold text-white">{course.title}</h1>
-          <p className="text-[15px] font-bold text-[#B0B0B0]">Hosted by {course.host}</p>
-        </div>
+      <div className="mb-6 flex items-center justify-between gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+        <h1 className="flex-1 text-[31px] font-bold leading-normal text-white">{course.title}</h1>
         <button
           type="button"
           onClick={handleToggleFavorite}
-          className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
+          className="flex-shrink-0 transition-colors"
           aria-pressed={isFavorite}
           aria-label={isFavorite ? "Remove course from favourites" : "Add course to favourites"}
         >
-          <Star className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`} />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M13.7296 3.44515L15.4894 6.99385C15.7294 7.48784 16.3693 7.96167 16.9093 8.0524L20.0989 8.58672C22.1387 8.9295 22.6187 10.4216 21.1488 11.8935L18.6691 14.3937C18.2491 14.8171 18.0192 15.6337 18.1491 16.2185L18.8591 19.3135C19.419 21.7633 18.1291 22.711 15.9794 21.4306L12.9897 19.6462C12.4498 19.3236 11.5599 19.3236 11.0099 19.6462L8.02022 21.4306C5.88045 22.711 4.5806 21.7532 5.14054 19.3135L5.85046 16.2185C5.98044 15.6337 5.75047 14.8171 5.33051 14.3937L2.85079 11.8935C1.39095 10.4216 1.8609 8.9295 3.90067 8.58672L7.09032 8.0524C7.62026 7.96167 8.26019 7.48784 8.50016 6.99385L10.26 3.44515C11.2199 1.51958 12.7797 1.51958 13.7296 3.44515Z"
+              stroke={isFavorite ? "#A06AFF" : "#B0B0B0"}
+              fill={isFavorite ? "#A06AFF" : "none"}
+              strokeWidth="1.00667"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_339px]">
         <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-center gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+            <div className="relative w-full">
+              <img
+                src={course.image}
+                alt={`${course.title} preview`}
+                className="w-full rounded-lg"
+              />
+              <button
+                type="button"
+                aria-label="Previous screenshot"
+                className="absolute left-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#course_prev)" />
+                  <path
+                    d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="course_prev"
+                      x1="23.9815"
+                      y1="11.9907"
+                      x2="0"
+                      y2="11.9907"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#A06AFF" />
+                      <stop offset="1" stopColor="#482090" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </button>
+              <button
+                type="button"
+                aria-label="Next screenshot"
+                className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#course_next)" />
+                  <path
+                    d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="course_next"
+                      x1="23.9815"
+                      y1="11.9907"
+                      x2="0"
+                      y2="11.9907"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#A06AFF" />
+                      <stop offset="1" stopColor="#482090" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </button>
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
+                <div className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+                <div className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+                <div className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+            <h2 className="text-[19px] font-bold text-[#A06AFF]">What you'll learn</h2>
+            <div className="flex gap-2.5">
+              <div className="flex flex-1 flex-col gap-2">
+                {whatYouLearnItems[0].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                        stroke="#A06AFF"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="flex-1 text-[15px] font-medium text-white">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-1 flex-col gap-2">
+                {whatYouLearnItems[1].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                        stroke="#A06AFF"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="flex-1 text-[15px] font-medium text-white">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                setExpandedSections((prev) => ({ ...prev, whatYouLearn: !prev.whatYouLearn }))
+              }
+              className="flex items-center justify-center gap-0"
+            >
+              <span className="text-[15px] font-medium text-[#A06AFF]">Expand</span>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className={`transition-transform ${expandedSections.whatYouLearn ? "rotate-180" : ""}`}
+              >
+                <path
+                  d="M8.4693 10.7402L11.9993 14.2602L15.5293 10.7402"
+                  stroke="#A06AFF"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            <div className="border-t border-[#181B22] pt-4">
+              <h2 className="mb-4 text-[19px] font-bold text-[#A06AFF]">Requirements</h2>
+              <div className="flex flex-col gap-2">
+                {requirementsItems.map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                        stroke="#A06AFF"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="flex-1 text-[15px] font-medium text-white">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
+            </div>
+            <div className="p-4">
+              <p className="mb-4 text-[15px] font-normal text-white">{course.subtitle}</p>
+              <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium text-white">
+                {lessonHighlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
             <div className="border-b border-[#181B22] p-4">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">Details</h2>
@@ -499,90 +704,6 @@ const CourseDetailLanding: FC = () => {
                   <span className="text-[15px] font-bold text-white">{item.value}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
-            <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
-            </div>
-            <div className="p-4">
-              <p className="mb-4 text-[15px] font-normal text-white">{course.subtitle}</p>
-              <ul className="mb-4 list-disc space-y-2 pl-5 text-[15px] font-medium text-white">
-                {lessonHighlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-              <div className="relative">
-                <img
-                  src={course.image}
-                  alt={`${course.title} preview`}
-                  className="w-full rounded-lg"
-                />
-                <button
-                  type="button"
-                  aria-label="Previous screenshot"
-                  className="absolute left-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#course_prev)" />
-                    <path
-                      d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="course_prev"
-                        x1="23.9815"
-                        y1="11.9907"
-                        x2="0"
-                        y2="11.9907"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#A06AFF" />
-                        <stop offset="1" stopColor="#482090" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  aria-label="Next screenshot"
-                  className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#course_next)" />
-                    <path
-                      d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="course_next"
-                        x1="23.9815"
-                        y1="11.9907"
-                        x2="0"
-                        y2="11.9907"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#A06AFF" />
-                        <stop offset="1" stopColor="#482090" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </button>
-                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
-                  <div className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
-                  <div className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
-                  <div className="h-1 w-1 rounded-full bg-[#B0B0B0]" />
-                </div>
-              </div>
             </div>
           </div>
 
@@ -645,43 +766,200 @@ const CourseDetailLanding: FC = () => {
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
-            <img
-              src={course.image}
-              alt={course.title}
-              className="h-[332px] w-full rounded-t-3xl border border-[#181B22] object-cover"
-            />
-            <div className="p-4">
-              <div className="mb-2 text-2xl font-bold text-white">{priceLabel}</div>
-              <div className="mb-3 flex flex-wrap gap-2">
-                {infoTags.map((tag) => (
-                  <span key={tag} className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="mb-4 flex items-center justify-between">
-                <div className="flex items-center gap-1">
-                  <div className="flex gap-0.5">{renderStars(ratingValue)}</div>
-                  <span className="text-[15px] font-normal text-[#B0B0B0]">
-                    {ratingValue.toFixed(1)} ({totalReviews} reviews)
-                  </span>
+          <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="relative flex items-center justify-center rounded-t-3xl border border-[#181B22] bg-cover bg-center" style={{ backgroundImage: `url('${course.image}')`, paddingTop: '217px', paddingBottom: '217px' }}>
+              <button
+                type="button"
+                className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M4 12.0004V8.44038C4 4.02038 7.13 2.21039 10.96 4.42039L14.05 6.20039L17.14 7.98039C20.97 10.1904 20.97 13.8104 17.14 16.0204L14.05 17.8004L10.96 19.5804C7.13 21.7904 4 19.9804 4 15.5604V12.0004Z"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="flex flex-col gap-4 p-4">
+              <div className="flex items-baseline gap-2">
+                <div className="text-2xl font-bold text-white">$39.99</div>
+                <div className="flex items-center gap-2">
+                  <div className="text-[15px] font-medium text-[#B0B0B0] line-through">$39.99</div>
+                  <div className="rounded bg-[#1C3430] px-1 py-0.5">
+                    <span className="text-xs font-bold uppercase text-[#2EBD85]">34% OFF</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Eye className="h-4 w-4 text-[#B0B0B0]" />
-                  <span className="text-[15px] font-normal text-[#B0B0B0]">{course.students}</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-1">
+                <div className="flex items-center justify-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                  <span className="text-xs font-bold uppercase text-white">4.5H</span>
+                </div>
+                <div className="flex items-center justify-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
+                  <span className="text-xs font-bold uppercase text-white">17 LECTURES</span>
+                </div>
+                <div className="flex items-center justify-center gap-1 rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5">
+                  <span className="text-xs font-bold uppercase text-[#6AA5FF]">ALL LEVELS</span>
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
-                  <ShoppingCart className="h-5 w-5" />
-                  Enroll now
-                </button>
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
-                  <MessageCircle className="h-4 w-4" />
-                  Contact host
-                </button>
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1111_20909)">
+                    <path
+                      d="M8.00065 14.6663C11.6825 14.6663 14.6673 11.6816 14.6673 7.99967C14.6673 4.31778 11.6825 1.33301 8.00065 1.33301C4.31875 1.33301 1.33398 4.31778 1.33398 7.99967C1.33398 11.6816 4.31875 14.6663 8.00065 14.6663Z"
+                      stroke="#A06AFF"
+                      strokeWidth="1.5"
+                    />
+                    <path
+                      d="M8 5.33301V7.99967L9.33333 9.33301"
+                      stroke="#A06AFF"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1111_20909">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                <span className="text-[15px] text-[#A06AFF]">
+                  Limited time offer: <span className="font-bold">2 days left</span>
+                </span>
               </div>
+              <div className="flex items-center gap-2">
+                <span className="text-[15px] text-[#B0B0B0]">P2P Crypto Arbitrage from Scratch!</span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 px-4 pb-2">
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                    stroke="#A06AFF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="flex-1 text-[15px] font-medium text-white">Expert level content</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                    stroke="#A06AFF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="flex-1 text-[15px] font-medium text-white">For experienced users</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                    stroke="#A06AFF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="flex-1 text-[15px] font-medium text-white">Full lifetime access</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                    stroke="#A06AFF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="flex-1 text-[15px] font-medium text-white">Certificate of completion</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                    stroke="#A06AFF"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="flex-1 text-[15px] font-medium text-white">Access on mobile and TV</span>
+              </div>
+            </div>
+            <div className="flex items-center justify-between px-4 pb-4">
+              <div className="flex items-center gap-1">
+                <div className="flex gap-0.5">{renderStars(4.1)}</div>
+                <span className="text-[15px] text-[#B0B0B0]">4.1 (311 reviews)</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="text-[15px] text-[#B0B0B0]">46 sales</span>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2 px-4 pb-4">
+              <div className="rounded bg-[#2E2744] px-2 py-1">
+                <span className="text-xs font-bold uppercase text-white">COURSES</span>
+              </div>
+              <div className="rounded bg-[#2E2744] px-2 py-1">
+                <span className="text-xs font-bold uppercase text-white">TRADING_MATERIALS</span>
+              </div>
+              <div className="rounded bg-[#2E2744] px-2 py-1">
+                <span className="text-xs font-bold uppercase text-white">CRYPTOCURRENCY</span>
+              </div>
+              <div className="rounded bg-[#2E2744] px-2 py-1">
+                <span className="text-xs font-bold uppercase text-white">P2P_TRADING</span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4 p-4">
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg bg-gradient-to-l from-[#482090] to-[#A06AFF] text-[15px] font-bold text-white">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1111_20966)">
+                    <path d="M5.19922 10.6667L11.0126 10.1822C12.8316 10.0307 13.24 9.63333 13.4416 7.81927L13.8659 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M4 4H14.6667" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M3.99935 14.6667C4.73573 14.6667 5.33268 14.0697 5.33268 13.3333C5.33268 12.597 4.73573 12 3.99935 12C3.26297 12 2.66602 12.597 2.66602 13.3333C2.66602 14.0697 3.26297 14.6667 3.99935 14.6667Z" stroke="white" strokeWidth="1.5" />
+                    <path d="M11.3333 14.6667C12.0697 14.6667 12.6667 14.0697 12.6667 13.3333C12.6667 12.597 12.0697 12 11.3333 12C10.597 12 10 12.597 10 13.3333C10 14.0697 10.597 14.6667 11.3333 14.6667Z" stroke="white" strokeWidth="1.5" />
+                    <path d="M5.33398 13.333H10.0007" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                    <path d="M1.33398 1.33301H1.97798C2.60777 1.33301 3.15674 1.7494 3.30949 2.34296L5.293 10.0507C5.39323 10.4402 5.30745 10.8528 5.05948 11.1741L4.42207 11.9997" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1111_20966">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Buy
+              </button>
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clipPath="url(#clip0_1111_20975)">
+                    <path d="M13.334 5.99967C12.8039 3.34271 10.3425 1.33301 7.38685 1.33301C4.04431 1.33301 1.33398 3.90315 1.33398 7.07301C1.33398 8.59607 1.95944 9.97994 2.97968 11.0069C3.20431 11.233 3.35428 11.5419 3.29376 11.8599C3.19386 12.3797 2.96749 12.8647 2.63602 13.2688C3.50814 13.4296 4.41496 13.2848 5.19266 12.8748C5.46758 12.7299 5.60503 12.6575 5.70203 12.6427C5.76993 12.6325 5.85838 12.6421 6.00065 12.6665" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M7.33398 10.8408C7.33398 12.7779 8.97585 14.3486 11.0007 14.3486C11.2387 14.3489 11.4761 14.3269 11.71 14.283C11.8783 14.2513 11.9625 14.2355 12.0213 14.2445C12.08 14.2535 12.1633 14.2978 12.3299 14.3863C12.8009 14.6369 13.3503 14.7253 13.8786 14.6271C13.6778 14.3801 13.5407 14.0838 13.4801 13.7661C13.4435 13.5718 13.5343 13.383 13.6704 13.2448C14.2885 12.6172 14.6673 11.7715 14.6673 10.8408C14.6673 8.90367 13.0255 7.33301 11.0007 7.33301C8.97585 7.33301 7.33398 8.90367 7.33398 10.8408Z" stroke="white" strokeWidth="1.5" strokeLinejoin="round" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_1111_20975">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Chat
+              </button>
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8 4V13.3333" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M3.98769 2.19029C6.21515 2.6144 7.54272 3.50154 8.00065 4.01085C8.45858 3.50154 9.78612 2.6144 12.0136 2.19029C13.1421 1.97543 13.7063 1.86801 14.1868 2.27976C14.6673 2.69151 14.6673 3.36015 14.6673 4.69741V9.50333C14.6673 10.7261 14.6673 11.3374 14.3589 11.7191C14.0505 12.1008 13.3716 12.2301 12.0136 12.4887C10.8031 12.7191 9.85838 13.0863 9.17452 13.4554C8.50172 13.8185 8.16532 14 8.00065 14C7.83598 14 7.49958 13.8185 6.82678 13.4554C6.14294 13.0863 5.1982 12.7191 3.98769 12.4887C2.62975 12.2301 1.95078 12.1008 1.64238 11.7191C1.33398 11.3374 1.33398 10.7261 1.33398 9.50333V4.69741C1.33398 3.36015 1.33398 2.69151 1.8145 2.27976C2.29503 1.86801 2.85925 1.97543 3.98769 2.19029Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Live Preview
+              </button>
             </div>
           </div>
 
