@@ -153,6 +153,8 @@ const StrategyDetailLanding: FC = () => {
     | null;
 
   const [isFavorite, setIsFavorite] = useState(Boolean(locationState?.isFavorite));
+  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
 
   const strategy = useMemo<Strategy>(() => {
     if (locationState?.strategy) {
