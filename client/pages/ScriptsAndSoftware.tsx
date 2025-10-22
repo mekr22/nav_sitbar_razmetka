@@ -375,6 +375,20 @@ const ScriptsAndSoftware: FC = () => {
 
   const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
+  const openScriptDetails = useCallback(
+    (selectedProduct: ScriptProduct, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/script-details", {
+        state: {
+          scrollToTop: true,
+          category: "Scripts and Software" as MarketplaceCategory,
+          product: selectedProduct,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
+
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
     if (category === "Scripts and Software") {
@@ -701,6 +715,7 @@ const ScriptsAndSoftware: FC = () => {
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onOpenDetails={openScriptDetails}
                   />
                 );
               })}
