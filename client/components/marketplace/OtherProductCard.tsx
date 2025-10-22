@@ -42,7 +42,10 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
       isActive ? "border-[#A06AFF]" : "border-[#181B22]",
     )}
   >
-    <div className="absolute right-4 top-4">
+    <div
+      className="absolute right-4 top-4"
+      onClick={(event) => event.stopPropagation()}
+    >
       <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
     </div>
     <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
