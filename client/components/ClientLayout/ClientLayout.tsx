@@ -47,6 +47,14 @@ export const ClientLayout: FC<Props> = ({
       return;
     }
 
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
     const shouldLockScroll =
       window.innerWidth < 1024 && (mobileNavOpen || rightMenuOpen);
     document.body.style.overflow = shouldLockScroll ? "hidden" : "";
