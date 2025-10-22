@@ -522,7 +522,17 @@ const SignalCardLegacy: FC<{
 
       {/* Buttons */}
       <div className="flex flex-col gap-2 sm:flex-row">
-        <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+        <button
+          className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+          onClick={(event) => {
+            event.stopPropagation();
+            if (featuredScriptProduct) {
+              openScriptDetails(featuredScriptProduct, {
+                isFavorite: scriptsFavorited,
+              });
+            }
+          }}
+        >
           <BookOpen className="h-4 w-4" />
           Learn More
         </button>
@@ -624,6 +634,22 @@ const MarketplaceMyProducts: FC = () => {
 
   const scriptsFavorited = isFavorite(scriptsCardKey);
   const otherFavorited = isFavorite(otherCardKey);
+
+  const featuredScriptProduct = baseScriptProducts[0];
+
+  const openScriptDetails = useCallback(
+    (product: ScriptProduct, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/script-details", {
+        state: {
+          scrollToTop: true,
+          category: "Scripts and Software" as MarketplaceCategory,
+          product,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
   const openSignalDetails = useCallback(
     (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
