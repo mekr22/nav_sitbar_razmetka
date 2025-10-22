@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Eye,
   EyeOff,
@@ -282,6 +282,20 @@ const CoursesAndTrainingMaterials: FC = () => {
   };
 
   const isFavorite = (key: string) => favoriteCardKeys.has(key);
+
+  const openCourseDetails = useCallback(
+    (selectedCourse: Course, meta?: { isFavorite: boolean }) => {
+      navigate("/marketplace/course-details", {
+        state: {
+          scrollToTop: true,
+          category: "Courses and Training materials" as MarketplaceCategory,
+          course: selectedCourse,
+          isFavorite: Boolean(meta?.isFavorite),
+        },
+      });
+    },
+    [navigate],
+  );
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
@@ -609,6 +623,7 @@ const CoursesAndTrainingMaterials: FC = () => {
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onOpenDetails={openCourseDetails}
                   />
                 );
               })}
