@@ -340,7 +340,7 @@ const ScriptDetailLanding: FC = () => {
       <div className="mb-6 flex items-center gap-2">
         <button
           onClick={handleNavigateBack}
-          className="text-[15px] font-normal text-[#B0B0B0] hover:text-white"
+          className="rounded-full text-[15px] font-normal text-[#B0B0B0] hover:text-white"
         >
           Scripts and Software
         </button>
@@ -355,7 +355,7 @@ const ScriptDetailLanding: FC = () => {
         </h1>
         <button
           onClick={() => setIsFavorite(!isFavorite)}
-          className="flex-shrink-0"
+          className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
         >
           <Star className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`} />
         </button>
@@ -517,26 +517,26 @@ const ScriptDetailLanding: FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4">
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
+                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
                   <ShoppingCart className="h-5 w-5" />
                   Buy
                 </button>
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
                   <MessageCircle className="h-4 w-4" />
                   Chat
                 </button>
               </div>
             </div>
             <div className="flex gap-2 p-4">
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Heart className="h-4 w-4" />
                 Save
               </button>
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Share2 className="h-4 w-4" />
                 Share
               </button>
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Play className="h-4 w-4" />
                 Demo
               </button>
@@ -554,7 +554,7 @@ const ScriptDetailLanding: FC = () => {
                 />
                 <div className="flex-1">
                   <div className="text-[15px] font-bold text-white">John Smith</div>
-                  <button className="mt-2 flex h-[26px] items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-3 text-xs font-bold text-white">
+                  <button className="mt-2 flex h-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-3 text-xs font-bold text-white">
                     Follow
                   </button>
                 </div>
@@ -660,7 +660,7 @@ const ScriptDetailLanding: FC = () => {
               </div>
             </div>
             <div className="p-4">
-              <button className="flex h-[46px] w-full items-center justify-center rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex h-[46px] w-full items-center justify-center rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
                 Show More Reviews
               </button>
             </div>
