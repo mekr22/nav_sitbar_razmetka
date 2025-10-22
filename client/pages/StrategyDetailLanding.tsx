@@ -32,6 +32,101 @@ const AVATAR_PLACEHOLDER =
 const COMMENT_AVATAR =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
 
+type CommentNode = {
+  id: string;
+  author: string;
+  time: string;
+  text: string;
+  likes: number;
+  likeColor?: string;
+  timeColor?: string;
+  canHide?: boolean;
+  replies?: CommentNode[];
+  liked?: boolean;
+  hidden?: boolean;
+};
+
+const INITIAL_COMMENTS: CommentNode[] = [
+  {
+    id: "comment-1",
+    author: "Avery Collins",
+    time: "3 hours ago",
+    text: "Appreciate the transparency around drawdown triggers. The weekly playbook templates have made our post-trade reviews far more actionable.",
+    likes: 18,
+    canHide: true,
+    replies: [
+      {
+        id: "comment-1-1",
+        author: "Noah Kim",
+        time: "2 hours ago",
+        text: "Glad it helps, Avery. We just added fresh macro stress paths—let us know how they perform for your desks.",
+        likes: 12,
+        canHide: true,
+        replies: [
+          {
+            id: "comment-1-1-1",
+            author: "Avery Collins",
+            time: "1 hour ago",
+            text: "Perfect timing ahead of the earnings cycle. Thanks team!",
+            likes: 7,
+            likeColor: "#B0B0B0",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "comment-2",
+    author: "Morgan Patel",
+    time: "5 hours ago",
+    text: "Subscribed last month. The capital efficiency drills alone justified the subscription—curious if automation coverage is expanding to Asia sessions?",
+    likes: 9,
+    likeColor: "#808283",
+    timeColor: "#808283",
+  },
+  {
+    id: "comment-3",
+    author: "Jordan Singh",
+    time: "1 day ago",
+    text: "Could we get deeper dives on hedging tactics during CPI weeks? The alerts have been solid but more context would be great.",
+    likes: 11,
+    likeColor: "#808283",
+    timeColor: "#808283",
+  },
+];
+
+const toggleLikeInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
+  nodes.map((node) => {
+    if (node.id === id) {
+      const liked = !node.liked;
+      return {
+        ...node,
+        liked,
+        likes: liked ? node.likes + 1 : Math.max(node.likes - 1, 0),
+      };
+    }
+
+    return {
+      ...node,
+      replies: node.replies ? toggleLikeInTree(node.replies, id) : undefined,
+    };
+  });
+
+const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
+  nodes.map((node) => {
+    if (node.id === id) {
+      return {
+        ...node,
+        hidden: !node.hidden,
+      };
+    }
+
+    return {
+      ...node,
+      replies: node.replies ? toggleHiddenInTree(node.replies, id) : undefined,
+    };
+  });
+
 const COVER_IMAGE_BY_RISK: Record<Strategy["riskLevel"], string> = {
   LOW: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1400&q=80",
   MEDIUM: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80",
