@@ -282,15 +282,6 @@ const CourseDetailLanding: FC = () => {
     [],
   );
 
-  const requirementsItems = useMemo(
-    () => [
-      "Basic knowledge of cryptocurreincies",
-      "Computer with interner access",
-      "Willingness to learn and grow in crypto trading",
-    ],
-    [],
-  );
-
   const renderStars = (rating: number) => {
     const stars = [] as JSX.Element[];
     for (let i = 0; i < 5; i += 1) {
