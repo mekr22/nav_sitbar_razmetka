@@ -800,14 +800,14 @@ const CourseDetailLanding: FC = () => {
                 </div>
               </div>
               <div className="flex flex-wrap items-center gap-1">
-                <div className="flex items-center justify-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
-                  <span className="text-xs font-bold uppercase text-white">4.5H</span>
+                <div className="inline-flex h-7 items-center justify-center gap-1 rounded bg-[#2E2744] px-2">
+                  <span className="text-xs font-bold uppercase leading-none text-white">4.5H</span>
                 </div>
-                <div className="flex items-center justify-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
-                  <span className="text-xs font-bold uppercase text-white">17 LECTURES</span>
+                <div className="inline-flex h-7 items-center justify-center gap-1 rounded bg-[#2E2744] px-2">
+                  <span className="text-xs font-bold uppercase leading-none text-white">17 LECTURES</span>
                 </div>
-                <div className="flex items-center justify-center gap-1 rounded bg-[rgba(106,165,255,0.16)] px-1 py-0.5">
-                  <span className="text-xs font-bold uppercase text-[#6AA5FF]">ALL LEVELS</span>
+                <div className="inline-flex h-7 items-center justify-center gap-1 rounded bg-[rgba(106,165,255,0.16)] px-2">
+                  <span className="text-xs font-bold uppercase leading-none text-[#6AA5FF]">ALL LEVELS</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
