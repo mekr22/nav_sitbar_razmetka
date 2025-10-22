@@ -505,7 +505,7 @@ const CourseDetailLanding: FC = () => {
         <button
           type="button"
           onClick={handleToggleFavorite}
-          className="flex-shrink-0 transition-colors"
+          className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
           aria-pressed={isFavorite}
           aria-label={isFavorite ? "Remove course from favourites" : "Add course to favourites"}
         >
