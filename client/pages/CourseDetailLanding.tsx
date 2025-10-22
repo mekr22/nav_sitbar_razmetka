@@ -865,9 +865,6 @@ const CourseDetailLanding: FC = () => {
                 <div className="flex gap-0.5">{renderStars(4.1)}</div>
                 <span className="text-[15px] text-[#B0B0B0]">4.1 (311 reviews)</span>
               </div>
-              <div className="flex items-center gap-1">
-                <span className="text-[15px] text-[#B0B0B0]">46 sales</span>
-              </div>
             </div>
             <div className="flex flex-wrap gap-2 px-4 pb-4">
               <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
