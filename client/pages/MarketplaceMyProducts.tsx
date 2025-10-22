@@ -631,8 +631,9 @@ const MarketplaceMyProducts: FC = () => {
   const otherFavorited = isFavorite(otherCardKey);
 
   const featuredScriptProduct = baseScriptProducts[0];
+  const featuredOtherProduct = baseOtherProducts[0];
 
-const openCourseDetails = useCallback(
+  const openCourseDetails = useCallback(
   (selectedCourse: MarketplaceCourse, meta?: { isFavorite: boolean }) => {
     navigate("/marketplace/course-details", {
       state: {
