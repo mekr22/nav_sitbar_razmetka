@@ -631,21 +631,35 @@ const MarketplaceMyProducts: FC = () => {
 
   const featuredScriptProduct = baseScriptProducts[0];
 
-  const openScriptDetails = useCallback(
-    (product: ScriptProduct, meta?: { isFavorite: boolean }) => {
-      navigate("/marketplace/script-details", {
-        state: {
-          scrollToTop: true,
-          category: "Scripts and Software" as MarketplaceCategory,
-          product,
-          isFavorite: Boolean(meta?.isFavorite),
-        },
-      });
-    },
-    [navigate],
-  );
+const openCourseDetails = useCallback(
+  (selectedCourse: MarketplaceCourse, meta?: { isFavorite: boolean }) => {
+    navigate("/marketplace/course-details", {
+      state: {
+        scrollToTop: true,
+        category: "Courses and Training materials" as MarketplaceCategory,
+        course: selectedCourse,
+        isFavorite: Boolean(meta?.isFavorite),
+      },
+    });
+  },
+  [navigate],
+);
 
-  const openSignalDetails = useCallback(
+const openScriptDetails = useCallback(
+  (product: ScriptProduct, meta?: { isFavorite: boolean }) => {
+    navigate("/marketplace/script-details", {
+      state: {
+        scrollToTop: true,
+        category: "Scripts and Software" as MarketplaceCategory,
+        product,
+        isFavorite: Boolean(meta?.isFavorite),
+      },
+    });
+  },
+  [navigate],
+);
+
+const openSignalDetails = useCallback(
     (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/signals-details", {
         state: {
