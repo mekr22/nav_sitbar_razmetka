@@ -128,8 +128,6 @@ const tradingRobots: TradingRobot[] = baseTradingRobots;
 
 const courses: MarketplaceCourse[] = baseCourses.slice(0, 3);
 
-const StrategyDetailsMeta = { isFavorite: false };
-
 const CourseCard: FC<{
   course: MarketplaceCourse;
   isActive: boolean;
