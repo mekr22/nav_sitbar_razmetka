@@ -661,6 +661,20 @@ const openScriptDetails = useCallback(
   [navigate],
 );
 
+const openOtherDetails = useCallback(
+  (product: OtherProduct, meta?: { isFavorite: boolean }) => {
+    navigate("/marketplace/other-details", {
+      state: {
+        scrollToTop: true,
+        category: "Others" as MarketplaceCategory,
+        product,
+        isFavorite: Boolean(meta?.isFavorite),
+      },
+    });
+  },
+  [navigate],
+);
+
 const openSignalDetails = useCallback(
     (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/signals-details", {
