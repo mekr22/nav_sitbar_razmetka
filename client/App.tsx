@@ -33,6 +33,7 @@ import InvestmentConsultantDetailLanding from "./pages/InvestmentConsultantDetai
 import TraderDetailLanding from "./pages/TraderDetailLanding";
 import AnalystDetailLanding from "./pages/AnalystDetailLanding";
 import ScriptDetailLanding from "./pages/ScriptDetailLanding";
+import CourseDetailLanding from "./pages/CourseDetailLanding";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
@@ -104,6 +105,10 @@ const App = () => (
                     <Route
                       path="/marketplace/script-details"
                       element={<ScriptDetailLanding />}
+                    />
+                    <Route
+                      path="/marketplace/course-details"
+                      element={<CourseDetailLanding />}
                     />
                     <Route
                       path="/marketplace/indicators-details"
