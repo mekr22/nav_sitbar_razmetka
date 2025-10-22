@@ -7,6 +7,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Bell,
+  Check,
   Calendar,
   ExternalLink,
   Globe2,
