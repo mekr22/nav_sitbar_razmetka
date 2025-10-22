@@ -62,6 +62,11 @@ const StrategyCard: FC<StrategyCardProps> = ({
         tabIndex={0}
         aria-pressed={isActive}
         onClick={onSelect}
+        onDoubleClick={() =>
+          onOpenDetails?.(strategy, {
+            isFavorite,
+          })
+        }
         onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
           if (isActivationKey(event.key)) {
             event.preventDefault();
