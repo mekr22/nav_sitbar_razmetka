@@ -108,6 +108,8 @@ const ScriptDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [isCompactLayout, setIsCompactLayout] = useState(false);
 
   const product = useMemo<ScriptProduct>(() => {
     const locationState = location.state as { product?: ScriptProduct } | null;
