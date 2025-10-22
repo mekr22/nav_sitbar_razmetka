@@ -1,4 +1,4 @@
-import { Heart, Star, ShoppingCart, MessageCircle, Share2, Play } from "lucide-react";
+import { Star, ShoppingCart, MessageCircle } from "lucide-react";
 import { FC, useState, useCallback, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
