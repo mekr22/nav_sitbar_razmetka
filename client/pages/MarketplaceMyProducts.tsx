@@ -43,6 +43,7 @@ import {
   baseScriptProducts,
   ScriptProduct,
 } from "@/data/marketplaceScriptsSoftware";
+import { baseOtherProducts, OtherProduct } from "@/data/marketplaceOthers";
 import {
   baseCourses,
   Course as MarketplaceCourse,
