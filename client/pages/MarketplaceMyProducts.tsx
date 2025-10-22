@@ -40,6 +40,10 @@ import {
 import { baseAnalysts, Analyst } from "@/data/marketplaceAnalysts";
 import { baseTraders, Trader } from "@/data/marketplaceTraders";
 import {
+  baseScriptProducts,
+  ScriptProduct,
+} from "@/data/marketplaceScriptsSoftware";
+import {
   marketplaceCategories,
   MarketplaceCategory,
 } from "@/data/marketplaceCategories";
