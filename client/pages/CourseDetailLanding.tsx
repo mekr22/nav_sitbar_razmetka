@@ -629,7 +629,7 @@ const CourseDetailLanding: FC = () => {
               onClick={() =>
                 setExpandedSections((prev) => ({ ...prev, whatYouLearn: !prev.whatYouLearn }))
               }
-              className="flex items-center justify-center gap-1 rounded-full px-3 py-2 transition-colors hover:bg-[#A06AFF]/10"
+              className="flex items-center justify-center gap-1 rounded-full border border-[#A06AFF] px-3 py-2 transition-colors hover:bg-[#A06AFF]/10"
             >
               <span className="text-[15px] font-medium text-[#A06AFF]">Expand</span>
               <svg
