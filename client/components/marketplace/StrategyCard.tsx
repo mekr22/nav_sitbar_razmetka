@@ -205,7 +205,9 @@ const StrategyCard: FC<StrategyCardProps> = ({
             )}
             onClick={(event) => {
               event.stopPropagation();
-              onOpenDetails?.(strategy);
+              onOpenDetails?.(strategy, {
+                isFavorite,
+              });
             }}
           >
             <BookOpen className="h-4 w-4" />
