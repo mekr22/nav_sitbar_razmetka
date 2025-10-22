@@ -142,6 +142,10 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
                 actionButtonBaseClass,
                 "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
               )}
+              onClick={(event) => {
+                event.stopPropagation();
+                onSelect();
+              }}
             >
               <BookOpen className="h-4 w-4" />
               DETAILS
@@ -151,6 +155,7 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
                 actionButtonBaseClass,
                 "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
               )}
+              onClick={(event) => event.stopPropagation()}
             >
               <ShoppingCart className="h-4 w-4" />
               ADD TO CART
