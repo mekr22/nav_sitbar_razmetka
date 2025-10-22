@@ -120,6 +120,24 @@ const ScriptDetailLanding: FC = () => {
     navigate("/marketplace/scripts");
   }, [navigate]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const updateLayout = () => {
+      setIsCompactLayout(window.innerWidth <= 360);
+    };
+
+    updateLayout();
+
+    window.addEventListener("resize", updateLayout);
+
+    return () => {
+      window.removeEventListener("resize", updateLayout);
+    };
+  }, []);
+
   const renderStars = (rating: number) => {
     const stars = [];
     for (let i = 0; i < 5; i++) {
