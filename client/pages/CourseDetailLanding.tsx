@@ -6,7 +6,6 @@ import {
   ShoppingCart,
   Star,
   Eye,
-  Users,
 } from "lucide-react";
 
 import type { Course } from "@/data/marketplaceCourses";
