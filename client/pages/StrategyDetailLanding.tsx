@@ -941,6 +941,68 @@ const StrategyDetailLanding: FC = () => {
           </div>
 
           <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+            <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 max-[360px]:gap-3 max-[360px]:p-3">
+              <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Reviews</h2>
+
+              <div className="flex items-center gap-4 max-[360px]:gap-3">
+                <span className="text-[31px] font-bold leading-none text-[#A06AFF] max-[360px]:text-2xl">
+                  {averageRating.toFixed(1)}
+                </span>
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-0.5">{renderStars(averageRating)}</div>
+                  <p className="text-xs font-bold text-[#B0B0B0]">
+                    Based on {totalReviews} reviews
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              {reviewsToDisplay.map((review, index) => (
+                <div key={review.id} className="flex flex-col">
+                  {index > 0 && (
+                    <div className="px-4 py-2 max-[360px]:px-3">
+                      <div className="h-px bg-[#181B22]" />
+                    </div>
+                  )}
+
+                  <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src={review.avatar}
+                        alt={review.author}
+                        className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
+                      />
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[15px] font-bold text-white max-[360px]:text-sm">{review.author}</span>
+                        <span className="text-xs font-bold text-[#B0B0B0]">{review.postedAt}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-0.5">{renderStars(review.rating)}</div>
+                  </div>
+
+                  <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
+                    <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">{review.title}</h4>
+                    <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">{review.message}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {strategyReviews.length > 3 && (
+              <div className="p-4 max-[360px]:p-3">
+                <button
+                  type="button"
+                  onClick={() => setShowAllReviews((prev) => !prev)}
+                  className="flex h-[26px] w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/50 px-4 text-center text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] max-[360px]:text-sm"
+                >
+                  {showAllReviews ? "Show Less Reviews" : "Show More Reviews"}
+                </button>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
             <div className="border-b border-[#181B22] p-4">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">What you receive</h2>
             </div>
