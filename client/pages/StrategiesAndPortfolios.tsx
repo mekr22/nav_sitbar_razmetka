@@ -651,6 +651,11 @@ const StrategiesAndPortfolios: FC = () => {
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onOpenDetails={(selectedStrategy) =>
+                      openStrategyDetails(selectedStrategy, {
+                        isFavorite: isFavorited,
+                      })
+                    }
                   />
                 );
               })}
