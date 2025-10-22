@@ -25,6 +25,7 @@ export interface StrategyCardProps {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onOpenDetails?: (strategy: Strategy) => void;
 }
 
 const StrategyCard: FC<StrategyCardProps> = ({
@@ -67,7 +68,10 @@ const StrategyCard: FC<StrategyCardProps> = ({
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
-        <div className="absolute right-4 top-4">
+        <div
+          className="absolute right-4 top-4"
+          onClick={(event) => event.stopPropagation()}
+        >
           <FavoriteStarButton
             pressed={isFavorite}
             onToggle={onToggleFavorite}
@@ -189,6 +193,10 @@ const StrategyCard: FC<StrategyCardProps> = ({
               actionButtonBaseClass,
               "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
             )}
+            onClick={(event) => {
+              event.stopPropagation();
+              onOpenDetails?.(strategy);
+            }}
           >
             <BookOpen className="h-4 w-4" />
             LEARN MORE
@@ -198,6 +206,7 @@ const StrategyCard: FC<StrategyCardProps> = ({
               actionButtonBaseClass,
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
+            onClick={(event) => event.stopPropagation()}
           >
             <Check className="h-4 w-4" />
             SUBSCRIBE
