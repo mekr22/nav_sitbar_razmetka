@@ -44,6 +44,10 @@ import {
   ScriptProduct,
 } from "@/data/marketplaceScriptsSoftware";
 import {
+  baseCourses,
+  Course as MarketplaceCourse,
+} from "@/data/marketplaceCourses";
+import {
   marketplaceCategories,
   MarketplaceCategory,
 } from "@/data/marketplaceCategories";
