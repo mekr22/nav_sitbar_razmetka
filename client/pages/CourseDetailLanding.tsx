@@ -767,10 +767,15 @@ const CourseDetailLanding: FC = () => {
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
-            <div className="relative flex items-center justify-center rounded-t-3xl border border-[#181B22] bg-cover bg-center" style={{ backgroundImage: `url('${course.image}')`, paddingTop: '217px', paddingBottom: '217px' }}>
+            <div className="relative">
+              <img
+                src={course.image}
+                alt={course.title}
+                className="h-[332px] w-full rounded-t-3xl border border-[#181B22] object-cover"
+              />
               <button
                 type="button"
-                className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]"
+                className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
