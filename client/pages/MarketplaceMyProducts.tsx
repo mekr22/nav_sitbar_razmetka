@@ -1000,6 +1000,13 @@ const MarketplaceMyProducts: FC = () => {
             tabIndex={0}
             aria-pressed={activeCardKey === scriptsCardKey}
             onClick={() => setActiveCardKey(scriptsCardKey)}
+            onDoubleClick={() => {
+              if (featuredScriptProduct) {
+                openScriptDetails(featuredScriptProduct, {
+                  isFavorite: scriptsFavorited,
+                });
+              }
+            }}
             onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
               if (isActivationKey(event.key)) {
                 event.preventDefault();
