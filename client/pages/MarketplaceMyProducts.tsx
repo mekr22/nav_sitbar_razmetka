@@ -1301,7 +1301,10 @@ const openSignalDetails = useCallback(
                 : "border-[#181B22]",
             )}
           >
-            <div className="absolute right-4 top-4">
+            <div
+              className="absolute right-4 top-4"
+              onClick={(event) => event.stopPropagation()}
+            >
               <FavoriteStarButton
                 pressed={otherFavorited}
                 onToggle={() => toggleFavorite(otherCardKey)}
