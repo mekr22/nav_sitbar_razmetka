@@ -693,20 +693,6 @@ const CourseDetailLanding: FC = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
-            <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Details</h2>
-            </div>
-            <div className="grid grid-cols-2 gap-4 p-4">
-              {detailItems.map((item) => (
-                <div key={item.label} className="flex flex-col gap-1">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">{item.label}</span>
-                  <span className="text-[15px] font-bold text-white">{item.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">Community discussions</h2>
