@@ -34,6 +34,7 @@ const StrategyCard: FC<StrategyCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
+  onOpenDetails,
 }) => {
   const getRiskColor = (level: Strategy["riskLevel"]) => {
     switch (level) {
