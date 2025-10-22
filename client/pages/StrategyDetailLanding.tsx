@@ -869,7 +869,78 @@ const StrategyDetailLanding: FC = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
+          <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
+            <div className="flex items-center gap-2 p-4 max-[360px]:gap-2 max-[360px]:p-3">
+              <img
+                src={strategyAuthor.avatar}
+                alt={strategyAuthor.name}
+                className="h-20 w-20 flex-shrink-0 rounded-full object-cover max-[360px]:h-16 max-[360px]:w-16"
+              />
+              <div className="flex flex-1 flex-col gap-2 max-[360px]:gap-1.5">
+                <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">{strategyAuthor.name}</h3>
+                <button
+                  type="button"
+                  className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90 max-[360px]:w-16 max-[360px]:text-[11px]"
+                >
+                  Follow
+                </button>
+              </div>
+            </div>
+
+            {strategyAuthor.communityLink && (
+              <div className="px-4 pb-4 max-[360px]:px-3 max-[360px]:pb-3">
+                <p className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">
+                  Join our 10k+ community: {" "}
+                  <a
+                    href={strategyAuthor.communityLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-[#A06AFF] underline"
+                  >
+                    {strategyAuthor.communityLink.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                  </a>
+                </p>
+              </div>
+            )}
+
+            <div className="px-4 pb-4 max-[360px]:px-3 max-[360px]:pb-3">
+              <p className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">{strategyAuthor.bio}</p>
+            </div>
+
+            {strategyAuthor.socials && strategyAuthor.socials.length > 0 && (
+              <div className="flex items-center gap-3 px-4 pb-4 max-[360px]:gap-2 max-[360px]:px-3 max-[360px]:pb-3">
+                <span className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">Also on:</span>
+                <div className="flex items-center gap-3">
+                  {strategyAuthor.socials.includes("twitter") && (
+                    <svg className="h-4 w-4 text-white" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M12.2174 1.26953H14.4663L9.55298 6.88519L15.3332 14.5268H10.8073L7.26253 9.89222L3.20647 14.5268H0.956125L6.21146 8.52026L0.666504 1.26953H5.30724L8.51143 5.50575L12.2174 1.26953ZM11.428 13.1807H12.6742L4.6301 2.54495H3.29281L11.428 13.1807Z" />
+                    </svg>
+                  )}
+                  {strategyAuthor.socials.includes("youtube") && (
+                    <svg className="h-4 w-4 text-white" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M15.8406 4.8002C15.8406 4.8002 15.6844 3.69707 15.2031 3.2127C14.5938 2.5752 13.9125 2.57207 13.6 2.53457C11.3625 2.37207 8.00313 2.37207 8.00313 2.37207H7.99687C7.99687 2.37207 4.6375 2.37207 2.4 2.53457C2.0875 2.57207 1.40625 2.5752 0.796875 3.2127C0.315625 3.69707 0.1625 4.8002 0.1625 4.8002C0.1625 4.8002 0 6.09707 0 7.39082V8.60332C0 9.89707 0.159375 11.1939 0.159375 11.1939C0.159375 11.1939 0.315625 12.2971 0.79375 12.7814C1.40313 13.4189 2.20313 13.3971 2.55938 13.4658C3.84063 13.5877 8 13.6252 8 13.6252C8 13.6252 11.3625 13.6189 13.6 13.4596C13.9125 13.4221 14.5938 13.4189 15.2031 12.7814C15.6844 12.2971 15.8406 11.1939 15.8406 11.1939C15.8406 11.1939 16 9.90019 16 8.60332V7.39082C16 6.09707 15.8406 4.8002 15.8406 4.8002ZM6.34688 10.0752V5.57832L10.6687 7.83457L6.34688 10.0752Z" />
+                    </svg>
+                  )}
+                  {strategyAuthor.socials.includes("instagram") && (
+                    <svg className="h-4 w-4 text-white" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M8 1.44062C10.1375 1.44062 10.3906 1.45 11.2313 1.4875C12.0125 1.52187 12.4344 1.65313 12.7156 1.7625C13.0875 1.90625 13.3563 2.08125 13.6344 2.35938C13.9156 2.64063 14.0875 2.90625 14.2313 3.27813C14.3406 3.55938 14.4719 3.98437 14.5063 4.7625C14.5438 5.60625 14.5531 5.85938 14.5531 7.99375C14.5531 10.1313 14.5438 10.3844 14.5063 11.225C14.4719 12.0063 14.3406 12.4281 14.2313 12.7094C14.0875 13.0813 13.9125 13.35 13.6344 13.6281C13.3531 13.9094 13.0875 14.0813 12.7156 14.225C12.4344 14.3344 12.0094 14.4656 11.2313 14.5C10.3875 14.5375 10.1344 14.5469 8 14.5469C5.8625 14.5469 5.60938 14.5375 4.76875 14.5C3.9875 14.4656 3.56563 14.3344 3.28438 14.225C2.9125 14.0813 2.64375 13.9063 2.36563 13.6281C2.08438 13.3469 1.9125 13.0813 1.76875 12.7094C1.65938 12.4281 1.52813 12.0031 1.49375 11.225C1.45625 10.3813 1.44688 10.1281 1.44688 7.99375C1.44688 5.85625 1.45625 5.60312 1.49375 4.7625C1.52813 3.98125 1.65938 3.55938 1.76875 3.27813C1.9125 2.90625 2.0875 2.6375 2.36563 2.35938C2.64688 2.07813 2.9125 1.90625 3.28438 1.7625C3.56563 1.65313 3.99063 1.52187 4.76875 1.4875C5.60938 1.45 5.8625 1.44062 8 1.44062Z" />
+                    </svg>
+                  )}
+                  {strategyAuthor.socials.includes("web") && (
+                    <svg className="h-4 w-4 text-white" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+                      <path
+                        d="M8.00016 14.6663C4.31826 14.6663 1.3335 11.6815 1.3335 7.99967C1.3335 6.13798 2.0966 4.45452 3.32708 3.24502M8.00016 14.6663C7.35816 14.1906 7.46063 13.6367 7.7827 13.0828C8.2779 12.2313 8.2779 12.2313 8.2779 11.0959C8.2779 9.96061 8.95256 9.42827 11.3335 9.90441C12.4033 10.1184 13.1829 8.64027 14.5717 9.12834M8.00016 14.6663C11.2974 14.6663 14.0355 12.2727 14.5717 9.12834M3.32708 3.24502C3.89327 3.30477 4.21028 3.6081 4.7368 4.16445C5.73643 5.22069 6.73603 5.30882 7.4025 4.95674C8.4021 4.42863 7.5621 3.57321 8.7353 3.10833C9.45456 2.82335 9.59163 2.077 9.25123 1.4502M3.32708 3.24502C4.53013 2.06248 6.17996 1.33301 8.00016 1.33301C8.42776 1.33301 8.84596 1.37327 9.25123 1.4502M14.5717 9.12834C14.6342 8.76147 14.6668 8.38441 14.6668 7.99967C14.6668 4.74539 12.3351 2.03571 9.25123 1.4502"
+                        strokeWidth="1.5"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
             <div className="border-b border-[#181B22] p-4">
               <h2 className="text-[19px] font-bold text-[#A06AFF]">What you receive</h2>
             </div>
