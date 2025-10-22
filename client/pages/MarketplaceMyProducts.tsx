@@ -148,6 +148,9 @@ const CourseCard: FC<{
       tabIndex={0}
       aria-pressed={isActive}
       onClick={onSelect}
+      onDoubleClick={() => {
+        onOpenDetails(course, { isFavorite });
+      }}
       onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
         if (isActivationKey(event.key)) {
           event.preventDefault();
