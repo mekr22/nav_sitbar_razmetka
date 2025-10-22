@@ -267,6 +267,25 @@ const StrategyDetailLanding: FC = () => {
     [assetsSummary, exchangesSummary, strategy.exchangesCount, strategy.maxDrawdown, strategy.name],
   );
 
+  const strategyAuthor = useMemo(() => STRATEGY_AUTHOR, []);
+  const strategyReviews = useMemo(() => STRATEGY_REVIEWS, []);
+
+  const averageRating = useMemo(() => {
+    if (strategyReviews.length === 0) {
+      return 0;
+    }
+
+    const total = strategyReviews.reduce((sum, review) => sum + review.rating, 0);
+    return total / strategyReviews.length;
+  }, [strategyReviews]);
+
+  const totalReviews = useMemo(() => strategyReviews.length, [strategyReviews]);
+
+  const reviewsToDisplay = useMemo(
+    () => (showAllReviews ? strategyReviews : strategyReviews.slice(0, 3)),
+    [showAllReviews, strategyReviews],
+  );
+
   const performanceMetrics = useMemo(
     () => [
       {
