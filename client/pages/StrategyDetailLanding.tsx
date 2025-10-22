@@ -286,6 +286,26 @@ const StrategyDetailLanding: FC = () => {
     [showAllReviews, strategyReviews],
   );
 
+  const renderStars = useCallback((rating: number) => {
+    return Array.from({ length: 5 }, (_, index) => {
+      const filled = index < Math.floor(rating);
+      const halfFilled = !filled && index < rating;
+
+      return (
+        <Star
+          key={index}
+          className={`h-4 w-4 ${
+            filled
+              ? "fill-[#A06AFF] text-[#A06AFF]"
+              : halfFilled
+                ? "fill-[url(#half-star)] text-[#A06AFF]"
+                : "fill-[#2E2744] text-[#2E2744]"
+          }`}
+        />
+      );
+    });
+  }, []);
+
   const performanceMetrics = useMemo(
     () => [
       {
