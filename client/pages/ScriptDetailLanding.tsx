@@ -527,7 +527,7 @@ const ScriptDetailLanding: FC = () => {
                 </button>
               </div>
             </div>
-            <div className="flex gap-2 p-4">
+            <div className="flex gap-4 p-4">
               <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <Heart className="h-4 w-4" />
                 Save
