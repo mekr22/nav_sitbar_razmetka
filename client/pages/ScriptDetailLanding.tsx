@@ -1,402 +1,148 @@
-import {
-  ArrowLeft,
-  BookOpen,
-  Check,
-  Download,
-  MessageCircle,
-  ShieldCheck,
-  ShoppingCart,
-  Share2,
-  Star,
-  Users,
-  Eye,
-  Globe,
-} from "lucide-react";
-import { FC, useCallback, useEffect, useMemo, useState } from "react";
+import { Heart, Eye, Star, ShoppingCart, MessageCircle, Share2, Play } from "lucide-react";
+import { FC, useState, useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
-import type { MarketplaceCategory } from "@/data/marketplaceCategories";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
 import { baseScriptProducts } from "@/data/marketplaceScriptsSoftware";
 
-interface ScriptDetailLocationState {
-  product?: ScriptProduct;
-  category?: MarketplaceCategory;
-  scrollToTop?: boolean;
-  isFavorite?: boolean;
-}
+const AVATAR_PLACEHOLDER = "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=160";
 
-type Review = {
-  id: string;
-  author: string;
-  avatar: string;
-  postedAt: string;
-  rating: number;
-  title: string;
-  message: string;
-  likes?: number;
-};
-
-type ExtendedScriptProduct = ScriptProduct & {
-  price: string;
-  productImage: string;
-  gallery: string[];
-  supportChannels: string[];
-  documentationLinks: string[];
-  deploymentOptions: string[];
-  authorBio: string;
-  tags: string[];
-  averageRating: number;
-  totalReviews: number;
-  releaseNotes: string[];
-  supportResponseTime: string;
-  reviews: Review[];
-};
-
-const FAVORITE_STORAGE_KEY = "scripts-detail-favorites";
-
-const DEFAULT_GALLERY = [
-  "https://api.builder.io/api/v1/image/assets/TEMP/7825b04c53855449a418b331c5ca1f44ac396b69?width=800",
-  "https://api.builder.io/api/v1/image/assets/TEMP/9dbaf1fa8ee6fb3c7d1fc3279b8a8fbeb9b0dd02c54af43c9aac5a2ddcaad419?width=800",
-  "https://api.builder.io/api/v1/image/assets/TEMP/6b8dbd1c8b78427745934976a8c72c2863d7b8ce7b8077682fa0c3d1ee0d28da?width=800",
-];
-
-const resolveFallbackProduct = (
-  provided?: ScriptProduct,
-): ExtendedScriptProduct => {
-  const base = provided ?? baseScriptProducts[0];
-
-  const gallery = [base.heroImage, ...DEFAULT_GALLERY].filter(
-    (url, index, array) => array.indexOf(url) === index,
-  );
-
-  const numericRating = parseFloat(base.ratingScore) || 4.7;
-
-  return {
-    ...base,
-    price: "$499 one-time",
-    productImage: base.heroImage,
-    gallery,
-    supportChannels: ["Email", "Discord", "Slack"],
-    documentationLinks: [
-      "https://example.com/docs",
-      "https://example.com/api",
-      "https://example.com/quickstart",
-    ],
-    deploymentOptions: ["On-Premise", "Cloud", "Docker"],
-    authorBio:
-      "Trading automation specialist focused on packaging institutional-grade tooling for independent desks.",
-    tags: ["Automation", "Risk Management", "Multi-platform"],
-    averageRating: Number.isFinite(numericRating) ? numericRating : 4.7,
-    totalReviews: 128,
-    releaseNotes: [
-      "Version 2.4 adds broker-agnostic execution adapters and enhanced monitoring dashboards.",
-      "Performance optimised with batch backtesting improvements (up to 35% faster).",
-      "Extended compatibility with TradingView webhooks and REST automation triggers.",
-    ],
-    supportResponseTime: "Responds within 2 business hours",
-    reviews: [
-      {
-        id: "review-1",
-        author: "Isabella Reed",
-        avatar:
-          "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=160",
-        postedAt: "3 days ago",
-        rating: 5,
-        title: "Streamlined our risk management",
-        message:
-          "RiskMaster replaced three separate spreadsheets. Position sizing and stop placement are calculated instantly, and the audit trail keeps compliance happy.",
-        likes: 32,
-      },
-      {
-        id: "review-2",
-        author: "Marcus Taylor",
-        avatar:
-          "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F4a0f255d9e9940ecaf46e40918c30f1f?format=webp&width=160",
-        postedAt: "1 week ago",
-        rating: 4,
-        title: "Great automation toolkit",
-        message:
-          "Deployment through Docker was painless and the included scripts cover most scenarios. Hoping for additional REST endpoints in the next update.",
-        likes: 21,
-      },
-      {
-        id: "review-3",
-        author: "Lin Chen",
-        avatar:
-          "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F19246b010e374d04bbcb2900c9c4d3cb?format=webp&width=160",
-        postedAt: "2 weeks ago",
-        rating: 5,
-        title: "Excellent documentation",
-        message:
-          "The API guides are clear and the sample notebooks shortened integration time dramatically. The support team is quick to respond on Slack.",
-        likes: 18,
-      },
-    ],
-  };
-};
-
-const COMMENT_AVATAR =
-  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=128";
-
-interface CommentNode {
+interface Comment {
   id: string;
   author: string;
   time: string;
   text: string;
   likes: number;
-  liked?: boolean;
-  hidden?: boolean;
-  replies?: CommentNode[];
+  replies?: Comment[];
 }
 
-const INITIAL_COMMENTS: CommentNode[] = [
+const MOCK_COMMENTS: Comment[] = [
   {
-    id: "comment-1",
-    author: "Isabella Reed",
-    time: "4 hours ago",
-    text: "Integrated the script with our portfolio risk dashboard. Alerting and hedging recommendations are on point.",
-    likes: 18,
+    id: "1",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
     replies: [
       {
-        id: "comment-1-1",
-        author: "Sarah Lee",
-        time: "3 hours ago",
-        text: "Appreciate the feedback! We are rolling out an Azure deployment guide next week.",
-        likes: 9,
-      },
-    ],
+        id: "1-1",
+        author: "John Smith",
+        time: "6 hours ago",
+        text: "Thank you, John Smith!",
+        likes: 25,
+        replies: [
+          {
+            id: "1-1-1",
+            author: "John Smith",
+            time: "6 hours ago",
+            text: "At your service, John Smith!",
+            likes: 25,
+          }
+        ]
+      }
+    ]
   },
   {
-    id: "comment-2",
-    author: "David Romero",
-    time: "1 day ago",
-    text: "The automation scheduler works flawlessly with our FIX execution stack. Would love an option for webhook retries.",
-    likes: 12,
+    id: "2",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
   },
   {
-    id: "comment-3",
-    author: "Priya Desai",
-    time: "2 days ago",
-    text: "Onboarding team answered every question quickly. Documentation is dense but comprehensive.",
-    likes: 15,
-  },
+    id: "3",
+    author: "John Smith",
+    time: "6 hours ago",
+    text: "Following your lead, I'm reviewing my limit orders. Adjusting some, adding others. The only thing missing is some kind of alphabetical index for the coins—something you can glance at and immediately see whether a coin is in the list and what stage it's at. Thanks. At first glance, it's a tedious task, but with a strong upward move, it could pay off really well.",
+    likes: 25,
+  }
 ];
-
-const toggleLikeInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
-  nodes.map((node) => {
-    if (node.id === id) {
-      const liked = !node.liked;
-      return {
-        ...node,
-        liked,
-        likes: liked ? node.likes + 1 : Math.max(node.likes - 1, 0),
-      };
-    }
-
-    return {
-      ...node,
-      replies: node.replies ? toggleLikeInTree(node.replies, id) : undefined,
-    };
-  });
-
-const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
-  nodes.map((node) => {
-    if (node.id === id) {
-      return {
-        ...node,
-        hidden: !node.hidden,
-      };
-    }
-
-    return {
-      ...node,
-      replies: node.replies ? toggleHiddenInTree(node.replies, id) : undefined,
-    };
-  });
 
 const ScriptDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
-  const [activeTab, setActiveTab] = useState<"overview" | "documentation">("overview");
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  const locationState = (location.state as ScriptDetailLocationState | null) ?? null;
+  const product = useMemo<ScriptProduct>(() => {
+    const locationState = location.state as { product?: ScriptProduct } | null;
+    return locationState?.product ?? baseScriptProducts[0];
+  }, [location.state]);
 
-  useEffect(() => {
-    if (locationState?.scrollToTop) {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-      navigate(location.pathname, {
-        replace: true,
-        state: { ...locationState, scrollToTop: false },
-      });
-    }
-  }, [location.pathname, locationState, navigate]);
+  const handleNavigateBack = useCallback(() => {
+    navigate("/marketplace/scripts");
+  }, [navigate]);
 
-  const favoritesStorageKey = FAVORITE_STORAGE_KEY;
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(() => {
-    const stored = new Set<string>();
-
-    if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(favoritesStorageKey);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((value) => {
-              if (typeof value === "string" && value.trim().length > 0) {
-                stored.add(value);
-              }
-            });
-          }
-        } catch {
-          // ignore malformed values
-        }
-      }
-    }
-
-    if (locationState?.product?.id && locationState.isFavorite) {
-      stored.add(locationState.product.id);
-    }
-
-    return stored;
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(
-      favoritesStorageKey,
-      JSON.stringify(Array.from(favoriteIds)),
-    );
-  }, [favoriteIds, favoritesStorageKey]);
-
-  const product = useMemo<ExtendedScriptProduct>(() => {
-    const provided = locationState?.product;
-    return resolveFallbackProduct(provided);
-  }, [locationState?.product]);
-
-  const isFavorite = favoriteIds.has(product.id);
-
-  const handleToggleFavorite = useCallback(() => {
-    setFavoriteIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(product.id)) {
-        next.delete(product.id);
-      } else {
-        next.add(product.id);
-      }
-      return next;
-    });
-  }, [product.id]);
-
-  const categoryLabel = locationState?.category ?? "Scripts and Software";
-
-  const handleNavigateToCategory = useCallback(() => {
-    navigate("/marketplace/scripts", {
-      state: {
-        scrollToTop: true,
-        category: categoryLabel,
-      },
-    });
-  }, [categoryLabel, navigate]);
-
-  const handleToggleLike = useCallback((id: string) => {
-    setComments((prev) => toggleLikeInTree(prev, id));
-  }, []);
-
-  const handleToggleHidden = useCallback((id: string) => {
-    setComments((prev) => toggleHiddenInTree(prev, id));
-  }, []);
-
-  const renderComment = (comment: CommentNode, depth = 0): JSX.Element => {
-    const indent = depth * 20;
-
-    if (comment.hidden) {
-      return (
-        <div
-          key={comment.id}
-          className="relative flex items-center justify-between rounded-2xl border border-[#181B22] bg-[#0C1014]/50 px-4 py-3"
-          style={{ marginLeft: indent }}
+  const renderStars = (rating: number) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      const filled = i < Math.floor(rating);
+      const halfFilled = !filled && i < rating;
+      
+      stars.push(
+        <svg
+          key={i}
+          className="h-4 w-4 aspect-square"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <span className="text-sm font-bold text-[#B0B0B0]">
-            Comment hidden
-          </span>
-          <button
-            type="button"
-            onClick={() => handleToggleHidden(comment.id)}
-            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
-          >
-            Show
-          </button>
-        </div>
+          <path
+            d="M9.15238 2.29579L10.3256 4.66159C10.4856 4.99092 10.9122 5.30681 11.2722 5.36729L13.3986 5.72351C14.7585 5.95203 15.0785 6.94674 14.0985 7.92801L12.4454 9.59481C12.1654 9.87707 12.0121 10.4215 12.0987 10.8113L12.5721 12.8747C12.9453 14.5079 12.0854 15.1397 10.6523 14.2861L8.65912 13.0965C8.29918 12.8814 7.70592 12.8814 7.33925 13.0965L5.34616 14.2861C3.91965 15.1397 3.05308 14.5011 3.42638 12.8747L3.89966 10.8113C3.98631 10.4215 3.833 9.87707 3.55302 9.59481L1.89988 7.92801C0.926651 6.94674 1.23995 5.95203 2.5998 5.72351L4.72623 5.36729C5.07952 5.30681 5.50614 4.99092 5.66612 4.66159L6.83932 2.29579C7.47925 1.01208 8.51912 1.01208 9.15238 2.29579Z"
+            fill={filled ? "#A06AFF" : halfFilled ? "#2E2744" : "#23252D"}
+          />
+          {halfFilled && (
+            <path
+              d="M9.15238 2.29579L10.3256 4.66159C10.4856 4.99092 10.9122 5.30681 11.2722 5.36729L13.3986 5.72351C14.7585 5.95203 15.0785 6.94674 14.0985 7.92801L12.4454 9.59481C12.1654 9.87707 12.0121 10.4215 12.0987 10.8113L12.5721 12.8747C12.9453 14.5079 12.0854 15.1397 10.6523 14.2861L8.65912 13.0965C8.29918 12.8814 7.70592 12.8814 7.33925 13.0965L5.34616 14.2861C3.91965 15.1397 3.05308 14.5011 3.42638 12.8747L3.89966 10.8113C3.98631 10.4215 3.833 9.87707 3.55302 9.59481L1.89988 7.92801C0.926651 6.94674 1.23995 5.95203 2.5998 5.72351L4.72623 5.36729C5.07952 5.30681 5.50614 4.99092 5.66612 4.66159L6.83932 2.29579C7.47925 1.01208 8.51912 1.01208 9.15238 2.29579Z"
+              fill="url(#paint0_linear)"
+            />
+          )}
+          {halfFilled && (
+            <defs>
+              <linearGradient id="paint0_linear" x1="14.6673" y1="7.99968" x2="1.33398" y2="7.99968" gradientUnits="userSpaceOnUse">
+                <stop offset="0.5" stopColor="#A06AFF" stopOpacity="0"/>
+                <stop offset="0.502929" stopColor="#A06AFF"/>
+              </linearGradient>
+            </defs>
+          )}
+        </svg>
       );
     }
+    return stars;
+  };
 
+  const renderComment = (comment: Comment, depth: number = 0): JSX.Element => {
     return (
-      <div
-        key={comment.id}
-        className="relative flex flex-col gap-4"
-        style={{ marginLeft: indent }}
-      >
-        <div className="flex items-center gap-3">
-          <img
-            src={COMMENT_AVATAR}
-            alt={`${comment.author} avatar`}
-            className="h-11 w-11 rounded-full object-cover"
-          />
-          <div className="flex flex-1 flex-col">
-            <span className="text-[15px] font-bold text-white">{comment.author}</span>
-            <span className="text-xs font-bold text-[#B0B0B0]">{comment.time}</span>
+      <div key={comment.id} className="flex flex-col gap-4" style={{ marginLeft: depth * 32 }}>
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center gap-2">
+            <img
+              src={AVATAR_PLACEHOLDER}
+              alt={comment.author}
+              className="h-11 w-11 rounded-full object-cover"
+            />
+            <div className="flex flex-1 flex-col gap-0.5">
+              <span className="text-[15px] font-bold text-white">{comment.author}</span>
+              <span className="text-xs font-bold text-[#B0B0B0]">{comment.time}</span>
+            </div>
+          </div>
+          <p className="text-[15px] font-normal text-white">{comment.text}</p>
+          <div className="flex items-center gap-1.5">
+            <Heart className="h-5 w-5 text-[#B0B0B0]" />
+            <span className="text-xs font-bold text-[#B0B0B0]">{comment.likes}</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="text-[15px] font-bold text-[#A06AFF]">Hide</button>
+            <button className="text-[15px] font-bold text-white">Reply</button>
+            <button className="text-[#B0B0B0]">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="1" fill="#B0B0B0" stroke="#B0B0B0" strokeWidth="2"/>
+                <circle cx="5" cy="12" r="1" fill="#B0B0B0" stroke="#B0B0B0" strokeWidth="2"/>
+                <circle cx="19" cy="12" r="1" fill="#B0B0B0" stroke="#B0B0B0" strokeWidth="2"/>
+              </svg>
+            </button>
           </div>
         </div>
-
-        <p className="text-[15px] font-medium text-white">{comment.text}</p>
-
-        <div className="flex flex-wrap items-center gap-2">
-          <button
-            type="button"
-            onClick={() => handleToggleLike(comment.id)}
-            className={`flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-bold transition-colors ${
-              comment.liked
-                ? "border-[#A06AFF] text-[#A06AFF]"
-                : "border-[#181B22] text-[#B0B0B0] hover:border-[#A06AFF]/40"
-            }`}
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 20 20"
-              fill={comment.liked ? "currentColor" : "none"}
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.2189 3.32846C13.9842 1.95769 12.0337 2.51009 10.8621 3.39001C10.3816 3.7508 10.1414 3.93119 10.0001 3.93119C9.85875 3.93119 9.61858 3.7508 9.13808 3.39001C7.96643 2.51009 6.01599 1.95769 3.78128 3.32846C0.848472 5.12745 0.184848 11.0624 6.94969 16.0695C8.23818 17.0232 8.88241 17.5 10.0001 17.5C11.1177 17.5 11.762 17.0232 13.0505 16.0695C19.8153 11.0624 19.1517 5.12745 16.2189 3.32846Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-            {comment.likes}
-          </button>
-          <button
-            type="button"
-            onClick={() => handleToggleHidden(comment.id)}
-            className="rounded-full px-4 py-2 text-[15px] font-bold text-[#A06AFF]"
-          >
-            Hide
-          </button>
-          <button
-            type="button"
-            className="rounded-full px-4 py-2 text-[15px] font-bold text-white"
-          >
-            Reply
-          </button>
-        </div>
-
         {comment.replies && comment.replies.length > 0 && (
           <div className="flex flex-col gap-4">
             {comment.replies.map((reply) => renderComment(reply, depth + 1))}
@@ -406,439 +152,332 @@ const ScriptDetailLanding: FC = () => {
     );
   };
 
-  const renderStars = (rating: number) =>
-    Array.from({ length: 5 }, (_, index) => {
-      const filled = index < Math.floor(rating);
-      const halfFilled = !filled && index < rating;
-
-      return (
-        <Star
-          key={index}
-          className={`h-4 w-4 ${
-            filled
-              ? "fill-[#A06AFF] text-[#A06AFF]"
-              : halfFilled
-                ? "fill-[#A06AFF]/60 text-[#A06AFF]"
-                : "fill-[#2E2744] text-[#2E2744]"
-          }`}
-        />
-      );
-    });
-
   return (
-    <div className="flex flex-col gap-6">
-      <div className="mx-auto flex w-full max-w-[1075px] items-center justify-between px-3 py-2 sm:px-4">
+    <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
+      {/* Breadcrumb */}
+      <div className="mb-6 flex items-center gap-2">
         <button
-          type="button"
-          onClick={handleNavigateToCategory}
-          className="inline-flex items-center gap-2 text-sm font-bold text-[#B0B0B0] transition-colors hover:text-white sm:text-[15px]"
+          onClick={handleNavigateBack}
+          className="text-[15px] font-normal text-[#B0B0B0] hover:text-white"
         >
-          <ArrowLeft className="h-4 w-4" />
-          {categoryLabel}
+          Scripts and Software
         </button>
-        <span className="text-sm font-bold text-[#B0B0B0] sm:text-[15px]">
-          {product.id}
-        </span>
+        <span className="text-[15px] font-bold text-[#808283]">/</span>
+        <span className="text-[15px] font-bold text-white">Script_name</span>
       </div>
 
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
-        <div className="flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] lg:flex-row lg:items-start lg:gap-6">
-          <div className="flex flex-1 flex-col gap-4">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div className="flex flex-col gap-2">
-                <div className="inline-flex items-center gap-2 rounded-full bg-[rgba(160,106,255,0.16)] px-3 py-1 text-xs font-extrabold uppercase text-[#A06AFF]">
-                  {product.typeLabel}
-                </div>
-                <h1 className="text-2xl font-bold text-white sm:text-[31px]">
-                  {product.title}
-                </h1>
-                <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-                  <span className="inline-flex items-center gap-1 text-white">
-                    <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
-                    {product.purchases} purchases
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-white">
-                    <Eye className="h-4 w-4 text-[#FFA800]" />
-                    {product.views} views
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-white">
-                    <Users className="h-4 w-4 text-[#B0B0B0]" />
-                    {product.creator.followers} followers
-                  </span>
-                </div>
-              </div>
+      {/* Header */}
+      <div className="mb-6 flex items-center justify-between rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+        <h1 className="flex-1 text-[31px] font-bold text-white">
+          RiskMaster - powerful tool for traders
+        </h1>
+        <button
+          onClick={() => setIsFavorite(!isFavorite)}
+          className="flex-shrink-0"
+        >
+          <Star className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`} />
+        </button>
+      </div>
 
-              <FavoriteStarButton
-                pressed={isFavorite}
-                onToggle={handleToggleFavorite}
-                className="focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
-              />
+      {/* Main content grid */}
+      <div className="grid gap-6 lg:grid-cols-[1fr_339px]">
+        {/* Left column */}
+        <div className="flex flex-col gap-6">
+          {/* Details */}
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Details</h2>
             </div>
-
-            <div className="relative overflow-hidden rounded-2xl border border-[#181B22]">
-              <img
-                src={product.productImage}
-                alt={product.heroAlt}
-                className="h-full w-full max-h-[400px] rounded-2xl object-cover"
-              />
-            </div>
-
-            <div className="grid gap-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4 md:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 p-4">
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Price
-                </span>
-                <span className="text-lg font-bold text-white">{product.price}</span>
+                <span className="text-xs font-bold uppercase text-[#B0B0B0]">type</span>
+                <span className="text-[15px] font-bold text-white">Script</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Revenue
-                </span>
-                <span className="text-lg font-bold text-white">
-                  {product.revenueLabel}
-                </span>
+                <span className="text-xs font-bold uppercase text-[#B0B0B0]">industry</span>
+                <span className="text-[15px] font-bold text-white">Automation</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Rating
-                </span>
-                <div className="flex items-center gap-1">
-                  <div className="flex items-center gap-0.5">
-                    {renderStars(product.averageRating)}
-                  </div>
-                  <span className="text-lg font-bold text-white">
-                    {product.averageRating.toFixed(1)}
-                  </span>
-                </div>
+                <span className="text-xs font-bold uppercase text-[#B0B0B0]">platform</span>
+                <span className="text-[15px] font-bold text-white">Windows/Mac</span>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Support
-                </span>
-                <span className="text-lg font-bold text-white">
-                  {product.supportResponseTime}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  className="flex h-[42px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-sm font-bold text-white transition-opacity hover:opacity-90"
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                  Buy now
-                </button>
-                <button
-                  type="button"
-                  className="flex h-[42px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-6 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  <BookOpen className="h-4 w-4" />
-                  Request demo
-                </button>
-                <button
-                  type="button"
-                  className="flex h-[42px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-6 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Contact author
-                </button>
-                <button
-                  type="button"
-                  className="flex h-[42px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-6 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-                >
-                  <Share2 className="h-4 w-4" />
-                  Share
-                </button>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-                <span>Tags:</span>
-                {product.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded bg-[#2E2744] px-2 py-0.5 text-white"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                <h2 className="mb-2 text-[19px] font-bold text-white">Overview</h2>
-                <p className="text-[15px] font-medium text-white">
-                  {product.description}
-                </p>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                  <h3 className="mb-3 text-[15px] font-bold uppercase text-[#B0B0B0]">
-                    Compatibility
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {product.compatibility.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded bg-[#2E2744] px-2 py-1 text-xs font-bold uppercase text-white"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                  <h3 className="mb-3 text-[15px] font-bold uppercase text-[#B0B0B0]">
-                    Requirements
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {product.requirements.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded bg-[#2E2744] px-2 py-1 text-xs font-bold uppercase text-white"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid gap-4 md:grid-cols-3">
-                <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                  <h3 className="mb-3 text-[15px] font-bold uppercase text-[#B0B0B0]">
-                    Support channels
-                  </h3>
-                  <ul className="flex flex-col gap-2 text-sm font-bold text-white">
-                    {product.supportChannels.map((channel) => (
-                      <li key={channel} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-[#2EBD85]" />
-                        {channel}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                  <h3 className="mb-3 text-[15px] font-bold uppercase text-[#B0B0B0]">
-                    Documentation
-                  </h3>
-                  <ul className="flex flex-col gap-2 text-sm font-bold text-white">
-                    {product.documentationLinks.map((link) => (
-                      <li key={link} className="flex items-center gap-2">
-                        <Download className="h-4 w-4 text-[#A06AFF]" />
-                        <a
-                          href={link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="underline decoration-[#A06AFF] underline-offset-4 hover:opacity-80"
-                        >
-                          {link}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                  <h3 className="mb-3 text-[15px] font-bold uppercase text-[#B0B0B0]">
-                    Deployment
-                  </h3>
-                  <ul className="flex flex-col gap-2 text-sm font-bold text-white">
-                    {product.deploymentOptions.map((item) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <ShieldCheck className="h-4 w-4 text-[#6AA5FF]" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-                <h3 className="mb-3 text-[15px] font-bold uppercase text-[#B0B0B0]">
-                  Latest release notes
-                </h3>
-                <ul className="flex list-disc flex-col gap-2 pl-4 text-sm font-bold text-white">
-                  {product.releaseNotes.map((note, index) => (
-                    <li key={`${note}-${index}`}>{note}</li>
-                  ))}
-                </ul>
+                <span className="text-xs font-bold uppercase text-[#B0B0B0]">category</span>
+                <span className="text-[15px] font-bold text-white">Other</span>
               </div>
             </div>
           </div>
 
-          <div className="flex w-full max-w-[320px] flex-col gap-4">
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-              <h2 className="mb-3 text-[19px] font-bold text-white">Creator</h2>
-              <div className="flex items-center gap-3">
+          {/* Description */}
+          <div className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
+            </div>
+            <div className="p-4">
+              <p className="mb-4 text-[15px] font-normal text-white">
+                RiskMaster - powerful tool for traders, automatically calculates trade risks. Optimize trading and minimize losses!
+              </p>
+              <div className="relative">
                 <img
-                  src={product.creator.avatar}
-                  alt={product.creator.name}
-                  className="h-16 w-16 rounded-xl object-cover"
+                  src="https://api.builder.io/api/v1/image/assets/TEMP/5d24f283cbc71837279744db6b5226a102476ce9?width=1360"
+                  alt="Product screenshot"
+                  className="w-full rounded-lg"
                 />
-                <div className="flex flex-col gap-1">
-                  <span className="text-[15px] font-bold text-white">
-                    {product.creator.name}
-                  </span>
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Responds fast
-                  </span>
+                {/* Carousel navigation */}
+                <div className="absolute left-8 top-1/2 flex -translate-y-1/2 items-center gap-4">
+                  <button className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090]">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M13.627 8.17578L9.81171 11.991L13.627 15.8063" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" transform="rotate(180 11.7193 12)"/>
+                    </svg>
+                  </button>
+                </div>
+                <div className="absolute right-8 top-1/2 flex -translate-y-1/2 items-center gap-4">
+                  <button className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090]">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M13.627 8.17578L9.81171 11.991L13.627 15.8063" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" transform="rotate(0 11.7193 12)"/>
+                    </svg>
+                  </button>
+                </div>
+                <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-1">
+                  <div className="h-1 w-1 rounded-full bg-[#B0B0B0]"></div>
+                  <div className="h-1 w-1 rounded-full bg-[#B0B0B0]"></div>
+                  <div className="h-1 w-1 rounded-full bg-[#B0B0B0]"></div>
                 </div>
               </div>
-              <p className="mt-4 text-sm font-medium text-white">
-                {product.authorBio}
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {product.creator.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]"
-                  >
-                    {tag}
-                  </span>
-                ))}
+            </div>
+          </div>
+
+          {/* Comments */}
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+            <div className="mb-6 flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-white">20 comments</h2>
+              <div className="flex items-center gap-1 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-1 backdrop-blur-[50px]">
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3.36597 5.73739L1.69254 5.63552C2.89206 2.46952 6.33598 0.666286 9.69372 1.56284C13.27 2.51775 15.3943 6.17372 14.4383 9.72868C13.4825 13.2837 9.80838 15.3914 6.23212 14.4365C3.57678 13.7275 1.72193 11.5294 1.33398 8.98928" stroke="#B0B0B0" strokeWidth="1.5"/>
+                    <path d="M8 5.33301V7.99967L9.33333 9.33301" stroke="#B0B0B0" strokeWidth="1.5"/>
+                  </svg>
+                </button>
+                <button className="flex h-[26px] w-[26px] items-center justify-center rounded bg-gradient-to-r from-[#A06AFF] to-[#482090]">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M9.23805 14.6663C17.3862 12.6663 12.8232 4.66634 7.28245 1.33301C6.63085 3.66634 5.65291 4.33301 3.6973 6.66634C1.10813 9.75561 2.39365 13.333 5.97878 14.6663C5.43559 13.9997 4.03371 12.6002 5.00065 10.6663C5.33399 9.99967 6.00065 9.33301 5.66732 7.99967C6.31917 8.33301 7.66732 8.66634 8.00065 10.333C8.54385 9.66634 9.10759 8.26634 8.58619 6.66634C12.6673 9.66634 11.0007 12.6663 9.23805 14.6663Z" stroke="white" strokeWidth="1.5"/>
+                  </svg>
+                </button>
               </div>
-              <button
-                type="button"
-                className="mt-4 flex h-[38px] w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 text-sm font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
-              >
-                <Globe className="h-4 w-4" />
-                View portfolio
+            </div>
+
+            <div className="mb-4 flex flex-col gap-4">
+              <textarea
+                placeholder="Comment..."
+                className="h-[88px] w-full rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-3 text-[15px] font-normal text-white placeholder-[#B0B0B0] backdrop-blur-[50px] outline-none"
+              />
+              <button className="ml-auto flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
+                Send
               </button>
             </div>
 
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-              <h2 className="mb-3 text-[19px] font-bold text-white">Gallery</h2>
-              <div className="grid grid-cols-2 gap-3">
-                {product.gallery.map((image, index) => (
-                  <img
-                    key={`${image}-${index}`}
-                    src={image}
-                    alt={`${product.title} screenshot ${index + 1}`}
-                    className="h-28 w-full rounded-xl object-cover"
-                  />
-                ))}
-              </div>
+            <div className="flex flex-col gap-6">
+              {MOCK_COMMENTS.map((comment) => renderComment(comment, 0))}
             </div>
 
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
-              <h2 className="mb-3 text-[19px] font-bold text-white">
-                Customer satisfaction
-              </h2>
-              <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-bold text-white">
-                  {product.averageRating.toFixed(1)}
-                </span>
-                <span className="text-sm font-bold text-[#B0B0B0]">
-                  ({product.totalReviews} reviews)
-                </span>
-              </div>
-              <div className="mt-3 flex items-center gap-1">
-                {renderStars(product.averageRating)}
-              </div>
+            <div className="mt-6 flex justify-center">
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] px-6 text-[15px] font-bold text-white backdrop-blur-[50px]">
+                16 more comments
+              </button>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="mx-auto w-full max-w-[1075px] px-3 sm:px-4">
-        <div className="flex flex-wrap items-center gap-3">
-          <button
-            type="button"
-            onClick={() => setActiveTab("overview")}
-            className={`rounded-full px-4 py-2 text-[15px] font-bold transition-colors ${
-              activeTab === "overview"
-                ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                : "border border-[#181B22] bg-[#0C1014]/50 text-white"
-            }`}
-          >
-            Reviews
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveTab("documentation")}
-            className={`rounded-full px-4 py-2 text-[15px] font-bold transition-colors ${
-              activeTab === "documentation"
-                ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                : "border border-[#181B22] bg-[#0C1014]/50 text-white"
-            }`}
-          >
-            Documentation
-          </button>
-        </div>
+        {/* Right column */}
+        <div className="flex flex-col gap-6">
+          {/* Product card */}
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/d706605b0956cb26f33fb8b670c187f4bd573a4b?width=678"
+              alt="Product"
+              className="h-[332px] w-full rounded-t-3xl border border-[#181B22] object-cover"
+            />
+            <div className="p-4">
+              <div className="mb-2 text-2xl font-bold text-white">$49.99</div>
+              <div className="mb-3 flex flex-wrap gap-2">
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">automation</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">risk_management</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">trading</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">script</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">optimization</span>
+              </div>
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <div className="flex gap-0.5">{renderStars(4.5)}</div>
+                  <span className="text-[15px] font-normal text-[#B0B0B0]">4.5 (28 reviews)</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Eye className="h-4 w-4 text-[#B0B0B0]" />
+                  <span className="text-[15px] font-normal text-[#B0B0B0]">1.245</span>
+                </div>
+              </div>
+              <div className="flex flex-col gap-4">
+                <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
+                  <ShoppingCart className="h-5 w-5" />
+                  Buy
+                </button>
+                <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+                  <MessageCircle className="h-4 w-4" />
+                  Chat
+                </button>
+              </div>
+            </div>
+            <div className="flex gap-2 p-4">
+              <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+                <Heart className="h-4 w-4" />
+                Save
+              </button>
+              <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+                <Share2 className="h-4 w-4" />
+                Share
+              </button>
+              <button className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] py-3 text-[15px] font-bold text-white backdrop-blur-[50px]">
+                <Play className="h-4 w-4" />
+                Demo
+              </button>
+            </div>
+          </div>
 
-        {activeTab === "overview" ? (
-          <div className="mt-6 flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px]">
-            <div className="grid gap-4 md:grid-cols-2">
-              {product.reviews.map((review) => (
-                <div
-                  key={review.id}
-                  className="flex flex-col gap-3 rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={review.avatar}
-                      alt={`${review.author} avatar`}
-                      className="h-12 w-12 rounded-full object-cover"
-                    />
-                    <div className="flex flex-col">
-                      <span className="text-[15px] font-bold text-white">
-                        {review.author}
-                      </span>
-                      <span className="text-xs font-bold text-[#B0B0B0]">
-                        {review.postedAt}
-                      </span>
+          {/* Author */}
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="p-4">
+              <div className="mb-4 flex items-center gap-2">
+                <img
+                  src={AVATAR_PLACEHOLDER}
+                  alt="John Smith"
+                  className="h-20 w-20 rounded-full"
+                />
+                <div className="flex-1">
+                  <div className="text-[15px] font-bold text-white">John Smith</div>
+                  <button className="mt-2 flex h-[26px] items-center justify-center rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-3 text-xs font-bold text-white">
+                    Follow
+                  </button>
+                </div>
+              </div>
+              <div className="mb-4 text-[15px] font-normal text-[#B0B0B0]">
+                Join our 10k+ community: <a href="https://example.com" className="text-[#A06AFF] underline">example.com</a>
+              </div>
+              <div className="mb-4 text-[15px] font-normal text-[#B0B0B0]">
+                Professional trader with 8+ years of experience in momentum strategies and technical analysis.
+              </div>
+              <div className="mb-4 flex items-center gap-3">
+                <span className="text-[15px] font-normal text-[#B0B0B0]">Also on:</span>
+                <div className="flex gap-2">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12.2169 1.26953H14.4659L9.55249 6.88519L15.3327 14.5268H10.8068L7.26204 9.89222L3.20598 14.5268H0.955637L6.21097 8.52026L0.666016 1.26953H5.30675L8.51095 5.50575L12.2169 1.26953ZM11.4276 13.1807H12.6737L4.62961 2.54495H3.29232L11.4276 13.1807Z" fill="white"/>
+                  </svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M15.8406 4.8002C15.8406 4.8002 15.6844 3.69707 15.2031 3.2127C14.5938 2.5752 13.9125 2.57207 13.6 2.53457C11.3625 2.37207 8.00313 2.37207 8.00313 2.37207H7.99687C7.99687 2.37207 4.6375 2.37207 2.4 2.53457C2.0875 2.57207 1.40625 2.5752 0.796875 3.2127C0.315625 3.69707 0.1625 4.8002 0.1625 4.8002C0.1625 4.8002 0 6.09707 0 7.39082V8.60332C0 9.89707 0.159375 11.1939 0.159375 11.1939C0.159375 11.1939 0.315625 12.2971 0.79375 12.7814C1.40313 13.4189 2.20313 13.3971 2.55938 13.4658C3.84063 13.5877 8 13.6252 8 13.6252C8 13.6252 11.3625 13.6189 13.6 13.4596C13.9125 13.4221 14.5938 13.4189 15.2031 12.7814C15.6844 12.2971 15.8406 11.1939 15.8406 11.1939C15.8406 11.1939 16 9.90019 16 8.60332V7.39082C16 6.09707 15.8406 4.8002 15.8406 4.8002ZM6.34688 10.0752V5.57832L10.6687 7.83457L6.34688 10.0752Z" fill="white"/>
+                  </svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 1.44062C10.1375 1.44062 10.3906 1.45 11.2313 1.4875C12.0125 1.52187 12.4344 1.65313 12.7156 1.7625C13.0875 1.90625 13.3563 2.08125 13.6344 2.35938C13.9156 2.64063 14.0875 2.90625 14.2313 3.27813C14.3406 3.55938 14.4719 3.98437 14.5063 4.7625C14.5438 5.60625 14.5531 5.85938 14.5531 7.99375C14.5531 10.1313 14.5438 10.3844 14.5063 11.225C14.4719 12.0063 14.3406 12.4281 14.2313 12.7094C14.0875 13.0813 13.9125 13.35 13.6344 13.6281C13.3531 13.9094 13.0875 14.0813 12.7156 14.225C12.4344 14.3344 12.0094 14.4656 11.2313 14.5C10.3875 14.5375 10.1344 14.5469 8 14.5469C5.8625 14.5469 5.60938 14.5375 4.76875 14.5C3.9875 14.4656 3.56563 14.3344 3.28438 14.225C2.9125 14.0813 2.64375 13.9063 2.36563 13.6281C2.08438 13.3469 1.9125 13.0813 1.76875 12.7094C1.65938 12.4281 1.52813 12.0031 1.49375 11.225C1.45625 10.3813 1.44688 10.1281 1.44688 7.99375C1.44688 5.85625 1.45625 5.60312 1.49375 4.7625C1.52813 3.98125 1.65938 3.55938 1.76875 3.27813C1.9125 2.90625 2.0875 2.6375 2.36563 2.35938C2.64688 2.07813 2.9125 1.90625 3.28438 1.7625C3.56563 1.65313 3.99063 1.52187 4.76875 1.4875C5.60938 1.45 5.8625 1.44062 8 1.44062ZM8 0C5.82813 0 5.55625 0.009375 4.70313 0.046875C3.85313 0.084375 3.26875 0.221875 2.7625 0.41875C2.23438 0.625 1.7875 0.896875 1.34375 1.34375C0.896875 1.7875 0.625 2.23438 0.41875 2.75938C0.221875 3.26875 0.084375 3.85 0.046875 4.7C0.009375 5.55625 0 5.82813 0 8C0 10.1719 0.009375 10.4438 0.046875 11.2969C0.084375 12.1469 0.221875 12.7313 0.41875 13.2375C0.625 13.7656 0.896875 14.2125 1.34375 14.6563C1.7875 15.1 2.23438 15.375 2.75938 15.5781C3.26875 15.775 3.85 15.9125 4.7 15.95C5.55313 15.9875 5.825 15.9969 7.99688 15.9969C10.1688 15.9969 10.4406 15.9875 11.2938 15.95C12.1438 15.9125 12.7281 15.775 13.2344 15.5781C13.7594 15.375 14.2063 15.1 14.65 14.6563C15.0938 14.2125 15.3688 13.7656 15.5719 13.2406C15.7688 12.7313 15.9063 12.15 15.9438 11.3C15.9813 10.4469 15.9906 10.175 15.9906 8.00313C15.9906 5.83125 15.9813 5.55938 15.9438 4.70625C15.9063 3.85625 15.7688 3.27188 15.5719 2.76563C15.375 2.23438 15.1031 1.7875 14.6563 1.34375C14.2125 0.9 13.7656 0.625 13.2406 0.421875C12.7313 0.225 12.15 0.0875 11.3 0.05C10.4438 0.009375 10.1719 0 8 0Z" fill="white"/>
+                    <path d="M8 3.89062C5.73125 3.89062 3.89062 5.73125 3.89062 8C3.89062 10.2688 5.73125 12.1094 8 12.1094C10.2688 12.1094 12.1094 10.2688 12.1094 8C12.1094 5.73125 10.2688 3.89062 8 3.89062ZM8 10.6656C6.52813 10.6656 5.33437 9.47188 5.33437 8C5.33437 6.52813 6.52813 5.33437 8 5.33437C9.47188 5.33437 10.6656 6.52813 10.6656 8C10.6656 9.47188 9.47188 10.6656 8 10.6656Z" fill="white"/>
+                    <path d="M13.2312 3.72793C13.2312 4.25918 12.8 4.68731 12.2719 4.68731C11.7406 4.68731 11.3125 4.25606 11.3125 3.72793C11.3125 3.19668 11.7438 2.76855 12.2719 2.76855C12.8 2.76855 13.2312 3.19981 13.2312 3.72793Z" fill="white"/>
+                  </svg>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8.00065 14.6663C4.31875 14.6663 1.33398 11.6815 1.33398 7.99967C1.33398 6.13798 2.09708 4.45452 3.32756 3.24502M8.00065 14.6663C7.35865 14.1906 7.46112 13.6367 7.78318 13.0828C8.27838 12.2313 8.27838 12.2313 8.27838 11.0959C8.27838 9.96061 8.95305 9.42827 11.334 9.90441C12.4038 10.1184 13.1834 8.64027 14.5722 9.12834M8.00065 14.6663C11.2979 14.6663 14.036 12.2727 14.5722 9.12834M3.32756 3.24502C3.89376 3.30477 4.21076 3.6081 4.73729 4.16445C5.73692 5.22069 6.73652 5.30882 7.40298 4.95674C8.40258 4.42863 7.56258 3.57321 8.73578 3.10833C9.45505 2.82335 9.59212 2.077 9.25172 1.4502M3.32756 3.24502C4.53062 2.06248 6.18044 1.33301 8.00065 1.33301C8.42825 1.33301 8.84645 1.37327 9.25172 1.4502M14.5722 9.12834C14.6347 8.76147 14.6673 8.38441 14.6673 7.99967C14.6673 4.74539 12.3356 2.03571 9.25172 1.4502" stroke="white" strokeWidth="1.5"/>
+                  </svg>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">Distribution</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">Luxaigo</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">signals</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">statisticalprobability</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">statistics</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">Stop</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">trailingstop</span>
+                <span className="rounded bg-[#2E2744] px-2 py-0.5 text-xs font-bold uppercase text-white">trendanalysis</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Reviews */}
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="mb-4 text-[19px] font-bold text-[#A06AFF]">Reviews</h2>
+              <div className="flex items-center gap-4">
+                <div className="text-[31px] font-bold text-[#A06AFF]">4.5</div>
+                <div>
+                  <div className="flex gap-0.5">{renderStars(4.5)}</div>
+                  <div className="text-xs font-bold text-[#B0B0B0]">Based on 28 reviews</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col divide-y divide-[#181B22]">
+              <div className="p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <img src={AVATAR_PLACEHOLDER} alt="John Smith" className="h-11 w-11 rounded-full" />
+                    <div>
+                      <div className="text-[15px] font-bold text-white">John Smith</div>
+                      <div className="text-xs font-bold text-[#B0B0B0]">2 days ago</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    {renderStars(review.rating)}
-                    <span className="text-sm font-bold text-white">
-                      {review.rating.toFixed(1)}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-bold text-white sm:text-[15px]">
-                    {review.title}
-                  </h3>
-                  <p className="text-sm font-medium text-white">
-                    {review.message}
-                  </p>
-                  {typeof review.likes === "number" && (
-                    <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                      {review.likes} helpful votes
-                    </span>
-                  )}
+                  <div className="flex gap-0.5">{renderStars(5)}</div>
                 </div>
-              ))}
-            </div>
-            <div className="flex flex-col gap-6">
-              {comments.map((comment) => renderComment(comment))}
-            </div>
-          </div>
-        ) : (
-          <div className="mt-6 grid gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] md:grid-cols-2">
-            {product.documentationLinks.map((link) => (
-              <div
-                key={`doc-${link}`}
-                className="flex flex-col gap-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4"
-              >
-                <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Documentation resource
-                </span>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[15px] font-bold text-white underline decoration-[#A06AFF] underline-offset-4 hover:opacity-80"
-                >
-                  {link}
-                </a>
-                <p className="text-sm font-medium text-white">
-                  Step-by-step guide covering configuration, integration notes, and best practices for this resource.
-                </p>
+                <div className="text-[15px] font-bold text-white">Game changer for my trading strategy!</div>
+                <div className="text-[15px] font-normal text-[#B0B0B0]">
+                  This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.
+                </div>
               </div>
-            ))}
+              <div className="p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <img src={AVATAR_PLACEHOLDER} alt="John Smith" className="h-11 w-11 rounded-full" />
+                    <div>
+                      <div className="text-[15px] font-bold text-white">John Smith</div>
+                      <div className="text-xs font-bold text-[#B0B0B0]">1 week ago</div>
+                    </div>
+                  </div>
+                  <div className="flex gap-0.5">{renderStars(4)}</div>
+                </div>
+                <div className="text-[15px] font-bold text-white">Great tool, but could use more features</div>
+                <div className="text-[15px] font-normal text-[#B0B0B0]">
+                  RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.
+                </div>
+              </div>
+              <div className="p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <img src={AVATAR_PLACEHOLDER} alt="John Smith" className="h-11 w-11 rounded-full" />
+                    <div>
+                      <div className="text-[15px] font-bold text-white">John Smith</div>
+                      <div className="text-xs font-bold text-[#B0B0B0]">3 weeks ago</div>
+                    </div>
+                  </div>
+                  <div className="flex gap-0.5">{renderStars(4.5)}</div>
+                </div>
+                <div className="text-[15px] font-bold text-white">Worth every penny</div>
+                <div className="text-[15px] font-normal text-[#B0B0B0]">
+                  I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.
+                </div>
+              </div>
+            </div>
+            <div className="p-4">
+              <button className="flex h-[46px] w-full items-center justify-center rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+                Show More Reviews
+              </button>
+            </div>
           </div>
-        )}
+
+          {/* Disclaimer */}
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Disclaimer</h2>
+            </div>
+            <div className="p-4">
+              <p className="text-[15px] font-normal text-[#B0B0B0]">
+                The information and publications are not meant to be, and do not constitute, financial, investment, trading, or other types of advice or recommendations supplied or endorsed by TyrianTrade. Read more in the <a href="#" className="text-[#A06AFF] underline">Terms of Use</a>.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
