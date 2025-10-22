@@ -229,15 +229,21 @@ const CourseCard: FC<{
       {/* Buttons */}
       <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 md:ml-auto">
         <button
+          type="button"
           className={cn(
             actionButtonBaseClass,
             "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
           )}
+          onClick={(event) => {
+            event.stopPropagation();
+            onOpenDetails(course, { isFavorite });
+          }}
         >
           <BookOpen className="h-4 w-4" />
           DETAILS
         </button>
         <button
+          type="button"
           className={cn(
             actionButtonBaseClass,
             "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
