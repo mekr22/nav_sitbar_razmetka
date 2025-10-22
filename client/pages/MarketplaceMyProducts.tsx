@@ -1283,11 +1283,15 @@ const openSignalDetails = useCallback(
             role="button"
             tabIndex={0}
             aria-pressed={activeCardKey === otherCardKey}
-            onClick={() => setActiveCardKey(otherCardKey)}
+            onClick={() => {
+              setActiveCardKey(otherCardKey);
+              openOtherDetails(featuredOtherProduct, { isFavorite: otherFavorited });
+            }}
             onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
               if (isActivationKey(event.key)) {
                 event.preventDefault();
                 setActiveCardKey(otherCardKey);
+                openOtherDetails(featuredOtherProduct, { isFavorite: otherFavorited });
               }
             }}
             className={cn(
