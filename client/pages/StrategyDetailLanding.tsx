@@ -46,6 +46,69 @@ type CommentNode = {
   hidden?: boolean;
 };
 
+type StrategyReview = {
+  id: string;
+  author: string;
+  avatar: string;
+  postedAt: string;
+  rating: number;
+  title: string;
+  message: string;
+};
+
+type StrategyAuthor = {
+  name: string;
+  avatar: string;
+  bio: string;
+  communityLink?: string;
+  socials?: string[];
+};
+
+const STRATEGY_AUTHOR: StrategyAuthor = {
+  name: "Sarah Lee",
+  avatar:
+    "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=160",
+  bio: "Systematic strategist focused on momentum and macro overlays with 12+ years across New York and Singapore trading desks.",
+  communityLink: "https://example.com",
+  socials: ["twitter", "youtube", "instagram", "web"],
+};
+
+const STRATEGY_REVIEWS: StrategyReview[] = [
+  {
+    id: "strategy-review-1",
+    author: "Morgan Patel",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+    postedAt: "2 days ago",
+    rating: 4.5,
+    title: "Disciplined playbook with strong context",
+    message:
+      "Subscribed for our mid-cap book. Guidance around hedging cadence has helped us reduce reactive trades during macro events.",
+  },
+  {
+    id: "strategy-review-2",
+    author: "Noah Kim",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+    postedAt: "1 week ago",
+    rating: 5,
+    title: "Automation workflows are on point",
+    message:
+      "The rebalancing templates plug straight into our ops runbooks. Execution risk dropped noticeably after two cycles.",
+  },
+  {
+    id: "strategy-review-3",
+    author: "Jordan Singh",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+    postedAt: "3 weeks ago",
+    rating: 4,
+    title: "Great for capital efficiency",
+    message:
+      "Would love deeper overnight positioning notes, but the current toolkit already keeps our drawdown guardrails intact.",
+  },
+];
+
 const INITIAL_COMMENTS: CommentNode[] = [
   {
     id: "comment-1",
