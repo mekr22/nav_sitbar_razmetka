@@ -17,6 +17,7 @@ type CourseCardProps = {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onOpenDetails?: (course: Course, meta?: { isFavorite: boolean }) => void;
 };
 
 const CourseCard: FC<CourseCardProps> = ({
@@ -25,6 +26,7 @@ const CourseCard: FC<CourseCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
+  onOpenDetails,
 }) => (
   <div className="w-full">
     <div
@@ -32,6 +34,9 @@ const CourseCard: FC<CourseCardProps> = ({
       tabIndex={0}
       aria-pressed={isActive}
       onClick={onSelect}
+      onDoubleClick={() => {
+        onOpenDetails?.(course, { isFavorite });
+      }}
       onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
         if (isActivationKey(event.key)) {
           event.preventDefault();
@@ -105,10 +110,15 @@ const CourseCard: FC<CourseCardProps> = ({
 
       <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 md:ml-auto">
         <button
+          type="button"
           className={cn(
             actionButtonBaseClass,
             "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
           )}
+          onClick={(event) => {
+            event.stopPropagation();
+            onOpenDetails?.(course, { isFavorite });
+          }}
         >
           <BookOpen className="h-4 w-4" />
           DETAILS
