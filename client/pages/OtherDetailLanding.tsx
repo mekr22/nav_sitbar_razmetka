@@ -182,8 +182,8 @@ const OtherDetailLanding: FC = () => {
   }, [compatibilityItems, product.industryLabel, product.location, product.ratingTag, product.title, product.typeLabel, requirementItems]);
 
   const metaTags = useMemo(
-    () => [product.typeLabel, product.industryLabel, product.label, product.location],
-    [product.industryLabel, product.label, product.location, product.typeLabel],
+    () => [product.typeLabel, product.industryLabel, product.label],
+    [product.industryLabel, product.label, product.typeLabel],
   );
 
   const ratingValue = useMemo(() => {
@@ -687,6 +687,18 @@ const OtherDetailLanding: FC = () => {
               <button className="flex h-[46px] w-full items-center justify-center rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
                 Show More Reviews
               </button>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Disclaimer</h2>
+            </div>
+            <div className="p-4">
+              <p className="text-[15px] font-normal text-[#B0B0B0]">
+                Educational content is provided for instructional purposes only and does not constitute financial or investment advice. Review the
+                <a href="#" className="text-[#A06AFF] underline"> Terms of Use</a> for additional details.
+              </p>
             </div>
           </div>
         </div>
