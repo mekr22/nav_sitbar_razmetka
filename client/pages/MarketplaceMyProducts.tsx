@@ -1322,24 +1322,24 @@ const openSignalDetails = useCallback(
               <div className="flex flex-1 flex-col gap-4">
                 <div className="flex flex-col items-start gap-3 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-4 sm:flex-row sm:items-center">
                   <img
-                    src="https://api.builder.io/api/v1/image/assets/TEMP/c9e278b9480a28f27e6e8611aae8e152e0b641f9?width=128"
-                    alt="Author"
+                    src={featuredOtherProduct.image}
+                    alt={featuredOtherProduct.title}
                     className="h-16 w-16 rounded-lg object-cover max-[640px]:h-20 max-[640px]:w-20"
                   />
                   <div>
                     <h3 className="text-lg font-bold text-white sm:text-[19px]">
-                      Product Name
+                      {featuredOtherProduct.title}
                     </h3>
                     <div className="mt-1 flex flex-wrap items-center gap-1">
                       <span className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">
-                        4.8
+                        {featuredOtherProduct.rating}
                       </span>
                       <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
                         <Users className="h-4 w-4 text-[#B0B0B0]" />
                         1,748
                       </span>
                       <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
-                        Individual Analyst
+                        {featuredOtherProduct.ratingTag}
                       </span>
                     </div>
                   </div>
