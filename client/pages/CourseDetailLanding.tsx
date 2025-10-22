@@ -944,7 +944,7 @@ const CourseDetailLanding: FC = () => {
                 </svg>
                 Buy
               </button>
-              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clipPath="url(#clip0_1111_20975)">
                     <path d="M13.334 5.99967C12.8039 3.34271 10.3425 1.33301 7.38685 1.33301C4.04431 1.33301 1.33398 3.90315 1.33398 7.07301C1.33398 8.59607 1.95944 9.97994 2.97968 11.0069C3.20431 11.233 3.35428 11.5419 3.29376 11.8599C3.19386 12.3797 2.96749 12.8647 2.63602 13.2688C3.50814 13.4296 4.41496 13.2848 5.19266 12.8748C5.46758 12.7299 5.60503 12.6575 5.70203 12.6427C5.76993 12.6325 5.85838 12.6421 6.00065 12.6665" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -958,7 +958,7 @@ const CourseDetailLanding: FC = () => {
                 </svg>
                 Chat
               </button>
-              <button className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
+              <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M8 4V13.3333" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
                   <path d="M3.98769 2.19029C6.21515 2.6144 7.54272 3.50154 8.00065 4.01085C8.45858 3.50154 9.78612 2.6144 12.0136 2.19029C13.1421 1.97543 13.7063 1.86801 14.1868 2.27976C14.6673 2.69151 14.6673 3.36015 14.6673 4.69741V9.50333C14.6673 10.7261 14.6673 11.3374 14.3589 11.7191C14.0505 12.1008 13.3716 12.2301 12.0136 12.4887C10.8031 12.7191 9.85838 13.0863 9.17452 13.4554C8.50172 13.8185 8.16532 14 8.00065 14C7.83598 14 7.49958 13.8185 6.82678 13.4554C6.14294 13.0863 5.1982 12.7191 3.98769 12.4887C2.62975 12.2301 1.95078 12.1008 1.64238 11.7191C1.33398 11.3374 1.33398 10.7261 1.33398 9.50333V4.69741C1.33398 3.36015 1.33398 2.69151 1.8145 2.27976C2.29503 1.86801 2.85925 1.97543 3.98769 2.19029Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
