@@ -125,42 +125,23 @@ const signals: Signal[] = baseSignals;
 const strategies: Strategy[] = baseStrategies.slice(0, 2);
 const tradingRobots: TradingRobot[] = baseTradingRobots;
 
-type Course = {
-  id: string;
-  title: string;
-  subtitle: string;
-  image: string;
-  host: string;
-  students: string;
-  rating: string;
-  duration: string;
-  lectures: string;
-  level: string;
-};
-
-const courses: Course[] = [
-  {
-    id: "course-1",
-    title: "Expert Futures Trading",
-    subtitle: "Expert Trading Training",
-    image:
-      "https://api.builder.io/api/v1/image/assets/TEMP/785c3faa6d149a1cf74053c6eee68a561cfcead4?width=463",
-    host: "Sarah Lee",
-    students: "1,748",
-    rating: "4.3",
-    duration: "4.5H",
-    lectures: "17 LECTURES",
-    level: "ALL LEVELS",
-  },
-];
+const courses: MarketplaceCourse[] = baseCourses.slice(0, 3);
 
 const CourseCard: FC<{
-  course: Course;
+  course: MarketplaceCourse;
   isActive: boolean;
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-}> = ({ course, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+  onOpenDetails: (course: MarketplaceCourse, meta?: { isFavorite: boolean }) => void;
+}> = ({
+  course,
+  isActive,
+  onSelect,
+  isFavorite,
+  onToggleFavorite,
+  onOpenDetails,
+}) => (
   <div className="w-full">
     <div
       role="button"
