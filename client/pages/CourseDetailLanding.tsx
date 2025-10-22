@@ -649,25 +649,6 @@ const CourseDetailLanding: FC = () => {
                 />
               </svg>
             </button>
-            <div className="border-t border-[#181B22] pt-4">
-              <h2 className="mb-4 text-[19px] font-bold text-[#A06AFF]">Requirements</h2>
-              <div className="flex flex-col gap-2">
-                {requirementsItems.map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
-                        stroke="#A06AFF"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="flex-1 text-[15px] font-medium text-white">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           <div className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
