@@ -1310,12 +1310,12 @@ const openSignalDetails = useCallback(
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
               <div className="relative h-[264px] w-full overflow-hidden rounded-lg lg:w-[451px]">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/11be63f95ae12fcb0e993c20038328c213b1b15f?width=902"
-                  alt="Product"
+                  src={featuredOtherProduct.image}
+                  alt={featuredOtherProduct.imageAlt}
                   className="h-full w-full object-cover"
                 />
                 <span className="absolute bottom-1 left-1 rounded bg-[#2E2744] px-1 text-xs font-bold uppercase text-white">
-                  Windows/MAC
+                  {featuredOtherProduct.label}
                 </span>
               </div>
 
