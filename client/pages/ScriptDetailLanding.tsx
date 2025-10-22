@@ -75,8 +75,8 @@ const resolveFallbackProduct = (
 
   return {
     ...base,
-    price: "$499 one-time";
-    productImage: base.heroImage;
+    price: "$499 one-time",
+    productImage: base.heroImage,
     gallery,
     supportChannels: ["Email", "Discord", "Slack"],
     documentationLinks: [
