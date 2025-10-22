@@ -912,17 +912,17 @@ const CourseDetailLanding: FC = () => {
               </div>
             </div>
             <div className="flex flex-wrap gap-2 px-4 pb-4">
-              <div className="rounded bg-[#2E2744] px-2 py-1">
-                <span className="text-xs font-bold uppercase text-white">COURSES</span>
+              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
+                <span className="text-xs font-bold uppercase leading-none text-white">COURSES</span>
               </div>
-              <div className="rounded bg-[#2E2744] px-2 py-1">
-                <span className="text-xs font-bold uppercase text-white">TRADING_MATERIALS</span>
+              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
+                <span className="text-xs font-bold uppercase leading-none text-white">TRADING_MATERIALS</span>
               </div>
-              <div className="rounded bg-[#2E2744] px-2 py-1">
-                <span className="text-xs font-bold uppercase text-white">CRYPTOCURRENCY</span>
+              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
+                <span className="text-xs font-bold uppercase leading-none text-white">CRYPTOCURRENCY</span>
               </div>
-              <div className="rounded bg-[#2E2744] px-2 py-1">
-                <span className="text-xs font-bold uppercase text-white">P2P_TRADING</span>
+              <div className="flex h-7 items-center rounded bg-[#2E2744] px-2">
+                <span className="text-xs font-bold uppercase leading-none text-white">P2P_TRADING</span>
               </div>
             </div>
             <div className="flex flex-col gap-4 p-4">
