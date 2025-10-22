@@ -9,6 +9,8 @@ import {
   Bell,
   Check,
   Calendar,
+  Clock,
+  DollarSign,
   ExternalLink,
   Globe2,
   HelpCircle,
