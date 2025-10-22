@@ -794,8 +794,8 @@ const CourseDetailLanding: FC = () => {
                 <div className="text-2xl font-bold text-white">$39.99</div>
                 <div className="flex items-center gap-2">
                   <div className="text-[15px] font-medium text-[#B0B0B0] line-through">$39.99</div>
-                  <div className="rounded bg-[#1C3430] px-1 py-0.5">
-                    <span className="text-xs font-bold uppercase text-[#2EBD85]">34% OFF</span>
+                  <div className="inline-flex h-7 items-center rounded bg-[#1C3430] px-2">
+                    <span className="text-xs font-bold uppercase leading-none text-[#2EBD85]">34% OFF</span>
                   </div>
                 </div>
               </div>
