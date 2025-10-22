@@ -976,6 +976,11 @@ const openSignalDetails = useCallback(
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onOpenDetails={(selectedStrategy) =>
+                    openStrategyDetails(selectedStrategy, {
+                      isFavorite: isFavorited,
+                    })
+                  }
                 />
               );
             })}
