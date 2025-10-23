@@ -815,28 +815,10 @@ const StrategyDetailLanding: FC = () => {
               </aside>
             </div>
 
-            <div className="mt-6 relative aspect-video w-full overflow-hidden rounded-2xl border border-[#181B22] bg-[#0C1014]/60">
-              <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Strategy preview"
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-              <button
-                type="button"
-                onClick={() =>
-                  window.open(
-                    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    "_blank",
-                  )
-                }
-                className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/80 px-3 py-1 text-xs font-semibold uppercase text-white backdrop-blur transition-colors hover:border-[#A06AFF]"
-              >
-                External preview
-                <ExternalLink className="h-3.5 w-3.5" />
-              </button>
-            </div>
+            <StrategyGalleryCarousel
+              className="mt-6"
+              items={strategyGallery}
+            />
           </section>
 
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
