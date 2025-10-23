@@ -238,7 +238,6 @@ const TraderDetailLanding: FC = () => {
     return storedIds;
   });
   const [activeFilter, setActiveFilter] = useState<TraderContentFilter>("all");
-  const [activeTab, setActiveTab] = useState<"statistics" | "trades">("trades");
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [isCompactLayout, setIsCompactLayout] = useState(false);
@@ -993,53 +992,27 @@ const TraderDetailLanding: FC = () => {
               </div>
             </div>
 
-            {/* Tab Navigation */}
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-3 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("statistics")}
-                  className={`rounded-full px-4 py-3 text-[15px] font-bold text-white transition-colors ${
-                    activeTab === "statistics"
-                      ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] backdrop-blur-[58px]"
-                      : "border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[58px] hover:border-[#1F2230]"
-                  }`}
-                >
-                  Statistics
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveTab("trades")}
-                  className={`rounded-full px-4 py-3 text-[15px] font-bold text-white transition-colors ${
-                    activeTab === "trades"
-                      ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] backdrop-blur-[58px]"
-                      : "border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[58px] hover:border-[#1F2230]"
-                  }`}
-                >
-                  Trades
-                </button>
-              </div>
-              <div className="flex gap-2 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
-                {CONTENT_FILTERS.map(({ id, label }) => {
-                  const isActive = activeFilter === id;
+            {/* Filters */}
+            <div className="flex gap-2 rounded-[36px] border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px]">
+              {CONTENT_FILTERS.map(({ id, label }) => {
+                const isActive = activeFilter === id;
 
-                  return (
-                    <button
-                      key={id}
-                      type="button"
-                      onClick={() => setActiveFilter(id)}
-                      aria-pressed={isActive}
-                      className={`rounded-full px-4 py-2 text-[15px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] backdrop-blur-[58px] ${
-                        isActive
-                          ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                          : "border border-[#181B22] bg-[#0C1014]/50 text-white/80 hover:text-white"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
+                return (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setActiveFilter(id)}
+                    aria-pressed={isActive}
+                    className={`rounded-full px-4 py-2 text-[15px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] backdrop-blur-[58px] ${
+                      isActive
+                        ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
+                        : "border border-[#181B22] bg-[#0C1014]/50 text-white/80 hover:text-white"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Allocation Section */}
