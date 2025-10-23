@@ -1,11 +1,9 @@
-import { useCallback, useEffect, useMemo, useState, type FC } from "react";
+import { useCallback, useEffect, useMemo, useState, useId, type FC } from "react";
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
@@ -30,23 +28,31 @@ const StrategyGalleryCarousel: FC<StrategyGalleryCarouselProps> = ({
   );
   const [api, setApi] = useState<CarouselApi>();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+  const rawId = useId();
+  const gradientIdBase = rawId.replace(/:/g, "");
+  const leftGradientId = `${gradientIdBase}-left`;
+  const rightGradientId = `${gradientIdBase}-right`;
 
   useEffect(() => {
     if (!api) {
       return;
     }
 
-    const handleSelect = () => {
+    const updateState = () => {
       setActiveIndex(api.selectedScrollSnap());
+      setCanScrollPrev(api.canScrollPrev());
+      setCanScrollNext(api.canScrollNext());
     };
 
-    handleSelect();
-    api.on("select", handleSelect);
-    api.on("reInit", handleSelect);
+    updateState();
+    api.on("select", updateState);
+    api.on("reInit", updateState);
 
     return () => {
-      api.off("select", handleSelect);
-      api.off("reInit", handleSelect);
+      api.off("select", updateState);
+      api.off("reInit", updateState);
     };
   }, [api]);
 
@@ -61,12 +67,27 @@ const StrategyGalleryCarousel: FC<StrategyGalleryCarouselProps> = ({
     }
   }, [activeIndex, slides.length]);
 
+  useEffect(() => {
+    if (slides.length <= 1) {
+      setCanScrollPrev(false);
+      setCanScrollNext(false);
+    }
+  }, [slides.length]);
+
   const handleDotClick = useCallback(
     (index: number) => {
       api?.scrollTo(index);
     },
     [api],
   );
+
+  const handlePrevious = useCallback(() => {
+    api?.scrollPrev();
+  }, [api]);
+
+  const handleNext = useCallback(() => {
+    api?.scrollNext();
+  }, [api]);
 
   if (slides.length === 0) {
     return null;
@@ -96,18 +117,82 @@ const StrategyGalleryCarousel: FC<StrategyGalleryCarouselProps> = ({
         </CarouselContent>
         {hasMultipleSlides && (
           <>
-            <CarouselPrevious
-              variant="ghost"
-              size="icon"
-              className="left-4 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full border border-[#181B22] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_rgba(0,0,0,0.48)] transition hover:bg-transparent hover:opacity-100 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+            <button
+              type="button"
+              onClick={handlePrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] disabled:pointer-events-none disabled:opacity-40"
               aria-label="Previous slide"
-            />
-            <CarouselNext
-              variant="ghost"
-              size="icon"
-              className="right-4 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full border border-[#181B22] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_rgba(0,0,0,0.48)] transition hover:bg-transparent hover:opacity-100 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+              disabled={!canScrollPrev}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle cx="11.9908" cy="11.9908" r="11.9908" fill={`url(#${leftGradientId})`} />
+                <path
+                  d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <defs>
+                  <linearGradient
+                    id={leftGradientId}
+                    x1="23.9815"
+                    y1="11.9907"
+                    x2="0"
+                    y2="11.9907"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#A06AFF" />
+                    <stop offset="1" stopColor="#482090" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] disabled:pointer-events-none disabled:opacity-40"
               aria-label="Next slide"
-            />
+              disabled={!canScrollNext}
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle cx="11.9908" cy="11.9908" r="11.9908" fill={`url(#${rightGradientId})`} />
+                <path
+                  d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <defs>
+                  <linearGradient
+                    id={rightGradientId}
+                    x1="23.9815"
+                    y1="11.9907"
+                    x2="0"
+                    y2="11.9907"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stopColor="#A06AFF" />
+                    <stop offset="1" stopColor="#482090" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </button>
           </>
         )}
       </Carousel>
