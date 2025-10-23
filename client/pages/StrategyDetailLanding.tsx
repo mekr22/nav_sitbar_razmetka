@@ -975,7 +975,7 @@ const StrategyDetailLanding: FC = () => {
                 className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)] transition-opacity hover:opacity-90"
                 aria-label="Open gallery preview"
               >
-                <Images className="h-6 w-6" />
+                <Play className="h-6 w-6" />
               </button>
             </div>
             <div className="p-4 space-y-4">
