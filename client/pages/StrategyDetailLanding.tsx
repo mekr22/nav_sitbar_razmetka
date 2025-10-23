@@ -1,14 +1,11 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  Activity,
   Aperture,
-  ArrowUpRight,
   Bell,
   Bookmark,
   Check,
   Globe2,
-  Layers,
   LineChart,
   MapPin,
   Network,
@@ -16,7 +13,6 @@ import {
   Play,
   Settings,
   Star,
-  TrendingUp,
   Zap,
 } from "lucide-react";
 
