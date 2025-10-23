@@ -960,21 +960,22 @@ const StrategyDetailLanding: FC = () => {
           <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
             <div className="relative">
               <img
-                src={coverImage}
+                src={heroMediaImage}
                 alt={strategy.name}
                 className="h-[332px] w-full rounded-t-3xl border border-[#181B22] object-cover"
               />
               <button
                 type="button"
-                onClick={() =>
-                  window.open(
-                    "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    "_blank",
-                  )
-                }
-                className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)]"
+                onClick={() => {
+                  if (!galleryLaunchTarget) {
+                    return;
+                  }
+                  window.open(galleryLaunchTarget, "_blank", "noopener,noreferrer");
+                }}
+                className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)] transition-opacity hover:opacity-90"
+                aria-label="Open gallery preview"
               >
-                <Play className="h-6 w-6" />
+                <Images className="h-6 w-6" />
               </button>
             </div>
             <div className="p-4 space-y-4">
