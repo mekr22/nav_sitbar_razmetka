@@ -22,6 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 
+import StrategyGalleryCarousel from "@/components/marketplace/StrategyGalleryCarousel";
 import type { Strategy } from "@/data/marketplaceStrategies";
 import { baseStrategies } from "@/data/marketplaceStrategies";
 
