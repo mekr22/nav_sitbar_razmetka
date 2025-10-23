@@ -342,6 +342,28 @@ const StrategyDetailLanding: FC = () => {
     });
   }, []);
 
+  const automationLevel = useMemo(() => {
+    switch (strategy.riskLevel) {
+      case "LOW":
+        return "Guided automation";
+      case "HIGH":
+        return "Fully automated entries";
+      default:
+        return "Auto + manual overrides";
+    }
+  }, [strategy.riskLevel]);
+
+  const alertsPerWeek = useMemo(() => {
+    switch (strategy.riskLevel) {
+      case "LOW":
+        return "3-4 alerts";
+      case "HIGH":
+        return "10+ alerts";
+      default:
+        return "6-8 alerts";
+    }
+  }, [strategy.riskLevel]);
+
   const strategySpecifications = useMemo(
     () => [
       `Strategy type: ${strategy.strategy}`,
@@ -402,28 +424,6 @@ const StrategyDetailLanding: FC = () => {
     () => `${Math.max(40, usersCount + 20)} seats`,
     [usersCount],
   );
-
-  const automationLevel = useMemo(() => {
-    switch (strategy.riskLevel) {
-      case "LOW":
-        return "Guided automation";
-      case "HIGH":
-        return "Fully automated entries";
-      default:
-        return "Auto + manual overrides";
-    }
-  }, [strategy.riskLevel]);
-
-  const alertsPerWeek = useMemo(() => {
-    switch (strategy.riskLevel) {
-      case "LOW":
-        return "3-4 alerts";
-      case "HIGH":
-        return "10+ alerts";
-      default:
-        return "6-8 alerts";
-    }
-  }, [strategy.riskLevel]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
