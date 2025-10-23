@@ -99,13 +99,13 @@ const StrategyGalleryCarousel: FC<StrategyGalleryCarouselProps> = ({
             <CarouselPrevious
               variant="ghost"
               size="icon"
-              className="left-4 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full border border-[#181B22] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_rgba(0,0,0,0.48)] transition hover:opacity-100 focus-visible:ring-[#A06AFF]"
+              className="left-4 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full border border-[#181B22] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_rgba(0,0,0,0.48)] transition hover:bg-transparent hover:opacity-100 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
               aria-label="Previous slide"
             />
             <CarouselNext
               variant="ghost"
               size="icon"
-              className="right-4 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full border border-[#181B22] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_rgba(0,0,0,0.48)] transition hover:opacity-100 focus-visible:ring-[#A06AFF]"
+              className="right-4 top-1/2 h-11 w-11 -translate-y-1/2 rounded-full border border-[#181B22] bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_rgba(0,0,0,0.48)] transition hover:bg-transparent hover:opacity-100 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
               aria-label="Next slide"
             />
           </>
