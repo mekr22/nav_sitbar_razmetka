@@ -1,13 +1,11 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  Aperture,
   Bell,
   Bookmark,
   Check,
   Globe2,
   HelpCircle,
-  LineChart,
   MapPin,
   Network,
   PieChart,
