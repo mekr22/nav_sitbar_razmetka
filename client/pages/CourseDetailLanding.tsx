@@ -120,7 +120,6 @@ const CourseDetailLanding: FC = () => {
   const locationState = location.state as {
     course?: Course;
     category?: string;
-    isFavorite?: boolean;
   } | null;
 
   const [comments, setComments] = useState<CommentNode[]>(
