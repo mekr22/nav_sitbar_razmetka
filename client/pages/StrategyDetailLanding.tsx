@@ -17,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 
+import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import StrategyGalleryCarousel from "@/components/marketplace/StrategyGalleryCarousel";
 import type { Strategy } from "@/data/marketplaceStrategies";
 import { baseStrategies } from "@/data/marketplaceStrategies";
@@ -856,7 +857,7 @@ const StrategyDetailLanding: FC = () => {
               </button>
             </div>
             <div className="p-4 space-y-4">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-3">
                 <div>
                   <div className="text-xs font-semibold uppercase text-[#B0B0B0]">
                     Subscription
@@ -865,10 +866,11 @@ const StrategyDetailLanding: FC = () => {
                     {subscriptionPrice}
                   </div>
                 </div>
-                <div className="flex items-center gap-1 rounded bg-[#2E2744] px-2 py-0.5 text-xs font-semibold uppercase text-white">
-                  <Star className="h-3.5 w-3.5 text-[#A06AFF]" />
-                  {strategy.riskLevel}
-                </div>
+                <FavoriteStarButton
+                  pressed={isFavorite}
+                  onToggle={handleToggleFavorite}
+                  className="focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
+                />
               </div>
 
               <div className="space-y-2 text-[13px] font-semibold text-white">
