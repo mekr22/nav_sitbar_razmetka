@@ -857,10 +857,10 @@ const StrategyDetailLanding: FC = () => {
 
               <div className="flex flex-col gap-2">
                 <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
-                  Subscribe now
+                  SUBSCRIBE
                 </button>
                 <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
-                  Chat with team
+                  CHAT
                 </button>
               </div>
             </div>
