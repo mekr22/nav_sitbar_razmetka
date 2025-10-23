@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { MessageCircle, ShoppingCart, Star, Eye } from "lucide-react";
+import { MessageCircle, ShoppingCart, Eye } from "lucide-react";
 
 import type { Course } from "@/data/marketplaceCourses";
 import { baseCourses } from "@/data/marketplaceCourses";
@@ -123,9 +123,6 @@ const CourseDetailLanding: FC = () => {
     isFavorite?: boolean;
   } | null;
 
-  const [isFavorite, setIsFavorite] = useState(
-    Boolean(locationState?.isFavorite),
-  );
   const [comments, setComments] = useState<CommentNode[]>(
     () => INITIAL_COMMENTS,
   );
@@ -140,10 +137,6 @@ const CourseDetailLanding: FC = () => {
     }
     return baseCourses[0];
   }, [locationState]);
-
-  useEffect(() => {
-    setIsFavorite(Boolean(locationState?.isFavorite));
-  }, [locationState?.isFavorite]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -173,10 +166,6 @@ const CourseDetailLanding: FC = () => {
       },
     });
   }, [navigate]);
-
-  const handleToggleFavorite = useCallback(() => {
-    setIsFavorite((prev) => !prev);
-  }, []);
 
   const handleToggleLike = useCallback((id: string) => {
     setComments((prev) => toggleLikeInTree(prev, id));
@@ -517,40 +506,6 @@ const CourseDetailLanding: FC = () => {
         </button>
         <span className="text-[15px] font-bold text-[#808283]">/</span>
         <span className="text-[15px] font-bold text-white">{course.title}</span>
-      </div>
-
-      <div className="mb-6 flex items-center justify-between gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
-        <h1 className="flex-1 text-[31px] font-bold leading-normal text-white">
-          {course.title}
-        </h1>
-        <button
-          type="button"
-          onClick={handleToggleFavorite}
-          className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
-          aria-pressed={isFavorite}
-          aria-label={
-            isFavorite
-              ? "Remove course from favourites"
-              : "Add course to favourites"
-          }
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13.7296 3.44515L15.4894 6.99385C15.7294 7.48784 16.3693 7.96167 16.9093 8.0524L20.0989 8.58672C22.1387 8.9295 22.6187 10.4216 21.1488 11.8935L18.6691 14.3937C18.2491 14.8171 18.0192 15.6337 18.1491 16.2185L18.8591 19.3135C19.419 21.7633 18.1291 22.711 15.9794 21.4306L12.9897 19.6462C12.4498 19.3236 11.5599 19.3236 11.0099 19.6462L8.02022 21.4306C5.88045 22.711 4.5806 21.7532 5.14054 19.3135L5.85046 16.2185C5.98044 15.6337 5.75047 14.8171 5.33051 14.3937L2.85079 11.8935C1.39095 10.4216 1.8609 8.9295 3.90067 8.58672L7.09032 8.0524C7.62026 7.96167 8.26019 7.48784 8.50016 6.99385L10.26 3.44515C11.2199 1.51958 12.7797 1.51958 13.7296 3.44515Z"
-              stroke={isFavorite ? "#A06AFF" : "#B0B0B0"}
-              fill={isFavorite ? "#A06AFF" : "none"}
-              strokeWidth="1.00667"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_339px]">
