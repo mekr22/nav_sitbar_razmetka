@@ -762,10 +762,11 @@ const StrategyDetailLanding: FC = () => {
         </button>
       </header>
 
-      <StrategyGalleryCarousel className="mb-6" items={strategyGallery} />
-
       <div className="grid gap-6 lg:grid-cols-[1fr_339px]">
         <div className="flex flex-col gap-6">
+          <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+            <StrategyGalleryCarousel items={strategyGallery} />
+          </section>
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
             <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
               <div className="flex flex-col gap-4">
