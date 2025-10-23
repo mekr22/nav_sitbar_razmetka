@@ -283,12 +283,6 @@ const StrategyDetailLanding: FC = () => {
     [strategy.assets],
   );
 
-  const heroTagline = useMemo(
-    () =>
-      `${strategy.strategy} engine with ${strategy.riskLevel.toLowerCase()} risk controls and ${strategy.profitSharing.toLowerCase()}.`,
-    [strategy.profitSharing, strategy.riskLevel, strategy.strategy],
-  );
-
   const description = useMemo(
     () =>
       `${strategy.name} allocates across ${assetsSummary.toLowerCase()} while monitoring ${strategy.exchangesCount}+ venues including ${exchangesSummary}. The playbook emphasises disciplined position sizing and adaptive hedging to keep drawdowns near ${strategy.maxDrawdown}.`,
