@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { MessageCircle, ShoppingCart, Star } from "lucide-react";
+import { MessageCircle, ShoppingCart } from "lucide-react";
 
 import type { OtherProduct } from "@/data/marketplaceOthers";
 import { baseOtherProducts } from "@/data/marketplaceOthers";
@@ -112,12 +112,8 @@ const OtherDetailLanding: FC = () => {
   const navigate = useNavigate();
   const locationState = location.state as {
     product?: OtherProduct;
-    isFavorite?: boolean;
   } | null;
 
-  const [isFavorite, setIsFavorite] = useState(
-    Boolean(locationState?.isFavorite),
-  );
   const [comments, setComments] = useState<CommentNode[]>(
     () => INITIAL_COMMENTS,
   );
@@ -129,10 +125,6 @@ const OtherDetailLanding: FC = () => {
     }
     return baseOtherProducts[0];
   }, [locationState]);
-
-  useEffect(() => {
-    setIsFavorite(Boolean(locationState?.isFavorite));
-  }, [locationState?.isFavorite]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -442,27 +434,6 @@ const OtherDetailLanding: FC = () => {
         <span className="text-[15px] font-bold text-white">
           {product.title}
         </span>
-      </div>
-
-      <div className="mb-6 flex items-center justify-between rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
-        <h1 className="flex-1 text-[31px] font-bold text-white">
-          {product.title}
-        </h1>
-        <button
-          type="button"
-          onClick={() => setIsFavorite((prev) => !prev)}
-          className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
-          aria-pressed={isFavorite}
-          aria-label={
-            isFavorite
-              ? "Remove product from favourites"
-              : "Add product to favourites"
-          }
-        >
-          <Star
-            className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`}
-          />
-        </button>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_339px]">
