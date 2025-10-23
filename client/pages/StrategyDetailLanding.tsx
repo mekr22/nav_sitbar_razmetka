@@ -702,57 +702,22 @@ const StrategyDetailLanding: FC = () => {
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
             <StrategyGalleryCarousel items={strategyGallery} />
           </section>
-          <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
-            <div className="grid gap-4 lg:grid-cols-[2fr_1fr]">
-              <div className="flex flex-col gap-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {performanceMetrics.map((metric) => (
-                    <div
-                      key={metric.label}
-                      className="rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4"
-                    >
-                      <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
-                        <metric.icon className="h-4 w-4 text-[#A06AFF]" />
-                        {metric.label}
-                      </div>
-                      <div className="text-[21px] font-bold text-white">
-                        {metric.value}
-                      </div>
-                      <p className="mt-2 text-[13px] font-medium text-[#B0B0B0]">
-                        {metric.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <aside className="flex flex-col gap-3 rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-4">
-                <h3 className="text-[15px] font-semibold text-white">
-                  Snapshot
-                </h3>
-                <div className="grid gap-3">
-                  {quickStats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="flex items-center justify-between"
-                    >
-                      <span className="text-xs font-bold uppercase text-[#B0B0B0]">
-                        {stat.label}
-                      </span>
-                      <span className="text-[15px] font-bold text-white">
-                        {stat.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                <div className="rounded-xl border border-[#181B22] bg-[#0C1014]/70 p-3 text-xs font-semibold text-[#B0B0B0]">
-                  <HelpCircle className="mr-2 inline h-4 w-4 text-[#A06AFF]" />
-                  Subscribers receive weekly recap videos, executable
-                  checklists, and direct access to team office hours.
-                </div>
-              </aside>
+          <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
+            <div className="border-b border-[#181B22] p-4">
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
             </div>
-
+            <div className="space-y-4 p-4">
+              <p className="text-[15px] font-normal text-white">{description}</p>
+              <p className="text-[15px] font-normal text-[#B0B0B0]">
+                The playbook runs with {automationLevel.toLowerCase()} execution support, delivering
+                {" "}
+                {alertsPerWeek.toLowerCase()} and capital deployment guidance across
+                {" "}
+                {strategy.exchangesCount}+ monitored venues. Weekly updates keep
+                subscribers aligned on hedge posture, rebalancing cadence, and drawdown
+                guardrails across the {assetsSummary.toLowerCase()} mix.
+              </p>
+            </div>
           </section>
 
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
