@@ -6,6 +6,7 @@ import {
   Bookmark,
   Check,
   Globe2,
+  HelpCircle,
   LineChart,
   MapPin,
   Network,
