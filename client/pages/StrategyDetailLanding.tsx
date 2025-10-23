@@ -438,6 +438,20 @@ const StrategyDetailLanding: FC = () => {
     [strategy.riskLevel],
   );
 
+  const strategyGallery = useMemo(
+    () =>
+      (STRATEGY_GALLERY_BY_RISK[strategy.riskLevel] ?? DEFAULT_STRATEGY_GALLERY).map(
+        (src, index) => ({
+          src,
+          alt: `${strategy.name} preview ${index + 1}`,
+        }),
+      ),
+    [strategy.name, strategy.riskLevel],
+  );
+
+  const heroMediaImage = strategyGallery[0]?.src ?? coverImage;
+  const galleryLaunchTarget = strategyGallery[0]?.src ?? coverImage;
+
   const focusArea = useMemo(
     () => `${strategy.strategy} | ${strategy.riskLevel} risk`,
     [strategy.riskLevel, strategy.strategy],
