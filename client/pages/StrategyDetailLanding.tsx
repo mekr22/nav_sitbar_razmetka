@@ -345,89 +345,30 @@ const StrategyDetailLanding: FC = () => {
     });
   }, []);
 
-  const performanceMetrics = useMemo(
+  const strategySpecifications = useMemo(
     () => [
-      {
-        icon: TrendingUp,
-        label: "30 day ROI",
-        value: strategy.roi30d,
-        description:
-          "Trailing performance across the last 30 trading sessions.",
-      },
-      {
-        icon: ArrowUpRight,
-        label: "1 year ROI",
-        value: strategy.roi1y,
-        description: "Total net return generated over the previous 12 months.",
-      },
-      {
-        icon: Activity,
-        label: "Risk level",
-        value: strategy.riskLevel,
-        description: "Target volatility profile applied to the managed basket.",
-      },
-      {
-        icon: Layers,
-        label: "Asset mix",
-        value: assetsSummary,
-        description: "Primary instruments included in the core rotation.",
-      },
-    ],
-    [assetsSummary, strategy.riskLevel, strategy.roi1y, strategy.roi30d],
-  );
-
-  const quickStats = useMemo(
-    () => [
-      {
-        label: "Users",
-        value: usersCount ? usersCount.toLocaleString() : "N/A",
-      },
-      { label: "Profit sharing", value: strategy.profitSharing },
-      { label: "Min capital", value: strategy.minCapital },
-      { label: "Max drawdown", value: strategy.maxDrawdown },
+      `Strategy type: ${strategy.strategy}`,
+      `Risk profile: ${strategy.riskLevel} (max drawdown ${strategy.maxDrawdown})`,
+      `Profit sharing: ${strategy.profitSharing}`,
+      `Minimum capital: ${strategy.minCapital}`,
+      `User base: ${usersCount ? usersCount.toLocaleString() : "N/A"} subscribers`,
+      `Primary assets: ${assetsSummary}`,
+      `Exchange coverage: ${strategy.exchangesCount}+ venues including ${exchangesSummary}`,
+      `Automation: ${automationLevel}`,
+      `Alert cadence: ${alertsPerWeek}`,
     ],
     [
+      alertsPerWeek,
+      assetsSummary,
+      automationLevel,
+      exchangesSummary,
+      strategy.exchangesCount,
       strategy.maxDrawdown,
       strategy.minCapital,
       strategy.profitSharing,
-      usersCount,
-    ],
-  );
-
-  const highlights = useMemo(
-    () => [
-      {
-        title: "Multi-venue coverage",
-        description: `Signals aggregate order flow from ${strategy.exchangesCount}+ listed venues such as ${exchangesSummary}.`,
-      },
-      {
-        title: "Capital efficiency",
-        description: `Optimised for allocations starting at ${strategy.minCapital}, scaling position sizes relative to volatility.`,
-      },
-      {
-        title: "Playbook templates",
-        description:
-          "Comes with weekly rebalancing checklists, portfolio drift alerts, and scenario drills for macro shocks.",
-      },
-    ],
-    [exchangesSummary, strategy.exchangesCount, strategy.minCapital],
-  );
-
-  const tags = useMemo(
-    () =>
-      [
-        strategy.strategy,
-        strategy.riskLevel,
-        strategy.profitSharing,
-        ...strategy.assets,
-      ]
-        .map((entry) => entry.toUpperCase())
-        .slice(0, 8),
-    [
-      strategy.assets,
-      strategy.profitSharing,
       strategy.riskLevel,
       strategy.strategy,
+      usersCount,
     ],
   );
 
