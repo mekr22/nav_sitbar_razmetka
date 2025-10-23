@@ -722,42 +722,19 @@ const StrategyDetailLanding: FC = () => {
 
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
             <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">
-                Strategy overview
-              </h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">Specifications</h2>
             </div>
-            <div className="p-4 space-y-4">
-              <p className="text-[15px] font-normal text-white">
-                {description}
-              </p>
-              <div className="grid gap-3 md:grid-cols-2">
-                {highlights.map((highlight) => (
-                  <div
-                    key={highlight.title}
-                    className="rounded-2xl border border-[#181B22] bg-[#0C1014]/60 p-3"
-                  >
-                    <div className="mb-1 flex items-center gap-2">
-                      <Sparkles className="h-4 w-4 text-[#A06AFF]" />
-                      <span className="text-[15px] font-semibold text-white">
-                        {highlight.title}
-                      </span>
-                    </div>
-                    <p className="text-[13px] font-medium text-[#B0B0B0]">
-                      {highlight.description}
-                    </p>
+            <div className="flex flex-col gap-4 p-4">
+              {strategySpecifications.map((item) => (
+                <div key={item} className="flex items-center gap-2">
+                  <div className="flex h-4 w-4 items-center justify-center">
+                    <div className="h-1 w-1 rounded-full bg-[#A06AFF]" />
                   </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-[#2E2744] px-3 py-1 text-xs font-semibold uppercase text-white"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                  <p className="flex-1 text-[15px] font-medium text-white max-[360px]:text-sm">
+                    {item}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
 
