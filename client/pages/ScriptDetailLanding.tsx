@@ -1,4 +1,4 @@
-import { Star, ShoppingCart, MessageCircle } from "lucide-react";
+import { ShoppingCart, MessageCircle } from "lucide-react";
 import { FC, useState, useCallback, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
@@ -108,7 +108,6 @@ const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
 const ScriptDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isFavorite, setIsFavorite] = useState(false);
   const [comments, setComments] = useState<CommentNode[]>(
     () => INITIAL_COMMENTS,
   );
@@ -369,21 +368,6 @@ const ScriptDetailLanding: FC = () => {
         </button>
         <span className="text-[15px] font-bold text-[#808283]">/</span>
         <span className="text-[15px] font-bold text-white">Script_name</span>
-      </div>
-
-      {/* Header */}
-      <div className="mb-6 flex items-center justify-between rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
-        <h1 className="flex-1 text-[31px] font-bold text-white">
-          RiskMaster - powerful tool for traders
-        </h1>
-        <button
-          onClick={() => setIsFavorite(!isFavorite)}
-          className="flex-shrink-0 rounded-full p-1.5 transition-colors hover:bg-[#A06AFF]/10"
-        >
-          <Star
-            className={`h-6 w-6 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : "text-[#808283]"}`}
-          />
-        </button>
       </div>
 
       {/* Main content grid */}
