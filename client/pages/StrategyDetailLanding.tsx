@@ -659,46 +659,6 @@ const StrategyDetailLanding: FC = () => {
         <span className="text-white">{strategy.name}</span>
       </nav>
 
-      <header className="mb-6 flex flex-col gap-3 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px] sm:flex-row sm:items-center sm:justify-between">
-        <div className="space-y-2">
-          <h1 className="text-[31px] font-bold leading-tight text-white">
-            {strategy.name}
-          </h1>
-          <p className="max-w-[620px] text-[15px] font-medium text-[#B0B0B0]">
-            {heroTagline}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#2E2744] px-3 py-1 text-xs font-bold uppercase text-white">
-              <LineChart className="h-3.5 w-3.5 text-[#A06AFF]" />
-              {strategy.strategy}
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#2E2744] px-3 py-1 text-xs font-bold uppercase text-white">
-              <Aperture className="h-3.5 w-3.5 text-[#A06AFF]" />
-              {strategy.profitSharing}
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#2E2744] px-3 py-1 text-xs font-bold uppercase text-white">
-              <Globe2 className="h-3.5 w-3.5 text-[#A06AFF]" />
-              {distribution}
-            </span>
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={handleToggleFavorite}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-[#181B22] text-[#808283] transition-colors hover:border-[#A06AFF] hover:text-[#A06AFF]"
-          aria-pressed={isFavorite}
-          aria-label={
-            isFavorite
-              ? "Remove strategy from favourites"
-              : "Add strategy to favourites"
-          }
-        >
-          <Star
-            className={`h-5 w-5 ${isFavorite ? "fill-[#A06AFF] text-[#A06AFF]" : ""}`}
-          />
-        </button>
-      </header>
-
       <div className="grid gap-6 lg:grid-cols-[1fr_339px]">
         <div className="flex flex-col gap-6">
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
