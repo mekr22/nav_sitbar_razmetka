@@ -22,6 +22,7 @@ type AuthFormValues = z.infer<typeof authSchema>;
 
 const Profile: FC = () => {
   const { toast } = useToast();
+  const client = supabase;
   const [session, setSession] = useState<Session | null>(null);
   const [initializing, setInitializing] = useState(true);
   const [authError, setAuthError] = useState<string | null>(null);
@@ -40,10 +41,15 @@ const Profile: FC = () => {
   });
 
   useEffect(() => {
+    if (!client) {
+      setInitializing(false);
+      return;
+    }
+
     let active = true;
 
     const loadSession = async () => {
-      const { data, error } = await supabase.auth.getSession();
+      const { data, error } = await client.auth.getSession();
 
       if (!active) {
         return;
@@ -66,7 +72,7 @@ const Profile: FC = () => {
 
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    } = client.auth.onAuthStateChange((_event, newSession) => {
       setSession(newSession);
       if (newSession) {
         setAuthError(null);
@@ -78,11 +84,20 @@ const Profile: FC = () => {
       active = false;
       subscription.unsubscribe();
     };
-  }, [reset, toast]);
+  }, [client, reset, toast]);
 
   const handleSignIn = async (values: AuthFormValues) => {
+    if (!client) {
+      toast({
+        title: "Supabase not configured",
+        description: "Set Supabase environment variables to enable sign-in.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setAuthError(null);
-    const { error } = await supabase.auth.signInWithPassword(values);
+    const { error } = await client.auth.signInWithPassword(values);
 
     if (error) {
       setAuthError(error.message);
@@ -101,7 +116,11 @@ const Profile: FC = () => {
   };
 
   const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
+    if (!client) {
+      return;
+    }
+
+    const { error } = await client.auth.signOut();
     if (error) {
       toast({
         title: "Sign out failed",
@@ -125,6 +144,29 @@ const Profile: FC = () => {
           <span className="text-sm font-medium text-white">
             Checking your session...
           </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!client) {
+    return (
+      <div className="mx-auto w-full max-w-[420px]">
+        <div className="container-card flex flex-col gap-4 p-6 sm:p-8">
+          <h1 className="text-center text-2xl font-bold text-white">
+            Supabase configuration required
+          </h1>
+          <p className="text-sm text-[#B0B0B0]">
+            Supabase environment variables are missing. Provide
+            <code className="mx-1 rounded bg-black/40 px-1 py-0.5 text-xs text-white">
+              VITE_SUPABASE_URL
+            </code>
+            and
+            <code className="mx-1 rounded bg-black/40 px-1 py-0.5 text-xs text-white">
+              VITE_SUPABASE_ANON_KEY
+            </code>
+            to enable authentication on this page.
+          </p>
         </div>
       </div>
     );
