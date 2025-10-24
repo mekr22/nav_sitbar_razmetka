@@ -149,29 +149,6 @@ const Profile: FC = () => {
     );
   }
 
-  if (!client) {
-    return (
-      <div className="mx-auto w-full max-w-[420px]">
-        <div className="container-card flex flex-col gap-4 p-6 sm:p-8">
-          <h1 className="text-center text-2xl font-bold text-white">
-            Supabase configuration required
-          </h1>
-          <p className="text-sm text-[#B0B0B0]">
-            Supabase environment variables are missing. Provide
-            <code className="mx-1 rounded bg-black/40 px-1 py-0.5 text-xs text-white">
-              VITE_SUPABASE_URL
-            </code>
-            and
-            <code className="mx-1 rounded bg-black/40 px-1 py-0.5 text-xs text-white">
-              VITE_SUPABASE_ANON_KEY
-            </code>
-            to enable authentication on this page.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   if (!session) {
     return (
       <div className="mx-auto w-full max-w-[420px]">
