@@ -193,7 +193,7 @@ const AddProductLanding: FC = () => {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.20)] p-4 backdrop-blur-[50px]" />
+          <div className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.20)] p-4 backdrop-blur-[50px] min-h-[260px]" />
         </div>
 
         <div className="flex flex-col gap-6">
