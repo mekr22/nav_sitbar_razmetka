@@ -270,7 +270,7 @@ const AddProduct: FC = () => {
           <div className="flex flex-col gap-2 border-t border-[#181B22] px-4 pb-8 pt-4">
             <h2 className="text-[19px] font-bold text-white">Monetization</h2>
             <div className="flex flex-wrap gap-4">
-              <div className="flex h-11 flex-1 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
+              <div className="flex h-11 flex-1 items-center justify-between rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]">
                 <input
                   type="text"
                   placeholder="Enter price (USD)..."
@@ -278,7 +278,7 @@ const AddProduct: FC = () => {
                 />
                 <span className="text-[15px] font-bold text-[#B0B0B0]">$</span>
               </div>
-              <div className="flex h-11 min-w-[200px] flex-1 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
+              <div className="flex h-11 min-w-[200px] flex-1 items-center justify-between rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]">
                 <span className="text-[15px] font-bold text-white">
                   Select monetization type
                 </span>
@@ -325,7 +325,7 @@ const AddProduct: FC = () => {
                   }}
                   className="h-11 flex-1 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
                 />
-                <div className="flex h-11 flex-1 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
+                <div className="flex h-11 flex-1 items-center justify-between rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]">
                   <input
                     type="text"
                     placeholder="Enter yield (%)"
