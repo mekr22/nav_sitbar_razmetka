@@ -123,7 +123,7 @@ const App = () => (
                     />
                     <Route
                       path="/marketplace/add-product"
-                      element={<CourseDetailLanding hideAdditionalContent />}
+                      element={<AddProduct />}
                     />
                     <Route
                       path="/marketplace/indicators-details"
