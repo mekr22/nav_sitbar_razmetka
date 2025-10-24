@@ -128,6 +128,7 @@ const Profile: FC = () => {
         description:
           "We sent a confirmation email. Complete the verification to activate your account.",
       });
+      setMode("signIn");
       return;
     }
 
