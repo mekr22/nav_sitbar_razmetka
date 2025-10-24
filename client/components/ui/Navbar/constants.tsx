@@ -53,7 +53,7 @@ export const navElements: NavElementProps[] = [
     title: 'Marketplace',
     children: [
       { icon: <BoxIcon className='h-5 w-5' />, title: 'Products', route: '/marketplace/my-products' },
-      { icon: <BoxIcon className='h-5 w-5' />, title: 'Cart', route: '#' },
+      { icon: <BoxIcon className='h-5 w-5' />, title: 'Cart', route: '/cart' },
     ],
   },
   {
