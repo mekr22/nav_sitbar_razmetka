@@ -182,7 +182,7 @@ const AddProduct: FC = () => {
             </div>
 
             {/* Upload Cover Image */}
-            <div className="flex flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-[#181B22] py-6">
+            <div className="flex flex-col items-center justify-center gap-1 rounded-[28px] border border-dashed border-[#181B22] py-6">
               <Upload className="h-12 w-12 text-[#A06AFF]" strokeWidth={1.5} />
               <h3 className="text-2xl font-bold text-white">
                 Upload cover image
@@ -524,7 +524,7 @@ const AddProduct: FC = () => {
             </button>
           </div>
           {isDemoEnabled && (
-            <div className="flex flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-[#181B22] py-6">
+            <div className="flex flex-col items-center justify-center gap-1 rounded-[28px] border border-dashed border-[#181B22] py-6">
               <Upload className="h-12 w-12 text-[#A06AFF]" strokeWidth={1.5} />
               <h3 className="text-2xl font-bold text-white">
                 Upload demo image or video
