@@ -386,7 +386,7 @@ const AddProduct: FC = () => {
             <button
               type="button"
               onClick={addPerformanceRow}
-              className="flex h-[26px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]"
+              className="flex h-[26px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]"
             >
               <Plus className="h-4 w-4 text-white" />
               <span className="text-[15px] font-bold text-white">Add</span>
@@ -496,7 +496,7 @@ const AddProduct: FC = () => {
             <button
               type="button"
               onClick={addAccuracyRow}
-              className="flex h-[26px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]"
+              className="flex h-[26px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]"
             >
               <Plus className="h-4 w-4 text-white" />
               <span className="text-[15px] font-bold text-white">Add</span>
