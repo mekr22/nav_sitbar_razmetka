@@ -42,6 +42,10 @@ const Profile: FC = () => {
   });
 
   useEffect(() => {
+    setAuthError(null);
+  }, [mode]);
+
+  useEffect(() => {
     if (!client) {
       setInitializing(false);
       return;
