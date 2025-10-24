@@ -345,7 +345,7 @@ const AddProduct: FC = () => {
                   <button
                     type="button"
                     onClick={() => removePerformanceRow(index)}
-                    className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0B0E11]"
+                    className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0B0E11]"
                   >
                     <svg
                       className="h-4 w-4"
@@ -455,7 +455,7 @@ const AddProduct: FC = () => {
                   <button
                     type="button"
                     onClick={() => removeAccuracyRow(index)}
-                    className="flex h-[26px] w-[26px] items-center justify-center rounded-lg border border-[#181B22] bg-[#0B0E11]"
+                    className="flex h-[26px] w-[26px] items-center justify-center rounded-full border border-[#181B22] bg-[#0B0E11]"
                   >
                     <svg
                       className="h-4 w-4"
