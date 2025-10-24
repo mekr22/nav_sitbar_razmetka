@@ -125,7 +125,7 @@ const AddProduct: FC = () => {
         <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px]">
           {/* Product Preview Header */}
           <div className="flex gap-3 border-b border-[#181B22] p-4">
-            <div className="h-[135px] w-[240px] flex-shrink-0 rounded-lg bg-[#2E2744]"></div>
+            <div className="h-[135px] w-[240px] flex-shrink-0 rounded-[24px] bg-[#2E2744]"></div>
             <div className="flex flex-col gap-0.5">
               <h2 className="text-[19px] font-bold text-white">
                 Your product's title
