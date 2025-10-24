@@ -164,4 +164,16 @@ const App = () => (
   </QueryClientProvider>
 );
 
-createRoot(document.getElementById("root")!).render(<App />);
+type RootContainer = HTMLElement & { __reactRoot?: Root };
+
+const rootElement = document.getElementById("root") as RootContainer | null;
+
+if (!rootElement) {
+  throw new Error("Root element with id 'root' was not found in the document.");
+}
+
+if (!rootElement.__reactRoot) {
+  rootElement.__reactRoot = createRoot(rootElement);
+}
+
+rootElement.__reactRoot.render(<App />);
