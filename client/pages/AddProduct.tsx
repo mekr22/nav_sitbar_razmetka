@@ -59,7 +59,7 @@ const AddProduct: FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-6 px-3 pb-20 sm:px-4">
+    <div className="mx-auto flex w-full max-w-[1075px] flex-col gap-6 px-3 pb-20 sm:px-4">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-[15px]">
         <button
@@ -73,7 +73,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Product Type Selection */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
           <h1 className="text-2xl font-bold text-white">
             Creating new product
@@ -121,7 +121,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Main Form */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px]">
           {/* Product Preview Header */}
           <div className="flex gap-3 border-b border-[#181B22] p-4">
@@ -290,7 +290,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Performance Chart */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
           <div className="flex items-center justify-between">
             <h2 className="text-[19px] font-bold text-[#A06AFF]">
@@ -396,7 +396,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Accuracy Chart */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
           <div className="flex items-center justify-between">
             <h2 className="text-[19px] font-bold text-[#A06AFF]">
@@ -506,7 +506,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Demo */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col gap-4 rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
           <div className="flex items-center justify-between border-b border-[#181B22] pb-4">
             <h2 className="text-[19px] font-bold text-[#A06AFF]">Demo</h2>
@@ -539,7 +539,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Description */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px]">
           <div className="border-b border-[#181B22] p-4">
             <h2 className="text-[19px] font-bold text-[#A06AFF]">
@@ -602,7 +602,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Specifications */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px]">
           <div className="border-b border-[#181B22] p-4">
             <h2 className="text-[19px] font-bold text-[#A06AFF]">
@@ -645,7 +645,7 @@ const AddProduct: FC = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="mx-auto w-full max-w-[712px]">
+      <div className="w-full">
         <div className="flex flex-col items-center gap-4 rounded-b-lg px-6 pt-6">
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
