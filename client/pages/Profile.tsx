@@ -189,10 +189,12 @@ const Profile: FC = () => {
         <div className="container-card flex flex-col gap-6 p-6 sm:p-8">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-bold text-white">
-              Sign in to view your profile
+              {mode === "signIn" ? "Sign in to view your profile" : "Create your account"}
             </h1>
             <p className="text-sm text-[#B0B0B0]">
-              Use your email and password to access your account information.
+              {mode === "signIn"
+                ? "Use your email and password to access your account information."
+                : "Enter your email and password to register for a new account."}
             </p>
           </div>
 
