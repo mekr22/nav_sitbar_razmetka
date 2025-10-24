@@ -1096,7 +1096,9 @@ const MarketplaceRightMenuContent: FC = () => {
 
 export const RightMenu: FC<Props> = ({ isCollapsed, onClose }) => {
   const location = useLocation();
-  const isMarketplaceRoute = location.pathname.startsWith("/marketplace");
+  const isMarketplaceRoute =
+    location.pathname.startsWith("/marketplace") ||
+    location.pathname === "/cart";
 
   const renderMenuContent = () => (
     <div className="flex flex-col gap-6 pb-6">
