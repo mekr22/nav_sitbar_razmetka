@@ -650,19 +650,19 @@ const AddProduct: FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               type="button"
-              className="flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+              className="flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
             >
               Save Draft
             </button>
             <button
               type="button"
-              className="flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+              className="flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
             >
               Preview
             </button>
             <button
               type="button"
-              className="flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-2.5 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
+              className="flex h-[46px] w-[180px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 text-[15px] font-bold text-white transition-opacity hover:opacity-90"
             >
               Publish
             </button>
