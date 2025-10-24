@@ -63,10 +63,10 @@ const AddProduct: FC = () => {
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-[15px]">
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/marketplace/my-products")}
           className="font-medium text-[#B0B0B0] hover:text-white"
         >
-          Home
+          Marketplace
         </button>
         <span className="font-bold text-[#808283]">/</span>
         <span className="font-bold text-white">Creating new product</span>
