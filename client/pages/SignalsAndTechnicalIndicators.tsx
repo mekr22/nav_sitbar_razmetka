@@ -175,9 +175,11 @@ const SignalsAndTechnicalIndicators: FC = () => {
 
   const openSignalDetails = useCallback(
     (selectedSignal: Signal, meta?: { isFavorite: boolean }) => {
-      const extended = selectedSignal as SignalWithMeta | (Signal & {
-        category?: string;
-      });
+      const extended = selectedSignal as
+        | SignalWithMeta
+        | (Signal & {
+            category?: string;
+          });
       const detailType =
         extended?.category === "indicators" ? "indicators" : "signals";
       const targetPath =
@@ -611,14 +613,14 @@ const SignalsAndTechnicalIndicators: FC = () => {
                 const isFavorited = isFavorite(cardKey);
                 return (
                   <SignalCard
-                  key={signal.id}
-                  signal={signal}
-                  isActive={activeCardKey === cardKey}
-                  onSelect={() => setActiveCardKey(cardKey)}
-                  isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
-                  onOpenDetails={openSignalDetails}
-                />
+                    key={signal.id}
+                    signal={signal}
+                    isActive={activeCardKey === cardKey}
+                    onSelect={() => setActiveCardKey(cardKey)}
+                    isFavorite={isFavorited}
+                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onOpenDetails={openSignalDetails}
+                  />
                 );
               })}
             </div>

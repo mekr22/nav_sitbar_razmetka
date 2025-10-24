@@ -258,7 +258,9 @@ const Profile: FC = () => {
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex flex-col gap-3">
-              <h1 className="text-2xl font-bold text-white">Profile Overview</h1>
+              <h1 className="text-2xl font-bold text-white">
+                Profile Overview
+              </h1>
               <p className="text-sm text-webGray">
                 Manage your personal information, contact details, and account
                 preferences in one place.
