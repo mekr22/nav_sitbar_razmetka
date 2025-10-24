@@ -122,6 +122,10 @@ const App = () => (
                       element={<CourseDetailLanding />}
                     />
                     <Route
+                      path="/marketplace/add-product"
+                      element={<AddProductLanding />}
+                    />
+                    <Route
                       path="/marketplace/indicators-details"
                       element={<IndicatorsDetailLanding />}
                     />
