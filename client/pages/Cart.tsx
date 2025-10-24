@@ -83,7 +83,7 @@ const Cart: FC = () => {
   return (
     <div className="mx-auto flex w-full max-w-[880px] flex-col gap-6 px-3 pb-20 sm:px-4 xl:min-w-[880px]">
       {/* Main Content */}
-      <div className="flex flex-col gap-4 rounded-[24px] border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px] lg:flex-row lg:gap-0">
+      <div className="flex flex-col gap-4 rounded-[24px] border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px] sm:p-6 lg:flex-row lg:gap-0">
         {/* Cart Items Section */}
         <div className="flex flex-1 flex-col gap-4">
           <h1 className="text-2xl font-bold text-white">Your cart</h1>
@@ -93,7 +93,7 @@ const Cart: FC = () => {
               <div
                 key={item.id}
                 className={cn(
-                  "flex items-center gap-4 pt-4",
+                  "flex flex-col gap-4 pt-4 sm:flex-row sm:items-center sm:gap-4",
                   index > 0 && "border-t border-[#181B22]",
                 )}
               >
@@ -133,11 +133,11 @@ const Cart: FC = () => {
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="h-11 w-[84px] flex-shrink-0 rounded-lg object-cover"
+                  className="h-[88px] w-full flex-shrink-0 rounded-2xl object-cover sm:h-11 sm:w-[84px] sm:rounded-lg"
                 />
 
                 {/* Product Info */}
-                <div className="flex min-w-0 flex-1 flex-col justify-between gap-0.5">
+                <div className="flex min-w-0 flex-1 flex-col justify-between gap-0.5 sm:w-auto">
                   <h3 className="truncate text-[15px] font-bold text-white">
                     {item.title}
                   </h3>
@@ -147,14 +147,14 @@ const Cart: FC = () => {
                 </div>
 
                 {/* Price */}
-                <div className="w-20 flex-shrink-0 text-right text-[15px] font-normal text-white">
+                <div className="w-full text-left text-[15px] font-normal text-white sm:w-20 sm:flex-shrink-0 sm:text-right">
                   ${item.price.toFixed(2)}
                 </div>
 
                 {/* Delete Button */}
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="flex-shrink-0 text-[#B0B0B0] transition-colors hover:text-white"
+                  className="self-start text-[#B0B0B0] transition-colors hover:text-white sm:self-auto"
                   aria-label={`Remove ${item.title}`}
                 >
                   <Trash2 className="h-5 w-5" />
@@ -170,13 +170,13 @@ const Cart: FC = () => {
         {/* Order Summary */}
         <div className="flex w-full flex-col justify-between lg:w-[330px]">
           <div className="flex flex-col">
-            <div className="p-4">
+            <div className="p-4 sm:p-0 sm:pb-4">
               <h2 className="text-[19px] font-bold text-white">
                 Order Summary
               </h2>
             </div>
 
-            <div className="flex items-center justify-between border-b border-[#181B22] px-4 pb-4">
+            <div className="flex items-center justify-between border-b border-[#181B22] px-4 pb-4 sm:px-0">
               <span className="text-[15px] font-normal text-[#B0B0B0]">
                 Subtotal
               </span>
@@ -185,7 +185,7 @@ const Cart: FC = () => {
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-4">
+            <div className="flex items-center justify-between px-4 py-4 sm:px-0">
               <span className="text-[15px] font-bold text-white">Total</span>
               <span className="text-[15px] font-normal text-[#A06AFF]">
                 ${subtotal.toFixed(2)}
@@ -196,14 +196,14 @@ const Cart: FC = () => {
           <div className="flex flex-col gap-4">
             <button
               type="button"
-              className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-opacity hover:opacity-90"
+              className="flex h-[46px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-opacity hover:opacity-90 sm:w-auto"
             >
               Proceed to Checkout
             </button>
             <button
               type="button"
               onClick={() => navigate("/marketplace/my-products")}
-              className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+              className="flex h-[46px] w-full items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] sm:w-auto"
             >
               Continue Shopping
             </button>
