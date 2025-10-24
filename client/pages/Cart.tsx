@@ -82,18 +82,6 @@ const Cart: FC = () => {
 
   return (
     <div className="mx-auto flex w-full max-w-[880px] flex-col gap-6 px-3 pb-20 sm:px-4 xl:min-w-[880px]">
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-[15px]">
-        <button
-          onClick={() => navigate("/")}
-          className="font-medium text-[#B0B0B0] hover:text-white"
-        >
-          Home
-        </button>
-        <span className="font-bold text-[#808283]">/</span>
-        <span className="font-bold text-white">Cart</span>
-      </div>
-
       {/* Main Content */}
       <div className="flex flex-col gap-4 rounded-[24px] border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px] lg:flex-row lg:gap-0">
         {/* Cart Items Section */}
@@ -208,14 +196,14 @@ const Cart: FC = () => {
           <div className="flex flex-col gap-4">
             <button
               type="button"
-              className="flex h-[46px] items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 text-[15px] font-bold text-white backdrop-blur-[50px] transition-opacity hover:opacity-90"
+              className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-opacity hover:opacity-90"
             >
               Proceed to Checkout
             </button>
             <button
               type="button"
               onClick={() => navigate("/marketplace/my-products")}
-              className="flex h-[46px] items-center justify-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+              className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
             >
               Continue Shopping
             </button>
