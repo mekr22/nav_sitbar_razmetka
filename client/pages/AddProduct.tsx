@@ -177,7 +177,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter product title..."
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
 
@@ -201,7 +201,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter exchanges (e.g., NYSE, NASDAQ, Binance, Coinbase)"
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
 
@@ -213,7 +213,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter assets (e.g., AAPL, BTC, EUR/USD)"
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
 
@@ -225,7 +225,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter indicator type (e.g., Trend, Oscillator)"
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
 
@@ -237,7 +237,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter timeframe (e.g., M15, H1, D1)"
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
 
@@ -249,7 +249,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter usage (e.g., Trend, Reversal, Breakout)"
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
 
@@ -261,7 +261,7 @@ const AddProduct: FC = () => {
               <input
                 type="text"
                 placeholder="Enter product accuracy in % (e.g., 75%)"
-                className="h-11 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
               />
             </div>
           </div>
