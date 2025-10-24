@@ -74,7 +74,10 @@ const AddProduct: FC = () => {
 
       {/* Product Type Selection */}
       <div className="w-full">
-        <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]">
+        <div className={cn(
+          "relative z-10 flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px]",
+          showProductTypeDropdown && "z-50",
+        )}>
           <h1 className="text-2xl font-bold text-white">
             Creating new product
           </h1>
@@ -122,7 +125,7 @@ const AddProduct: FC = () => {
 
       {/* Main Form */}
       <div className="w-full">
-        <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px]">
+        <div className="relative flex flex-col rounded-3xl border border-[#181B22] bg-[#0C101480] backdrop-blur-[50px]">
           {/* Product Preview Header */}
           <div className="flex gap-3 border-b border-[#181B22] p-4">
             <div className="h-[135px] w-[240px] flex-shrink-0 rounded-[24px] bg-[#2E2744]"></div>
