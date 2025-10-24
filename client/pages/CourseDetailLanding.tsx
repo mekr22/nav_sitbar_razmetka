@@ -114,7 +114,7 @@ const releaseWindowLabel: Record<Course["releaseWindow"], string> = {
   "30d": "Released in the last 30 days",
 };
 
-const CourseDetailLanding: FC = () => {
+const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({ hideAdditionalContent = false }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const locationState = location.state as {
