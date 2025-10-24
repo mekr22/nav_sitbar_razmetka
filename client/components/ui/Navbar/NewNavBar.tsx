@@ -171,7 +171,7 @@ const NewNavBar: FC<Props> = ({
 
   return (
     <>
-      <div className="relative mt-8 ml-8 hidden lg:block">
+      <div className="relative mt-8 ml-8 hidden lg:block mb-12">
         <div
           className={cn(
             "bg-transparent relative h-fit rounded-[12px] p-[1px] w-fit",
