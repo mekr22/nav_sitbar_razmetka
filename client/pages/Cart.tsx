@@ -137,7 +137,7 @@ const Cart: FC = () => {
                 />
 
                 {/* Product Info */}
-                <div className="flex min-w-0 flex-1 flex-col justify-between gap-0.5 sm:w-auto">
+                <div className="flex min-w-0 w-full flex-1 flex-col justify-between gap-0.5 sm:w-auto">
                   <h3 className="truncate text-[15px] font-bold text-white">
                     {item.title}
                   </h3>
