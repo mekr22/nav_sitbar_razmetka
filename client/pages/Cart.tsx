@@ -81,7 +81,7 @@ const Cart: FC = () => {
     .reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <div className="mx-auto flex w-full max-w-[1075px] flex-col gap-6 px-3 pb-20 sm:px-4">
+    <div className="mx-auto flex w-full max-w-[880px] flex-col gap-6 px-3 pb-20 sm:px-4 xl:min-w-[880px]">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-[15px]">
         <button
