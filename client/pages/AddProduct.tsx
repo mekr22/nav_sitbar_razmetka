@@ -610,7 +610,7 @@ const AddProduct: FC = () => {
             </h2>
           </div>
           <div className="flex flex-col gap-4 p-4">
-            <div className="flex h-11 items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
+            <div className="flex h-11 items-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]">
               <div className="flex h-4 w-4 items-center justify-center">
                 <div className="h-1 w-1 rounded-full bg-[#A06AFF]"></div>
               </div>
@@ -620,7 +620,7 @@ const AddProduct: FC = () => {
                 className="flex-1 bg-transparent text-[15px] text-white placeholder:text-[#B0B0B0] focus:outline-none"
               />
             </div>
-            <div className="flex h-11 items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
+            <div className="flex h-11 items-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]">
               <div className="flex h-4 w-4 items-center justify-center">
                 <div className="h-1 w-1 rounded-full bg-[#A06AFF]"></div>
               </div>
@@ -630,7 +630,7 @@ const AddProduct: FC = () => {
                 className="flex-1 bg-transparent text-[15px] text-white placeholder:text-[#B0B0B0] focus:outline-none"
               />
             </div>
-            <div className="flex h-11 items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
+            <div className="flex h-11 items-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]">
               <div className="flex h-4 w-4 items-center justify-center">
                 <div className="h-1 w-1 rounded-full bg-[#A06AFF]"></div>
               </div>
