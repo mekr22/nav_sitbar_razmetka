@@ -26,6 +26,7 @@ const Profile: FC = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [initializing, setInitializing] = useState(true);
   const [authError, setAuthError] = useState<string | null>(null);
+  const [mode, setMode] = useState<"signIn" | "signUp">("signIn");
 
   const {
     register,
@@ -86,17 +87,46 @@ const Profile: FC = () => {
     };
   }, [client, reset, toast]);
 
-  const handleSignIn = async (values: AuthFormValues) => {
+  const handleAuth = async (values: AuthFormValues) => {
     if (!client) {
       toast({
         title: "Supabase not configured",
-        description: "Set Supabase environment variables to enable sign-in.",
+        description: "Set Supabase environment variables to enable authentication.",
         variant: "destructive",
       });
       return;
     }
 
     setAuthError(null);
+
+    if (mode === "signUp") {
+      const { data, error } = await client.auth.signUp({
+        email: values.email,
+        password: values.password,
+      });
+
+      if (error) {
+        setAuthError(error.message);
+        toast({
+          title: "Unable to register",
+          description: error.message,
+          variant: "destructive",
+        });
+        return;
+      }
+
+      if (data.session) {
+        setSession(data.session);
+      }
+
+      toast({
+        title: "Check your inbox",
+        description:
+          "We sent a confirmation email. Complete the verification to activate your account.",
+      });
+      return;
+    }
+
     const { error } = await client.auth.signInWithPassword(values);
 
     if (error) {
@@ -178,7 +208,7 @@ const Profile: FC = () => {
 
           <form
             className="flex flex-col gap-5"
-            onSubmit={handleSubmit(handleSignIn)}
+            onSubmit={handleSubmit(handleAuth)}
             noValidate
           >
             <div className="flex flex-col gap-2 text-left">
@@ -231,13 +261,26 @@ const Profile: FC = () => {
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Signing in...
+                  {mode === "signUp" ? "Creating..." : "Signing in..."}
                 </>
+              ) : mode === "signUp" ? (
+                "Create account"
               ) : (
                 "Sign in"
               )}
             </button>
           </form>
+
+          <button
+            type="button"
+            onClick={() => setMode((prev) => (prev === "signIn" ? "signUp" : "signIn"))}
+            className="text-xs font-semibold text-[#A06AFF] underline transition-opacity hover:opacity-80"
+            disabled={isSubmitting}
+          >
+            {mode === "signIn"
+              ? "No account yet? Create one"
+              : "Already have an account? Sign in"}
+          </button>
         </div>
       </div>
     );
