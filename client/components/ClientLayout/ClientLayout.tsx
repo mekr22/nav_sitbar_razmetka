@@ -151,7 +151,7 @@ export const ClientLayout: FC<Props> = ({
         onMobileNavToggle={() => setMobileNavOpen(true)}
         mobileNavOpen={mobileNavOpen}
       />
-      <div className="flex justify-start">
+      <div className="flex justify-start gap-6">
         <NewNavBar
           variant={layoutVariant}
           mobileOpen={mobileNavOpen}
