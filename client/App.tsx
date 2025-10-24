@@ -39,6 +39,7 @@ import CourseDetailLanding from "./pages/CourseDetailLanding";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import AddProduct from "./pages/AddProduct";
+import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
 import { ClientLayout } from "./components/ClientLayout/ClientLayout";
 
@@ -125,6 +126,7 @@ const App = () => (
                       path="/marketplace/add-product"
                       element={<AddProduct />}
                     />
+                    <Route path="/cart" element={<Cart />} />
                     <Route
                       path="/marketplace/indicators-details"
                       element={<IndicatorsDetailLanding />}
