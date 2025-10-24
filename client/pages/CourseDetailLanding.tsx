@@ -199,6 +199,7 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({ hideAddi
     () => toTitleCase(course.language),
     [course.language],
   );
+  const showFullContent = !hideAdditionalContent;
   const materialLabel =
     course.materialType === "training" ? "Training" : "Course";
   const releaseLabel = releaseWindowLabel[course.releaseWindow];
