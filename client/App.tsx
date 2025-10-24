@@ -36,7 +36,6 @@ import ScriptDetailLanding from "./pages/ScriptDetailLanding";
 import OtherDetailLanding from "./pages/OtherDetailLanding";
 import StrategyDetailLanding from "./pages/StrategyDetailLanding";
 import CourseDetailLanding from "./pages/CourseDetailLanding";
-import AddProductLanding from "./pages/AddProductLanding";
 import Analysts from "./pages/Analysts";
 import Traders from "./pages/Traders";
 import NotFound from "./pages/NotFound";
