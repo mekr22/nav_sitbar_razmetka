@@ -162,6 +162,20 @@ const Profile: FC = () => {
             </p>
           </div>
 
+          {!client && (
+            <div className="rounded-[16px] border border-[#2E2744] bg-[#0C1014]/70 px-4 py-3 text-left text-xs font-semibold text-[#B0B0B0]">
+              Supabase environment variables are missing. Provide
+              <code className="mx-1 rounded bg-black/40 px-1 py-0.5 text-[11px] text-white">
+                VITE_SUPABASE_URL
+              </code>
+              and
+              <code className="mx-1 rounded bg-black/40 px-1 py-0.5 text-[11px] text-white">
+                VITE_SUPABASE_ANON_KEY
+              </code>
+              to enable authentication. The form is disabled until they are set.
+            </div>
+          )}
+
           <form
             className="flex flex-col gap-5"
             onSubmit={handleSubmit(handleSignIn)}
