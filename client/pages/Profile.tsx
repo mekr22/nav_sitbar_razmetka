@@ -225,8 +225,8 @@ const Profile: FC = () => {
 
             <button
               type="submit"
-              className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-[15px] font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-              disabled={isSubmitting}
+              className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-[15px] font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+              disabled={isSubmitting || !client}
             >
               {isSubmitting ? (
                 <>
