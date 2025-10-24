@@ -605,166 +605,86 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({ hideAddi
             </div>
           </div>
 
-          <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
-            <h2 className="text-[19px] font-bold text-[#A06AFF]">
-              What you'll learn
-            </h2>
-            <div className="flex gap-2.5">
-              <div className="flex flex-1 flex-col gap-2">
-                {whatYouLearnItems[0].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
-                        stroke="#A06AFF"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="flex-1 text-[15px] font-medium text-white">
-                      {item}
-                    </span>
+          {showFullContent && (
+            <>
+              <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] p-4 backdrop-blur-[50px]">
+                <h2 className="text-[19px] font-bold text-[#A06AFF]">
+                  What you'll learn
+                </h2>
+                <div className="flex gap-2.5">
+                  <div className="flex flex-1 flex-col gap-2">
+                    {whatYouLearnItems[0].map((item) => (
+                      <div key={item} className="flex items-center gap-2">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                            stroke="#A06AFF"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span className="flex-1 text-[15px] font-medium text-white">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              <div className="flex flex-1 flex-col gap-2">
-                {whatYouLearnItems[1].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
-                        stroke="#A06AFF"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="flex-1 text-[15px] font-medium text-white">
-                      {item}
-                    </span>
+                  <div className="flex flex-1 flex-col gap-2">
+                    {whatYouLearnItems[1].map((item) => (
+                      <div key={item} className="flex items-center gap-2">
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M3.33398 9.66699C3.33398 9.66699 4.33398 9.66699 5.66732 12.0003C5.66732 12.0003 9.37318 5.88921 12.6673 4.66699"
+                            stroke="#A06AFF"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span className="flex-1 text-[15px] font-medium text-white">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() =>
-                setExpandedSections((prev) => ({
-                  ...prev,
-                  whatYouLearn: !prev.whatYouLearn,
-                }))
-              }
-              className="flex items-center justify-center gap-1 rounded-full border border-[#A06AFF] px-3 py-2 transition-colors hover:bg-[#A06AFF]/10"
-            >
-              <span className="text-[15px] font-medium text-[#A06AFF]">
-                Expand
-              </span>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className={`transition-transform ${expandedSections.whatYouLearn ? "rotate-180" : ""}`}
-              >
-                <path
-                  d="M8.4693 10.7402L11.9993 14.2602L15.5293 10.7402"
-                  stroke="#A06AFF"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </div>
-
-          <div className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
-            <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">
-                Description
-              </h2>
-            </div>
-            <div className="p-4">
-              <p className="mb-4 text-[15px] font-normal text-white">
-                {course.subtitle}
-              </p>
-              <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium text-white">
-                {lessonHighlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">
-                Community discussions
-              </h2>
-              <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px] max-[360px]:p-0.5">
+                </div>
                 <button
                   type="button"
-                  aria-label="Sort comments"
-                  className="flex h-[26px] w-[26px] items-center justify-center rounded-full transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
+                  onClick={() =>
+                    setExpandedSections((prev) => ({
+                      ...prev,
+                      whatYouLearn: !prev.whatYouLearn,
+                    }))
+                  }
+                  className="flex items-center justify-center gap-1 rounded-full border border-[#A06AFF] px-3 py-2 transition-colors hover:bg-[#A06AFF]/10"
                 >
+                  <span className="text-[15px] font-medium text-[#A06AFF]">
+                    Expand
+                  </span>
                   <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_clock_course)">
-                      <path
-                        d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928"
-                        stroke="#B0B0B0"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8 5.33301V7.99967L9.33333 9.33301"
-                        stroke="#B0B0B0"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_clock_course">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  aria-label="Show highlighted comments"
-                  className="flex h-[26px] w-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    className={`transition-transform ${expandedSections.whatYouLearn ? "rotate-180" : ""}`}
                   >
                     <path
-                      d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z"
-                      stroke="white"
+                      d="M8.4693 10.7402L11.9993 14.2602L15.5293 10.7402"
+                      stroke="#A06AFF"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -772,33 +692,117 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({ hideAddi
                   </svg>
                 </button>
               </div>
-            </div>
 
-            <div className="flex flex-col items-end gap-4 max-[360px]:gap-3">
-              <textarea
-                className="h-[88px] w-full resize-none rounded-2xl border border-[#181B22] bg-[#0C1014]/30 px-4 py-3 text-[15px] font-medium text-white placeholder-[#B0B0B0] focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40 max-[360px]:h-[72px] max-[360px]:px-3 max-[360px]:py-2 max-[360px]:text-sm"
-                placeholder="Share your experience with this course"
-                aria-label="Add a comment"
-              />
-              <button
-                type="button"
-                className="flex h-[26px] w-[180px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] px-6 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02] max-[360px]:w-auto max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm"
-              >
-                Send
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-4 max-[360px]:gap-3">
-              {comments.map((comment) => renderComment(comment))}
-              <div className="flex justify-center">
-                <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 max-[360px]:px-4 max-[360px]:py-2">
-                  <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">
-                    Load more comments
-                  </span>
-                </button>
+              <div className="rounded-2xl border border-[#181B22] bg-[rgba(12,16,20,0.50)] backdrop-blur-[50px]">
+                <div className="border-b border-[#181B22] p-4">
+                  <h2 className="text-[19px] font-bold text-[#A06AFF]">
+                    Description
+                  </h2>
+                </div>
+                <div className="p-4">
+                  <p className="mb-4 text-[15px] font-normal text-white">
+                    {course.subtitle}
+                  </p>
+                  <ul className="list-disc space-y-2 pl-5 text-[15px] font-medium text-white">
+                    {lessonHighlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </div>
+
+              <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">
+                    Community discussions
+                  </h2>
+                  <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px] max-[360px]:p-0.5">
+                    <button
+                      type="button"
+                      aria-label="Sort comments"
+                      className="flex h-[26px] w-[26px] items-center justify-center rounded-full transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clipPath="url(#clip0_clock_course)">
+                          <path
+                            d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928"
+                            stroke="#B0B0B0"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M8 5.33301V7.99967L9.33333 9.33301"
+                            stroke="#B0B0B0"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_clock_course">
+                            <rect width="16" height="16" fill="white" />
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Show highlighted comments"
+                      className="flex h-[26px] w-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z"
+                          stroke="white"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-end gap-4 max-[360px]:gap-3">
+                  <textarea
+                    className="h-[88px] w-full resize-none rounded-2xl border border-[#181B22] bg-[#0C1014]/30 px-4 py-3 text-[15px] font-medium text-white placeholder-[#B0B0B0] focus:border-[#A06AFF] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]/40 max-[360px]:h-[72px] max-[360px]:px-3 max-[360px]:py-2 max-[360px]:text-sm"
+                    placeholder="Share your experience with this course"
+                    aria-label="Add a comment"
+                  />
+                  <button
+                    type="button"
+                    className="flex h-[26px] w-[180px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] px-6 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02] max-[360px]:w-auto max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm"
+                  >
+                    Send
+                  </button>
+                </div>
+
+                <div className="flex flex-col gap-4 max-[360px]:gap-3">
+                  {comments.map((comment) => renderComment(comment))}
+                  <div className="flex justify-center">
+                    <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 max-[360px]:px-4 max-[360px]:py-2">
+                      <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">
+                        Load more comments
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="flex flex-col gap-6">
