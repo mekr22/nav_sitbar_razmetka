@@ -323,7 +323,7 @@ const AddProduct: FC = () => {
                     newRows[index].period = e.target.value;
                     setPerformanceChartRows(newRows);
                   }}
-                  className="h-11 flex-1 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                  className="h-11 flex-1 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
                 />
                 <div className="flex h-11 flex-1 items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]">
                   <input
@@ -438,7 +438,7 @@ const AddProduct: FC = () => {
                     newRows[index].profitable = e.target.value;
                     setAccuracyChartRows(newRows);
                   }}
-                  className="h-11 flex-1 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                  className="h-11 flex-1 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
                 />
                 <input
                   type="text"
@@ -449,7 +449,7 @@ const AddProduct: FC = () => {
                     newRows[index].unprofitable = e.target.value;
                     setAccuracyChartRows(newRows);
                   }}
-                  className="h-11 flex-1 rounded-lg border border-[#181B22] bg-[#0C101480] px-4 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
+                  className="h-11 flex-1 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] font-bold text-white placeholder:text-[#B0B0B0] backdrop-blur-[50px] focus:outline-none focus:ring-2 focus:ring-[#A06AFF]"
                 />
                 {accuracyChartRows.length > 1 && (
                   <button
