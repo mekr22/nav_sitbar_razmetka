@@ -88,7 +88,7 @@ const AddProduct: FC = () => {
                 onClick={() =>
                   setShowProductTypeDropdown(!showProductTypeDropdown)
                 }
-                className="flex h-11 w-full items-center justify-between rounded-lg border border-[#181B22] bg-[#0C101480] px-4 backdrop-blur-[50px]"
+                className="flex h-11 w-full items-center justify-between rounded-full border border-[#181B22] bg-[#0C101480] px-6 backdrop-blur-[50px]"
               >
                 <span className="text-[15px] font-bold text-white">
                   {selectedProductType}
@@ -96,7 +96,7 @@ const AddProduct: FC = () => {
                 <ChevronDown className="h-6 w-6 text-white" />
               </button>
               {showProductTypeDropdown && (
-                <div className="absolute left-0 right-0 top-full z-10 mt-2 flex flex-col gap-0 rounded-xl border border-[#181B22] bg-[#0B0E11]/95 p-3 shadow-[24px_48px_48px_0_rgba(0,0,0,0.64)] backdrop-blur-[50px]">
+                <div className="absolute left-0 right-0 top-full z-10 mt-2 flex flex-col gap-0 rounded-[26px] border border-[#181B22] bg-[#0B0E11]/95 p-3 shadow-[24px_48px_48px_0_rgba(0,0,0,0.64)] backdrop-blur-[50px]">
                   {PRODUCT_TYPES.map((type, index) => (
                     <button
                       key={type}
@@ -106,7 +106,7 @@ const AddProduct: FC = () => {
                         setShowProductTypeDropdown(false);
                       }}
                       className={cn(
-                        "rounded-lg px-4 py-3 text-left text-[15px] font-bold text-white transition-colors hover:bg-[#523A83]",
+                        "rounded-full px-5 py-3 text-left text-[15px] font-bold text-white transition-colors hover:bg-[#523A83]",
                         index === 1 && "bg-[#523A83]",
                       )}
                     >
