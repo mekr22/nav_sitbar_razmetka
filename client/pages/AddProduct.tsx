@@ -593,7 +593,7 @@ const AddProduct: FC = () => {
             </div>
             <button
               type="button"
-              className="flex items-center gap-4 self-start"
+              className="flex items-center gap-4 self-start rounded-full px-3 py-2 transition-colors hover:bg-[#1C1F2A]"
             >
               <Plus className="h-6 w-6 text-[#B0B0B0]" />
             </button>
