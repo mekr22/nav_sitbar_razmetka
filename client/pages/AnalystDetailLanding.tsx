@@ -7,6 +7,7 @@ import PerformanceChartCard, {
   type PerformanceChartLevel,
 } from "@/components/marketplace/PerformanceChartCard";
 import { baseAnalysts, type Analyst } from "@/data/marketplaceAnalysts";
+import { useFavorite } from "@/hooks/useFavorite";
 
 type ExtendedAnalyst = Analyst & {
   price?: string;
