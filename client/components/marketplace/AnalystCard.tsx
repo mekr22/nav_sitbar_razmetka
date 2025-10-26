@@ -89,6 +89,12 @@ const AnalystCard: FC<{
     navigate("/marketplace/analyst-details", { state: { analyst } });
   };
 
+  const resolvedSecondaryCta = secondaryCta ?? {
+    label: "CONTACT",
+    icon: Mail,
+  };
+  const SecondaryIcon = resolvedSecondaryCta.icon;
+
   return (
   <div className="mx-auto w-full max-w-[525px]">
     <div
