@@ -1,6 +1,7 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { Eye, EyeOff, ChevronRight, Package, Plus, Search } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 
 import {
   marketplaceCategories,
