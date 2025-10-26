@@ -43,8 +43,10 @@ export async function addFavorite(
     return false;
   }
 
+  console.log("[addFavorite] Adding favorite:", { userId, productType, productId });
+
   try {
-    const { error } = await supabase.from("user_favorites").insert({
+    const { data, error } = await supabase.from("user_favorites").insert({
       user_id: userId,
       product_type: productType,
       product_id: productId,
@@ -52,15 +54,17 @@ export async function addFavorite(
 
     if (error) {
       if (error.code === "23505") {
+        console.log("[addFavorite] Already favorited");
         return true;
       }
-      console.error("Error adding favorite:", error);
+      console.error("[addFavorite] Database error:", error.message, error.code, error.details);
       return false;
     }
 
+    console.log("[addFavorite] Successfully added");
     return true;
   } catch (err) {
-    console.error("Error adding favorite:", err);
+    console.error("[addFavorite] Exception:", err);
     return false;
   }
 }
@@ -75,6 +79,8 @@ export async function removeFavorite(
     return false;
   }
 
+  console.log("[removeFavorite] Removing favorite:", { userId, productType, productId });
+
   try {
     const { error } = await supabase
       .from("user_favorites")
@@ -84,13 +90,14 @@ export async function removeFavorite(
       .eq("product_id", productId);
 
     if (error) {
-      console.error("Error removing favorite:", error);
+      console.error("[removeFavorite] Database error:", error.message, error.code, error.details);
       return false;
     }
 
+    console.log("[removeFavorite] Successfully removed");
     return true;
   } catch (err) {
-    console.error("Error removing favorite:", err);
+    console.error("[removeFavorite] Exception:", err);
     return false;
   }
 }
@@ -128,13 +135,14 @@ export async function checkFavorite(
       .single();
 
     if (error && error.code !== "PGRST116") {
-      console.error("Error checking favorite:", error);
+      console.error("[checkFavorite] Database error:", error.message, error.code);
       return false;
     }
 
+    console.log("[checkFavorite] Result:", !!data, "for", { productType, productId });
     return !!data;
   } catch (err) {
-    console.error("Error checking favorite:", err);
+    console.error("[checkFavorite] Exception:", err);
     return false;
   }
 }
