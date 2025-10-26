@@ -20,7 +20,7 @@ import {
   marketplaceCategories,
   MarketplaceCategory,
 } from "@/data/marketplaceCategories";
-import { cn, maskNonWhitespace } from "@/lib/utils";
+import { cn, maskNonWhitespace, extractOriginalProductId } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
