@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   Bell,
   Bookmark,
+  BookOpen,
   Check,
   Globe2,
   HelpCircle,
@@ -11,6 +12,7 @@ import {
   PieChart,
   Play,
   Settings,
+  ShoppingCart,
   Star,
   Zap,
 } from "lucide-react";
@@ -59,6 +61,11 @@ type StrategyAuthor = {
   communityLink?: string;
   socials?: string[];
 };
+
+const STRATEGY_ACTIONS = [
+  { key: "demo", label: "Demo", icon: BookOpen },
+  { key: "buy", label: "Buy", icon: ShoppingCart },
+];
 
 const STRATEGY_AUTHOR: StrategyAuthor = {
   name: "Sarah Lee",
@@ -857,13 +864,25 @@ const StrategyDetailLanding: FC = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
-                  Subscribe
-                </button>
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
-                  Chat
-                </button>
+              <div className="flex flex-col gap-3">
+                {STRATEGY_ACTIONS.map(({ key, label, icon: Icon }) => {
+                  const isPrimary = key === "buy";
+                  const baseClasses = isPrimary
+                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white transition-transform hover:scale-[1.02]"
+                    : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]";
+                  const iconClass = isPrimary ? "h-5 w-5" : "h-4 w-4";
+
+                  return (
+                    <button
+                      key={key}
+                      type="button"
+                      className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
+                    >
+                      <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
