@@ -55,7 +55,7 @@ type ExtendedSignal = Signal & {
 const DEFAULT_CHART_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F2d6d24710ba34771b2ab72e3d53cd2ec?format=webp&width=800";
 const PRODUCT_ACTIONS = [
-  { key: "learn", label: "Learn More", icon: BookOpen },
+  { key: "learn", label: "Demo", icon: BookOpen },
   { key: "buy", label: "Buy", icon: ShoppingCart },
 ] as const;
 
