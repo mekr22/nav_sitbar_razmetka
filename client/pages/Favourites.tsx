@@ -530,8 +530,8 @@ const Favourites: FC = () => {
                     return (
                       <div
                         key={product.id}
+                        className="w-full cursor-pointer"
                         onClick={() => handleNavigateToDetails("trading-robot", robot)}
-                        className="cursor-pointer"
                       >
                         <TradingRobotCard
                           robot={robot}
