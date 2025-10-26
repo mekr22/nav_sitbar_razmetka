@@ -188,8 +188,8 @@ const AnalystCard: FC<{
           Learn More
         </button>
         <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90">
-          <Mail className="h-4 w-4" />
-          Contact
+          <SecondaryIcon className="h-4 w-4" />
+          {resolvedSecondaryCta.label}
         </button>
       </div>
     </div>
