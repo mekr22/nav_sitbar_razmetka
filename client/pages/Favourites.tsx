@@ -571,16 +571,21 @@ const Favourites: FC = () => {
                   case "other":
                     const otherProduct = product.data as OtherProduct;
                     return (
-                      <OtherProductCard
+                      <div
                         key={product.id}
-                        product={otherProduct}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("other", product.id)
-                        }
-                      />
+                        onClick={() => handleNavigateToDetails("other", otherProduct)}
+                        className="cursor-pointer"
+                      >
+                        <OtherProductCard
+                          product={otherProduct}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("other", product.id)
+                          }
+                        />
+                      </div>
                     );
 
                   default:
