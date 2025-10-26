@@ -89,10 +89,8 @@ const InvestmentConsultants: FC = () => {
     "Investment consultants",
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const { isFavorite, toggle } = useFavoriteMultiple();
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState<FilterSelections>({
     availability: "all",
@@ -239,19 +237,6 @@ const InvestmentConsultants: FC = () => {
     }
   }, [location.pathname, location.state, navigate]);
 
-  const toggleFavorite = (key: string) => {
-    setFavoriteCardKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
@@ -583,7 +568,7 @@ const InvestmentConsultants: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {sortedConsultants.map((consultant) => {
                 const cardKey = buildCardKey("consultants-page", consultant.id);
-                const isFavorited = isFavorite(cardKey);
+                const isFavorited = isFavorite("investment-consultant", consultant.id);
 
                 return (
                   <InvestmentConsultantCard
@@ -592,7 +577,7 @@ const InvestmentConsultants: FC = () => {
                     isActive={activeCardKey === cardKey}
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onToggleFavorite={() => toggle("investment-consultant", consultant.id)}
                   />
                 );
               })}
