@@ -522,7 +522,8 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
     return provided ?? fallbackSignal;
   }, [locationState, fallbackSignal]);
 
-  const { isFavorite: isSignalFavorite, toggle: toggleSignalFavorite } = useFavorite("signal", signal.id);
+  const originalSignalId = useMemo(() => extractOriginalProductId(signal.id), [signal.id]);
+  const { isFavorite: isSignalFavorite, toggle: toggleSignalFavorite } = useFavorite("signal", originalSignalId);
 
   const favoriteStarButtonClassName = isSignalFavorite
     ? "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
