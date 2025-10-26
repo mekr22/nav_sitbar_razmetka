@@ -263,44 +263,6 @@ const InvestmentConsultantDetailLanding: FC = () => {
 
   const locationState = location.state as { consultant?: InvestmentConsultant; isFavorite?: boolean } | null;
 
-  const [favoriteConsultantIds, setFavoriteConsultantIds] = useState<Set<string>>(() => {
-    const storedIds = new Set<string>();
-
-    if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(FAVORITE_STORAGE_KEY);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((value) => {
-              if (typeof value === "string" && value.trim().length > 0) {
-                storedIds.add(value);
-              }
-            });
-          }
-        } catch {
-          // ignore
-        }
-      }
-    }
-
-    if (locationState?.consultant?.id && locationState.isFavorite) {
-      storedIds.add(locationState.consultant.id);
-    }
-
-    return storedIds;
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(
-      FAVORITE_STORAGE_KEY,
-      JSON.stringify(Array.from(favoriteConsultantIds)),
-    );
-  }, [favoriteConsultantIds]);
 
   const consultant = useMemo(() => {
     const fallback = {
