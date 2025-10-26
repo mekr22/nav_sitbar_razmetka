@@ -622,9 +622,11 @@ const StrategyDetailLanding: FC = () => {
   const commentCountLabel =
     commentCount === 1 ? "1 comment" : `${commentCount} comments`;
 
+  const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", strategy.id);
+
   const handleToggleFavorite = useCallback(() => {
-    setIsFavorite((prev) => !prev);
-  }, []);
+    toggleFavorite();
+  }, [toggleFavorite]);
 
   const handleNavigateBack = useCallback(() => {
     navigate("/marketplace/strategies", {
