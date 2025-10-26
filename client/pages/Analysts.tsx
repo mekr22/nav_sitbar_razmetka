@@ -7,6 +7,7 @@ import {
   Package,
   Plus,
   Search,
+  ShoppingCart,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
