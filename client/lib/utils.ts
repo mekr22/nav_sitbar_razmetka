@@ -10,6 +10,12 @@ export function maskNonWhitespace(value: string, maskChar = "•") {
 }
 
 export function extractOriginalProductId(displayId: string): string {
-  const match = displayId.match(/^(.+?)-pair-\d+-\d+$/);
-  return match ? match[1] : displayId;
+  let originalId = displayId;
+
+  originalId = originalId.replace(/-pair-\d+-\d+$/, "");
+  originalId = originalId.replace(/-\d+-\d+$/, "");
+  originalId = originalId.replace(/-variant-\d+$/, "");
+  originalId = originalId.replace(/-set-\d+$/, "");
+
+  return originalId;
 }
