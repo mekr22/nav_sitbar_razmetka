@@ -129,6 +129,13 @@ const tradingRobots: TradingRobot[] = baseTradingRobots;
 
 const courses: MarketplaceCourse[] = baseCourses.slice(0, 3);
 
+const platformLogos = [
+  "https://api.builder.io/api/v1/image/assets/TEMP/binance.png",
+  "https://api.builder.io/api/v1/image/assets/TEMP/kraken.png",
+  "https://api.builder.io/api/v1/image/assets/TEMP/coinbase.png",
+  "https://api.builder.io/api/v1/image/assets/TEMP/huobi.png",
+];
+
 const CourseCard: FC<{
   course: MarketplaceCourse;
   isActive: boolean;
@@ -525,11 +532,6 @@ const SignalCardLegacy: FC<{
           className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
           onClick={(event) => {
             event.stopPropagation();
-            if (featuredScriptProduct) {
-              openScriptDetails(featuredScriptProduct, {
-                isFavorite: scriptsFavorited,
-              });
-            }
           }}
         >
           <BookOpen className="h-4 w-4" />
@@ -614,6 +616,8 @@ const MarketplaceMyProducts: FC = () => {
 
   const scriptsFavorited = isFavorite("script", "main");
   const otherFavorited = isFavorite("other", "main");
+  const scriptsCardKey = buildCardKey("scripts", "main");
+  const otherCardKey = buildCardKey("other", "main");
 
   const featuredScriptProduct = baseScriptProducts[0];
   const featuredOtherProduct = baseOtherProducts[0];
@@ -751,7 +755,7 @@ const MarketplaceMyProducts: FC = () => {
               <div className="flex flex-wrap items-center gap-3 sm:gap-6">
                 <button
                   type="button"
-                  onClick={() => navigate("/marketplace/add-product")}
+                  onClick={() => navigate("/marketplace/my-products")}
                   className="flex h-9 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:h-[32px] sm:px-8 sm:text-[15px]"
                 >
                   <Package className="h-4 w-4" />
@@ -816,7 +820,7 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {traders.map((trader) => {
               const cardKey = buildCardKey("trader", trader.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("trader", trader.id);
               return (
                 <TraderCard
                   key={trader.id}
@@ -824,7 +828,7 @@ const MarketplaceMyProducts: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("trader", trader.id)}
                 />
               );
             })}
@@ -849,7 +853,7 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {analysts.map((analyst) => {
               const cardKey = buildCardKey("analyst", analyst.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("analyst", analyst.id);
               return (
                 <AnalystCard
                   key={analyst.id}
@@ -857,7 +861,7 @@ const MarketplaceMyProducts: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("analyst", analyst.id)}
                 />
               );
             })}
@@ -882,7 +886,7 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {investmentConsultants.map((consultant) => {
               const cardKey = buildCardKey("consultant", consultant.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("investment-consultant", consultant.id);
               return (
                 <InvestmentConsultantCard
                   key={consultant.id}
@@ -895,7 +899,7 @@ const MarketplaceMyProducts: FC = () => {
                     });
                   }}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("investment-consultant", consultant.id)}
                 />
               );
             })}
@@ -920,7 +924,7 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {signals.map((signal) => {
               const cardKey = buildCardKey("signal", signal.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("signal", signal.id);
               return (
                 <SignalCard
                   key={signal.id}
@@ -928,7 +932,7 @@ const MarketplaceMyProducts: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("signal", signal.id)}
                   onOpenDetails={openSignalDetails}
                 />
               );
@@ -954,7 +958,7 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {strategies.map((strategy) => {
               const cardKey = buildCardKey("strategy", strategy.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("strategy", strategy.id);
               return (
                 <StrategyCard
                   key={strategy.id}
@@ -962,7 +966,7 @@ const MarketplaceMyProducts: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("strategy", strategy.id)}
                   onOpenDetails={(selectedStrategy) =>
                     openStrategyDetails(selectedStrategy, {
                       isFavorite: isFavorited,
@@ -995,7 +999,7 @@ const MarketplaceMyProducts: FC = () => {
           <div className="flex flex-col gap-6">
             {courses.map((course) => {
               const cardKey = buildCardKey("course", course.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("course", course.id);
               return (
                 <CourseCard
                   key={course.id}
@@ -1003,7 +1007,7 @@ const MarketplaceMyProducts: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("course", course.id)}
                   onOpenDetails={openCourseDetails}
                 />
               );
@@ -1064,7 +1068,7 @@ const MarketplaceMyProducts: FC = () => {
               </div>
               <FavoriteStarButton
                 pressed={scriptsFavorited}
-                onToggle={() => toggleFavorite(scriptsCardKey)}
+                onToggle={() => toggle("script", "main")}
               />
             </div>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
@@ -1246,7 +1250,7 @@ const MarketplaceMyProducts: FC = () => {
             {tradingRobots.slice(0, 2).map((robot) => {
               const adjustedRobot = { ...robot, icon: RISK_MASTER_ICON };
               const cardKey = buildCardKey("trading-robot", adjustedRobot.id);
-              const isFavorited = isFavorite(cardKey);
+              const isFavorited = isFavorite("trading-robot", adjustedRobot.id);
               return (
                 <TradingRobotCard
                   key={adjustedRobot.id}
@@ -1263,7 +1267,7 @@ const MarketplaceMyProducts: FC = () => {
                     });
                   }}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggleFavorite(cardKey)}
+                  onToggleFavorite={() => toggle("trading-robot", adjustedRobot.id)}
                 />
               );
             })}
@@ -1317,7 +1321,7 @@ const MarketplaceMyProducts: FC = () => {
             >
               <FavoriteStarButton
                 pressed={otherFavorited}
-                onToggle={() => toggleFavorite(otherCardKey)}
+                onToggle={() => toggle("other", "main")}
               />
             </div>
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
@@ -1499,31 +1503,35 @@ const MarketplaceMyProducts: FC = () => {
                           "absolute h-6 w-6 text-[#B0B0B0] transition-all",
                           isOpen ? "rotate-45 opacity-0" : "opacity-100",
                         )}
-                        strokeWidth={2}
                       />
                       <X
                         className={cn(
                           "absolute h-6 w-6 text-[#B0B0B0] transition-all",
-                          isOpen ? "opacity-100" : "-rotate-45 opacity-0",
+                          isOpen ? "opacity-100" : "opacity-0",
                         )}
-                        strokeWidth={1.5}
                       />
                     </div>
                   </button>
-                  {isOpen && (faq.description || faq.bullets?.length) ? (
-                    <div className="px-4 pb-6 text-sm font-bold leading-normal text-[#B0B0B0] sm:px-6 sm:text-[15px]">
-                      {faq.description ? (
-                        <p className="mb-3">{faq.description}</p>
-                      ) : null}
-                      {faq.bullets?.length ? (
-                        <ul className="list-disc space-y-1 pl-4">
-                          {faq.bullets.map((bullet) => (
-                            <li key={bullet}>{bullet}</li>
+                  {isOpen && (
+                    <div className="border-t border-[#181B22] px-4 py-6 sm:px-6">
+                      <p className="mb-3 text-sm font-medium text-white sm:text-[15px]">
+                        {faq.description}
+                      </p>
+                      {faq.bullets && (
+                        <ul className="space-y-2">
+                          {faq.bullets.map((bullet, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-3 text-sm font-medium text-white sm:text-[15px]"
+                            >
+                              <Check className="h-5 w-5 flex-shrink-0 text-[#A06AFF]" />
+                              {bullet}
+                            </li>
                           ))}
                         </ul>
-                      ) : null}
+                      )}
                     </div>
-                  ) : null}
+                  )}
                 </div>
               );
             })}
