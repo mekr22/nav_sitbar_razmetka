@@ -348,19 +348,11 @@ const AnalystDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const isAnalystFavorite = favoriteAnalystIds.has(analyst.id);
+  const { isFavorite: isAnalystFavorite, toggle: toggleAnalystFavorite } = useFavorite("analyst", analyst.id);
 
   const handleToggleFavoriteAnalyst = useCallback(() => {
-    setFavoriteAnalystIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(analyst.id)) {
-        next.delete(analyst.id);
-      } else {
-        next.add(analyst.id);
-      }
-      return next;
-    });
-  }, [analyst.id]);
+    toggleAnalystFavorite();
+  }, [toggleAnalystFavorite]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/analysts", {
