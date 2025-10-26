@@ -1,4 +1,4 @@
-import { Check, Globe, MapPin, MessageCircle, ShoppingCart, Star } from "lucide-react";
+import { Check, Globe, MapPin, ShoppingCart, Star } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
@@ -112,7 +112,6 @@ const InvestmentConsultantDetailLanding: FC = () => {
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
-  const [isChatActive, setIsChatActive] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -401,16 +400,10 @@ const InvestmentConsultantDetailLanding: FC = () => {
               <div className="mt-4 flex flex-col gap-2">
                 <button
                   type="button"
-                  aria-pressed={isChatActive}
-                  onClick={() => setIsChatActive((prev) => !prev)}
-                  className={`flex items-center justify-center gap-2 rounded-full px-3 py-2 backdrop-blur-[50px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] ${
-                    isChatActive
-                      ? "border-transparent bg-gradient-to-r from-[#A06AFF] to-[#482090]"
-                      : "border border-[#181B22] bg-[#0C1014]/50 hover:border-[#1F2230]"
-                  }`}
+                  className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[15px] font-bold uppercase text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                 >
-                  <MessageCircle className="h-4 w-4 text-white" />
-                  <span className="text-[15px] font-bold text-white">Chat</span>
+                  <ShoppingCart className="h-4 w-4" />
+                  BUY
                 </button>
                 <p className="text-center text-[15px] font-normal text-[#B0B0B0]">
                   free 20-minute introductory consultation
