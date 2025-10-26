@@ -495,6 +495,52 @@ const Favourites: FC = () => {
                       />
                     );
 
+                  case "course":
+                    const course = product.data as Course;
+                    return (
+                      <CourseCard
+                        key={product.id}
+                        course={course}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("course", product.id)
+                        }
+                      />
+                    );
+
+                  case "script":
+                    const script = product.data as ScriptProduct;
+                    return (
+                      <ScriptProductCard
+                        key={product.id}
+                        product={script}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("script", product.id)
+                        }
+                        onOpenDetails={() => {}}
+                      />
+                    );
+
+                  case "other":
+                    const otherProduct = product.data as OtherProduct;
+                    return (
+                      <OtherProductCard
+                        key={product.id}
+                        product={otherProduct}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("other", product.id)
+                        }
+                      />
+                    );
+
                   default:
                     return null;
                 }
