@@ -375,20 +375,6 @@ const StrategiesAndPortfolios: FC = () => {
     }
   }, [activeCardKey, filteredStrategies]);
 
-  const toggleFavorite = (key: string) => {
-    setFavoriteCardKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const isFavorite = (key: string) => favoriteCardKeys.has(key);
-
   const openStrategyDetails = useCallback(
     (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/strategy-details", {
