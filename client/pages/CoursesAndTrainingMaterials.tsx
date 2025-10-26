@@ -600,7 +600,8 @@ const CoursesAndTrainingMaterials: FC = () => {
             <div className="flex flex-col gap-6">
               {filteredCourses.map((course) => {
                 const cardKey = buildCardKey("courses-page", course.id);
-                const isFavorited = isFavorite("course", course.id);
+                const originalId = extractOriginalProductId(course.id);
+                const isFavorited = isFavorite("course", originalId);
                 return (
                   <CourseCard
                     key={course.id}
@@ -608,7 +609,7 @@ const CoursesAndTrainingMaterials: FC = () => {
                     isActive={activeCardKey === cardKey}
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggle("course", course.id)}
+                    onToggleFavorite={() => toggle("course", originalId)}
                     onOpenDetails={openCourseDetails}
                   />
                 );
