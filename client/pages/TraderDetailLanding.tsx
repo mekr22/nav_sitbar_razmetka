@@ -210,34 +210,6 @@ const TraderDetailLanding: FC = () => {
   const navigate = useNavigate();
 
   const locationState = (location.state as TraderDetailsState | null) ?? null;
-
-  const [favoriteTraderIds, setFavoriteTraderIds] = useState<Set<string>>(() => {
-    const storedIds = new Set<string>();
-
-    if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(FAVORITE_STORAGE_KEY);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((value) => {
-              if (typeof value === "string" && value.trim().length > 0) {
-                storedIds.add(value);
-              }
-            });
-          }
-        } catch {
-          // ignore
-        }
-      }
-    }
-
-    if (locationState?.trader?.id && locationState.isFavorite) {
-      storedIds.add(locationState.trader.id);
-    }
-
-    return storedIds;
-  });
   const [activeFilter, setActiveFilter] = useState<TraderContentFilter>("all");
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
@@ -256,34 +228,6 @@ const TraderDetailLanding: FC = () => {
   );
   const averageRating = TRADER_AVERAGE_RATING;
   const totalReviews = TRADER_TOTAL_REVIEWS;
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(
-      FAVORITE_STORAGE_KEY,
-      JSON.stringify(Array.from(favoriteTraderIds)),
-    );
-  }, [favoriteTraderIds]);
-
-  useEffect(() => {
-    const id = locationState?.trader?.id;
-    if (!id || !locationState?.isFavorite) {
-      return;
-    }
-
-    setFavoriteTraderIds((prev) => {
-      if (prev.has(id)) {
-        return prev;
-      }
-
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  }, [locationState]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
