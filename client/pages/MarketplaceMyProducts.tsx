@@ -26,6 +26,7 @@ import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
 import TraderCard from "@/components/marketplace/TraderCard";
 import AnalystCard from "@/components/marketplace/AnalystCard";
 import InvestmentConsultantCard from "@/components/marketplace/InvestmentConsultantCard";
+import OtherProductCard from "@/components/marketplace/OtherProductCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";
 import {
