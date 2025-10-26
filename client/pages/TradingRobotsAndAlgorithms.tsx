@@ -592,7 +592,8 @@ const TradingRobotsAndAlgorithms: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredRobots.map((robot) => {
                 const cardKey = buildCardKey("trading-robots-page", robot.id);
-                const isFavorited = isFavorite("trading-robot", robot.id);
+                const originalId = extractOriginalProductId(robot.id);
+                const isFavorited = isFavorite("trading-robot", originalId);
                 return (
                   <TradingRobotCard
                     key={robot.id}
@@ -608,7 +609,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
                       });
                     }}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggle("trading-robot", robot.id)}
+                    onToggleFavorite={() => toggle("trading-robot", originalId)}
                   />
                 );
               })}
