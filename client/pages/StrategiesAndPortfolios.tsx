@@ -644,6 +644,9 @@ const StrategiesAndPortfolios: FC = () => {
                         isFavorite: isFavorited,
                       })
                     }
+                    secondaryActionLabel="Learn More"
+                    primaryActionLabel="Buy"
+                    primaryActionIcon={ShoppingCart}
                   />
                 );
               })}
