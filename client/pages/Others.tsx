@@ -656,7 +656,7 @@ const Others: FC = () => {
               search query.
             </div>
           ) : (
-            <div className="flex flex-col gap-6">
+            <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredProducts.map((product) => {
                 const cardKey = buildCardKey("others-page", product.id);
                 const originalId = extractOriginalProductId(product.id);
@@ -666,12 +666,14 @@ const Others: FC = () => {
                     key={product.id}
                     product={product}
                     isActive={activeCardKey === cardKey}
-                    onSelect={() => {
-                      setActiveCardKey(cardKey);
-                      openOtherDetails(product, { isFavorite: isFavorited });
-                    }}
+                    onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggle("other", originalId)}
+                    onOpenDetails={(selectedProduct) =>
+                      openOtherDetails(selectedProduct, {
+                        isFavorite: isFavorited,
+                      })
+                    }
                   />
                 );
               })}
