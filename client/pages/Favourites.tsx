@@ -519,16 +519,21 @@ const Favourites: FC = () => {
                   case "trading-robot":
                     const robot = product.data as TradingRobot;
                     return (
-                      <TradingRobotCard
+                      <div
                         key={product.id}
-                        robot={robot}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("trading-robot", product.id)
-                        }
-                      />
+                        onClick={() => handleNavigateToDetails("trading-robot", robot)}
+                        className="cursor-pointer"
+                      >
+                        <TradingRobotCard
+                          robot={robot}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("trading-robot", product.id)
+                          }
+                        />
+                      </div>
                     );
 
                   case "course":
