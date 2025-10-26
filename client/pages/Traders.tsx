@@ -9,6 +9,7 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 
 import TraderCard from "@/components/marketplace/TraderCard";
 import { baseTraders, Trader } from "@/data/marketplaceTraders";
@@ -581,16 +582,16 @@ const Traders: FC = () => {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredTraders.map((trader) => {
-                const cardKey = `trader:${trader.id}`;
-                const isFavorited = isFavorite(cardKey);
-                return (
-                  <TraderCard
-                    key={trader.id}
-                    trader={trader}
-                    isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
-                    isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+              const cardKey = `trader:${trader.id}`;
+              const isFavorited = isFavorite("trader", trader.id);
+              return (
+                <TraderCard
+                  key={trader.id}
+                  trader={trader}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggle("trader", trader.id)}
                   />
                 );
               })}
