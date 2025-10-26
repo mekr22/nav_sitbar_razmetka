@@ -1,12 +1,12 @@
 import { FC, KeyboardEvent } from "react";
-import { BookOpen, Check, Users } from "lucide-react";
+import { BookOpen, ShoppingCart, Users, type LucideIcon } from "lucide-react";
 
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
 import type { Strategy } from "@/data/marketplaceStrategies";
 
 const actionButtonBaseClass =
-  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
+  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold text-white sm:w-auto";
 
 const exchangeLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5812aa6cc56f419ca24acdce705cca81?format=webp&width=800",
@@ -30,6 +30,11 @@ export interface StrategyCardProps {
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onOpenDetails?: (strategy: Strategy, meta?: StrategyDetailsMeta) => void;
+  secondaryActionLabel?: string;
+  secondaryActionIcon?: LucideIcon;
+  primaryActionLabel?: string;
+  primaryActionIcon?: LucideIcon;
+  onPrimaryAction?: (strategy: Strategy) => void;
 }
 
 const StrategyCard: FC<StrategyCardProps> = ({
@@ -39,6 +44,11 @@ const StrategyCard: FC<StrategyCardProps> = ({
   isFavorite,
   onToggleFavorite,
   onOpenDetails,
+  secondaryActionLabel = "Learn More",
+  secondaryActionIcon: SecondaryActionIcon = BookOpen,
+  primaryActionLabel = "Subscribe",
+  primaryActionIcon: PrimaryActionIcon = ShoppingCart,
+  onPrimaryAction,
 }) => {
   const getRiskColor = (level: Strategy["riskLevel"]) => {
     switch (level) {
@@ -210,18 +220,21 @@ const StrategyCard: FC<StrategyCardProps> = ({
               });
             }}
           >
-            <BookOpen className="h-4 w-4" />
-            LEARN MORE
+            <SecondaryActionIcon className="h-4 w-4" />
+            {secondaryActionLabel}
           </button>
           <button
             className={cn(
               actionButtonBaseClass,
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
-            onClick={(event) => event.stopPropagation()}
+            onClick={(event) => {
+              event.stopPropagation();
+              onPrimaryAction?.(strategy);
+            }}
           >
-            <Check className="h-4 w-4" />
-            SUBSCRIBE
+            <PrimaryActionIcon className="h-4 w-4" />
+            {primaryActionLabel}
           </button>
         </div>
       </div>
