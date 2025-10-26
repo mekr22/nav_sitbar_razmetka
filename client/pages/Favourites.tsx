@@ -439,81 +439,90 @@ const Favourites: FC = () => {
                   case "analyst":
                     const analyst = product.data as Analyst;
                     return (
-                      <AnalystCard
-                        key={product.id}
-                        analyst={analyst}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("analyst", product.id)
-                        }
-                      />
+                      <div key={product.id} className="w-full">
+                        <AnalystCard
+                          analyst={analyst}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("analyst", product.id)
+                          }
+                        />
+                      </div>
                     );
 
                   case "investment-consultant":
                     const consultant = product.data as InvestmentConsultant;
                     return (
-                      <InvestmentConsultantCard
-                        key={product.id}
-                        consultant={consultant}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite(
-                            "investment-consultant",
-                            product.id
-                          )
-                        }
-                      />
+                      <div key={product.id} className="w-full">
+                        <InvestmentConsultantCard
+                          consultant={consultant}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite(
+                              "investment-consultant",
+                              product.id
+                            )
+                          }
+                        />
+                      </div>
                     );
 
                   case "trader":
                     const trader = product.data as Trader;
                     return (
-                      <TraderCard
-                        key={product.id}
-                        trader={trader}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("trader", product.id)
-                        }
-                      />
+                      <div key={product.id} className="w-full">
+                        <TraderCard
+                          trader={trader}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("trader", product.id)
+                          }
+                        />
+                      </div>
                     );
 
                   case "signal":
                     const signal = product.data as Signal;
                     return (
-                      <SignalCard
-                        key={product.id}
-                        signal={signal}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("signal", product.id)
-                        }
-                        onOpenDetails={() => handleNavigateToDetails("signal", signal)}
-                      />
+                      <div key={product.id} className="w-full">
+                        <SignalCard
+                          signal={signal}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("signal", product.id)
+                          }
+                          onOpenDetails={() =>
+                            handleNavigateToDetails("signal", signal)
+                          }
+                        />
+                      </div>
                     );
 
                   case "strategy":
                     const strategy = product.data as Strategy;
                     return (
-                      <StrategyCard
-                        key={product.id}
-                        strategy={strategy}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("strategy", product.id)
-                        }
-                        onOpenDetails={() => handleNavigateToDetails("strategy", strategy)}
-                      />
+                      <div key={product.id} className="w-full">
+                        <StrategyCard
+                          strategy={strategy}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("strategy", product.id)
+                          }
+                          onOpenDetails={() =>
+                            handleNavigateToDetails("strategy", strategy)
+                          }
+                        />
+                      </div>
                     );
 
                   case "trading-robot":
