@@ -230,8 +230,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
           </div>
 
           <div className="h-px w-full bg-[#181B22]" />
-
-          </div>
+        </div>
 
         <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
