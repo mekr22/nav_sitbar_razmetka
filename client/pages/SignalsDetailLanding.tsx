@@ -500,65 +500,6 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
       ? "indicators"
       : "signals";
   const isIndicator = resolvedDetailType === "indicators";
-  const favoritesStorageKey = isIndicator
-    ? "indicators-detail-favorites"
-    : FAVORITE_STORAGE_KEY;
-
-  const [favoriteSignalIds, setFavoriteSignalIds] = useState<Set<string>>(() => {
-    const storedIds = new Set<string>();
-
-    if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(favoritesStorageKey);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((value) => {
-              if (typeof value === "string" && value.trim().length > 0) {
-                storedIds.add(value);
-              }
-            });
-          }
-        } catch {
-          // ignore malformed storage values
-        }
-      }
-    }
-
-    if (locationState?.signal?.id && locationState.isFavorite) {
-      storedIds.add(locationState.signal.id);
-    }
-
-    return storedIds;
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(
-      favoritesStorageKey,
-      JSON.stringify(Array.from(favoriteSignalIds)),
-    );
-  }, [favoriteSignalIds, favoritesStorageKey]);
-
-  useEffect(() => {
-    const id = locationState?.signal?.id;
-    if (!id || !locationState?.isFavorite) {
-      return;
-    }
-
-    setFavoriteSignalIds((prev) => {
-      if (prev.has(id)) {
-        return prev;
-      }
-
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  }, [locationState]);
 
   useEffect(() => {
     if (locationState?.scrollToTop) {
