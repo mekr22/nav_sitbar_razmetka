@@ -231,18 +231,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
 
           <div className="h-px w-full bg-[#181B22]" />
 
-          <div className="flex flex-col items-start gap-1">
-            <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-[#B0B0B0] sm:text-xs">
-              <span>Calc. APY</span>
-              <div className="inline-flex items-center justify-center rounded border border-[#B0B0B0] px-1.5 py-0 text-[10px] text-[#B0B0B0]">
-                30D
-              </div>
-            </div>
-            <span className="text-2xl font-bold leading-none text-[#2EBD85] sm:text-[26px]">
-              {robot.roi30d}
-            </span>
           </div>
-        </div>
 
         <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:gap-3">
           <button
