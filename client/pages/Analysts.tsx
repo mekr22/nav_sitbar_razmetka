@@ -505,7 +505,8 @@ const Analysts: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredAnalysts.map((analyst) => {
               const cardKey = `analyst:${analyst.id}`;
-              const isFavorited = isFavorite("analyst", analyst.id);
+              const originalId = extractOriginalProductId(analyst.id);
+              const isFavorited = isFavorite("analyst", originalId);
               return (
                 <AnalystCard
                   key={analyst.id}
@@ -513,7 +514,7 @@ const Analysts: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggle("analyst", analyst.id)}
+                  onToggleFavorite={() => toggle("analyst", originalId)}
                   />
                 );
               })}
