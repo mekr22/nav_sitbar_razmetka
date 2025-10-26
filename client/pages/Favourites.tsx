@@ -193,6 +193,42 @@ const Favourites: FC = () => {
     );
   };
 
+  const handleNavigateToDetails = (productType: ProductType, product: any) => {
+    const routeMap: Record<ProductType, string> = {
+      analyst: "/marketplace/analyst-details",
+      "investment-consultant": "/marketplace/investment-consultant-details",
+      trader: "/marketplace/trader-details",
+      signal: "/marketplace/signals-details",
+      strategy: "/marketplace/strategy-details",
+      "trading-robot": "/marketplace/trading-robot-details",
+      course: "/marketplace/course-details",
+      script: "/marketplace/script-details",
+      other: "/marketplace/other-details",
+    };
+
+    const dataMap: Record<ProductType, string> = {
+      analyst: "analyst",
+      "investment-consultant": "consultant",
+      trader: "trader",
+      signal: "signal",
+      strategy: "strategy",
+      "trading-robot": "robot",
+      course: "course",
+      script: "script",
+      other: "other",
+    };
+
+    const route = routeMap[productType];
+    const dataKey = dataMap[productType];
+
+    navigate(route, {
+      state: {
+        [dataKey]: product,
+        scrollToTop: true,
+      },
+    });
+  };
+
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
     if (category === "Favourites") {
