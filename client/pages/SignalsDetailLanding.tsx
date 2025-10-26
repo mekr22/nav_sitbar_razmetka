@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import type { MarketplaceCategory } from "@/data/marketplaceCategories";
 import type { Signal } from "@/components/marketplace/SignalCard";
+import { useFavorite } from "@/hooks/useFavorite";
 import { baseSignals } from "@/data/marketplaceSignals";
 
 interface SignalDetailsLocationState {
