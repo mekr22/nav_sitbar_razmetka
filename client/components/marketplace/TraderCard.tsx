@@ -1,5 +1,5 @@
 import { FC, KeyboardEvent, useId } from "react";
-import { BookOpen, Mail, Users, FileEdit } from "lucide-react";
+import { BookOpen, Mail, Users, FileEdit, type LucideIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
