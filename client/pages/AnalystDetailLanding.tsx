@@ -211,33 +211,6 @@ const AnalystDetailLanding: FC = () => {
 
   const locationState = (location.state as AnalystDetailsState | null) ?? null;
 
-  const [favoriteAnalystIds, setFavoriteAnalystIds] = useState<Set<string>>(() => {
-    const storedIds = new Set<string>();
-
-    if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(FAVORITE_STORAGE_KEY);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((value) => {
-              if (typeof value === "string" && value.trim().length > 0) {
-                storedIds.add(value);
-              }
-            });
-          }
-        } catch {
-          // ignore
-        }
-      }
-    }
-
-    if (locationState?.analyst?.id && locationState.isFavorite) {
-      storedIds.add(locationState.analyst.id);
-    }
-
-    return storedIds;
-  });
   const [activeFilter, setActiveFilter] = useState<AnalystContentFilter>("all");
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
@@ -256,34 +229,6 @@ const AnalystDetailLanding: FC = () => {
   );
   const averageRating = ANALYST_AVERAGE_RATING;
   const totalReviews = ANALYST_TOTAL_REVIEWS;
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(
-      FAVORITE_STORAGE_KEY,
-      JSON.stringify(Array.from(favoriteAnalystIds)),
-    );
-  }, [favoriteAnalystIds]);
-
-  useEffect(() => {
-    const id = locationState?.analyst?.id;
-    if (!id || !locationState?.isFavorite) {
-      return;
-    }
-
-    setFavoriteAnalystIds((prev) => {
-      if (prev.has(id)) {
-        return prev;
-      }
-
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  }, [locationState]);
 
   useEffect(() => {
     if (typeof window === "undefined") {
