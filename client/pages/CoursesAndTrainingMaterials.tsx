@@ -167,10 +167,8 @@ const CoursesAndTrainingMaterials: FC = () => {
     "Courses and Training materials",
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const { isFavorite, toggle } = useFavoriteMultiple();
   const [filters, setFilters] = useState<FilterSelections>({
     materialType: FILTER_CONFIG.materialType.options[0].value,
     release: FILTER_CONFIG.release.options[0].value,
