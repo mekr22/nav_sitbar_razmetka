@@ -595,7 +595,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredSignals.map((signal) => {
               const cardKey = buildCardKey("signals-page", signal.id);
-              const isFavorited = isFavorite("signal", signal.id);
+              const originalId = extractOriginalProductId(signal.id);
+              const isFavorited = isFavorite("signal", originalId);
               return (
                 <SignalCard
                   key={signal.id}
@@ -603,7 +604,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggle("signal", signal.id)}
+                  onToggleFavorite={() => toggle("signal", originalId)}
                     onOpenDetails={openSignalDetails}
                   />
                 );
