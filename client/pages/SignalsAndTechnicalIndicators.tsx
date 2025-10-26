@@ -148,9 +148,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
     "Signals and Technical indicators",
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
+  const { isFavorite, toggle } = useFavoriteMultiple("signal");
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [filters, setFilters] = useState<FilterSelections>({
     category: FILTER_CONFIG.category.options[0].value,
