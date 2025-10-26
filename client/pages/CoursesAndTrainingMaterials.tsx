@@ -9,6 +9,7 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 
 import CourseCard from "@/components/marketplace/CourseCard";
 import { baseCourses, Course } from "@/data/marketplaceCourses";
