@@ -9,6 +9,7 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 
 import AnalystCard from "@/components/marketplace/AnalystCard";
 import { baseAnalysts, Analyst } from "@/data/marketplaceAnalysts";
@@ -87,9 +88,6 @@ const Analysts: FC = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<MarketplaceCategory>("Analysts");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState<FilterSelections>({
@@ -98,6 +96,7 @@ const Analysts: FC = () => {
     analysis: "all",
     rating: "all",
   });
+  const { isFavorite, toggle } = useFavoriteMultiple();
 
   useEffect(() => {
     const state = location.state as { category?: MarketplaceCategory } | null;
@@ -115,20 +114,6 @@ const Analysts: FC = () => {
       });
     }
   }, [location.pathname, location.state, navigate]);
-
-  const toggleFavorite = (key: string) => {
-    setFavoriteCardKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
@@ -519,16 +504,16 @@ const Analysts: FC = () => {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredAnalysts.map((analyst) => {
-                const cardKey = `analyst:${analyst.id}`;
-                const isFavorited = isFavorite(cardKey);
-                return (
-                  <AnalystCard
-                    key={analyst.id}
-                    analyst={analyst}
-                    isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
-                    isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+              const cardKey = `analyst:${analyst.id}`;
+              const isFavorited = isFavorite("analyst", analyst.id);
+              return (
+                <AnalystCard
+                  key={analyst.id}
+                  analyst={analyst}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggle("analyst", analyst.id)}
                   />
                 );
               })}
