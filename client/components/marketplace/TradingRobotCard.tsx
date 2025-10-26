@@ -1,5 +1,5 @@
 import { FC, KeyboardEvent, useId } from "react";
-import { BookOpen, Check, Rocket, Users } from "lucide-react";
+import { BookOpen, Rocket, ShoppingCart, Users } from "lucide-react";
 
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { cn } from "@/lib/utils";
@@ -252,7 +252,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
             )}
           >
             <BookOpen className="h-4 w-4" />
-            LEARN MORE
+            Learn More
           </button>
           <button
             className={cn(
@@ -260,8 +260,8 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
           >
-            <Check className="h-4 w-4" />
-            SUBSCRIBE
+            <ShoppingCart className="h-4 w-4" />
+            Buy
           </button>
         </div>
       </div>
