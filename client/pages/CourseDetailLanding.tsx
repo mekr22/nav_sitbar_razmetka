@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { MessageCircle, ShoppingCart, Eye } from "lucide-react";
+import { BookOpen, ShoppingCart } from "lucide-react";
 
 import type { Course } from "@/data/marketplaceCourses";
 import { baseCourses } from "@/data/marketplaceCourses";
@@ -10,6 +10,11 @@ const AVATAR_PLACEHOLDER =
 
 const COMMENT_AVATAR =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
+
+const COURSE_ACTIONS = [
+  { key: "demo", label: "Demo", icon: BookOpen },
+  { key: "buy", label: "Buy", icon: ShoppingCart },
+];
 
 type CommentNode = {
   id: string;
@@ -1023,114 +1028,25 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
                 P2P_TRADING
               </span>
             </div>
-            <div className="flex flex-col gap-4 p-4">
-              <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-l from-[#482090] to-[#A06AFF] text-[15px] font-bold text-white">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_1111_20966)">
-                    <path
-                      d="M5.19922 10.6667L11.0126 10.1822C12.8316 10.0307 13.24 9.63333 13.4416 7.81927L13.8659 4"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M4 4H14.6667"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M3.99935 14.6667C4.73573 14.6667 5.33268 14.0697 5.33268 13.3333C5.33268 12.597 4.73573 12 3.99935 12C3.26297 12 2.66602 12.597 2.66602 13.3333C2.66602 14.0697 3.26297 14.6667 3.99935 14.6667Z"
-                      stroke="white"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M11.3333 14.6667C12.0697 14.6667 12.6667 14.0697 12.6667 13.3333C12.6667 12.597 12.0697 12 11.3333 12C10.597 12 10 12.597 10 13.3333C10 14.0697 10.597 14.6667 11.3333 14.6667Z"
-                      stroke="white"
-                      strokeWidth="1.5"
-                    />
-                    <path
-                      d="M5.33398 13.333H10.0007"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M1.33398 1.33301H1.97798C2.60777 1.33301 3.15674 1.7494 3.30949 2.34296L5.293 10.0507C5.39323 10.4402 5.30745 10.8528 5.05948 11.1741L4.42207 11.9997"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_1111_20966">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                Buy
-              </button>
-              <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clipPath="url(#clip0_1111_20975)">
-                    <path
-                      d="M13.334 5.99967C12.8039 3.34271 10.3425 1.33301 7.38685 1.33301C4.04431 1.33301 1.33398 3.90315 1.33398 7.07301C1.33398 8.59607 1.95944 9.97994 2.97968 11.0069C3.20431 11.233 3.35428 11.5419 3.29376 11.8599C3.19386 12.3797 2.96749 12.8647 2.63602 13.2688C3.50814 13.4296 4.41496 13.2848 5.19266 12.8748C5.46758 12.7299 5.60503 12.6575 5.70203 12.6427C5.76993 12.6325 5.85838 12.6421 6.00065 12.6665"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M7.33398 10.8408C7.33398 12.7779 8.97585 14.3486 11.0007 14.3486C11.2387 14.3489 11.4761 14.3269 11.71 14.283C11.8783 14.2513 11.9625 14.2355 12.0213 14.2445C12.08 14.2535 12.1633 14.2978 12.3299 14.3863C12.8009 14.6369 13.3503 14.7253 13.8786 14.6271C13.6778 14.3801 13.5407 14.0838 13.4801 13.7661C13.4435 13.5718 13.5343 13.383 13.6704 13.2448C14.2885 12.6172 14.6673 11.7715 14.6673 10.8408C14.6673 8.90367 13.0255 7.33301 11.0007 7.33301C8.97585 7.33301 7.33398 8.90367 7.33398 10.8408Z"
-                      stroke="white"
-                      strokeWidth="1.5"
-                      strokeLinejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_1111_20975">
-                      <rect width="16" height="16" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                Chat
-              </button>
-              <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 4V13.3333"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M3.98769 2.19029C6.21515 2.6144 7.54272 3.50154 8.00065 4.01085C8.45858 3.50154 9.78612 2.6144 12.0136 2.19029C13.1421 1.97543 13.7063 1.86801 14.1868 2.27976C14.6673 2.69151 14.6673 3.36015 14.6673 4.69741V9.50333C14.6673 10.7261 14.6673 11.3374 14.3589 11.7191C14.0505 12.1008 13.3716 12.2301 12.0136 12.4887C10.8031 12.7191 9.85838 13.0863 9.17452 13.4554C8.50172 13.8185 8.16532 14 8.00065 14C7.83598 14 7.49958 13.8185 6.82678 13.4554C6.14294 13.0863 5.1982 12.7191 3.98769 12.4887C2.62975 12.2301 1.95078 12.1008 1.64238 11.7191C1.33398 11.3374 1.33398 10.7261 1.33398 9.50333V4.69741C1.33398 3.36015 1.33398 2.69151 1.8145 2.27976C2.29503 1.86801 2.85925 1.97543 3.98769 2.19029Z"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Live Preview
-              </button>
+            <div className="flex flex-col gap-3 p-4">
+              {COURSE_ACTIONS.map(({ key, label, icon: Icon }) => {
+                const isPrimary = key === "buy";
+                const baseClasses = isPrimary
+                  ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white transition-transform hover:scale-[1.02]"
+                  : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]";
+                const iconClass = isPrimary ? "h-5 w-5" : "h-4 w-4";
+
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
+                  >
+                    <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
+                    {label}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
