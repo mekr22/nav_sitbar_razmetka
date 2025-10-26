@@ -1,12 +1,53 @@
 import { FC, useEffect, useMemo, useState } from "react";
 import { Eye, EyeOff, ChevronRight, Package, Plus, Search } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { supabase } from "@/lib/supabaseClient";
 import {
   marketplaceCategories,
   MarketplaceCategory,
 } from "@/data/marketplaceCategories";
 import { cn, maskNonWhitespace } from "@/lib/utils";
+import AnalystCard from "@/components/marketplace/AnalystCard";
+import InvestmentConsultantCard from "@/components/marketplace/InvestmentConsultantCard";
+import TraderCard from "@/components/marketplace/TraderCard";
+import SignalCard from "@/components/marketplace/SignalCard";
+import StrategyCard from "@/components/marketplace/StrategyCard";
+import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
+import CourseCard from "@/components/marketplace/CourseCard";
+import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import {
+  getUserFavorites,
+  toggleFavorite,
+  checkFavorite,
+  ProductType,
+  FavoriteProduct,
+} from "@/lib/supabaseFavorites";
+import type {
+  Analyst,
+  InvestmentConsultant,
+  Trader,
+  Signal,
+  Strategy,
+  TradingRobot,
+  Course,
+  ScriptProduct,
+  OtherProduct,
+} from "@/data/marketplaceTypes";
+
+interface DisplayProduct {
+  id: string;
+  type: ProductType;
+  data:
+    | Analyst
+    | InvestmentConsultant
+    | Trader
+    | Signal
+    | Strategy
+    | TradingRobot
+    | Course
+    | ScriptProduct
+    | OtherProduct;
+}
 
 const Favourites: FC = () => {
   const navigate = useNavigate();
@@ -15,6 +56,16 @@ const Favourites: FC = () => {
     useState<MarketplaceCategory>("Favourites");
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [favorites, setFavorites] = useState<DisplayProduct[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
+
+  const balanceValue = "$1,000,000,000.00";
+  const maskedBalanceValue = useMemo(
+    () => maskNonWhitespace(balanceValue),
+    [balanceValue]
+  );
 
   useEffect(() => {
     if (
@@ -35,11 +86,110 @@ const Favourites: FC = () => {
     }
   }, [location.pathname, location.state, navigate]);
 
-  const balanceValue = "$1,000,000,000.00";
-  const maskedBalanceValue = useMemo(
-    () => maskNonWhitespace(balanceValue),
-    [balanceValue],
-  );
+  useEffect(() => {
+    const checkUser = async () => {
+      if (!supabase) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const {
+          data: { user },
+          error,
+        } = await supabase.auth.getUser();
+
+        if (error || !user) {
+          setLoading(false);
+          return;
+        }
+
+        setUserId(user.id);
+
+        const userFavorites = await getUserFavorites(user.id);
+        const displayFavorites: DisplayProduct[] = userFavorites.map(
+          (fav) => ({
+            id: fav.id,
+            type: (fav as any).type,
+            data: fav,
+          })
+        );
+
+        setFavorites(displayFavorites);
+      } catch (err) {
+        console.error("Error loading favorites:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkUser();
+  }, []);
+
+  const filteredFavorites = useMemo(() => {
+    if (!searchTerm) return favorites;
+
+    return favorites.filter((fav) => {
+      const data = fav.data;
+      let searchableText = "";
+
+      switch (fav.type) {
+        case "analyst":
+          const analyst = data as Analyst;
+          searchableText = `${analyst.name} ${analyst.company}`;
+          break;
+        case "investment-consultant":
+          const consultant = data as InvestmentConsultant;
+          searchableText = `${consultant.name} ${consultant.company}`;
+          break;
+        case "trader":
+          const trader = data as Trader;
+          searchableText = `${trader.name} ${trader.badge}`;
+          break;
+        case "signal":
+          const signal = data as Signal;
+          searchableText = signal.name;
+          break;
+        case "strategy":
+          const strategy = data as Strategy;
+          searchableText = strategy.name;
+          break;
+        case "trading-robot":
+          const robot = data as TradingRobot;
+          searchableText = robot.name;
+          break;
+        case "course":
+          const course = data as Course;
+          searchableText = `${course.title} ${course.host}`;
+          break;
+        case "script":
+          const script = data as ScriptProduct;
+          searchableText = `${script.title} ${script.creator.name}`;
+          break;
+        case "other":
+          const other = data as OtherProduct;
+          searchableText = `${other.title} ${other.typeLabel}`;
+          break;
+      }
+
+      return searchableText
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+    });
+  }, [favorites, searchTerm]);
+
+  const handleToggleFavorite = async (
+    productType: ProductType,
+    productId: string
+  ) => {
+    if (!userId) return;
+
+    await toggleFavorite(userId, productType, productId);
+
+    setFavorites((prev) =>
+      prev.filter((fav) => !(fav.type === productType && fav.id === productId))
+    );
+  };
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
@@ -88,6 +238,25 @@ const Favourites: FC = () => {
     }
     navigate("/marketplace/my-products", { state: { category } });
   };
+
+  if (!userId && !loading) {
+    return (
+      <div className="flex flex-col gap-6">
+        <div className="mx-auto w-full max-w-[880px] px-3 sm:px-4 xl:min-w-[880px]">
+          <div className="flex flex-col gap-6 border-b border-[#181B22] pb-6">
+            <h1 className="text-4xl font-bold leading-tight text-white md:text-[56px] md:leading-[100%]">
+              Marketplace
+            </h1>
+            <div className="rounded-lg border border-[#A06AFF] bg-[#A06AFF]/10 p-4">
+              <p className="text-sm font-medium text-white">
+                Please log in to view your favorites.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -172,7 +341,7 @@ const Favourites: FC = () => {
                     "flex h-8 items-center justify-center rounded-full px-3 text-xs font-bold text-white backdrop-blur-[58px] transition-colors sm:gap-2 sm:text-sm md:px-4 md:text-[15px]",
                     isSelected
                       ? "bg-gradient-to-r from-[#A06AFF] to-[#482090]"
-                      : "border border-[#181B22] bg-[#0C101480] hover:border-[#1F2230]",
+                      : "border border-[#181B22] bg-[#0C101480] hover:border-[#1F2230]"
                   )}
                 >
                   {category}
@@ -203,10 +372,133 @@ const Favourites: FC = () => {
             </div>
           </div>
 
-          <div
-            className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-6"
-            aria-label="Favourite listings canvas"
-          />
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <div className="text-center">
+                <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-[#181B22] border-t-[#A06AFF] mx-auto"></div>
+                <p className="text-sm font-medium text-[#B0B0B0]">
+                  Loading your favorites...
+                </p>
+              </div>
+            </div>
+          ) : filteredFavorites.length === 0 ? (
+            <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-12">
+              <div className="text-center">
+                <p className="text-sm font-medium text-[#B0B0B0]">
+                  {searchTerm
+                    ? "No favorites match your search."
+                    : "You haven't added any favorites yet."}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-6">
+              {filteredFavorites.map((product) => {
+                const cardKey = `${product.type}:${product.id}`;
+                const isActive = activeCardKey === cardKey;
+
+                switch (product.type) {
+                  case "analyst":
+                    const analyst = product.data as Analyst;
+                    return (
+                      <AnalystCard
+                        key={product.id}
+                        analyst={analyst}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("analyst", product.id)
+                        }
+                      />
+                    );
+
+                  case "investment-consultant":
+                    const consultant = product.data as InvestmentConsultant;
+                    return (
+                      <InvestmentConsultantCard
+                        key={product.id}
+                        consultant={consultant}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite(
+                            "investment-consultant",
+                            product.id
+                          )
+                        }
+                      />
+                    );
+
+                  case "trader":
+                    const trader = product.data as Trader;
+                    return (
+                      <TraderCard
+                        key={product.id}
+                        trader={trader}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("trader", product.id)
+                        }
+                      />
+                    );
+
+                  case "signal":
+                    const signal = product.data as Signal;
+                    return (
+                      <SignalCard
+                        key={product.id}
+                        signal={signal}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("signal", product.id)
+                        }
+                        onOpenDetails={() => {}}
+                      />
+                    );
+
+                  case "strategy":
+                    const strategy = product.data as Strategy;
+                    return (
+                      <StrategyCard
+                        key={product.id}
+                        strategy={strategy}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("strategy", product.id)
+                        }
+                        onOpenDetails={() => {}}
+                      />
+                    );
+
+                  case "trading-robot":
+                    const robot = product.data as TradingRobot;
+                    return (
+                      <TradingRobotCard
+                        key={product.id}
+                        robot={robot}
+                        isActive={isActive}
+                        onSelect={() => setActiveCardKey(cardKey)}
+                        isFavorite={true}
+                        onToggleFavorite={() =>
+                          handleToggleFavorite("trading-robot", product.id)
+                        }
+                      />
+                    );
+
+                  default:
+                    return null;
+                }
+              })}
+            </div>
+          )}
         </section>
       </div>
     </div>
