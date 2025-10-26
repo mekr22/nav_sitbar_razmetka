@@ -126,7 +126,7 @@ const signals: Signal[] = baseSignals;
 const strategies: Strategy[] = baseStrategies.slice(0, 2);
 const tradingRobots: TradingRobot[] = baseTradingRobots;
 
-const courses: MarketplaceCourse[] = baseCourses.slice(0, 3);
+const courses: MarketplaceCourse[] = baseCourses.slice(0, 2);
 
 const platformLogos = [
   "https://api.builder.io/api/v1/image/assets/TEMP/binance.png",
@@ -251,7 +251,7 @@ const CourseCard: FC<{
           }}
         >
           <BookOpen className="h-4 w-4" />
-          DETAILS
+          Learn More
         </button>
         <button
           type="button"
@@ -261,7 +261,7 @@ const CourseCard: FC<{
           )}
         >
           <ShoppingCart className="h-4 w-4" />
-          BUY
+          Buy
         </button>
       </div>
     </div>
@@ -399,7 +399,7 @@ const InvestmentConsultantCard: FC<{
             }}
           >
             <ShoppingCart className="h-4 w-4" />
-            BUY
+            Buy
           </button>
         </div>
 
@@ -846,7 +846,7 @@ const MarketplaceMyProducts: FC = () => {
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("trader", trader.id)}
-                  secondaryCta={{ label: "BUY", icon: ShoppingCart }}
+                  secondaryCta={{ label: "Buy", icon: ShoppingCart }}
                 />
               );
             })}
@@ -880,7 +880,7 @@ const MarketplaceMyProducts: FC = () => {
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("analyst", analyst.id)}
-                  secondaryCta={{ label: "BUY", icon: ShoppingCart }}
+                  secondaryCta={{ label: "Buy", icon: ShoppingCart }}
                 />
               );
             })}
@@ -919,7 +919,7 @@ const MarketplaceMyProducts: FC = () => {
                   }}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("investment-consultant", consultant.id)}
-                  secondaryCta={{ label: "BUY", icon: ShoppingCart }}
+                  secondaryCta={{ label: "Buy", icon: ShoppingCart }}
                 />
               );
             })}
@@ -1463,7 +1463,7 @@ const MarketplaceMyProducts: FC = () => {
                       }}
                     >
                       <BookOpen className="h-4 w-4" />
-                      DETAILS
+                      Learn More
                     </button>
                     <button
                       className={cn(
