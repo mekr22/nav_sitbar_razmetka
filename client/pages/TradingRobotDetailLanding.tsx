@@ -593,19 +593,11 @@ const TradingRobotDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const isRobotFavorite = favoriteRobotIds.has(robot.id);
+  const { isFavorite: isRobotFavorite, toggle: toggleRobotFavorite } = useFavorite("trading-robot", robot.id);
 
   const handleToggleFavoriteRobot = useCallback(() => {
-    setFavoriteRobotIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(robot.id)) {
-        next.delete(robot.id);
-      } else {
-        next.add(robot.id);
-      }
-      return next;
-    });
-  }, [robot.id]);
+    toggleRobotFavorite();
+  }, [toggleRobotFavorite]);
 
   const reviews = useMemo(() => {
     const sourceReviews = Array.isArray(robot.reviews) && robot.reviews.length > 0
