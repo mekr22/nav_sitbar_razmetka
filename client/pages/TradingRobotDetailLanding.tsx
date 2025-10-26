@@ -1,4 +1,4 @@
-import { Check, MessageCircle, Star, Users } from "lucide-react";
+import { BookOpen, ShoppingCart, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
@@ -77,8 +77,8 @@ const DEFAULT_CHART_IMAGE =
 const FAVORITE_STORAGE_KEY = "robot-detail-favorites";
 
 const PRODUCT_ACTIONS = [
-  { key: "subscribe", label: "Subscribe", icon: Check },
-  { key: "chat", label: "Chat", icon: MessageCircle },
+  { key: "demo", label: "Demo", icon: BookOpen },
+  { key: "buy", label: "Buy", icon: ShoppingCart },
 ] as const;
 
 type ProductActionKey = (typeof PRODUCT_ACTIONS)[number]["key"];
@@ -301,7 +301,7 @@ const TradingRobotDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
-  const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
+  const [activeAction, setActiveAction] = useState<ProductActionKey>("buy");
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
