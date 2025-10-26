@@ -90,7 +90,7 @@ const InvestmentConsultants: FC = () => {
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
-  const { isFavorite, toggle } = useFavoriteMultiple();
+  const { isFavorite, toggle } = useFavoriteMultiple("investment-consultant");
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState<FilterSelections>({
     availability: "all",
