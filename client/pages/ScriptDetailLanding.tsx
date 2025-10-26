@@ -1,4 +1,4 @@
-import { ShoppingCart, MessageCircle } from "lucide-react";
+import { BookOpen, ShoppingCart } from "lucide-react";
 import { FC, useState, useCallback, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
@@ -104,6 +104,11 @@ const toggleHiddenInTree = (nodes: CommentNode[], id: string): CommentNode[] =>
       replies: node.replies ? toggleHiddenInTree(node.replies, id) : undefined,
     };
   });
+
+const SCRIPT_ACTIONS = [
+  { key: "demo", label: "Demo", icon: BookOpen },
+  { key: "buy", label: "Buy", icon: ShoppingCart },
+];
 
 const ScriptDetailLanding: FC = () => {
   const location = useLocation();
@@ -649,14 +654,23 @@ const ScriptDetailLanding: FC = () => {
                 </div>
               </div>
               <div className="flex flex-col gap-4">
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-[15px] font-bold text-white">
-                  <ShoppingCart className="h-5 w-5" />
-                  Buy
-                </button>
-                <button className="flex h-[46px] items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[rgba(12,16,20,0.50)] text-[15px] font-bold text-white backdrop-blur-[50px]">
-                  <MessageCircle className="h-4 w-4" />
-                  Chat
-                </button>
+                {SCRIPT_ACTIONS.map(({ key, label, icon: Icon }) => {
+                  const isPrimary = key === "buy";
+                  const baseClasses = isPrimary
+                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white transition-transform hover:scale-[1.02]"
+                    : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]";
+                  const iconClass = isPrimary ? "h-5 w-5" : "h-4 w-4";
+
+                  return (
+                    <button
+                      key={key}
+                      className={`flex h-[46px] items-center justify-center gap-2 rounded-full text-[15px] font-bold ${baseClasses}`}
+                    >
+                      <Icon className={iconClass} />
+                      {label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
