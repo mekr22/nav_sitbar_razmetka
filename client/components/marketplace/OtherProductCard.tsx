@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { OtherProduct } from "@/data/marketplaceOthers";
 
 const actionButtonBaseClass =
-  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold text-white sm:w-auto";
+  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
 
 const isActivationKey = (key: string) =>
   key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
