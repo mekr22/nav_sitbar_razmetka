@@ -290,7 +290,8 @@ const InvestmentConsultantDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const { isFavorite: isConsultantFavorite, toggle: toggleConsultantFavorite } = useFavorite("investment-consultant", consultant.id);
+  const originalConsultantId = useMemo(() => extractOriginalProductId(consultant.id), [consultant.id]);
+  const { isFavorite: isConsultantFavorite, toggle: toggleConsultantFavorite } = useFavorite("investment-consultant", originalConsultantId);
 
   const handleToggleFavoriteConsultant = useCallback(() => {
     toggleConsultantFavorite();
