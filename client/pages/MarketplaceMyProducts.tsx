@@ -620,12 +620,8 @@ const MarketplaceMyProducts: FC = () => {
   };
 
   const featuredScriptProduct = baseScriptProducts[0];
-  const featuredOtherProduct = baseOtherProducts[0];
-
   const scriptsFavorited = isFavorite("script", featuredScriptProduct.id);
-  const otherFavorited = isFavorite("other", featuredOtherProduct.id);
   const scriptsCardKey = buildCardKey("scripts", featuredScriptProduct.id);
-  const otherCardKey = buildCardKey("other", featuredOtherProduct.id);
 
   const openStrategyDetails = useCallback(
     (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
@@ -1166,7 +1162,7 @@ const MarketplaceMyProducts: FC = () => {
                     </span>
                   </div>
                   <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
-                    RiskMaster ��� powerful tool for traders, automatically
+                    RiskMaster ���� powerful tool for traders, automatically
                     calculates trade risks. Optimize trading and minimize
                     losses!
                   </p>
