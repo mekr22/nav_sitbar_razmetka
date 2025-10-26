@@ -594,7 +594,8 @@ const TradingRobotDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const { isFavorite: isRobotFavorite, toggle: toggleRobotFavorite } = useFavorite("trading-robot", robot.id);
+  const originalRobotId = useMemo(() => extractOriginalProductId(robot.id), [robot.id]);
+  const { isFavorite: isRobotFavorite, toggle: toggleRobotFavorite } = useFavorite("trading-robot", originalRobotId);
 
   const handleToggleFavoriteRobot = useCallback(() => {
     toggleRobotFavorite();
