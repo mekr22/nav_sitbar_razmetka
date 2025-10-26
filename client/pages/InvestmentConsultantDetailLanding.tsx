@@ -327,19 +327,11 @@ const InvestmentConsultantDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const isConsultantFavorite = favoriteConsultantIds.has(consultant.id);
+  const { isFavorite: isConsultantFavorite, toggle: toggleConsultantFavorite } = useFavorite("investment-consultant", consultant.id);
 
   const handleToggleFavoriteConsultant = useCallback(() => {
-    setFavoriteConsultantIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(consultant.id)) {
-        next.delete(consultant.id);
-      } else {
-        next.add(consultant.id);
-      }
-      return next;
-    });
-  }, [consultant.id]);
+    toggleConsultantFavorite();
+  }, [toggleConsultantFavorite]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/investment-consultants", {
