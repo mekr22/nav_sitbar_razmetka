@@ -34,7 +34,7 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
   };
 
   return (
-    <div className="mx-auto w-full max-w-[525px]">
+    <div className="mx-auto h-full w-full max-w-[525px]">
       <div
         role="button"
         tabIndex={0}
@@ -47,7 +47,7 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
           }
         }}
         className={cn(
-          "relative flex cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full min-h-[360px] cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
@@ -61,13 +61,13 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
             alt={product.title}
             className="h-[72px] w-[72px] flex-shrink-0 rounded-lg object-cover"
           />
-          <div className="flex flex-1 flex-col gap-1">
+          <div className="flex flex-1 min-w-0 flex-col gap-1">
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="rounded bg-[#2E2744] px-2 py-0.5 text-[11px] font-bold uppercase text-white">
                 {product.label}
               </span>
             </div>
-            <h3 className="text-lg font-bold text-white sm:text-[19px]">
+            <h3 className="truncate text-lg font-bold text-white sm:text-[19px]">
               {product.title}
             </h3>
             <div className="flex flex-wrap items-center gap-1 text-xs font-bold text-[#B0B0B0]">
