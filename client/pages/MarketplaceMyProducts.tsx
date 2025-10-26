@@ -176,11 +176,13 @@ const CourseCard: FC<{
       )}
     >
       {/* Course Image */}
-      <img
-        src={course.image}
-        alt={course.title}
-        className="h-[133px] w-full rounded-lg object-cover md:h-auto md:w-[231px] md:self-center"
-      />
+      <div className="w-full overflow-hidden rounded-2xl md:w-[231px] md:self-center">
+        <img
+          src={course.image}
+          alt={course.title}
+          className="h-[133px] w-full object-cover md:h-auto"
+        />
+      </div>
 
       {/* Content */}
       <div className="flex flex-1 flex-col gap-4 md:gap-3 md:justify-between">
