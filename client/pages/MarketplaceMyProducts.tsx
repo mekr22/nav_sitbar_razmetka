@@ -128,6 +128,7 @@ const strategies: Strategy[] = baseStrategies.slice(0, 2);
 const tradingRobots: TradingRobot[] = baseTradingRobots;
 
 const courses: MarketplaceCourse[] = baseCourses.slice(0, 2);
+const otherProducts: OtherProduct[] = baseOtherProducts;
 
 const platformLogos = [
   "https://api.builder.io/api/v1/image/assets/TEMP/binance.png",
