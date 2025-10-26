@@ -108,11 +108,11 @@ const CourseCard: FC<CourseCardProps> = ({
         </div>
       </div>
 
-      <div className="mt-2 flex w-full flex-col gap-2 sm:mt-0 sm:flex-row">
+      <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center sm:gap-3 md:ml-auto">
         <button
           className={cn(
             actionButtonBaseClass,
-            "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+            "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90 sm:flex-none",
           )}
         >
           <ShoppingCart className="h-4 w-4" />
