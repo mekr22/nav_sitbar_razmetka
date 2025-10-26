@@ -96,7 +96,7 @@ const Analysts: FC = () => {
     analysis: "all",
     rating: "all",
   });
-  const { isFavorite, toggle } = useFavoriteMultiple();
+  const { isFavorite, toggle } = useFavoriteMultiple("analyst");
 
   useEffect(() => {
     const state = location.state as { category?: MarketplaceCategory } | null;
