@@ -294,7 +294,8 @@ const AnalystDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const { isFavorite: isAnalystFavorite, toggle: toggleAnalystFavorite } = useFavorite("analyst", analyst.id);
+  const originalAnalystId = useMemo(() => extractOriginalProductId(analyst.id), [analyst.id]);
+  const { isFavorite: isAnalystFavorite, toggle: toggleAnalystFavorite } = useFavorite("analyst", originalAnalystId);
 
   const handleToggleFavoriteAnalyst = useCallback(() => {
     toggleAnalystFavorite();
