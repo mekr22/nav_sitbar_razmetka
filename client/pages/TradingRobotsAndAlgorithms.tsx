@@ -608,7 +608,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredRobots.map((robot) => {
                 const cardKey = buildCardKey("trading-robots-page", robot.id);
-                const isFavorited = isFavorite(cardKey);
+                const isFavorited = isFavorite("trading-robot", robot.id);
                 return (
                   <TradingRobotCard
                     key={robot.id}

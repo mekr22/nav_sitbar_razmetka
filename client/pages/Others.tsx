@@ -659,7 +659,7 @@ const Others: FC = () => {
             <div className="flex flex-col gap-6">
               {filteredProducts.map((product) => {
                 const cardKey = buildCardKey("others-page", product.id);
-                const isFavorited = isFavorite(cardKey);
+                const isFavorited = isFavorite("other", product.id);
                 return (
                   <OtherProductCard
                     key={product.id}
@@ -670,7 +670,7 @@ const Others: FC = () => {
                       openOtherDetails(product, { isFavorite: isFavorited });
                     }}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onToggleFavorite={() => toggle("other", product.id)}
                   />
                 );
               })}
