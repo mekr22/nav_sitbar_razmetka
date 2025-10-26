@@ -121,7 +121,7 @@ const CourseCard: FC<CourseCardProps> = ({
           }}
         >
           <BookOpen className="h-4 w-4" />
-          DETAILS
+          Learn More
         </button>
         <button
           className={cn(
@@ -130,7 +130,7 @@ const CourseCard: FC<CourseCardProps> = ({
           )}
         >
           <ShoppingCart className="h-4 w-4" />
-          BUY
+          Buy
         </button>
       </div>
     </div>
