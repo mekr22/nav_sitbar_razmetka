@@ -341,20 +341,6 @@ const Others: FC = () => {
     }
   }, [activeCardKey, filteredProducts]);
 
-  const toggleFavorite = (key: string) => {
-    setFavoriteCardKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const isFavorite = (key: string) => favoriteCardKeys.has(key);
-
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
     if (category === "Others") {

@@ -360,20 +360,6 @@ const ScriptsAndSoftware: FC = () => {
     }
   }, [activeCardKey, filteredProducts]);
 
-  const toggleFavorite = (key: string) => {
-    setFavoriteCardKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const isFavorite = (key: string) => favoriteCardKeys.has(key);
-
   const openScriptDetails = useCallback(
     (selectedProduct: ScriptProduct, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/script-details", {
