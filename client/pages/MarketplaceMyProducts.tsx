@@ -10,7 +10,6 @@ import {
   Plus,
   X,
   BookOpen,
-  Mail,
   Check,
   ShoppingCart,
   Users,
@@ -380,11 +379,29 @@ const InvestmentConsultantCard: FC<{
           </div>
         </div>
 
-        {/* Contact Button */}
-        <button className="mb-4 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
-          <Mail className="h-4 w-4" />
-          CONTACT
-        </button>
+        <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:gap-3">
+          <button
+            type="button"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-xs font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+            onClick={(event) => {
+              event.stopPropagation();
+              onSelect();
+            }}
+          >
+            <BookOpen className="h-4 w-4" />
+            LEARN MORE
+          </button>
+          <button
+            type="button"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90"
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
+            <ShoppingCart className="h-4 w-4" />
+            BUY
+          </button>
+        </div>
 
         {/* Divider */}
         <div className="mb-2 h-px w-full bg-[#181B22]" />
