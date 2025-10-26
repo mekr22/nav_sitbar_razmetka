@@ -183,7 +183,7 @@ const Others: FC = () => {
     useState<MarketplaceCategory>("Others");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
-  const { isFavorite, toggle } = useFavoriteMultiple();
+  const { isFavorite, toggle } = useFavoriteMultiple("other");
   const [filters, setFilters] = useState<FilterSelections>({
     type: FILTER_CONFIG.type.options[0].value,
     industry: FILTER_CONFIG.industry.options[0].value,
