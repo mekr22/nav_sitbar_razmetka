@@ -3,6 +3,7 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import { useFavorite } from "@/hooks/useFavorite";
+import { extractOriginalProductId } from "@/lib/utils";
 import PerformanceChartCard, {
   type PerformanceChartLevel,
 } from "@/components/marketplace/PerformanceChartCard";
