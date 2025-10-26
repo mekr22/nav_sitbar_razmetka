@@ -18,7 +18,7 @@ import {
   Globe,
   Star,
 } from "lucide-react";
-import { cn, maskNonWhitespace } from "@/lib/utils";
+import { cn, maskNonWhitespace, extractOriginalProductId } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import StrategyCard from "@/components/marketplace/StrategyCard";
