@@ -172,10 +172,8 @@ const TradingRobotsAndAlgorithms: FC = () => {
     "Trading robots and Algorithms",
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const { isFavorite, toggle } = useFavoriteMultiple();
   const [filters, setFilters] = useState<FilterSelections>({
     automation: FILTER_CONFIG.automation.options[0].value,
     accuracy: FILTER_CONFIG.accuracy.options[0].value,
