@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import type { InvestmentConsultant } from "@/data/marketplaceInvestmentConsultants";
 import { useFavorite } from "@/hooks/useFavorite";
+import { extractOriginalProductId } from "@/lib/utils";
 
 const COMMENT_AVATAR =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
