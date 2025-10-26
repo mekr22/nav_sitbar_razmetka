@@ -394,7 +394,7 @@ const Favourites: FC = () => {
             <h2 className="text-2xl font-bold text-white sm:text-[31px]">
               Favourites
             </h2>
-            <div className="ml-auto flex h-9 w-[235px] min-w-[235px] flex-shrink-0 items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px] max-[1156px]:ml-0 max-[1156px]:mt-0 max-[1156px]:w-full max-[1156px]:min-w-0 max-[1156px]:flex-1">
+            <div className="flex h-9 w-full items-center gap-1 rounded-xl border border-[#181B22] bg-[#0C1014]/50 px-2 backdrop-blur-[50px]">
               <Search
                 className="h-4 w-4 flex-shrink-0 text-[#B0B0B0]"
                 aria-hidden="true"
