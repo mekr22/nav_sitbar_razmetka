@@ -863,6 +863,7 @@ const MarketplaceMyProducts: FC = () => {
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("analyst", analyst.id)}
+                  secondaryCta={{ label: "BUY", icon: ShoppingCart }}
                 />
               );
             })}
