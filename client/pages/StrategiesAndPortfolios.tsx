@@ -644,7 +644,7 @@ const StrategiesAndPortfolios: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredStrategies.map((strategy) => {
                 const cardKey = buildCardKey("strategies-page", strategy.id);
-                const isFavorited = isFavorite(cardKey);
+                const isFavorited = isFavorite("strategy", strategy.id);
                 return (
                   <StrategyCard
                     key={strategy.id}
@@ -652,7 +652,7 @@ const StrategiesAndPortfolios: FC = () => {
                     isActive={activeCardKey === cardKey}
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onToggleFavorite={() => toggle("strategy", strategy.id)}
                     onOpenDetails={(selectedStrategy) =>
                       openStrategyDetails(selectedStrategy, {
                         isFavorite: isFavorited,
