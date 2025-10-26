@@ -8,6 +8,7 @@ import PerformanceChartCard, {
 } from "@/components/marketplace/PerformanceChartCard";
 import { baseAnalysts, type Analyst } from "@/data/marketplaceAnalysts";
 import { useFavorite } from "@/hooks/useFavorite";
+import { extractOriginalProductId } from "@/lib/utils";
 
 type ExtendedAnalyst = Analyst & {
   price?: string;
