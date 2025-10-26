@@ -286,7 +286,8 @@ const TraderDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const { isFavorite: isTraderFavorite, toggle: toggleTraderFavorite } = useFavorite("trader", trader.id);
+  const originalTraderId = useMemo(() => extractOriginalProductId(trader.id), [trader.id]);
+  const { isFavorite: isTraderFavorite, toggle: toggleTraderFavorite } = useFavorite("trader", originalTraderId);
 
   const handleToggleFavoriteTrader = useCallback(() => {
     toggleTraderFavorite();
