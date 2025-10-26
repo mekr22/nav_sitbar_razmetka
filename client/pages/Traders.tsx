@@ -567,7 +567,8 @@ const Traders: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredTraders.map((trader) => {
               const cardKey = `trader:${trader.id}`;
-              const isFavorited = isFavorite("trader", trader.id);
+              const originalId = extractOriginalProductId(trader.id);
+              const isFavorited = isFavorite("trader", originalId);
               return (
                 <TraderCard
                   key={trader.id}
@@ -575,7 +576,7 @@ const Traders: FC = () => {
                   isActive={activeCardKey === cardKey}
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggle("trader", trader.id)}
+                  onToggleFavorite={() => toggle("trader", originalId)}
                   />
                 );
               })}
