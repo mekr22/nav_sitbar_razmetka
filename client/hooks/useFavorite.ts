@@ -21,11 +21,19 @@ export function useFavorite(productType: ProductType, productId: string) {
 
       try {
         const {
-          data: { user },
-          error,
-        } = await supabase.auth.getUser();
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
 
-        if (error || !user) {
+        if (sessionError) {
+          console.error("[useFavorite] Session error:", sessionError.message);
+          setLoading(false);
+          return;
+        }
+
+        const user = session?.user;
+
+        if (!user) {
           setLoading(false);
           return;
         }
@@ -90,23 +98,23 @@ export function useFavoriteMultiple(productType?: ProductType) {
 
       try {
         const {
-          data: { user },
-          error,
-        } = await supabase.auth.getUser();
+          data: { session },
+          error: sessionError,
+        } = await supabase.auth.getSession();
 
-        if (error) {
-          console.error("[useFavoriteMultiple] Auth error:", error.message);
+        if (sessionError) {
+          console.error("[useFavoriteMultiple] Session error:", sessionError.message);
           setLoading(false);
           return;
         }
+
+        const user = session?.user;
 
         if (!user) {
-          console.log("[useFavoriteMultiple] User not authenticated");
           setLoading(false);
           return;
         }
 
-        console.log("[useFavoriteMultiple] User authenticated:", user.id);
         setUserId(user.id);
 
         let query = supabase
