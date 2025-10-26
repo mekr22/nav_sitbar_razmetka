@@ -568,7 +568,8 @@ const InvestmentConsultants: FC = () => {
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {sortedConsultants.map((consultant) => {
                 const cardKey = buildCardKey("consultants-page", consultant.id);
-                const isFavorited = isFavorite("investment-consultant", consultant.id);
+                const originalId = extractOriginalProductId(consultant.id);
+                const isFavorited = isFavorite("investment-consultant", originalId);
 
                 return (
                   <InvestmentConsultantCard
@@ -577,7 +578,7 @@ const InvestmentConsultants: FC = () => {
                     isActive={activeCardKey === cardKey}
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggle("investment-consultant", consultant.id)}
+                    onToggleFavorite={() => toggle("investment-consultant", originalId)}
                   />
                 );
               })}
