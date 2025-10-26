@@ -19,6 +19,7 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import StrategyGalleryCarousel from "@/components/marketplace/StrategyGalleryCarousel";
 import type { Strategy } from "@/data/marketplaceStrategies";
 import { baseStrategies } from "@/data/marketplaceStrategies";
+import { useFavorite } from "@/hooks/useFavorite";
 
 const AVATAR_PLACEHOLDER =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=160";
