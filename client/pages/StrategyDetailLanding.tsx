@@ -236,9 +236,6 @@ const StrategyDetailLanding: FC = () => {
     isFavorite?: boolean;
   } | null;
 
-  const [isFavorite, setIsFavorite] = useState(
-    Boolean(locationState?.isFavorite),
-  );
   const [comments, setComments] = useState<CommentNode[]>(
     () => INITIAL_COMMENTS,
   );
