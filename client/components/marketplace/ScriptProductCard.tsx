@@ -191,19 +191,6 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
           <button
             className={cn(
               actionButtonBaseClass,
-              "border border-[#181B22] bg-[#0C1014]/60 backdrop-blur-[50px] transition-colors hover:border-[#1F2230]",
-            )}
-            onClick={(event) => {
-              event.stopPropagation();
-              onOpenDetails?.(product, { isFavorite });
-            }}
-          >
-            <BookOpen className="h-4 w-4" />
-            Details
-          </button>
-          <button
-            className={cn(
-              actionButtonBaseClass,
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
           >
