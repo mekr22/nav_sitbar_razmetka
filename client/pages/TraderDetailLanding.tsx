@@ -7,6 +7,7 @@ import PerformanceChartCard, {
   type PerformanceChartLevel,
 } from "@/components/marketplace/PerformanceChartCard";
 import { baseTraders, type Trader } from "@/data/marketplaceTraders";
+import { useFavorite } from "@/hooks/useFavorite";
 
 type ExtendedTrader = Trader & {
   price?: string;
