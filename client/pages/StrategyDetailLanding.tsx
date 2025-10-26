@@ -623,7 +623,8 @@ const StrategyDetailLanding: FC = () => {
   const commentCountLabel =
     commentCount === 1 ? "1 comment" : `${commentCount} comments`;
 
-  const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", strategy.id);
+  const originalStrategyId = useMemo(() => extractOriginalProductId(strategy.id), [strategy.id]);
+  const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", originalStrategyId);
 
   const handleToggleFavorite = useCallback(() => {
     toggleFavorite();
