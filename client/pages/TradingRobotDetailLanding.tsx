@@ -481,62 +481,6 @@ const TradingRobotDetailLanding: FC = () => {
 
   const locationState = (location.state as TradingRobotDetailsState | null) ?? null;
 
-  const [favoriteRobotIds, setFavoriteRobotIds] = useState<Set<string>>(() => {
-    const storedIds = new Set<string>();
-
-    if (typeof window !== "undefined") {
-      const raw = window.localStorage.getItem(FAVORITE_STORAGE_KEY);
-      if (raw) {
-        try {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed)) {
-            parsed.forEach((value) => {
-              if (typeof value === "string" && value.trim().length > 0) {
-                storedIds.add(value);
-              }
-            });
-          }
-        } catch {
-          // ignore malformed storage values
-        }
-      }
-    }
-
-    if (locationState?.robot?.id && locationState.isFavorite) {
-      storedIds.add(locationState.robot.id);
-    }
-
-    return storedIds;
-  });
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    window.localStorage.setItem(
-      FAVORITE_STORAGE_KEY,
-      JSON.stringify(Array.from(favoriteRobotIds)),
-    );
-  }, [favoriteRobotIds]);
-
-  useEffect(() => {
-    const id = locationState?.robot?.id;
-    if (!id || !locationState?.isFavorite) {
-      return;
-    }
-
-    setFavoriteRobotIds((prev) => {
-      if (prev.has(id)) {
-        return prev;
-      }
-
-      const next = new Set(prev);
-      next.add(id);
-      return next;
-    });
-  }, [locationState]);
-
   useEffect(() => {
     if (locationState?.scrollToTop) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
