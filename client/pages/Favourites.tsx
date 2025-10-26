@@ -588,8 +588,8 @@ const Favourites: FC = () => {
                     return (
                       <div
                         key={product.id}
+                        className="w-full cursor-pointer md:col-span-2"
                         onClick={() => handleNavigateToDetails("other", otherProduct)}
-                        className="cursor-pointer"
                       >
                         <OtherProductCard
                           product={otherProduct}
