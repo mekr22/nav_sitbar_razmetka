@@ -1,9 +1,8 @@
 import {
-  Check,
+  BookOpen,
   Eye,
   Instagram,
-  MessageCircle,
-  Play,
+  ShoppingCart,
   Star,
   TrendingUp,
   Users,
@@ -55,9 +54,8 @@ type ExtendedSignal = Signal & {
 const DEFAULT_CHART_IMAGE =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F2d6d24710ba34771b2ab72e3d53cd2ec?format=webp&width=800";
 const PRODUCT_ACTIONS = [
-  { key: "subscribe", label: "Subscribe", icon: Check },
-  { key: "chat", label: "Chat", icon: MessageCircle },
-  { key: "demo", label: "Demo", icon: Play },
+  { key: "learn", label: "Learn More", icon: BookOpen },
+  { key: "buy", label: "Buy", icon: ShoppingCart },
 ] as const;
 
 type ProductActionKey = (typeof PRODUCT_ACTIONS)[number]["key"];
@@ -318,7 +316,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
-  const [activeAction, setActiveAction] = useState<ProductActionKey>("subscribe");
+  const [activeAction, setActiveAction] = useState<ProductActionKey>("learn");
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
 
