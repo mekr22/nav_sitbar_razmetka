@@ -123,11 +123,13 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
 
         <div className="flex flex-1 flex-col gap-4">
           <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <img
-              src={robot.icon}
-              alt={robot.name}
-              className="h-[72px] w-[72px] rounded-lg object-cover"
-            />
+            <div className="h-[72px] w-[72px] overflow-hidden rounded-2xl">
+              <img
+                src={robot.icon}
+                alt={robot.name}
+                className="h-full w-full object-cover"
+              />
+            </div>
             <div className="flex flex-1 flex-col gap-1">
               <h3 className="text-lg font-bold text-white sm:text-[19px]">
                 {robot.name}
