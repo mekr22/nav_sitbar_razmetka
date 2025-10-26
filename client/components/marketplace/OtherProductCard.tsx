@@ -119,7 +119,7 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
           ))}
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+        <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
           <button
             type="button"
             className={cn(
