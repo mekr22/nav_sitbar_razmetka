@@ -692,7 +692,7 @@ const ScriptsAndSoftware: FC = () => {
             <div className="flex flex-col gap-6">
               {filteredProducts.map((product) => {
                 const cardKey = buildCardKey("scripts-page", product.id);
-                const isFavorited = isFavorite(cardKey);
+                const isFavorited = isFavorite("script", product.id);
                 return (
                   <ScriptProductCard
                     key={product.id}
@@ -700,7 +700,7 @@ const ScriptsAndSoftware: FC = () => {
                     isActive={activeCardKey === cardKey}
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onToggleFavorite={() => toggle("script", product.id)}
                     onOpenDetails={openScriptDetails}
                   />
                 );
