@@ -183,9 +183,6 @@ const Traders: FC = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<MarketplaceCategory>("Traders");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState<FilterSelections>({
@@ -194,6 +191,7 @@ const Traders: FC = () => {
     roi: "all",
     accuracy: "all",
   });
+  const { isFavorite, toggle } = useFavoriteMultiple();
 
   useEffect(() => {
     const state = location.state as { category?: MarketplaceCategory } | null;
