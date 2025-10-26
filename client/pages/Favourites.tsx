@@ -430,7 +430,7 @@ const Favourites: FC = () => {
               </div>
             </div>
           ) : (
-            <div className="flex flex-col gap-6">
+            <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredFavorites.map((product) => {
                 const cardKey = `${product.type}:${product.id}`;
                 const isActive = activeCardKey === cardKey;
