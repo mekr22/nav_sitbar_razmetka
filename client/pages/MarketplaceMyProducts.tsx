@@ -1068,7 +1068,7 @@ const MarketplaceMyProducts: FC = () => {
               </div>
               <FavoriteStarButton
                 pressed={scriptsFavorited}
-                onToggle={() => toggle("script", "main")}
+                onToggle={() => toggle("script", featuredScriptProduct.id)}
               />
             </div>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
