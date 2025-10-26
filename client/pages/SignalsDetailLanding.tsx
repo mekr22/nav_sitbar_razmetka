@@ -521,22 +521,15 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
     return provided ?? fallbackSignal;
   }, [locationState, fallbackSignal]);
 
-  const isSignalFavorite = favoriteSignalIds.has(signal.id);
+  const { isFavorite: isSignalFavorite, toggle: toggleSignalFavorite } = useFavorite("signal", signal.id);
+
   const favoriteStarButtonClassName = isSignalFavorite
     ? "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
     : "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014] hover:text-white";
 
   const handleToggleFavoriteSignal = useCallback(() => {
-    setFavoriteSignalIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(signal.id)) {
-        next.delete(signal.id);
-      } else {
-        next.add(signal.id);
-      }
-      return next;
-    });
-  }, [signal.id]);
+    toggleSignalFavorite();
+  }, [toggleSignalFavorite]);
 
   const reviews = useMemo(() => {
     const sourceReviews = Array.isArray(signal.reviews) && signal.reviews.length > 0
