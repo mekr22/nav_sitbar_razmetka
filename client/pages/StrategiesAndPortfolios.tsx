@@ -195,9 +195,7 @@ const StrategiesAndPortfolios: FC = () => {
     "Strategies and Portfolios",
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
+  const { isFavorite, toggle } = useFavoriteMultiple("strategy");
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [filters, setFilters] = useState<FilterSelections>({
     style: FILTER_CONFIG.style.options[0].value,
