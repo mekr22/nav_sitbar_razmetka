@@ -624,7 +624,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
                       });
                     }}
                     isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+                    onToggleFavorite={() => toggle("trading-robot", robot.id)}
                   />
                 );
               })}
