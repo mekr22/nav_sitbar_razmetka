@@ -56,11 +56,13 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
         </div>
 
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <img
-            src={product.image}
-            alt={product.title}
-            className="h-[72px] w-[72px] flex-shrink-0 rounded-lg object-cover"
-          />
+          <div className="h-[72px] w-[72px] flex-shrink-0 overflow-hidden rounded-2xl">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="h-full w-full object-cover"
+            />
+          </div>
           <div className="flex flex-1 min-w-0 flex-col gap-1">
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="rounded bg-[#2E2744] px-2 py-0.5 text-[11px] font-bold uppercase text-white">
