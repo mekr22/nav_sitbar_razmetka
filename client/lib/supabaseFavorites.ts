@@ -266,7 +266,13 @@ async function fetchProductByType(
       .single();
 
     if (error) {
-      console.error(`Error fetching ${productType}:`, error);
+      if (error.code === "PGRST116") {
+        console.warn(
+          `Product not found: ${productType} with id ${productId}`
+        );
+      } else {
+        console.error(`Error fetching ${productType}:`, error);
+      }
       return null;
     }
 
