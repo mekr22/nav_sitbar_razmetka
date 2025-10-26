@@ -173,7 +173,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
-  const { isFavorite, toggle } = useFavoriteMultiple();
+  const { isFavorite, toggle } = useFavoriteMultiple("trading-robot");
   const [filters, setFilters] = useState<FilterSelections>({
     automation: FILTER_CONFIG.automation.options[0].value,
     accuracy: FILTER_CONFIG.accuracy.options[0].value,
