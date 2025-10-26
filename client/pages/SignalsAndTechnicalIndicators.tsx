@@ -9,6 +9,7 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import { baseSignals } from "@/data/marketplaceSignals";
 import {
@@ -609,16 +610,16 @@ const SignalsAndTechnicalIndicators: FC = () => {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredSignals.map((signal) => {
-                const cardKey = buildCardKey("signals-page", signal.id);
-                const isFavorited = isFavorite(cardKey);
-                return (
-                  <SignalCard
-                    key={signal.id}
-                    signal={signal}
-                    isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
-                    isFavorite={isFavorited}
-                    onToggleFavorite={() => toggleFavorite(cardKey)}
+              const cardKey = buildCardKey("signals-page", signal.id);
+              const isFavorited = isFavorite("signal", signal.id);
+              return (
+                <SignalCard
+                  key={signal.id}
+                  signal={signal}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggle("signal", signal.id)}
                     onOpenDetails={openSignalDetails}
                   />
                 );
