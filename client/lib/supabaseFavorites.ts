@@ -206,6 +206,11 @@ export async function getUserFavorites(userId: string): Promise<FavoriteProduct[
 
       if (product) {
         result.push({ ...product, type: fav.product_type as ProductType } as FavoriteProduct);
+      } else {
+        console.warn(
+          `Removing orphaned favorite: ${fav.product_type} with id ${fav.product_id}`
+        );
+        await removeFavorite(userId, fav.product_type as ProductType, fav.product_id);
       }
     }
 
