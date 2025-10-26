@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { KeyboardEvent, useCallback, useState, useEffect } from "react";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Eye,
@@ -549,11 +550,9 @@ const MarketplaceMyProducts: FC = () => {
   const [selectedCategory, setSelectedCategory] =
     useState<MarketplaceCategory>("All");
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
-  const [favoriteCardKeys, setFavoriteCardKeys] = useState<Set<string>>(
-    new Set(),
-  );
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const { isFavorite, toggle } = useFavoriteMultiple();
 
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
@@ -564,20 +563,6 @@ const MarketplaceMyProducts: FC = () => {
       setSelectedCategory(state.category);
     }
   }, [location.state]);
-
-  const toggleFavorite = (key: string) => {
-    setFavoriteCardKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
-
-  const isFavorite = (key: string) => favoriteCardKeys.has(key);
 
   const handleCategoryClick = (category: MarketplaceCategory) => {
     setSelectedCategory(category);
@@ -627,11 +612,8 @@ const MarketplaceMyProducts: FC = () => {
     }
   };
 
-  const scriptsCardKey = buildCardKey("scripts", "main");
-  const otherCardKey = buildCardKey("other", "main");
-
-  const scriptsFavorited = isFavorite(scriptsCardKey);
-  const otherFavorited = isFavorite(otherCardKey);
+  const scriptsFavorited = isFavorite("script", "main");
+  const otherFavorited = isFavorite("other", "main");
 
   const featuredScriptProduct = baseScriptProducts[0];
   const featuredOtherProduct = baseOtherProducts[0];
