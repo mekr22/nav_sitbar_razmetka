@@ -59,8 +59,6 @@ const PRODUCT_ACTIONS = [
   { key: "buy", label: "Buy", icon: ShoppingCart },
 ] as const;
 
-type ProductActionKey = (typeof PRODUCT_ACTIONS)[number]["key"];
-
 const resolveFallbackSignal = (
   detailType: "signals" | "indicators",
 ): ExtendedSignal => {
@@ -317,7 +315,6 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
   const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
-  const [activeAction, setActiveAction] = useState<ProductActionKey>("learn");
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
 
@@ -1183,20 +1180,19 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
               <div className="flex flex-col gap-3 p-4">
                 {PRODUCT_ACTIONS.map(({ key, label, icon: Icon }) => {
-                  const isActive = activeAction === key;
-                  const baseClasses = isActive
-                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white"
-                    : "border border-[#181B22] bg-[#0C1014]/60 text-white backdrop-blur-[50px] hover:border-[#1F2230]";
+                  const isPrimary = key === "buy";
+                  const baseClasses = isPrimary
+                    ? "bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white transition-transform hover:scale-[1.02]"
+                    : "border border-[#181B22] bg-[#0C1014]/50 text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]";
+                  const iconClass = isPrimary ? "h-5 w-5" : "h-4 w-4";
 
                   return (
                     <button
                       key={key}
                       type="button"
-                      aria-pressed={isActive}
-                      onClick={() => setActiveAction(key)}
-                      className={`flex w-full items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold transition-colors ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-[11px]`}
+                      className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                     >
-                      <Icon className="h-4 w-4 max-[360px]:h-3.5 max-[360px]:w-3.5" />
+                      <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
                       {label}
                     </button>
                   );
