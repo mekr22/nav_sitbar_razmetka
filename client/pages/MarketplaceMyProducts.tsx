@@ -1287,173 +1287,26 @@ const MarketplaceMyProducts: FC = () => {
             </Link>
           </div>
 
-          <div
-            role="button"
-            tabIndex={0}
-            aria-pressed={activeCardKey === otherCardKey}
-            onClick={() => {
-              setActiveCardKey(otherCardKey);
-              openOtherDetails(featuredOtherProduct, {
-                isFavorite: otherFavorited,
-              });
-            }}
-            onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
-              if (isActivationKey(event.key)) {
-                event.preventDefault();
-                setActiveCardKey(otherCardKey);
-                openOtherDetails(featuredOtherProduct, {
-                  isFavorite: otherFavorited,
-                });
-              }
-            }}
-            className={cn(
-              "relative w-full cursor-pointer rounded-2xl border bg-[#0C101480] p-4 backdrop-blur-[50px] transition-colors max-[640px]:p-6",
-              activeCardKey === otherCardKey
-                ? "border-[#A06AFF]"
-                : "border-[#181B22]",
-            )}
-          >
-            <div
-              className="absolute right-4 top-4"
-              onClick={(event) => event.stopPropagation()}
-            >
-              <FavoriteStarButton
-                pressed={otherFavorited}
-                onToggle={() => toggle("other", featuredOtherProduct.id)}
-              />
-            </div>
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-              <div className="relative h-[264px] w-full overflow-hidden rounded-lg lg:w-[451px]">
-                <img
-                  src={featuredOtherProduct.image}
-                  alt={featuredOtherProduct.imageAlt}
-                  className="h-full w-full object-cover"
+          <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
+            {otherProducts.map((product) => {
+              const cardKey = buildCardKey("other", product.id);
+              const isFavorited = isFavorite("other", product.id);
+              return (
+                <OtherProductCard
+                  key={product.id}
+                  product={product}
+                  isActive={activeCardKey === cardKey}
+                  onSelect={() => setActiveCardKey(cardKey)}
+                  isFavorite={isFavorited}
+                  onToggleFavorite={() => toggle("other", product.id)}
+                  onOpenDetails={(selectedProduct) =>
+                    openOtherDetails(selectedProduct, {
+                      isFavorite: isFavorited,
+                    })
+                  }
                 />
-                <span className="absolute bottom-1 left-1 rounded bg-[#2E2744] px-1 text-xs font-bold uppercase text-white">
-                  {featuredOtherProduct.label}
-                </span>
-              </div>
-
-              <div className="flex flex-1 flex-col gap-4">
-                <div className="flex flex-col items-start gap-3 max-[640px]:flex-col max-[640px]:items-start max-[640px]:gap-4 sm:flex-row sm:items-center">
-                  <img
-                    src={featuredOtherProduct.image}
-                    alt={featuredOtherProduct.title}
-                    className="h-16 w-16 rounded-lg object-cover max-[640px]:h-20 max-[640px]:w-20"
-                  />
-                  <div>
-                    <h3 className="text-lg font-bold text-white sm:text-[19px]">
-                      {featuredOtherProduct.title}
-                    </h3>
-                    <div className="mt-1 flex flex-wrap items-center gap-1">
-                      <span className="flex items-center gap-0.5 rounded bg-[#1C3430] px-1 py-0.5 text-xs font-bold text-[#2EBD85]">
-                        {featuredOtherProduct.rating}
-                      </span>
-                      <span className="flex items-center gap-1 rounded bg-[#2E2744] px-1 text-xs font-bold text-white">
-                        <Users className="h-4 w-4 text-[#B0B0B0]" />
-                        1,748
-                      </span>
-                      <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
-                        {featuredOtherProduct.ratingTag}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-[#181B22]" />
-
-                <div>
-                  <h4 className="mb-3 text-lg font-bold text-white sm:text-[19px]">
-                    {featuredOtherProduct.title}
-                  </h4>
-                  <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
-                    {featuredOtherProduct.description}
-                  </p>
-
-                  <div className="mb-4 flex flex-wrap items-center gap-4 text-xs font-bold">
-                    <div className="flex items-center gap-1">
-                      <span className="uppercase text-[#B0B0B0]">Type:</span>
-                      <span className="rounded bg-[#2E2744] px-1 uppercase text-white">
-                        {featuredOtherProduct.typeLabel}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="uppercase text-[#B0B0B0]">
-                        Industry:
-                      </span>
-                      <span className="rounded bg-[rgba(106,165,255,0.16)] px-1 uppercase text-[#6AA5FF]">
-                        {featuredOtherProduct.industryLabel}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span className="uppercase text-[#B0B0B0]">
-                        Location:
-                      </span>
-                      <span className="rounded bg-[#2E2744] px-1 uppercase text-white">
-                        {featuredOtherProduct.location}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="mb-4 space-y-2 text-xs font-bold text-white">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="uppercase text-[#B0B0B0]">
-                        Compatibility:
-                      </span>
-                      {featuredOtherProduct.compatibility.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded bg-[#2E2744] px-1 uppercase text-white"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="uppercase text-[#B0B0B0]">
-                        Requirements:
-                      </span>
-                      {featuredOtherProduct.requirements.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded bg-[#2E2744] px-1 uppercase text-white"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
-                    <button
-                      className={cn(
-                        actionButtonBaseClass,
-                        "border border-[#181B22] bg-[#141821] transition-colors hover:border-[#1F2230]",
-                      )}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        openOtherDetails(featuredOtherProduct, {
-                          isFavorite: otherFavorited,
-                        });
-                      }}
-                    >
-                      <BookOpen className="h-4 w-4" />
-                      Learn More
-                    </button>
-                    <button
-                      className={cn(
-                        actionButtonBaseClass,
-                        "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
-                      )}
-                      onClick={(event) => event.stopPropagation()}
-                    >
-                      <ShoppingCart className="h-4 w-4" />
-                      ADD TO CART
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
 
