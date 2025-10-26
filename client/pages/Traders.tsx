@@ -191,7 +191,7 @@ const Traders: FC = () => {
     roi: "all",
     accuracy: "all",
   });
-  const { isFavorite, toggle } = useFavoriteMultiple();
+  const { isFavorite, toggle } = useFavoriteMultiple("trader");
 
   useEffect(() => {
     const state = location.state as { category?: MarketplaceCategory } | null;
