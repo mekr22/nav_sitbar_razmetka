@@ -83,6 +83,7 @@ export function useFavoriteMultiple(productType?: ProductType) {
   useEffect(() => {
     const checkUserAndLoadFavorites = async () => {
       if (!supabase) {
+        console.log("[useFavoriteMultiple] Supabase not configured");
         setLoading(false);
         return;
       }
@@ -93,11 +94,19 @@ export function useFavoriteMultiple(productType?: ProductType) {
           error,
         } = await supabase.auth.getUser();
 
-        if (error || !user) {
+        if (error) {
+          console.error("[useFavoriteMultiple] Auth error:", error.message);
           setLoading(false);
           return;
         }
 
+        if (!user) {
+          console.log("[useFavoriteMultiple] User not authenticated");
+          setLoading(false);
+          return;
+        }
+
+        console.log("[useFavoriteMultiple] User authenticated:", user.id);
         setUserId(user.id);
 
         let query = supabase
@@ -112,14 +121,16 @@ export function useFavoriteMultiple(productType?: ProductType) {
         const { data, error: queryError } = await query;
 
         if (queryError) {
-          console.error("Error loading favorites:", queryError);
+          console.error("[useFavoriteMultiple] Query error:", queryError.message);
           setLoading(false);
           return;
         }
 
+        console.log("[useFavoriteMultiple] Loaded favorites:", data);
         const favoriteSet = new Set(
           data.map((fav) => `${fav.product_type}:${fav.product_id}`)
         );
+        console.log("[useFavoriteMultiple] Favorite set:", Array.from(favoriteSet));
         setFavorites(favoriteSet);
       } catch (err) {
         console.error("Error loading favorites:", err);
@@ -140,14 +151,21 @@ export function useFavoriteMultiple(productType?: ProductType) {
 
   const toggle = useCallback(
     async (type: ProductType, id: string) => {
+      console.log("[useFavoriteMultiple.toggle] Starting toggle:", { type, id, userId });
+
       if (!userId) {
-        console.warn("User not authenticated");
+        console.warn("[useFavoriteMultiple.toggle] User not authenticated!");
         return;
       }
 
       try {
-        if (isFavorite(type, id)) {
+        const isFav = isFavorite(type, id);
+        console.log("[useFavoriteMultiple.toggle] Current favorite status:", isFav);
+
+        if (isFav) {
+          console.log("[useFavoriteMultiple.toggle] Removing favorite...");
           const success = await removeFavorite(userId, type, id);
+          console.log("[useFavoriteMultiple.toggle] Remove result:", success);
           if (success) {
             setFavorites((prev) => {
               const next = new Set(prev);
@@ -156,7 +174,9 @@ export function useFavoriteMultiple(productType?: ProductType) {
             });
           }
         } else {
+          console.log("[useFavoriteMultiple.toggle] Adding favorite...");
           const success = await addFavorite(userId, type, id);
+          console.log("[useFavoriteMultiple.toggle] Add result:", success);
           if (success) {
             setFavorites((prev) => {
               const next = new Set(prev);
@@ -166,7 +186,7 @@ export function useFavoriteMultiple(productType?: ProductType) {
           }
         }
       } catch (err) {
-        console.error("Error toggling favorite:", err);
+        console.error("[useFavoriteMultiple.toggle] Exception:", err);
       }
     },
     [userId, isFavorite]
