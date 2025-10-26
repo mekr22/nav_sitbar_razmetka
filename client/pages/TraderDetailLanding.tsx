@@ -285,19 +285,11 @@ const TraderDetailLanding: FC = () => {
     };
   }, [locationState]);
 
-  const isTraderFavorite = favoriteTraderIds.has(trader.id);
+  const { isFavorite: isTraderFavorite, toggle: toggleTraderFavorite } = useFavorite("trader", trader.id);
 
   const handleToggleFavoriteTrader = useCallback(() => {
-    setFavoriteTraderIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(trader.id)) {
-        next.delete(trader.id);
-      } else {
-        next.add(trader.id);
-      }
-      return next;
-    });
-  }, [trader.id]);
+    toggleTraderFavorite();
+  }, [toggleTraderFavorite]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/traders", {
