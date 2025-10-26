@@ -1,4 +1,4 @@
-import { Mail, MapPin, Globe } from "lucide-react";
+import { BookOpen, ShoppingCart, MapPin, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { FC, KeyboardEvent } from "react";
 
@@ -8,6 +8,9 @@ import type { InvestmentConsultant } from "@/data/marketplaceInvestmentConsultan
 
 const isActivationKey = (key: string) =>
   key === "Enter" || key === " " || key === "Space" || key === "Spacebar";
+
+const actionButtonBaseClass =
+  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
 
 export interface InvestmentConsultantCardProps {
   consultant: InvestmentConsultant;
@@ -136,10 +139,32 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
           </div>
         </div>
 
-        <button className="mb-4 flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
-          <Mail className="h-4 w-4" aria-hidden="true" />
-          CONTACT
-        </button>
+        <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:gap-3">
+          <button
+            type="button"
+            className={cn(
+              actionButtonBaseClass,
+              "border border-[#181B22] bg-[#0C1014]/60 transition-colors hover:border-[#1F2230]",
+            )}
+            onClick={(event) => {
+              event.stopPropagation();
+              handleCardClick();
+            }}
+          >
+            <BookOpen className="h-4 w-4" aria-hidden="true" />
+            Learn More
+          </button>
+          <button
+            type="button"
+            className={cn(
+              actionButtonBaseClass,
+              "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+            )}
+          >
+            <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+            BUY
+          </button>
+        </div>
 
         <div className="mb-2 h-px w-full bg-[#181B22]" />
 
