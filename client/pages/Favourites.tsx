@@ -439,16 +439,17 @@ const Favourites: FC = () => {
                   case "analyst":
                     const analyst = product.data as Analyst;
                     return (
-                      <AnalystCard
-                        key={product.id}
-                        analyst={analyst}
-                        isActive={isActive}
-                        onSelect={() => setActiveCardKey(cardKey)}
-                        isFavorite={true}
-                        onToggleFavorite={() =>
-                          handleToggleFavorite("analyst", product.id)
-                        }
-                      />
+                      <div key={product.id} onClick={() => handleNavigateToDetails("analyst", analyst)}>
+                        <AnalystCard
+                          analyst={analyst}
+                          isActive={isActive}
+                          onSelect={() => setActiveCardKey(cardKey)}
+                          isFavorite={true}
+                          onToggleFavorite={() =>
+                            handleToggleFavorite("analyst", product.id)
+                          }
+                        />
+                      </div>
                     );
 
                   case "investment-consultant":
