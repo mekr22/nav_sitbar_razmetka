@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Strategy } from "@/data/marketplaceStrategies";
 
 const actionButtonBaseClass =
-  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold text-white sm:w-auto";
+  "flex w-full flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-xs font-bold uppercase text-white sm:w-auto";
 
 const exchangeLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F5812aa6cc56f419ca24acdce705cca81?format=webp&width=800",
@@ -46,7 +46,7 @@ const StrategyCard: FC<StrategyCardProps> = ({
   onOpenDetails,
   secondaryActionLabel = "Learn More",
   secondaryActionIcon: SecondaryActionIcon = BookOpen,
-  primaryActionLabel = "Subscribe",
+  primaryActionLabel = "Buy",
   primaryActionIcon: PrimaryActionIcon = ShoppingCart,
   onPrimaryAction,
 }) => {
