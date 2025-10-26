@@ -614,8 +614,8 @@ const MarketplaceMyProducts: FC = () => {
     }
   };
 
-  const scriptsFavorited = isFavorite("script", "main");
-  const otherFavorited = isFavorite("other", "main");
+  const scriptsFavorited = isFavorite("script", featuredScriptProduct.id);
+  const otherFavorited = isFavorite("other", featuredOtherProduct.id);
   const scriptsCardKey = buildCardKey("scripts", "main");
   const otherCardKey = buildCardKey("other", "main");
 
@@ -1155,7 +1155,7 @@ const MarketplaceMyProducts: FC = () => {
                     </span>
                   </div>
                   <p className="mb-4 text-sm font-medium text-white sm:text-[15px]">
-                    RiskMaster – powerful tool for traders, automatically
+                    RiskMaster ��� powerful tool for traders, automatically
                     calculates trade risks. Optimize trading and minimize
                     losses!
                   </p>
