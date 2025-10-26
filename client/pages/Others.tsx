@@ -666,7 +666,10 @@ const Others: FC = () => {
                     key={product.id}
                     product={product}
                     isActive={activeCardKey === cardKey}
-                    onSelect={() => setActiveCardKey(cardKey)}
+                    onSelect={() => {
+                      setActiveCardKey(cardKey);
+                      openOtherDetails(product, { isFavorite: isFavorited });
+                    }}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggle("other", originalId)}
                     onOpenDetails={(selectedProduct) =>
