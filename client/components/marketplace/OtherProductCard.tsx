@@ -28,7 +28,7 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
   onToggleFavorite,
   onOpenDetails,
 }) => {
-  const handleOpenDetails = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOpenDetails = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     onOpenDetails?.(product, { isFavorite });
   };
