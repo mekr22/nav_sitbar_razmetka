@@ -108,7 +108,7 @@ const CourseCard: FC<CourseCardProps> = ({
         </div>
       </div>
 
-      <div className="mt-2 flex flex-col sm:mt-0 sm:self-end sm:items-center sm:gap-3 md:ml-auto">
+      <div className="mt-2 flex flex-col gap-2 sm:mt-0 sm:flex-row sm:self-end sm:items-center md:ml-auto">
         <button
           className={cn(
             actionButtonBaseClass,
