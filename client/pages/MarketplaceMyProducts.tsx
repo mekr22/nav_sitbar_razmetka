@@ -992,6 +992,9 @@ const MarketplaceMyProducts: FC = () => {
                       isFavorite: isFavorited,
                     })
                   }
+                  secondaryActionLabel="Learn More"
+                  primaryActionLabel="Buy"
+                  primaryActionIcon={ShoppingCart}
                 />
               );
             })}
