@@ -1,0 +1,182 @@
+import { useCallback, useEffect, useState } from "react";
+import { supabase } from "@/lib/supabaseClient";
+import {
+  addFavorite,
+  removeFavorite,
+  checkFavorite,
+  ProductType,
+} from "@/lib/supabaseFavorites";
+
+export function useFavorite(productType: ProductType, productId: string) {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkUserAndFavorite = async () => {
+      if (!supabase) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const {
+          data: { user },
+          error,
+        } = await supabase.auth.getUser();
+
+        if (error || !user) {
+          setLoading(false);
+          return;
+        }
+
+        setUserId(user.id);
+
+        const isFav = await checkFavorite(user.id, productType, productId);
+        setIsFavorite(isFav);
+      } catch (err) {
+        console.error("Error checking favorite:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkUserAndFavorite();
+  }, [productType, productId]);
+
+  const toggle = useCallback(async () => {
+    if (!userId) {
+      console.warn("User not authenticated");
+      return;
+    }
+
+    try {
+      if (isFavorite) {
+        const success = await removeFavorite(userId, productType, productId);
+        if (success) {
+          setIsFavorite(false);
+        }
+      } else {
+        const success = await addFavorite(userId, productType, productId);
+        if (success) {
+          setIsFavorite(true);
+        }
+      }
+    } catch (err) {
+      console.error("Error toggling favorite:", err);
+    }
+  }, [userId, productType, productId, isFavorite]);
+
+  return {
+    isFavorite,
+    loading,
+    toggle,
+    userId,
+  };
+}
+
+export function useFavoriteMultiple(productType?: ProductType) {
+  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const checkUserAndLoadFavorites = async () => {
+      if (!supabase) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const {
+          data: { user },
+          error,
+        } = await supabase.auth.getUser();
+
+        if (error || !user) {
+          setLoading(false);
+          return;
+        }
+
+        setUserId(user.id);
+
+        let query = supabase
+          .from("user_favorites")
+          .select("product_id, product_type")
+          .eq("user_id", user.id);
+
+        if (productType) {
+          query = query.eq("product_type", productType);
+        }
+
+        const { data, error: queryError } = await query;
+
+        if (queryError) {
+          console.error("Error loading favorites:", queryError);
+          setLoading(false);
+          return;
+        }
+
+        const favoriteSet = new Set(
+          data.map((fav) => `${fav.product_type}:${fav.product_id}`)
+        );
+        setFavorites(favoriteSet);
+      } catch (err) {
+        console.error("Error loading favorites:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkUserAndLoadFavorites();
+  }, [productType]);
+
+  const isFavorite = useCallback(
+    (type: ProductType, id: string) => {
+      return favorites.has(`${type}:${id}`);
+    },
+    [favorites]
+  );
+
+  const toggle = useCallback(
+    async (type: ProductType, id: string) => {
+      if (!userId) {
+        console.warn("User not authenticated");
+        return;
+      }
+
+      try {
+        if (isFavorite(type, id)) {
+          const success = await removeFavorite(userId, type, id);
+          if (success) {
+            setFavorites((prev) => {
+              const next = new Set(prev);
+              next.delete(`${type}:${id}`);
+              return next;
+            });
+          }
+        } else {
+          const success = await addFavorite(userId, type, id);
+          if (success) {
+            setFavorites((prev) => {
+              const next = new Set(prev);
+              next.add(`${type}:${id}`);
+              return next;
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Error toggling favorite:", err);
+      }
+    },
+    [userId, isFavorite]
+  );
+
+  return {
+    favorites,
+    isFavorite,
+    loading,
+    toggle,
+    userId,
+  };
+}
