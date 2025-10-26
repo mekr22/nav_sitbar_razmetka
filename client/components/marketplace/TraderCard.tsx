@@ -62,13 +62,26 @@ const PerformanceChart: FC = () => {
   );
 };
 
+type SecondaryCta = {
+  label: string;
+  icon: LucideIcon;
+};
+
 const TraderCard: FC<{
   trader: Trader;
   isActive: boolean;
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-}> = ({ trader, isActive, onSelect, isFavorite, onToggleFavorite }) => {
+  secondaryCta?: SecondaryCta;
+}> = ({
+  trader,
+  isActive,
+  onSelect,
+  isFavorite,
+  onToggleFavorite,
+  secondaryCta,
+}) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
