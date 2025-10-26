@@ -548,6 +548,7 @@ const Favourites: FC = () => {
                         onToggleFavorite={() =>
                           handleToggleFavorite("course", product.id)
                         }
+                        onOpenDetails={() => handleNavigateToDetails("course", course)}
                       />
                     );
 
@@ -563,7 +564,7 @@ const Favourites: FC = () => {
                         onToggleFavorite={() =>
                           handleToggleFavorite("script", product.id)
                         }
-                        onOpenDetails={() => {}}
+                        onOpenDetails={() => handleNavigateToDetails("script", script)}
                       />
                     );
 
