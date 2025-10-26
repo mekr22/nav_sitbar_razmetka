@@ -9,6 +9,7 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 
 import StrategyCard from "@/components/marketplace/StrategyCard";
 import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";

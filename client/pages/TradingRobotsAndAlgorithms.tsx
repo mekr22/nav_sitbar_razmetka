@@ -9,6 +9,7 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useFavoriteMultiple } from "@/hooks/useFavorite";
 
 import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
 import {
