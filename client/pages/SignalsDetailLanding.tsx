@@ -2,6 +2,7 @@ import {
   BookOpen,
   Eye,
   Instagram,
+  MessageCircle,
   ShoppingCart,
   Star,
   TrendingUp,
