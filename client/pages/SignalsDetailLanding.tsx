@@ -16,6 +16,7 @@ import type { MarketplaceCategory } from "@/data/marketplaceCategories";
 import type { Signal } from "@/components/marketplace/SignalCard";
 import { useFavorite } from "@/hooks/useFavorite";
 import { baseSignals } from "@/data/marketplaceSignals";
+import { extractOriginalProductId } from "@/lib/utils";
 
 interface SignalDetailsLocationState {
   signal?: Signal;
