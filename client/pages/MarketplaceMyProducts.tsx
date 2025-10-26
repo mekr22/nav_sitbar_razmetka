@@ -614,13 +614,13 @@ const MarketplaceMyProducts: FC = () => {
     }
   };
 
-  const scriptsFavorited = isFavorite("script", featuredScriptProduct.id);
-  const otherFavorited = isFavorite("other", featuredOtherProduct.id);
-  const scriptsCardKey = buildCardKey("scripts", "main");
-  const otherCardKey = buildCardKey("other", "main");
-
   const featuredScriptProduct = baseScriptProducts[0];
   const featuredOtherProduct = baseOtherProducts[0];
+
+  const scriptsFavorited = isFavorite("script", featuredScriptProduct.id);
+  const otherFavorited = isFavorite("other", featuredOtherProduct.id);
+  const scriptsCardKey = buildCardKey("scripts", featuredScriptProduct.id);
+  const otherCardKey = buildCardKey("other", featuredOtherProduct.id);
 
   const openStrategyDetails = useCallback(
     (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
