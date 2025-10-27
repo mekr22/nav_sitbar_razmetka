@@ -191,7 +191,7 @@ export const useCart = () => {
         items: mergeItems(prev.items, result),
       }));
     },
-    [refresh, state.userId],
+    [refresh, user],
   );
 
   const removeItem = useCallback(
@@ -226,7 +226,7 @@ export const useCart = () => {
         }),
       }));
     },
-    [state.userId, toast],
+    [toast, user],
   );
 
   const resetCart = useCallback(async () => {
@@ -245,7 +245,7 @@ export const useCart = () => {
     }
 
     setState((prev) => ({ ...prev, items: [] }));
-  }, [state.userId, toast]);
+  }, [toast, user]);
 
   const subtotalCents = useMemo(() => {
     return state.items.reduce((total, item) => {
