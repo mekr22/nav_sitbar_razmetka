@@ -563,6 +563,7 @@ const MarketplaceMyProducts: FC = () => {
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const { isFavorite, toggle } = useFavoriteMultiple();
+  const { addProductToCart } = useCart();
 
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = maskNonWhitespace(balanceValue);
