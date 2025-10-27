@@ -1,8 +1,8 @@
 import type { FC, KeyboardEvent } from "react";
 import { BookOpen, ShoppingCart, Users } from "lucide-react";
 
-import type { Signal } from "@/data/marketplaceTypes";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import type { Signal } from "@/data/marketplaceTypes";
 import { cn } from "@/lib/utils";
 
 const platformLogos = [
@@ -25,7 +25,7 @@ interface SignalCardProps {
   onBuy?: (signal: Signal) => void;
 }
 
-export const SignalCard: FC<SignalCardProps> = ({
+const SignalCard: FC<SignalCardProps> = ({
   signal,
   isActive,
   onSelect,
@@ -64,6 +64,7 @@ export const SignalCard: FC<SignalCardProps> = ({
         <div className="absolute right-4 top-4">
           <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
         </div>
+
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
             <img src={signal.icon} alt={signal.name} className="h-16 w-16 rounded-lg" />
@@ -139,7 +140,7 @@ export const SignalCard: FC<SignalCardProps> = ({
           <span className="text-[15px] text-[#2EBD85]">{accuracyLabel}</span>
         </div>
 
-        <div className="mt-autoროვე flex flex-col gap-2 sm:flex-row">
+        <div className="mt-auto flex flex-col gap-2 sm:flex-row">
           <button
             type="button"
             onClick={(event) => {
