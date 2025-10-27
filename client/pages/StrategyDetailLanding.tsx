@@ -412,12 +412,7 @@ const StrategyDetailLanding: FC = () => {
   const primaryStrategyImage = strategyGallery[0]?.src ?? strategy.icon;
 
   const handleAddStrategyToCart = useCallback(() => {
-    const productForCart: Strategy = {
-      ...strategy,
-      id: originalStrategyId,
-    };
-
-    void addProductToCart("strategy", productForCart, {
+    void addProductToCart("strategy", strategy, {
       price: subscriptionPrice,
       subtitle: strategy.strategy,
       imageUrl: primaryStrategyImage,
@@ -427,7 +422,7 @@ const StrategyDetailLanding: FC = () => {
         roi30d: strategy.roi30d,
       },
     });
-  }, [addProductToCart, originalStrategyId, primaryStrategyImage, strategy, subscriptionPrice]);
+  }, [addProductToCart, primaryStrategyImage, strategy, subscriptionPrice]);
 
   const focusArea = useMemo(
     () => `${strategy.strategy} | ${strategy.riskLevel} risk`,
