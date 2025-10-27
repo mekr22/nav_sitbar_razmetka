@@ -441,7 +441,7 @@ const Favourites: FC = () => {
                           analyst={analyst}
                           isActive={isActive}
                           onSelect={() => setActiveCardKey(cardKey)}
-                          isFavorite={true}
+                          isFavorite
                           onToggleFavorite={() =>
                             handleToggleFavorite("analyst", product.id)
                           }
