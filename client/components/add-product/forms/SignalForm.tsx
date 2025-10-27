@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/providers/AuthProvider";
 import { useToast } from "@/hooks/use-toast";
 import { insertProductRecord, type ProductInsertStatus } from "@/lib/supabaseMarketplaceMutations";
-import { cn, slugify } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const DEFAULT_IMAGE = "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder-signal";
 
@@ -62,11 +62,16 @@ const splitList = (value: string): string[] =>
     .map((item) => item.trim())
     .filter((item) => item.length > 0);
 
+const toSlug = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/gi, "-")
+    .replace(/^-+|-+$/g, "")
+    .replace(/-{2,}/g, "-")
+    .trim();
+
 const buildSignalId = (name: string) => {
-  const base = slugify(name || "signal", {
-    lower: true,
-    replacement: "-",
-  });
+  const base = toSlug(name || "signal") || "signal";
   const suffix = Math.random().toString(36).slice(2, 6);
   return `${base}-${suffix}`;
 };
