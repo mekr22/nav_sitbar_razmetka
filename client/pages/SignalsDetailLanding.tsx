@@ -13,7 +13,7 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import type { MarketplaceCategory } from "@/data/marketplaceCategories";
-import type { Signal } from "@/components/marketplace/SignalCard";
+import type { Signal } from "@/data/marketplaceTypes";
 import { useCart } from "@/hooks/useCart";
 import { useFavorite } from "@/hooks/useFavorite";
 import { baseSignals } from "@/data/marketplaceSignals";
