@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
+import { useCart } from "@/hooks/useCart";
 
 import TraderCard from "@/components/marketplace/TraderCard";
 import { baseTraders, Trader } from "@/data/marketplaceTraders";
