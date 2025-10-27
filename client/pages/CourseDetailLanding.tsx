@@ -213,6 +213,26 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
     course.materialType === "training" ? "Training" : "Course";
   const releaseLabel = releaseWindowLabel[course.releaseWindow];
   const priceLabel = priceByFormat[course.format];
+  const originalCourseId = useMemo(() => extractOriginalProductId(course.id), [course.id]);
+  const { addProductToCart } = useCart();
+
+  const handleAddCourseToCart = useCallback(() => {
+    const productForCart: Course = {
+      ...course,
+      id: originalCourseId,
+    };
+
+    void addProductToCart("course", productForCart, {
+      price: priceLabel,
+      subtitle: course.subtitle,
+      imageUrl: course.image,
+      metadata: {
+        duration: course.duration,
+        format: formatLabel,
+        level: course.level,
+      },
+    });
+  }, [addProductToCart, course, formatLabel, originalCourseId, priceLabel]);
 
   const detailItems = useMemo(
     () => [
