@@ -108,11 +108,11 @@ export const useCart = () => {
   }, [toast, user]);
 
   const refresh = useCallback(async () => {
-    if (!state.userId) {
+    if (!user) {
       return;
     }
-    await loadCartItems(state.userId);
-  }, [loadCartItems, state.userId]);
+    await loadCartItems(user.id);
+  }, [loadCartItems, user]);
 
   const addPayloadToCart = useCallback(
     async (payload: AddPayloadWithoutUser): Promise<CartAddResult> => {
@@ -172,13 +172,13 @@ export const useCart = () => {
 
   const updateQuantity = useCallback(
     async (input: Omit<UpdateQuantityInput, "userId">) => {
-      if (!state.userId) {
+      if (!user) {
         return;
       }
 
       const result = await updateCartItemQuantity({
         ...input,
-        userId: state.userId,
+        userId: user.id,
       });
 
       if (!result) {
@@ -196,11 +196,11 @@ export const useCart = () => {
 
   const removeItem = useCallback(
     async (input: Omit<RemoveCartItemInput, "userId">) => {
-      if (!state.userId) {
+      if (!user) {
         return;
       }
 
-      const success = await removeCartItem({ ...input, userId: state.userId });
+      const success = await removeCartItem({ ...input, userId: user.id });
       if (!success) {
         toast({
           title: "Unable to remove item",
@@ -230,11 +230,11 @@ export const useCart = () => {
   );
 
   const resetCart = useCallback(async () => {
-    if (!state.userId) {
+    if (!user) {
       return;
     }
 
-    const success = await clearCart(state.userId);
+    const success = await clearCart(user.id);
     if (!success) {
       toast({
         title: "Unable to clear cart",
@@ -265,7 +265,7 @@ export const useCart = () => {
   return {
     items: state.items,
     loading: state.loading,
-    userId: state.userId,
+    userId: user?.id ?? null,
     subtotalCents,
     addPayloadToCart,
     addProductToCart,
