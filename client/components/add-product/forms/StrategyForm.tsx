@@ -1,16 +1,19 @@
-import { useMemo, useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useMemo } from "react";
 import { z } from "zod";
 
 import FormSection from "@/components/add-product/FormSection";
 import FormActions from "@/components/add-product/FormActions";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import useProductForm from "@/components/add-product/useProductForm";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useAuth } from "@/providers/AuthProvider";
-import { useToast } from "@/hooks/use-toast";
-import { insertProductRecord, type ProductInsertStatus } from "@/lib/supabaseMarketplaceMutations";
 
 const strategySchema = z.object({
   name: z.string().min(2, "Enter a strategy name"),
@@ -63,17 +66,37 @@ const toSlug = (value: string) =>
     .replace(/^-+|-+$/g, "")
     .replace(/-{2,}/g, "-");
 
-const buildStrategyId = (name: string) => `${toSlug(name || "strategy")}-${Math.random().toString(36).slice(2, 6)}`;
+const buildStrategyId = (values: StrategyFormValues) =>
+  `${toSlug(values.name || "strategy") || "strategy"}-${Math.random().toString(36).slice(2, 6)}`;
 
 const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const form = useForm<StrategyFormValues>({
-    resolver: zodResolver(strategySchema),
-    defaultValues,
-  });
-  const { user } = useAuth();
-  const { toast } = useToast();
-  const [publishing, setPublishing] = useState(false);
-  const [savingDraft, setSavingDraft] = useState(false);
+  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<StrategyFormValues>(
+    {
+      schema: strategySchema,
+      defaultValues,
+      table: "strategies",
+      buildId: buildStrategyId,
+      buildPayload: (values) => ({
+        name: values.name,
+        icon: values.icon,
+        users: values.users,
+        risk_level: values.riskLevel.toUpperCase(),
+        profit_sharing: values.profitSharing,
+        exchanges: splitList(values.exchanges).map((exchange) => toSlug(exchange)),
+        exchanges_count: values.exchangesCount,
+        assets: splitList(values.assets).map((asset) => asset.toUpperCase()),
+        strategy: values.strategy,
+        max_drawdown: values.maxDrawdown,
+        min_capital: values.minCapital,
+        roi_30d: values.roi30d,
+        roi_1y: values.roi1y,
+        description: values.description ?? null,
+        price: values.price ?? null,
+      }),
+      onCreated,
+      getDisplayName: (values) => values.name,
+    },
+  );
 
   const values = form.watch();
 
@@ -94,57 +117,32 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
     [values],
   );
 
-  const handleSubmit = async (
-    submitValues: StrategyFormValues,
-    status: ProductInsertStatus,
-  ) => {
-    const payload = {
-      id: buildStrategyId(submitValues.name),
-      name: submitValues.name,
-      icon: submitValues.icon,
-      users: submitValues.users,
-      risk_level: submitValues.riskLevel.toUpperCase(),
-      profit_sharing: submitValues.profitSharing,
-      exchanges: splitList(submitValues.exchanges).map((exchange) => toSlug(exchange)),
-      exchanges_count: submitValues.exchangesCount,
-      assets: splitList(submitValues.assets).map((asset) => asset.toUpperCase()),
-      strategy: submitValues.strategy,
-      max_drawdown: submitValues.maxDrawdown,
-      min_capital: submitValues.minCapital,
-      roi_30d: submitValues.roi30d,
-      roi_1y: submitValues.roi1y,
-      description: submitValues.description ?? null,
-      price: submitValues.price ?? null,
-    } as Record<string, unknown>;
-
-    const activeSetter = status === "draft" ? setSavingDraft : setPublishing;
-
-    try {
-      activeSetter(true);
-      const created = await insertProductRecord("strategies", payload, {
-        status,
-        userId: user?.id,
-      });
-      toast.toast({
-        title: status === "draft" ? "Draft saved" : "Product published",
-        description: `${submitValues.name} is now available in strategies`,
-      });
-      form.reset(defaultValues);
-      onCreated?.((created as { id?: string }).id ?? payload.id);
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Unexpected error while saving strategy";
-      toast.toast({
-        title: "Unable to save strategy",
-        description: message,
-      });
-    } finally {
-      activeSetter(false);
-    }
-  };
-
-  const publish = form.handleSubmit((data) => handleSubmit(data, "published"));
-  const saveDraft = form.handleSubmit((data) => handleSubmit(data, "draft"));
+  const textField = (
+    name: keyof StrategyFormValues,
+    label: string,
+    placeholder?: string,
+    type: React.HTMLInputTypeAttribute = "text",
+  ) => (
+    <FormField
+      key={name as string}
+      control={form.control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormControl>
+            <Input
+              {...field}
+              type={type}
+              placeholder={placeholder}
+              className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
+            />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
 
   return (
     <Form {...form}>
@@ -167,18 +165,14 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
             </div>
             <p className="text-sm font-medium text-[#B0B0B0]">{previewData.description}</p>
             <div className="grid gap-3 md:grid-cols-3">
-              <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-3">
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Profit sharing</p>
-                <p className="text-[15px] font-bold text-white">{previewData.profitSharing}</p>
-              </div>
-              <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-3">
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">ROI 30d</p>
-                <p className="text-[15px] font-bold text-[#2EBD85]">{previewData.roi30d}</p>
-              </div>
-              <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-3">
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">ROI 1y</p>
-                <p className="text-[15px] font-bold text-[#2EBD85]">{previewData.roi1y}</p>
-              </div>
+              {["Profit sharing", "ROI 30d", "ROI 1y"].map((label, index) => (
+                <div key={label} className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-3">
+                  <p className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</p>
+                  <p className="text-[15px] font-bold text-white">
+                    {index === 0 ? previewData.profitSharing : index === 1 ? previewData.roi30d : previewData.roi1y}
+                  </p>
+                </div>
+              ))}
             </div>
             <div className="flex flex-col gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Exchanges:</span>
@@ -205,84 +199,11 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
 
         <FormSection title="Strategy details">
           <div className="grid gap-4 md:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Strategy name
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="Momentum Alpha"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="icon"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Icon URL
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="https://"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="users"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Subscribers / investors
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="320"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="riskLevel"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Risk level
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="MEDIUM"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {textField("name", "Strategy name", "Momentum Alpha")}
+            {textField("icon", "Icon URL", "https://")}
+            {textField("users", "Subscribers / investors", "320")}
+            {textField("riskLevel", "Risk level", "MEDIUM")}
           </div>
-
           <FormField
             control={form.control}
             name="description"
@@ -305,211 +226,25 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
         </FormSection>
 
         <FormSection title="Trading parameters">
-          <FormField
-            control={form.control}
-            name="profitSharing"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Profit sharing
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="20% Profit Sharing"
-                    className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
+          {textField("profitSharing", "Profit sharing", "20% Profit Sharing")}
           <div className="grid gap-4 md:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="exchanges"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Exchanges (comma separated)
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="Binance, Coinbase, NYSE"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="exchangesCount"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Total exchanges available
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      type="number"
-                      placeholder="30"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {textField("exchanges", "Exchanges (comma separated)", "Binance, Coinbase, NYSE")}
+            {textField("exchangesCount", "Total exchanges available", "30", "number")}
           </div>
-
-          <FormField
-            control={form.control}
-            name="assets"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Assets (comma separated)
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="Stocks, Crypto, ETFs"
-                    className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
+          {textField("assets", "Assets (comma separated)", "Stocks, Crypto, ETFs")}
           <div className="grid gap-4 md:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="strategy"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Strategy style
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="Momentum breakout"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="maxDrawdown"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Maximum drawdown
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="15%"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {textField("strategy", "Strategy style", "Momentum breakout")}
+            {textField("maxDrawdown", "Maximum drawdown", "15%")}
           </div>
-
           <div className="grid gap-4 md:grid-cols-2">
-            <FormField
-              control={form.control}
-              name="minCapital"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    Minimum capital
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="$1,000"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="roi30d"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                    ROI 30 days
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder="+12.4%"
-                      className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {textField("minCapital", "Minimum capital", "$1,000")}
+            {textField("roi30d", "ROI 30 days", "+12.4%")}
           </div>
-
-          <FormField
-            control={form.control}
-            name="roi1y"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  ROI 1 year
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="+68.3%"
-                    className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {textField("roi1y", "ROI 1 year", "+68.3%")}
         </FormSection>
 
         <FormSection title="Monetization">
-          <FormField
-            control={form.control}
-            name="price"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
-                  Management fee / subscription price
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    {...field}
-                    placeholder="$99 / month"
-                    className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white placeholder:text-[#B0B0B0]"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {textField("price", "Management fee / subscription price", "$99 / month")}
         </FormSection>
 
         <FormActions
