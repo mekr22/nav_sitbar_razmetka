@@ -85,6 +85,7 @@ export interface TradingRobotCardProps {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onBuy?: (robot: TradingRobot) => void;
 }
 
 const TradingRobotCard: FC<TradingRobotCardProps> = ({
@@ -93,6 +94,7 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
+  onBuy,
 }) => {
   const accuracyStyle = accuracyStyles[robot.accuracyLevel];
 
@@ -249,6 +251,10 @@ const TradingRobotCard: FC<TradingRobotCardProps> = ({
               actionButtonBaseClass,
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
+            onClick={(event) => {
+              event.stopPropagation();
+              onBuy?.(robot);
+            }}
           >
             <ShoppingCart className="h-4 w-4" />
             Buy
