@@ -410,6 +410,9 @@ const StrategyDetailLanding: FC = () => {
   const heroMediaImage = strategyGallery[0]?.src ?? coverImage;
   const galleryLaunchTarget = strategyGallery[0]?.src ?? coverImage;
   const primaryStrategyImage = strategyGallery[0]?.src ?? strategy.icon;
+  const originalStrategyId = useMemo(() => extractOriginalProductId(strategy.id), [strategy.id]);
+  const { addProductToCart } = useCart();
+  const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", originalStrategyId);
 
   const handleAddStrategyToCart = useCallback(() => {
     void addProductToCart("strategy", strategy, {
@@ -644,10 +647,6 @@ const StrategyDetailLanding: FC = () => {
   const remainingComments = Math.max(commentCount - comments.length, 0);
   const commentCountLabel =
     commentCount === 1 ? "1 comment" : `${commentCount} comments`;
-
-  const originalStrategyId = useMemo(() => extractOriginalProductId(strategy.id), [strategy.id]);
-  const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", originalStrategyId);
-  const { addProductToCart } = useCart();
 
   const handleToggleFavorite = useCallback(() => {
     toggleFavorite();
