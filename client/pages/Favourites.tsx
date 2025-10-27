@@ -490,18 +490,21 @@ const Favourites: FC = () => {
                   case "signal":
                     const signal = product.data as Signal;
                     return (
-                      <div key={product.id} className="w-full">
+                      <div key={product.id} className="h-full">
                         <SignalCard
                           signal={signal}
                           isActive={isActive}
                           onSelect={() => setActiveCardKey(cardKey)}
-                          isFavorite={true}
+                          isFavorite
                           onToggleFavorite={() =>
                             handleToggleFavorite("signal", product.id)
                           }
                           onOpenDetails={() =>
                             handleNavigateToDetails("signal", signal)
                           }
+                          onBuy={(current) => {
+                            void addProductToCart("signal", current);
+                          }}
                         />
                       </div>
                     );
