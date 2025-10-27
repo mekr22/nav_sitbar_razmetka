@@ -1000,6 +1000,9 @@ const MarketplaceMyProducts: FC = () => {
                   secondaryActionLabel="Learn More"
                   primaryActionLabel="Buy"
                   primaryActionIcon={ShoppingCart}
+                  onPrimaryAction={(current) => {
+                    void addProductToCart("strategy", current);
+                  }}
                 />
               );
             })}
