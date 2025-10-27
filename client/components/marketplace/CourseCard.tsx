@@ -18,6 +18,7 @@ type CourseCardProps = {
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onOpenDetails?: (course: Course, meta?: { isFavorite: boolean }) => void;
+  onBuy?: (course: Course) => void;
 };
 
 const CourseCard: FC<CourseCardProps> = ({
@@ -27,6 +28,7 @@ const CourseCard: FC<CourseCardProps> = ({
   isFavorite,
   onToggleFavorite,
   onOpenDetails,
+  onBuy,
 }) => (
   <div className="w-full">
     <div
@@ -116,6 +118,10 @@ const CourseCard: FC<CourseCardProps> = ({
             actionButtonBaseClass,
             "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90 sm:flex-none",
           )}
+          onClick={(event) => {
+            event.stopPropagation();
+            onBuy?.(course);
+          }}
         >
           <ShoppingCart className="h-4 w-4" />
           Buy
