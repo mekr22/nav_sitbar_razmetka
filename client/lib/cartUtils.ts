@@ -326,21 +326,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "other": {
+      const other = product as OtherProduct;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.title,
-        subtitle: resolveSubtitle(product.label, options?.subtitle),
+        productId: other.id,
+        title: other.title,
+        subtitle: resolveSubtitle(other.label, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.image ?? null, options?.imageUrl),
+        imageUrl: resolveImage(other.image ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            rating: product.rating,
-            ratingTag: product.ratingTag,
-            industry: product.industryLabel,
+            rating: other.rating,
+            ratingTag: other.ratingTag,
+            industry: other.industryLabel,
           },
           options?.metadata,
         ),
