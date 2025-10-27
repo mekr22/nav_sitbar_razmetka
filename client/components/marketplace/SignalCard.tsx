@@ -36,6 +36,7 @@ interface SignalCardProps {
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onOpenDetails?: (signal: Signal, meta?: { isFavorite: boolean }) => void;
+  onBuy?: (signal: Signal) => void;
 }
 
 export const SignalCard: FC<SignalCardProps> = ({
@@ -45,6 +46,7 @@ export const SignalCard: FC<SignalCardProps> = ({
   isFavorite,
   onToggleFavorite,
   onOpenDetails,
+  onBuy,
 }) => {
   const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
   const assets = Array.isArray(signal.assets) ? signal.assets : [];
@@ -177,7 +179,14 @@ export const SignalCard: FC<SignalCardProps> = ({
             <BookOpen className="h-4 w-4" />
             Learn More
           </button>
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90">
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onBuy?.(signal);
+            }}
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90"
+          >
             <ShoppingCart className="h-4 w-4" />
             Buy
           </button>
