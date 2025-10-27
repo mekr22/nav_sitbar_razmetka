@@ -20,6 +20,7 @@ export interface UseProductFormOptions<T extends FieldValues> {
   buildPayload: (values: T) => Record<string, unknown>;
   buildId?: (values: T) => string;
   onCreated?: (id: string) => void;
+  getDisplayName?: (values: T) => string;
 }
 
 export interface UseProductFormResult<T extends FieldValues> {
@@ -36,8 +37,15 @@ const DEFAULT_ID_BUILDER = () => Math.random().toString(36).slice(2, 10);
 const useProductForm = <T extends FieldValues>(
   options: UseProductFormOptions<T>,
 ): UseProductFormResult<T> => {
-  const { schema, defaultValues, table, buildPayload, buildId = DEFAULT_ID_BUILDER, onCreated } =
-    options;
+  const {
+    schema,
+    defaultValues,
+    table,
+    buildPayload,
+    buildId = DEFAULT_ID_BUILDER,
+    onCreated,
+    getDisplayName,
+  } = options;
 
   const form = useForm<T>({
     resolver: zodResolver(schema),
@@ -61,9 +69,11 @@ const useProductForm = <T extends FieldValues>(
         userId: user?.id,
       });
 
+      const displayName = getDisplayName ? getDisplayName(values) : "Product";
+
       toast.toast({
         title: status === "draft" ? "Draft saved" : "Product published",
-        description: `${values["name" as keyof T] ?? "Product"} successfully saved`,
+        description: `${displayName} successfully saved`,
       });
 
       form.reset(defaultValues);
