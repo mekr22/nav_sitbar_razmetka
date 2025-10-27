@@ -3,6 +3,7 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import type { InvestmentConsultant } from "@/data/marketplaceInvestmentConsultants";
+import { useCart } from "@/hooks/useCart";
 import { useFavorite } from "@/hooks/useFavorite";
 import { extractOriginalProductId } from "@/lib/utils";
 
@@ -291,10 +292,27 @@ const InvestmentConsultantDetailLanding: FC = () => {
 
   const originalConsultantId = useMemo(() => extractOriginalProductId(consultant.id), [consultant.id]);
   const { isFavorite: isConsultantFavorite, toggle: toggleConsultantFavorite } = useFavorite("investment-consultant", originalConsultantId);
+  const { addProductToCart } = useCart();
 
   const handleToggleFavoriteConsultant = useCallback(() => {
     toggleConsultantFavorite();
   }, [toggleConsultantFavorite]);
+
+  const handleAddConsultantToCart = useCallback(() => {
+    const productForCart: InvestmentConsultant = {
+      ...consultant,
+      id: originalConsultantId,
+    };
+
+    void addProductToCart("investment-consultant", productForCart, {
+      subtitle: consultant.company,
+      imageUrl: consultant.avatar,
+      metadata: {
+        credentials: consultant.credentials,
+        location: consultant.location,
+      },
+    });
+  }, [addProductToCart, consultant, originalConsultantId]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/investment-consultants", {
@@ -400,6 +418,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
               <div className="mt-4 flex flex-col gap-2">
                 <button
                   type="button"
+                  onClick={handleAddConsultantToCart}
                   className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[15px] font-bold uppercase text-white transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                 >
                   <ShoppingCart className="h-4 w-4" />
