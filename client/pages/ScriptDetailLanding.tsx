@@ -124,6 +124,24 @@ const ScriptDetailLanding: FC = () => {
     const locationState = location.state as { product?: ScriptProduct } | null;
     return locationState?.product ?? baseScriptProducts[0];
   }, [location.state]);
+  const originalProductId = useMemo(() => extractOriginalProductId(product.id), [product.id]);
+  const { addProductToCart } = useCart();
+
+  const handleAddScriptToCart = useCallback(() => {
+    const productForCart: ScriptProduct = {
+      ...product,
+      id: originalProductId,
+    };
+
+    void addProductToCart("script", productForCart, {
+      imageUrl: product.heroImage,
+      subtitle: product.typeLabel,
+      metadata: {
+        revenue: product.revenueLabel,
+        compatibility: product.compatibility.join(", "),
+      },
+    });
+  }, [addProductToCart, originalProductId, product]);
 
   const handleNavigateBack = useCallback(() => {
     navigate("/marketplace/scripts");
