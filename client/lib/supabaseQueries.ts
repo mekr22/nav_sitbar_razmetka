@@ -115,7 +115,7 @@ export async function getSignals(): Promise<Signal[]> {
   const { data, error } = await supabase
     .from("signals")
     .select("*")
-    .eq("status", "published")
+    .or("status.eq.published,status.is.null")
     .order("risk_level", { ascending: true });
 
   if (error) {
