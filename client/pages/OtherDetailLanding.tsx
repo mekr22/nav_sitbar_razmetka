@@ -132,7 +132,10 @@ const OtherDetailLanding: FC = () => {
     }
     return baseOtherProducts[0];
   }, [locationState]);
-  const originalProductId = useMemo(() => extractOriginalProductId(product.id), [product.id]);
+  const originalProductId = useMemo(
+    () => extractOriginalProductId(product.id),
+    [product.id],
+  );
   const { addProductToCart } = useCart();
 
   useEffect(() => {
@@ -716,10 +719,14 @@ const OtherDetailLanding: FC = () => {
                     <button
                       key={key}
                       type="button"
-                      onClick={isPrimary ? handleAddOtherProductToCart : undefined}
+                      onClick={
+                        isPrimary ? handleAddOtherProductToCart : undefined
+                      }
                       className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                     >
-                      <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
+                      <Icon
+                        className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`}
+                      />
                       {label}
                     </button>
                   );

@@ -85,8 +85,12 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
     let isActive = true;
 
-    const startAutoRefresh = (supabase.auth as unknown as { startAutoRefresh?: () => void }).startAutoRefresh;
-    const stopAutoRefresh = (supabase.auth as unknown as { stopAutoRefresh?: () => void }).stopAutoRefresh;
+    const startAutoRefresh = (
+      supabase.auth as unknown as { startAutoRefresh?: () => void }
+    ).startAutoRefresh;
+    const stopAutoRefresh = (
+      supabase.auth as unknown as { stopAutoRefresh?: () => void }
+    ).stopAutoRefresh;
 
     startAutoRefresh?.();
 
@@ -102,7 +106,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
         }
         currentSession = data.session ?? null;
       } catch (error) {
-        console.error("[AuthProvider] Unexpected error while getting session", error);
+        console.error(
+          "[AuthProvider] Unexpected error while getting session",
+          error,
+        );
       }
 
       if (!currentSession) {
@@ -114,7 +121,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
               refresh_token: persisted.refresh_token,
             });
             if (error) {
-              console.warn("[AuthProvider] Unable to restore session from storage", error.message);
+              console.warn(
+                "[AuthProvider] Unable to restore session from storage",
+                error.message,
+              );
               if (isBrowser) {
                 window.localStorage.removeItem(AUTH_STORAGE_KEY);
               }
@@ -122,7 +132,10 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
               currentSession = data.session ?? null;
             }
           } catch (error) {
-            console.error("[AuthProvider] Unexpected error while restoring session", error);
+            console.error(
+              "[AuthProvider] Unexpected error while restoring session",
+              error,
+            );
           }
         }
       }

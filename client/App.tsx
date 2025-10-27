@@ -63,101 +63,107 @@ const App = () => (
                 <AuthProvider>
                   <ClientLayout>
                     <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/pricing" element={<Pricing />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/profile-old" element={<ProfileNew />} />
-                    <Route path="/billing" element={<Billing />} />
-                    <Route path="/stock" element={<Stock />} />
-                    <Route
-                      path="/marketplace/my-products"
-                      element={<MarketplaceMyProducts />}
-                    />
-                    <Route path="/marketplace/traders" element={<Traders />} />
-                    <Route
-                      path="/marketplace/analysts"
-                      element={<Analysts />}
-                    />
-                    <Route
-                      path="/marketplace/investment-consultants"
-                      element={<InvestmentConsultants />}
-                    />
-                    <Route
-                      path="/marketplace/signals"
-                      element={<SignalsAndTechnicalIndicators />}
-                    />
-                    <Route
-                      path="/marketplace/strategies"
-                      element={<StrategiesAndPortfolios />}
-                    />
-                    <Route
-                      path="/marketplace/trading-robots"
-                      element={<TradingRobotsAndAlgorithms />}
-                    />
-                    <Route
-                      path="/marketplace/courses"
-                      element={<CoursesAndTrainingMaterials />}
-                    />
-                    <Route
-                      path="/marketplace/scripts"
-                      element={<ScriptsAndSoftware />}
-                    />
-                    <Route path="/marketplace/others" element={<Others />} />
-                    <Route path="/marketplace/popular" element={<Popular />} />
-                    <Route
-                      path="/marketplace/signals-details"
-                      element={<SignalsDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/script-details"
-                      element={<ScriptDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/other-details"
-                      element={<OtherDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/strategy-details"
-                      element={<StrategyDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/course-details"
-                      element={<CourseDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/add-product"
-                      element={<AddProduct />}
-                    />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route
-                      path="/marketplace/indicators-details"
-                      element={<IndicatorsDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/trading-robot-details"
-                      element={<TradingRobotDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/investment-consultant-details"
-                      element={<InvestmentConsultantDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/trader-details"
-                      element={<TraderDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/analyst-details"
-                      element={<AnalystDetailLanding />}
-                    />
-                    <Route
-                      path="/marketplace/favourites"
-                      element={<Favourites />}
-                    />
-                    {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </ClientLayout>
-              </AuthProvider>
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="/pricing" element={<Pricing />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/profile-old" element={<ProfileNew />} />
+                      <Route path="/billing" element={<Billing />} />
+                      <Route path="/stock" element={<Stock />} />
+                      <Route
+                        path="/marketplace/my-products"
+                        element={<MarketplaceMyProducts />}
+                      />
+                      <Route
+                        path="/marketplace/traders"
+                        element={<Traders />}
+                      />
+                      <Route
+                        path="/marketplace/analysts"
+                        element={<Analysts />}
+                      />
+                      <Route
+                        path="/marketplace/investment-consultants"
+                        element={<InvestmentConsultants />}
+                      />
+                      <Route
+                        path="/marketplace/signals"
+                        element={<SignalsAndTechnicalIndicators />}
+                      />
+                      <Route
+                        path="/marketplace/strategies"
+                        element={<StrategiesAndPortfolios />}
+                      />
+                      <Route
+                        path="/marketplace/trading-robots"
+                        element={<TradingRobotsAndAlgorithms />}
+                      />
+                      <Route
+                        path="/marketplace/courses"
+                        element={<CoursesAndTrainingMaterials />}
+                      />
+                      <Route
+                        path="/marketplace/scripts"
+                        element={<ScriptsAndSoftware />}
+                      />
+                      <Route path="/marketplace/others" element={<Others />} />
+                      <Route
+                        path="/marketplace/popular"
+                        element={<Popular />}
+                      />
+                      <Route
+                        path="/marketplace/signals-details"
+                        element={<SignalsDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/script-details"
+                        element={<ScriptDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/other-details"
+                        element={<OtherDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/strategy-details"
+                        element={<StrategyDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/course-details"
+                        element={<CourseDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/add-product"
+                        element={<AddProduct />}
+                      />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route
+                        path="/marketplace/indicators-details"
+                        element={<IndicatorsDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/trading-robot-details"
+                        element={<TradingRobotDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/investment-consultant-details"
+                        element={<InvestmentConsultantDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/trader-details"
+                        element={<TraderDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/analyst-details"
+                        element={<AnalystDetailLanding />}
+                      />
+                      <Route
+                        path="/marketplace/favourites"
+                        element={<Favourites />}
+                      />
+                      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </ClientLayout>
+                </AuthProvider>
               }
             />
           </Routes>

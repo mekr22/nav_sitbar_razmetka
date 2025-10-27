@@ -53,7 +53,8 @@ const Profile: FC = () => {
     if (!client) {
       toast({
         title: "Supabase not configured",
-        description: "Set Supabase environment variables to enable authentication.",
+        description:
+          "Set Supabase environment variables to enable authentication.",
         variant: "destructive",
       });
       return;
@@ -144,7 +145,9 @@ const Profile: FC = () => {
         <div className="container-card flex flex-col gap-6 p-6 sm:p-8">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-bold text-white">
-              {mode === "signIn" ? "Sign in to view your profile" : "Create your account"}
+              {mode === "signIn"
+                ? "Sign in to view your profile"
+                : "Create your account"}
             </h1>
             <p className="text-sm text-[#B0B0B0]">
               {mode === "signIn"
@@ -234,7 +237,9 @@ const Profile: FC = () => {
 
           <button
             type="button"
-            onClick={() => setMode((prev) => (prev === "signIn" ? "signUp" : "signIn"))}
+            onClick={() =>
+              setMode((prev) => (prev === "signIn" ? "signUp" : "signIn"))
+            }
             className="text-xs font-semibold text-[#A06AFF] underline transition-opacity hover:opacity-80"
             disabled={isSubmitting}
           >

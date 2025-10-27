@@ -936,7 +936,10 @@ const MarketplaceMyProducts: FC = () => {
           <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
             {investmentConsultants.map((consultant) => {
               const cardKey = buildCardKey("consultant", consultant.id);
-              const isFavorited = isFavorite("investment-consultant", consultant.id);
+              const isFavorited = isFavorite(
+                "investment-consultant",
+                consultant.id,
+              );
               return (
                 <InvestmentConsultantCard
                   key={consultant.id}
@@ -949,7 +952,9 @@ const MarketplaceMyProducts: FC = () => {
                     });
                   }}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggle("investment-consultant", consultant.id)}
+                  onToggleFavorite={() =>
+                    toggle("investment-consultant", consultant.id)
+                  }
                   onBuy={(current) => {
                     void addProductToCart("investment-consultant", current);
                   }}
@@ -1327,7 +1332,9 @@ const MarketplaceMyProducts: FC = () => {
                     });
                   }}
                   isFavorite={isFavorited}
-                  onToggleFavorite={() => toggle("trading-robot", adjustedRobot.id)}
+                  onToggleFavorite={() =>
+                    toggle("trading-robot", adjustedRobot.id)
+                  }
                   onBuy={(current) => {
                     void addProductToCart("trading-robot", current);
                   }}

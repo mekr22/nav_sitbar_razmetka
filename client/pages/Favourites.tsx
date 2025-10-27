@@ -66,7 +66,7 @@ const Favourites: FC = () => {
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = useMemo(
     () => maskNonWhitespace(balanceValue),
-    [balanceValue]
+    [balanceValue],
   );
 
   useEffect(() => {
@@ -109,13 +109,11 @@ const Favourites: FC = () => {
         setUserId(user.id);
 
         const userFavorites = await getUserFavorites(user.id);
-        const displayFavorites: DisplayProduct[] = userFavorites.map(
-          (fav) => ({
-            id: fav.id,
-            type: (fav as any).type,
-            data: fav,
-          })
-        );
+        const displayFavorites: DisplayProduct[] = userFavorites.map((fav) => ({
+          id: fav.id,
+          type: (fav as any).type,
+          data: fav,
+        }));
 
         setFavorites(displayFavorites);
       } catch (err) {
@@ -174,22 +172,20 @@ const Favourites: FC = () => {
           break;
       }
 
-      return searchableText
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
+      return searchableText.toLowerCase().includes(searchTerm.toLowerCase());
     });
   }, [favorites, searchTerm]);
 
   const handleToggleFavorite = async (
     productType: ProductType,
-    productId: string
+    productId: string,
   ) => {
     if (!userId) return;
 
     await toggleFavorite(userId, productType, productId);
 
     setFavorites((prev) =>
-      prev.filter((fav) => !(fav.type === productType && fav.id === productId))
+      prev.filter((fav) => !(fav.type === productType && fav.id === productId)),
     );
   };
 
@@ -379,7 +375,7 @@ const Favourites: FC = () => {
                     "flex h-8 items-center justify-center rounded-full px-3 text-xs font-bold text-white backdrop-blur-[58px] transition-colors sm:gap-2 sm:text-sm md:px-4 md:text-[15px]",
                     isSelected
                       ? "bg-gradient-to-r from-[#A06AFF] to-[#482090]"
-                      : "border border-[#181B22] bg-[#0C101480] hover:border-[#1F2230]"
+                      : "border border-[#181B22] bg-[#0C101480] hover:border-[#1F2230]",
                   )}
                 >
                   {category}
@@ -464,7 +460,7 @@ const Favourites: FC = () => {
                           onToggleFavorite={() =>
                             handleToggleFavorite(
                               "investment-consultant",
-                              product.id
+                              product.id,
                             )
                           }
                         />
@@ -531,7 +527,9 @@ const Favourites: FC = () => {
                       <div
                         key={product.id}
                         className="w-full cursor-pointer"
-                        onClick={() => handleNavigateToDetails("trading-robot", robot)}
+                        onClick={() =>
+                          handleNavigateToDetails("trading-robot", robot)
+                        }
                       >
                         <TradingRobotCard
                           robot={robot}
@@ -589,7 +587,9 @@ const Favourites: FC = () => {
                       <div
                         key={product.id}
                         className="w-full cursor-pointer"
-                        onClick={() => handleNavigateToDetails("other", otherProduct)}
+                        onClick={() =>
+                          handleNavigateToDetails("other", otherProduct)
+                        }
                       >
                         <OtherProductCard
                           product={otherProduct}

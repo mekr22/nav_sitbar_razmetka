@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type FC,
-} from "react";
+import { useCallback, useEffect, useMemo, useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -30,17 +24,20 @@ const Cart: FC = () => {
     });
   }, [items]);
 
-  const formatCurrency = useCallback((amountCents: number, currencyCode?: string) => {
-    const normalizedCurrency = (currencyCode ?? "USD").toUpperCase();
-    try {
-      return new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: normalizedCurrency,
-      }).format(amountCents / 100);
-    } catch {
-      return `$${(amountCents / 100).toFixed(2)}`;
-    }
-  }, []);
+  const formatCurrency = useCallback(
+    (amountCents: number, currencyCode?: string) => {
+      const normalizedCurrency = (currencyCode ?? "USD").toUpperCase();
+      try {
+        return new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: normalizedCurrency,
+        }).format(amountCents / 100);
+      } catch {
+        return `$${(amountCents / 100).toFixed(2)}`;
+      }
+    },
+    [],
+  );
 
   const buildDescription = useCallback((item: CartItemType): string => {
     if (item.subtitle && item.subtitle.trim().length > 0) {
@@ -49,7 +46,8 @@ const Cart: FC = () => {
 
     if (item.metadata) {
       const stringValues = Object.values(item.metadata).filter(
-        (value): value is string => typeof value === "string" && value.trim().length > 0,
+        (value): value is string =>
+          typeof value === "string" && value.trim().length > 0,
       );
 
       if (stringValues.length > 0) {
@@ -87,11 +85,13 @@ const Cart: FC = () => {
   }, [items, selection]);
 
   const hasSelectedItems = useMemo(() => {
-    return items.some((item) => (selection[item.id] ?? true));
+    return items.some((item) => selection[item.id] ?? true);
   }, [items, selection]);
 
   const summaryCurrency = useMemo(() => {
-    const firstCurrency = items.find((item) => (selection[item.id] ?? true))?.priceCurrency;
+    const firstCurrency = items.find(
+      (item) => selection[item.id] ?? true,
+    )?.priceCurrency;
     return firstCurrency ?? items[0]?.priceCurrency ?? "USD";
   }, [items, selection]);
 
@@ -109,7 +109,9 @@ const Cart: FC = () => {
             ) : items.length === 0 ? (
               <div className="flex flex-col items-center justify-center rounded-[20px] border border-[#181B22] bg-[#0C1014] p-6 text-center text-[#B0B0B0]">
                 <span className="text-[15px]">
-                  {userId ? "Your cart is empty." : "Sign in to view your saved items."}
+                  {userId
+                    ? "Your cart is empty."
+                    : "Sign in to view your saved items."}
                 </span>
                 <button
                   type="button"
@@ -172,15 +174,20 @@ const Cart: FC = () => {
                     />
 
                     <div className="flex min-w-0 w-full flex-1 flex-col justify-between gap-0.5 sm:w-auto">
-                      <h3 className="truncate text-[15px] font-bold text-white">{item.title}</h3>
-                      <p className="truncate text-[15px] font-normal text-[#B0B0B0]">{description}</p>
+                      <h3 className="truncate text-[15px] font-bold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="truncate text-[15px] font-normal text-[#B0B0B0]">
+                        {description}
+                      </p>
                     </div>
 
                     <div className="w-full text-left text-[15px] font-normal text-white sm:w-32 sm:flex-shrink-0 sm:text-right">
                       {formatCurrency(itemTotalCents, item.priceCurrency)}
                       {item.quantity > 1 && (
                         <span className="block text-xs text-[#B0B0B0]">
-                          {item.quantity} × {formatCurrency(item.priceCents, item.priceCurrency)}
+                          {item.quantity} ×{" "}
+                          {formatCurrency(item.priceCents, item.priceCurrency)}
                         </span>
                       )}
                     </div>
@@ -206,11 +213,15 @@ const Cart: FC = () => {
         <div className="flex w-full flex-col justify-between lg:w-[330px]">
           <div className="flex flex-col">
             <div className="p-4 sm:p-0 sm:pb-4">
-              <h2 className="text-[19px] font-bold text-white">Order Summary</h2>
+              <h2 className="text-[19px] font-bold text-white">
+                Order Summary
+              </h2>
             </div>
 
             <div className="flex items-center justify-between border-b border-[#181B22] px-4 pb-4 sm:px-0">
-              <span className="text-[15px] font-normal text-[#B0B0B0]">Subtotal</span>
+              <span className="text-[15px] font-normal text-[#B0B0B0]">
+                Subtotal
+              </span>
               <span className="text-[15px] font-normal text-white">
                 {formatCurrency(selectedSubtotalCents, summaryCurrency)}
               </span>
@@ -230,7 +241,8 @@ const Cart: FC = () => {
               disabled={!hasSelectedItems}
               className={cn(
                 "flex h-[46px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-[15px] font-bold text-white backdrop-blur-[50px] transition-opacity hover:opacity-90 sm:w-auto",
-                !hasSelectedItems && "cursor-not-allowed opacity-50 hover:opacity-50",
+                !hasSelectedItems &&
+                  "cursor-not-allowed opacity-50 hover:opacity-50",
               )}
             >
               Proceed to Checkout

@@ -70,7 +70,8 @@ const resolveFallbackSignal = (
 
     return true;
   }) as ExtendedSignal | undefined;
-  const first = preferredEntry ?? (baseSignals[0] as ExtendedSignal | undefined);
+  const first =
+    preferredEntry ?? (baseSignals[0] as ExtendedSignal | undefined);
 
   if (first) {
     return {
@@ -79,47 +80,61 @@ const resolveFallbackSignal = (
       productImage: first.chartImage,
       author: {
         name: "Sarah Lee",
-        avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=160",
+        avatar:
+          "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=160",
         bio: "Professional trader with 8+ years of experience in momentum strategies and technical analysis.",
         communityLink: "https://example.com",
         socials: ["twitter", "youtube", "instagram", "web"],
       },
-      tags: ["Distribution", "Luxaigo", "signals", "statisticalprobability", "statistics", "Stop", "trailingstop", "trendanalysis"],
+      tags: [
+        "Distribution",
+        "Luxaigo",
+        "signals",
+        "statisticalprobability",
+        "statistics",
+        "Stop",
+        "trailingstop",
+        "trendanalysis",
+      ],
       averageRating: 4.5,
       totalReviews: 28,
       reviews: [
         {
           id: "1",
           author: "John Smith",
-          avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+          avatar:
+            "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
           postedAt: "2 days ago",
           rating: 5,
           title: "Game changer for my trading strategy!",
-          message: "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.",
+          message:
+            "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.",
         },
         {
           id: "2",
           author: "John Smith",
-          avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+          avatar:
+            "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
           postedAt: "1 week ago",
           rating: 4,
           title: "Great tool, but could use more features",
-          message: "RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.",
+          message:
+            "RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.",
         },
         {
           id: "3",
           author: "John Smith",
-          avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+          avatar:
+            "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
           postedAt: "3 weeks ago",
           rating: 4.5,
           title: "Worth every penny",
-          message: "I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.",
+          message:
+            "I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.",
         },
       ],
       name:
-        detailType === "indicators"
-          ? `${first.name} Indicator`
-          : first.name,
+        detailType === "indicators" ? `${first.name} Indicator` : first.name,
     };
   }
 
@@ -129,8 +144,7 @@ const resolveFallbackSignal = (
   return {
     id: detailType === "indicators" ? "default-indicator" : "default-signal",
     name: defaultName,
-    icon:
-      "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1d90fdad8fa945dc9d0b417f6bb84c17?format=webp&width=256",
+    icon: "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1d90fdad8fa945dc9d0b417f6bb84c17?format=webp&width=256",
     users: "0",
     riskLevel: "UNSPECIFIED",
     platforms: [],
@@ -315,7 +329,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const location = useLocation();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"chart" | "source">("chart");
-  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [comments, setComments] = useState<CommentNode[]>(
+    () => INITIAL_COMMENTS,
+  );
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
 
@@ -349,7 +365,8 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
     const indentStep = isCompactLayout ? 16 : 24;
     const indent = depth * indentStep;
     const timeColor = comment.timeColor ?? "#B0B0B0";
-    const hasReplies = Array.isArray(comment.replies) && comment.replies.length > 0;
+    const hasReplies =
+      Array.isArray(comment.replies) && comment.replies.length > 0;
     const baseLikeColor = comment.likeColor ?? "#B0B0B0";
     const displayLikeColor = comment.liked ? "#A06AFF" : baseLikeColor;
     const likeButtonClasses = comment.liked
@@ -373,7 +390,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
               style={{ left: -indentStep }}
             />
           )}
-          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">{hiddenLabel}</span>
+          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">
+            {hiddenLabel}
+          </span>
           <button
             type="button"
             onClick={() => handleToggleHidden(comment.id)}
@@ -406,13 +425,17 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
               className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
             />
             <div className="flex flex-1 flex-col gap-0.5">
-              <span className="text-[15px] font-bold text-white">{comment.author}</span>
+              <span className="text-[15px] font-bold text-white">
+                {comment.author}
+              </span>
               <span className="text-xs font-bold" style={{ color: timeColor }}>
                 {comment.time}
               </span>
             </div>
           </div>
-          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
+          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">
+            {comment.text}
+          </p>
         </div>
 
         <button
@@ -448,11 +471,20 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
           >
             {hideLabel}
           </button>
-          <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-white max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm">
+          <button
+            type="button"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-white max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
+          >
             Reply
           </button>
           <button type="button" className="rounded-full p-1 text-[#B0B0B0]">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11Z"
                 fill="#B0B0B0"
@@ -519,8 +551,12 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
     return provided ?? fallbackSignal;
   }, [locationState, fallbackSignal]);
 
-  const originalSignalId = useMemo(() => extractOriginalProductId(signal.id), [signal.id]);
-  const { isFavorite: isSignalFavorite, toggle: toggleSignalFavorite } = useFavorite("signal", originalSignalId);
+  const originalSignalId = useMemo(
+    () => extractOriginalProductId(signal.id),
+    [signal.id],
+  );
+  const { isFavorite: isSignalFavorite, toggle: toggleSignalFavorite } =
+    useFavorite("signal", originalSignalId);
   const { addProductToCart } = useCart();
 
   const favoriteStarButtonClassName = isSignalFavorite
@@ -532,11 +568,12 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   }, [toggleSignalFavorite]);
 
   const reviews = useMemo(() => {
-    const sourceReviews = Array.isArray(signal.reviews) && signal.reviews.length > 0
-      ? signal.reviews
-      : Array.isArray(fallbackSignal.reviews)
-        ? fallbackSignal.reviews
-        : [];
+    const sourceReviews =
+      Array.isArray(signal.reviews) && signal.reviews.length > 0
+        ? signal.reviews
+        : Array.isArray(fallbackSignal.reviews)
+          ? fallbackSignal.reviews
+          : [];
 
     return sourceReviews.filter(
       (review) =>
@@ -564,18 +601,24 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const assets = Array.isArray(signal.assets) ? signal.assets : [];
   const platforms = Array.isArray(signal.platforms) ? signal.platforms : [];
   const timeframes = Array.isArray(signal.timeframes) ? signal.timeframes : [];
-  const tags = Array.isArray(signal.tags) ? signal.tags : fallbackSignal.tags ?? [];
+  const tags = Array.isArray(signal.tags)
+    ? signal.tags
+    : (fallbackSignal.tags ?? []);
   const author = signal.author ?? fallbackSignal.author;
   const averageRating =
     typeof signal.averageRating === "number" && signal.averageRating > 0
       ? signal.averageRating
-      : fallbackSignal.averageRating ?? 0;
+      : (fallbackSignal.averageRating ?? 0);
   const totalReviews =
     typeof signal.totalReviews === "number" && signal.totalReviews > 0
       ? signal.totalReviews
-      : fallbackSignal.totalReviews ?? 0;
+      : (fallbackSignal.totalReviews ?? 0);
   const baseChartImage =
-    signal.productImage ?? signal.chartImage ?? fallbackSignal.productImage ?? fallbackSignal.chartImage ?? "";
+    signal.productImage ??
+    signal.chartImage ??
+    fallbackSignal.productImage ??
+    fallbackSignal.chartImage ??
+    "";
   const displayChartImage = baseChartImage || DEFAULT_CHART_IMAGE;
   const authorAvatar = author?.avatar ?? fallbackSignal.author?.avatar ?? "";
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
@@ -688,7 +731,12 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#paint0_linear_left)" />
+                  <circle
+                    cx="11.9908"
+                    cy="11.9908"
+                    r="11.9908"
+                    fill="url(#paint0_linear_left)"
+                  />
                   <path
                     d="M13.627 8.17578L9.81171 11.991L13.627 15.8063"
                     stroke="white"
@@ -723,7 +771,12 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <circle cx="11.9908" cy="11.9908" r="11.9908" fill="url(#paint0_linear_right)" />
+                  <circle
+                    cx="11.9908"
+                    cy="11.9908"
+                    r="11.9908"
+                    fill="url(#paint0_linear_right)"
+                  />
                   <path
                     d="M10.373 8.17578L14.188 11.991L10.373 15.8063"
                     stroke="white"
@@ -756,19 +809,19 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-4 max-[360px]:gap-3">
               <div className="flex flex-wrap items-center gap-5 sm:gap-6 max-[360px]:gap-3">
                 <div className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
+                  <TrendingUp className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                   <span className="text-xs font-bold uppercase text-[#B0B0B0]">
                     Use on chart
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
+                  <Users className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                   <span className="text-xs font-bold text-[#B0B0B0]">
                     {signal.users}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                <MessageCircle className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
+                  <MessageCircle className="h-5 w-5 text-[#B0B0B0] max-[360px]:h-4 max-[360px]:w-4" />
                   <span className="text-xs font-bold text-[#B0B0B0]">
                     {reviews.length > 0 ? reviews.length : "87"}
                   </span>
@@ -782,96 +835,150 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
             {detailType !== "indicators" && (
               <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 max-[360px]:gap-3 max-[360px]:p-3 backdrop-blur-[50px]">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Performance</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Performance
+                </h2>
 
-              <div className="h-px w-full bg-[#181B22]" />
+                <div className="h-px w-full bg-[#181B22]" />
 
-              <div className="relative">
-                <div className="relative h-[220px] max-[360px]:h-[140px]">
-                  <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)]">
-                    <svg
-                      className="h-full w-full"
-                      viewBox="0 0 652 221"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      preserveAspectRatio="none"
-                    >
-                      <g filter="url(#filter0_d_perf)">
-                        <path
-                          d="M9 208.911L16.454 212L21.0091 205.822L25.1502 208.028L26.3926 204.498L29.7054 205.822L33.8465 202.291L37.5735 204.498L49.5826 185.08L51.2391 186.404L56.6225 176.696L58.2789 180.226L60.3494 178.02L62.42 180.226L64.0764 176.696L66.9752 179.343L69.8739 176.696L72.3586 178.02C73.6009 174.048 76.0856 166.016 76.0856 165.663C76.0856 165.31 76.0856 157.278 76.0856 153.307L79.3984 157.278L81.8831 153.307C81.8831 154.189 81.8831 155.601 81.8831 154.189C81.8831 152.777 84.6438 143.009 86.0242 138.302L89.337 151.1L93.8922 140.067L97.2051 139.185L98.4474 131.683L100.932 133.007L102.174 128.593L105.487 136.537L107.144 145.804L108.8 137.42L110.457 142.274L112.113 154.189L114.184 139.185L117.911 149.776L122.88 131.683L127.021 135.213L128.677 130.8L130.748 134.33L134.061 129.917L138.616 144.922L141.101 137.42L144.828 140.067L147.726 129.917L148.555 135.213L151.453 130.8L155.594 147.57L157.665 143.157L158.493 147.57L162.22 144.922L163.462 152.865L165.119 146.687L168.846 143.157L170.502 145.804L171.745 140.067L175.057 147.57L177.542 146.687L181.269 152.865L183.754 146.687L187.067 161.691L190.379 160.367V151.1L192.864 148.452L199.076 157.72L201.975 149.776L203.217 157.72L205.702 156.837L208.186 152.865L209.843 156.837L211.499 144.922L212.741 147.57L214.812 142.274C216.192 145.216 218.953 150.57 218.953 148.452C218.953 146.334 219.781 137.861 220.195 133.889L225.579 142.274L228.063 143.157L228.892 141.391H231.376L234.689 144.922L237.588 145.804L238.416 141.391L240.487 144.039L245.87 143.157L249.183 136.537L252.496 143.157H254.152L255.395 140.067L258.707 146.687L260.364 143.157L263.263 149.776L269.888 148.452L272.373 162.574L274.443 155.072L278.17 152.865L281.483 166.104L283.554 161.691L288.109 168.311C289.904 165.222 293.575 159.308 293.907 160.367C294.238 161.427 298.186 169.341 300.118 173.165L302.603 169.635L303.845 174.93H306.33L308.815 170.517L310.057 174.048L317.097 165.222L319.167 152.865L322.066 156.396L324.137 151.1L328.692 146.687C330.9 150.953 335.317 159.397 335.317 159.043C335.317 158.69 336.422 153.601 336.974 151.1H339.459L340.701 149.776L345.256 160.367L346.912 157.72L348.983 166.104L351.054 168.311L353.538 184.198L355.609 178.461L358.093 180.226L360.164 163.457L360.992 166.104L363.477 165.222L365.133 170.517L365.547 163.457L368.86 160.367L372.173 170.517L374.658 164.339L377.557 169.635L379.627 163.457H381.283L382.526 157.72L382.94 159.926L385.425 149.776H390.394L392.464 161.25L394.121 163.015L395.777 161.25L400.747 167.428L402.817 164.78L404.474 172.724L406.544 171.4L409.857 177.578L412.342 177.137L414.412 174.489L417.311 166.104L421.038 169.635L422.694 161.25L427.664 164.339L430.976 152.865L438.016 149.776L440.087 152.865L441.329 148.011L443.4 151.541L446.299 140.95L449.197 140.509L451.682 149.776L456.651 154.189L459.55 148.893H461.206L462.035 146.687H467.004L469.074 151.541L471.973 144.922L474.458 146.687L474.872 140.067L479.841 130.8L485.639 133.007L486.467 129.476L491.85 136.978L492.679 132.565L494.749 134.33L500.133 129.476L502.203 116.237L508.415 125.946L513.384 128.152L515.455 125.946L517.111 108.735L520.01 106.97L522.909 105.646L525.393 78.7261L528.706 66.8109L530.777 75.637L531.191 64.6043L535.332 67.2522L540.715 54.013L544.028 31.0652L547.341 34.5957L550.654 48.7174L552.724 15.6196L555.209 31.0652L556.451 29.3L557.694 32.3891L560.178 26.2109L563.077 37.6848L565.148 29.3L565.976 45.187L568.46 37.6848L572.602 39.45L573.844 46.5109L577.571 20.9152L578.813 26.2109L580.47 23.1217H582.54L588.752 9L590.822 37.6848L594.963 40.7739L598.276 51.8065L600.761 41.2152C601.589 44.4514 603.246 51.0122 603.246 51.3652C603.246 51.7183 605.178 42.0978 606.144 37.2435L608.629 42.5391L611.942 21.3565L618.154 16.5022L621.052 19.15L622.709 13.413L627.678 54.4543L629.749 50.0413L633.89 51.3652L637.617 31.0652L643 19.15"
-                          stroke="#A06AFF"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </g>
-                      <defs>
-                        <filter id="filter0_d_perf" x="0.249756" y="0.698242" width="651.5" height="220.22" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                          <feOffset />
-                          <feGaussianBlur stdDeviation="4" />
-                          <feComposite in2="hardAlpha" operator="out" />
-                          <feColorMatrix type="matrix" values="0 0 0 0 0.627451 0 0 0 0 0.415686 0 0 0 0 1 0 0 0 0.24 0" />
-                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_perf" />
-                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_perf" result="shape" />
-                        </filter>
-                      </defs>
-                    </svg>
+                <div className="relative">
+                  <div className="relative h-[220px] max-[360px]:h-[140px]">
+                    <div className="absolute left-0.5 top-0 h-full w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)]">
+                      <svg
+                        className="h-full w-full"
+                        viewBox="0 0 652 221"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none"
+                      >
+                        <g filter="url(#filter0_d_perf)">
+                          <path
+                            d="M9 208.911L16.454 212L21.0091 205.822L25.1502 208.028L26.3926 204.498L29.7054 205.822L33.8465 202.291L37.5735 204.498L49.5826 185.08L51.2391 186.404L56.6225 176.696L58.2789 180.226L60.3494 178.02L62.42 180.226L64.0764 176.696L66.9752 179.343L69.8739 176.696L72.3586 178.02C73.6009 174.048 76.0856 166.016 76.0856 165.663C76.0856 165.31 76.0856 157.278 76.0856 153.307L79.3984 157.278L81.8831 153.307C81.8831 154.189 81.8831 155.601 81.8831 154.189C81.8831 152.777 84.6438 143.009 86.0242 138.302L89.337 151.1L93.8922 140.067L97.2051 139.185L98.4474 131.683L100.932 133.007L102.174 128.593L105.487 136.537L107.144 145.804L108.8 137.42L110.457 142.274L112.113 154.189L114.184 139.185L117.911 149.776L122.88 131.683L127.021 135.213L128.677 130.8L130.748 134.33L134.061 129.917L138.616 144.922L141.101 137.42L144.828 140.067L147.726 129.917L148.555 135.213L151.453 130.8L155.594 147.57L157.665 143.157L158.493 147.57L162.22 144.922L163.462 152.865L165.119 146.687L168.846 143.157L170.502 145.804L171.745 140.067L175.057 147.57L177.542 146.687L181.269 152.865L183.754 146.687L187.067 161.691L190.379 160.367V151.1L192.864 148.452L199.076 157.72L201.975 149.776L203.217 157.72L205.702 156.837L208.186 152.865L209.843 156.837L211.499 144.922L212.741 147.57L214.812 142.274C216.192 145.216 218.953 150.57 218.953 148.452C218.953 146.334 219.781 137.861 220.195 133.889L225.579 142.274L228.063 143.157L228.892 141.391H231.376L234.689 144.922L237.588 145.804L238.416 141.391L240.487 144.039L245.87 143.157L249.183 136.537L252.496 143.157H254.152L255.395 140.067L258.707 146.687L260.364 143.157L263.263 149.776L269.888 148.452L272.373 162.574L274.443 155.072L278.17 152.865L281.483 166.104L283.554 161.691L288.109 168.311C289.904 165.222 293.575 159.308 293.907 160.367C294.238 161.427 298.186 169.341 300.118 173.165L302.603 169.635L303.845 174.93H306.33L308.815 170.517L310.057 174.048L317.097 165.222L319.167 152.865L322.066 156.396L324.137 151.1L328.692 146.687C330.9 150.953 335.317 159.397 335.317 159.043C335.317 158.69 336.422 153.601 336.974 151.1H339.459L340.701 149.776L345.256 160.367L346.912 157.72L348.983 166.104L351.054 168.311L353.538 184.198L355.609 178.461L358.093 180.226L360.164 163.457L360.992 166.104L363.477 165.222L365.133 170.517L365.547 163.457L368.86 160.367L372.173 170.517L374.658 164.339L377.557 169.635L379.627 163.457H381.283L382.526 157.72L382.94 159.926L385.425 149.776H390.394L392.464 161.25L394.121 163.015L395.777 161.25L400.747 167.428L402.817 164.78L404.474 172.724L406.544 171.4L409.857 177.578L412.342 177.137L414.412 174.489L417.311 166.104L421.038 169.635L422.694 161.25L427.664 164.339L430.976 152.865L438.016 149.776L440.087 152.865L441.329 148.011L443.4 151.541L446.299 140.95L449.197 140.509L451.682 149.776L456.651 154.189L459.55 148.893H461.206L462.035 146.687H467.004L469.074 151.541L471.973 144.922L474.458 146.687L474.872 140.067L479.841 130.8L485.639 133.007L486.467 129.476L491.85 136.978L492.679 132.565L494.749 134.33L500.133 129.476L502.203 116.237L508.415 125.946L513.384 128.152L515.455 125.946L517.111 108.735L520.01 106.97L522.909 105.646L525.393 78.7261L528.706 66.8109L530.777 75.637L531.191 64.6043L535.332 67.2522L540.715 54.013L544.028 31.0652L547.341 34.5957L550.654 48.7174L552.724 15.6196L555.209 31.0652L556.451 29.3L557.694 32.3891L560.178 26.2109L563.077 37.6848L565.148 29.3L565.976 45.187L568.46 37.6848L572.602 39.45L573.844 46.5109L577.571 20.9152L578.813 26.2109L580.47 23.1217H582.54L588.752 9L590.822 37.6848L594.963 40.7739L598.276 51.8065L600.761 41.2152C601.589 44.4514 603.246 51.0122 603.246 51.3652C603.246 51.7183 605.178 42.0978 606.144 37.2435L608.629 42.5391L611.942 21.3565L618.154 16.5022L621.052 19.15L622.709 13.413L627.678 54.4543L629.749 50.0413L633.89 51.3652L637.617 31.0652L643 19.15"
+                            stroke="#A06AFF"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                          />
+                        </g>
+                        <defs>
+                          <filter
+                            id="filter0_d_perf"
+                            x="0.249756"
+                            y="0.698242"
+                            width="651.5"
+                            height="220.22"
+                            filterUnits="userSpaceOnUse"
+                            colorInterpolationFilters="sRGB"
+                          >
+                            <feFlood
+                              floodOpacity="0"
+                              result="BackgroundImageFix"
+                            />
+                            <feColorMatrix
+                              in="SourceAlpha"
+                              type="matrix"
+                              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                              result="hardAlpha"
+                            />
+                            <feOffset />
+                            <feGaussianBlur stdDeviation="4" />
+                            <feComposite in2="hardAlpha" operator="out" />
+                            <feColorMatrix
+                              type="matrix"
+                              values="0 0 0 0 0.627451 0 0 0 0 0.415686 0 0 0 0 1 0 0 0 0.24 0"
+                            />
+                            <feBlend
+                              mode="normal"
+                              in2="BackgroundImageFix"
+                              result="effect1_dropShadow_perf"
+                            />
+                            <feBlend
+                              mode="normal"
+                              in="SourceGraphic"
+                              in2="effect1_dropShadow_perf"
+                              result="shape"
+                            />
+                          </filter>
+                        </defs>
+                      </svg>
+                    </div>
+
+                    <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
+                      {PERFORMANCE_LEVELS.map((level) => (
+                        <div
+                          key={level.label}
+                          className="flex items-center gap-0.5"
+                        >
+                          <div
+                            className={`h-px flex-1 ${level.accent ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
+                          />
+                          <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0] max-[360px]:w-8">
+                            {level.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="absolute right-4 top-0 z-20 inline-flex items-center justify-center rounded bg-[#A06AFF] px-1 py-0.5">
+                      <span className="text-center text-xs font-bold uppercase text-white">
+                        $507K
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
-                    {PERFORMANCE_LEVELS.map((level) => (
-                      <div key={level.label} className="flex items-center gap-0.5">
-                        <div
-                          className={`h-px flex-1 ${level.accent ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
-                        />
-                        <span className="w-10 text-right text-xs font-bold uppercase text-[#B0B0B0] max-[360px]:w-8">
-                          {level.label}
+                  <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
+                    {PERFORMANCE_MONTHS.map((month) => (
+                      <div
+                        key={month}
+                        className="flex flex-col items-center gap-1"
+                      >
+                        <div className="h-2 w-px bg-[#523A83]" />
+                        <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">
+                          {month}
                         </span>
                       </div>
                     ))}
                   </div>
-
-                  <div className="absolute right-4 top-0 z-20 inline-flex items-center justify-center rounded bg-[#A06AFF] px-1 py-0.5">
-                    <span className="text-center text-xs font-bold uppercase text-white">$507K</span>
-                  </div>
                 </div>
-
-                <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
-                  {PERFORMANCE_MONTHS.map((month) => (
-                    <div key={month} className="flex flex-col items-center gap-1">
-                      <div className="h-2 w-px bg-[#523A83]" />
-                      <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">{month}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
               </div>
             )}
 
             {detailType === "indicators" ? (
               <div className="flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-3 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Overview</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Overview
+                </h2>
 
                 <p className="text-[15px] font-normal text-white max-[360px]:text-sm">
-                  The Statistical Trailing Stop tool offers traders a way to lock in profits in trending markets with four statistical levels based on the log-normal distribution of volatility
+                  The Statistical Trailing Stop tool offers traders a way to
+                  lock in profits in trending markets with four statistical
+                  levels based on the log-normal distribution of volatility
                 </p>
 
                 <p className="text-[15px] font-normal text-white max-[360px]:text-sm">
-                  The indicator also features a dashboard with statistics of all detected signals.
+                  The indicator also features a dashboard with statistics of all
+                  detected signals.
                 </p>
 
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Usage</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Usage
+                </h2>
 
                 <p className="text-[15px] font-normal text-white max-[360px]:text-sm">
-                  The tool works out of the box, traders can adjust the data used with two parameters: data & distribution length.
+                  The tool works out of the box, traders can adjust the data
+                  used with two parameters: data & distribution length.
                 </p>
 
                 <p className="text-[15px] font-normal text-white max-[360px]:text-sm">
-                  By default, the tool takes volatility measures of groups of 10 candles, and statistical measures of the last 100 of these groups. Then traders can adjust the base level to use as trailing. The larger the level, the more resistant the tool will be to moves against the trend.
+                  By default, the tool takes volatility measures of groups of 10
+                  candles, and statistical measures of the last 100 of these
+                  groups. Then traders can adjust the base level to use as
+                  trailing. The larger the level, the more resistant the tool
+                  will be to moves against the trend.
                 </p>
 
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Settings</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Settings
+                </h2>
 
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <div className="flex items-center gap-2">
@@ -888,7 +995,8 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                       <div className="h-1 w-1 rounded-full bg-[#A06AFF]" />
                     </div>
                     <p className="flex-1 text-[15px] font-normal text-white max-[360px]:text-sm">
-                      Distribution Length: Select how many data points the distribution will have
+                      Distribution Length: Select how many data points the
+                      distribution will have
                     </p>
                   </div>
 
@@ -902,7 +1010,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                   </div>
                 </div>
 
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Dashboard</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Dashboard
+                </h2>
 
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
                   <div className="flex items-center gap-2">
@@ -936,7 +1046,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
             ) : (
               <>
                 <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 max-[360px]:gap-3 max-[360px]:p-3 backdrop-blur-[50px]">
-                  <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Accuracy</h2>
+                  <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                    Accuracy
+                  </h2>
 
                   <div className="h-px w-full bg-[#181B22]" />
 
@@ -944,7 +1056,10 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                     <div className="relative h-[216px] max-[360px]:h-[140px]">
                       <div className="pointer-events-none absolute inset-0 z-10 flex flex-col justify-between">
                         {ACCURACY_LEVELS.map((level, index) => (
-                          <div key={level} className="flex items-center gap-0.5">
+                          <div
+                            key={level}
+                            className="flex items-center gap-0.5"
+                          >
                             <div
                               className={`h-px flex-1 ${index === ACCURACY_LEVELS.length - 1 ? "bg-[#523A83]" : "bg-[#2E2744]"}`}
                             />
@@ -958,23 +1073,30 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                       <div className="absolute bottom-0 left-0 right-[42px] z-20 flex items-end justify-between gap-[2px] max-[360px]:right-[28px]">
                         {ACCURACY_DATA.map((data) => {
                           const maxHeight = 181;
-                          const successfulHeight = (data.successful / 250) * maxHeight;
-                          const unsuccessfulHeight = (data.unsuccessful / 250) * maxHeight;
+                          const successfulHeight =
+                            (data.successful / 250) * maxHeight;
+                          const unsuccessfulHeight =
+                            (data.unsuccessful / 250) * maxHeight;
 
                           return (
-                            <div key={data.month} className="flex flex-1 items-end gap-px">
+                            <div
+                              key={data.month}
+                              className="flex flex-1 items-end gap-px"
+                            >
                               <div
                                 className="w-full rounded-t-full bg-gradient-to-t from-[#181A20] to-[#A06AFF]"
                                 style={{
                                   height: `${successfulHeight}px`,
-                                  minHeight: successfulHeight > 0 ? "8px" : "0px",
+                                  minHeight:
+                                    successfulHeight > 0 ? "8px" : "0px",
                                 }}
                               />
                               <div
                                 className="w-full rounded-t-full bg-gradient-to-t from-[#181A20] to-[#FFA800]"
                                 style={{
                                   height: `${unsuccessfulHeight}px`,
-                                  minHeight: unsuccessfulHeight > 0 ? "8px" : "0px",
+                                  minHeight:
+                                    unsuccessfulHeight > 0 ? "8px" : "0px",
                                 }}
                               />
                             </div>
@@ -985,7 +1107,10 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
                     <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
                       {ACCURACY_DATA.map((data) => (
-                        <div key={data.month} className="flex flex-col items-center gap-1">
+                        <div
+                          key={data.month}
+                          className="flex flex-col items-center gap-1"
+                        >
                           <div className="h-2 w-px bg-[#523A83]" />
                           <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">
                             {data.month}
@@ -998,29 +1123,38 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                   <div className="flex items-center justify-center gap-4 max-[360px]:gap-3">
                     <div className="flex items-center gap-2">
                       <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
-                      <span className="text-xs font-bold uppercase text-[#808283]">Successful</span>
+                      <span className="text-xs font-bold uppercase text-[#808283]">
+                        Successful
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="h-3 w-3 rounded-full bg-[#FFA800]" />
-                      <span className="text-xs font-bold uppercase text-[#808283]">Unsuccessful</span>
+                      <span className="text-xs font-bold uppercase text-[#808283]">
+                        Unsuccessful
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
                   <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
-                    <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Description</h2>
+                    <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                      Description
+                    </h2>
                   </div>
                   <div className="p-4 max-[360px]:p-3">
                     <p className="text-[15px] font-medium text-white max-[360px]:text-sm">
-                      Catches breakouts on M5–D1 for crypto, stocks, and forex. Suitable for accounts starting from $500.
+                      Catches breakouts on M5–D1 for crypto, stocks, and forex.
+                      Suitable for accounts starting from $500.
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
                   <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
-                    <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Specifications</h2>
+                    <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                      Specifications
+                    </h2>
                   </div>
                   <div className="flex flex-col gap-4 p-4 max-[360px]:gap-3 max-[360px]:p-3">
                     {SPECIFICATIONS.map((spec, index) => (
@@ -1028,7 +1162,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                         <div className="flex h-4 w-4 items-center justify-center">
                           <div className="h-1 w-1 rounded-full bg-[#A06AFF]" />
                         </div>
-                        <p className="flex-1 text-[15px] font-medium text-white max-[360px]:text-sm">{spec}</p>
+                        <p className="flex-1 text-[15px] font-medium text-white max-[360px]:text-sm">
+                          {spec}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -1038,21 +1174,41 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
             <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">20 comments</h2>
+                <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">
+                  20 comments
+                </h2>
                 <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px] max-[360px]:p-0.5">
                   <button
                     type="button"
                     aria-label="Sort comments"
                     className="flex h-[26px] w-[26px] items-center justify-center rounded-full transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <g clipPath="url(#clip0_clock)">
-                        <path d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M8 5.33301V7.99967L9.33333 9.33301" stroke="#B0B0B0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path
+                          d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928"
+                          stroke="#B0B0B0"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M8 5.33301V7.99967L9.33333 9.33301"
+                          stroke="#B0B0B0"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </g>
                       <defs>
                         <clipPath id="clip0_clock">
-                          <rect width="16" height="16" fill="white"/>
+                          <rect width="16" height="16" fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
@@ -1062,8 +1218,20 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                     aria-label="Show trending comments"
                     className="flex h-[26px] w-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z"
+                        stroke="white"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -1087,7 +1255,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                 {comments.map((comment) => renderComment(comment))}
                 <div className="flex justify-center">
                   <button className="flex h-[26px] items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 py-2.5 max-[360px]:px-4 max-[360px]:py-2">
-                    <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">16 more comments</span>
+                    <span className="text-center text-[15px] font-bold text-white max-[360px]:text-sm">
+                      16 more comments
+                    </span>
                   </button>
                 </div>
               </div>
@@ -1104,7 +1274,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
               <div className="flex items-center gap-3 p-4 max-[360px]:gap-2 max-[360px]:p-3">
                 <div className="flex flex-col gap-0.5">
-                  <h3 className="text-[19px] font-bold text-white max-[360px]:text-base">{signal.name}</h3>
+                  <h3 className="text-[19px] font-bold text-white max-[360px]:text-base">
+                    {signal.name}
+                  </h3>
                   <div className="flex items-center gap-1">
                     <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
                       <Users className="h-4 w-4 text-[#B0B0B0] max-[360px]:h-3.5 max-[360px]:w-3.5" />
@@ -1208,7 +1380,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                       onClick={isPrimary ? handleAddSignalToCart : undefined}
                       className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                     >
-                      <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
+                      <Icon
+                        className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`}
+                      />
                       {label}
                     </button>
                   );
@@ -1225,7 +1399,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                     className="h-20 w-20 flex-shrink-0 rounded-full object-cover max-[360px]:h-16 max-[360px]:w-16"
                   />
                   <div className="flex flex-1 flex-col gap-2 max-[360px]:gap-1.5">
-                    <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">{author.name}</h3>
+                    <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                      {author.name}
+                    </h3>
                     <button
                       type="button"
                       className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90 max-[360px]:w-16 max-[360px]:text-[11px]"
@@ -1331,7 +1507,9 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 max-[360px]:gap-3 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Reviews</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Reviews
+                </h2>
 
                 <div className="flex items-center gap-4 max-[360px]:gap-3">
                   <span className="text-[31px] font-bold leading-none text-[#A06AFF] max-[360px]:text-2xl">
@@ -1349,45 +1527,47 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
               </div>
 
               <div className="flex flex-col">
-                {(showAllReviews ? reviews : reviews.slice(0, 3)).map((review, index) => (
-                  <div key={review.id} className="flex flex-col">
-                    {index > 0 && (
-                      <div className="px-4 py-2 max-[360px]:px-3">
-                        <div className="h-px bg-[#181B22]" />
-                      </div>
-                    )}
+                {(showAllReviews ? reviews : reviews.slice(0, 3)).map(
+                  (review, index) => (
+                    <div key={review.id} className="flex flex-col">
+                      {index > 0 && (
+                        <div className="px-4 py-2 max-[360px]:px-3">
+                          <div className="h-px bg-[#181B22]" />
+                        </div>
+                      )}
 
-                    <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
-                      <div className="flex items-center gap-2">
-                        <img
-                          src={review.avatar}
-                          alt={review.author}
-                          className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                            {review.author}
-                          </span>
-                          <span className="text-xs font-bold text-[#B0B0B0]">
-                            {review.postedAt}
-                          </span>
+                      <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src={review.avatar}
+                            alt={review.author}
+                            className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
+                          />
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                              {review.author}
+                            </span>
+                            <span className="text-xs font-bold text-[#B0B0B0]">
+                              {review.postedAt}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-0.5">
+                          {renderStars(review.rating)}
                         </div>
                       </div>
-                      <div className="flex items-center gap-0.5">
-                        {renderStars(review.rating)}
+
+                      <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
+                        <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                          {review.title}
+                        </h4>
+                        <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">
+                          {review.message}
+                        </p>
                       </div>
                     </div>
-
-                    <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
-                      <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                        {review.title}
-                      </h4>
-                      <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">
-                        {review.message}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
 
               {reviews.length > 0 && (
@@ -1405,18 +1585,17 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Disclaimer</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Disclaimer
+                </h2>
               </div>
               <div className="p-4">
                 <p className="text-[15px] font-medium text-[#B0B0B0]">
-                  The information and publications are not meant to be, and do not
-                  constitute, financial, investment, trading, or other types of advice
-                  or recommendations supplied or endorsed by TyrianTrade. Read more in
-                  the{" "}
-                  <a
-                    href="/terms"
-                    className="text-[#A06AFF] underline"
-                  >
+                  The information and publications are not meant to be, and do
+                  not constitute, financial, investment, trading, or other types
+                  of advice or recommendations supplied or endorsed by
+                  TyrianTrade. Read more in the{" "}
+                  <a href="/terms" className="text-[#A06AFF] underline">
                     Terms of Use
                   </a>
                   .

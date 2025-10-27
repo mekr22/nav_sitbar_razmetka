@@ -97,125 +97,128 @@ const TraderCard: FC<{
   const SecondaryIcon = resolvedSecondaryCta.icon;
 
   return (
-  <div className="mx-auto w-full max-w-[525px]">
-    <div
-      role="button"
-      tabIndex={0}
-      aria-pressed={isActive}
-      onClick={handleClick}
-      onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
-        if (isActivationKey(event.key)) {
-          event.preventDefault();
-          handleClick();
-        }
-      }}
-      className={cn(
-        "relative cursor-pointer rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
-        isActive ? "border-[#A06AFF]" : "border-[#181B22]",
-      )}
-    >
-      <div className="absolute right-4 top-4">
-        <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
-      </div>
-      <div className="relative flex flex-col gap-4">
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-          <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
-            <img
-              src={trader.avatar}
-              alt={trader.name}
-              className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
-            />
-            <div className="absolute bottom-2 left-2 flex items-center gap-1">
-              <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">
-                PRO
-              </span>
-              <span className="rounded bg-[#1C3430] px-1 text-[12px] font-bold text-[#2EBD85]">
-                {trader.rating}
-              </span>
-            </div>
-          </div>
-
-          <div className="flex flex-1 flex-col gap-3">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-[15px] font-bold leading-tight text-white">
-                {trader.name}
-              </h3>
-              <div className="flex flex-col items-start gap-1">
-                <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800] self-start">
-                  {trader.badge}
+    <div className="mx-auto w-full max-w-[525px]">
+      <div
+        role="button"
+        tabIndex={0}
+        aria-pressed={isActive}
+        onClick={handleClick}
+        onKeyDown={(event: KeyboardEvent<HTMLDivElement>) => {
+          if (isActivationKey(event.key)) {
+            event.preventDefault();
+            handleClick();
+          }
+        }}
+        className={cn(
+          "relative cursor-pointer rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          isActive ? "border-[#A06AFF]" : "border-[#181B22]",
+        )}
+      >
+        <div className="absolute right-4 top-4">
+          <FavoriteStarButton
+            pressed={isFavorite}
+            onToggle={onToggleFavorite}
+          />
+        </div>
+        <div className="relative flex flex-col gap-4">
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
+              <img
+                src={trader.avatar}
+                alt={trader.name}
+                className="block h-full w-full object-cover object-center [transform:scale(1.2)]"
+              />
+              <div className="absolute bottom-2 left-2 flex items-center gap-1">
+                <span className="rounded bg-[#A06AFF] px-1 text-[12px] font-extrabold uppercase text-white">
+                  PRO
                 </span>
+                <span className="rounded bg-[#1C3430] px-1 text-[12px] font-bold text-[#2EBD85]">
+                  {trader.rating}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-1 flex-col gap-3">
+              <div className="flex flex-col gap-2">
+                <h3 className="text-[15px] font-bold leading-tight text-white">
+                  {trader.name}
+                </h3>
+                <div className="flex flex-col items-start gap-1">
+                  <span className="max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded bg-[#3E321D] px-1 py-0.5 text-[12px] font-extrabold uppercase text-[#FFA800] self-start">
+                    {trader.badge}
+                  </span>
+                  <div className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 whitespace-nowrap rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
+                      <Users className="h-4 w-4 text-[#B0B0B0]" />
+                      {trader.followers}
+                    </span>
+                    <span className="flex items-center gap-1 whitespace-nowrap rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
+                      <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
+                      {trader.publications}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-1 text-[12px] font-bold uppercase text-[#B0B0B0]">
                 <div className="flex items-center gap-1">
-                  <span className="flex items-center gap-1 whitespace-nowrap rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
-                    <Users className="h-4 w-4 text-[#B0B0B0]" />
-                    {trader.followers}
-                  </span>
-                  <span className="flex items-center gap-1 whitespace-nowrap rounded bg-[#2E2744] px-1 py-0.5 text-[12px] font-bold text-white">
-                    <FileEdit className="h-4 w-4 text-[#B0B0B0]" />
-                    {trader.publications}
-                  </span>
+                  <span>Number of trades in 30 days:</span>
+                  <span className="text-[#2EBD85]">{trader.trades30Days}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span>Experience:</span>
+                  <span className="text-[#2EBD85]">{trader.experience}</span>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="space-y-1 text-[12px] font-bold uppercase text-[#B0B0B0]">
-              <div className="flex items-center gap-1">
-                <span>Number of trades in 30 days:</span>
-                <span className="text-[#2EBD85]">{trader.trades30Days}</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span>Experience:</span>
-                <span className="text-[#2EBD85]">{trader.experience}</span>
-              </div>
+          <div className="h-14 w-full overflow-hidden">
+            <PerformanceChart />
+          </div>
+
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-bold uppercase text-[#B0B0B0] sm:gap-y-3 sm:text-[12px]">
+            <div className="flex items-center gap-1 whitespace-nowrap">
+              <span>ROI(Month)</span>
+              <span className="text-[#2EBD85]">{trader.roiMonth}</span>
+            </div>
+            <div className="flex items-center gap-1 whitespace-nowrap">
+              <span>ROI(3 Months)</span>
+              <span className="text-[#2EBD85]">{trader.roiQuarter}</span>
+            </div>
+            <div className="flex items-center gap-1 whitespace-nowrap">
+              <span>Average trade profit</span>
+              <span className="text-[#2EBD85]">{trader.avgProfitability}</span>
+            </div>
+            <div className="flex items-center gap-1 whitespace-nowrap">
+              <span>Trades accuracy</span>
+              <span className="text-[#2EBD85]">{trader.accuracy}</span>
             </div>
           </div>
-        </div>
 
-        <div className="h-14 w-full overflow-hidden">
-          <PerformanceChart />
-        </div>
+          <div className="text-[12px] font-extrabold text-white">
+            {trader.certification}
+          </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-[11px] font-bold uppercase text-[#B0B0B0] sm:gap-y-3 sm:text-[12px]">
-          <div className="flex items-center gap-1 whitespace-nowrap">
-            <span>ROI(Month)</span>
-            <span className="text-[#2EBD85]">{trader.roiMonth}</span>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
+              <BookOpen className="h-4 w-4" />
+              Learn More
+            </button>
+            <button
+              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90"
+              onClick={(event) => {
+                event.stopPropagation();
+                resolvedSecondaryCta.onClick?.();
+              }}
+            >
+              <SecondaryIcon className="h-4 w-4" />
+              {resolvedSecondaryCta.label}
+            </button>
           </div>
-          <div className="flex items-center gap-1 whitespace-nowrap">
-            <span>ROI(3 Months)</span>
-            <span className="text-[#2EBD85]">{trader.roiQuarter}</span>
-          </div>
-          <div className="flex items-center gap-1 whitespace-nowrap">
-            <span>Average trade profit</span>
-            <span className="text-[#2EBD85]">{trader.avgProfitability}</span>
-          </div>
-          <div className="flex items-center gap-1 whitespace-nowrap">
-            <span>Trades accuracy</span>
-            <span className="text-[#2EBD85]">{trader.accuracy}</span>
-          </div>
-        </div>
-
-        <div className="text-[12px] font-extrabold text-white">
-          {trader.certification}
-        </div>
-
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
-            <BookOpen className="h-4 w-4" />
-            Learn More
-          </button>
-          <button
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-[12px] font-bold uppercase text-white transition-opacity hover:opacity-90"
-            onClick={(event) => {
-              event.stopPropagation();
-              resolvedSecondaryCta.onClick?.();
-            }}
-          >
-            <SecondaryIcon className="h-4 w-4" />
-            {resolvedSecondaryCta.label}
-          </button>
         </div>
       </div>
     </div>
-  </div>
   );
 };
 

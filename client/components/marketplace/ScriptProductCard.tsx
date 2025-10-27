@@ -191,18 +191,18 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
 
         <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
           <button
-          className={cn(
-            actionButtonBaseClass,
-            "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
-          )}
-          onClick={(event) => {
-            event.stopPropagation();
-            onBuy?.(product);
-          }}
-        >
-          <ShoppingCart className="h-4 w-4" />
-          Buy
-        </button>
+            className={cn(
+              actionButtonBaseClass,
+              "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+            )}
+            onClick={(event) => {
+              event.stopPropagation();
+              onBuy?.(product);
+            }}
+          >
+            <ShoppingCart className="h-4 w-4" />
+            Buy
+          </button>
         </div>
       </div>
     </div>

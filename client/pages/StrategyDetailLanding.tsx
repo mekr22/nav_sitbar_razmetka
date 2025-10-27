@@ -398,21 +398,27 @@ const StrategyDetailLanding: FC = () => {
 
   const strategyGallery = useMemo(
     () =>
-      (STRATEGY_GALLERY_BY_RISK[strategy.riskLevel] ?? DEFAULT_STRATEGY_GALLERY).map(
-        (src, index) => ({
-          src,
-          alt: `${strategy.name} preview ${index + 1}`,
-        }),
-      ),
+      (
+        STRATEGY_GALLERY_BY_RISK[strategy.riskLevel] ?? DEFAULT_STRATEGY_GALLERY
+      ).map((src, index) => ({
+        src,
+        alt: `${strategy.name} preview ${index + 1}`,
+      })),
     [strategy.name, strategy.riskLevel],
   );
 
   const heroMediaImage = strategyGallery[0]?.src ?? coverImage;
   const galleryLaunchTarget = strategyGallery[0]?.src ?? coverImage;
   const primaryStrategyImage = strategyGallery[0]?.src ?? strategy.icon;
-  const originalStrategyId = useMemo(() => extractOriginalProductId(strategy.id), [strategy.id]);
+  const originalStrategyId = useMemo(
+    () => extractOriginalProductId(strategy.id),
+    [strategy.id],
+  );
   const { addProductToCart } = useCart();
-  const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", originalStrategyId);
+  const { isFavorite, toggle: toggleFavorite } = useFavorite(
+    "strategy",
+    originalStrategyId,
+  );
 
   const handleAddStrategyToCart = useCallback(() => {
     void addProductToCart("strategy", strategy, {
@@ -682,25 +688,30 @@ const StrategyDetailLanding: FC = () => {
           </section>
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
             <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Description</h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">
+                Description
+              </h2>
             </div>
             <div className="space-y-4 p-4">
-              <p className="text-[15px] font-normal text-white">{description}</p>
+              <p className="text-[15px] font-normal text-white">
+                {description}
+              </p>
               <p className="text-[15px] font-normal text-[#B0B0B0]">
-                The playbook runs with {automationLevel.toLowerCase()} execution support, delivering
-                {" "}
-                {alertsPerWeek.toLowerCase()} and capital deployment guidance across
-                {" "}
-                {strategy.exchangesCount}+ monitored venues. Weekly updates keep
-                subscribers aligned on hedge posture, rebalancing cadence, and drawdown
-                guardrails across the {assetsSummary.toLowerCase()} mix.
+                The playbook runs with {automationLevel.toLowerCase()} execution
+                support, delivering {alertsPerWeek.toLowerCase()} and capital
+                deployment guidance across {strategy.exchangesCount}+ monitored
+                venues. Weekly updates keep subscribers aligned on hedge
+                posture, rebalancing cadence, and drawdown guardrails across the{" "}
+                {assetsSummary.toLowerCase()} mix.
               </p>
             </div>
           </section>
 
           <section className="rounded-3xl border border-[#181B22] bg-[rgba(12,16,20,0.50)]">
             <div className="border-b border-[#181B22] p-4">
-              <h2 className="text-[19px] font-bold text-[#A06AFF]">Specifications</h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF]">
+                Specifications
+              </h2>
             </div>
             <div className="flex flex-col gap-4 p-4">
               {strategySpecifications.map((item) => (
@@ -824,7 +835,11 @@ const StrategyDetailLanding: FC = () => {
                   if (!galleryLaunchTarget) {
                     return;
                   }
-                  window.open(galleryLaunchTarget, "_blank", "noopener,noreferrer");
+                  window.open(
+                    galleryLaunchTarget,
+                    "_blank",
+                    "noopener,noreferrer",
+                  );
                 }}
                 className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-white shadow-[0_12px_24px_0_rgba(0,0,0,0.48)] transition-opacity hover:opacity-90"
                 aria-label="Open gallery preview"
@@ -894,7 +909,9 @@ const StrategyDetailLanding: FC = () => {
                       onClick={isPrimary ? handleAddStrategyToCart : undefined}
                       className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                     >
-                      <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
+                      <Icon
+                        className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`}
+                      />
                       {label}
                     </button>
                   );

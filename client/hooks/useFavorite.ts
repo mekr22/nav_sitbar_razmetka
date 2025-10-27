@@ -103,7 +103,10 @@ export function useFavoriteMultiple(productType?: ProductType) {
         } = await supabase.auth.getSession();
 
         if (sessionError) {
-          console.error("[useFavoriteMultiple] Session error:", sessionError.message);
+          console.error(
+            "[useFavoriteMultiple] Session error:",
+            sessionError.message,
+          );
           setLoading(false);
           return;
         }
@@ -129,16 +132,22 @@ export function useFavoriteMultiple(productType?: ProductType) {
         const { data, error: queryError } = await query;
 
         if (queryError) {
-          console.error("[useFavoriteMultiple] Query error:", queryError.message);
+          console.error(
+            "[useFavoriteMultiple] Query error:",
+            queryError.message,
+          );
           setLoading(false);
           return;
         }
 
         console.log("[useFavoriteMultiple] Loaded favorites:", data);
         const favoriteSet = new Set(
-          data.map((fav) => `${fav.product_type}:${fav.product_id}`)
+          data.map((fav) => `${fav.product_type}:${fav.product_id}`),
         );
-        console.log("[useFavoriteMultiple] Favorite set:", Array.from(favoriteSet));
+        console.log(
+          "[useFavoriteMultiple] Favorite set:",
+          Array.from(favoriteSet),
+        );
         setFavorites(favoriteSet);
       } catch (err) {
         console.error("Error loading favorites:", err);
@@ -154,12 +163,16 @@ export function useFavoriteMultiple(productType?: ProductType) {
     (type: ProductType, id: string) => {
       return favorites.has(`${type}:${id}`);
     },
-    [favorites]
+    [favorites],
   );
 
   const toggle = useCallback(
     async (type: ProductType, id: string) => {
-      console.log("[useFavoriteMultiple.toggle] Starting toggle:", { type, id, userId });
+      console.log("[useFavoriteMultiple.toggle] Starting toggle:", {
+        type,
+        id,
+        userId,
+      });
 
       if (!userId) {
         console.warn("[useFavoriteMultiple.toggle] User not authenticated!");
@@ -168,7 +181,10 @@ export function useFavoriteMultiple(productType?: ProductType) {
 
       try {
         const isFav = isFavorite(type, id);
-        console.log("[useFavoriteMultiple.toggle] Current favorite status:", isFav);
+        console.log(
+          "[useFavoriteMultiple.toggle] Current favorite status:",
+          isFav,
+        );
 
         if (isFav) {
           console.log("[useFavoriteMultiple.toggle] Removing favorite...");
@@ -197,7 +213,7 @@ export function useFavoriteMultiple(productType?: ProductType) {
         console.error("[useFavoriteMultiple.toggle] Exception:", err);
       }
     },
-    [userId, isFavorite]
+    [userId, isFavorite],
   );
 
   return {

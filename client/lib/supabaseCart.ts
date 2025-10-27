@@ -140,7 +140,11 @@ export const addCartItem = async (
       metadata,
     } = input;
 
-    const existing = await fetchExistingCartItem(userId, productType, productId);
+    const existing = await fetchExistingCartItem(
+      userId,
+      productType,
+      productId,
+    );
 
     if (existing) {
       const mergedMetadata = metadata
@@ -172,7 +176,11 @@ export const addCartItem = async (
     }
 
     const performUpdateForExisting = async (): Promise<CartItem | null> => {
-      const latest = await fetchExistingCartItem(userId, productType, productId);
+      const latest = await fetchExistingCartItem(
+        userId,
+        productType,
+        productId,
+      );
       if (!latest) {
         return null;
       }
@@ -198,7 +206,10 @@ export const addCartItem = async (
         .single();
 
       if (updateError) {
-        console.error("[supabaseCart] Error updating cart item after conflict", updateError);
+        console.error(
+          "[supabaseCart] Error updating cart item after conflict",
+          updateError,
+        );
         return null;
       }
 

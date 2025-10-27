@@ -17,7 +17,10 @@ type OtherProductCardProps = {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-  onOpenDetails?: (product: OtherProduct, meta?: { isFavorite: boolean }) => void;
+  onOpenDetails?: (
+    product: OtherProduct,
+    meta?: { isFavorite: boolean },
+  ) => void;
   onBuy?: (product: OtherProduct) => void;
 };
 
@@ -54,7 +57,10 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
         )}
       >
         <div className="absolute right-4 top-4">
-          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
+          <FavoriteStarButton
+            pressed={isFavorite}
+            onToggle={onToggleFavorite}
+          />
         </div>
 
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
@@ -108,7 +114,10 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
         <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase text-[#B0B0B0]">
           <span>Compatibility:</span>
           {product.compatibility.map((item) => (
-            <span key={item} className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+            <span
+              key={item}
+              className="rounded bg-[#2E2744] px-1 py-0.5 text-white"
+            >
               {item}
             </span>
           ))}
@@ -117,7 +126,10 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
         <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase text-[#B0B0B0]">
           <span>Requirements:</span>
           {product.requirements.map((item) => (
-            <span key={item} className="rounded bg-[#2E2744] px-1 py-0.5 text-white">
+            <span
+              key={item}
+              className="rounded bg-[#2E2744] px-1 py-0.5 text-white"
+            >
               {item}
             </span>
           ))}

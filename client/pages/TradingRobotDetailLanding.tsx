@@ -228,7 +228,8 @@ const SUBSCRIBER_RATINGS = [
     id: "1",
     rank: 1,
     name: "Atlas Quinn",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/3c86ef8ce9d9f7f00e7e31590e37379c0ce5a723?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/3c86ef8ce9d9f7f00e7e31590e37379c0ce5a723?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -237,7 +238,8 @@ const SUBSCRIBER_RATINGS = [
     id: "2",
     rank: 2,
     name: "Mira Sterling",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/df1d49f2a52e02e453bedc3be604d2f6d505dd9d?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/df1d49f2a52e02e453bedc3be604d2f6d505dd9d?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -246,7 +248,8 @@ const SUBSCRIBER_RATINGS = [
     id: "3",
     rank: 3,
     name: "Drake Lawson",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/4d7134864adca418ec77aca2390bd76e870bfda9?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4d7134864adca418ec77aca2390bd76e870bfda9?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -255,7 +258,8 @@ const SUBSCRIBER_RATINGS = [
     id: "4",
     rank: 4,
     name: "Eva Ryker",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/184a2af0b23d017baa9a302e8dc1c6dfaa6a52dd?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/184a2af0b23d017baa9a302e8dc1c6dfaa6a52dd?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -264,7 +268,8 @@ const SUBSCRIBER_RATINGS = [
     id: "5",
     rank: 5,
     name: "Silas Trent",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/df1d54dd467a939d083ce359882e9d457963b2fb?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/df1d54dd467a939d083ce359882e9d457963b2fb?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -273,7 +278,8 @@ const SUBSCRIBER_RATINGS = [
     id: "6",
     rank: 6,
     name: "Noa Vance",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/9a5ce8adf3ba54842c9026bacddc4e382df3a8dd?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/9a5ce8adf3ba54842c9026bacddc4e382df3a8dd?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -282,7 +288,8 @@ const SUBSCRIBER_RATINGS = [
     id: "7",
     rank: 7,
     name: "Jaxon Wolfe",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/6889c9671fa904091f0b71cae03fb98e81cd4da6?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/6889c9671fa904091f0b71cae03fb98e81cd4da6?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -291,7 +298,8 @@ const SUBSCRIBER_RATINGS = [
     id: "8",
     rank: 8,
     name: "Elara Knox",
-    avatar: "https://api.builder.io/api/v1/image/assets/TEMP/0003cb6c803e279a28542c907af7178d810da9b1?width=88",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/0003cb6c803e279a28542c907af7178d810da9b1?width=88",
     subscribedDays: 9,
     roi: "+120.83%",
     amount: "466.00",
@@ -301,7 +309,9 @@ const SUBSCRIBER_RATINGS = [
 const TradingRobotDetailLanding: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [comments, setComments] = useState<CommentNode[]>(() => INITIAL_COMMENTS);
+  const [comments, setComments] = useState<CommentNode[]>(
+    () => INITIAL_COMMENTS,
+  );
   const [activeAction, setActiveAction] = useState<ProductActionKey>("buy");
   const [isCompactLayout, setIsCompactLayout] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
@@ -338,7 +348,8 @@ const TradingRobotDetailLanding: FC = () => {
     const indentStep = isCompactLayout ? 16 : 32;
     const indent = depth * indentStep;
     const timeColor = comment.timeColor ?? "#B0B0B0";
-    const hasReplies = Array.isArray(comment.replies) && comment.replies.length > 0;
+    const hasReplies =
+      Array.isArray(comment.replies) && comment.replies.length > 0;
     const baseLikeColor = comment.likeColor ?? "#B0B0B0";
     const displayLikeColor = comment.liked ? "#A06AFF" : baseLikeColor;
     const likeButtonClasses = comment.liked
@@ -362,7 +373,9 @@ const TradingRobotDetailLanding: FC = () => {
               style={{ left: -indentStep }}
             />
           )}
-          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">{hiddenLabel}</span>
+          <span className="text-sm font-bold text-[#B0B0B0] max-[360px]:text-xs">
+            {hiddenLabel}
+          </span>
           <button
             type="button"
             onClick={() => handleToggleHidden(comment.id)}
@@ -395,13 +408,17 @@ const TradingRobotDetailLanding: FC = () => {
               className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
             />
             <div className="flex flex-1 flex-col gap-0.5">
-              <span className="text-[15px] font-bold text-white">{comment.author}</span>
+              <span className="text-[15px] font-bold text-white">
+                {comment.author}
+              </span>
               <span className="text-xs font-bold" style={{ color: timeColor }}>
                 {comment.time}
               </span>
             </div>
           </div>
-          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">{comment.text}</p>
+          <p className="text-[15px] font-medium text-white max-[360px]:text-sm">
+            {comment.text}
+          </p>
         </div>
 
         <button
@@ -439,11 +456,20 @@ const TradingRobotDetailLanding: FC = () => {
               {hideLabel}
             </button>
           )}
-          <button type="button" className="rounded-full px-4 py-2 text-[15px] font-bold text-white max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm">
+          <button
+            type="button"
+            className="rounded-full px-4 py-2 text-[15px] font-bold text-white max-[360px]:px-3 max-[360px]:py-1.5 max-[360px]:text-sm"
+          >
             Reply
           </button>
           <button type="button" className="rounded-full p-1 text-[#B0B0B0]">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11Z"
                 fill="#B0B0B0"
@@ -481,7 +507,8 @@ const TradingRobotDetailLanding: FC = () => {
     );
   };
 
-  const locationState = (location.state as TradingRobotDetailsState | null) ?? null;
+  const locationState =
+    (location.state as TradingRobotDetailsState | null) ?? null;
 
   useEffect(() => {
     if (locationState?.scrollToTop) {
@@ -522,44 +549,61 @@ const TradingRobotDetailLanding: FC = () => {
       productImage: DEFAULT_CHART_IMAGE,
       author: {
         name: "Sarah Lee",
-        avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=160",
+        avatar:
+          "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=160",
         bio: "Professional trader with 8+ years of experience in momentum strategies and technical analysis.",
         communityLink: "https://example.com",
         socials: ["twitter", "youtube", "instagram", "web"],
       },
-      tags: ["Distribution", "Luxaigo", "signals", "statisticalprobability", "statistics", "Stop", "trailingstop", "trendanalysis"],
+      tags: [
+        "Distribution",
+        "Luxaigo",
+        "signals",
+        "statisticalprobability",
+        "statistics",
+        "Stop",
+        "trailingstop",
+        "trendanalysis",
+      ],
       averageRating: 4.5,
       totalReviews: 28,
-      description: "Automates swaps between Ethereum (ETH) and Bitcoin (BTC) based on price divergence. When ETH outperforms BTC the bot sells a slice of ETH for BTC; when BTC regains strength the cycle reverse. No manual action required.",
+      description:
+        "Automates swaps between Ethereum (ETH) and Bitcoin (BTC) based on price divergence. When ETH outperforms BTC the bot sells a slice of ETH for BTC; when BTC regains strength the cycle reverse. No manual action required.",
       originalDescription:
         "Automates swaps between Ethereum (ETH) and Bitcoin (BTC) based on price divergence. When ETH outperforms BTC the bot sells a slice of ETH for BTC; when BTC regains strength the cycle reverse. No manual action required.",
       reviews: [
         {
           id: "1",
           author: "John Smith",
-          avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+          avatar:
+            "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
           postedAt: "2 days ago",
           rating: 5,
           title: "Game changer for my trading strategy!",
-          message: "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.",
+          message:
+            "This tool has completely transformed how I manage risk in my trading. The automatic calculations save me so much time, and I've seen a significant improvement in my overall performance. Highly recommended for any serious trader.",
         },
         {
           id: "2",
           author: "John Smith",
-          avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+          avatar:
+            "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
           postedAt: "1 week ago",
           rating: 4,
           title: "Great tool, but could use more features",
-          message: "RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.",
+          message:
+            "RiskMaster has been very helpful for my day trading. The risk calculations are spot on and have helped me avoid some potentially big losses. I'd love to see more advanced features in future updates, like custom risk models and better integration with other platforms.",
         },
         {
           id: "3",
           author: "John Smith",
-          avatar: "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
+          avatar:
+            "https://api.builder.io/api/v1/image/assets/TEMP/f9b1a559e2dfecc34192f3c44dcb709b0e800d3a?width=88",
           postedAt: "3 weeks ago",
           rating: 4.5,
           title: "Worth every penny",
-          message: "I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.",
+          message:
+            "I was hesitant about the price at first, but after using Riskmaster for a month, I can confidently say it's worth every penny. The portfolio analysis feature alone has saved me from making several costly mistakes. The UI is clean and intuitive, making it easy to incorporate into my daily routine.",
         },
       ],
     };
@@ -578,25 +622,34 @@ const TradingRobotDetailLanding: FC = () => {
       ...fallback,
       ...provided,
       author: mergedAuthor,
-      tags: Array.isArray(provided.tags) && provided.tags.length > 0 ? provided.tags : fallback.tags,
+      tags:
+        Array.isArray(provided.tags) && provided.tags.length > 0
+          ? provided.tags
+          : fallback.tags,
       reviews:
         Array.isArray(provided.reviews) && provided.reviews.length > 0
           ? (provided.reviews as ExtendedRobot["reviews"])
           : fallback.reviews,
       productImage: provided.productImage ?? fallback.productImage,
       description:
-        typeof provided.description === "string" && provided.description.trim().length > 0
+        typeof provided.description === "string" &&
+        provided.description.trim().length > 0
           ? provided.description
           : fallback.description,
       originalDescription:
-        typeof provided.originalDescription === "string" && provided.originalDescription.trim().length > 0
+        typeof provided.originalDescription === "string" &&
+        provided.originalDescription.trim().length > 0
           ? provided.originalDescription
           : fallback.originalDescription,
     };
   }, [locationState]);
 
-  const originalRobotId = useMemo(() => extractOriginalProductId(robot.id), [robot.id]);
-  const { isFavorite: isRobotFavorite, toggle: toggleRobotFavorite } = useFavorite("trading-robot", originalRobotId);
+  const originalRobotId = useMemo(
+    () => extractOriginalProductId(robot.id),
+    [robot.id],
+  );
+  const { isFavorite: isRobotFavorite, toggle: toggleRobotFavorite } =
+    useFavorite("trading-robot", originalRobotId);
   const { addProductToCart } = useCart();
 
   const handleToggleFavoriteRobot = useCallback(() => {
@@ -604,9 +657,10 @@ const TradingRobotDetailLanding: FC = () => {
   }, [toggleRobotFavorite]);
 
   const reviews = useMemo(() => {
-    const sourceReviews = Array.isArray(robot.reviews) && robot.reviews.length > 0
-      ? robot.reviews
-      : [];
+    const sourceReviews =
+      Array.isArray(robot.reviews) && robot.reviews.length > 0
+        ? robot.reviews
+        : [];
 
     return sourceReviews.filter(
       (review) =>
@@ -635,8 +689,7 @@ const TradingRobotDetailLanding: FC = () => {
     typeof robot.totalReviews === "number" && robot.totalReviews > 0
       ? robot.totalReviews
       : 0;
-  const baseChartImage =
-    robot.productImage ?? DEFAULT_CHART_IMAGE;
+  const baseChartImage = robot.productImage ?? DEFAULT_CHART_IMAGE;
   const displayChartImage = baseChartImage || DEFAULT_CHART_IMAGE;
   const authorAvatar = author?.avatar ?? "";
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
@@ -654,10 +707,12 @@ const TradingRobotDetailLanding: FC = () => {
   }, [addProductToCart, displayChartImage, robot]);
 
   const translatedDescription = robot.description ?? "";
-  const hasOriginalDescription = Boolean(robot.originalDescription && robot.originalDescription.trim().length > 0);
+  const hasOriginalDescription = Boolean(
+    robot.originalDescription && robot.originalDescription.trim().length > 0,
+  );
   const descriptionToDisplay =
     showOriginalDescription && hasOriginalDescription
-      ? robot.originalDescription ?? ""
+      ? (robot.originalDescription ?? "")
       : translatedDescription;
 
   const renderStars = (rating: number) => {
@@ -702,12 +757,16 @@ const TradingRobotDetailLanding: FC = () => {
             {/* Grid-Bot HODL Description */}
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Grid-Bot HODL</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Grid-Bot HODL
+                </h2>
               </div>
               <div className="p-4 max-[360px]:p-3">
                 <div
                   className={`relative text-[15px] font-medium leading-relaxed text-white/90 max-[360px]:text-sm ${
-                    isDescriptionExpanded ? "" : "max-h-[176px] overflow-hidden pr-1"
+                    isDescriptionExpanded
+                      ? ""
+                      : "max-h-[176px] overflow-hidden pr-1"
                   }`}
                 >
                   <p className="whitespace-pre-line">{descriptionToDisplay}</p>
@@ -726,10 +785,14 @@ const TradingRobotDetailLanding: FC = () => {
                   {hasOriginalDescription && (
                     <button
                       type="button"
-                      onClick={() => setShowOriginalDescription((prev) => !prev)}
+                      onClick={() =>
+                        setShowOriginalDescription((prev) => !prev)
+                      }
                       className="text-[#A06AFF] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A06AFF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
                     >
-                      {showOriginalDescription ? "Show Translation" : "Show Original"}
+                      {showOriginalDescription
+                        ? "Show Translation"
+                        : "Show Original"}
                     </button>
                   )}
                 </div>
@@ -739,7 +802,9 @@ const TradingRobotDetailLanding: FC = () => {
             {/* Details Section */}
             <div className="flex flex-col rounded-2xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Details</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Details
+                </h2>
               </div>
               <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 sm:flex-row sm:items-center sm:justify-between max-[360px]:p-3">
                 <div className="flex items-center gap-3">
@@ -758,7 +823,9 @@ const TradingRobotDetailLanding: FC = () => {
                   </div>
                 </div>
                 <div className="flex flex-col gap-1 text-left sm:text-right">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Running time</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    Running time
+                  </span>
                   <span className="text-[15px] font-medium text-[#A06AFF] max-[360px]:text-sm">
                     {robot.runningTime ?? "—"}
                   </span>
@@ -766,19 +833,25 @@ const TradingRobotDetailLanding: FC = () => {
               </div>
               <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-3 max-[360px]:gap-3 max-[360px]:p-3">
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">ROI APY for 30 days</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    ROI APY for 30 days
+                  </span>
                   <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
                     {robot.roiApy30d ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">AUM (USDT)</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    AUM (USDT)
+                  </span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
                     {robot.aum ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Platform</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    Platform
+                  </span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
                     {robot.platform ?? "—"}
                   </span>
@@ -786,19 +859,25 @@ const TradingRobotDetailLanding: FC = () => {
               </div>
               <div className="grid grid-cols-1 gap-4 border-t border-[#181B22] p-4 sm:grid-cols-3 max-[360px]:gap-3 max-[360px]:p-3">
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">ROI APY for 1 year</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    ROI APY for 1 year
+                  </span>
                   <span className="text-[15px] font-bold text-[#2EBD85] max-[360px]:text-sm">
                     {robot.roiApy1y ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Subscribers</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    Subscribers
+                  </span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
                     {robot.subscribers ?? "—"}
                   </span>
                 </div>
                 <div className="flex flex-col gap-2 max-[360px]:gap-1.5">
-                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">Sector</span>
+                  <span className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    Sector
+                  </span>
                   <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
                     {robot.sector ?? "—"}
                   </span>
@@ -814,7 +893,9 @@ const TradingRobotDetailLanding: FC = () => {
             />
             {/* Accuracy Chart */}
             <div className="relative flex flex-col gap-4 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-3 max-[360px]:p-3">
-              <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Accuracy</h2>
+              <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                Accuracy
+              </h2>
               <div className="h-px w-full bg-[#181B22]" />
               <div className="relative">
                 <div className="relative h-[216px] max-[360px]:h-[140px]">
@@ -834,11 +915,16 @@ const TradingRobotDetailLanding: FC = () => {
                   <div className="absolute bottom-0 left-0 right-[42px] z-20 flex items-end justify-between gap-[2px] max-[360px]:right-[28px]">
                     {ACCURACY_DATA.map((data) => {
                       const maxHeight = 181;
-                      const successfulHeight = (data.successful / 250) * maxHeight;
-                      const unsuccessfulHeight = (data.unsuccessful / 250) * maxHeight;
+                      const successfulHeight =
+                        (data.successful / 250) * maxHeight;
+                      const unsuccessfulHeight =
+                        (data.unsuccessful / 250) * maxHeight;
 
                       return (
-                        <div key={data.month} className="flex flex-1 items-end gap-px">
+                        <div
+                          key={data.month}
+                          className="flex flex-1 items-end gap-px"
+                        >
                           <div
                             className="w-full rounded-t-full bg-gradient-to-t from-[#181A20] to-[#A06AFF]"
                             style={{
@@ -861,7 +947,10 @@ const TradingRobotDetailLanding: FC = () => {
 
                 <div className="relative left-0.5 top-0.5 flex w-[calc(100%-42px)] max-[360px]:w-[calc(100%-24px)] items-start justify-between gap-2">
                   {ACCURACY_DATA.map((data) => (
-                    <div key={data.month} className="flex flex-col items-center gap-1">
+                    <div
+                      key={data.month}
+                      className="flex flex-col items-center gap-1"
+                    >
                       <div className="h-2 w-px bg-[#523A83]" />
                       <span className="text-center text-xs font-bold uppercase text-[#B0B0B0]">
                         {data.month}
@@ -874,11 +963,15 @@ const TradingRobotDetailLanding: FC = () => {
               <div className="flex items-center justify-center gap-4 max-[360px]:gap-3">
                 <div className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full bg-[#A06AFF]" />
-                  <span className="text-xs font-bold uppercase text-[#808283]">Successful</span>
+                  <span className="text-xs font-bold uppercase text-[#808283]">
+                    Successful
+                  </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full bg-[#FFA800]" />
-                  <span className="text-xs font-bold uppercase text-[#808283]">Unsuccessful</span>
+                  <span className="text-xs font-bold uppercase text-[#808283]">
+                    Unsuccessful
+                  </span>
                 </div>
               </div>
             </div>
@@ -890,7 +983,13 @@ const TradingRobotDetailLanding: FC = () => {
                   Bot Subscribers Rating
                 </h2>
                 <button type="button" className="text-[#B0B0B0]">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <g clipPath="url(#clip0_rating)">
                       <path
                         d="M8.7135 2.20042C9.42358 1.48918 10.5761 1.48918 11.2862 2.20042L12.1273 3.04292C12.4686 3.38482 12.932 3.57676 13.4151 3.57636L14.6056 3.57538C15.6107 3.57457 16.4256 4.38951 16.4248 5.39454L16.4238 6.58504C16.4234 7.06815 16.6153 7.53153 16.9573 7.87287L17.7998 8.71399C18.511 9.42407 18.511 10.5766 17.7998 11.2867L16.9573 12.1278C16.6153 12.4691 16.4234 12.9325 16.4238 13.4156L16.4248 14.6061C16.4256 15.6112 15.6107 16.4261 14.6056 16.4252L13.4151 16.4243C12.932 16.4239 12.4686 16.6158 12.1273 16.9577L11.2862 17.8002C10.5761 18.5115 9.42358 18.5115 8.7135 17.8002L7.87238 16.9577C7.53104 16.6158 7.06766 16.4239 6.58455 16.4243L5.39405 16.4252C4.38902 16.4261 3.57408 15.6112 3.57489 14.6061L3.57587 13.4156C3.57627 12.9325 3.38433 12.4691 3.04244 12.1278L2.19994 11.2867C1.48869 10.5766 1.48869 9.42407 2.19994 8.71399L3.04244 7.87287C3.38433 7.53153 3.57627 7.06815 3.57587 6.58504L3.57489 5.39454C3.57408 4.38951 4.38902 3.57457 5.39405 3.57538L6.58455 3.57636C7.06766 3.57676 7.53104 3.38482 7.87238 3.04292L8.7135 2.20042Z"
@@ -932,7 +1031,9 @@ const TradingRobotDetailLanding: FC = () => {
                   <div
                     key={subscriber.id}
                     className={`flex items-center gap-6 p-4 max-[360px]:gap-3 max-[360px]:p-3 ${
-                      index !== SUBSCRIBER_RATINGS.length - 1 ? "border-b border-[#181B22]" : ""
+                      index !== SUBSCRIBER_RATINGS.length - 1
+                        ? "border-b border-[#181B22]"
+                        : ""
                     }`}
                   >
                     <span className="text-[15px] font-bold text-[#B0B0B0] max-[360px]:text-sm">
@@ -1073,14 +1174,22 @@ const TradingRobotDetailLanding: FC = () => {
             {/* Comments Section */}
             <div className="relative flex flex-col gap-6 rounded-3xl border border-[#181B22] bg-[#0C1014]/50 p-4 backdrop-blur-[50px] max-[360px]:gap-4 max-[360px]:p-3">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">20 comments</h2>
+                <h2 className="text-2xl font-bold text-white max-[360px]:text-xl">
+                  20 comments
+                </h2>
                 <div className="flex items-center gap-1 rounded-full border border-[#181B22] bg-[#0C1014]/50 p-1 backdrop-blur-[50px] max-[360px]:p-0.5">
                   <button
                     type="button"
                     aria-label="Sort comments"
                     className="flex h-[26px] w-[26px] items-center justify-center rounded-full transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <g clipPath="url(#clip0_clock)">
                         <path
                           d="M3.36524 5.73739L1.69181 5.63552C2.89133 2.46952 6.33525 0.666286 9.69299 1.56284C13.2693 2.51775 15.3935 6.17372 14.4376 9.72868C13.4817 13.2837 9.80765 15.3914 6.23139 14.4365C3.57605 13.7275 1.7212 11.5294 1.33325 8.98928"
@@ -1109,7 +1218,13 @@ const TradingRobotDetailLanding: FC = () => {
                     aria-label="Show trending comments"
                     className="flex h-[26px] w-[26px] items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-transform hover:scale-[1.02] max-[360px]:h-6 max-[360px]:w-6"
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path
                         d="M9.23732 14.6663C17.3855 12.6663 12.8225 4.66634 7.28172 1.33301C6.63012 3.66634 5.65217 4.33301 3.69657 6.66634C1.10739 9.75561 2.39292 13.333 5.97805 14.6663C5.43485 13.9997 4.03297 12.6002 4.99992 10.6663C5.33325 9.99967 5.99992 9.33301 5.66659 7.99967C6.31844 8.33301 7.66659 8.66634 7.99992 10.333C8.54312 9.66634 9.10685 8.26634 8.58545 6.66634C12.6666 9.66634 10.9999 12.6663 9.23732 14.6663Z"
                         stroke="white"
@@ -1167,7 +1282,9 @@ const TradingRobotDetailLanding: FC = () => {
                   <div className="flex flex-wrap items-center gap-1">
                     <div className="flex min-h-[24px] items-center gap-1 rounded bg-[#2E2744] px-1">
                       <Users className="h-4 w-4 text-[#B0B0B0] max-[360px]:h-3.5 max-[360px]:w-3.5" />
-                      <span className="text-xs font-bold text-white">{robot.users}</span>
+                      <span className="text-xs font-bold text-white">
+                        {robot.users}
+                      </span>
                     </div>
                     <div className="flex min-h-[24px] items-center rounded bg-[rgba(255,168,0,0.16)] px-1">
                       <span className="text-xs font-extrabold uppercase text-[#FFA800]">
@@ -1217,7 +1334,9 @@ const TradingRobotDetailLanding: FC = () => {
                   <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">MAX DRAWDOWN:</span>
                     <div className="rounded bg-[#1C3430] px-1 py-0.5">
-                      <span className="text-[#2EBD85]">{robot.maxDrawdown}</span>
+                      <span className="text-[#2EBD85]">
+                        {robot.maxDrawdown}
+                      </span>
                     </div>
                   </div>
                 )}
@@ -1235,7 +1354,10 @@ const TradingRobotDetailLanding: FC = () => {
                   <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
                     <span className="text-[#B0B0B0]">TYPE:</span>
                     {robot.type.split(", ").map((type, idx) => (
-                      <div key={idx} className="rounded bg-[#2E2744] px-1 py-0.5">
+                      <div
+                        key={idx}
+                        className="rounded bg-[#2E2744] px-1 py-0.5"
+                      >
                         <span className="text-white">{type}</span>
                       </div>
                     ))}
@@ -1339,7 +1461,9 @@ const TradingRobotDetailLanding: FC = () => {
                     className="h-20 w-20 flex-shrink-0 rounded-full object-cover max-[360px]:h-16 max-[360px]:w-16"
                   />
                   <div className="flex flex-1 flex-col gap-2 max-[360px]:gap-1.5">
-                    <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">{author.name}</h3>
+                    <h3 className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                      {author.name}
+                    </h3>
                     <button
                       type="button"
                       className="flex h-[26px] w-20 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] text-xs font-bold text-white transition-opacity hover:opacity-90 max-[360px]:w-16 max-[360px]:text-[11px]"
@@ -1446,7 +1570,9 @@ const TradingRobotDetailLanding: FC = () => {
             {/* Reviews */}
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="flex flex-col gap-4 border-b border-[#181B22] p-4 max-[360px]:gap-3 max-[360px]:p-3">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Reviews</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Reviews
+                </h2>
 
                 <div className="flex items-center gap-4 max-[360px]:gap-3">
                   <span className="text-[31px] font-bold leading-none text-[#A06AFF] max-[360px]:text-2xl">
@@ -1464,45 +1590,47 @@ const TradingRobotDetailLanding: FC = () => {
               </div>
 
               <div className="flex flex-col">
-                {(showAllReviews ? reviews : reviews.slice(0, 3)).map((review, index) => (
-                  <div key={review.id} className="flex flex-col">
-                    {index > 0 && (
-                      <div className="px-4 py-2 max-[360px]:px-3">
-                        <div className="h-px bg-[#181B22]" />
-                      </div>
-                    )}
+                {(showAllReviews ? reviews : reviews.slice(0, 3)).map(
+                  (review, index) => (
+                    <div key={review.id} className="flex flex-col">
+                      {index > 0 && (
+                        <div className="px-4 py-2 max-[360px]:px-3">
+                          <div className="h-px bg-[#181B22]" />
+                        </div>
+                      )}
 
-                    <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
-                      <div className="flex items-center gap-2">
-                        <img
-                          src={review.avatar}
-                          alt={review.author}
-                          className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
-                        />
-                        <div className="flex flex-col gap-1">
-                          <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                            {review.author}
-                          </span>
-                          <span className="text-xs font-bold text-[#B0B0B0]">
-                            {review.postedAt}
-                          </span>
+                      <div className="flex justify-between gap-3 px-4 pb-2 pt-4 max-[360px]:px-3 max-[360px]:pt-3">
+                        <div className="flex items-center gap-2">
+                          <img
+                            src={review.avatar}
+                            alt={review.author}
+                            className="h-11 w-11 rounded-full object-cover max-[360px]:h-10 max-[360px]:w-10"
+                          />
+                          <div className="flex flex-col gap-1">
+                            <span className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                              {review.author}
+                            </span>
+                            <span className="text-xs font-bold text-[#B0B0B0]">
+                              {review.postedAt}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-0.5">
+                          {renderStars(review.rating)}
                         </div>
                       </div>
-                      <div className="flex items-center gap-0.5">
-                        {renderStars(review.rating)}
+
+                      <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
+                        <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">
+                          {review.title}
+                        </h4>
+                        <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">
+                          {review.message}
+                        </p>
                       </div>
                     </div>
-
-                    <div className="flex flex-col gap-2 px-4 pb-4 max-[360px]:gap-1.5 max-[360px]:px-3 max-[360px]:pb-3">
-                      <h4 className="text-[15px] font-bold text-white max-[360px]:text-sm">
-                        {review.title}
-                      </h4>
-                      <p className="text-[15px] font-normal text-[#B0B0B0] max-[360px]:text-sm">
-                        {review.message}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ),
+                )}
               </div>
 
               {reviews.length > 0 && (
@@ -1521,18 +1649,17 @@ const TradingRobotDetailLanding: FC = () => {
             {/* Disclaimer */}
             <div className="flex flex-col rounded-3xl border border-[#181B22] bg-[#0C1014]/50 backdrop-blur-[50px]">
               <div className="border-b border-[#181B22] p-4">
-                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">Disclaimer</h2>
+                <h2 className="text-[19px] font-bold text-[#A06AFF] max-[360px]:text-base">
+                  Disclaimer
+                </h2>
               </div>
               <div className="p-4">
                 <p className="text-[15px] font-medium text-[#B0B0B0] max-[360px]:text-sm">
-                  The information and publications are not meant to be, and do not
-                  constitute, financial, investment, trading, or other types of advice
-                  or recommendations supplied or endorsed by TyrianTrade. Read more in
-                  the{" "}
-                  <a
-                    href="/terms"
-                    className="text-[#A06AFF] underline"
-                  >
+                  The information and publications are not meant to be, and do
+                  not constitute, financial, investment, trading, or other types
+                  of advice or recommendations supplied or endorsed by
+                  TyrianTrade. Read more in the{" "}
+                  <a href="/terms" className="text-[#A06AFF] underline">
                     Terms of Use
                   </a>
                   .

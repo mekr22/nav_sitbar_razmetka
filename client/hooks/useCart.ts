@@ -55,14 +55,11 @@ export const useCart = () => {
   const { toast } = useToast();
   const { user, loading: authLoading } = useAuth();
 
-  const loadCartItems = useCallback(
-    async (userId: string) => {
-      setState((prev) => ({ ...prev, loading: true }));
-      const items = await getCartItems(userId);
-      setState({ items, loading: false, userId });
-    },
-    [],
-  );
+  const loadCartItems = useCallback(async (userId: string) => {
+    setState((prev) => ({ ...prev, loading: true }));
+    const items = await getCartItems(userId);
+    setState({ items, loading: false, userId });
+  }, []);
 
   useEffect(() => {
     if (!supabase) {

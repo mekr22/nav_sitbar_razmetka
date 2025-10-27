@@ -507,26 +507,26 @@ const Analysts: FC = () => {
           ) : (
             <div className="grid gap-6 md:grid-cols-2 xl:gap-8">
               {filteredAnalysts.map((analyst) => {
-              const cardKey = `analyst:${analyst.id}`;
-              const originalId = extractOriginalProductId(analyst.id);
-              const isFavorited = isFavorite("analyst", originalId);
-              return (
-                <AnalystCard
-                  key={analyst.id}
-                  analyst={analyst}
-                  isActive={activeCardKey === cardKey}
-                  onSelect={() => setActiveCardKey(cardKey)}
-                  isFavorite={isFavorited}
-                  onToggleFavorite={() => toggle("analyst", originalId)}
-                  secondaryCta={{
-                    label: "BUY",
-                    icon: ShoppingCart,
-                    onClick: () => {
-                      void addProductToCart("analyst", analyst);
-                    },
-                  }}
-                />
-              );
+                const cardKey = `analyst:${analyst.id}`;
+                const originalId = extractOriginalProductId(analyst.id);
+                const isFavorited = isFavorite("analyst", originalId);
+                return (
+                  <AnalystCard
+                    key={analyst.id}
+                    analyst={analyst}
+                    isActive={activeCardKey === cardKey}
+                    onSelect={() => setActiveCardKey(cardKey)}
+                    isFavorite={isFavorited}
+                    onToggleFavorite={() => toggle("analyst", originalId)}
+                    secondaryCta={{
+                      label: "BUY",
+                      icon: ShoppingCart,
+                      onClick: () => {
+                        void addProductToCart("analyst", analyst);
+                      },
+                    }}
+                  />
+                );
               })}
             </div>
           )}

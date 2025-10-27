@@ -213,7 +213,10 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
     course.materialType === "training" ? "Training" : "Course";
   const releaseLabel = releaseWindowLabel[course.releaseWindow];
   const priceLabel = priceByFormat[course.format];
-  const originalCourseId = useMemo(() => extractOriginalProductId(course.id), [course.id]);
+  const originalCourseId = useMemo(
+    () => extractOriginalProductId(course.id),
+    [course.id],
+  );
   const { addProductToCart } = useCart();
 
   const handleAddCourseToCart = useCallback(() => {
@@ -1060,7 +1063,9 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
                     onClick={isPrimary ? handleAddCourseToCart : undefined}
                     className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                   >
-                    <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
+                    <Icon
+                      className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`}
+                    />
                     {label}
                   </button>
                 );
