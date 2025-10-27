@@ -56,7 +56,7 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
           }
         }}
         className={cn(
-          "relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border bg-[#0C1014]/50 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border bg-[#0C1014]/50 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
@@ -141,7 +141,7 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
             </div>
           </div>
 
-          <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:gap-3">
+          <div className="mb-4 mt-auto flex flex-col gap-2 sm:flex-row sm:gap-3">
             <button
               type="button"
               className={cn(
