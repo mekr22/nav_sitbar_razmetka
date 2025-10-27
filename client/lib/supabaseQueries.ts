@@ -119,7 +119,12 @@ export async function getSignals(): Promise<Signal[]> {
     .order("risk_level", { ascending: true });
 
   if (error) {
-    console.error("Error fetching signals:", error);
+    console.error("Supabase error fetching signals:", error.message || error);
+    return [];
+  }
+
+  if (!data || !Array.isArray(data)) {
+    console.warn("No signals data returned from Supabase");
     return [];
   }
 
