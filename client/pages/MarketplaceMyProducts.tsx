@@ -19,7 +19,7 @@ import {
   Globe,
   Star,
 } from "lucide-react";
-import { cn, maskNonWhitespace, extractOriginalProductId } from "@/lib/utils";
+import { cn, maskNonWhitespace } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
 import StrategyCard from "@/components/marketplace/StrategyCard";
@@ -148,6 +148,7 @@ const CourseCard: FC<{
     course: MarketplaceCourse,
     meta?: { isFavorite: boolean },
   ) => void;
+  onBuy?: (course: MarketplaceCourse) => void;
 }> = ({
   course,
   isActive,
@@ -155,6 +156,7 @@ const CourseCard: FC<{
   isFavorite,
   onToggleFavorite,
   onOpenDetails,
+  onBuy,
 }) => (
   <div className="w-full">
     <div
@@ -250,6 +252,10 @@ const CourseCard: FC<{
             actionButtonBaseClass,
             "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90 sm:flex-none",
           )}
+          onClick={(event) => {
+            event.stopPropagation();
+            onBuy?.(course);
+          }}
         >
           <ShoppingCart className="h-4 w-4" />
           Buy
@@ -265,7 +271,15 @@ const InvestmentConsultantCard: FC<{
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-}> = ({ consultant, isActive, onSelect, isFavorite, onToggleFavorite }) => (
+  onBuy?: (consultant: InvestmentConsultant) => void;
+}> = ({
+  consultant,
+  isActive,
+  onSelect,
+  isFavorite,
+  onToggleFavorite,
+  onBuy,
+}) => (
   <div className="mx-auto w-full max-w-[525px]">
     <div
       role="button"
@@ -387,6 +401,7 @@ const InvestmentConsultantCard: FC<{
             className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-5 py-2 text-xs font-bold uppercase text-white transition-opacity hover:opacity-90"
             onClick={(event) => {
               event.stopPropagation();
+              onBuy?.(consultant);
             }}
           >
             <ShoppingCart className="h-4 w-4" />
