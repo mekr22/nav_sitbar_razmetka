@@ -1,16 +1,19 @@
-import { useMemo, useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useMemo } from "react";
 import { z } from "zod";
 
 import FormSection from "@/components/add-product/FormSection";
 import FormActions from "@/components/add-product/FormActions";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import useProductForm from "@/components/add-product/useProductForm";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useAuth } from "@/providers/AuthProvider";
-import { useToast } from "@/hooks/use-toast";
-import { insertProductRecord, type ProductInsertStatus } from "@/lib/supabaseMarketplaceMutations";
 import { cn } from "@/lib/utils";
 
 const DEFAULT_IMAGE = "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder-signal";
@@ -69,24 +72,40 @@ const toSlug = (value: string) =>
     .replace(/-{2,}/g, "-")
     .trim();
 
-const buildSignalId = (name: string) => {
-  const base = toSlug(name || "signal") || "signal";
+const buildSignalId = (values: SignalFormValues) => {
+  const base = toSlug(values.name || "signal") || "signal";
   const suffix = Math.random().toString(36).slice(2, 6);
   return `${base}-${suffix}`;
 };
 
 const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const form = useForm<SignalFormValues>({
-    resolver: zodResolver(signalFormSchema),
-    defaultValues,
-  });
-  const { user } = useAuth();
-  const { toast } = useToast();
-  const [publishing, setPublishing] = useState(false);
-  const [savingDraft, setSavingDraft] = useState(false);
+  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<SignalFormValues>(
+    {
+      schema: signalFormSchema,
+      defaultValues,
+      table: "signals",
+      buildId: buildSignalId,
+      buildPayload: (values) => ({
+        name: values.name,
+        icon: values.icon,
+        users: values.users,
+        risk_level: values.riskLevel.toUpperCase(),
+        platforms: splitList(values.platforms),
+        assets: splitList(values.assets),
+        type: values.type,
+        timeframes: splitList(values.timeframes),
+        use: values.use,
+        accuracy: values.accuracy,
+        chart_image: values.chartImage ? values.chartImage : null,
+        description: values.description ?? null,
+        price: values.price ?? null,
+      }),
+      onCreated,
+      getDisplayName: (values) => values.name,
+    },
+  );
 
   const values = form.watch();
-
   const previewData = useMemo(
     () => ({
       name: values.name || "Your product's title",
@@ -105,58 +124,6 @@ const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
     }),
     [values],
   );
-
-  const handleSubmit = async (
-    submitValues: SignalFormValues,
-    status: ProductInsertStatus,
-  ) => {
-    const payload = {
-      id: buildSignalId(submitValues.name),
-      name: submitValues.name,
-      icon: submitValues.icon,
-      users: submitValues.users,
-      risk_level: submitValues.riskLevel.toUpperCase(),
-      platforms: splitList(submitValues.platforms),
-      assets: splitList(submitValues.assets),
-      type: submitValues.type,
-      timeframes: splitList(submitValues.timeframes),
-      use: submitValues.use,
-      accuracy: submitValues.accuracy,
-      chart_image: submitValues.chartImage ? submitValues.chartImage : null,
-      description: submitValues.description ?? null,
-      price: submitValues.price ?? null,
-    } as Record<string, unknown>;
-
-    const activeSetter = status === "draft" ? setSavingDraft : setPublishing;
-
-    try {
-      activeSetter(true);
-      const created = await insertProductRecord("signals", payload, {
-        status,
-        userId: user?.id,
-      });
-
-      toast.toast({
-        title: status === "draft" ? "Draft saved" : "Product published",
-        description: `${submitValues.name} is now available in the marketplace`,
-      });
-
-      form.reset(defaultValues);
-      onCreated?.((created as { id?: string }).id ?? payload.id);
-    } catch (error) {
-      const message =
-        error instanceof Error ? error.message : "Unexpected error while saving product";
-      toast.toast({
-        title: "Unable to save product",
-        description: message,
-      });
-    } finally {
-      activeSetter(false);
-    }
-  };
-
-  const publish = form.handleSubmit((data) => handleSubmit(data, "published"));
-  const saveDraft = form.handleSubmit((data) => handleSubmit(data, "draft"));
 
   return (
     <Form {...form}>
