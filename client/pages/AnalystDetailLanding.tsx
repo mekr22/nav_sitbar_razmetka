@@ -7,6 +7,7 @@ import PerformanceChartCard, {
   type PerformanceChartLevel,
 } from "@/components/marketplace/PerformanceChartCard";
 import { baseAnalysts, type Analyst } from "@/data/marketplaceAnalysts";
+import { useCart } from "@/hooks/useCart";
 import { useFavorite } from "@/hooks/useFavorite";
 import { extractOriginalProductId } from "@/lib/utils";
 
@@ -296,10 +297,24 @@ const AnalystDetailLanding: FC = () => {
 
   const originalAnalystId = useMemo(() => extractOriginalProductId(analyst.id), [analyst.id]);
   const { isFavorite: isAnalystFavorite, toggle: toggleAnalystFavorite } = useFavorite("analyst", originalAnalystId);
+  const { addProductToCart } = useCart();
 
   const handleToggleFavoriteAnalyst = useCallback(() => {
     toggleAnalystFavorite();
   }, [toggleAnalystFavorite]);
+
+  const handleAddAnalystToCart = useCallback(() => {
+    const productForCart: Analyst = {
+      ...analyst,
+      id: originalAnalystId,
+    };
+
+    void addProductToCart("analyst", productForCart, {
+      price: analyst.price,
+      subtitle: analyst.company,
+      imageUrl: analyst.avatar,
+    });
+  }, [addProductToCart, analyst, originalAnalystId]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/analysts", {
@@ -646,6 +661,7 @@ const AnalystDetailLanding: FC = () => {
 
                 <button
                   type="button"
+                  onClick={handleAddAnalystToCart}
                   className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-12 py-2.5 text-[15px] font-bold text-white transition-transform hover:scale-[1.02]"
                 >
                   <ShoppingCartIcon className="h-5 w-5" />
