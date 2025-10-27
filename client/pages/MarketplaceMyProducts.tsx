@@ -1293,6 +1293,9 @@ const MarketplaceMyProducts: FC = () => {
                   }}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("trading-robot", adjustedRobot.id)}
+                  onBuy={(current) => {
+                    void addProductToCart("trading-robot", current);
+                  }}
                 />
               );
             })}
