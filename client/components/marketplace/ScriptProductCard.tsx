@@ -182,9 +182,9 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
                       </span>
                     ))}
                     {isCompact &&
-                      product.creator.tags.length > creatorTags.length && (
+                      creatorTagsSource.length > creatorTags.length && (
                         <span className="rounded bg-[#2A1C0E] px-2 py-0.5 text-xs font-extrabold uppercase text-[#FFA800]">
-                          +{product.creator.tags.length - creatorTags.length}
+                          +{creatorTagsSource.length - creatorTags.length}
                         </span>
                       )}
                   </div>
@@ -226,9 +226,9 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
                   </span>
                 ))}
                 {isCompact &&
-                  product.compatibility.length > compatibilityItems.length && (
+                  compatibilitySource.length > compatibilityItems.length && (
                     <span className="rounded bg-[#2E2744] px-1 uppercase text-white">
-                      +{product.compatibility.length - compatibilityItems.length}
+                      +{compatibilitySource.length - compatibilityItems.length}
                     </span>
                   )}
               </div>
@@ -243,9 +243,9 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
                   </span>
                 ))}
                 {isCompact &&
-                  product.requirements.length > requirementsItems.length && (
+                  requirementsSource.length > requirementsItems.length && (
                     <span className="rounded bg-[#2E2744] px-1 uppercase text-white">
-                      +{product.requirements.length - requirementsItems.length}
+                      +{requirementsSource.length - requirementsItems.length}
                     </span>
                   )}
               </div>
