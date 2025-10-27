@@ -132,14 +132,42 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
     return [];
   }
 
-  const { data, error } = await supabase
-    .from<CartItemRow>(TABLE_NAME)
-    .select("*")
-    .eq("user_id", userId)
-    .order("created_at", { ascending: false });
+  const buildSelectQuery = () =>
+    supabase
+      .from<CartItemRow>(TABLE_NAME)
+      .select("*")
+      .eq("user_id", userId);
+
+  const { data, error } = await buildSelectQuery().order("created_at", {
+    ascending: false,
+  });
 
   if (error) {
-    console.error("[supabaseCart] Error loading cart items", error);
+    if (shouldRetryWithoutOrder(error)) {
+      console.warn(
+        "[supabaseCart] Falling back to unordered cart items query",
+        {
+          message: error.message,
+          code: error.code,
+        },
+      );
+      const {
+        data: fallbackData,
+        error: fallbackError,
+      } = await buildSelectQuery();
+
+      if (!fallbackError) {
+        return (fallbackData ?? []).map(mapRowToCartItem);
+      }
+
+      logSupabaseError(
+        "[supabaseCart] Error loading cart items (fallback)",
+        fallbackError,
+      );
+      return [];
+    }
+
+    logSupabaseError("[supabaseCart] Error loading cart items", error);
     return [];
   }
 
