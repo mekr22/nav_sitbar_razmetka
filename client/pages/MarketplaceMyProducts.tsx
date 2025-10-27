@@ -21,7 +21,8 @@ import {
 } from "lucide-react";
 import { cn, maskNonWhitespace } from "@/lib/utils";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
-import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
+import SignalCard from "@/components/marketplace/SignalCard";
+import type { Signal } from "@/data/marketplaceTypes";
 import StrategyCard from "@/components/marketplace/StrategyCard";
 import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
 import TraderCard from "@/components/marketplace/TraderCard";
