@@ -75,10 +75,19 @@ const useProductForm = <T extends FieldValues>(
 
       const displayName = getDisplayName ? getDisplayName(values) : "Product";
 
-      toastApi.toast({
-        title: status === "draft" ? "Draft saved" : "Product published",
-        description: `${displayName} successfully saved`,
-      });
+      if (status === "published") {
+        toastApi.toast({
+          title: "✅ Product published successfully",
+          description: `"${displayName}" is now live in the marketplace!`,
+          variant: "default",
+        });
+      } else {
+        toastApi.toast({
+          title: "💾 Draft saved",
+          description: `"${displayName}" saved as draft`,
+          variant: "default",
+        });
+      }
 
       form.reset(defaultValues);
       const createdId = (created as { id?: string }).id ?? id;
@@ -88,8 +97,9 @@ const useProductForm = <T extends FieldValues>(
       const message =
         error instanceof Error ? error.message : "Unexpected error while saving product";
       toastApi.toast({
-        title: "Unable to save product",
+        title: "❌ Publication failed",
         description: message,
+        variant: "destructive",
       });
       throw error;
     } finally {
