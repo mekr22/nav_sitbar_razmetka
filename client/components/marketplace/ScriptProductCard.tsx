@@ -21,6 +21,7 @@ type ScriptProductCardProps = {
     product: ScriptProduct,
     meta?: { isFavorite: boolean },
   ) => void;
+  onBuy?: (product: ScriptProduct) => void;
 };
 
 const ScriptProductCard: FC<ScriptProductCardProps> = ({
@@ -30,6 +31,7 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
   isFavorite,
   onToggleFavorite,
   onOpenDetails,
+  onBuy,
 }) => (
   <div
     role="button"
@@ -189,14 +191,18 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
 
         <div className="mt-auto flex flex-col gap-2 sm:flex-row sm:self-end sm:items-center sm:gap-3">
           <button
-            className={cn(
-              actionButtonBaseClass,
-              "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
-            )}
-          >
-            <ShoppingCart className="h-4 w-4" />
-            Buy
-          </button>
+          className={cn(
+            actionButtonBaseClass,
+            "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
+          )}
+          onClick={(event) => {
+            event.stopPropagation();
+            onBuy?.(product);
+          }}
+        >
+          <ShoppingCart className="h-4 w-4" />
+          Buy
+        </button>
         </div>
       </div>
     </div>
