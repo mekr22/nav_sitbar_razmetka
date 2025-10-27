@@ -18,6 +18,7 @@ type OtherProductCardProps = {
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onOpenDetails?: (product: OtherProduct, meta?: { isFavorite: boolean }) => void;
+  onBuy?: (product: OtherProduct) => void;
 };
 
 const OtherProductCard: FC<OtherProductCardProps> = ({
@@ -27,6 +28,7 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
   isFavorite,
   onToggleFavorite,
   onOpenDetails,
+  onBuy,
 }) => {
   const handleOpenDetails = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -139,7 +141,10 @@ const OtherProductCard: FC<OtherProductCardProps> = ({
               actionButtonBaseClass,
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
-            onClick={handleOpenDetails}
+            onClick={(event) => {
+              event.stopPropagation();
+              onBuy?.(product);
+            }}
           >
             <ShoppingCart className="h-4 w-4" />
             Buy
