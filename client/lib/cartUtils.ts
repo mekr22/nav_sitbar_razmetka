@@ -143,21 +143,22 @@ export function buildCartInsertPayload<K extends ProductType>(
 
   switch (productType) {
     case "analyst": {
+      const analyst = product as Analyst;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.name,
-        subtitle: resolveSubtitle(product.company, options?.subtitle),
+        productId: analyst.id,
+        title: analyst.name,
+        subtitle: resolveSubtitle(analyst.company, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.avatar ?? null, options?.imageUrl),
+        imageUrl: resolveImage(analyst.avatar ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            rating: product.rating,
-            followers: product.followers,
-            role: product.role,
+            rating: analyst.rating,
+            followers: analyst.followers,
+            role: analyst.role,
           },
           options?.metadata,
         ),
@@ -165,21 +166,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "investment-consultant": {
+      const consultant = product as InvestmentConsultant;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.name,
-        subtitle: resolveSubtitle(product.company, options?.subtitle),
+        productId: consultant.id,
+        title: consultant.name,
+        subtitle: resolveSubtitle(consultant.company, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.avatar ?? null, options?.imageUrl),
+        imageUrl: resolveImage(consultant.avatar ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            riskLevel: product.riskLevel,
-            clients: product.clients,
-            portfolioReturn: product.portfolioReturn,
+            riskLevel: consultant.riskLevel,
+            clients: consultant.clients,
+            portfolioReturn: consultant.portfolioReturn,
           },
           options?.metadata,
         ),
@@ -187,21 +189,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "trader": {
+      const trader = product as Trader;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.name,
-        subtitle: resolveSubtitle(product.badge, options?.subtitle),
+        productId: trader.id,
+        title: trader.name,
+        subtitle: resolveSubtitle(trader.badge, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.avatar ?? null, options?.imageUrl),
+        imageUrl: resolveImage(trader.avatar ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            roiMonth: product.roiMonth,
-            roiQuarter: product.roiQuarter,
-            accuracy: product.accuracy,
+            roiMonth: trader.roiMonth,
+            roiQuarter: trader.roiQuarter,
+            accuracy: trader.accuracy,
           },
           options?.metadata,
         ),
