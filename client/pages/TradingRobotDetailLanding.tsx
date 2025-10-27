@@ -2,6 +2,7 @@ import { BookOpen, ShoppingCart, Star, Users } from "lucide-react";
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import { useCart } from "@/hooks/useCart";
 import { useFavorite } from "@/hooks/useFavorite";
 import { extractOriginalProductId } from "@/lib/utils";
 import PerformanceChartCard, {
@@ -596,6 +597,7 @@ const TradingRobotDetailLanding: FC = () => {
 
   const originalRobotId = useMemo(() => extractOriginalProductId(robot.id), [robot.id]);
   const { isFavorite: isRobotFavorite, toggle: toggleRobotFavorite } = useFavorite("trading-robot", originalRobotId);
+  const { addProductToCart } = useCart();
 
   const handleToggleFavoriteRobot = useCallback(() => {
     toggleRobotFavorite();
@@ -638,6 +640,23 @@ const TradingRobotDetailLanding: FC = () => {
   const displayChartImage = baseChartImage || DEFAULT_CHART_IMAGE;
   const authorAvatar = author?.avatar ?? "";
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
+
+  const handleAddRobotToCart = useCallback(() => {
+    const productForCart: TradingRobot = {
+      ...robot,
+      id: originalRobotId,
+    };
+
+    void addProductToCart("trading-robot", productForCart, {
+      price: robot.price,
+      subtitle: robot.strategy ?? robot.type ?? null,
+      imageUrl: displayChartImage,
+      metadata: {
+        platform: robot.platform,
+        leverage: robot.leverage,
+      },
+    });
+  }, [addProductToCart, displayChartImage, originalRobotId, robot]);
 
   const translatedDescription = robot.description ?? "";
   const hasOriginalDescription = Boolean(robot.originalDescription && robot.originalDescription.trim().length > 0);
@@ -1299,7 +1318,12 @@ const TradingRobotDetailLanding: FC = () => {
                       key={key}
                       type="button"
                       aria-pressed={isActive}
-                      onClick={() => setActiveAction(key)}
+                      onClick={() => {
+                        setActiveAction(key);
+                        if (key === "buy") {
+                          handleAddRobotToCart();
+                        }
+                      }}
                       className={`flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-2 text-[15px] font-bold transition-colors ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                     >
                       <Icon className="h-4 w-4 max-[360px]:h-3.5 max-[360px]:w-3.5" />
