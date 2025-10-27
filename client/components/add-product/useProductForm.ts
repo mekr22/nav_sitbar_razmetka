@@ -7,8 +7,8 @@ import type {
 } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import type { ZodTypeAny } from "zod";
+import { toast } from "sonner";
 
-import { useToast } from "@/hooks/use-toast";
 import { insertProductRecord, type ProductInsertStatus } from "@/lib/supabaseMarketplaceMutations";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -57,7 +57,6 @@ const useProductForm = <T extends FieldValues>(
   });
 
   const { user } = useAuth();
-  const toastApi = useToast();
   const [publishing, setPublishing] = useState(false);
   const [savingDraft, setSavingDraft] = useState(false);
 
@@ -76,16 +75,14 @@ const useProductForm = <T extends FieldValues>(
       const displayName = getDisplayName ? getDisplayName(values) : "Product";
 
       if (status === "published") {
-        toastApi.toast({
-          title: "✅ Product published successfully",
+        toast.success("Product published!", {
           description: `"${displayName}" is now live in the marketplace!`,
-          variant: "default",
+          duration: 5000,
         });
       } else {
-        toastApi.toast({
-          title: "💾 Draft saved",
+        toast.success("Draft saved", {
           description: `"${displayName}" saved as draft`,
-          variant: "default",
+          duration: 4000,
         });
       }
 
@@ -96,10 +93,9 @@ const useProductForm = <T extends FieldValues>(
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Unexpected error while saving product";
-      toastApi.toast({
-        title: "❌ Publication failed",
+      toast.error("Publication failed", {
         description: message,
-        variant: "destructive",
+        duration: 6000,
       });
       throw error;
     } finally {
