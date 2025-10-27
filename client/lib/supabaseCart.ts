@@ -93,8 +93,10 @@ const shouldRetryWithoutOrder = (error: PostgrestError): boolean => {
     return false;
   }
 
-  return message.includes("created_at") ||
-    (message.includes("column") && message.includes("does not exist"));
+  return (
+    message.includes("created_at") ||
+    (message.includes("column") && message.includes("does not exist"))
+  );
 };
 
 const fetchExistingCartItem = async (
@@ -133,10 +135,7 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
   }
 
   const buildSelectQuery = () =>
-    supabase
-      .from<CartItemRow>(TABLE_NAME)
-      .select("*")
-      .eq("user_id", userId);
+    supabase.from<CartItemRow>(TABLE_NAME).select("*").eq("user_id", userId);
 
   const { data, error } = await buildSelectQuery().order("created_at", {
     ascending: false,
@@ -151,10 +150,8 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
           code: error.code,
         },
       );
-      const {
-        data: fallbackData,
-        error: fallbackError,
-      } = await buildSelectQuery();
+      const { data: fallbackData, error: fallbackError } =
+        await buildSelectQuery();
 
       if (!fallbackError) {
         return (fallbackData ?? []).map(mapRowToCartItem);

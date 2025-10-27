@@ -60,30 +60,32 @@ const toSlug = (value: string) =>
     .replace(/-{2,}/g, "-");
 
 const AnalystForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<AnalystFormValues>({
-    schema: analystSchema,
-    defaultValues,
-    table: "analysts",
-    buildId: (values) => `${toSlug(values.name || "analyst") || "analyst"}-${Math.random().toString(36).slice(2, 6)}`,
-    buildPayload: (values) => ({
-      name: values.name,
-      avatar: values.avatar,
-      company: values.company,
-      role: values.role,
-      rating: values.rating,
-      followers: values.followers,
-      publications: values.publications,
-      markets: values.markets,
-      assets: values.assets,
-      analysis: values.analysis,
-      forecast_accuracy: values.forecastAccuracy,
-      featured: values.featured,
-      bio: values.bio ?? null,
-      price: values.price ?? null,
-    }),
-    onCreated,
-    getDisplayName: (values) => values.name,
-  });
+  const { form, publish, saveDraft, publishing, savingDraft } =
+    useProductForm<AnalystFormValues>({
+      schema: analystSchema,
+      defaultValues,
+      table: "analysts",
+      buildId: (values) =>
+        `${toSlug(values.name || "analyst") || "analyst"}-${Math.random().toString(36).slice(2, 6)}`,
+      buildPayload: (values) => ({
+        name: values.name,
+        avatar: values.avatar,
+        company: values.company,
+        role: values.role,
+        rating: values.rating,
+        followers: values.followers,
+        publications: values.publications,
+        markets: values.markets,
+        assets: values.assets,
+        analysis: values.analysis,
+        forecast_accuracy: values.forecastAccuracy,
+        featured: values.featured,
+        bio: values.bio ?? null,
+        price: values.price ?? null,
+      }),
+      onCreated,
+      getDisplayName: (values) => values.name,
+    });
 
   const values = form.watch();
 
@@ -117,7 +119,9 @@ const AnalystForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -138,8 +142,12 @@ const AnalystForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Analyst preview</p>
-                <h3 className="text-lg font-bold text-white">{previewData.name}</h3>
+                <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Analyst preview
+                </p>
+                <h3 className="text-lg font-bold text-white">
+                  {previewData.name}
+                </h3>
                 <p className="text-sm font-medium text-[#B0B0B0]">
                   {previewData.role} · {previewData.company}
                 </p>
@@ -155,14 +163,21 @@ const AnalystForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
             </div>
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Markets:</span>
-              <span className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">{previewData.markets}</span>
+              <span className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                {previewData.markets}
+              </span>
             </div>
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Assets:</span>
-              <span className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">{previewData.assets}</span>
+              <span className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                {previewData.assets}
+              </span>
             </div>
             <p className="text-xs font-bold uppercase text-[#B0B0B0]">
-              Analysis: <span className="text-white normal-case">{previewData.analysis}</span>
+              Analysis:{" "}
+              <span className="text-white normal-case">
+                {previewData.analysis}
+              </span>
             </p>
             <div className="flex gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Followers: {previewData.followers}</span>
@@ -229,7 +244,10 @@ const AnalystForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
                   </span>
                 </div>
                 <FormControl>
-                  <Switch checked={field.value} onCheckedChange={field.onChange} />
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
                 </FormControl>
               </FormItem>
             )}

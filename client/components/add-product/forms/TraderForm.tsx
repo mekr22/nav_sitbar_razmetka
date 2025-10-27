@@ -61,31 +61,33 @@ const toSlug = (value: string) =>
     .replace(/-{2,}/g, "-");
 
 const TraderForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<TraderFormValues>({
-    schema: traderSchema,
-    defaultValues,
-    table: "traders",
-    buildId: (values) => `${toSlug(values.name || "trader") || "trader"}-${Math.random().toString(36).slice(2, 6)}`,
-    buildPayload: (values) => ({
-      name: values.name,
-      avatar: values.avatar,
-      badge: values.badge,
-      followers: values.followers,
-      publications: values.publications,
-      trades_30_days: values.trades30Days,
-      experience: values.experience,
-      roi_month: values.roiMonth,
-      roi_quarter: values.roiQuarter,
-      avg_profitability: values.avgProfitability,
-      accuracy: values.accuracy,
-      certification: values.certification,
-      rating: values.rating,
-      bio: values.bio ?? null,
-      price: values.price ?? null,
-    }),
-    onCreated,
-    getDisplayName: (values) => values.name,
-  });
+  const { form, publish, saveDraft, publishing, savingDraft } =
+    useProductForm<TraderFormValues>({
+      schema: traderSchema,
+      defaultValues,
+      table: "traders",
+      buildId: (values) =>
+        `${toSlug(values.name || "trader") || "trader"}-${Math.random().toString(36).slice(2, 6)}`,
+      buildPayload: (values) => ({
+        name: values.name,
+        avatar: values.avatar,
+        badge: values.badge,
+        followers: values.followers,
+        publications: values.publications,
+        trades_30_days: values.trades30Days,
+        experience: values.experience,
+        roi_month: values.roiMonth,
+        roi_quarter: values.roiQuarter,
+        avg_profitability: values.avgProfitability,
+        accuracy: values.accuracy,
+        certification: values.certification,
+        rating: values.rating,
+        bio: values.bio ?? null,
+        price: values.price ?? null,
+      }),
+      onCreated,
+      getDisplayName: (values) => values.name,
+    });
 
   const values = form.watch();
 
@@ -114,7 +116,9 @@ const TraderForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -135,8 +139,12 @@ const TraderForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Trader preview</p>
-                <h3 className="text-lg font-bold text-white">{previewData.name}</h3>
+                <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Trader preview
+                </p>
+                <h3 className="text-lg font-bold text-white">
+                  {previewData.name}
+                </h3>
                 <span className="rounded-full bg-[#523A83] px-3 py-1 text-xs font-bold text-white">
                   {previewData.badge}
                 </span>

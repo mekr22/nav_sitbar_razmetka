@@ -170,7 +170,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
         const signals = await getSignals();
         setSupabaseSignals(signals);
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : String(error);
+        const errorMessage =
+          error instanceof Error ? error.message : String(error);
         console.error("Error fetching signals:", errorMessage);
         setSupabaseSignals([]);
       } finally {
@@ -226,15 +227,15 @@ const SignalsAndTechnicalIndicators: FC = () => {
   );
 
   const signals: SignalWithMeta[] = useMemo(() => {
-    const allSignals = supabaseSignals.length > 0 ? supabaseSignals : baseSignals;
+    const allSignals =
+      supabaseSignals.length > 0 ? supabaseSignals : baseSignals;
 
     if (supabaseSignals.length > 0) {
       return allSignals.map((signal, index) => ({
         ...signal,
         category: CATEGORY_CYCLE[index % CATEGORY_CYCLE.length],
         createdWindow: CREATED_CYCLE[index % CREATED_CYCLE.length],
-        activeTimeBucket:
-          ACTIVE_TIME_CYCLE[index % ACTIVE_TIME_CYCLE.length],
+        activeTimeBucket: ACTIVE_TIME_CYCLE[index % ACTIVE_TIME_CYCLE.length],
         pnlBucket: PNL_CYCLE[index % PNL_CYCLE.length],
         drawdownBucket: DRAWDOWN_CYCLE[index % DRAWDOWN_CYCLE.length],
       }));

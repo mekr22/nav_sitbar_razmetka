@@ -62,30 +62,36 @@ const splitList = (value: string): string[] =>
     .map((item) => item.trim())
     .filter((item) => item.length > 0);
 
-const OtherProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<OtherProductFormValues>({
-    schema: otherSchema,
-    defaultValues,
-    table: "other_products",
-    buildId: (values) => `${toSlug(values.title || "product") || "product"}-${Math.random().toString(36).slice(2, 6)}`,
-    buildPayload: (values) => ({
-      title: values.title,
-      description: values.description,
-      image: values.image,
-      image_alt: values.imageAlt,
-      label: values.label,
-      location: values.location,
-      rating: values.rating,
-      rating_tag: values.ratingTag,
-      type_label: values.typeLabel,
-      industry_label: values.industryLabel,
-      compatibility: splitList(values.compatibility),
-      requirements: splitList(values.requirements),
-      price: values.price ?? null,
-    }),
-    onCreated,
-    getDisplayName: (values) => values.title,
-  });
+const OtherProductForm = ({
+  onCreated,
+}: {
+  onCreated?: (id: string) => void;
+}) => {
+  const { form, publish, saveDraft, publishing, savingDraft } =
+    useProductForm<OtherProductFormValues>({
+      schema: otherSchema,
+      defaultValues,
+      table: "other_products",
+      buildId: (values) =>
+        `${toSlug(values.title || "product") || "product"}-${Math.random().toString(36).slice(2, 6)}`,
+      buildPayload: (values) => ({
+        title: values.title,
+        description: values.description,
+        image: values.image,
+        image_alt: values.imageAlt,
+        label: values.label,
+        location: values.location,
+        rating: values.rating,
+        rating_tag: values.ratingTag,
+        type_label: values.typeLabel,
+        industry_label: values.industryLabel,
+        compatibility: splitList(values.compatibility),
+        requirements: splitList(values.requirements),
+        price: values.price ?? null,
+      }),
+      onCreated,
+      getDisplayName: (values) => values.title,
+    });
 
   const values = form.watch();
 
@@ -114,7 +120,9 @@ const OtherProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -133,7 +141,9 @@ const OtherProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
       <form className="flex flex-col gap-6">
         <FormSection title="Preview">
           <div className="flex flex-col gap-2">
-            <h3 className="text-lg font-bold text-white">{previewData.title}</h3>
+            <h3 className="text-lg font-bold text-white">
+              {previewData.title}
+            </h3>
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>{previewData.label}</span>
               <span>Rating: {previewData.rating}</span>
@@ -147,7 +157,10 @@ const OtherProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Compatibility:</span>
               {previewData.compatibility.map((item) => (
-                <span key={item} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                <span
+                  key={item}
+                  className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                >
                   {item}
                 </span>
               ))}
@@ -192,8 +205,16 @@ const OtherProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
         </FormSection>
 
         <FormSection title="Compatibility & requirements">
-          {textField("compatibility", "Compatibility (comma separated)", "Small business, Enterprise")}
-          {textField("requirements", "Requirements (comma separated)", "KYC, Onboarding call")}
+          {textField(
+            "compatibility",
+            "Compatibility (comma separated)",
+            "Small business, Enterprise",
+          )}
+          {textField(
+            "requirements",
+            "Requirements (comma separated)",
+            "KYC, Onboarding call",
+          )}
         </FormSection>
 
         <FormSection title="Pricing">

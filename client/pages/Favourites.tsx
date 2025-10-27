@@ -465,7 +465,10 @@ const Favourites: FC = () => {
                             )
                           }
                           onBuy={(current) => {
-                            void addProductToCart("investment-consultant", current);
+                            void addProductToCart(
+                              "investment-consultant",
+                              current,
+                            );
                           }}
                         />
                       </div>

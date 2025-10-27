@@ -101,12 +101,19 @@ const parseExchanges = (value: string) =>
         icon: icon || "",
       };
     })
-    .filter((entry): entry is { id: string; name: string; icon: string } => entry !== null);
+    .filter(
+      (entry): entry is { id: string; name: string; icon: string } =>
+        entry !== null,
+    );
 
 const buildTradingRobotId = (values: TradingRobotFormValues) =>
   `${toSlug(values.name || "trading-robot") || "trading-robot"}-${Math.random().toString(36).slice(2, 6)}`;
 
-const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
+const TradingRobotForm = ({
+  onCreated,
+}: {
+  onCreated?: (id: string) => void;
+}) => {
   const { form, publish, saveDraft, publishing, savingDraft } =
     useProductForm<TradingRobotFormValues>({
       schema: tradingRobotSchema,
@@ -167,7 +174,9 @@ const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -188,8 +197,12 @@ const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Robot preview</p>
-                <h3 className="text-lg font-bold text-white">{previewData.title}</h3>
+                <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Robot preview
+                </p>
+                <h3 className="text-lg font-bold text-white">
+                  {previewData.title}
+                </h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 <span className="rounded-full bg-[#2E2744] px-3 py-1 text-xs font-bold uppercase text-white">
@@ -215,7 +228,10 @@ const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
               <span>Exchanges:</span>
               <div className="flex flex-wrap gap-2">
                 {previewData.exchanges.map((exchange) => (
-                  <span key={exchange.id} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                  <span
+                    key={exchange.id}
+                    className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                  >
                     {exchange.name}
                   </span>
                 ))}
@@ -224,7 +240,10 @@ const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Assets:</span>
               {previewData.assetTags.map((tag) => (
-                <span key={tag} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                <span
+                  key={tag}
+                  className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                >
                   {tag}
                 </span>
               ))}
@@ -281,7 +300,9 @@ const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="bg-[#0C1014] text-white">
-                      {(["trend", "grid", "arbitrage", "scalping"] as const).map((option) => (
+                      {(
+                        ["trend", "grid", "arbitrage", "scalping"] as const
+                      ).map((option) => (
                         <SelectItem key={option} value={option}>
                           {option}
                         </SelectItem>
@@ -307,11 +328,13 @@ const TradingRobotForm = ({ onCreated }: { onCreated?: (id: string) => void }) =
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent className="bg-[#0C1014] text-white">
-                      {(["spot", "futures", "derivatives"] as const).map((option) => (
-                        <SelectItem key={option} value={option}>
-                          {option}
-                        </SelectItem>
-                      ))}
+                      {(["spot", "futures", "derivatives"] as const).map(
+                        (option) => (
+                          <SelectItem key={option} value={option}>
+                            {option}
+                          </SelectItem>
+                        ),
+                      )}
                     </SelectContent>
                   </Select>
                   <FormMessage />

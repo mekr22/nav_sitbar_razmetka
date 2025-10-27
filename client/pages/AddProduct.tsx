@@ -2,7 +2,10 @@ import { useState } from "react";
 import { ChevronDown, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { PRODUCT_TYPE_OPTIONS, type ProductFormKey } from "@/components/add-product/productTypeOptions";
+import {
+  PRODUCT_TYPE_OPTIONS,
+  type ProductFormKey,
+} from "@/components/add-product/productTypeOptions";
 import SignalForm from "@/components/add-product/forms/SignalForm";
 import StrategyForm from "@/components/add-product/forms/StrategyForm";
 import TradingRobotForm from "@/components/add-product/forms/TradingRobotForm";
@@ -14,7 +17,10 @@ import ScriptProductForm from "@/components/add-product/forms/ScriptProductForm"
 import OtherProductForm from "@/components/add-product/forms/OtherProductForm";
 import { cn } from "@/lib/utils";
 
-const FORM_COMPONENTS: Record<ProductFormKey, (props: { onCreated?: (id: string) => void }) => JSX.Element> = {
+const FORM_COMPONENTS: Record<
+  ProductFormKey,
+  (props: { onCreated?: (id: string) => void }) => JSX.Element
+> = {
   signal: SignalForm,
   strategy: StrategyForm,
   "trading-robot": TradingRobotForm,
@@ -33,7 +39,9 @@ const AddProduct = () => {
   const [lastCreatedId, setLastCreatedId] = useState<string | null>(null);
 
   const SelectedForm = FORM_COMPONENTS[selectedType];
-  const selectedOption = PRODUCT_TYPE_OPTIONS.find((option) => option.value === selectedType);
+  const selectedOption = PRODUCT_TYPE_OPTIONS.find(
+    (option) => option.value === selectedType,
+  );
 
   return (
     <div className="mx-auto flex w-full max-w-[1075px] flex-col gap-6 px-3 pb-20 sm:px-4">
@@ -58,7 +66,9 @@ const AddProduct = () => {
         >
           <div className="flex items-center justify-between gap-2">
             <div className="flex flex-col">
-              <h1 className="text-2xl font-bold text-white">Creating new product</h1>
+              <h1 className="text-2xl font-bold text-white">
+                Creating new product
+              </h1>
               {selectedOption?.description ? (
                 <p className="text-sm font-medium text-[#B0B0B0]">
                   {selectedOption.description}

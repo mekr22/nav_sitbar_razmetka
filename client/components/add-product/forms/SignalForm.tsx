@@ -16,7 +16,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
-const DEFAULT_IMAGE = "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder-signal";
+const DEFAULT_IMAGE =
+  "https://cdn.builder.io/api/v1/image/assets/TEMP/placeholder-signal";
 
 const signalFormSchema = z.object({
   name: z.string().min(2, "Enter a product title"),
@@ -79,8 +80,8 @@ const buildSignalId = (values: SignalFormValues) => {
 };
 
 const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<SignalFormValues>(
-    {
+  const { form, publish, saveDraft, publishing, savingDraft } =
+    useProductForm<SignalFormValues>({
       schema: signalFormSchema,
       defaultValues,
       table: "signals",
@@ -102,8 +103,7 @@ const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       }),
       onCreated,
       getDisplayName: (values) => values.name,
-    },
-  );
+    });
 
   const values = form.watch();
   const previewData = useMemo(
@@ -132,8 +132,12 @@ const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between gap-2">
               <div>
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Preview</p>
-                <h3 className="text-lg font-bold text-white">{previewData.name}</h3>
+                <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Preview
+                </p>
+                <h3 className="text-lg font-bold text-white">
+                  {previewData.name}
+                </h3>
               </div>
               <div className="flex items-center gap-3">
                 <span className="rounded bg-[#1C3430] px-2 py-1 text-xs font-bold uppercase text-[#2EBD85]">
@@ -144,11 +148,16 @@ const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
                 </span>
               </div>
             </div>
-            <p className="text-sm font-medium text-[#B0B0B0]">{previewData.description}</p>
+            <p className="text-sm font-medium text-[#B0B0B0]">
+              {previewData.description}
+            </p>
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Platforms:</span>
               {previewData.platforms.map((platform) => (
-                <span key={platform} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                <span
+                  key={platform}
+                  className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                >
                   {platform}
                 </span>
               ))}
@@ -156,7 +165,10 @@ const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Assets:</span>
               {previewData.assets.map((asset) => (
-                <span key={asset} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                <span
+                  key={asset}
+                  className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                >
                   {asset}
                 </span>
               ))}
@@ -164,7 +176,10 @@ const SignalForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Timeframes:</span>
               {previewData.timeframes.map((tf) => (
-                <span key={tf} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-[#6AA5FF]">
+                <span
+                  key={tf}
+                  className="rounded-full bg-[#2E2744] px-2 py-0.5 text-[#6AA5FF]"
+                >
                   {tf}
                 </span>
               ))}

@@ -125,7 +125,9 @@ const InvestmentConsultantForm = ({
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -146,8 +148,12 @@ const InvestmentConsultantForm = ({
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Consultant preview</p>
-                <h3 className="text-lg font-bold text-white">{previewData.name}</h3>
+                <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Consultant preview
+                </p>
+                <h3 className="text-lg font-bold text-white">
+                  {previewData.name}
+                </h3>
                 <p className="text-sm font-medium text-[#B0B0B0]">
                   {previewData.credentials} · {previewData.company}
                 </p>
@@ -230,7 +236,10 @@ const InvestmentConsultantForm = ({
                     </span>
                   </div>
                   <FormControl>
-                    <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
                 </FormItem>
               )}
@@ -249,7 +258,10 @@ const InvestmentConsultantForm = ({
                     </span>
                   </div>
                   <FormControl>
-                    <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
                   </FormControl>
                 </FormItem>
               )}

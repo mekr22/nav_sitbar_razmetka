@@ -74,13 +74,18 @@ const splitList = (value: string): string[] =>
     .map((item) => item.trim())
     .filter((item) => item.length > 0);
 
-const ScriptProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
+const ScriptProductForm = ({
+  onCreated,
+}: {
+  onCreated?: (id: string) => void;
+}) => {
   const { form, publish, saveDraft, publishing, savingDraft } =
     useProductForm<ScriptProductFormValues>({
       schema: scriptSchema,
       defaultValues,
       table: "script_products",
-      buildId: (values) => `${toSlug(values.title || "script") || "script"}-${Math.random().toString(36).slice(2, 6)}`,
+      buildId: (values) =>
+        `${toSlug(values.title || "script") || "script"}-${Math.random().toString(36).slice(2, 6)}`,
       buildPayload: (values) => ({
         title: values.title,
         description: values.description,
@@ -137,7 +142,9 @@ const ScriptProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) 
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -156,7 +163,9 @@ const ScriptProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) 
       <form className="flex flex-col gap-6">
         <FormSection title="Preview">
           <div className="flex flex-col gap-2">
-            <h3 className="text-lg font-bold text-white">{previewData.title}</h3>
+            <h3 className="text-lg font-bold text-white">
+              {previewData.title}
+            </h3>
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Type: {previewData.type}</span>
               <span>Revenue: {previewData.revenue}</span>
@@ -166,7 +175,10 @@ const ScriptProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) 
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Compatibility:</span>
               {previewData.compatibility.map((item) => (
-                <span key={item} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                <span
+                  key={item}
+                  className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                >
                   {item}
                 </span>
               ))}
@@ -202,7 +214,11 @@ const ScriptProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) 
             {textField("creatorFollowers", "Creator followers", "8,200")}
             {textField("creatorTags", "Creator tags", "quant, python")}
             {textField("location", "Location", "Remote")}
-            {textField("verificationLabel", "Verification label", "Verified seller")}
+            {textField(
+              "verificationLabel",
+              "Verification label",
+              "Verified seller",
+            )}
           </div>
         </FormSection>
 
@@ -226,8 +242,16 @@ const ScriptProductForm = ({ onCreated }: { onCreated?: (id: string) => void }) 
               </FormItem>
             )}
           />
-          {textField("compatibility", "Compatibility (comma separated)", "TradingView, MetaTrader")}
-          {textField("requirements", "Requirements (comma separated)", "Pro subscription, API access")}
+          {textField(
+            "compatibility",
+            "Compatibility (comma separated)",
+            "TradingView, MetaTrader",
+          )}
+          {textField(
+            "requirements",
+            "Requirements (comma separated)",
+            "Pro subscription, API access",
+          )}
         </FormSection>
 
         <FormSection title="Pricing">

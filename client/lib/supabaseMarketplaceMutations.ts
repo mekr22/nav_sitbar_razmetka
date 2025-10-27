@@ -15,7 +15,9 @@ const extractMissingColumns = (error: PostgrestError): string[] => {
   }
 
   const matches = Array.from(
-    error.message.matchAll(/column\s+\"([^\"]+)\"\s+(?:of\s+relation\s+\"[^\"]+\"\s+)?does\s+not\s+exist/gi),
+    error.message.matchAll(
+      /column\s+\"([^\"]+)\"\s+(?:of\s+relation\s+\"[^\"]+\"\s+)?does\s+not\s+exist/gi,
+    ),
   );
 
   return matches.map((match) => match[1]).filter(Boolean);
@@ -25,7 +27,10 @@ const isDuplicateKeyError = (error: PostgrestError): boolean =>
   error?.code === "23505" || /duplicate key value/i.test(error?.message ?? "");
 
 export class ProductInsertError extends Error {
-  constructor(message: string, readonly cause?: PostgrestError) {
+  constructor(
+    message: string,
+    readonly cause?: PostgrestError,
+  ) {
     super(message);
     this.name = "ProductInsertError";
   }
@@ -56,7 +61,10 @@ export const insertProductRecord = async <T extends Record<string, unknown>>(
 
   if (error) {
     if (isDuplicateKeyError(error)) {
-      throw new ProductInsertError("A product with the same identifier already exists", error);
+      throw new ProductInsertError(
+        "A product with the same identifier already exists",
+        error,
+      );
     }
 
     const missingColumns = extractMissingColumns(error);

@@ -9,7 +9,10 @@ import { useForm } from "react-hook-form";
 import type { ZodTypeAny } from "zod";
 import { toast } from "sonner";
 
-import { insertProductRecord, type ProductInsertStatus } from "@/lib/supabaseMarketplaceMutations";
+import {
+  insertProductRecord,
+  type ProductInsertStatus,
+} from "@/lib/supabaseMarketplaceMutations";
 import { useAuth } from "@/providers/AuthProvider";
 
 type SubmitHandler<T extends FieldValues> = (
@@ -92,7 +95,9 @@ const useProductForm = <T extends FieldValues>(
       return createdId;
     } catch (error) {
       const message =
-        error instanceof Error ? error.message : "Unexpected error while saving product";
+        error instanceof Error
+          ? error.message
+          : "Unexpected error while saving product";
       toast.error("Publication failed", {
         description: message,
         duration: 6000,

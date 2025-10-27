@@ -70,8 +70,8 @@ const buildStrategyId = (values: StrategyFormValues) =>
   `${toSlug(values.name || "strategy") || "strategy"}-${Math.random().toString(36).slice(2, 6)}`;
 
 const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<StrategyFormValues>(
-    {
+  const { form, publish, saveDraft, publishing, savingDraft } =
+    useProductForm<StrategyFormValues>({
       schema: strategySchema,
       defaultValues,
       table: "strategies",
@@ -82,7 +82,9 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
         users: values.users,
         risk_level: values.riskLevel.toUpperCase(),
         profit_sharing: values.profitSharing,
-        exchanges: splitList(values.exchanges).map((exchange) => toSlug(exchange)),
+        exchanges: splitList(values.exchanges).map((exchange) =>
+          toSlug(exchange),
+        ),
         exchanges_count: values.exchangesCount,
         assets: splitList(values.assets).map((asset) => asset.toUpperCase()),
         strategy: values.strategy,
@@ -95,8 +97,7 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       }),
       onCreated,
       getDisplayName: (values) => values.name,
-    },
-  );
+    });
 
   const values = form.watch();
 
@@ -129,7 +130,9 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -151,8 +154,12 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
           <div className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <p className="text-xs font-bold uppercase text-[#B0B0B0]">Strategy preview</p>
-                <h3 className="text-lg font-bold text-white">{previewData.title}</h3>
+                <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                  Strategy preview
+                </p>
+                <h3 className="text-lg font-bold text-white">
+                  {previewData.title}
+                </h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 <span className="rounded-full bg-[#1C3430] px-3 py-1 text-xs font-bold uppercase text-[#2EBD85]">
@@ -163,13 +170,24 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
                 </span>
               </div>
             </div>
-            <p className="text-sm font-medium text-[#B0B0B0]">{previewData.description}</p>
+            <p className="text-sm font-medium text-[#B0B0B0]">
+              {previewData.description}
+            </p>
             <div className="grid gap-3 md:grid-cols-3">
               {["Profit sharing", "ROI 30d", "ROI 1y"].map((label, index) => (
-                <div key={label} className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-3">
-                  <p className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</p>
+                <div
+                  key={label}
+                  className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-3"
+                >
+                  <p className="text-xs font-bold uppercase text-[#B0B0B0]">
+                    {label}
+                  </p>
                   <p className="text-[15px] font-bold text-white">
-                    {index === 0 ? previewData.profitSharing : index === 1 ? previewData.roi30d : previewData.roi1y}
+                    {index === 0
+                      ? previewData.profitSharing
+                      : index === 1
+                        ? previewData.roi30d
+                        : previewData.roi1y}
                   </p>
                 </div>
               ))}
@@ -178,7 +196,10 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
               <span>Exchanges:</span>
               <div className="flex flex-wrap gap-2">
                 {previewData.exchanges.map((exchange) => (
-                  <span key={exchange} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                  <span
+                    key={exchange}
+                    className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                  >
                     {exchange}
                   </span>
                 ))}
@@ -188,7 +209,10 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
               <span>Assets:</span>
               <div className="flex flex-wrap gap-2">
                 {previewData.assets.map((asset) => (
-                  <span key={asset} className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white">
+                  <span
+                    key={asset}
+                    className="rounded-full bg-[#2E2744] px-2 py-0.5 text-white"
+                  >
                     {asset}
                   </span>
                 ))}
@@ -228,10 +252,23 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
         <FormSection title="Trading parameters">
           {textField("profitSharing", "Profit sharing", "20% Profit Sharing")}
           <div className="grid gap-4 md:grid-cols-2">
-            {textField("exchanges", "Exchanges (comma separated)", "Binance, Coinbase, NYSE")}
-            {textField("exchangesCount", "Total exchanges available", "30", "number")}
+            {textField(
+              "exchanges",
+              "Exchanges (comma separated)",
+              "Binance, Coinbase, NYSE",
+            )}
+            {textField(
+              "exchangesCount",
+              "Total exchanges available",
+              "30",
+              "number",
+            )}
           </div>
-          {textField("assets", "Assets (comma separated)", "Stocks, Crypto, ETFs")}
+          {textField(
+            "assets",
+            "Assets (comma separated)",
+            "Stocks, Crypto, ETFs",
+          )}
           <div className="grid gap-4 md:grid-cols-2">
             {textField("strategy", "Strategy style", "Momentum breakout")}
             {textField("maxDrawdown", "Maximum drawdown", "15%")}
@@ -244,7 +281,11 @@ const StrategyForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
         </FormSection>
 
         <FormSection title="Monetization">
-          {textField("price", "Management fee / subscription price", "$99 / month")}
+          {textField(
+            "price",
+            "Management fee / subscription price",
+            "$99 / month",
+          )}
         </FormSection>
 
         <FormActions

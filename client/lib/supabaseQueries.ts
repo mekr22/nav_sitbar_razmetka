@@ -43,7 +43,9 @@ export async function getAnalysts(): Promise<Analyst[]> {
   }));
 }
 
-export async function getInvestmentConsultants(): Promise<InvestmentConsultant[]> {
+export async function getInvestmentConsultants(): Promise<
+  InvestmentConsultant[]
+> {
   if (!supabase) {
     return [];
   }
@@ -434,7 +436,7 @@ export async function getStrategyById(id: string): Promise<Strategy | null> {
 }
 
 export async function getTradingRobotById(
-  id: string
+  id: string,
 ): Promise<TradingRobot | null> {
   if (!supabase) {
     return null;
@@ -524,7 +526,7 @@ export async function getCourseById(id: string): Promise<Course | null> {
 }
 
 export async function getScriptProductById(
-  id: string
+  id: string,
 ): Promise<ScriptProduct | null> {
   if (!supabase) {
     return null;
@@ -566,7 +568,7 @@ export async function getScriptProductById(
 }
 
 export async function getOtherProductById(
-  id: string
+  id: string,
 ): Promise<OtherProduct | null> {
   if (!supabase) {
     return null;

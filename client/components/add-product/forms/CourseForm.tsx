@@ -36,7 +36,14 @@ const courseSchema = z.object({
   materialType: z.enum(["course", "training"]),
   releaseWindow: z.enum(["24h", "7d", "30d"]),
   format: z.enum(["video", "ebook", "live"]),
-  focusArea: z.enum(["stocks", "forex", "crypto", "options", "macro", "futures"]),
+  focusArea: z.enum([
+    "stocks",
+    "forex",
+    "crypto",
+    "options",
+    "macro",
+    "futures",
+  ]),
   language: z.enum(["english", "spanish", "german"]),
   description: z.string().optional(),
   price: z.string().optional(),
@@ -72,33 +79,35 @@ const toSlug = (value: string) =>
     .replace(/-{2,}/g, "-");
 
 const CourseForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
-  const { form, publish, saveDraft, publishing, savingDraft } = useProductForm<CourseFormValues>({
-    schema: courseSchema,
-    defaultValues,
-    table: "courses",
-    buildId: (values) => `${toSlug(values.title || "course") || "course"}-${Math.random().toString(36).slice(2, 6)}`,
-    buildPayload: (values) => ({
-      title: values.title,
-      subtitle: values.subtitle,
-      image: values.image,
-      host: values.host,
-      students: values.students,
-      rating: values.rating,
-      duration: values.duration,
-      lectures: values.lectures,
-      level: values.level,
-      level_category: values.levelCategory,
-      material_type: values.materialType,
-      release_window: values.releaseWindow,
-      format: values.format,
-      focus_area: values.focusArea,
-      language: values.language,
-      description: values.description ?? null,
-      price: values.price ?? null,
-    }),
-    onCreated,
-    getDisplayName: (values) => values.title,
-  });
+  const { form, publish, saveDraft, publishing, savingDraft } =
+    useProductForm<CourseFormValues>({
+      schema: courseSchema,
+      defaultValues,
+      table: "courses",
+      buildId: (values) =>
+        `${toSlug(values.title || "course") || "course"}-${Math.random().toString(36).slice(2, 6)}`,
+      buildPayload: (values) => ({
+        title: values.title,
+        subtitle: values.subtitle,
+        image: values.image,
+        host: values.host,
+        students: values.students,
+        rating: values.rating,
+        duration: values.duration,
+        lectures: values.lectures,
+        level: values.level,
+        level_category: values.levelCategory,
+        material_type: values.materialType,
+        release_window: values.releaseWindow,
+        format: values.format,
+        focus_area: values.focusArea,
+        language: values.language,
+        description: values.description ?? null,
+        price: values.price ?? null,
+      }),
+      onCreated,
+      getDisplayName: (values) => values.title,
+    });
 
   const values = form.watch();
 
@@ -128,7 +137,9 @@ const CourseForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <FormControl>
             <Input
               {...field}
@@ -153,7 +164,9 @@ const CourseForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">{label}</FormLabel>
+          <FormLabel className="text-xs font-bold uppercase text-[#B0B0B0]">
+            {label}
+          </FormLabel>
           <Select onValueChange={field.onChange} value={field.value as string}>
             <FormControl>
               <SelectTrigger className="h-11 rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-[15px] text-white">
@@ -179,8 +192,12 @@ const CourseForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
       <form className="flex flex-col gap-6">
         <FormSection title="Preview">
           <div className="flex flex-col gap-2">
-            <h3 className="text-lg font-bold text-white">{previewData.title}</h3>
-            <p className="text-sm font-medium text-[#B0B0B0]">{previewData.subtitle}</p>
+            <h3 className="text-lg font-bold text-white">
+              {previewData.title}
+            </h3>
+            <p className="text-sm font-medium text-[#B0B0B0]">
+              {previewData.subtitle}
+            </p>
             <div className="flex flex-wrap gap-2 text-xs font-bold uppercase text-[#B0B0B0]">
               <span>Host: {previewData.host}</span>
               <span>Students: {previewData.students}</span>
@@ -197,8 +214,16 @@ const CourseForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
 
         <FormSection title="Course basics">
           <div className="grid gap-4 md:grid-cols-2">
-            {textField("title", "Course title", "Complete Options Trading Bootcamp")}
-            {textField("subtitle", "Subtitle", "Master options strategies in 30 days")}
+            {textField(
+              "title",
+              "Course title",
+              "Complete Options Trading Bootcamp",
+            )}
+            {textField(
+              "subtitle",
+              "Subtitle",
+              "Master options strategies in 30 days",
+            )}
             {textField("image", "Hero image URL", "https://")}
             {textField("host", "Host", "Olivia Harris")}
             {textField("students", "Students", "1,200")}
@@ -211,12 +236,35 @@ const CourseForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
 
         <FormSection title="Categorization">
           <div className="grid gap-4 md:grid-cols-2">
-            {selectField("levelCategory", "Level category", ["beginner", "intermediate", "advanced", "all"])}
-            {selectField("materialType", "Material type", ["course", "training"])}
-            {selectField("releaseWindow", "Release window", ["24h", "7d", "30d"])}
+            {selectField("levelCategory", "Level category", [
+              "beginner",
+              "intermediate",
+              "advanced",
+              "all",
+            ])}
+            {selectField("materialType", "Material type", [
+              "course",
+              "training",
+            ])}
+            {selectField("releaseWindow", "Release window", [
+              "24h",
+              "7d",
+              "30d",
+            ])}
             {selectField("format", "Format", ["video", "ebook", "live"])}
-            {selectField("focusArea", "Focus area", ["stocks", "forex", "crypto", "options", "macro", "futures"])}
-            {selectField("language", "Language", ["english", "spanish", "german"])}
+            {selectField("focusArea", "Focus area", [
+              "stocks",
+              "forex",
+              "crypto",
+              "options",
+              "macro",
+              "futures",
+            ])}
+            {selectField("language", "Language", [
+              "english",
+              "spanish",
+              "german",
+            ])}
           </div>
         </FormSection>
 
