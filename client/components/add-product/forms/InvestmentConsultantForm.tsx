@@ -109,8 +109,13 @@ const InvestmentConsultantForm = ({
     [values],
   );
 
+  type ConsultantTextFieldName = Exclude<
+    keyof InvestmentConsultantFormValues,
+    "nationwide" | "featured"
+  >;
+
   const textField = (
-    name: keyof InvestmentConsultantFormValues,
+    name: ConsultantTextFieldName,
     label: string,
     placeholder?: string,
   ) => (
