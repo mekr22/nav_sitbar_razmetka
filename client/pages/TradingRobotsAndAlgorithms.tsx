@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import {
   Eye,
   EyeOff,
@@ -175,6 +175,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const { isFavorite, toggle } = useFavoriteMultiple("trading-robot");
+  const { addProductToCart } = useCart();
   const [filters, setFilters] = useState<FilterSelections>({
     automation: FILTER_CONFIG.automation.options[0].value,
     accuracy: FILTER_CONFIG.accuracy.options[0].value,
@@ -220,6 +221,21 @@ const TradingRobotsAndAlgorithms: FC = () => {
         }),
       ).flat(),
     [],
+  );
+
+  const handleAddRobotToCart = useCallback(
+    (selectedRobot: TradingRobot) => {
+      void addProductToCart("trading-robot", selectedRobot, {
+        subtitle: selectedRobot.strategy,
+        imageUrl: selectedRobot.icon,
+        metadata: {
+          accuracyLabel: selectedRobot.accuracyLabel,
+          market: selectedRobot.market,
+          automationStyle: selectedRobot.automationStyle,
+        },
+      });
+    },
+    [addProductToCart],
   );
 
   const filteredRobots = useMemo(() => {
@@ -611,6 +627,7 @@ const TradingRobotsAndAlgorithms: FC = () => {
                     }}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggle("trading-robot", originalId)}
+                    onBuy={handleAddRobotToCart}
                   />
                 );
               })}
