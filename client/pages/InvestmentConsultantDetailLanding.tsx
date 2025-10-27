@@ -299,12 +299,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
   }, [toggleConsultantFavorite]);
 
   const handleAddConsultantToCart = useCallback(() => {
-    const productForCart: InvestmentConsultant = {
-      ...consultant,
-      id: originalConsultantId,
-    };
-
-    void addProductToCart("investment-consultant", productForCart, {
+    void addProductToCart("investment-consultant", consultant, {
       subtitle: consultant.company,
       imageUrl: consultant.avatar,
       metadata: {
@@ -312,7 +307,7 @@ const InvestmentConsultantDetailLanding: FC = () => {
         location: consultant.location,
       },
     });
-  }, [addProductToCart, consultant, originalConsultantId]);
+  }, [addProductToCart, consultant]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/investment-consultants", {
