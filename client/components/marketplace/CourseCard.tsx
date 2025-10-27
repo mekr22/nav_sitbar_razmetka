@@ -37,7 +37,7 @@ const CourseCard: FC<CourseCardProps> = ({
   const isCompact = variant === "compact";
 
   return (
-    <div className={cn("w-full", className, isCompact && "h-full") }>
+    <div className={cn("w-full", className, isCompact && "h-full")}>
       <div
         role="button"
         tabIndex={0}
