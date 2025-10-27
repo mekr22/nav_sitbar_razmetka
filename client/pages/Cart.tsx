@@ -61,7 +61,7 @@ const Cart: FC = () => {
   }, []);
 
   const toggleItemSelection = useCallback((id: string) => {
-    setSelection((prev) => ({ ...prev, [id]: !prev[id] }));
+    setSelection((prev) => ({ ...prev, [id]: !(prev[id] ?? true) }));
   }, []);
 
   const handleRemove = useCallback(
@@ -78,7 +78,8 @@ const Cart: FC = () => {
 
   const selectedSubtotalCents = useMemo(() => {
     return items.reduce((total, item) => {
-      if (!selection[item.id]) {
+      const isSelected = selection[item.id] ?? true;
+      if (!isSelected) {
         return total;
       }
       return total + item.priceCents * item.quantity;
@@ -86,11 +87,11 @@ const Cart: FC = () => {
   }, [items, selection]);
 
   const hasSelectedItems = useMemo(() => {
-    return items.some((item) => selection[item.id]);
+    return items.some((item) => (selection[item.id] ?? true));
   }, [items, selection]);
 
   const summaryCurrency = useMemo(() => {
-    const firstCurrency = items.find((item) => selection[item.id])?.priceCurrency;
+    const firstCurrency = items.find((item) => (selection[item.id] ?? true))?.priceCurrency;
     return firstCurrency ?? items[0]?.priceCurrency ?? "USD";
   }, [items, selection]);
 
@@ -123,6 +124,7 @@ const Cart: FC = () => {
                 const description = buildDescription(item);
                 const itemTotalCents = item.priceCents * item.quantity;
                 const imageSource = item.imageUrl ?? PLACEHOLDER_IMAGE;
+                const isSelected = selection[item.id] ?? true;
 
                 return (
                   <div
@@ -140,12 +142,12 @@ const Cart: FC = () => {
                       <div
                         className={cn(
                           "h-[18px] w-[18px] rounded-[3px] transition-all",
-                          selection[item.id]
+                          isSelected
                             ? "bg-gradient-to-r from-[#A06AFF] to-[#482090]"
                             : "border border-[#181B22] bg-[#0C1014]",
                         )}
                       />
-                      {selection[item.id] && (
+                      {isSelected && (
                         <svg
                           className="absolute left-1 top-1.5 h-[6px] w-[10px]"
                           viewBox="0 0 12 8"
