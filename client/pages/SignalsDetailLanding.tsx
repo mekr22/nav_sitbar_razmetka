@@ -14,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import type { MarketplaceCategory } from "@/data/marketplaceCategories";
 import type { Signal } from "@/components/marketplace/SignalCard";
+import { useCart } from "@/hooks/useCart";
 import { useFavorite } from "@/hooks/useFavorite";
 import { baseSignals } from "@/data/marketplaceSignals";
 import { extractOriginalProductId } from "@/lib/utils";
@@ -520,6 +521,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
 
   const originalSignalId = useMemo(() => extractOriginalProductId(signal.id), [signal.id]);
   const { isFavorite: isSignalFavorite, toggle: toggleSignalFavorite } = useFavorite("signal", originalSignalId);
+  const { addProductToCart } = useCart();
 
   const favoriteStarButtonClassName = isSignalFavorite
     ? "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0C1014]"
@@ -577,6 +579,24 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const displayChartImage = baseChartImage || DEFAULT_CHART_IMAGE;
   const authorAvatar = author?.avatar ?? fallbackSignal.author?.avatar ?? "";
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
+
+  const handleAddSignalToCart = useCallback(() => {
+    const productForCart: Signal = {
+      ...signal,
+      id: originalSignalId,
+    };
+
+    void addProductToCart("signal", productForCart, {
+      price: signal.price,
+      subtitle: signal.type,
+      imageUrl: displayChartImage,
+      metadata: {
+        riskLevel: signal.riskLevel,
+        platforms: platforms.join(", "),
+        use: signal.use,
+      },
+    });
+  }, [addProductToCart, displayChartImage, originalSignalId, platforms, signal]);
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => {
@@ -1190,6 +1210,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
                     <button
                       key={key}
                       type="button"
+                      onClick={isPrimary ? handleAddSignalToCart : undefined}
                       className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                     >
                       <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
