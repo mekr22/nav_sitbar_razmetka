@@ -140,8 +140,6 @@ const ACTIVE_TIME_CYCLE: ActiveTimeOptionValue[] = ["intraday", "swing"];
 const PNL_CYCLE: PnlOptionValue[] = ["positive", "negative"];
 const DRAWDOWN_CYCLE: DrawdownOptionValue[] = ["low", "high"];
 
-const DUPLICATED_PAIRS = 12;
-
 const buildCardKey = (section: string, id: string) => `${section}:${id}`;
 
 const SignalsAndTechnicalIndicators: FC = () => {
@@ -230,6 +228,19 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const signals: SignalWithMeta[] = useMemo(() => {
     const allSignals = supabaseSignals.length > 0 ? supabaseSignals : baseSignals;
 
+    if (supabaseSignals.length > 0) {
+      return allSignals.map((signal, index) => ({
+        ...signal,
+        category: CATEGORY_CYCLE[index % CATEGORY_CYCLE.length],
+        createdWindow: CREATED_CYCLE[index % CREATED_CYCLE.length],
+        activeTimeBucket:
+          ACTIVE_TIME_CYCLE[index % ACTIVE_TIME_CYCLE.length],
+        pnlBucket: PNL_CYCLE[index % PNL_CYCLE.length],
+        drawdownBucket: DRAWDOWN_CYCLE[index % DRAWDOWN_CYCLE.length],
+      }));
+    }
+
+    const DUPLICATED_PAIRS = 12;
     return Array.from({ length: DUPLICATED_PAIRS }, (_, pairIndex) =>
       allSignals.map((signal, cardIndex) => {
         const metaIndex = pairIndex * allSignals.length + cardIndex;
