@@ -642,12 +642,7 @@ const TradingRobotDetailLanding: FC = () => {
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
 
   const handleAddRobotToCart = useCallback(() => {
-    const productForCart: TradingRobot = {
-      ...robot,
-      id: originalRobotId,
-    };
-
-    void addProductToCart("trading-robot", productForCart, {
+    void addProductToCart("trading-robot", robot, {
       price: robot.price,
       subtitle: robot.strategy ?? robot.type ?? null,
       imageUrl: displayChartImage,
@@ -656,7 +651,7 @@ const TradingRobotDetailLanding: FC = () => {
         leverage: robot.leverage,
       },
     });
-  }, [addProductToCart, displayChartImage, originalRobotId, robot]);
+  }, [addProductToCart, displayChartImage, robot]);
 
   const translatedDescription = robot.description ?? "";
   const hasOriginalDescription = Boolean(robot.originalDescription && robot.originalDescription.trim().length > 0);
