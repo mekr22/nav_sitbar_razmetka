@@ -409,6 +409,25 @@ const StrategyDetailLanding: FC = () => {
 
   const heroMediaImage = strategyGallery[0]?.src ?? coverImage;
   const galleryLaunchTarget = strategyGallery[0]?.src ?? coverImage;
+  const primaryStrategyImage = strategyGallery[0]?.src ?? strategy.icon;
+
+  const handleAddStrategyToCart = useCallback(() => {
+    const productForCart: Strategy = {
+      ...strategy,
+      id: originalStrategyId,
+    };
+
+    void addProductToCart("strategy", productForCart, {
+      price: subscriptionPrice,
+      subtitle: strategy.strategy,
+      imageUrl: primaryStrategyImage,
+      metadata: {
+        riskLevel: strategy.riskLevel,
+        minCapital: strategy.minCapital,
+        roi30d: strategy.roi30d,
+      },
+    });
+  }, [addProductToCart, originalStrategyId, primaryStrategyImage, strategy, subscriptionPrice]);
 
   const focusArea = useMemo(
     () => `${strategy.strategy} | ${strategy.riskLevel} risk`,
