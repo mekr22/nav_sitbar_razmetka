@@ -919,7 +919,9 @@ const MarketplaceMyProducts: FC = () => {
                   }}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("investment-consultant", consultant.id)}
-                  secondaryCta={{ label: "Buy", icon: ShoppingCart }}
+                  onBuy={(current) => {
+                    void addProductToCart("investment-consultant", current);
+                  }}
                 />
               );
             })}
