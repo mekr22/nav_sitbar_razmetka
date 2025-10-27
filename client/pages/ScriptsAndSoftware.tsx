@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
+import { useCart } from "@/hooks/useCart";
 
 import ScriptProductCard from "@/components/marketplace/ScriptProductCard";
 import {
@@ -177,6 +178,7 @@ const ScriptsAndSoftware: FC = () => {
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const { isFavorite, toggle } = useFavoriteMultiple("script");
+  const { addProductToCart } = useCart();
   const [filters, setFilters] = useState<FilterSelections>({
     type: FILTER_CONFIG.type.options[0].value,
     industry: FILTER_CONFIG.industry.options[0].value,
@@ -359,6 +361,21 @@ const ScriptsAndSoftware: FC = () => {
       setActiveCardKey(null);
     }
   }, [activeCardKey, filteredProducts]);
+
+  const handleScriptBuy = useCallback(
+    (product: ScriptProduct) => {
+      void addProductToCart("script", product, {
+        subtitle: product.typeLabel,
+        imageUrl: product.heroImage,
+        metadata: {
+          revenue: product.revenueLabel,
+          compatibility: product.compatibility.join(", "),
+          rating: product.ratingScore,
+        },
+      });
+    },
+    [addProductToCart],
+  );
 
   const openScriptDetails = useCallback(
     (selectedProduct: ScriptProduct, meta?: { isFavorite: boolean }) => {
@@ -702,6 +719,7 @@ const ScriptsAndSoftware: FC = () => {
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggle("script", product.id)}
                     onOpenDetails={openScriptDetails}
+                    onBuy={handleScriptBuy}
                   />
                 );
               })}
