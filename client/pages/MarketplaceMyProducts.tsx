@@ -642,6 +642,22 @@ const MarketplaceMyProducts: FC = () => {
   const scriptsFavorited = isFavorite("script", featuredScriptProduct.id);
   const scriptsCardKey = buildCardKey("scripts", featuredScriptProduct.id);
 
+  const handleFeaturedScriptBuy = useCallback(() => {
+    if (!featuredScriptProduct) {
+      return;
+    }
+
+    void addProductToCart("script", featuredScriptProduct, {
+      subtitle: featuredScriptProduct.typeLabel,
+      imageUrl: featuredScriptProduct.heroImage,
+      metadata: {
+        revenue: featuredScriptProduct.revenueLabel,
+        compatibility: featuredScriptProduct.compatibility.join(", "),
+        rating: featuredScriptProduct.ratingScore,
+      },
+    });
+  }, [addProductToCart, featuredScriptProduct]);
+
   const openStrategyDetails = useCallback(
     (selectedStrategy: Strategy, meta?: { isFavorite: boolean }) => {
       navigate("/marketplace/strategy-details", {
@@ -1261,6 +1277,10 @@ const MarketplaceMyProducts: FC = () => {
                       actionButtonBaseClass,
                       "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
                     )}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleFeaturedScriptBuy();
+                    }}
                   >
                     <ShoppingCart className="h-4 w-4" />
                     Buy
