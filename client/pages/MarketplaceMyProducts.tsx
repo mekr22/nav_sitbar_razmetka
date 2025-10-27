@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { KeyboardEvent, useCallback, useState, useEffect } from "react";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
+import { useCart } from "@/hooks/useCart";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   Eye,
