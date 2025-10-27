@@ -1337,6 +1337,9 @@ const MarketplaceMyProducts: FC = () => {
                       isFavorite: isFavorited,
                     })
                   }
+                  onBuy={(current) => {
+                    void addProductToCart("other", current);
+                  }}
                 />
               );
             })}
