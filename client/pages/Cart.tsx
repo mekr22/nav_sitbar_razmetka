@@ -95,7 +95,7 @@ const Cart: FC = () => {
   }, [items, selection]);
 
   return (
-    <div className="mx-auto flex w/full max-w-[880px] flex-col gap-6 px-3 pb-20 sm:px-4 xl:min-w-[880px]">
+    <div className="mx-auto flex w-full max-w-[880px] flex-col gap-6 px-3 pb-20 sm:px-4 xl:min-w-[880px]">
       <div className="flex flex-col gap-4 rounded-[24px] border border-[#181B22] bg-[#0C101480] p-4 backdrop-blur-[50px] sm:p-6 lg:flex-row lg:gap-0">
         <div className="flex flex-1 flex-col gap-4">
           <h1 className="text-2xl font-bold text-white">Your cart</h1>
@@ -139,7 +139,7 @@ const Cart: FC = () => {
                     >
                       <div
                         className={cn(
-                          "h-[18px] w/[18px] rounded-[3px] transition-all",
+                          "h-[18px] w-[18px] rounded-[3px] transition-all",
                           selection[item.id]
                             ? "bg-gradient-to-r from-[#A06AFF] to-[#482090]"
                             : "border border-[#181B22] bg-[#0C1014]",
@@ -169,7 +169,7 @@ const Cart: FC = () => {
                       className="h-[88px] w-full flex-shrink-0 rounded-2xl object-cover sm:h-11 sm:w-[84px] sm:rounded-lg"
                     />
 
-                    <div className="flex min-w-0 w/full flex-1 flex-col justify-between gap-0.5 sm:w-auto">
+                    <div className="flex min-w-0 w-full flex-1 flex-col justify-between gap-0.5 sm:w-auto">
                       <h3 className="truncate text-[15px] font-bold text-white">{item.title}</h3>
                       <p className="truncate text-[15px] font-normal text-[#B0B0B0]">{description}</p>
                     </div>
