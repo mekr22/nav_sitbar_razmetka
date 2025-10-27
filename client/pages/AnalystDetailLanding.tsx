@@ -304,17 +304,12 @@ const AnalystDetailLanding: FC = () => {
   }, [toggleAnalystFavorite]);
 
   const handleAddAnalystToCart = useCallback(() => {
-    const productForCart: Analyst = {
-      ...analyst,
-      id: originalAnalystId,
-    };
-
-    void addProductToCart("analyst", productForCart, {
+    void addProductToCart("analyst", analyst, {
       price: analyst.price,
       subtitle: analyst.company,
       imageUrl: analyst.avatar,
     });
-  }, [addProductToCart, analyst, originalAnalystId]);
+  }, [addProductToCart, analyst]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/analysts", {
