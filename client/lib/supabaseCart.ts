@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import type { PostgrestError } from "@supabase/supabase-js";
 import type { ProductType } from "@/lib/supabaseFavorites";
 import type { CartInsertPayload } from "@/lib/cartUtils";
 
