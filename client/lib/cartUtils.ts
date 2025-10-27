@@ -212,20 +212,21 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "signal": {
+      const signal = product as Signal;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.name,
-        subtitle: resolveSubtitle(product.type, options?.subtitle),
+        productId: signal.id,
+        title: signal.name,
+        subtitle: resolveSubtitle(signal.type, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.icon ?? null, options?.imageUrl),
+        imageUrl: resolveImage(signal.icon ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            riskLevel: product.riskLevel,
-            platforms: product.platforms,
+            riskLevel: signal.riskLevel,
+            platforms: signal.platforms,
           },
           options?.metadata,
         ),
@@ -233,21 +234,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "strategy": {
+      const strategy = product as Strategy;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.name,
-        subtitle: resolveSubtitle(product.strategy, options?.subtitle),
+        productId: strategy.id,
+        title: strategy.name,
+        subtitle: resolveSubtitle(strategy.strategy, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.icon ?? null, options?.imageUrl),
+        imageUrl: resolveImage(strategy.icon ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            riskLevel: product.riskLevel,
-            minCapital: product.minCapital,
-            roi30d: product.roi30d,
+            riskLevel: strategy.riskLevel,
+            minCapital: strategy.minCapital,
+            roi30d: strategy.roi30d,
           },
           options?.metadata,
         ),
@@ -255,21 +257,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "trading-robot": {
+      const robot = product as TradingRobot;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.name,
-        subtitle: resolveSubtitle(product.strategy, options?.subtitle),
+        productId: robot.id,
+        title: robot.name,
+        subtitle: resolveSubtitle(robot.strategy, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.icon ?? null, options?.imageUrl),
+        imageUrl: resolveImage(robot.icon ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            accuracyLabel: product.accuracyLabel,
-            market: product.market,
-            automationStyle: product.automationStyle,
+            accuracyLabel: robot.accuracyLabel,
+            market: robot.market,
+            automationStyle: robot.automationStyle,
           },
           options?.metadata,
         ),
@@ -277,21 +280,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "course": {
+      const course = product as Course;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.title,
-        subtitle: resolveSubtitle(product.subtitle, options?.subtitle),
+        productId: course.id,
+        title: course.title,
+        subtitle: resolveSubtitle(course.subtitle, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.image ?? null, options?.imageUrl),
+        imageUrl: resolveImage(course.image ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            duration: product.duration,
-            format: product.format,
-            level: product.level,
+            duration: course.duration,
+            format: course.format,
+            level: course.level,
           },
           options?.metadata,
         ),
@@ -299,21 +303,22 @@ export function buildCartInsertPayload<K extends ProductType>(
     }
 
     case "script": {
+      const script = product as ScriptProduct;
       const pricing = resolvePriceCents(productType, options);
       return {
         productType,
-        productId: product.id,
-        title: product.title,
-        subtitle: resolveSubtitle(product.typeLabel, options?.subtitle),
+        productId: script.id,
+        title: script.title,
+        subtitle: resolveSubtitle(script.typeLabel, options?.subtitle),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
-        imageUrl: resolveImage(product.heroImage ?? null, options?.imageUrl),
+        imageUrl: resolveImage(script.heroImage ?? null, options?.imageUrl),
         metadata: mergeMetadata(
           {
-            revenueLabel: product.revenueLabel,
-            ratingScore: product.ratingScore,
-            creatorName: product.creator?.name,
+            revenueLabel: script.revenueLabel,
+            ratingScore: script.ratingScore,
+            creatorName: script.creator?.name,
           },
           options?.metadata,
         ),
