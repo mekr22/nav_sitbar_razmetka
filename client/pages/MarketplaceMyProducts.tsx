@@ -956,6 +956,9 @@ const MarketplaceMyProducts: FC = () => {
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("signal", signal.id)}
                   onOpenDetails={openSignalDetails}
+                  onBuy={(current) => {
+                    void addProductToCart("signal", current);
+                  }}
                 />
               );
             })}
