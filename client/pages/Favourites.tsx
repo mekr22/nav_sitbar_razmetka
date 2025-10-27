@@ -559,18 +559,23 @@ const Favourites: FC = () => {
                   case "course":
                     const course = product.data as Course;
                     return (
-                      <div key={product.id} className="w-full md:col-span-2">
+                      <div key={product.id} className="h-full">
                         <CourseCard
                           course={course}
                           isActive={isActive}
                           onSelect={() => setActiveCardKey(cardKey)}
-                          isFavorite={true}
+                          isFavorite
                           onToggleFavorite={() =>
                             handleToggleFavorite("course", product.id)
                           }
                           onOpenDetails={() =>
                             handleNavigateToDetails("course", course)
                           }
+                          onBuy={(current) => {
+                            void addProductToCart("course", current);
+                          }}
+                          variant="compact"
+                          className="h-full"
                         />
                       </div>
                     );
