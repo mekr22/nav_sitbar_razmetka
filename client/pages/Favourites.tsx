@@ -16,14 +16,13 @@ import TradingRobotCard from "@/components/marketplace/TradingRobotCard";
 import CourseCard from "@/components/marketplace/CourseCard";
 import ScriptProductCard from "@/components/marketplace/ScriptProductCard";
 import OtherProductCard from "@/components/marketplace/OtherProductCard";
-import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import {
   getUserFavorites,
   toggleFavorite,
-  checkFavorite,
   ProductType,
   FavoriteProduct,
 } from "@/lib/supabaseFavorites";
+import { useCart } from "@/hooks/useCart";
 import type {
   Analyst,
   InvestmentConsultant,
