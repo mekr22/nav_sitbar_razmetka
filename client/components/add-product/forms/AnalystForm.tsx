@@ -104,8 +104,10 @@ const AnalystForm = ({ onCreated }: { onCreated?: (id: string) => void }) => {
     [values],
   );
 
+  type AnalystTextFieldName = Exclude<keyof AnalystFormValues, "featured">;
+
   const textField = (
-    name: keyof AnalystFormValues,
+    name: AnalystTextFieldName,
     label: string,
     placeholder?: string,
   ) => (
