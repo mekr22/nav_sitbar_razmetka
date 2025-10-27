@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { AuthProvider } from "./providers/AuthProvider";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
@@ -59,8 +60,9 @@ const App = () => (
             <Route
               path="*"
               element={
-                <ClientLayout>
-                  <Routes>
+                <AuthProvider>
+                  <ClientLayout>
+                    <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/pricing" element={<Pricing />} />
                     <Route path="/profile" element={<Profile />} />
@@ -155,6 +157,7 @@ const App = () => (
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </ClientLayout>
+              </AuthProvider>
               }
             />
           </Routes>
