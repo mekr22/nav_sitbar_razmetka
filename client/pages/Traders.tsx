@@ -194,6 +194,7 @@ const Traders: FC = () => {
     accuracy: "all",
   });
   const { isFavorite, toggle } = useFavoriteMultiple("trader");
+  const { addProductToCart } = useCart();
 
   useEffect(() => {
     const state = location.state as { category?: MarketplaceCategory } | null;
