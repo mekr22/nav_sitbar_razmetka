@@ -1,22 +1,9 @@
 import type { FC, KeyboardEvent } from "react";
 import { BookOpen, ShoppingCart, Users } from "lucide-react";
-import { cn } from "@/lib/utils";
-import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 
-export type Signal = {
-  id: string;
-  name: string;
-  icon: string;
-  users: string;
-  riskLevel: string;
-  platforms: string[];
-  assets: string[];
-  type: string;
-  timeframes: string[];
-  use: string;
-  accuracy: string;
-  chartImage: string;
-};
+import type { Signal } from "@/data/marketplaceTypes";
+import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
+import { cn } from "@/lib/utils";
 
 const platformLogos = [
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F1d90fdad8fa945dc9d0b417f6bb84c17?format=webp&width=800",
@@ -75,28 +62,17 @@ export const SignalCard: FC<SignalCardProps> = ({
         )}
       >
         <div className="absolute right-4 top-4">
-          <FavoriteStarButton
-            pressed={isFavorite}
-            onToggle={onToggleFavorite}
-          />
+          <FavoriteStarButton pressed={isFavorite} onToggle={onToggleFavorite} />
         </div>
         <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
-            <img
-              src={signal.icon}
-              alt={signal.name}
-              className="h-16 w-16 rounded-lg"
-            />
+            <img src={signal.icon} alt={signal.name} className="h-16 w-16 rounded-lg" />
             <div className="flex flex-col gap-0.5">
-              <h3 className="text-lg font-bold text-white sm:text-[19px]">
-                {signal.name}
-              </h3>
+              <h3 className="text-lg font-bold text-white sm:text-[19px]">{signal.name}</h3>
               <div className="flex items-center gap-1">
                 <div className="flex items-center gap-1 rounded bg-[#2E2744] px-1 py-0.5">
                   <Users className="h-4 w-4 text-[#B0B0B0]" />
-                  <span className="text-xs font-bold text-white">
-                    {signal.users}
-                  </span>
+                  <span className="text-xs font-bold text-white">{signal.users}</span>
                 </div>
                 <div className="flex items-center gap-1 rounded bg-[#1C3430] px-1 py-0.5">
                   <span className="text-xs font-bold uppercase text-[#2EBD85]">
@@ -125,10 +101,7 @@ export const SignalCard: FC<SignalCardProps> = ({
           <div className="flex flex-wrap items-center gap-1 text-xs font-bold uppercase">
             <span className="text-[#B0B0B0]">Assets:</span>
             {assets.map((asset, idx) => (
-              <div
-                key={`${signal.id}-asset-${asset}-${idx}`}
-                className="rounded bg-[#2E2744] px-1 py-0.5"
-              >
+              <div key={`${signal.id}-asset-${asset}-${idx}`} className="rounded bg-[#2E2744] px-1 py-0.5">
                 <span className="text-white">{asset}</span>
               </div>
             ))}
@@ -166,7 +139,7 @@ export const SignalCard: FC<SignalCardProps> = ({
           <span className="text-[15px] text-[#2EBD85]">{accuracyLabel}</span>
         </div>
 
-        <div className="mt-auto flex flex-col gap-2 sm:flex-row">
+        <div className="mt-autoროვე flex flex-col gap-2 sm:flex-row">
           <button
             type="button"
             onClick={(event) => {
