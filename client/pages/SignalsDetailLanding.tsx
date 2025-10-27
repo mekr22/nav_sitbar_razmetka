@@ -581,12 +581,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
   const heroImage = authorAvatar || baseChartImage || DEFAULT_CHART_IMAGE;
 
   const handleAddSignalToCart = useCallback(() => {
-    const productForCart: Signal = {
-      ...signal,
-      id: originalSignalId,
-    };
-
-    void addProductToCart("signal", productForCart, {
+    void addProductToCart("signal", signal, {
       price: signal.price,
       subtitle: signal.type,
       imageUrl: displayChartImage,
@@ -596,7 +591,7 @@ const SignalsDetailLanding: FC<SignalsDetailLandingProps> = ({
         use: signal.use,
       },
     });
-  }, [addProductToCart, displayChartImage, originalSignalId, platforms, signal]);
+  }, [addProductToCart, displayChartImage, platforms, signal]);
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => {
