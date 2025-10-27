@@ -3,6 +3,8 @@ import { FC, useState, useCallback, useMemo, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import type { ScriptProduct } from "@/data/marketplaceScriptsSoftware";
 import { baseScriptProducts } from "@/data/marketplaceScriptsSoftware";
+import { useCart } from "@/hooks/useCart";
+import { extractOriginalProductId } from "@/lib/utils";
 
 const AVATAR_PLACEHOLDER =
   "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=160";
