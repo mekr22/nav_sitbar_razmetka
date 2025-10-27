@@ -1062,6 +1062,7 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
                   <button
                     key={key}
                     type="button"
+                    onClick={isPrimary ? handleAddCourseToCart : undefined}
                     className={`flex w-full items-center justify-center gap-2 rounded-full px-12 py-2.5 text-[15px] font-bold ${baseClasses} max-[360px]:gap-1.5 max-[360px]:px-4 max-[360px]:py-2 max-[360px]:text-sm`}
                   >
                     <Icon className={`${iconClass} max-[360px]:h-4 max-[360px]:w-4`} />
