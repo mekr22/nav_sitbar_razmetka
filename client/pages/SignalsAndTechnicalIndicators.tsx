@@ -11,7 +11,8 @@ import {
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
 import { useCart } from "@/hooks/useCart";
-import SignalCard, { Signal } from "@/components/marketplace/SignalCard";
+import SignalCard from "@/components/marketplace/SignalCard";
+import type { Signal } from "@/data/marketplaceTypes";
 import { baseSignals } from "@/data/marketplaceSignals";
 import {
   marketplaceCategories,
