@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { FieldValues, UseFormReturn } from "react-hook-form";
+import type {
+  DefaultValues,
+  FieldValues,
+  SubmitHandler as HookSubmitHandler,
+  UseFormReturn,
+} from "react-hook-form";
 import { useForm } from "react-hook-form";
 import type { ZodTypeAny } from "zod";
 
@@ -15,7 +20,7 @@ type SubmitHandler<T extends FieldValues> = (
 
 export interface UseProductFormOptions<T extends FieldValues> {
   schema: ZodTypeAny;
-  defaultValues: T;
+  defaultValues: DefaultValues<T>;
   table: string;
   buildPayload: (values: T) => Record<string, unknown>;
   buildId?: (values: T) => string;
@@ -53,7 +58,7 @@ const useProductForm = <T extends FieldValues>(
   });
 
   const { user } = useAuth();
-  const { toast } = useToast();
+  const toastApi = useToast();
   const [publishing, setPublishing] = useState(false);
   const [savingDraft, setSavingDraft] = useState(false);
 
@@ -71,7 +76,7 @@ const useProductForm = <T extends FieldValues>(
 
       const displayName = getDisplayName ? getDisplayName(values) : "Product";
 
-      toast.toast({
+      toastApi.toast({
         title: status === "draft" ? "Draft saved" : "Product published",
         description: `${displayName} successfully saved`,
       });
@@ -83,7 +88,7 @@ const useProductForm = <T extends FieldValues>(
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Unexpected error while saving product";
-      toast.toast({
+      toastApi.toast({
         title: "Unable to save product",
         description: message,
       });
@@ -93,11 +98,11 @@ const useProductForm = <T extends FieldValues>(
     }
   };
 
-  const publish = form.handleSubmit((data) => {
+  const publish: HookSubmitHandler<T> = form.handleSubmit((data) => {
     void submit(data, "published");
   });
 
-  const saveDraft = form.handleSubmit((data) => {
+  const saveDraft: HookSubmitHandler<T> = form.handleSubmit((data) => {
     void submit(data, "draft");
   });
 
