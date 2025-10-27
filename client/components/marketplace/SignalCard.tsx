@@ -71,7 +71,7 @@ export const SignalCard: FC<SignalCardProps> = ({
           }
         }}
         className={cn(
-          "relative flex cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
@@ -167,7 +167,7 @@ export const SignalCard: FC<SignalCardProps> = ({
           <span className="text-[15px] text-[#2EBD85]">{accuracyLabel}</span>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="mt-auto flex flex-col gap-2 sm:flex-row">
           <button
             type="button"
             onClick={(event) => {
