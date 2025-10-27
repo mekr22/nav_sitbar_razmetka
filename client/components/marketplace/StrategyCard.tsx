@@ -84,7 +84,7 @@ const StrategyCard: FC<StrategyCardProps> = ({
           }
         }}
         className={cn(
-          "relative flex cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full cursor-pointer flex-col gap-4 rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
@@ -207,7 +207,7 @@ const StrategyCard: FC<StrategyCardProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="mt-auto flex flex-col gap-2 sm:flex-row">
           <button
             className={cn(
               actionButtonBaseClass,
