@@ -110,7 +110,7 @@ const TraderCard: FC<{
           }
         }}
         className={cn(
-          "relative cursor-pointer rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
+          "relative flex h-full flex-col gap-4 cursor-pointer rounded-2xl border bg-[#0C1014]/50 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
         )}
       >
@@ -120,7 +120,7 @@ const TraderCard: FC<{
             onToggle={onToggleFavorite}
           />
         </div>
-        <div className="relative flex flex-col gap-4">
+        <div className="relative flex h-full flex-col gap-4">
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <div className="relative h-[120px] w-[120px] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_6.711px_11.409px_-1.342px_rgba(0,0,0,0.28)]">
               <img
@@ -200,7 +200,7 @@ const TraderCard: FC<{
             {trader.certification}
           </div>
 
-          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="mt-auto flex flex-col gap-2 sm:flex-row">
             <button className="flex flex-1 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C1014]/60 px-5 py-2 text-[12px] font-bold uppercase text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]">
               <BookOpen className="h-4 w-4" />
               Learn More
