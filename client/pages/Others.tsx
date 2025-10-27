@@ -694,6 +694,7 @@ const Others: FC = () => {
                         isFavorite: isFavorited,
                       })
                     }
+                    onBuy={handleOtherBuy}
                   />
                 );
               })}
