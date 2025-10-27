@@ -14,6 +14,7 @@ import { useCart } from "@/hooks/useCart";
 import SignalCard from "@/components/marketplace/SignalCard";
 import type { Signal } from "@/data/marketplaceTypes";
 import { baseSignals } from "@/data/marketplaceSignals";
+import { getSignals } from "@/lib/supabaseQueries";
 import {
   marketplaceCategories,
   MarketplaceCategory,
@@ -153,6 +154,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
   const { isFavorite, toggle } = useFavoriteMultiple("signal");
   const { addProductToCart } = useCart();
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+  const [supabaseSignals, setSupabaseSignals] = useState<Signal[]>([]);
+  const [loadingSignals, setLoadingSignals] = useState(true);
   const [filters, setFilters] = useState<FilterSelections>({
     category: FILTER_CONFIG.category.options[0].value,
     created: FILTER_CONFIG.created.options[0].value,
@@ -161,6 +164,23 @@ const SignalsAndTechnicalIndicators: FC = () => {
     drawdown: FILTER_CONFIG.drawdown.options[0].value,
   });
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchSignals = async () => {
+      try {
+        setLoadingSignals(true);
+        const signals = await getSignals();
+        setSupabaseSignals(signals);
+      } catch (error) {
+        console.error("Error fetching signals:", error);
+        setSupabaseSignals([]);
+      } finally {
+        setLoadingSignals(false);
+      }
+    };
+
+    void fetchSignals();
+  }, []);
 
   useEffect(() => {
     if (location.state?.scrollToTop) {
@@ -206,27 +226,27 @@ const SignalsAndTechnicalIndicators: FC = () => {
     [navigate],
   );
 
-  const signals: SignalWithMeta[] = useMemo(
-    () =>
-      Array.from({ length: DUPLICATED_PAIRS }, (_, pairIndex) =>
-        baseSignals.map((signal, cardIndex) => {
-          const metaIndex = pairIndex * baseSignals.length + cardIndex;
+  const signals: SignalWithMeta[] = useMemo(() => {
+    const allSignals = supabaseSignals.length > 0 ? supabaseSignals : baseSignals;
 
-          return {
-            ...signal,
-            id: `${signal.id}-pair-${pairIndex}-${cardIndex}`,
-            name: `${signal.name} ${metaIndex + 1}`,
-            category: CATEGORY_CYCLE[metaIndex % CATEGORY_CYCLE.length],
-            createdWindow: CREATED_CYCLE[metaIndex % CREATED_CYCLE.length],
-            activeTimeBucket:
-              ACTIVE_TIME_CYCLE[metaIndex % ACTIVE_TIME_CYCLE.length],
-            pnlBucket: PNL_CYCLE[metaIndex % PNL_CYCLE.length],
-            drawdownBucket: DRAWDOWN_CYCLE[metaIndex % DRAWDOWN_CYCLE.length],
-          };
-        }),
-      ).flat(),
-    [],
-  );
+    return Array.from({ length: DUPLICATED_PAIRS }, (_, pairIndex) =>
+      allSignals.map((signal, cardIndex) => {
+        const metaIndex = pairIndex * allSignals.length + cardIndex;
+
+        return {
+          ...signal,
+          id: `${signal.id}-pair-${pairIndex}-${cardIndex}`,
+          name: `${signal.name} ${metaIndex + 1}`,
+          category: CATEGORY_CYCLE[metaIndex % CATEGORY_CYCLE.length],
+          createdWindow: CREATED_CYCLE[metaIndex % CREATED_CYCLE.length],
+          activeTimeBucket:
+            ACTIVE_TIME_CYCLE[metaIndex % ACTIVE_TIME_CYCLE.length],
+          pnlBucket: PNL_CYCLE[metaIndex % PNL_CYCLE.length],
+          drawdownBucket: DRAWDOWN_CYCLE[metaIndex % DRAWDOWN_CYCLE.length],
+        };
+      }),
+    ).flat();
+  }, [supabaseSignals]);
 
   const filteredSignals = useMemo(() => {
     const normalizedTerm = searchTerm.trim().toLowerCase();
