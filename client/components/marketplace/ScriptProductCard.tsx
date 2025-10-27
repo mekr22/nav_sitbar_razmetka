@@ -22,6 +22,8 @@ type ScriptProductCardProps = {
     meta?: { isFavorite: boolean },
   ) => void;
   onBuy?: (product: ScriptProduct) => void;
+  variant?: "default" | "compact";
+  className?: string;
 };
 
 const ScriptProductCard: FC<ScriptProductCardProps> = ({
