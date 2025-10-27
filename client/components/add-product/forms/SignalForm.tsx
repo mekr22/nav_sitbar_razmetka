@@ -5,7 +5,6 @@ import { z } from "zod";
 
 import FormSection from "@/components/add-product/FormSection";
 import FormActions from "@/components/add-product/FormActions";
-import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
