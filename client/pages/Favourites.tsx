@@ -609,7 +609,7 @@ const Favourites: FC = () => {
                     return (
                       <div
                         key={product.id}
-                        className="w-full cursor-pointer"
+                        className="h-full cursor-pointer"
                         onClick={() =>
                           handleNavigateToDetails("other", otherProduct)
                         }
@@ -618,10 +618,13 @@ const Favourites: FC = () => {
                           product={otherProduct}
                           isActive={isActive}
                           onSelect={() => setActiveCardKey(cardKey)}
-                          isFavorite={true}
+                          isFavorite
                           onToggleFavorite={() =>
                             handleToggleFavorite("other", product.id)
                           }
+                          onBuy={(current) => {
+                            void addProductToCart("other", current);
+                          }}
                         />
                       </div>
                     );
