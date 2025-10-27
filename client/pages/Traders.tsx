@@ -580,7 +580,13 @@ const Traders: FC = () => {
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("trader", originalId)}
-                  secondaryCta={{ label: "BUY", icon: ShoppingCart }}
+                  secondaryCta={{
+                    label: "BUY",
+                    icon: ShoppingCart,
+                    onClick: () => {
+                      void addProductToCart("trader", trader);
+                    },
+                  }}
                 />
               );
               })}
