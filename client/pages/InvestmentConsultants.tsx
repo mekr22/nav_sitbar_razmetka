@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState, useCallback } from "react";
 import {
   Eye,
   EyeOff,
@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
+import { useCart } from "@/hooks/useCart";
 
 import InvestmentConsultantCard from "@/components/marketplace/InvestmentConsultantCard";
 import {
@@ -91,6 +92,7 @@ const InvestmentConsultants: FC = () => {
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const { isFavorite, toggle } = useFavoriteMultiple("investment-consultant");
+  const { addProductToCart } = useCart();
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState<FilterSelections>({
     availability: "all",
@@ -363,6 +365,21 @@ const InvestmentConsultants: FC = () => {
     return items;
   }, [filters.sort, normalizedConsultants]);
 
+  const handleConsultantBuy = useCallback(
+    (consultant: InvestmentConsultant) => {
+      void addProductToCart("investment-consultant", consultant, {
+        subtitle: consultant.company,
+        imageUrl: consultant.avatar,
+        metadata: {
+          riskLevel: consultant.riskLevel,
+          clients: consultant.clients,
+          portfolioReturn: consultant.portfolioReturn,
+        },
+      });
+    },
+    [addProductToCart],
+  );
+
   useEffect(() => {
     if (!activeCardKey) {
       return;
@@ -579,6 +596,7 @@ const InvestmentConsultants: FC = () => {
                     onSelect={() => setActiveCardKey(cardKey)}
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggle("investment-consultant", originalId)}
+                    onBuy={handleConsultantBuy}
                   />
                 );
               })}
