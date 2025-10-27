@@ -296,17 +296,12 @@ const TraderDetailLanding: FC = () => {
   }, [toggleTraderFavorite]);
 
   const handleAddTraderToCart = useCallback(() => {
-    const productForCart: Trader = {
-      ...trader,
-      id: originalTraderId,
-    };
-
-    void addProductToCart("trader", productForCart, {
+    void addProductToCart("trader", trader, {
       price: trader.price,
       subtitle: trader.badge,
       imageUrl: trader.avatar,
     });
-  }, [addProductToCart, originalTraderId, trader]);
+  }, [addProductToCart, trader]);
 
   const handleNavigateToCategory = useCallback(() => {
     navigate("/marketplace/traders", {
