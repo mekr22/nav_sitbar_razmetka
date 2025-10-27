@@ -613,6 +613,9 @@ const CoursesAndTrainingMaterials: FC = () => {
                     isFavorite={isFavorited}
                     onToggleFavorite={() => toggle("course", originalId)}
                     onOpenDetails={openCourseDetails}
+                    onBuy={(current) => {
+                      void addProductToCart("course", current);
+                    }}
                   />
                 );
               })}
