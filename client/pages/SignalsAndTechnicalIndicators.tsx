@@ -172,7 +172,8 @@ const SignalsAndTechnicalIndicators: FC = () => {
         const signals = await getSignals();
         setSupabaseSignals(signals);
       } catch (error) {
-        console.error("Error fetching signals:", error);
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        console.error("Error fetching signals:", errorMessage);
         setSupabaseSignals([]);
       } finally {
         setLoadingSignals(false);
