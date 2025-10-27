@@ -70,6 +70,33 @@ const mapRowToCartItem = (row: CartItemRow): CartItem => ({
   updatedAt: row.updated_at,
 });
 
+const logSupabaseError = (context: string, error: PostgrestError) => {
+  console.error(context, {
+    message: error.message,
+    code: error.code,
+    details: error.details,
+    hint: error.hint,
+  });
+};
+
+const shouldRetryWithoutOrder = (error: PostgrestError): boolean => {
+  if (!error) {
+    return false;
+  }
+
+  if (error.code === "42703" || error.code === "42P01") {
+    return true;
+  }
+
+  const message = error.message?.toLowerCase?.() ?? "";
+  if (!message) {
+    return false;
+  }
+
+  return message.includes("created_at") ||
+    (message.includes("column") && message.includes("does not exist"));
+};
+
 const fetchExistingCartItem = async (
   userId: string,
   productType: ProductType,
