@@ -684,6 +684,8 @@ const ScriptDetailLanding: FC = () => {
                   return (
                     <button
                       key={key}
+                      type="button"
+                      onClick={isPrimary ? handleAddScriptToCart : undefined}
                       className={`flex h-[46px] items-center justify-center gap-2 rounded-full text-[15px] font-bold ${baseClasses}`}
                     >
                       <Icon className={iconClass} />
