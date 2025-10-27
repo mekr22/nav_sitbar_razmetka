@@ -12,6 +12,7 @@ import {
   type RemoveCartItemInput,
   type UpdateQuantityInput,
 } from "@/lib/supabaseCart";
+import { useAuth } from "@/providers/AuthProvider";
 import {
   buildCartInsertPayload,
   type CartBuilderOptions,
@@ -52,6 +53,7 @@ export const useCart = () => {
     userId: null,
   });
   const { toast } = useToast();
+  const { user, loading: authLoading } = useAuth();
 
   const loadCartItems = useCallback(
     async (userId: string) => {
@@ -69,57 +71,17 @@ export const useCart = () => {
       return;
     }
 
-    let isMounted = true;
+    if (authLoading) {
+      return;
+    }
 
-    const resolveSession = async () => {
-      const {
-        data: { session },
-        error,
-      } = await supabase.auth.getSession();
+    if (!user) {
+      setState({ items: [], loading: false, userId: null });
+      return;
+    }
 
-      if (error) {
-        console.error("[useCart] Unable to fetch session", error.message);
-        if (isMounted) {
-          setState({ items: [], loading: false, userId: null });
-        }
-        return;
-      }
-
-      const user = session?.user ?? null;
-
-      if (!user) {
-        if (isMounted) {
-          setState({ items: [], loading: false, userId: null });
-        }
-        return;
-      }
-
-      if (isMounted) {
-        await loadCartItems(user.id);
-      }
-    };
-
-    resolveSession();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      if (!isMounted) {
-        return;
-      }
-      const user = session?.user ?? null;
-      if (!user) {
-        setState({ items: [], loading: false, userId: null });
-        return;
-      }
-      await loadCartItems(user.id);
-    });
-
-    return () => {
-      isMounted = false;
-      subscription.unsubscribe();
-    };
-  }, [loadCartItems]);
+    void loadCartItems(user.id);
+  }, [authLoading, loadCartItems, user]);
 
   const ensureUserAndClient = useCallback((): {
     supabaseAvailable: boolean;
@@ -134,7 +96,7 @@ export const useCart = () => {
       return { supabaseAvailable: false, userId: null };
     }
 
-    if (!state.userId) {
+    if (!user) {
       toast({
         title: "Sign in required",
         description: "Please sign in to add items to your cart.",
@@ -142,8 +104,8 @@ export const useCart = () => {
       return { supabaseAvailable: true, userId: null };
     }
 
-    return { supabaseAvailable: true, userId: state.userId };
-  }, [state.userId, toast]);
+    return { supabaseAvailable: true, userId: user.id };
+  }, [toast, user]);
 
   const refresh = useCallback(async () => {
     if (!state.userId) {
