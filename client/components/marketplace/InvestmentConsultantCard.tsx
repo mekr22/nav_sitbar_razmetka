@@ -18,6 +18,7 @@ export interface InvestmentConsultantCardProps {
   onSelect: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  onBuy?: (consultant: InvestmentConsultant) => void;
 }
 
 const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
@@ -26,6 +27,7 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
   onSelect,
   isFavorite,
   onToggleFavorite,
+  onBuy,
 }) => {
   const navigate = useNavigate();
 
@@ -160,6 +162,10 @@ const InvestmentConsultantCard: FC<InvestmentConsultantCardProps> = ({
               actionButtonBaseClass,
               "bg-gradient-to-r from-[#A06AFF] to-[#482090] transition-opacity hover:opacity-90",
             )}
+            onClick={(event) => {
+              event.stopPropagation();
+              onBuy?.(consultant);
+            }}
           >
             <ShoppingCart className="h-4 w-4" aria-hidden="true" />
             BUY
