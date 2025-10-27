@@ -76,7 +76,7 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
           isCompact && "gap-2 text-[11px]",
         )}
       >
-        <div className={cn("flex items-center gap-3", isCompact && "gap-2") }>
+        <div className={cn("flex items-center gap-3", isCompact && "gap-2")}>
           <div className="flex items-center gap-1">
             <ShoppingCart className="h-4 w-4 text-[#FFA800]" />
             <span className="text-[#FFA800]">{product.purchases}</span>
