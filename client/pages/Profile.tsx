@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { FC } from "react";
-import type { Session } from "@supabase/supabase-js";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,6 +7,7 @@ import { Loader2, LogOut } from "lucide-react";
 
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/providers/AuthProvider";
 
 const authSchema = z.object({
   email: z
@@ -23,8 +23,7 @@ type AuthFormValues = z.infer<typeof authSchema>;
 const Profile: FC = () => {
   const { toast } = useToast();
   const client = supabase;
-  const [session, setSession] = useState<Session | null>(null);
-  const [initializing, setInitializing] = useState(true);
+  const { session, loading: authLoading } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
   const [mode, setMode] = useState<"signIn" | "signUp">("signIn");
 
@@ -46,50 +45,10 @@ const Profile: FC = () => {
   }, [mode]);
 
   useEffect(() => {
-    if (!client) {
-      setInitializing(false);
-      return;
+    if (session) {
+      reset({ email: "", password: "" });
     }
-
-    let active = true;
-
-    const loadSession = async () => {
-      const { data, error } = await client.auth.getSession();
-
-      if (!active) {
-        return;
-      }
-
-      if (error) {
-        toast({
-          title: "Authentication error",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        setSession(data.session ?? null);
-      }
-
-      setInitializing(false);
-    };
-
-    loadSession();
-
-    const {
-      data: { subscription },
-    } = client.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
-      if (newSession) {
-        setAuthError(null);
-        reset({ email: "", password: "" });
-      }
-    });
-
-    return () => {
-      active = false;
-      subscription.unsubscribe();
-    };
-  }, [client, reset, toast]);
+  }, [reset, session]);
 
   const handleAuth = async (values: AuthFormValues) => {
     if (!client) {
@@ -117,10 +76,6 @@ const Profile: FC = () => {
           variant: "destructive",
         });
         return;
-      }
-
-      if (data.session) {
-        setSession(data.session);
       }
 
       toast({
@@ -171,7 +126,7 @@ const Profile: FC = () => {
     });
   };
 
-  if (initializing) {
+  if (authLoading) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
         <div className="flex items-center gap-3 rounded-2xl border border-[#181B22] bg-[#0C101480] px-6 py-4">
