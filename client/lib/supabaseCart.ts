@@ -171,6 +171,40 @@ export const addCartItem = async (
       return mapRowToCartItem(data);
     }
 
+    const performUpdateForExisting = async (): Promise<CartItem | null> => {
+      const latest = await fetchExistingCartItem(userId, productType, productId);
+      if (!latest) {
+        return null;
+      }
+
+      const mergedMetadata = metadata
+        ? { ...(latest.metadata ?? {}), ...metadata }
+        : latest.metadata;
+
+      const { data: updateData, error: updateError } = await supabase
+        .from<CartItemRow>(TABLE_NAME)
+        .update({
+          title,
+          subtitle,
+          price_cents: priceCents,
+          price_currency: priceCurrency,
+          quantity: latest.quantity + quantity,
+          image_url: imageUrl ?? latest.image_url,
+          metadata: mergedMetadata,
+        })
+        .eq("id", latest.id)
+        .eq("user_id", userId)
+        .select("*")
+        .single();
+
+      if (updateError) {
+        console.error("[supabaseCart] Error updating cart item after conflict", updateError);
+        return null;
+      }
+
+      return mapRowToCartItem(updateData);
+    };
+
     const { data, error } = await supabase
       .from<CartItemRow>(TABLE_NAME)
       .insert({
@@ -189,7 +223,19 @@ export const addCartItem = async (
       .single();
 
     if (error) {
-      console.error("[supabaseCart] Error inserting cart item", error);
+      if (error && "code" in error && error.code === "23505") {
+        const updated = await performUpdateForExisting();
+        if (updated) {
+          return updated;
+        }
+      }
+
+      console.error(
+        "[supabaseCart] Error inserting cart item",
+        error,
+        ("message" in error && error.message) || undefined,
+        ("details" in error && error.details) || undefined,
+      );
       return null;
     }
 
