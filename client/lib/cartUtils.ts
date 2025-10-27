@@ -30,7 +30,6 @@ export type CartBuilderOptions = {
   imageUrl?: string | null;
   subtitle?: string | null;
   metadata?: Record<string, unknown>;
-  description?: string | null;
 };
 
 export type CartInsertPayload = {
@@ -38,7 +37,6 @@ export type CartInsertPayload = {
   productId: string;
   title: string;
   subtitle: string | null;
-  description: string | null;
   priceCents: number;
   priceCurrency: string;
   quantity: number;
@@ -63,22 +61,15 @@ const DEFAULT_CURRENCY = "USD";
 const SAFE_NUMBER_REGEX = /-?\d+(?:[.,]\d+)?/;
 
 function clampQuantity(value: number | undefined): number {
-  if (Number.isNaN(value) || !Number.isFinite(value as number)) {
+  if (value === undefined || Number.isNaN(value) || !Number.isFinite(value)) {
     return 1;
   }
-  const normalized = Math.floor(Math.max(1, value as number));
-  return normalized;
+  return Math.max(1, Math.floor(value));
 }
 
 function parsePriceToCents(price: string | number | undefined): number | null {
-  if (typeof price === "number" && Number.isFinite(price)) {
-    if (price >= 1) {
-      return Math.round(price * 100);
-    }
-    if (price >= 0) {
-      return Math.round(price * 100);
-    }
-    return null;
+  if (typeof price === "number" && Number.isFinite(price) && price >= 0) {
+    return Math.round(price * 100);
   }
 
   if (typeof price === "string") {
@@ -102,8 +93,7 @@ function resolvePriceCents(
   options?: CartBuilderOptions,
 ): number {
   if (options?.priceCents !== undefined) {
-    const normalized = Math.max(0, Math.round(options.priceCents));
-    return normalized;
+    return Math.max(0, Math.round(options.priceCents));
   }
 
   const parsed = parsePriceToCents(options?.price);
@@ -144,16 +134,6 @@ function resolveImage(
   return fallback;
 }
 
-function resolveDescription(
-  fallback: string | null,
-  override: string | null | undefined,
-): string | null {
-  if (override !== undefined) {
-    return override;
-  }
-  return fallback;
-}
-
 export function buildCartInsertPayload<K extends ProductType>(
   productType: K,
   product: ProductTypeMap[K],
@@ -169,7 +149,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.name,
         subtitle: resolveSubtitle(product.company, options?.subtitle),
-        description: resolveDescription(product.analysis ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -192,7 +171,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.name,
         subtitle: resolveSubtitle(product.company, options?.subtitle),
-        description: resolveDescription(product.description ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -215,7 +193,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.name,
         subtitle: resolveSubtitle(product.badge, options?.subtitle),
-        description: resolveDescription(product.experience ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -238,7 +215,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.name,
         subtitle: resolveSubtitle(product.type, options?.subtitle),
-        description: resolveDescription(product.use ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -260,7 +236,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.name,
         subtitle: resolveSubtitle(product.strategy, options?.subtitle),
-        description: resolveDescription(product.profitSharing ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -283,7 +258,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.name,
         subtitle: resolveSubtitle(product.strategy, options?.subtitle),
-        description: resolveDescription(product.profitSharing ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -306,7 +280,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.title,
         subtitle: resolveSubtitle(product.subtitle, options?.subtitle),
-        description: resolveDescription(product.host ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -329,7 +302,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.title,
         subtitle: resolveSubtitle(product.typeLabel, options?.subtitle),
-        description: resolveDescription(product.description ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
@@ -338,7 +310,7 @@ export function buildCartInsertPayload<K extends ProductType>(
           {
             revenueLabel: product.revenueLabel,
             ratingScore: product.ratingScore,
-            creatorName: product.creator?.name ?? product.creatorName,
+            creatorName: product.creator?.name,
           },
           options?.metadata,
         ),
@@ -352,7 +324,6 @@ export function buildCartInsertPayload<K extends ProductType>(
         productId: product.id,
         title: product.title,
         subtitle: resolveSubtitle(product.label, options?.subtitle),
-        description: resolveDescription(product.description ?? null, options?.description),
         priceCents: pricing,
         priceCurrency: DEFAULT_CURRENCY,
         quantity,
