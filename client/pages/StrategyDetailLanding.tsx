@@ -21,6 +21,7 @@ import FavoriteStarButton from "@/components/marketplace/FavoriteStarButton";
 import StrategyGalleryCarousel from "@/components/marketplace/StrategyGalleryCarousel";
 import type { Strategy } from "@/data/marketplaceStrategies";
 import { baseStrategies } from "@/data/marketplaceStrategies";
+import { useCart } from "@/hooks/useCart";
 import { useFavorite } from "@/hooks/useFavorite";
 import { extractOriginalProductId } from "@/lib/utils";
 
