@@ -132,6 +132,8 @@ const OtherDetailLanding: FC = () => {
     }
     return baseOtherProducts[0];
   }, [locationState]);
+  const originalProductId = useMemo(() => extractOriginalProductId(product.id), [product.id]);
+  const { addProductToCart } = useCart();
 
   useEffect(() => {
     if (typeof window === "undefined") {
