@@ -11,7 +11,6 @@ export type CartItemRow = {
   product_id: string;
   title: string;
   subtitle: string | null;
-  description: string | null;
   price_cents: number;
   price_currency: string;
   quantity: number;
@@ -28,7 +27,6 @@ export type CartItem = {
   productId: string;
   title: string;
   subtitle: string | null;
-  description: string | null;
   priceCents: number;
   priceCurrency: string;
   quantity: number;
@@ -62,7 +60,6 @@ const mapRowToCartItem = (row: CartItemRow): CartItem => ({
   productId: row.product_id,
   title: row.title,
   subtitle: row.subtitle,
-  description: row.description,
   priceCents: row.price_cents,
   priceCurrency: row.price_currency,
   quantity: row.quantity,
@@ -136,7 +133,6 @@ export const addCartItem = async (
       productId,
       title,
       subtitle,
-      description,
       priceCents,
       priceCurrency,
       quantity,
@@ -156,7 +152,6 @@ export const addCartItem = async (
         .update({
           title,
           subtitle,
-          description,
           price_cents: priceCents,
           price_currency: priceCurrency,
           quantity: existing.quantity + quantity,
@@ -184,7 +179,6 @@ export const addCartItem = async (
         product_id: productId,
         title,
         subtitle,
-        description,
         price_cents: priceCents,
         price_currency: priceCurrency,
         quantity,
