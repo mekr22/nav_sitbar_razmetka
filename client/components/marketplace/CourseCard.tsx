@@ -19,6 +19,8 @@ type CourseCardProps = {
   onToggleFavorite: () => void;
   onOpenDetails?: (course: Course, meta?: { isFavorite: boolean }) => void;
   onBuy?: (course: Course) => void;
+  variant?: "default" | "compact";
+  className?: string;
 };
 
 const CourseCard: FC<CourseCardProps> = ({
