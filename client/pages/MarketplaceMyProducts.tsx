@@ -1040,6 +1040,9 @@ const MarketplaceMyProducts: FC = () => {
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("course", course.id)}
                   onOpenDetails={openCourseDetails}
+                  onBuy={(current) => {
+                    void addProductToCart("course", current);
+                  }}
                 />
               );
             })}
