@@ -1,4 +1,4 @@
-import type { Signal } from "@/components/marketplace/SignalCard";
+import type { Signal } from "@/data/marketplaceTypes";
 
 export const baseSignals: Signal[] = [
   {
