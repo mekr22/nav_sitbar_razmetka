@@ -583,18 +583,23 @@ const Favourites: FC = () => {
                   case "script":
                     const script = product.data as ScriptProduct;
                     return (
-                      <div key={product.id} className="w-full md:col-span-2">
+                      <div key={product.id} className="h-full">
                         <ScriptProductCard
                           product={script}
                           isActive={isActive}
                           onSelect={() => setActiveCardKey(cardKey)}
-                          isFavorite={true}
+                          isFavorite
                           onToggleFavorite={() =>
                             handleToggleFavorite("script", product.id)
                           }
                           onOpenDetails={() =>
                             handleNavigateToDetails("script", script)
                           }
+                          onBuy={(current) => {
+                            void addProductToCart("script", current);
+                          }}
+                          variant="compact"
+                          className="h-full"
                         />
                       </div>
                     );
