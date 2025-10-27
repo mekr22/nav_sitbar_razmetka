@@ -98,11 +98,11 @@ const useProductForm = <T extends FieldValues>(
     }
   };
 
-  const publish: HookSubmitHandler<T> = form.handleSubmit((data) => {
+  const publish = form.handleSubmit((data) => {
     void submit(data, "published");
   });
 
-  const saveDraft: HookSubmitHandler<T> = form.handleSubmit((data) => {
+  const saveDraft = form.handleSubmit((data) => {
     void submit(data, "draft");
   });
 
