@@ -331,6 +331,21 @@ const Others: FC = () => {
     });
   }, [filters, products, searchTerm]);
 
+  const handleOtherBuy = useCallback(
+    (product: OtherProduct) => {
+      void addProductToCart("other", product, {
+        subtitle: product.label,
+        imageUrl: product.image,
+        metadata: {
+          industry: product.industryLabel,
+          rating: product.rating,
+          tag: product.ratingTag,
+        },
+      });
+    },
+    [addProductToCart],
+  );
+
   useEffect(() => {
     if (!activeCardKey) {
       return;
