@@ -214,12 +214,7 @@ const OtherDetailLanding: FC = () => {
   const priceLabel = priceByType[normalizedType] ?? "$199.00";
 
   const handleAddOtherProductToCart = useCallback(() => {
-    const productForCart: OtherProduct = {
-      ...product,
-      id: originalProductId,
-    };
-
-    void addProductToCart("other", productForCart, {
+    void addProductToCart("other", product, {
       price: priceLabel,
       subtitle: product.label,
       imageUrl: product.image,
@@ -228,7 +223,7 @@ const OtherDetailLanding: FC = () => {
         rating: product.rating,
       },
     });
-  }, [addProductToCart, originalProductId, priceLabel, product]);
+  }, [addProductToCart, priceLabel, product]);
 
   const renderStars = (rating: number) => {
     const stars: JSX.Element[] = [];
