@@ -62,6 +62,8 @@ const Favourites: FC = () => {
   const [userId, setUserId] = useState<string | null>(null);
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
 
+  const { addProductToCart } = useCart();
+
   const balanceValue = "$1,000,000,000.00";
   const maskedBalanceValue = useMemo(
     () => maskNonWhitespace(balanceValue),
