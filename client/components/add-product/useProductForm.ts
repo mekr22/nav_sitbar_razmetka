@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type {
   DefaultValues,
   FieldValues,
-  SubmitHandler as HookSubmitHandler,
   UseFormReturn,
 } from "react-hook-form";
 import { useForm } from "react-hook-form";
