@@ -128,12 +128,7 @@ const ScriptDetailLanding: FC = () => {
   const { addProductToCart } = useCart();
 
   const handleAddScriptToCart = useCallback(() => {
-    const productForCart: ScriptProduct = {
-      ...product,
-      id: originalProductId,
-    };
-
-    void addProductToCart("script", productForCart, {
+    void addProductToCart("script", product, {
       imageUrl: product.heroImage,
       subtitle: product.typeLabel,
       metadata: {
@@ -141,7 +136,7 @@ const ScriptDetailLanding: FC = () => {
         compatibility: product.compatibility.join(", "),
       },
     });
-  }, [addProductToCart, originalProductId, product]);
+  }, [addProductToCart, product]);
 
   const handleNavigateBack = useCallback(() => {
     navigate("/marketplace/scripts");
