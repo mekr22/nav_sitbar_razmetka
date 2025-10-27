@@ -633,6 +633,7 @@ const StrategyDetailLanding: FC = () => {
 
   const originalStrategyId = useMemo(() => extractOriginalProductId(strategy.id), [strategy.id]);
   const { isFavorite, toggle: toggleFavorite } = useFavorite("strategy", originalStrategyId);
+  const { addProductToCart } = useCart();
 
   const handleToggleFavorite = useCallback(() => {
     toggleFavorite();
