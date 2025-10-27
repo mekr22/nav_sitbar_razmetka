@@ -55,7 +55,7 @@ const CourseCard: FC<CourseCardProps> = ({
         className={cn(
           "relative flex h-full cursor-pointer flex-col gap-4 overflow-hidden rounded-2xl border bg-[#0C1014]/60 p-4 backdrop-blur-[50px] transition-colors",
           isActive ? "border-[#A06AFF]" : "border-[#181B22]",
-          isCompact ? "justify-between" : "md:flex-row md:items-center md:gap-6",
+          !isCompact && "md:flex-row md:items-center md:gap-6",
         )}
       >
         <div
