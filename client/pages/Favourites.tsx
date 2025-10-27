@@ -436,7 +436,7 @@ const Favourites: FC = () => {
                   case "analyst":
                     const analyst = product.data as Analyst;
                     return (
-                      <div key={product.id} className="w-full">
+                      <div key={product.id} className="h-full">
                         <AnalystCard
                           analyst={analyst}
                           isActive={isActive}
