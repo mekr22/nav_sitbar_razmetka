@@ -217,12 +217,7 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
   const { addProductToCart } = useCart();
 
   const handleAddCourseToCart = useCallback(() => {
-    const productForCart: Course = {
-      ...course,
-      id: originalCourseId,
-    };
-
-    void addProductToCart("course", productForCart, {
+    void addProductToCart("course", course, {
       price: priceLabel,
       subtitle: course.subtitle,
       imageUrl: course.image,
@@ -232,7 +227,7 @@ const CourseDetailLanding: FC<{ hideAdditionalContent?: boolean }> = ({
         level: course.level,
       },
     });
-  }, [addProductToCart, course, formatLabel, originalCourseId, priceLabel]);
+  }, [addProductToCart, course, formatLabel, priceLabel]);
 
   const detailItems = useMemo(
     () => [
