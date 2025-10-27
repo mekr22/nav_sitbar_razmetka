@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useFavoriteMultiple } from "@/hooks/useFavorite";
+import { useCart } from "@/hooks/useCart";
 
 import StrategyCard from "@/components/marketplace/StrategyCard";
 import { baseStrategies, Strategy } from "@/data/marketplaceStrategies";
@@ -197,6 +198,7 @@ const StrategiesAndPortfolios: FC = () => {
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const { isFavorite, toggle } = useFavoriteMultiple("strategy");
+  const { addProductToCart } = useCart();
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [filters, setFilters] = useState<FilterSelections>({
     style: FILTER_CONFIG.style.options[0].value,
@@ -245,6 +247,21 @@ const StrategiesAndPortfolios: FC = () => {
         }),
       ).flat(),
     [],
+  );
+
+  const handleAddStrategyToCart = useCallback(
+    (selectedStrategy: Strategy) => {
+      void addProductToCart("strategy", selectedStrategy, {
+        subtitle: selectedStrategy.strategy,
+        imageUrl: selectedStrategy.icon,
+        metadata: {
+          riskLevel: selectedStrategy.riskLevel,
+          minCapital: selectedStrategy.minCapital,
+          roi30d: selectedStrategy.roi30d,
+        },
+      });
+    },
+    [addProductToCart],
   );
 
   const filteredStrategies = useMemo(() => {
@@ -647,6 +664,7 @@ const StrategiesAndPortfolios: FC = () => {
                     secondaryActionLabel="Learn More"
                     primaryActionLabel="Buy"
                     primaryActionIcon={ShoppingCart}
+                    onPrimaryAction={handleAddStrategyToCart}
                   />
                 );
               })}
