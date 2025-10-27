@@ -18,6 +18,7 @@ export async function getAnalysts(): Promise<Analyst[]> {
   const { data, error } = await supabase
     .from("analysts")
     .select("*")
+    .eq("status", "published")
     .order("featured", { ascending: false });
 
   if (error) {
@@ -49,6 +50,7 @@ export async function getInvestmentConsultants(): Promise<InvestmentConsultant[]
   const { data, error } = await supabase
     .from("investment_consultants")
     .select("*")
+    .eq("status", "published")
     .order("featured", { ascending: false });
 
   if (error) {
@@ -80,6 +82,7 @@ export async function getTraders(): Promise<Trader[]> {
   const { data, error } = await supabase
     .from("traders")
     .select("*")
+    .eq("status", "published")
     .order("rating", { ascending: false });
 
   if (error) {
@@ -112,6 +115,7 @@ export async function getSignals(): Promise<Signal[]> {
   const { data, error } = await supabase
     .from("signals")
     .select("*")
+    .eq("status", "published")
     .order("risk_level", { ascending: true });
 
   if (error) {
@@ -142,6 +146,7 @@ export async function getStrategies(): Promise<Strategy[]> {
   const { data, error } = await supabase
     .from("strategies")
     .select("*")
+    .eq("status", "published")
     .order("risk_level", { ascending: true });
 
   if (error) {
@@ -174,6 +179,7 @@ export async function getTradingRobots(): Promise<TradingRobot[]> {
   const { data, error } = await supabase
     .from("trading_robots")
     .select("*")
+    .eq("status", "published")
     .order("accuracy_level", { ascending: false });
 
   if (error) {
@@ -216,6 +222,7 @@ export async function getCourses(): Promise<Course[]> {
   const { data, error } = await supabase
     .from("courses")
     .select("*")
+    .eq("status", "published")
     .order("rating", { ascending: false });
 
   if (error) {
@@ -260,6 +267,7 @@ export async function getScriptProducts(): Promise<ScriptProduct[]> {
   const { data, error } = await supabase
     .from("script_products")
     .select("*")
+    .eq("status", "published")
     .order("rating_score", { ascending: false });
 
   if (error) {
@@ -299,6 +307,7 @@ export async function getOtherProducts(): Promise<OtherProduct[]> {
   const { data, error } = await supabase
     .from("other_products")
     .select("*")
+    .eq("status", "published")
     .order("rating", { ascending: false });
 
   if (error) {
