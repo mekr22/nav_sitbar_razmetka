@@ -250,7 +250,18 @@ export const useCart = () => {
 
       setState((prev) => ({
         ...prev,
-        items: prev.items.filter((item) => item.id !== input.cartItemId),
+        items: prev.items.filter((item) => {
+          if (input.cartItemId) {
+            return item.id !== input.cartItemId;
+          }
+          if (input.productType && input.productId) {
+            return !(
+              item.productType === input.productType &&
+              item.productId === input.productId
+            );
+          }
+          return true;
+        }),
       }));
     },
     [state.userId, toast],
