@@ -38,15 +38,25 @@ const ScriptProductCard: FC<ScriptProductCardProps> = ({
   className,
 }) => {
   const isCompact = variant === "compact";
+  const creatorTagsSource = Array.isArray(product.creator.tags)
+    ? product.creator.tags
+    : [];
+  const compatibilitySource = Array.isArray(product.compatibility)
+    ? product.compatibility
+    : [];
+  const requirementsSource = Array.isArray(product.requirements)
+    ? product.requirements
+    : [];
+
   const creatorTags = isCompact
-    ? product.creator.tags.slice(0, 1)
-    : product.creator.tags;
+    ? creatorTagsSource.slice(0, 1)
+    : creatorTagsSource;
   const compatibilityItems = isCompact
-    ? product.compatibility.slice(0, 3)
-    : product.compatibility;
+    ? compatibilitySource.slice(0, 3)
+    : compatibilitySource;
   const requirementsItems = isCompact
-    ? product.requirements.slice(0, 3)
-    : product.requirements;
+    ? requirementsSource.slice(0, 3)
+    : requirementsSource;
 
   return (
     <div
