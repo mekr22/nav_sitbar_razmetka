@@ -150,6 +150,7 @@ const SignalsAndTechnicalIndicators: FC = () => {
   );
   const [activeCardKey, setActiveCardKey] = useState<string | null>(null);
   const { isFavorite, toggle } = useFavoriteMultiple("signal");
+  const { addProductToCart } = useCart();
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const [filters, setFilters] = useState<FilterSelections>({
     category: FILTER_CONFIG.category.options[0].value,
