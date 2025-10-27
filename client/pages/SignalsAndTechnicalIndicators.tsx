@@ -607,8 +607,11 @@ const SignalsAndTechnicalIndicators: FC = () => {
                   onSelect={() => setActiveCardKey(cardKey)}
                   isFavorite={isFavorited}
                   onToggleFavorite={() => toggle("signal", originalId)}
-                    onOpenDetails={openSignalDetails}
-                  />
+                  onOpenDetails={openSignalDetails}
+                  onBuy={(current) => {
+                    void addProductToCart("signal", current);
+                  }}
+                />
                 );
               })}
             </div>
