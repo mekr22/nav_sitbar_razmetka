@@ -260,7 +260,7 @@ export const addCartItem = async (
         return null;
       }
 
-      return mapRowToCartItem(data);
+      return mapRowToCartItem(data as CartItemRow);
     }
 
     const performUpdateForExisting = async (): Promise<CartItem | null> => {
@@ -338,7 +338,7 @@ export const addCartItem = async (
       return null;
     }
 
-    return mapRowToCartItem(data);
+    return mapRowToCartItem(data as CartItemRow);
   } catch (err) {
     console.error("[supabaseCart] Unexpected error adding cart item", err);
     return null;
@@ -373,7 +373,7 @@ export const updateCartItemQuantity = async (
       return null;
     }
 
-    return mapRowToCartItem(data);
+    return mapRowToCartItem(data as CartItemRow);
   } catch (err) {
     console.error("[supabaseCart] Unexpected error updating quantity", err);
     return null;
