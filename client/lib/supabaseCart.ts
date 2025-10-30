@@ -99,12 +99,19 @@ const mapRowToCartItem = (row: CartItemRow): CartItem => ({
 });
 
 const logSupabaseError = (context: string, error: PostgrestError) => {
-  console.error(context, {
-    message: toErrorMessage(error),
+  const message = toErrorMessage(error);
+  const payload = {
+    message,
     code: error.code,
     details: error.details,
     hint: error.hint,
-  });
+  };
+
+  if (isLikelyNetworkError(message)) {
+    console.warn(`${context} (network)`, payload);
+  } else {
+    console.error(context, payload);
+  }
 };
 
 const shouldRetryWithoutOrder = (error: PostgrestError): boolean => {
