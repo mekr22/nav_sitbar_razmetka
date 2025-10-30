@@ -5,7 +5,11 @@ const RETRY_DELAY_MS = 250;
 
 const sleep = (ms: number) =>
   new Promise<void>((resolve) => {
-    window.setTimeout(resolve, ms);
+    if (typeof globalThis.setTimeout === "function") {
+      globalThis.setTimeout(resolve, ms);
+    } else {
+      resolve();
+    }
   });
 
 const isNetworkError = (error: unknown): boolean => {
