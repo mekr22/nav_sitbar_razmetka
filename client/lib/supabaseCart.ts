@@ -301,7 +301,7 @@ export const addCartItem = async (
         return null;
       }
 
-      return mapRowToCartItem(updateData);
+      return mapRowToCartItem(updateData as CartItemRow);
     };
 
     const { data, error } = await supabase
