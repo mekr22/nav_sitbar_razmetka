@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+
 import { supabase } from "@/lib/supabaseClient";
 import {
   addFavorite,
@@ -6,221 +7,254 @@ import {
   checkFavorite,
   ProductType,
 } from "@/lib/supabaseFavorites";
+import { useAuth } from "@/providers/AuthProvider";
+
+const toErrorMessage = (error: unknown): string => {
+  if (!error) {
+    return "Unknown error";
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  const message = (error as { message?: unknown }).message;
+  if (typeof message === "string") {
+    return message;
+  }
+
+  try {
+    return JSON.stringify(error);
+  } catch {
+    return String(error);
+  }
+};
 
 export function useFavorite(productType: ProductType, productId: string) {
+  const { user, loading: authLoading } = useAuth();
   const [isFavorite, setIsFavorite] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    const checkUserAndFavorite = async () => {
-      if (!supabase) {
-        setLoading(false);
-        return;
-      }
+    if (!supabase) {
+      setIsFavorite(false);
+      setLoading(false);
+      return;
+    }
 
+    if (authLoading) {
+      return;
+    }
+
+    if (!user) {
+      setIsFavorite(false);
+      setLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    const loadFavorite = async () => {
+      setLoading(true);
       try {
-        const {
-          data: { session },
-          error: sessionError,
-        } = await supabase.auth.getSession();
-
-        if (sessionError) {
-          console.error("[useFavorite] Session error:", sessionError.message);
-          setLoading(false);
-          return;
+        const result = await checkFavorite(user.id, productType, productId);
+        if (!cancelled) {
+          setIsFavorite(result);
         }
-
-        const user = session?.user;
-
-        if (!user) {
-          setLoading(false);
-          return;
+      } catch (error) {
+        if (!cancelled) {
+          console.error(
+            "[useFavorite] Error checking favorite:",
+            toErrorMessage(error),
+            error,
+          );
         }
-
-        setUserId(user.id);
-
-        const isFav = await checkFavorite(user.id, productType, productId);
-        setIsFavorite(isFav);
-      } catch (err) {
-        console.error("Error checking favorite:", err);
       } finally {
-        setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     };
 
-    checkUserAndFavorite();
-  }, [productType, productId]);
+    void loadFavorite();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [authLoading, productId, productType, user?.id]);
 
   const toggle = useCallback(async () => {
-    if (!userId) {
-      console.warn("User not authenticated");
+    if (!supabase) {
+      console.warn("[useFavorite] Supabase client not configured");
+      return;
+    }
+
+    if (!user) {
+      console.warn("[useFavorite] User not authenticated");
       return;
     }
 
     try {
       if (isFavorite) {
-        const success = await removeFavorite(userId, productType, productId);
+        const success = await removeFavorite(user.id, productType, productId);
         if (success) {
           setIsFavorite(false);
         }
       } else {
-        const success = await addFavorite(userId, productType, productId);
+        const success = await addFavorite(user.id, productType, productId);
         if (success) {
           setIsFavorite(true);
         }
       }
-    } catch (err) {
-      console.error("Error toggling favorite:", err);
+    } catch (error) {
+      console.error(
+        "[useFavorite] Error toggling favorite:",
+        toErrorMessage(error),
+        error,
+      );
     }
-  }, [userId, productType, productId, isFavorite]);
+  }, [isFavorite, productId, productType, user]);
 
   return {
     isFavorite,
-    loading,
+    loading: loading || authLoading,
     toggle,
-    userId,
+    userId: user?.id ?? null,
   };
 }
 
 export function useFavoriteMultiple(productType?: ProductType) {
+  const { user, loading: authLoading } = useAuth();
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState<string | null>(null);
 
-  useEffect(() => {
-    const checkUserAndLoadFavorites = async () => {
-      if (!supabase) {
-        console.log("[useFavoriteMultiple] Supabase not configured");
-        setLoading(false);
+  const userId = user?.id ?? null;
+
+  const refresh = useCallback(async () => {
+    if (!supabase) {
+      console.warn("[useFavoriteMultiple] Supabase client not configured");
+      setFavorites(new Set());
+      setLoading(false);
+      return;
+    }
+
+    if (!userId) {
+      setFavorites(new Set());
+      setLoading(false);
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      let query = supabase
+        .from("user_favorites")
+        .select("product_id, product_type")
+        .eq("user_id", userId);
+
+      if (productType) {
+        query = query.eq("product_type", productType);
+      }
+
+      const { data, error } = await query;
+
+      if (error) {
+        console.error(
+          "[useFavoriteMultiple] Query error:",
+          toErrorMessage(error),
+          error,
+        );
+        setFavorites(new Set());
         return;
       }
 
-      try {
-        const {
-          data: { session },
-          error: sessionError,
-        } = await supabase.auth.getSession();
+      const records = Array.isArray(data) ? data : [];
+      const next = new Set(
+        records.map((fav) => `${fav.product_type}:${fav.product_id}`),
+      );
 
-        if (sessionError) {
-          console.error(
-            "[useFavoriteMultiple] Session error:",
-            sessionError.message,
-          );
-          setLoading(false);
-          return;
-        }
+      setFavorites(next);
+    } catch (error) {
+      console.error(
+        "[useFavoriteMultiple] Unexpected error loading favorites:",
+        toErrorMessage(error),
+        error,
+      );
+      setFavorites(new Set());
+    } finally {
+      setLoading(false);
+    }
+  }, [productType, userId]);
 
-        const user = session?.user;
+  useEffect(() => {
+    if (authLoading) {
+      return;
+    }
 
-        if (!user) {
-          setLoading(false);
-          return;
-        }
-
-        setUserId(user.id);
-
-        let query = supabase
-          .from("user_favorites")
-          .select("product_id, product_type")
-          .eq("user_id", user.id);
-
-        if (productType) {
-          query = query.eq("product_type", productType);
-        }
-
-        const { data, error: queryError } = await query;
-
-        if (queryError) {
-          console.error(
-            "[useFavoriteMultiple] Query error:",
-            queryError.message,
-          );
-          setLoading(false);
-          return;
-        }
-
-        console.log("[useFavoriteMultiple] Loaded favorites:", data);
-        const favoriteSet = new Set(
-          data.map((fav) => `${fav.product_type}:${fav.product_id}`),
-        );
-        console.log(
-          "[useFavoriteMultiple] Favorite set:",
-          Array.from(favoriteSet),
-        );
-        setFavorites(favoriteSet);
-      } catch (err) {
-        console.error("Error loading favorites:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    checkUserAndLoadFavorites();
-  }, [productType]);
+    void refresh();
+  }, [authLoading, refresh]);
 
   const isFavorite = useCallback(
-    (type: ProductType, id: string) => {
-      return favorites.has(`${type}:${id}`);
-    },
+    (type: ProductType, id: string) => favorites.has(`${type}:${id}`),
     [favorites],
   );
 
   const toggle = useCallback(
     async (type: ProductType, id: string) => {
-      console.log("[useFavoriteMultiple.toggle] Starting toggle:", {
-        type,
-        id,
-        userId,
-      });
-
-      if (!userId) {
-        console.warn("[useFavoriteMultiple.toggle] User not authenticated!");
+      if (!supabase) {
+        console.warn("[useFavoriteMultiple.toggle] Supabase not configured");
         return;
       }
 
-      try {
-        const isFav = isFavorite(type, id);
-        console.log(
-          "[useFavoriteMultiple.toggle] Current favorite status:",
-          isFav,
-        );
+      if (!userId) {
+        console.warn("[useFavoriteMultiple.toggle] User not authenticated");
+        return;
+      }
 
-        if (isFav) {
-          console.log("[useFavoriteMultiple.toggle] Removing favorite...");
+      const key = `${type}:${id}`;
+      const currentlyFavorite = favorites.has(key);
+
+      try {
+        if (currentlyFavorite) {
           const success = await removeFavorite(userId, type, id);
-          console.log("[useFavoriteMultiple.toggle] Remove result:", success);
           if (success) {
             setFavorites((prev) => {
               const next = new Set(prev);
-              next.delete(`${type}:${id}`);
+              next.delete(key);
               return next;
             });
           }
         } else {
-          console.log("[useFavoriteMultiple.toggle] Adding favorite...");
           const success = await addFavorite(userId, type, id);
-          console.log("[useFavoriteMultiple.toggle] Add result:", success);
           if (success) {
             setFavorites((prev) => {
               const next = new Set(prev);
-              next.add(`${type}:${id}`);
+              next.add(key);
               return next;
             });
           }
         }
-      } catch (err) {
-        console.error("[useFavoriteMultiple.toggle] Exception:", err);
+      } catch (error) {
+        console.error(
+          "[useFavoriteMultiple.toggle] Error toggling favorite:",
+          toErrorMessage(error),
+          error,
+        );
       }
     },
-    [userId, isFavorite],
+    [favorites, userId],
   );
 
   return {
     favorites,
     isFavorite,
-    loading,
+    loading: loading || authLoading,
     toggle,
     userId,
+    refresh,
   };
 }
