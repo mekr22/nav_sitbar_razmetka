@@ -68,14 +68,18 @@ export type FavoriteProduct =
 export async function addFavorite(
   userId: string,
   productType: ProductType,
-  productId: string
+  productId: string,
 ): Promise<boolean> {
   if (!supabase) {
     console.warn("Supabase client not configured");
     return false;
   }
 
-  console.log("[addFavorite] Adding favorite:", { userId, productType, productId });
+  console.log("[addFavorite] Adding favorite:", {
+    userId,
+    productType,
+    productId,
+  });
 
   try {
     const { data, error } = await supabase.from("user_favorites").insert({
@@ -109,14 +113,18 @@ export async function addFavorite(
 export async function removeFavorite(
   userId: string,
   productType: ProductType,
-  productId: string
+  productId: string,
 ): Promise<boolean> {
   if (!supabase) {
     console.warn("Supabase client not configured");
     return false;
   }
 
-  console.log("[removeFavorite] Removing favorite:", { userId, productType, productId });
+  console.log("[removeFavorite] Removing favorite:", {
+    userId,
+    productType,
+    productId,
+  });
 
   try {
     const { error } = await supabase
@@ -129,9 +137,17 @@ export async function removeFavorite(
     if (error) {
       const message = toErrorMessage(error);
       if (isLikelyNetworkError(message)) {
-        console.warn("[removeFavorite] Network issue while removing favorite:", message);
+        console.warn(
+          "[removeFavorite] Network issue while removing favorite:",
+          message,
+        );
       } else {
-        console.error("[removeFavorite] Database error:", message, error.code, error.details);
+        console.error(
+          "[removeFavorite] Database error:",
+          message,
+          error.code,
+          error.details,
+        );
       }
       return false;
     }
@@ -152,7 +168,7 @@ export async function removeFavorite(
 export async function toggleFavorite(
   userId: string,
   productType: ProductType,
-  productId: string
+  productId: string,
 ): Promise<boolean> {
   const isFav = await checkFavorite(userId, productType, productId);
 
@@ -166,7 +182,7 @@ export async function toggleFavorite(
 export async function checkFavorite(
   userId: string,
   productType: ProductType,
-  productId: string
+  productId: string,
 ): Promise<boolean> {
   if (!supabase) {
     return false;
@@ -190,7 +206,10 @@ export async function checkFavorite(
       return false;
     }
 
-    console.log("[checkFavorite] Result:", !!data, "for", { productType, productId });
+    console.log("[checkFavorite] Result:", !!data, "for", {
+      productType,
+      productId,
+    });
     return !!data;
   } catch (err) {
     console.error("[checkFavorite] Exception:", toErrorMessage(err), err);
@@ -200,7 +219,7 @@ export async function checkFavorite(
 
 export async function getUserFavoriteIds(
   userId: string,
-  productType?: ProductType
+  productType?: ProductType,
 ): Promise<Set<string>> {
   if (!supabase) {
     return new Set();
@@ -219,7 +238,11 @@ export async function getUserFavoriteIds(
     const { data, error } = await query;
 
     if (error) {
-      console.error("Error fetching user favorites:", toErrorMessage(error), error);
+      console.error(
+        "Error fetching user favorites:",
+        toErrorMessage(error),
+        error,
+      );
       return new Set();
     }
 
@@ -230,7 +253,9 @@ export async function getUserFavoriteIds(
   }
 }
 
-export async function getUserFavorites(userId: string): Promise<FavoriteProduct[]> {
+export async function getUserFavorites(
+  userId: string,
+): Promise<FavoriteProduct[]> {
   if (!supabase) {
     return [];
   }
@@ -243,7 +268,11 @@ export async function getUserFavorites(userId: string): Promise<FavoriteProduct[
       .order("created_at", { ascending: false });
 
     if (error) {
-      console.error("Error fetching user favorites:", toErrorMessage(error), error);
+      console.error(
+        "Error fetching user favorites:",
+        toErrorMessage(error),
+        error,
+      );
       return [];
     }
 
@@ -252,23 +281,26 @@ export async function getUserFavorites(userId: string): Promise<FavoriteProduct[
     for (const fav of favorites) {
       const product = await fetchProductByType(
         fav.product_type as ProductType,
-        fav.product_id
+        fav.product_id,
       );
 
       if (product) {
-        result.push({ ...product, type: fav.product_type as ProductType } as FavoriteProduct);
+        result.push({
+          ...product,
+          type: fav.product_type as ProductType,
+        } as FavoriteProduct);
       } else {
         console.warn(
-          `Removing orphaned favorite: ${fav.product_type} with id ${fav.product_id}`
+          `Removing orphaned favorite: ${fav.product_type} with id ${fav.product_id}`,
         );
         const removed = await removeFavorite(
           userId,
           fav.product_type as ProductType,
-          fav.product_id
+          fav.product_id,
         );
         if (!removed) {
           console.warn(
-            "[getUserFavorites] Unable to remove orphaned favorite due to network or permission issue"
+            "[getUserFavorites] Unable to remove orphaned favorite due to network or permission issue",
           );
         }
       }
@@ -283,7 +315,7 @@ export async function getUserFavorites(userId: string): Promise<FavoriteProduct[
 
 async function fetchProductByType(
   productType: ProductType,
-  productId: string
+  productId: string,
 ): Promise<any> {
   if (!supabase) {
     return null;
@@ -332,11 +364,13 @@ async function fetchProductByType(
 
     if (error) {
       if (error.code === "PGRST116") {
-        console.warn(
-          `Product not found: ${productType} with id ${productId}`
-        );
+        console.warn(`Product not found: ${productType} with id ${productId}`);
       } else {
-        console.error(`Error fetching ${productType}:`, toErrorMessage(error), error);
+        console.error(
+          `Error fetching ${productType}:`,
+          toErrorMessage(error),
+          error,
+        );
       }
       return null;
     }

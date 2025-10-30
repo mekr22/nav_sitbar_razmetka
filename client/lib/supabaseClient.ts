@@ -61,7 +61,10 @@ const fetchWithRetry: typeof fetch = async (input, init) => {
       try {
         return input.clone();
       } catch (error) {
-        console.warn("[supabaseClient] Unable to clone request for retry", toErrorMessage(error));
+        console.warn(
+          "[supabaseClient] Unable to clone request for retry",
+          toErrorMessage(error),
+        );
         return new Request(input);
       }
     }
@@ -81,7 +84,10 @@ const fetchWithRetry: typeof fetch = async (input, init) => {
     try {
       const response = await executeFetch();
 
-      if (!shouldRetryResponse(response) || attempt === DEFAULT_RETRY_ATTEMPTS) {
+      if (
+        !shouldRetryResponse(response) ||
+        attempt === DEFAULT_RETRY_ATTEMPTS
+      ) {
         return response;
       }
 
