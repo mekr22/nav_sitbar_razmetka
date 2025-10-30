@@ -5,6 +5,31 @@ import type { CartInsertPayload } from "@/lib/cartUtils";
 
 const TABLE_NAME = "cart_items";
 
+const toErrorMessage = (error: unknown): string => {
+  if (!error) {
+    return "Unknown error";
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  const message = (error as { message?: unknown }).message;
+  if (typeof message === "string") {
+    return message;
+  }
+
+  try {
+    return JSON.stringify(error);
+  } catch {
+    return String(error);
+  }
+};
+
 export type CartItemRow = {
   id: string;
   user_id: string;
@@ -72,7 +97,7 @@ const mapRowToCartItem = (row: CartItemRow): CartItem => ({
 
 const logSupabaseError = (context: string, error: PostgrestError) => {
   console.error(context, {
-    message: error.message,
+    message: toErrorMessage(error),
     code: error.code,
     details: error.details,
     hint: error.hint,
@@ -137,38 +162,47 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
   const buildSelectQuery = () =>
     supabase.from<CartItemRow>(TABLE_NAME).select("*").eq("user_id", userId);
 
-  const { data, error } = await buildSelectQuery().order("created_at", {
-    ascending: false,
-  });
+  try {
+    const { data, error } = await buildSelectQuery().order("created_at", {
+      ascending: false,
+    });
 
-  if (error) {
-    if (shouldRetryWithoutOrder(error)) {
-      console.warn(
-        "[supabaseCart] Falling back to unordered cart items query",
-        {
-          message: error.message,
-          code: error.code,
-        },
-      );
-      const { data: fallbackData, error: fallbackError } =
-        await buildSelectQuery();
+    if (error) {
+      if (shouldRetryWithoutOrder(error)) {
+        console.warn(
+          "[supabaseCart] Falling back to unordered cart items query",
+          {
+            message: error.message,
+            code: error.code,
+          },
+        );
+        const { data: fallbackData, error: fallbackError } =
+          await buildSelectQuery();
 
-      if (!fallbackError) {
-        return (fallbackData ?? []).map(mapRowToCartItem);
+        if (!fallbackError) {
+          return (fallbackData ?? []).map(mapRowToCartItem);
+        }
+
+        logSupabaseError(
+          "[supabaseCart] Error loading cart items (fallback)",
+          fallbackError,
+        );
+        return [];
       }
 
-      logSupabaseError(
-        "[supabaseCart] Error loading cart items (fallback)",
-        fallbackError,
-      );
+      logSupabaseError("[supabaseCart] Error loading cart items", error);
       return [];
     }
 
-    logSupabaseError("[supabaseCart] Error loading cart items", error);
+    return (data ?? []).map(mapRowToCartItem);
+  } catch (error) {
+    console.error(
+      "[supabaseCart] Unexpected error loading cart items",
+      toErrorMessage(error),
+      error,
+    );
     return [];
   }
-
-  return (data ?? []).map(mapRowToCartItem);
 };
 
 export const addCartItem = async (
