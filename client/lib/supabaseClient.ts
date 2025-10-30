@@ -12,26 +12,37 @@ const sleep = (ms: number) =>
     }
   });
 
-const isNetworkError = (error: unknown): boolean => {
+const toErrorMessage = (error: unknown): string => {
   if (!error) {
-    return false;
-  }
-
-  if (error instanceof TypeError) {
-    return error.message?.toLowerCase().includes("failed to fetch") ?? false;
-  }
-
-  if (typeof error === "object" && "message" in error) {
-    const message = String((error as { message?: unknown }).message ?? "");
-    return message.toLowerCase().includes("failed to fetch");
+    return "Unknown error";
   }
 
   if (typeof error === "string") {
-    return error.toLowerCase().includes("failed to fetch");
+    return error;
   }
 
-  return false;
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === "object" && error !== null) {
+    const message = (error as { message?: unknown }).message;
+    if (typeof message === "string") {
+      return message;
+    }
+
+    try {
+      return JSON.stringify(error);
+    } catch {
+      return String(error);
+    }
+  }
+
+  return String(error);
 };
+
+const isNetworkError = (error: unknown): boolean =>
+  toErrorMessage(error).toLowerCase().includes("failed to fetch");
 
 const shouldRetryResponse = (response: Response): boolean => {
   return response.status >= 500 && response.status < 600;
@@ -40,9 +51,29 @@ const shouldRetryResponse = (response: Response): boolean => {
 const fetchWithRetry: typeof fetch = async (input, init) => {
   let lastError: unknown;
 
+  const baseRequest = (() => {
+    if (typeof Request === "undefined") {
+      return null;
+    }
+    if (input instanceof Request) {
+      return input;
+    }
+    return new Request(input as RequestInfo, init);
+  })();
+
+  const executeFetch = async (attempt: number): Promise<Response> => {
+    if (!baseRequest) {
+      // Environment without Request constructor (unlikely on client). Fall back directly.
+      return fetch(input, init);
+    }
+
+    const request = attempt === 0 ? baseRequest.clone() : baseRequest.clone();
+    return fetch(request);
+  };
+
   for (let attempt = 0; attempt <= DEFAULT_RETRY_ATTEMPTS; attempt += 1) {
     try {
-      const response = await fetch(input, init);
+      const response = await (baseRequest ? executeFetch(attempt) : fetch(input, init));
 
       if (!shouldRetryResponse(response) || attempt === DEFAULT_RETRY_ATTEMPTS) {
         return response;
@@ -50,7 +81,12 @@ const fetchWithRetry: typeof fetch = async (input, init) => {
 
       lastError = response;
     } catch (error) {
-      if (!isNetworkError(error) || attempt === DEFAULT_RETRY_ATTEMPTS) {
+      const isNetworkFailure = isNetworkError(error);
+      if (!isNetworkFailure || attempt === DEFAULT_RETRY_ATTEMPTS) {
+        if (isNetworkFailure) {
+          lastError = error;
+          break;
+        }
         throw error;
       }
 
@@ -63,6 +99,21 @@ const fetchWithRetry: typeof fetch = async (input, init) => {
 
   if (lastError instanceof Response) {
     return lastError;
+  }
+
+  if (isNetworkError(lastError)) {
+    const message = toErrorMessage(lastError);
+    const body = JSON.stringify({
+      error: "network_error",
+      message,
+      retryAttempts: DEFAULT_RETRY_ATTEMPTS,
+    });
+    return new Response(body, {
+      status: 503,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
   throw lastError ?? new Error("Supabase network request failed after retries");
