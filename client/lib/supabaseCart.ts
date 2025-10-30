@@ -136,7 +136,7 @@ const fetchExistingCartItem = async (
 
   const { data, error } = await supabase
     .from(TABLE_NAME)
-    .select("*")
+    .select<CartItemRow>("*")
     .eq("user_id", userId)
     .eq("product_type", productType)
     .eq("product_id", productId)
@@ -162,7 +162,7 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
   }
 
   const buildSelectQuery = () =>
-    supabase.from(TABLE_NAME).select("*").eq("user_id", userId);
+    supabase.from(TABLE_NAME).select<CartItemRow>("*").eq("user_id", userId);
 
   try {
     const { data, error } = await buildSelectQuery().order("created_at", {
@@ -255,7 +255,7 @@ export const addCartItem = async (
         })
         .eq("id", existing.id)
         .eq("user_id", userId)
-        .select("*")
+        .select<CartItemRow>("*")
         .single();
 
       if (error) {
@@ -293,7 +293,7 @@ export const addCartItem = async (
         })
         .eq("id", latest.id)
         .eq("user_id", userId)
-        .select("*")
+        .select<CartItemRow>("*")
         .single();
 
       if (updateError) {
@@ -321,7 +321,7 @@ export const addCartItem = async (
         image_url: imageUrl ?? null,
         metadata: metadata ?? null,
       })
-      .select("*")
+      .select<CartItemRow>("*")
       .single();
 
     if (error) {
@@ -368,7 +368,7 @@ export const updateCartItemQuantity = async (
       .update({ quantity })
       .eq("id", cartItemId)
       .eq("user_id", userId)
-      .select("*")
+      .select<CartItemRow>("*")
       .single();
 
     if (error) {
