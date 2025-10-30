@@ -51,29 +51,35 @@ const shouldRetryResponse = (response: Response): boolean => {
 const fetchWithRetry: typeof fetch = async (input, init) => {
   let lastError: unknown;
 
-  const baseRequest = (() => {
-    if (typeof Request === "undefined") {
+  const supportsRequest = typeof Request !== "undefined";
+  const buildRequest = (): Request | null => {
+    if (!supportsRequest) {
       return null;
     }
+
     if (input instanceof Request) {
-      return input;
+      try {
+        return input.clone();
+      } catch (error) {
+        console.warn("[supabaseClient] Unable to clone request for retry", toErrorMessage(error));
+        return new Request(input);
+      }
     }
+
     return new Request(input as RequestInfo, init);
-  })();
+  };
 
-  const executeFetch = async (attempt: number): Promise<Response> => {
-    if (!baseRequest) {
-      // Environment without Request constructor (unlikely on client). Fall back directly.
-      return fetch(input, init);
+  const executeFetch = async (): Promise<Response> => {
+    const request = buildRequest();
+    if (request) {
+      return fetch(request);
     }
-
-    const request = attempt === 0 ? baseRequest.clone() : baseRequest.clone();
-    return fetch(request);
+    return fetch(input, init);
   };
 
   for (let attempt = 0; attempt <= DEFAULT_RETRY_ATTEMPTS; attempt += 1) {
     try {
-      const response = await (baseRequest ? executeFetch(attempt) : fetch(input, init));
+      const response = await executeFetch();
 
       if (!shouldRetryResponse(response) || attempt === DEFAULT_RETRY_ATTEMPTS) {
         return response;
