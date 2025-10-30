@@ -147,11 +147,12 @@ const fetchExistingCartItem = async (
     return null;
   }
 
-  if (!data || data.length === 0) {
+  const rows = (data as CartItemRow[] | null) ?? [];
+  if (rows.length === 0) {
     return null;
   }
 
-  return data[0];
+  return rows[0];
 };
 
 export const getCartItems = async (userId: string): Promise<CartItem[]> => {
