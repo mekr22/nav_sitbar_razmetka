@@ -26,10 +26,10 @@ import { useFavorite } from "@/hooks/useFavorite";
 import { extractOriginalProductId } from "@/lib/utils";
 
 const AVATAR_PLACEHOLDER =
-  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=160";
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Crect fill='%23E5E7EB' width='160' height='160'/%3E%3Ccircle cx='80' cy='50' r='25' fill='%239CA3AF'/%3E%3Cpath d='M 40 120 Q 40 90 80 90 Q 120 90 120 120 L 120 160 L 40 160 Z' fill='%239CA3AF'/%3E%3C/svg%3E";
 
 const COMMENT_AVATAR =
-  "https://cdn.builder.io/api/v1/image/assets%2F684cb122a7e14784926e57d7235fa702%2F68315e5814ee44f2b3af7585af3ac179?format=webp&width=800";
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Crect fill='%23E5E7EB' width='800' height='800'/%3E%3Ccircle cx='400' cy='250' r='150' fill='%239CA3AF'/%3E%3Cpath d='M 200 600 Q 200 450 400 450 Q 600 450 600 600 L 600 800 L 200 800 Z' fill='%239CA3AF'/%3E%3C/svg%3E";
 
 type CommentNode = {
   id: string;
