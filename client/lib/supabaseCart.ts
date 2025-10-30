@@ -182,7 +182,8 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
           await buildSelectQuery();
 
         if (!fallbackError) {
-          return (fallbackData ?? []).map(mapRowToCartItem);
+          const fallbackRows = (fallbackData as CartItemRow[] | null) ?? [];
+          return fallbackRows.map(mapRowToCartItem);
         }
 
         logSupabaseError(
