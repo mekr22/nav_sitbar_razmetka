@@ -30,6 +30,9 @@ const toErrorMessage = (error: unknown): string => {
   }
 };
 
+const isLikelyNetworkError = (message: string): boolean =>
+  message.toLowerCase().includes("failed to fetch");
+
 export type CartItemRow = {
   id: string;
   user_id: string;
