@@ -11,6 +11,38 @@ import {
   OtherProduct,
 } from "@/data/marketplaceTypes";
 
+const toErrorMessage = (error: unknown): string => {
+  if (!error) {
+    return "Unknown error";
+  }
+
+  if (typeof error === "string") {
+    return error;
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (typeof error === "object" && error !== null) {
+    const message = (error as { message?: unknown }).message;
+    if (typeof message === "string") {
+      return message;
+    }
+
+    try {
+      return JSON.stringify(error);
+    } catch {
+      return String(error);
+    }
+  }
+
+  return String(error);
+};
+
+const isLikelyNetworkError = (message: string): boolean =>
+  message.toLowerCase().includes("failed to fetch");
+
 export type ProductType =
   | "analyst"
   | "investment-consultant"
@@ -57,7 +89,12 @@ export async function addFavorite(
         console.log("[addFavorite] Already favorited");
         return true;
       }
-      console.error("[addFavorite] Database error:", error.message, error.code, error.details);
+      console.error(
+        "[addFavorite] Database error:",
+        toErrorMessage(error),
+        error.code,
+        error.details,
+      );
       return false;
     }
 
@@ -90,14 +127,24 @@ export async function removeFavorite(
       .eq("product_id", productId);
 
     if (error) {
-      console.error("[removeFavorite] Database error:", error.message, error.code, error.details);
+      const message = toErrorMessage(error);
+      if (isLikelyNetworkError(message)) {
+        console.warn("[removeFavorite] Network issue while removing favorite:", message);
+      } else {
+        console.error("[removeFavorite] Database error:", message, error.code, error.details);
+      }
       return false;
     }
 
     console.log("[removeFavorite] Successfully removed");
     return true;
   } catch (err) {
-    console.error("[removeFavorite] Exception:", err);
+    const message = toErrorMessage(err);
+    if (isLikelyNetworkError(message)) {
+      console.warn("[removeFavorite] Network exception:", message);
+    } else {
+      console.error("[removeFavorite] Exception:", message, err);
+    }
     return false;
   }
 }
@@ -135,14 +182,18 @@ export async function checkFavorite(
       .single();
 
     if (error && error.code !== "PGRST116") {
-      console.error("[checkFavorite] Database error:", error.message, error.code);
+      console.error(
+        "[checkFavorite] Database error:",
+        toErrorMessage(error),
+        error.code,
+      );
       return false;
     }
 
     console.log("[checkFavorite] Result:", !!data, "for", { productType, productId });
     return !!data;
   } catch (err) {
-    console.error("[checkFavorite] Exception:", err);
+    console.error("[checkFavorite] Exception:", toErrorMessage(err), err);
     return false;
   }
 }
@@ -168,13 +219,13 @@ export async function getUserFavoriteIds(
     const { data, error } = await query;
 
     if (error) {
-      console.error("Error fetching user favorites:", error);
+      console.error("Error fetching user favorites:", toErrorMessage(error), error);
       return new Set();
     }
 
     return new Set(data.map((fav) => `${fav.product_type}:${fav.product_id}`));
   } catch (err) {
-    console.error("Error fetching user favorites:", err);
+    console.error("Error fetching user favorites:", toErrorMessage(err), err);
     return new Set();
   }
 }
@@ -192,7 +243,7 @@ export async function getUserFavorites(userId: string): Promise<FavoriteProduct[
       .order("created_at", { ascending: false });
 
     if (error) {
-      console.error("Error fetching user favorites:", error);
+      console.error("Error fetching user favorites:", toErrorMessage(error), error);
       return [];
     }
 
@@ -210,13 +261,22 @@ export async function getUserFavorites(userId: string): Promise<FavoriteProduct[
         console.warn(
           `Removing orphaned favorite: ${fav.product_type} with id ${fav.product_id}`
         );
-        await removeFavorite(userId, fav.product_type as ProductType, fav.product_id);
+        const removed = await removeFavorite(
+          userId,
+          fav.product_type as ProductType,
+          fav.product_id
+        );
+        if (!removed) {
+          console.warn(
+            "[getUserFavorites] Unable to remove orphaned favorite due to network or permission issue"
+          );
+        }
       }
     }
 
     return result;
   } catch (err) {
-    console.error("Error fetching user favorites:", err);
+    console.error("Error fetching user favorites:", toErrorMessage(err), err);
     return [];
   }
 }
@@ -276,14 +336,14 @@ async function fetchProductByType(
           `Product not found: ${productType} with id ${productId}`
         );
       } else {
-        console.error(`Error fetching ${productType}:`, error);
+        console.error(`Error fetching ${productType}:`, toErrorMessage(error), error);
       }
       return null;
     }
 
     return mapDatabaseRowToType(productType, data);
   } catch (err) {
-    console.error("Error fetching product:", err);
+    console.error("Error fetching product:", toErrorMessage(err), err);
     return null;
   }
 }
