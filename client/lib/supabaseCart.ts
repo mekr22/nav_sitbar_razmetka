@@ -209,11 +209,16 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
     const rows = (data as CartItemRow[] | null) ?? [];
     return rows.map(mapRowToCartItem);
   } catch (error) {
-    console.error(
-      "[supabaseCart] Unexpected error loading cart items",
-      toErrorMessage(error),
-      error,
-    );
+    const message = toErrorMessage(error);
+    if (isLikelyNetworkError(message)) {
+      console.warn("[supabaseCart] Network error loading cart items", message);
+    } else {
+      console.error(
+        "[supabaseCart] Unexpected error loading cart items",
+        message,
+        error,
+      );
+    }
     return [];
   }
 };
