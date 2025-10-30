@@ -135,7 +135,7 @@ const fetchExistingCartItem = async (
   }
 
   const { data, error } = await supabase
-    .from<CartItemRow>(TABLE_NAME)
+    .from(TABLE_NAME)
     .select("*")
     .eq("user_id", userId)
     .eq("product_type", productType)
@@ -161,7 +161,7 @@ export const getCartItems = async (userId: string): Promise<CartItem[]> => {
   }
 
   const buildSelectQuery = () =>
-    supabase.from<CartItemRow>(TABLE_NAME).select("*").eq("user_id", userId);
+    supabase.from(TABLE_NAME).select("*").eq("user_id", userId);
 
   try {
     const { data, error } = await buildSelectQuery().order("created_at", {
@@ -240,7 +240,7 @@ export const addCartItem = async (
         : existing.metadata;
 
       const { data, error } = await supabase
-        .from<CartItemRow>(TABLE_NAME)
+        .from(TABLE_NAME)
         .update({
           title,
           subtitle,
@@ -278,7 +278,7 @@ export const addCartItem = async (
         : latest.metadata;
 
       const { data: updateData, error: updateError } = await supabase
-        .from<CartItemRow>(TABLE_NAME)
+        .from(TABLE_NAME)
         .update({
           title,
           subtitle,
@@ -305,7 +305,7 @@ export const addCartItem = async (
     };
 
     const { data, error } = await supabase
-      .from<CartItemRow>(TABLE_NAME)
+      .from(TABLE_NAME)
       .insert({
         user_id: userId,
         product_type: productType,
@@ -361,7 +361,7 @@ export const updateCartItemQuantity = async (
     }
 
     const { data, error } = await supabase
-      .from<CartItemRow>(TABLE_NAME)
+      .from(TABLE_NAME)
       .update({ quantity })
       .eq("id", cartItemId)
       .eq("user_id", userId)
