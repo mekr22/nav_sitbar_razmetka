@@ -288,7 +288,7 @@ const Profile: FC = () => {
                 Member since January 2024
               </p>
             </div>
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+            <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
               <p className="text-xs uppercase tracking-wide text-webGray">
                 Plan
               </p>
@@ -297,7 +297,7 @@ const Profile: FC = () => {
                 Next renewal: 14 Jul 2024
               </p>
             </div>
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+            <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
               <p className="text-xs uppercase tracking-wide text-webGray">
                 Security
               </p>
