@@ -271,7 +271,7 @@ const Profile: FC = () => {
             <button
               type="button"
               onClick={handleSignOut}
-              className="flex h-10 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-4 text-sm font-semibold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230]"
+              className="flex h-10 items-center justify-center gap-2 rounded-full border border-[#181B22] bg-[#0C101480] px-4 text-xs sm:text-sm font-semibold text-white backdrop-blur-[50px] transition-colors hover:border-[#1F2230] whitespace-nowrap"
             >
               <LogOut className="h-4 w-4" />
               Sign out
