@@ -53,14 +53,14 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             {/* Avatar & Basic Info */}
             <div className="flex items-start gap-4">
               {/* Avatar */}
-              <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-xl font-bold text-white">
-                {initials}
-              </div>
+            <div className="flex h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-lg sm:text-xl font-bold text-white">
+              {initials}
+            </div>
 
-              {/* User Info */}
-              <div className="flex flex-col gap-1 pt-1">
-                <h2 className="text-xl font-bold text-white">{username}</h2>
-                <p className="text-sm text-[#B0B0B0]">@{username}</p>
+            {/* User Info */}
+            <div className="flex flex-col gap-1 pt-1">
+              <h2 className="text-lg sm:text-xl font-bold text-white">{username}</h2>
+              <p className="text-xs sm:text-sm text-[#B0B0B0]">@{username}</p>
                 
                 {/* Tier Badge */}
                 <div className="mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-2">
