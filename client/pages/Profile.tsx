@@ -7,6 +7,7 @@ import { Loader2, LogOut } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/providers/AuthProvider";
+import ProfileHeader from "@/components/ProfileHeader";
 
 const authSchema = z.object({
   email: z
