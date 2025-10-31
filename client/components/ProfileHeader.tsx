@@ -38,9 +38,9 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
   ];
 
   return (
-    <div className="space-y-6">
-      {/* Profile Card */}
-      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+      {/* Profile Card - Left Side (3 columns) */}
+      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-3">
         {/* Header Background */}
         <div className="mb-6 h-24 rounded-xl bg-gradient-to-r from-[#A06AFF]/20 to-[#482090]/20 border border-[#181B22]" />
 
@@ -107,86 +107,83 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
       </div>
 
-      {/* Earnings & Activity Sidebar */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {/* Earnings Card - Right Sidebar */}
-        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-1 lg:row-span-2">
-          <div className="mb-6 flex items-center gap-2">
-            <Zap className="h-5 w-5 text-[#A06AFF]" />
-            <h3 className="text-lg font-bold text-white">Мой заработок</h3>
+      {/* Right Sidebar - Earnings (2 columns) */}
+      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2">
+        <div className="mb-6 flex items-center gap-2">
+          <Zap className="h-5 w-5 text-[#A06AFF]" />
+          <h3 className="text-lg font-bold text-white">Мой заработок</h3>
+        </div>
+
+        <div className="space-y-4">
+          {/* MRR */}
+          <div>
+            <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+              MRR (еженедельный доход)
+            </p>
+            <p className="mt-2 text-2xl font-bold text-white">$500.00</p>
           </div>
 
-          <div className="space-y-4">
-            {/* MRR */}
-            <div>
+          {/* Grid 2x2 */}
+          <div className="grid grid-cols-2 gap-4 pt-4">
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
               <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                MRR (еженедельный доход)
+                Всего
               </p>
-              <p className="mt-2 text-2xl font-bold text-white">$500.00</p>
+              <p className="mt-2 text-xl font-bold text-white">$1500.00</p>
             </div>
-
-            {/* Grid 2x2 */}
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-                <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                  Всего
-                </p>
-                <p className="mt-2 text-xl font-bold text-white">$1500.00</p>
-              </div>
-              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-                <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                  Подписчики
-                </p>
-                <p className="mt-2 text-xl font-bold text-white">25</p>
-              </div>
-              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-                <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                  Продано постов
-                </p>
-                <p className="mt-2 text-xl font-bold text-white">15</p>
-              </div>
-              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-                <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                  Средняя цена
-                </p>
-                <p className="mt-2 text-xl font-bold text-white">$10.00</p>
-              </div>
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+                Подписчики
+              </p>
+              <p className="mt-2 text-xl font-bold text-white">25</p>
+            </div>
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+                Продано постов
+              </p>
+              <p className="mt-2 text-xl font-bold text-white">15</p>
+            </div>
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+                Средняя цена
+              </p>
+              <p className="mt-2 text-xl font-bold text-white">$10.00</p>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Activity Card - Right Sidebar Below Earnings */}
-        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-1">
-          <div className="mb-6 flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-[#A06AFF]" />
-            <h3 className="text-lg font-bold text-white">Мой активность</h3>
+      {/* Right Sidebar - Activity (2 columns) */}
+      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2">
+        <div className="mb-6 flex items-center gap-2">
+          <BookOpen className="h-5 w-5 text-[#A06AFF]" />
+          <h3 className="text-lg font-bold text-white">Мой активность</h3>
+        </div>
+
+        <div className="space-y-4">
+          <div>
+            <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+              Посты
+            </p>
+            <p className="mt-2 text-2xl font-bold text-white">0</p>
           </div>
 
-          <div className="space-y-4">
-            <div>
+          <div className="grid grid-cols-2 gap-4 pt-4">
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
               <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                Посты
+                Лайки
               </p>
-              <p className="mt-2 text-2xl font-bold text-white">0</p>
+              <p className="mt-2 text-xl font-bold text-white">0</p>
             </div>
-
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-                <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                  Лайки
-                </p>
-                <p className="mt-2 text-xl font-bold text-white">0</p>
-              </div>
-              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-                <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                  Комментарии
-                </p>
-                <p className="mt-2 text-xl font-bold text-white">0</p>
-              </div>
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+                Комментарии
+              </p>
+              <p className="mt-2 text-xl font-bold text-white">0</p>
             </div>
-
-            <p className="text-xs text-[#B0B0B0] pt-2">За последние 7 дней</p>
           </div>
+
+          <p className="text-xs text-[#B0B0B0] pt-2">За последние 7 дней</p>
         </div>
       </div>
     </div>
