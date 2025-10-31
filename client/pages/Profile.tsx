@@ -313,8 +313,8 @@ const Profile: FC = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="container-card p-6">
-          <h2 className="text-xl font-semibold text-white">Personal Details</h2>
+        <div className="container-card p-4 sm:p-6 lg:p-8">
+          <h2 className="text-lg sm:text-xl font-semibold text-white">Personal Details</h2>
           <div className="mt-4 flex flex-col gap-4 text-sm text-white/80">
             <div className="flex flex-col">
               <span className="text-xs uppercase text-webGray">Full Name</span>
