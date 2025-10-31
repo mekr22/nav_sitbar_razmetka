@@ -109,7 +109,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
                 <button
                   key={item.label}
                   onClick={() => setActiveTab(item.label)}
-                  className={`lg:flex-shrink-0 px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors sm:flex-1 ${
+                  className={`px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors flex-1 sm:flex-1 lg:flex-shrink-0 ${
                     activeTab === item.label
                       ? "bg-[#A06AFF] text-white"
                       : "text-[#B0B0B0] hover:text-white border border-[#181B22] hover:border-[#1F2230]"
@@ -166,7 +166,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             </div>
             <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
               <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-                Ср��дняя цена
+                Средняя цена
               </p>
               <p className="mt-2 text-base sm:text-xl font-bold text-white">$10.00</p>
             </div>
