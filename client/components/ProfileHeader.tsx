@@ -11,6 +11,8 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
+  const [activeTab, setActiveTab] = useState<"Posts" | "Media" | "Premium" | "Likes" | "Security">("Posts");
+
   const username = useMemo(() => {
     return (
       user?.user_metadata?.username ||
@@ -30,11 +32,11 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
   });
 
   const navItems = [
-    { label: "Posts", active: true },
-    { label: "Media", active: false },
-    { label: "Premium", active: false },
-    { label: "Likes", active: false },
-    { label: "Security", active: false },
+    { label: "Posts" as const },
+    { label: "Media" as const },
+    { label: "Premium" as const },
+    { label: "Likes" as const },
+    { label: "Security" as const },
   ];
 
   return (
