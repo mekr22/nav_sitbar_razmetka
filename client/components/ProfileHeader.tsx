@@ -174,7 +174,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
       <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2">
         <div className="mb-6 flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-[#A06AFF]" />
-          <h3 className="text-lg font-bold text-white">Мой активность</h3>
+          <h3 className="text-lg font-bold text-white">Моя активность</h3>
         </div>
 
         <div className="space-y-4">
