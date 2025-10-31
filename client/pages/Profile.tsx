@@ -333,8 +333,8 @@ const Profile: FC = () => {
           </div>
         </div>
 
-        <div className="container-card p-6">
-          <h2 className="text-xl font-semibold text-white">Preferences</h2>
+        <div className="container-card p-4 sm:p-6 lg:p-8">
+          <h2 className="text-lg sm:text-xl font-semibold text-white">Preferences</h2>
           <div className="mt-4 flex flex-col gap-4 text-sm text-white/80">
             <div className="flex items-start justify-between gap-4">
               <div>
