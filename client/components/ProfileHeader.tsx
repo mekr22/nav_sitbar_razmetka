@@ -178,29 +178,25 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
 
         <div className="space-y-4">
-          <div>
-            <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-              Посты
-            </p>
-            <p className="mt-2 text-2xl font-bold text-white">0</p>
+          {/* Posts Row */}
+          <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3">
+            <p className="text-sm text-[#B0B0B0]">Посты</p>
+            <p className="text-2xl font-bold text-white">0</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 pt-4">
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                Лайки
-              </p>
-              <p className="mt-2 text-xl font-bold text-white">0</p>
-            </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
-                Комментарии
-              </p>
-              <p className="mt-2 text-xl font-bold text-white">0</p>
-            </div>
+          {/* Likes Row */}
+          <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3">
+            <p className="text-sm text-[#B0B0B0]">Лайки</p>
+            <p className="text-2xl font-bold text-white">0</p>
           </div>
 
-          <p className="text-xs text-[#B0B0B0] pt-2">За последние 7 дней</p>
+          {/* Comments Row */}
+          <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3">
+            <p className="text-sm text-[#B0B0B0]">Комментарии</p>
+            <p className="text-2xl font-bold text-white">0</p>
+          </div>
+
+          <p className="text-xs text-[#B0B0B0] pt-2 text-center">За последние 7 дней</p>
         </div>
       </div>
     </div>
