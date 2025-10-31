@@ -51,7 +51,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           {/* Top Row: Avatar + Info + Actions */}
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             {/* Avatar & Basic Info */}
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-3 sm:gap-4">
               {/* Avatar */}
             <div className="flex h-16 w-16 sm:h-20 sm:w-20 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-lg sm:text-xl font-bold text-white">
               {initials}
