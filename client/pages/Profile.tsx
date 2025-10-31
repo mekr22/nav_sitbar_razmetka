@@ -283,7 +283,7 @@ const Profile: FC = () => {
               <p className="text-xs uppercase tracking-wide text-webGray">
                 Status
               </p>
-              <p className="mt-2 text-lg font-semibold text-white">Active</p>
+              <p className="mt-2 text-base sm:text-lg font-semibold text-white">Active</p>
               <p className="mt-1 text-xs text-webGray">
                 Member since January 2024
               </p>
