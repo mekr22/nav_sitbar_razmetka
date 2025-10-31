@@ -256,9 +256,9 @@ const Profile: FC = () => {
   return (
     <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-6">
       <ProfileHeader user={session?.user} />
-      <div className="container-card p-6">
+      <div className="container-card p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col gap-3">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:items-center">
             <div className="flex flex-col gap-3">
               <h1 className="text-2xl font-bold text-white">
                 Profile Overview
