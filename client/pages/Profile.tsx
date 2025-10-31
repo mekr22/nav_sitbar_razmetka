@@ -292,7 +292,7 @@ const Profile: FC = () => {
               <p className="text-xs uppercase tracking-wide text-webGray">
                 Plan
               </p>
-              <p className="mt-2 text-lg font-semibold text-white">Platinum</p>
+              <p className="mt-2 text-base sm:text-lg font-semibold text-white">Platinum</p>
               <p className="mt-1 text-xs text-webGray">
                 Next renewal: 14 Jul 2024
               </p>
@@ -301,7 +301,7 @@ const Profile: FC = () => {
               <p className="text-xs uppercase tracking-wide text-webGray">
                 Security
               </p>
-              <p className="mt-2 text-lg font-semibold text-white">
+              <p className="mt-2 text-base sm:text-lg font-semibold text-white">
                 Two-factor enabled
               </p>
               <p className="mt-1 text-xs text-webGray">
