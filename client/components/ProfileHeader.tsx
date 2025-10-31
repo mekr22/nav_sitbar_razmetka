@@ -63,15 +63,15 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
                 <p className="text-sm text-[#B0B0B0]">@{username}</p>
                 
                 {/* Tier Badge */}
-                <div className="mt-2 flex items-center gap-2">
+                <div className="mt-2 flex flex-col sm:flex-row items-start sm:items-center gap-2">
                   <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 text-xs font-semibold text-[#A06AFF]">
                     <span className="flex h-4 w-4 items-center justify-center rounded bg-[#A06AFF] text-white text-[10px] font-bold">
                       4
                     </span>
                     TIER
                   </span>
-                  <div className="flex items-center gap-1 text-xs text-[#B0B0B0]">
-                    <Calendar className="h-3 w-3" />
+                  <div className="flex items-center gap-1 text-xs sm:text-sm text-[#B0B0B0] whitespace-nowrap">
+                    <Calendar className="h-3 w-3 flex-shrink-0" />
                     Joined {joinDate}
                   </div>
                 </div>
