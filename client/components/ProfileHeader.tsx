@@ -101,7 +101,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           </div>
 
           {/* Navigation Tabs */}
-          <div className="flex flex-col gap-3 border-t border-[#181B22] pt-4">
+          <div className="flex flex-col gap-3 border-t border-[#181B22] pt-3 sm:pt-4">
             {/* Tab Buttons - Distributed by Width */}
             <div className="flex gap-2 w-full">
               {navItems.map((item) => (
