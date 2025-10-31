@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC, useMemo, useState } from "react";
 import { Zap, BookOpen, Calendar } from "lucide-react";
 
 interface ProfileHeaderProps {
