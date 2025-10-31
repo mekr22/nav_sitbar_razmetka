@@ -279,7 +279,7 @@ const Profile: FC = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+            <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
               <p className="text-xs uppercase tracking-wide text-webGray">
                 Status
               </p>
