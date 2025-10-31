@@ -89,12 +89,12 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             </div>
 
             {/* Actions */}
-            <div className="flex gap-2 flex-shrink-0">
-              <button className="flex h-10 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-6 text-sm font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap">
-                <Zap className="h-4 w-4 mr-1" />
+            <div className="flex gap-2 flex-shrink-0 flex-col sm:flex-row">
+              <button className="flex h-9 sm:h-10 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 sm:px-6 text-xs sm:text-sm font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap">
+                <Zap className="h-3 sm:h-4 w-3 sm:w-4 mr-1" />
                 Donate
               </button>
-              <button className="flex h-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C101480] px-6 text-sm font-semibold text-white transition-colors hover:border-[#1F2230] whitespace-nowrap">
+              <button className="flex h-9 sm:h-10 items-center justify-center rounded-full border border-[#181B22] bg-[#0C101480] px-4 sm:px-6 text-xs sm:text-sm font-semibold text-white transition-colors hover:border-[#1F2230] whitespace-nowrap">
                 Edit profile
               </button>
             </div>
