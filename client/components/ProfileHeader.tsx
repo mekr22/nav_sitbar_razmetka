@@ -180,26 +180,26 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           <h3 className="text-base sm:text-lg font-bold text-white whitespace-nowrap">Моя активность</h3>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Posts Row */}
           <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3">
-            <p className="text-sm text-[#B0B0B0]">Посты</p>
-            <p className="text-2xl font-bold text-white">0</p>
+            <p className="text-xs sm:text-sm text-[#B0B0B0] whitespace-nowrap">Посты</p>
+            <p className="text-xl sm:text-2xl font-bold text-white ml-2">0</p>
           </div>
 
           {/* Likes Row */}
           <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3">
-            <p className="text-sm text-[#B0B0B0]">Лайки</p>
-            <p className="text-2xl font-bold text-white">0</p>
+            <p className="text-xs sm:text-sm text-[#B0B0B0] whitespace-nowrap">Лайки</p>
+            <p className="text-xl sm:text-2xl font-bold text-white ml-2">0</p>
           </div>
 
           {/* Comments Row */}
           <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3">
-            <p className="text-sm text-[#B0B0B0]">Комментарии</p>
-            <p className="text-2xl font-bold text-white">0</p>
+            <p className="text-xs sm:text-sm text-[#B0B0B0] whitespace-nowrap">Комментарии</p>
+            <p className="text-xl sm:text-2xl font-bold text-white ml-2">0</p>
           </div>
 
-          <p className="text-xs text-[#B0B0B0] pt-2 text-center">За последние 7 дней</p>
+          <p className="text-xs text-[#B0B0B0] pt-2 text-center whitespace-nowrap">За последние 7 дней</p>
         </div>
       </div>
     </div>
