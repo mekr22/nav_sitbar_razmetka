@@ -102,15 +102,16 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
           {/* Navigation Tabs */}
           <div className="flex flex-col gap-3 border-t border-[#181B22] pt-4">
-            {/* Tab Buttons */}
-            <div className="flex gap-2 flex-wrap">
+            {/* Tab Buttons - Distributed by Width */}
+            <div className="flex gap-2 w-full">
               {navItems.map((item) => (
                 <button
                   key={item.label}
-                  className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
-                    item.active
+                  onClick={() => setActiveTab(item.label)}
+                  className={`flex-1 px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors ${
+                    activeTab === item.label
                       ? "bg-[#A06AFF] text-white"
-                      : "text-[#B0B0B0] hover:text-white"
+                      : "text-[#B0B0B0] hover:text-white border border-[#181B22] hover:border-[#1F2230]"
                   }`}
                 >
                   {item.label}
