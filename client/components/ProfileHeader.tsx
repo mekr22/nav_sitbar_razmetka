@@ -40,9 +40,9 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
+    <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5">
       {/* Profile Card - Left Side (3 columns) */}
-      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-3 lg:row-span-2">
+      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-3 lg:row-span-2">
         {/* Header Background */}
         <div className="mb-6 h-24 rounded-xl bg-gradient-to-r from-[#A06AFF]/20 to-[#482090]/20 border border-[#181B22]" />
 
