@@ -47,9 +47,9 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         <div className="mb-6 h-24 rounded-xl bg-gradient-to-r from-[#A06AFF]/20 to-[#482090]/20 border border-[#181B22]" />
 
         {/* Profile Header Section */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 sm:gap-6">
           {/* Top Row: Avatar + Info + Actions */}
-          <div className="flex items-start gap-4 justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             {/* Avatar & Basic Info */}
             <div className="flex items-start gap-4">
               {/* Avatar */}
