@@ -89,8 +89,8 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
               </div>
             </div>
 
-            {/* Actions - Hidden on lg/xl when width < 1300px */}
-            <div className="hidden lg:flex gap-2 flex-shrink-0 flex-col sm:flex-row xl:flex">
+            {/* Actions - Hidden on lg (1024-1279), shown on xl (1280+) */}
+            <div className="hidden xl:flex gap-2 flex-shrink-0 flex-col sm:flex-row">
               <button className="flex h-9 sm:h-10 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 sm:px-6 text-xs sm:text-sm font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap">
                 <Zap className="h-3 sm:h-4 w-3 sm:w-4 mr-1" />
                 Donate
