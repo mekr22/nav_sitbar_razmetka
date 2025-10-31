@@ -109,7 +109,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
                 <button
                   key={item.label}
                   onClick={() => setActiveTab(item.label)}
-                  className={`px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors flex-1 sm:flex-1 lg:flex-shrink-0 ${
+                  className={`px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors w-full sm:w-auto lg:flex-shrink-0 ${
                     activeTab === item.label
                       ? "bg-[#A06AFF] text-white"
                       : "text-[#B0B0B0] hover:text-white border border-[#181B22] hover:border-[#1F2230]"
