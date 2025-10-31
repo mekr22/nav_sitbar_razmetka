@@ -77,7 +77,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
                 </div>
 
                 {/* Followers */}
-                <div className="mt-2 flex gap-3 text-sm">
+                <div className="mt-2 flex gap-3 text-xs sm:text-sm whitespace-nowrap">
                   <span className="text-[#B0B0B0]">
                     <span className="text-white font-semibold">0</span> Following
                   </span>
