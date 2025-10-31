@@ -144,30 +144,30 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           </div>
 
           {/* Grid 2x2 */}
-          <div className="grid grid-cols-2 gap-4 pt-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4">
             <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Всего
               </p>
-              <p className="mt-2 text-xl font-bold text-white">$1500.00</p>
+              <p className="mt-2 text-base sm:text-xl font-bold text-white">$1500.00</p>
             </div>
             <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Подписчики
               </p>
-              <p className="mt-2 text-xl font-bold text-white">25</p>
+              <p className="mt-2 text-base sm:text-xl font-bold text-white">25</p>
             </div>
             <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Продано постов
               </p>
-              <p className="mt-2 text-xl font-bold text-white">15</p>
+              <p className="mt-2 text-base sm:text-xl font-bold text-white">15</p>
             </div>
             <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Средняя цена
               </p>
-              <p className="mt-2 text-xl font-bold text-white">$10.00</p>
+              <p className="mt-2 text-base sm:text-xl font-bold text-white">$10.00</p>
             </div>
           </div>
         </div>
