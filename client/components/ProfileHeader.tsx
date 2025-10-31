@@ -1,5 +1,6 @@
 import { FC, useMemo, useState } from "react";
 import { Zap, BookOpen, Calendar } from "lucide-react";
+import "./ProfileHeader.css";
 
 interface ProfileHeaderProps {
   user?: {
