@@ -138,37 +138,37 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         <div className="space-y-4">
           {/* MRR */}
           <div>
-            <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
+            <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
               MRR (еженедельный доход)
             </p>
-            <p className="mt-2 text-xl sm:text-2xl font-bold text-white">$500.00</p>
+            <p className="mt-2 text-xl sm:text-2xl lg:text-lg font-bold text-white">$500.00</p>
           </div>
 
           {/* Grid 2x2 */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 pt-4">
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-2 pt-4">
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
+              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Всего
               </p>
-              <p className="mt-2 text-base sm:text-xl font-bold text-white">$1500.00</p>
+              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">$1500.00</p>
             </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
+              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Подписчики
               </p>
-              <p className="mt-2 text-base sm:text-xl font-bold text-white">25</p>
+              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">25</p>
             </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
+              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Продано постов
               </p>
-              <p className="mt-2 text-base sm:text-xl font-bold text-white">15</p>
+              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">15</p>
             </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-              <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
+            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
+              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
                 Средняя цена
               </p>
-              <p className="mt-2 text-base sm:text-xl font-bold text-white">$10.00</p>
+              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">$10.00</p>
             </div>
           </div>
         </div>
