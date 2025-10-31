@@ -102,13 +102,13 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
           {/* Navigation Tabs */}
           <div className="flex flex-col gap-3 border-t border-[#181B22] pt-3 sm:pt-4">
-            {/* Tab Buttons - Distributed by Width */}
-            <div className="flex gap-2 w-full">
+            {/* Tab Buttons - Distributed by Width on sm/md, Scrollable on lg */}
+            <div className="flex gap-2 w-full lg:overflow-x-auto lg:overflow-y-hidden lg:pb-2 lg:scrollbar-hide">
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => setActiveTab(item.label)}
-                  className={`flex-1 px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors ${
+                  className={`lg:flex-shrink-0 px-3 py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors sm:flex-1 ${
                     activeTab === item.label
                       ? "bg-[#A06AFF] text-white"
                       : "text-[#B0B0B0] hover:text-white border border-[#181B22] hover:border-[#1F2230]"
