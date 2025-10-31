@@ -104,7 +104,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           {/* Navigation Tabs */}
           <div className="flex flex-col gap-3 border-t border-[#181B22] pt-3 sm:pt-4">
             {/* Tab Buttons - Distributed by Width on sm/md, Scrollable on lg */}
-            <div className="flex gap-2 w-full lg:overflow-x-auto lg:overflow-y-hidden lg:pb-2 lg:scrollbar-hide">
+            <div className="flex gap-2 w-full lg:overflow-x-auto lg:overflow-y-hidden scrollbar-hide">
               {navItems.map((item) => (
                 <button
                   key={item.label}
@@ -166,7 +166,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             </div>
             <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
               <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-                Средняя цена
+                Ср��дняя цена
               </p>
               <p className="mt-2 text-base sm:text-xl font-bold text-white">$10.00</p>
             </div>
