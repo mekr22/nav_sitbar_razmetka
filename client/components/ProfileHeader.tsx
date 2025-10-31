@@ -137,10 +137,10 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         <div className="space-y-4">
           {/* MRR */}
           <div>
-            <p className="text-xs uppercase tracking-wide text-[#B0B0B0]">
+            <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
               MRR (еженедельный доход)
             </p>
-            <p className="mt-2 text-2xl font-bold text-white">$500.00</p>
+            <p className="mt-2 text-xl sm:text-2xl font-bold text-white">$500.00</p>
           </div>
 
           {/* Grid 2x2 */}
