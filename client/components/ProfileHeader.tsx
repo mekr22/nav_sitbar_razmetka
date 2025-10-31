@@ -107,10 +107,10 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
       </div>
 
-      {/* Earnings & Activity Grid */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {/* Earnings Card */}
-        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6">
+      {/* Earnings & Activity Sidebar */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Earnings Card - Right Sidebar */}
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-1 lg:row-span-2">
           <div className="mb-6 flex items-center gap-2">
             <Zap className="h-5 w-5 text-[#A06AFF]" />
             <h3 className="text-lg font-bold text-white">Мой заработок</h3>
@@ -155,8 +155,8 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           </div>
         </div>
 
-        {/* Activity Card */}
-        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6">
+        {/* Activity Card - Right Sidebar Below Earnings */}
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-1">
           <div className="mb-6 flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-[#A06AFF]" />
             <h3 className="text-lg font-bold text-white">Мой активность</h3>
