@@ -193,9 +193,9 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 y2={chartHeight}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#E0AAFF" />
+                <stop stopColor="#D8B4FE" />
                 <stop offset="0.5" stopColor="#C77DFF" />
-                <stop offset="1" stopColor="#9D4EDD" />
+                <stop offset="1" stopColor="#7C3AED" />
               </linearGradient>
             </defs>
 
