@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Trophy, Target, Flame, Star, TrendingUp, Zap, Edit } from "lucide-react";
 import { UserStatsWithCalculations } from "@/hooks/useUserStatistics";
 
