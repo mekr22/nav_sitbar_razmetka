@@ -342,6 +342,9 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       preserveAspectRatio="xMidYMid meet"
                     >
                       <defs>
+                        <clipPath id="chart-progress-clip-main">
+                          <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
+                        </clipPath>
                         <filter id="glow-main" x="-50%" y="-50%" width="200%" height="200%">
                           <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                           <feMerge>
@@ -351,15 +354,14 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         </filter>
                       </defs>
 
-                      {/* Background fill from bottom - fills based on progress percentage */}
-                      <rect
-                        x="0"
-                        y={chartHeight - (chartHeight * progressPercent) / 100}
-                        width={chartWidth}
-                        height={(chartHeight * progressPercent) / 100}
-                        fill="#A06AFF"
-                        opacity="0.15"
-                      />
+                      {/* Background fill from curve to bottom - follows graph structure */}
+                      <g clipPath="url(#chart-progress-clip-main)">
+                        <path
+                          d={areaD}
+                          fill="#A06AFF"
+                          opacity="0.15"
+                        />
+                      </g>
 
                       {/* Full outline - always visible at 100% */}
                       <path
