@@ -91,22 +91,29 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const xpRemaining = nextLevelXP - currentXP;
 
   const dataPoints = [
-    progressPercent * 0.4,
-    progressPercent * 0.6,
-    progressPercent * 0.8,
-    progressPercent * 0.9,
+    progressPercent * 0.3,
+    progressPercent * 0.45,
+    progressPercent * 0.65,
+    progressPercent * 0.75,
+    progressPercent * 0.88,
+    progressPercent * 0.92,
+    progressPercent * 0.95,
+    progressPercent * 0.98,
     progressPercent * 1.0,
-    progressPercent * 0.85,
-    progressPercent * 0.7,
+    progressPercent * 0.96,
+    progressPercent * 0.90,
+    progressPercent * 0.82,
+    progressPercent * 0.75,
+    progressPercent * 0.70,
   ];
 
   const id = Math.random().toString(36).substr(2, 9);
   const gradientId = `${id}-gradient`;
   const strokeId = `${id}-stroke`;
 
-  const chartHeight = 200;
-  const chartWidth = 280;
-  const padding = 15;
+  const chartHeight = 150;
+  const chartWidth = 320;
+  const padding = 10;
   const maxValue = Math.max(...dataPoints, 100);
 
   // Generate SVG path
