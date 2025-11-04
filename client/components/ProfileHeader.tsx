@@ -354,24 +354,43 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                 </div>
 
                 {/* Graph */}
-                <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-xl p-4">
+                <div className="relative bg-[#0C1014]/50 rounded-xl p-4">
                   <svg
                     viewBox={`0 0 ${chartWidth} ${chartHeight}`}
                     className="w-full h-40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="none"
                   >
-                    <path d={areaD} fill="url(#gradientFill)" opacity="0.5" />
+                    <path d={areaD} fill="url(#gradientFill)" />
                     <defs>
-                      <linearGradient id="gradientFill" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#A06AFF" stopOpacity="0.6" />
-                        <stop offset="100%" stopColor="#482090" stopOpacity="0.1" />
+                      <linearGradient
+                        id="gradientFill"
+                        x1="1"
+                        y1="1"
+                        x2="1"
+                        y2={chartHeight}
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                        <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+                      </linearGradient>
+                      <linearGradient
+                        id="strokeGradient"
+                        x1="1"
+                        y1="1"
+                        x2="1"
+                        y2={chartHeight}
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop stopColor="#C6A6FF" />
+                        <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
                       </linearGradient>
                     </defs>
                     <path
                       d={pathD}
-                      stroke="#C77DFF"
-                      strokeWidth="2"
-                      fill="none"
+                      stroke="url(#strokeGradient)"
+                      strokeWidth="1.4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
