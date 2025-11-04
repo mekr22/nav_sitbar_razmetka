@@ -42,7 +42,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           {/* Avatar positioned over banner */}
           <div className="flex flex-col items-center sm:items-start gap-4">
             {/* Avatar - Overlapped with banner */}
-            <div className="-mt-20 sm:-mt-24 mb-4 sm:mb-2">
+            <div className="-mt-16 sm:-mt-20 lg:-mt-24 mb-4 sm:mb-2">
               <div className="flex h-28 w-28 sm:h-32 sm:w-32 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-3xl sm:text-4xl font-bold text-white border-4 border-[#0C1014]">
                 {initials}
               </div>
