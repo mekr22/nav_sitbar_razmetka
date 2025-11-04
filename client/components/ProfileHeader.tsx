@@ -333,7 +333,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
                 {/* Graph */}
                 <div className="relative bg-[#0C1014]/50 rounded-xl p-4">
-                  <div className="w-full h-40 flex items-center justify-center">
+                  <div className="relative w-full h-40">
                     <svg
                       viewBox={`0 0 ${chartWidth} ${chartHeight}`}
                       className="w-full h-full"
@@ -342,60 +342,52 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       preserveAspectRatio="xMidYMid meet"
                     >
                       <defs>
-                        <clipPath id="chart-clip">
+                        <clipPath id="chart-clip-main">
                           <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
                         </clipPath>
                         <linearGradient
-                          id="gradientFill"
+                          id="gradientFill-main"
                           x1="0"
                           y1="0"
                           x2="0"
                           y2="1"
                           gradientUnits="objectBoundingBox"
                         >
-                          <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                          <stop stopColor="#A06AFF" stopOpacity="0.4" />
                           <stop offset="1" stopColor="#181A20" stopOpacity="0" />
                         </linearGradient>
-                        <linearGradient
-                          id="strokeGradient"
-                          x1="0"
-                          y1="0"
-                          x2="0"
-                          y2="1"
-                          gradientUnits="objectBoundingBox"
-                        >
-                          <stop stopColor="#C6A6FF" />
-                          <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
-                        </linearGradient>
+                        <filter id="glow-main" x="-50%" y="-50%" width="200%" height="200%">
+                          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                          <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                          </feMerge>
+                        </filter>
                       </defs>
 
-                      {/* Filled area (completed progress) */}
-                      <g clipPath="url(#chart-clip)">
-                        <path d={areaD} fill="url(#gradientFill)" />
+                      {/* Background fill - only up to progress */}
+                      <g clipPath="url(#chart-clip-main)">
                         <path
-                          d={pathD}
-                          stroke="url(#strokeGradient)"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
+                          d={areaD}
+                          fill="url(#gradientFill-main)"
                         />
                       </g>
 
-                      {/* Outline only (remaining progress) */}
+                      {/* Full outline - always visible at 100% */}
                       <path
                         d={pathD}
-                        stroke="#3A3F4D"
-                        strokeWidth="2"
+                        stroke="#A06AFF"
+                        strokeWidth="1.5"
                         strokeLinecap="round"
-                        strokeLinejoin="round"
-                        opacity="0.5"
+                        filter="url(#glow-main)"
                       />
                     </svg>
-                  </div>
-                  <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
-                    {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
-                      <span key={day}>{day}</span>
-                    ))}
+
+                    {/* Progress Percentage Inside Graph */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                      <p className="text-4xl font-bold text-white drop-shadow-lg">{progressPercent}%</p>
+                      <p className="text-xs text-[#E0AAFF] mt-1 font-semibold uppercase tracking-wide">Progress</p>
+                    </div>
                   </div>
                 </div>
 
