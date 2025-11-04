@@ -136,6 +136,9 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               <clipPath id={`${id}-progress-clip`}>
                 <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
               </clipPath>
+              <clipPath id={`${id}-unfilled-clip`}>
+                <rect x={(chartWidth * progressPercent) / 100} y="0" width={chartWidth} height={chartHeight} />
+              </clipPath>
               <linearGradient
                 id={`${id}-filled-gradient`}
                 x1="0"
@@ -157,19 +160,12 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             </defs>
 
             {/* Unfilled area (gray) - follows graph curve */}
-            <g>
-              <defs>
-                <clipPath id={`${id}-unfilled-clip`}>
-                  <rect x={(chartWidth * progressPercent) / 100} y="0" width={chartWidth} height={chartHeight} />
-                </clipPath>
-              </defs>
-              <g clipPath={`url(#${id}-unfilled-clip)`}>
-                <path
-                  d={areaD}
-                  fill="#2A2F3A"
-                  opacity="0.4"
-                />
-              </g>
+            <g clipPath={`url(#${id}-unfilled-clip)`}>
+              <path
+                d={areaD}
+                fill="#2A2F3A"
+                opacity="0.4"
+              />
             </g>
 
             {/* Filled area with gradient - follows graph curve and structure */}
