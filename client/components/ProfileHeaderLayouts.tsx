@@ -166,19 +166,11 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               opacity="0.4"
             />
 
-            {/* Filled area with gradient - follows graph structure */}
+            {/* Filled area with gradient - follows graph curve and structure */}
             <g clipPath={`url(#${id}-progress-clip)`}>
-              <rect
-                x="0"
-                y="0"
-                width={chartWidth}
-                height={chartHeight}
-                fill={`url(#${id}-filled-gradient)`}
-              />
               <path
                 d={areaD}
-                fill="#A06AFF"
-                opacity="0.25"
+                fill={`url(#${id}-filled-gradient)`}
               />
             </g>
 
