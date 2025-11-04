@@ -36,10 +36,10 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     year: "numeric",
   });
 
-  // Layout 2: Same structure but different right panel design - Horizontal achievements
+  // Layout 2: Horizontal achievements
   if (layoutTab === 2) {
     return (
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full" style={{ position: 'relative' }}>
         {/* Profile Card - Left Side (SAME AS LAYOUT 1) */}
         <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden min-w-0">
           {/* Advanced Level Section */}
