@@ -127,79 +127,79 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
       </div>
 
-      {/* Right Sidebar - Earnings (2 columns) */}
+      {/* Right Sidebar - Trader Info (2 columns) */}
       <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        <div className="mb-6 flex items-center gap-2">
-          <Zap className="h-4 sm:h-5 w-4 sm:w-5 text-[#A06AFF] flex-shrink-0" />
-          <h3 className="text-base sm:text-lg font-bold text-white whitespace-nowrap">Мой заработок</h3>
+        <div className="mb-4 flex items-center justify-between">
+          <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
+          <span className="text-xs font-semibold text-[#A0FF75] bg-[#A0FF75]/10 px-2 py-1 rounded-full">
+            4.6 (153)
+          </span>
         </div>
 
-        <div className="space-y-4">
-          {/* MRR */}
-          <div>
-            <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-              MRR (еженедельный доход)
-            </p>
-            <p className="mt-2 text-xl sm:text-2xl lg:text-lg font-bold text-white">$500.00</p>
+        <div className="mt-4 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+          <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
+            Pro Traders Selected
+          </p>
+          <div className="mt-3 flex items-center gap-2">
+            <div className="flex-1 h-2 bg-[#181B22] rounded-full overflow-hidden">
+              <div className="h-full w-2/3 bg-[#A0FF75] rounded-full"></div>
+            </div>
+            <span className="text-sm font-semibold text-white">2/3</span>
           </div>
+        </div>
 
-          {/* Grid 2x2 */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-2 pt-4">
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
-              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-                Всего
-              </p>
-              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">$1500.00</p>
-            </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
-              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-                Подписчики
-              </p>
-              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">25</p>
-            </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
-              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-                Продано постов
-              </p>
-              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">15</p>
-            </div>
-            <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 lg:p-2">
-              <p className="text-xs lg:text-[10px] uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-                Средняя цена
-              </p>
-              <p className="mt-2 text-base sm:text-xl lg:text-sm font-bold text-white">$10.00</p>
-            </div>
+        <div className="mt-4 pt-4 border-t border-[#181B22] space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs text-[#B0B0B0]">Verified Trader</p>
+            <span className="h-2 w-2 rounded-full bg-[#A0FF75]"></span>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-xs text-[#B0B0B0]">Top Dealer</p>
+            <span className="h-2 w-2 rounded-full bg-[#A0FF75]"></span>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-xs text-[#B0B0B0]">Daily Trader</p>
+            <span className="h-2 w-2 rounded-full bg-[#A0FF75]"></span>
           </div>
         </div>
       </div>
 
-      {/* Right Sidebar - Activity (2 columns) */}
+      {/* Right Sidebar - Achievements (2 columns) */}
       <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        <div className="mb-6 flex items-center gap-2">
-          <BookOpen className="h-4 sm:h-5 w-4 sm:w-5 text-[#A06AFF] flex-shrink-0" />
-          <h3 className="text-base sm:text-lg font-bold text-white whitespace-nowrap">Моя активность</h3>
-        </div>
+        <h3 className="text-base sm:text-lg font-bold text-white mb-4">ACHIEVEMENTS (4)</h3>
 
-        <div className="space-y-3 sm:space-y-4 lg:space-y-2">
-          {/* Posts Row */}
-          <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 lg:px-3 lg:py-2">
-            <p className="text-xs sm:text-sm lg:text-[11px] text-[#B0B0B0] whitespace-nowrap">Посты</p>
-            <p className="text-xl sm:text-2xl lg:text-base font-bold text-white ml-2">0</p>
+        <div className="space-y-3">
+          {/* Achievement Card 1 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#A06AFF]/20 flex-shrink-0">
+              <span className="text-sm font-bold text-[#A06AFF]">✓</span>
+            </div>
+            <p className="text-xs sm:text-sm text-white font-medium">Verified Trader</p>
           </div>
 
-          {/* Likes Row */}
-          <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 lg:px-3 lg:py-2">
-            <p className="text-xs sm:text-sm lg:text-[11px] text-[#B0B0B0] whitespace-nowrap">Лайки</p>
-            <p className="text-xl sm:text-2xl lg:text-base font-bold text-white ml-2">0</p>
+          {/* Achievement Card 2 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FFB800]/20 flex-shrink-0">
+              <span className="text-sm font-bold text-[#FFB800]">★</span>
+            </div>
+            <p className="text-xs sm:text-sm text-white font-medium">Trading Genius</p>
           </div>
 
-          {/* Comments Row */}
-          <div className="flex items-center justify-between rounded-lg border border-[#181B22] bg-[#0C1014]/50 px-4 py-3 lg:px-3 lg:py-2">
-            <p className="text-xs sm:text-sm lg:text-[11px] text-[#B0B0B0] whitespace-nowrap">Комментарии</p>
-            <p className="text-xl sm:text-2xl lg:text-base font-bold text-white ml-2">0</p>
+          {/* Achievement Card 3 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF6B9D]/20 flex-shrink-0">
+              <span className="text-sm font-bold text-[#FF6B9D]">●</span>
+            </div>
+            <p className="text-xs sm:text-sm text-white font-medium">Daily Trader</p>
           </div>
 
-          <p className="text-xs lg:text-[10px] text-[#B0B0B0] pt-2 text-center whitespace-nowrap">За последние 7 дней</p>
+          {/* Achievement Card 4 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#A0FF75]/20 flex-shrink-0">
+              <span className="text-sm font-bold text-[#A0FF75]">◆</span>
+            </div>
+            <p className="text-xs sm:text-sm text-white font-medium">Top Dealer</p>
+          </div>
         </div>
       </div>
     </div>
