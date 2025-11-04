@@ -317,7 +317,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
 
                 {/* Graph */}
-                <div className="relative bg-[#0C1014]/50 rounded-xl p-4">
+                <div className="relative bg-[#0C1014]/50 rounded-xl p-4 overflow-visible">
                   <div className="relative w-full h-40">
                     <svg
                       viewBox={`0 0 ${chartWidth} ${chartHeight}`}
@@ -358,10 +358,11 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       />
                     </svg>
 
-                    {/* Progress Percentage Inside Graph */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                      <p className="text-4xl font-bold text-white drop-shadow-lg">{progressPercent}%</p>
-                      <p className="text-xs text-[#E0AAFF] mt-1 font-semibold uppercase tracking-wide">Progress</p>
+                    {/* Progress Badge at Peak */}
+                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 pointer-events-none">
+                      <div className="bg-[#A06AFF] text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg shadow-[#A06AFF]/40">
+                        {progressPercent}%
+                      </div>
                     </div>
                   </div>
                 </div>
