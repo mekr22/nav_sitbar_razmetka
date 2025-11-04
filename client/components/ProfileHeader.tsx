@@ -239,12 +239,175 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
   // Layout 3: Minimalist compact with integrated graph
   if (layoutTab === 3) {
+    const progressPercent = stats?.level_info?.progressPercent || 0;
+    const currentXP = stats?.total_xp || 0;
+    const nextLevelXP = stats?.level_info?.nextLevelXP || 100;
+    const xpRemaining = nextLevelXP - currentXP;
+
+    const dataPoints = [
+      progressPercent * 0.4,
+      progressPercent * 0.6,
+      progressPercent * 0.8,
+      progressPercent * 0.9,
+      progressPercent * 1.0,
+      progressPercent * 0.85,
+      progressPercent * 0.7,
+    ];
+
+    const chartHeight = 140;
+    const chartWidth = 140;
+    const padding = 10;
+    const maxValue = Math.max(...dataPoints, 100);
+
+    const points = dataPoints.map((value, idx) => {
+      const x = padding + (idx / (dataPoints.length - 1)) * (chartWidth - padding * 2);
+      const y = chartHeight - padding - (value / maxValue) * (chartHeight - padding * 2);
+      return `${x},${y}`;
+    });
+
+    const pathD = `M ${points.join(' L ')}`;
+    const areaD = `M ${points[0]} L ${points.join(' L ')} L ${padding + (dataPoints.length - 1) / (dataPoints.length - 1) * (chartWidth - padding * 2)},${chartHeight - padding} L ${padding},${chartHeight - padding} Z`;
+
     return (
-      <div className="w-full space-y-4 sm:space-y-6">
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
-          {profileCard}
-          <RightPanelLayout3 stats={stats} onEditClick={() => setShowStatsModal(true)} />
+      <div className="w-full">
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-5 overflow-hidden">
+          {/* Gradient header */}
+          <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
+
+          <div className="px-4 sm:px-6 py-6 sm:py-8">
+            <div className="flex flex-col lg:flex-row lg:items-start gap-8">
+              {/* Left: Profile Info */}
+              <div className="flex flex-col items-center sm:items-start gap-4 flex-shrink-0">
+                <div className="-mt-16 sm:-mt-20 lg:-mt-24 mb-4 sm:mb-2">
+                  <div className="flex h-28 w-28 sm:h-32 sm:w-32 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-3xl sm:text-4xl font-bold text-white border-4 border-[#0C1014]">
+                    {initials}
+                  </div>
+                </div>
+                <div className="flex flex-col items-center sm:items-start gap-1">
+                  <h2 className="text-xl sm:text-2xl font-bold text-white">{username}</h2>
+                  <p className="text-xs sm:text-sm text-[#B0B0B0]">@{username}</p>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-2">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 text-xs font-semibold text-[#A06AFF] w-fit">
+                      <span className="flex h-4 w-4 items-center justify-center rounded bg-[#A06AFF] text-white text-[10px] font-bold">
+                        4
+                      </span>
+                      TIER
+                    </span>
+                    <div className="flex items-center gap-1 text-xs sm:text-sm text-[#B0B0B0]">
+                      <Calendar className="h-3 w-3 flex-shrink-0" />
+                      Joined {joinDate}
+                    </div>
+                  </div>
+                  <div className="flex gap-4 text-xs sm:text-sm pt-2">
+                    <span className="text-[#B0B0B0]">
+                      <span className="text-white font-semibold">0</span> Following
+                    </span>
+                    <span className="text-[#B0B0B0]">
+                      <span className="text-white font-semibold">0</span> Followers
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Level & Graph */}
+              <div className="flex-1 flex flex-col gap-6">
+                {/* Level Header */}
+                <div className="flex items-center gap-4">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#A0FF75] flex-shrink-0">
+                    <span className="text-3xl font-bold text-black">{stats?.current_level || 1}</span>
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+                    <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+                  </div>
+                  <div className="ml-auto text-right">
+                    <p className="text-[#A0FF75] font-bold">{progressPercent}%</p>
+                    <p className="text-xs text-[#B0B0B0]">Progress</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
+                    <p className="text-xs text-[#B0B0B0]">XP left</p>
+                  </div>
+                </div>
+
+                {/* Time Period Toggle */}
+                <div className="flex gap-1 bg-[#181B22] p-1 rounded-full w-fit">
+                  {['Day', 'Week', 'Month', 'Year'].map((period) => (
+                    <button
+                      key={period}
+                      className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
+                        period === 'Day'
+                          ? 'bg-white text-black'
+                          : 'text-[#B0B0B0] hover:text-white'
+                      }`}
+                    >
+                      {period}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Graph */}
+                <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-xl p-4">
+                  <svg
+                    viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+                    className="w-full h-40"
+                    preserveAspectRatio="none"
+                  >
+                    <path d={areaD} fill="url(#gradientFill)" opacity="0.5" />
+                    <defs>
+                      <linearGradient id="gradientFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#A06AFF" stopOpacity="0.6" />
+                        <stop offset="100%" stopColor="#482090" stopOpacity="0.1" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      d={pathD}
+                      stroke="#A0FF75"
+                      strokeWidth="2"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    {points.map((point, idx) => {
+                      const [x, y] = point.split(',').map(Number);
+                      return <circle key={idx} cx={x} cy={y} r="2" fill="#A0FF75" />;
+                    })}
+                  </svg>
+                  <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
+                    {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
+                      <span key={day}>{day}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* XP Stats */}
+                <div className="grid grid-cols-3 gap-2 text-center">
+                  <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+                    <p className="text-xs text-[#B0B0B0] mb-1">Current</p>
+                    <p className="text-sm font-bold text-white">{currentXP}</p>
+                  </div>
+                  <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+                    <p className="text-xs text-[#B0B0B0] mb-1">Next Level</p>
+                    <p className="text-sm font-bold text-white">{nextLevelXP}</p>
+                  </div>
+                  <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+                    <p className="text-xs text-[#B0B0B0] mb-1">Remaining</p>
+                    <p className="text-sm font-bold text-[#A0FF75]">{xpRemaining}</p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setShowStatsModal(true)}
+                  className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
+                >
+                  <Edit className="h-3 w-3 inline mr-2" />
+                  Edit Statistics
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
+
         <AdminStatsModal
           open={showStatsModal}
           onOpenChange={setShowStatsModal}
