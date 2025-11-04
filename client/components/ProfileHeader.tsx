@@ -222,6 +222,14 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
       </div>
 
+      {/* Admin Stats Modal */}
+      <AdminStatsModal
+        open={showStatsModal}
+        onOpenChange={setShowStatsModal}
+        stats={stats}
+        onSave={updateStatistics}
+        loading={statsLoading}
+      />
     </div>
   );
 };
