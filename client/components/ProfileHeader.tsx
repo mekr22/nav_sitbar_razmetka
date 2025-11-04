@@ -163,71 +163,79 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
       </div>
 
       {/* Right Sidebar - Achievements (2 columns) */}
-      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-6">
+      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <h3 className="text-base sm:text-lg font-bold text-white uppercase">Achievements (4)</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide">Achievements (4)</h3>
           <span className="text-xs text-[#B0B0B0]">2 in Progress</span>
         </div>
 
         {/* Achievement Grid 2x2 */}
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3 mb-4">
           {/* Achievement 1 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
-              <span className="text-lg">♦</span>
+          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
+              ♦
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">Verified Trader</p>
           </div>
 
           {/* Achievement 2 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
-              <span className="text-lg">◎</span>
+          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
+              ◎
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">Sharp Shooter</p>
           </div>
 
           {/* Achievement 3 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
-              <span className="text-lg">⚡</span>
+          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
+              ◐
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">On Fire</p>
           </div>
 
           {/* Achievement 4 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
-              <span className="text-lg">★</span>
+          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
+              ★
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">Top Rated</p>
           </div>
         </div>
 
         {/* Progress Achievements */}
-        <div className="pt-4 border-t border-[#181B22] space-y-4">
+        <div className="space-y-4">
           {/* Bull Master */}
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">📈</span>
-              <p className="text-xs sm:text-sm text-white font-semibold">Bull Master</p>
-              <span className="ml-auto text-xs text-[#A06AFF] font-semibold">72%</span>
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0 text-lg">
+              ▲
             </div>
-            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
-              <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
+            <div className="flex-1 pt-1">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-xs sm:text-sm text-white font-semibold">Bull Master</p>
+                <span className="text-xs text-[#A06AFF] font-semibold">72%</span>
+              </div>
+              <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+                <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
+              </div>
             </div>
           </div>
 
           {/* Influencer */}
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">⚡</span>
-              <p className="text-xs sm:text-sm text-white font-semibold">Influencer</p>
-              <span className="ml-auto text-xs text-[#A06AFF] font-semibold">45%</span>
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0 text-lg">
+              ⚡
             </div>
-            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
-              <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
+            <div className="flex-1 pt-1">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-xs sm:text-sm text-white font-semibold">Influencer</p>
+                <span className="text-xs text-[#A06AFF] font-semibold">45%</span>
+              </div>
+              <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+                <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
+              </div>
             </div>
           </div>
         </div>
