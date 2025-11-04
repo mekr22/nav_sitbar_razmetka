@@ -176,6 +176,290 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     );
   }
 
+  // Layout 3: Compact side-by-side
+  if (layoutTab === 3) {
+    return (
+      <div className="flex flex-col lg:flex-row gap-6 w-full">
+        {/* Profile Card - Compact */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 overflow-hidden lg:flex-1">
+          <div className="h-24 sm:h-32 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
+          <div className="px-4 sm:px-6 py-4 sm:py-6">
+            <div className="flex flex-col items-center gap-3">
+              <div className="-mt-12 sm:-mt-16">
+                <div className="flex h-24 w-24 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-2xl font-bold text-white border-4 border-[#0C1014]">
+                  {initials}
+                </div>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <h2 className="text-lg font-bold text-white">{username}</h2>
+                <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-0.5 text-xs font-semibold text-[#A06AFF]">
+                  <span className="flex h-3 w-3 items-center justify-center rounded bg-[#A06AFF] text-white text-[8px] font-bold">4</span>
+                  TIER
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Panel - Vertical */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 space-y-4 lg:flex-1">
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <div>
+                <p className="text-xl sm:text-2xl font-bold text-white">{stats?.current_level || 1}</p>
+                <p className="text-xs text-[#B0B0B0]">{stats?.level_info?.name || 'Newbie'}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-lg font-bold text-[#A0FF75]">{stats?.level_info?.progressPercent || 0}%</p>
+                <p className="text-xs text-[#B0B0B0]">{stats?.total_xp || 0} XP</p>
+              </div>
+            </div>
+            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#A0FF75] rounded-full transition-all"
+                style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
+              ></div>
+            </div>
+          </div>
+
+          <div className="pt-2 border-t border-[#181B22]">
+            <p className="text-xs uppercase text-[#B0B0B0] mb-2">Quick Stats</p>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-2">
+                <p className="text-xs text-[#B0B0B0]">Verified</p>
+                <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#8B5CF6] mt-1">
+                  <Trophy className="h-3 w-3 text-white" />
+                </div>
+              </div>
+              <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-2">
+                <p className="text-xs text-[#B0B0B0]">Shooter</p>
+                <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#8B5CF6] mt-1">
+                  <Target className="h-3 w-3 text-white" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setShowStatsModal(true)}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-2xl hover:bg-[#A06AFF]/30 transition-colors"
+          >
+            <Edit className="h-3 w-3" />
+            Edit
+          </button>
+        </div>
+
+        <AdminStatsModal
+          open={showStatsModal}
+          onOpenChange={setShowStatsModal}
+          stats={stats}
+          onSave={updateStatistics}
+          loading={statsLoading}
+        />
+      </div>
+    );
+  }
+
+  // Layout 4: Circular achievement display
+  if (layoutTab === 4) {
+    return (
+      <div className="flex flex-col gap-6 w-full">
+        {/* Main Level Card - Centered */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-8 w-full max-w-lg mx-auto">
+          <div className="flex flex-col items-center gap-6 text-center">
+            <div className="flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-[#A0FF75] to-[#482090]">
+              <span className="text-5xl font-bold text-white">{stats?.current_level || 1}</span>
+            </div>
+            <div>
+              <h2 className="text-3xl font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h2>
+              <p className="text-[#B0B0B0] mt-2">{stats?.total_xp || 0} / {stats?.level_info?.nextLevelXP || 100} XP</p>
+            </div>
+            <div className="w-full">
+              <div className="h-3 bg-[#181B22] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-[#A0FF75] to-[#A06AFF] rounded-full transition-all"
+                  style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
+                ></div>
+              </div>
+              <p className="text-xs text-[#B0B0B0] mt-2">{stats?.level_info?.progressPercent || 0}% to next level</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Achievements Grid */}
+        <div>
+          <h3 className="text-center text-sm font-bold text-white uppercase mb-4">Achievements (4)</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#181B22] bg-[#0C1014]/50 hover:bg-[#0C1014] transition-colors">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8B5CF6]">
+                <Trophy className="h-6 w-6 text-white" />
+              </div>
+              <p className="text-xs font-semibold text-white text-center">Verified</p>
+            </div>
+            <div className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#181B22] bg-[#0C1014]/50 hover:bg-[#0C1014] transition-colors">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8B5CF6]">
+                <Target className="h-6 w-6 text-white" />
+              </div>
+              <p className="text-xs font-semibold text-white text-center">Shooter</p>
+            </div>
+            <div className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#181B22] bg-[#0C1014]/50 hover:bg-[#0C1014] transition-colors">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8B5CF6]">
+                <Flame className="h-6 w-6 text-white" />
+              </div>
+              <p className="text-xs font-semibold text-white text-center">On Fire</p>
+            </div>
+            <div className="flex flex-col items-center gap-2 p-4 rounded-xl border border-[#181B22] bg-[#0C1014]/50 hover:bg-[#0C1014] transition-colors">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#8B5CF6]">
+                <Star className="h-6 w-6 text-white" />
+              </div>
+              <p className="text-xs font-semibold text-white text-center">Top Rated</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Profile Card Below */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 overflow-hidden max-w-sm mx-auto w-full">
+          <div className="h-20 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
+          <div className="px-4 sm:px-6 py-4">
+            <div className="flex flex-col items-center gap-2">
+              <div className="-mt-10">
+                <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-2xl font-bold text-white border-4 border-[#0C1014]">
+                  {initials}
+                </div>
+              </div>
+              <h2 className="text-lg font-bold text-white text-center">{username}</h2>
+              <p className="text-xs text-[#B0B0B0]">@{username}</p>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onClick={() => setShowStatsModal(true)}
+          className="mx-auto flex items-center justify-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-2xl hover:bg-[#A06AFF]/30 transition-colors"
+        >
+          <Edit className="h-4 w-4" />
+          Edit Statistics
+        </button>
+
+        <AdminStatsModal
+          open={showStatsModal}
+          onOpenChange={setShowStatsModal}
+          stats={stats}
+          onSave={updateStatistics}
+          loading={statsLoading}
+        />
+      </div>
+    );
+  }
+
+  // Layout 5: Minimal card layout
+  if (layoutTab === 5) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+        {/* Profile Mini Card */}
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 flex flex-col items-center gap-3">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-xl font-bold text-white">
+            {initials}
+          </div>
+          <div className="text-center">
+            <h3 className="text-sm font-bold text-white">{username}</h3>
+            <p className="text-xs text-[#B0B0B0]">@{username}</p>
+            <span className="inline-block mt-2 text-xs font-semibold text-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 rounded-full">TIER 4</span>
+          </div>
+        </div>
+
+        {/* Level Card */}
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+          <p className="text-xs uppercase text-[#B0B0B0] mb-2">Level</p>
+          <div className="flex items-end gap-2 mb-3">
+            <span className="text-3xl font-bold text-white">{stats?.current_level || 1}</span>
+            <span className="text-sm text-[#A0FF75]">{stats?.level_info?.name || 'Newbie'}</span>
+          </div>
+          <div className="space-y-1">
+            <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#A0FF75] rounded-full transition-all"
+                style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
+              ></div>
+            </div>
+            <p className="text-xs text-[#B0B0B0]">{stats?.total_xp || 0} XP</p>
+          </div>
+        </div>
+
+        {/* Stats Quick View */}
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+          <p className="text-xs uppercase text-[#B0B0B0] mb-3">Quick Stats</p>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex items-center gap-2">
+              <Trophy className="h-4 w-4 text-[#A06AFF]" />
+              <div>
+                <p className="text-xs text-[#B0B0B0]">Verified</p>
+                <p className="text-sm font-bold text-white">Yes</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Target className="h-4 w-4 text-[#A06AFF]" />
+              <div>
+                <p className="text-xs text-[#B0B0B0]">Shooter</p>
+                <p className="text-sm font-bold text-white">72%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Achievements Cards */}
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+          <p className="text-xs uppercase text-[#B0B0B0] mb-2">Fire</p>
+          <div className="flex items-end gap-2">
+            <Flame className="h-6 w-6 text-orange-400" />
+            <div>
+              <p className="text-xs text-[#B0B0B0]">On Fire</p>
+              <p className="text-lg font-bold text-orange-400">Active</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4">
+          <p className="text-xs uppercase text-[#B0B0B0] mb-2">Rating</p>
+          <div className="flex items-end gap-2">
+            <Star className="h-6 w-6 text-[#FFB800]" />
+            <div>
+              <p className="text-xs text-[#B0B0B0]">Top Rated</p>
+              <p className="text-lg font-bold text-white">4.8</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 flex flex-col justify-center items-center text-center gap-2">
+          <TrendingUp className="h-6 w-6 text-[#A0FF75]" />
+          <div>
+            <p className="text-xs text-[#B0B0B0]">Master</p>
+            <p className="text-sm font-bold text-white">Bull 72%</p>
+          </div>
+        </div>
+
+        {/* Edit button - full width */}
+        <div className="col-span-full">
+          <button
+            onClick={() => setShowStatsModal(true)}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-2xl hover:bg-[#A06AFF]/30 transition-colors"
+          >
+            <Edit className="h-4 w-4" />
+            Edit Statistics
+          </button>
+        </div>
+
+        <AdminStatsModal
+          open={showStatsModal}
+          onOpenChange={setShowStatsModal}
+          stats={stats}
+          onSave={updateStatistics}
+          loading={statsLoading}
+        />
+      </div>
+    );
+  }
+
   // Layout 1: Default grid layout
   return (
     <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
