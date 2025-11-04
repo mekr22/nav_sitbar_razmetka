@@ -237,12 +237,14 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     );
   }
 
-  // Layout 3: Minimalist compact
+  // Layout 3: Minimalist compact with integrated graph
   if (layoutTab === 3) {
     return (
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
-        {profileCard}
-        <RightPanelLayout3 stats={stats} onEditClick={() => setShowStatsModal(true)} />
+      <div className="w-full space-y-4 sm:space-y-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
+          {profileCard}
+          <RightPanelLayout3 stats={stats} onEditClick={() => setShowStatsModal(true)} />
+        </div>
         <AdminStatsModal
           open={showStatsModal}
           onOpenChange={setShowStatsModal}
