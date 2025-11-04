@@ -150,9 +150,6 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             preserveAspectRatio="xMidYMid meet"
           >
             <defs>
-              <clipPath id={`${id}-clip`}>
-                <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
-              </clipPath>
               <linearGradient
                 id={gradientId}
                 x1="0"
@@ -173,13 +170,15 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               </filter>
             </defs>
 
-            {/* Background fill - only up to progress */}
-            <g clipPath={`url(#${id}-clip)`}>
-              <path
-                d={areaD}
-                fill={`url(#${gradientId})`}
-              />
-            </g>
+            {/* Background fill from bottom - fills based on progress percentage */}
+            <rect
+              x="0"
+              y={chartHeight - (chartHeight * progressPercent) / 100}
+              width={chartWidth}
+              height={(chartHeight * progressPercent) / 100}
+              fill="#A06AFF"
+              opacity="0.15"
+            />
 
             {/* Full outline - always visible at 100% */}
             <path
