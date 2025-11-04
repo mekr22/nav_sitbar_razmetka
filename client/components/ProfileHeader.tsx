@@ -11,9 +11,10 @@ interface ProfileHeaderProps {
       username?: string;
     };
   };
+  layoutTab?: 1 | 2 | 3 | 4 | 5;
 }
 
-const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
+const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
   const { stats, updateStatistics, loading: statsLoading } = useUserStatistics();
   const [showStatsModal, setShowStatsModal] = useState(false);
   const username = useMemo(() => {
