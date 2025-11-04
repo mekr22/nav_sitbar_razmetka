@@ -26,6 +26,7 @@ const Profile: FC = () => {
   const { session, loading: authLoading } = useAuth();
   const [authError, setAuthError] = useState<string | null>(null);
   const [mode, setMode] = useState<"signIn" | "signUp">("signIn");
+  const [layoutTab, setLayoutTab] = useState<1 | 2 | 3 | 4 | 5>(1);
 
   const {
     register,
