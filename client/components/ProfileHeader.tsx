@@ -313,15 +313,15 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
               <div className="flex-1 flex flex-col gap-6">
                 {/* Level Header */}
                 <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#A0FF75] flex-shrink-0">
-                    <span className="text-3xl font-bold text-black">{stats?.current_level || 1}</span>
+                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#C77DFF] flex-shrink-0">
+                    <span className="text-3xl font-bold text-white">{stats?.current_level || 1}</span>
                   </div>
                   <div className="flex flex-col gap-1">
                     <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
                     <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
                   </div>
                   <div className="ml-auto text-right">
-                    <p className="text-[#A0FF75] font-bold">{progressPercent}%</p>
+                    <p className="text-[#C77DFF] font-bold">{progressPercent}%</p>
                     <p className="text-xs text-[#B0B0B0]">Progress</p>
                   </div>
                   <div className="text-right">
@@ -388,7 +388,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                   </div>
                   <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
                     <p className="text-xs text-[#B0B0B0] mb-1">Remaining</p>
-                    <p className="text-sm font-bold text-[#A0FF75]">{xpRemaining}</p>
+                    <p className="text-sm font-bold text-[#C77DFF]">{xpRemaining}</p>
                   </div>
                 </div>
 
