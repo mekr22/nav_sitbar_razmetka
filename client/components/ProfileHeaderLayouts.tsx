@@ -86,6 +86,10 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
   // Generate sample data points based on progress percentage
   const progressPercent = stats?.level_info?.progressPercent || 0;
+  const currentXP = stats?.total_xp || 0;
+  const nextLevelXP = stats?.level_info?.nextLevelXP || 100;
+  const xpRemaining = nextLevelXP - currentXP;
+
   const dataPoints = [
     progressPercent * 0.4,
     progressPercent * 0.6,
@@ -96,9 +100,9 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
     progressPercent * 0.7,
   ];
 
-  const chartHeight = 120;
-  const chartWidth = 100;
-  const padding = 10;
+  const chartHeight = 160;
+  const chartWidth = 160;
+  const padding = 12;
   const maxValue = Math.max(...dataPoints, 100);
 
   // Generate SVG path
@@ -112,32 +116,52 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const areaD = `M ${points[0]} L ${points.join(' L ')} L ${padding + (dataPoints.length - 1) / (dataPoints.length - 1) * (chartWidth - padding * 2)},${chartHeight - padding} L ${padding},${chartHeight - padding} Z`;
 
   return (
-    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-4">
-      {/* Title and Time Period Toggle */}
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-bold text-white">XP Progress</h3>
-        <div className="flex gap-1 bg-[#181B22] p-1 rounded-full">
-          {['day', 'week', 'month', 'year'].map((period) => (
-            <button
-              key={period}
-              onClick={() => setTimePeriod(period as any)}
-              className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
-                timePeriod === period
-                  ? 'bg-white text-black'
-                  : 'text-[#B0B0B0] hover:text-white'
-              }`}
-            >
-              {period.charAt(0).toUpperCase() + period.slice(1)}
-            </button>
-          ))}
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2 space-y-6">
+      {/* Header with Level and Stats Info */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
+            <span className="text-3xl font-bold text-black">{stats?.current_level || 1}</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <h3 className="text-xl font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+            <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+          </div>
+        </div>
+        <div className="flex gap-4 text-sm">
+          <div className="text-right">
+            <p className="text-[#A0FF75] font-bold">{progressPercent}%</p>
+            <p className="text-xs text-[#B0B0B0]">Progress</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
+            <p className="text-xs text-[#B0B0B0]">XP to next</p>
+          </div>
         </div>
       </div>
 
-      {/* Graph Container */}
-      <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-xl p-4">
+      {/* Time Period Toggle */}
+      <div className="flex gap-1 bg-[#181B22] p-1 rounded-full w-fit">
+        {['day', 'week', 'month', 'year'].map((period) => (
+          <button
+            key={period}
+            onClick={() => setTimePeriod(period as any)}
+            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
+              timePeriod === period
+                ? 'bg-white text-black'
+                : 'text-[#B0B0B0] hover:text-white'
+            }`}
+          >
+            {period.charAt(0).toUpperCase() + period.slice(1)}
+          </button>
+        ))}
+      </div>
+
+      {/* Large Graph Container */}
+      <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-2xl p-6">
         <svg
           viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-          className="w-full h-32"
+          className="w-full h-48"
           preserveAspectRatio="none"
         >
           {/* Grid lines */}
@@ -154,7 +178,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
           <path
             d={areaD}
             fill="url(#gradientFill)"
-            opacity="0.6"
+            opacity="0.5"
           />
 
           {/* Gradient definition */}
@@ -169,7 +193,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
           <path
             d={pathD}
             stroke="#A0FF75"
-            strokeWidth="1.5"
+            strokeWidth="2"
             fill="none"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -183,7 +207,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 key={idx}
                 cx={x}
                 cy={y}
-                r="1.5"
+                r="2"
                 fill="#A0FF75"
               />
             );
@@ -191,22 +215,26 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </svg>
 
         {/* X-axis labels */}
-        <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
+        <div className="flex justify-between text-xs text-[#B0B0B0] mt-3 px-2">
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
             <span key={day}>{day}</span>
           ))}
         </div>
       </div>
 
-      {/* Stats Summary */}
-      <div className="grid grid-cols-2 gap-2 text-center">
-        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-xs text-[#B0B0B0]">XP</p>
-          <p className="text-sm font-bold text-white">{stats?.total_xp || 0}</p>
+      {/* XP Details */}
+      <div className="grid grid-cols-3 gap-3 text-center">
+        <div className="p-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-xs text-[#B0B0B0] mb-1">Current XP</p>
+          <p className="text-sm font-bold text-white">{currentXP}</p>
         </div>
-        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-xs text-[#B0B0B0]">Progress</p>
-          <p className="text-sm font-bold text-[#A0FF75]">{progressPercent}%</p>
+        <div className="p-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-xs text-[#B0B0B0] mb-1">Next Level</p>
+          <p className="text-sm font-bold text-white">{nextLevelXP}</p>
+        </div>
+        <div className="p-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-xs text-[#B0B0B0] mb-1">Remaining</p>
+          <p className="text-sm font-bold text-[#A0FF75]">{xpRemaining}</p>
         </div>
       </div>
 
