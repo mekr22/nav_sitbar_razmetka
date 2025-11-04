@@ -256,7 +256,24 @@ const Profile: FC = () => {
 
   return (
     <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8 py-6 w-full">
-      <ProfileHeader user={session?.user} />
+      {/* Layout Tabs */}
+      <div className="flex justify-center gap-2 flex-wrap">
+        {[1, 2, 3, 4, 5].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setLayoutTab(tab as 1 | 2 | 3 | 4 | 5)}
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              layoutTab === tab
+                ? 'bg-[#A06AFF] text-white shadow-lg'
+                : 'bg-[#0C1014] border border-[#181B22] text-[#B0B0B0] hover:border-[#1F2230] hover:text-white'
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      <ProfileHeader user={session?.user} layoutTab={layoutTab} />
 
       {/* Filter Tabs */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-2 sm:overflow-x-auto scrollbar-hide w-full">
