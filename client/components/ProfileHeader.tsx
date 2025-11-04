@@ -12,8 +12,6 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
-  const [activeTab, setActiveTab] = useState<"Posts" | "Media" | "Premium" | "Likes" | "Security">("Posts");
-
   const username = useMemo(() => {
     return (
       user?.user_metadata?.username ||
@@ -31,14 +29,6 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
     month: "long",
     year: "numeric",
   });
-
-  const navItems = [
-    { label: "Posts" as const },
-    { label: "Media" as const },
-    { label: "Premium" as const },
-    { label: "Likes" as const },
-    { label: "Security" as const },
-  ];
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5">
