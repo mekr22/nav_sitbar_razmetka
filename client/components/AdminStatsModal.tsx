@@ -86,7 +86,7 @@ export const AdminStatsModal: FC<AdminStatsModalProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl bg-[#0C101480] border-[#181B22]">
+      <DialogContent className="max-w-2xl max-h-[90vh] bg-[#0C1014] border-[#181B22] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-white">User Statistics</DialogTitle>
           <DialogDescription className="text-[#B0B0B0]">
