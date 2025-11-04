@@ -330,6 +330,17 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         <clipPath id="chart-progress-clip-main">
                           <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
                         </clipPath>
+                        <linearGradient
+                          id="filled-gradient-main"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                          gradientUnits="objectBoundingBox"
+                        >
+                          <stop stopColor="#A06AFF" stopOpacity="0.5" />
+                          <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
+                        </linearGradient>
                         <filter id="glow-main" x="-50%" y="-50%" width="200%" height="200%">
                           <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                           <feMerge>
@@ -339,12 +350,29 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         </filter>
                       </defs>
 
-                      {/* Background fill from curve to bottom - follows graph structure */}
+                      {/* Background - unfilled area (gray) */}
+                      <rect
+                        x="0"
+                        y="0"
+                        width={chartWidth}
+                        height={chartHeight}
+                        fill="#2A2F3A"
+                        opacity="0.4"
+                      />
+
+                      {/* Filled area with gradient - follows graph structure */}
                       <g clipPath="url(#chart-progress-clip-main)">
+                        <rect
+                          x="0"
+                          y="0"
+                          width={chartWidth}
+                          height={chartHeight}
+                          fill="url(#filled-gradient-main)"
+                        />
                         <path
                           d={areaD}
                           fill="#A06AFF"
-                          opacity="0.15"
+                          opacity="0.25"
                         />
                       </g>
 
