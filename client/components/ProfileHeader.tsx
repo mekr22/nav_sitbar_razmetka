@@ -80,23 +80,22 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
                 {/* Followers */}
                 <div className="mt-2 flex gap-3 text-xs sm:text-sm whitespace-nowrap">
                   <span className="text-[#B0B0B0]">
-                    <span className="text-white font-semibold">0</span> Following
+                    <span className="text-white font-semibold">1</span> Followers
                   </span>
                   <span className="text-[#B0B0B0]">
-                    <span className="text-white font-semibold">0</span> Followers
+                    <span className="text-white font-semibold">0</span> Closefriends
                   </span>
                 </div>
               </div>
             </div>
 
             {/* Actions - Hidden on lg (1024-1279), shown on xl (1280+) */}
-            <div className="hidden xl:flex gap-1 flex-shrink-0 flex-col sm:flex-row">
-              <button className="flex h-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-3 text-xs font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap">
-                <Zap className="h-3 w-3 mr-1" />
-                Donate
+            <div className="hidden xl:flex gap-2 flex-shrink-0 flex-col sm:flex-row">
+              <button className="flex h-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 text-xs font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap">
+                Profile
               </button>
-              <button className="flex h-9 items-center justify-center rounded-full border border-[#181B22] bg-[#0C101480] px-3 text-xs font-semibold text-white transition-colors hover:border-[#1F2230] whitespace-nowrap">
-                Edit profile
+              <button className="flex h-9 items-center justify-center rounded-full border border-[#181B22] bg-[#0C101480] px-4 text-xs font-semibold text-white transition-colors hover:border-[#1F2230] whitespace-nowrap">
+                Social Network
               </button>
             </div>
           </div>
