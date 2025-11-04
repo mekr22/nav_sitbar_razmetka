@@ -150,17 +150,9 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             preserveAspectRatio="xMidYMid meet"
           >
             <defs>
-              <linearGradient
-                id={gradientId}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-                gradientUnits="objectBoundingBox"
-              >
-                <stop stopColor="#A06AFF" stopOpacity="0.4" />
-                <stop offset="1" stopColor="#181A20" stopOpacity="0" />
-              </linearGradient>
+              <clipPath id={`${id}-progress-clip`}>
+                <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
+              </clipPath>
               <filter id={`${id}-glow`} x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                 <feMerge>
@@ -171,11 +163,6 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             </defs>
 
             {/* Background fill from curve to bottom - follows graph structure */}
-            <defs>
-              <clipPath id={`${id}-progress-clip`}>
-                <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
-              </clipPath>
-            </defs>
             <g clipPath={`url(#${id}-progress-clip)`}>
               <path
                 d={areaD}
