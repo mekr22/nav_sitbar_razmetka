@@ -35,7 +35,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
       {/* Profile Card - Left Side (3 columns) */}
       <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden min-w-0">
         {/* Header Background Banner */}
-        <div className="h-20 sm:h-28 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
+        <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
 
         {/* Profile Content */}
         <div className="px-4 sm:px-6 py-6 sm:py-8">
