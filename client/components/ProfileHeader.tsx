@@ -131,7 +131,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             </p>
             <button
               onClick={() => setShowStatsModal(true)}
-              className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-lg hover:bg-[#A06AFF]/30 transition-colors"
+              className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-2xl hover:bg-[#A06AFF]/30 transition-colors"
             >
               <Edit className="h-3 w-3" />
               Edit Statistics
@@ -154,7 +154,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           <div className="grid grid-cols-2 gap-3 mb-4">
             {/* Achievement 1 */}
             <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8B5CF6] flex-shrink-0">
                 <Trophy className="h-5 w-5 text-white" />
               </div>
               <p className="text-xs sm:text-sm text-white font-semibold">Verified Trader</p>
@@ -162,7 +162,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
             {/* Achievement 2 */}
             <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8B5CF6] flex-shrink-0">
                 <Target className="h-5 w-5 text-white" />
               </div>
               <p className="text-xs sm:text-sm text-white font-semibold">Sharp Shooter</p>
@@ -170,7 +170,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
             {/* Achievement 3 */}
             <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8B5CF6] flex-shrink-0">
                 <Flame className="h-5 w-5 text-white" />
               </div>
               <p className="text-xs sm:text-sm text-white font-semibold">On Fire</p>
@@ -178,7 +178,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
             {/* Achievement 4 */}
             <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#8B5CF6] flex-shrink-0">
                 <Star className="h-5 w-5 text-white" />
               </div>
               <p className="text-xs sm:text-sm text-white font-semibold">Top Rated</p>
@@ -189,7 +189,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           <div className="space-y-4">
             {/* Bull Master */}
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#181B22] flex-shrink-0">
                 <TrendingUp className="h-5 w-5 text-white" />
               </div>
               <div className="flex-1 pt-1">
@@ -205,7 +205,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
             {/* Influencer */}
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#181B22] flex-shrink-0">
                 <Zap className="h-5 w-5 text-white" />
               </div>
               <div className="flex-1 pt-1">
