@@ -1,8 +1,8 @@
 import { FC, useMemo, useState } from "react";
-import { Zap, Calendar, Trophy, Target, Flame, Star, TrendingUp, Edit } from "lucide-react";
+import { Calendar, Trophy, Target, Flame, Star, TrendingUp, Edit } from "lucide-react";
 import "./ProfileHeader.css";
 import { useUserStatistics } from "@/hooks/useUserStatistics";
-import { AdminStatsModal } from "@/components/AdminStatsModal";
+import { AdminStatsModal } from "./AdminStatsModal";
 
 interface ProfileHeaderProps {
   user?: {
