@@ -362,8 +362,10 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                     xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="none"
                   >
-                    <path d={areaD} fill="url(#gradientFill)" />
                     <defs>
+                      <clipPath id="chart-clip">
+                        <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
+                      </clipPath>
                       <linearGradient
                         id="gradientFill"
                         x1="1"
@@ -387,12 +389,27 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
                       </linearGradient>
                     </defs>
+
+                    {/* Filled area (completed progress) */}
+                    <g clipPath="url(#chart-clip)">
+                      <path d={areaD} fill="url(#gradientFill)" />
+                      <path
+                        d={pathD}
+                        stroke="url(#strokeGradient)"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </g>
+
+                    {/* Outline only (remaining progress) */}
                     <path
                       d={pathD}
-                      stroke="url(#strokeGradient)"
+                      stroke="#3A3F4D"
                       strokeWidth="1.4"
                       strokeLinecap="round"
                       strokeLinejoin="round"
+                      opacity="0.5"
                     />
                   </svg>
                   <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
