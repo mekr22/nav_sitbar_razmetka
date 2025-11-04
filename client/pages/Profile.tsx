@@ -258,7 +258,7 @@ const Profile: FC = () => {
       <ProfileHeader user={session?.user} />
 
       {/* Filter Tabs */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2 sm:overflow-x-auto scrollbar-hide w-full">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-2 sm:overflow-x-auto scrollbar-hide w-full">
         <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#A06AFF] rounded-full whitespace-nowrap transition-opacity hover:opacity-90 flex-shrink-0">
           Profile
         </button>
