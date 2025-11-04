@@ -331,61 +331,117 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
   </div>
 );
 
-// Layout 5: Dark tech style
-export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) => (
-  <div className="rounded-3xl border border-[#1F2230] bg-[#000000] p-4 sm:p-6 lg:col-span-2 space-y-4">
-    {/* Header Row */}
-    <div className="flex items-center justify-between border-b border-[#1F2230] pb-3">
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A0FF75]">
-          <span className="text-sm font-bold text-black">{stats?.current_level || 1}</span>
+// Layout 5: Dark tech style with integrated progress
+export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) => {
+  const progressPercent = stats?.level_info?.progressPercent || 0;
+  const currentXP = stats?.total_xp || 0;
+  const nextLevelXP = stats?.level_info?.nextLevelXP || 100;
+  const xpRemaining = nextLevelXP - currentXP;
+
+  const circumference = 2 * Math.PI * 45;
+  const strokeDashoffset = circumference - (progressPercent / 100) * circumference;
+
+  return (
+    <div className="rounded-3xl border border-[#1F2230] bg-gradient-to-b from-[#0A0E12] to-[#000000] p-4 sm:p-6 lg:col-span-2 space-y-6">
+      {/* Tier Section with Integrated Progress Circle */}
+      <div className="flex flex-col items-center gap-4 pb-4 border-b border-[#1F2230]">
+        {/* Circular Progress Indicator */}
+        <div className="relative w-32 h-32 flex items-center justify-center">
+          <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+            {/* Background circle */}
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#1F2230" strokeWidth="2.5" />
+            {/* Progress circle */}
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke="#A0FF75"
+              strokeWidth="2.5"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              strokeLinecap="round"
+              className="transition-all duration-500"
+            />
+          </svg>
+
+          {/* Center content */}
+          <div className="flex flex-col items-center gap-1">
+            <span className="text-4xl font-bold text-white">{stats?.current_level || 1}</span>
+            <p className="text-xs uppercase text-[#A0FF75] font-mono font-bold tracking-wider">Tier</p>
+          </div>
         </div>
-        <div>
-          <p className="text-xs uppercase text-[#A0FF75] font-mono font-bold">{'LEVEL'}</p>
-          <p className="text-sm text-white font-bold">{stats?.level_info?.name || 'Newbie'}</p>
+
+        {/* Tier Name and Rating */}
+        <div className="text-center">
+          <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+          <div className="flex items-center justify-center gap-1 mt-2">
+            <span className="text-xl">⭐</span>
+            <span className="text-sm font-bold text-white">4.8</span>
+            <span className="text-xs text-[#B0B0B0]">(156 reviews)</span>
+          </div>
         </div>
       </div>
-      <div className="text-right">
-        <p className="text-xs uppercase text-[#B0B0B0] font-mono">RATING</p>
-        <p className="text-lg font-bold text-white">4.8★</p>
-      </div>
-    </div>
 
-    {/* XP as code */}
-    <div className="font-mono text-xs space-y-1 bg-[#0C1014] p-3 rounded-lg border border-[#1F2230]">
-      <p className="text-[#A0FF75]">→ xp: {stats?.total_xp || 0} / {stats?.level_info?.nextLevelXP || 100}</p>
-      <p className="text-[#A06AFF]">→ progress: {stats?.level_info?.progressPercent || 0}%</p>
-      <div className="h-1 bg-[#181B22] rounded overflow-hidden mt-2">
-        <div
-          className="h-full bg-[#A0FF75]"
-          style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
-        ></div>
-      </div>
-    </div>
-
-    {/* Achievements as status indicators */}
-    <div className="space-y-2">
-      <p className="text-xs uppercase text-[#B0B0B0] font-mono">ACHIEVEMENTS</p>
-      {[
-        { icon: Trophy, name: 'Verified Trader', active: true },
-        { icon: Target, name: 'Sharp Shooter', active: true },
-        { icon: Flame, name: 'On Fire', active: false },
-        { icon: Star, name: 'Top Rated', active: false },
-      ].map(({ icon: Icon, name, active }) => (
-        <div key={name} className="flex items-center gap-2 text-xs">
-          <div className={`h-2 w-2 rounded-full ${active ? 'bg-[#A0FF75]' : 'bg-[#1F2230]'}`}></div>
-          <Icon className="h-3 w-3" style={{ color: active ? '#A0FF75' : '#B0B0B0' }} />
-          <span style={{ color: active ? '#A0FF75' : '#666666' }}>{name}</span>
+      {/* XP Progress Details */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between text-xs font-mono">
+          <span className="text-[#A0FF75]">→ progress</span>
+          <span className="text-white font-bold">{progressPercent}%</span>
         </div>
-      ))}
-    </div>
+        <div className="h-1.5 bg-[#1F2230] rounded-full overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-[#A0FF75] to-[#7FD700] rounded-full transition-all duration-500"
+            style={{ width: `${progressPercent}%` }}
+          ></div>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+          <div className="text-[#A0FF75]">
+            <p className="text-[#B0B0B0] mb-1">Current</p>
+            <p className="text-white font-bold">{currentXP}</p>
+          </div>
+          <div className="text-[#A06AFF]">
+            <p className="text-[#B0B0B0] mb-1">Remaining</p>
+            <p className="text-white font-bold">{xpRemaining}</p>
+          </div>
+        </div>
+      </div>
 
-    {/* Edit */}
-    <button
-      onClick={onEditClick}
-      className="w-full px-3 py-2 text-xs font-semibold text-black bg-[#A0FF75] rounded-xl hover:bg-[#B8FF94] transition-colors font-mono"
-    >
-      → EDIT STATS
-    </button>
-  </div>
-);
+      {/* Divider */}
+      <div className="h-px bg-[#1F2230]"></div>
+
+      {/* Achievements as status indicators */}
+      <div className="space-y-2">
+        <p className="text-xs uppercase text-[#B0B0B0] font-mono tracking-wider">ACHIEVEMENTS</p>
+        <div className="grid grid-cols-2 gap-2">
+          {[
+            { icon: Trophy, name: 'Verified Trader', active: true },
+            { icon: Target, name: 'Sharp Shooter', active: true },
+            { icon: Flame, name: 'On Fire', active: false },
+            { icon: Star, name: 'Top Rated', active: false },
+          ].map(({ icon: Icon, name, active }) => (
+            <div
+              key={name}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-mono transition-all ${
+                active
+                  ? 'border-[#A0FF75] bg-[#A0FF75]/10 text-[#A0FF75]'
+                  : 'border-[#1F2230] bg-[#0C1014]/50 text-[#666666]'
+              }`}
+            >
+              <Icon className="h-3 w-3 flex-shrink-0" />
+              <span className="truncate">{name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Edit Button */}
+      <button
+        onClick={onEditClick}
+        className="w-full px-3 py-2 text-xs font-semibold text-black bg-[#A0FF75] rounded-xl hover:bg-[#B8FF94] transition-colors font-mono font-bold tracking-wide"
+      >
+        → EDIT STATS
+      </button>
+    </div>
+  );
+};
