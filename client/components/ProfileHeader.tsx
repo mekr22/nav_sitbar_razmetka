@@ -35,12 +35,12 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     year: "numeric",
   });
 
-  // Layout 2: Vertical stack with right panel on top
+  // Layout 2: Same structure but different right panel design - Horizontal achievements
   if (layoutTab === 2) {
     return (
-      <div className="flex flex-col gap-6 w-full">
-        {/* Right Sidebar - Advanced Level & Achievements - FULL WIDTH AT TOP */}
-        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 space-y-6 w-full">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
+        {/* Profile Card - Left Side (SAME AS LAYOUT 1) */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden min-w-0">
           {/* Advanced Level Section */}
           <div>
             <div className="flex items-start justify-between gap-4 mb-4">
