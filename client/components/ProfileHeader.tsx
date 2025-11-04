@@ -36,6 +36,46 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     year: "numeric",
   });
 
+  // Render left profile card (SAME FOR ALL LAYOUTS)
+  const profileCard = (
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden min-w-0">
+      <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
+      <div className="px-4 sm:px-6 py-6 sm:py-8">
+        <div className="flex flex-col items-center sm:items-start gap-4">
+          <div className="-mt-16 sm:-mt-20 lg:-mt-24 mb-4 sm:mb-2">
+            <div className="flex h-28 w-28 sm:h-32 sm:w-32 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-3xl sm:text-4xl font-bold text-white border-4 border-[#0C1014]">
+              {initials}
+            </div>
+          </div>
+          <div className="flex flex-col items-center sm:items-start gap-1 w-full">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">{username}</h2>
+            <p className="text-xs sm:text-sm text-[#B0B0B0]">@{username}</p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-2">
+              <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 text-xs font-semibold text-[#A06AFF] w-fit">
+                <span className="flex h-4 w-4 items-center justify-center rounded bg-[#A06AFF] text-white text-[10px] font-bold">
+                  4
+                </span>
+                TIER
+              </span>
+              <div className="flex items-center gap-1 text-xs sm:text-sm text-[#B0B0B0]">
+                <Calendar className="h-3 w-3 flex-shrink-0" />
+                Joined {joinDate}
+              </div>
+            </div>
+            <div className="flex gap-4 text-xs sm:text-sm pt-2">
+              <span className="text-[#B0B0B0]">
+                <span className="text-white font-semibold">0</span> Following
+              </span>
+              <span className="text-[#B0B0B0]">
+                <span className="text-white font-semibold">0</span> Followers
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   // Layout 2: Horizontal achievements
   if (layoutTab === 2) {
     return (
