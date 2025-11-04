@@ -254,7 +254,7 @@ const Profile: FC = () => {
   }
 
   return (
-    <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-6">
+    <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8 py-6 w-full">
       <ProfileHeader user={session?.user} />
 
       {/* Filter Tabs - Full Width with Responsive Padding */}
