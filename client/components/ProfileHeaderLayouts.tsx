@@ -217,7 +217,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </div>
 
         {/* X-axis labels */}
-        <div className="flex justify-between text-xs text-[#B0B0B0] px-6 py-3 border-t border-[#181B22]">
+        <div className="flex justify-between text-xs text-[#B0B0B0] px-6 py-3">
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
             <span key={day} className="text-center">{day}</span>
           ))}
