@@ -35,6 +35,148 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     year: "numeric",
   });
 
+  // Layout 2: Vertical stack with right panel on top
+  if (layoutTab === 2) {
+    return (
+      <div className="flex flex-col gap-6 w-full">
+        {/* Right Sidebar - Advanced Level & Achievements - FULL WIDTH AT TOP */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 space-y-6 w-full">
+          {/* Advanced Level Section */}
+          <div>
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div className="flex items-start gap-3">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
+                  <span className="text-xl font-bold text-black">{stats?.current_level || 1}</span>
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <h3 className="text-base sm:text-lg font-bold text-white">
+                    {stats?.level_info?.name || 'Newbie'}
+                  </h3>
+                  <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 text-xs sm:text-sm">
+                <span className="text-lg">⭐</span>
+                <span className="font-bold text-white">4.8</span>
+                <span className="text-[#B0B0B0]">(156)</span>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs">
+                <p className="text-[#B0B0B0]">
+                  {stats?.total_xp || 0} / {stats?.level_info?.nextLevelXP || 100} XP
+                </p>
+                <p className="text-[#A0FF75] font-semibold">{stats?.level_info?.progressPercent || 0}%</p>
+              </div>
+              <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-[#A0FF75] rounded-full transition-all"
+                  style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Achievements in 2 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Column 1 */}
+            <div className="space-y-3">
+              <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide">Achievements</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="flex items-center gap-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#8B5CF6] flex-shrink-0">
+                    <Trophy className="h-4 w-4 text-white" />
+                  </div>
+                  <p className="text-xs text-white font-semibold">Verified</p>
+                </div>
+                <div className="flex items-center gap-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#8B5CF6] flex-shrink-0">
+                    <Target className="h-4 w-4 text-white" />
+                  </div>
+                  <p className="text-xs text-white font-semibold">Shooter</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Column 2 - Progress */}
+            <div className="space-y-3">
+              <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide">In Progress</h3>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-xs text-white font-semibold">Bull Master</p>
+                  <div className="mt-1 h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+                    <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs text-white font-semibold">Influencer</p>
+                  <div className="mt-1 h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+                    <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setShowStatsModal(true)}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-2xl hover:bg-[#A06AFF]/30 transition-colors"
+          >
+            <Edit className="h-3 w-3" />
+            Edit Statistics
+          </button>
+        </div>
+
+        {/* Profile Card */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 overflow-hidden">
+          <div className="h-32 sm:h-40 lg:h-48 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
+          <div className="px-4 sm:px-6 py-6 sm:py-8">
+            <div className="flex flex-col items-center sm:items-start gap-4">
+              <div className="-mt-16 sm:-mt-20 lg:-mt-24 mb-4 sm:mb-2">
+                <div className="flex h-28 w-28 sm:h-32 sm:w-32 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A06AFF] to-[#482090] text-3xl sm:text-4xl font-bold text-white border-4 border-[#0C1014]">
+                  {initials}
+                </div>
+              </div>
+              <div className="flex flex-col items-center sm:items-start gap-1 w-full">
+                <h2 className="text-xl sm:text-2xl font-bold text-white">{username}</h2>
+                <p className="text-xs sm:text-sm text-[#B0B0B0]">@{username}</p>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-2">
+                  <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 text-xs font-semibold text-[#A06AFF] w-fit">
+                    <span className="flex h-4 w-4 items-center justify-center rounded bg-[#A06AFF] text-white text-[10px] font-bold">
+                      4
+                    </span>
+                    TIER
+                  </span>
+                  <div className="flex items-center gap-1 text-xs sm:text-sm text-[#B0B0B0]">
+                    <Calendar className="h-3 w-3 flex-shrink-0" />
+                    Joined {joinDate}
+                  </div>
+                </div>
+                <div className="flex gap-4 text-xs sm:text-sm pt-2">
+                  <span className="text-[#B0B0B0]">
+                    <span className="text-white font-semibold">0</span> Following
+                  </span>
+                  <span className="text-[#B0B0B0]">
+                    <span className="text-white font-semibold">0</span> Followers
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <AdminStatsModal
+          open={showStatsModal}
+          onOpenChange={setShowStatsModal}
+          stats={stats}
+          onSave={updateStatistics}
+          loading={statsLoading}
+        />
+      </div>
+    );
+  }
+
+  // Layout 1: Default grid layout
   return (
     <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
       {/* Profile Card - Left Side (3 columns) */}
