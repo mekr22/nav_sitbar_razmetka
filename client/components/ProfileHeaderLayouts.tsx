@@ -172,6 +172,11 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 d={areaD}
                 fill={`url(#${id}-filled-gradient)`}
               />
+              <path
+                d={areaD}
+                fill="#A06AFF"
+                opacity="0.2"
+              />
             </g>
 
             {/* Full outline - always visible at 100% */}
