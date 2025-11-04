@@ -188,9 +188,8 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 y2={chartHeight}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#9D4EDD" stopOpacity="0.6" />
-                <stop offset="0.5" stopColor="#7209B7" stopOpacity="0.4" />
-                <stop offset="1" stopColor="#3A0CA3" stopOpacity="0.1" />
+                <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                <stop offset="1" stopColor="#181A20" stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id={strokeId}
@@ -200,17 +199,16 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 y2={chartHeight}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#D8B4FE" />
-                <stop offset="0.5" stopColor="#C77DFF" />
-                <stop offset="1" stopColor="#7C3AED" />
+                <stop stopColor="#C6A6FF" />
+                <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
               </linearGradient>
             </defs>
 
-            {/* Line path with beautiful purple */}
+            {/* Line path with beautiful sharp purple */}
             <path
               d={pathD}
-              stroke="#C77DFF"
-              strokeWidth="2.2"
+              stroke={`url(#${strokeId})`}
+              strokeWidth="1.4"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
