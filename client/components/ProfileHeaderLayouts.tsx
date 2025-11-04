@@ -156,7 +156,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
       </div>
 
       {/* Graph Container with Progress Inside */}
-      <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-2xl overflow-hidden">
+      <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 border border-[#A06AFF]/30 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
         <div className="relative h-56">
           <svg
             className="h-full w-full"
@@ -165,7 +165,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
           >
-            {/* Area fill */}
+            {/* Area fill with vibrant purple gradient */}
             <path
               d={areaD}
               fill={`url(#${gradientId})`}
@@ -181,8 +181,9 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 y2={chartHeight}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#A06AFF" stopOpacity="0.32" />
-                <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+                <stop stopColor="#9D4EDD" stopOpacity="0.6" />
+                <stop offset="0.5" stopColor="#7209B7" stopOpacity="0.4" />
+                <stop offset="1" stopColor="#3A0CA3" stopOpacity="0.1" />
               </linearGradient>
               <linearGradient
                 id={strokeId}
@@ -192,25 +193,26 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 y2={chartHeight}
                 gradientUnits="userSpaceOnUse"
               >
-                <stop stopColor="#C6A6FF" />
-                <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
+                <stop stopColor="#E0AAFF" />
+                <stop offset="0.5" stopColor="#C77DFF" />
+                <stop offset="1" stopColor="#9D4EDD" />
               </linearGradient>
             </defs>
 
-            {/* Line path */}
+            {/* Line path with beautiful purple */}
             <path
               d={pathD}
               stroke={`url(#${strokeId})`}
-              strokeWidth="1.8"
+              strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
 
           {/* Progress Percentage Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <p className="text-4xl font-bold text-white">{progressPercent}%</p>
-            <p className="text-xs text-[#B0B0B0] mt-1">Progress</p>
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-transparent to-[#0C1014]/30">
+            <p className="text-5xl font-bold text-white drop-shadow-lg">{progressPercent}%</p>
+            <p className="text-xs text-[#E0AAFF] mt-1 font-semibold">Progress</p>
           </div>
         </div>
 
