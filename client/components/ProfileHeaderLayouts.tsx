@@ -123,7 +123,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
 
       {/* Graph Container */}
-      <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-visible shadow-lg shadow-[#A06AFF]/20">
+      <div className="relative rounded-2xl overflow-visible shadow-lg shadow-[#A06AFF]/20">
         <div className="relative h-56 w-full p-4">
           <svg
             className="w-full h-full"
