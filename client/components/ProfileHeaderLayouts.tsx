@@ -172,14 +172,11 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
           >
-            {/* Area fill with vibrant purple gradient */}
-            <path
-              d={areaD}
-              fill={`url(#${gradientId})`}
-            />
-
-            {/* Gradient definitions */}
+            {/* Clip path to show only filled portion */}
             <defs>
+              <clipPath id={`${id}-clip`}>
+                <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
+              </clipPath>
               <linearGradient
                 id={gradientId}
                 x1="1"
@@ -204,13 +201,29 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               </linearGradient>
             </defs>
 
-            {/* Line path with beautiful sharp purple */}
+            {/* Filled area (completed progress) */}
+            <g clipPath={`url(#${id}-clip)`}>
+              <path
+                d={areaD}
+                fill={`url(#${gradientId})`}
+              />
+              <path
+                d={pathD}
+                stroke={`url(#${strokeId})`}
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+
+            {/* Outline only (remaining progress) */}
             <path
               d={pathD}
-              stroke={`url(#${strokeId})`}
+              stroke="#3A3F4D"
               strokeWidth="1.4"
               strokeLinecap="round"
               strokeLinejoin="round"
+              opacity="0.5"
             />
           </svg>
 
