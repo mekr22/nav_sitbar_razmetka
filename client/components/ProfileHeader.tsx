@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from "react";
-import { Zap, Calendar } from "lucide-react";
+import { Zap, Calendar, Trophy, Target, Flame, Star, TrendingUp } from "lucide-react";
 import "./ProfileHeader.css";
 
 interface ProfileHeaderProps {
