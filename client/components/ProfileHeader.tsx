@@ -31,9 +31,9 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
   });
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5">
+    <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full auto-cols-fr">
       {/* Profile Card - Left Side (3 columns) */}
-      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden">
+      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden min-w-0">
         {/* Header Background Banner */}
         <div className="h-20 sm:h-28 bg-gradient-to-r from-pink-500 via-yellow-300 to-blue-500" />
 
@@ -82,7 +82,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
       </div>
 
       {/* Right Sidebar - Advanced Level & Achievements (2 columns) */}
-      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-6">
+      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-6 min-w-0">
         {/* Advanced Level Section */}
         <div>
           <div className="flex items-start justify-between gap-4 mb-4">
