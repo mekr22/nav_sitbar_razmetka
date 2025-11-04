@@ -362,16 +362,12 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                     </defs>
                     <path
                       d={pathD}
-                      stroke="#A0FF75"
+                      stroke="#C77DFF"
                       strokeWidth="2"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                    {points.map((point, idx) => {
-                      const [x, y] = point.split(',').map(Number);
-                      return <circle key={idx} cx={x} cy={y} r="2" fill="#A0FF75" />;
-                    })}
                   </svg>
                   <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
