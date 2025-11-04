@@ -93,11 +93,13 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             {/* Level Badge & Info */}
             <div className="flex items-start gap-3">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
-                <span className="text-xl font-bold text-black">42</span>
+                <span className="text-xl font-bold text-black">{stats?.current_level || 1}</span>
               </div>
               <div className="flex flex-col gap-0.5">
-                <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
-                <p className="text-xs text-[#B0B0B0]">Level 42</p>
+                <h3 className="text-base sm:text-lg font-bold text-white">
+                  {stats?.level_info?.name || 'Newbie'}
+                </h3>
+                <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
               </div>
             </div>
 
@@ -112,13 +114,28 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
           {/* XP Info */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs">
-              <p className="text-[#B0B0B0]">3 750 / 5 000 XP</p>
-              <p className="text-[#A0FF75] font-semibold">75%</p>
+              <p className="text-[#B0B0B0]">
+                {stats?.total_xp || 0} / {stats?.level_info?.nextLevelXP || 100} XP
+              </p>
+              <p className="text-[#A0FF75] font-semibold">{stats?.level_info?.progressPercent || 0}%</p>
             </div>
             <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
-              <div className="h-full w-3/4 bg-[#A0FF75] rounded-full"></div>
+              <div
+                className="h-full bg-[#A0FF75] rounded-full transition-all"
+                style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
+              ></div>
             </div>
-            <p className="text-xs text-[#B0B0B0]">1 250 XP to reach Level 43</p>
+            <p className="text-xs text-[#B0B0B0]">
+              {(stats?.level_info?.nextLevelXP || 100) - (stats?.total_xp || 0)} XP to reach Level{' '}
+              {(stats?.current_level || 1) + 1}
+            </p>
+            <button
+              onClick={() => setShowStatsModal(true)}
+              className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-lg hover:bg-[#A06AFF]/30 transition-colors"
+            >
+              <Edit className="h-3 w-3" />
+              Edit Statistics
+            </button>
           </div>
         </div>
 
