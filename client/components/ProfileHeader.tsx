@@ -92,119 +92,126 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
       </div>
 
-      {/* Right Sidebar - Advanced Level (2 columns) */}
-      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        <div className="flex items-start justify-between gap-4 mb-4">
-          {/* Level Badge & Info */}
-          <div className="flex items-start gap-3">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
-              <span className="text-xl font-bold text-black">42</span>
+      {/* Right Sidebar - Advanced Level & Achievements (2 columns) */}
+      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-6">
+        {/* Advanced Level Section */}
+        <div>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            {/* Level Badge & Info */}
+            <div className="flex items-start gap-3">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
+                <span className="text-xl font-bold text-black">42</span>
+              </div>
+              <div className="flex flex-col gap-0.5">
+                <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
+                <p className="text-xs text-[#B0B0B0]">Level 42</p>
+              </div>
             </div>
-            <div className="flex flex-col gap-0.5">
-              <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
-              <p className="text-xs text-[#B0B0B0]">Level 42</p>
+
+            {/* Rating Badge */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm">
+              <span className="text-lg">⭐</span>
+              <span className="font-bold text-white">4.8</span>
+              <span className="text-[#B0B0B0]">(156)</span>
             </div>
           </div>
 
-          {/* Rating Badge */}
-          <div className="flex items-center gap-2 text-xs sm:text-sm">
-            <span className="text-lg">⭐</span>
-            <span className="font-bold text-white">4.8</span>
-            <span className="text-[#B0B0B0]">(156)</span>
+          {/* XP Info */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-xs">
+              <p className="text-[#B0B0B0]">3 750 / 5 000 XP</p>
+              <p className="text-[#A0FF75] font-semibold">75%</p>
+            </div>
+            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
+              <div className="h-full w-3/4 bg-[#A0FF75] rounded-full"></div>
+            </div>
+            <p className="text-xs text-[#B0B0B0]">1 250 XP to reach Level 43</p>
           </div>
         </div>
 
-        {/* XP Info */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <p className="text-[#B0B0B0]">3 750 / 5 000 XP</p>
-            <p className="text-[#A0FF75] font-semibold">75%</p>
+        {/* Divider */}
+        <div className="h-px bg-[#181B22]"></div>
+
+        {/* Achievements Section */}
+        <div>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide">Achievements (4)</h3>
+            <span className="text-xs text-[#B0B0B0]">2 in Progress</span>
           </div>
-          <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
-            <div className="h-full w-3/4 bg-[#A0FF75] rounded-full"></div>
+
+          {/* Achievement Grid 2x2 */}
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            {/* Achievement 1 */}
+            <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+                <Trophy className="h-5 w-5 text-white" />
+              </div>
+              <p className="text-xs sm:text-sm text-white font-semibold">Verified Trader</p>
+            </div>
+
+            {/* Achievement 2 */}
+            <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+                <Target className="h-5 w-5 text-white" />
+              </div>
+              <p className="text-xs sm:text-sm text-white font-semibold">Sharp Shooter</p>
+            </div>
+
+            {/* Achievement 3 */}
+            <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+                <Flame className="h-5 w-5 text-white" />
+              </div>
+              <p className="text-xs sm:text-sm text-white font-semibold">On Fire</p>
+            </div>
+
+            {/* Achievement 4 */}
+            <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+                <Star className="h-5 w-5 text-white" />
+              </div>
+              <p className="text-xs sm:text-sm text-white font-semibold">Top Rated</p>
+            </div>
           </div>
-          <p className="text-xs text-[#B0B0B0]">1 250 XP to reach Level 43</p>
+
+          {/* Progress Achievements */}
+          <div className="space-y-4">
+            {/* Bull Master */}
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
+                <TrendingUp className="h-5 w-5 text-white" />
+              </div>
+              <div className="flex-1 pt-1">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs sm:text-sm text-white font-semibold">Bull Master</p>
+                  <span className="text-xs text-[#A06AFF] font-semibold">72%</span>
+                </div>
+                <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+                  <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Influencer */}
+            <div className="flex items-start gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
+                <Zap className="h-5 w-5 text-white" />
+              </div>
+              <div className="flex-1 pt-1">
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-xs sm:text-sm text-white font-semibold">Influencer</p>
+                  <span className="text-xs text-[#A06AFF] font-semibold">45%</span>
+                </div>
+                <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+                  <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Right Sidebar - Achievements (2 columns) */}
-      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide">Achievements (4)</h3>
-          <span className="text-xs text-[#B0B0B0]">2 in Progress</span>
-        </div>
-
-        {/* Achievement Grid 2x2 */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          {/* Achievement 1 */}
-          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
-              <Trophy className="h-5 w-5 text-white" />
-            </div>
-            <p className="text-xs sm:text-sm text-white font-semibold">Verified Trader</p>
-          </div>
-
-          {/* Achievement 2 */}
-          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
-              <Target className="h-5 w-5 text-white" />
-            </div>
-            <p className="text-xs sm:text-sm text-white font-semibold">Sharp Shooter</p>
-          </div>
-
-          {/* Achievement 3 */}
-          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
-              <Flame className="h-5 w-5 text-white" />
-            </div>
-            <p className="text-xs sm:text-sm text-white font-semibold">On Fire</p>
-          </div>
-
-          {/* Achievement 4 */}
-          <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
-              <Star className="h-5 w-5 text-white" />
-            </div>
-            <p className="text-xs sm:text-sm text-white font-semibold">Top Rated</p>
-          </div>
-        </div>
-
-        {/* Progress Achievements */}
-        <div className="space-y-4">
-          {/* Bull Master */}
-          <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
-              <TrendingUp className="h-5 w-5 text-white" />
-            </div>
-            <div className="flex-1 pt-1">
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xs sm:text-sm text-white font-semibold">Bull Master</p>
-                <span className="text-xs text-[#A06AFF] font-semibold">72%</span>
-              </div>
-              <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
-                <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
-              </div>
-            </div>
-          </div>
-
-          {/* Influencer */}
-          <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
-              <Zap className="h-5 w-5 text-white" />
-            </div>
-            <div className="flex-1 pt-1">
-              <div className="flex items-center justify-between mb-2">
-                <p className="text-xs sm:text-sm text-white font-semibold">Influencer</p>
-                <span className="text-xs text-[#A06AFF] font-semibold">45%</span>
-              </div>
-              <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
-                <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
