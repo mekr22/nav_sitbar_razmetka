@@ -350,15 +350,21 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         </filter>
                       </defs>
 
-                      {/* Background - unfilled area (gray) */}
-                      <rect
-                        x="0"
-                        y="0"
-                        width={chartWidth}
-                        height={chartHeight}
-                        fill="#2A2F3A"
-                        opacity="0.4"
-                      />
+                      {/* Unfilled area (gray) - follows graph curve */}
+                      <g>
+                        <defs>
+                          <clipPath id="chart-unfilled-clip-main">
+                            <rect x={(chartWidth * progressPercent) / 100} y="0" width={chartWidth} height={chartHeight} />
+                          </clipPath>
+                        </defs>
+                        <g clipPath="url(#chart-unfilled-clip-main)">
+                          <path
+                            d={areaD}
+                            fill="#2A2F3A"
+                            opacity="0.4"
+                          />
+                        </g>
+                      </g>
 
                       {/* Filled area with gradient - follows graph curve and structure */}
                       <g clipPath="url(#chart-progress-clip-main)">
