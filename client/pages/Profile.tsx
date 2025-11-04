@@ -257,34 +257,32 @@ const Profile: FC = () => {
     <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8 py-6 w-full">
       <ProfileHeader user={session?.user} />
 
-      {/* Filter Tabs - Full Width with Responsive Padding */}
-      <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2 sm:overflow-x-auto scrollbar-hide max-w-7xl mx-auto">
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#A06AFF] rounded-full whitespace-nowrap transition-opacity hover:opacity-90 flex-shrink-0">
-            Profile
-          </button>
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
-            Security
-          </button>
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
-            Notifications
-          </button>
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
-            Billing
-          </button>
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
-            Referrals
-          </button>
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
-            API & Integrations
-          </button>
-          <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
-            KYC
-          </button>
-        </div>
+      {/* Filter Tabs */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2 sm:overflow-x-auto scrollbar-hide w-full">
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#A06AFF] rounded-full whitespace-nowrap transition-opacity hover:opacity-90 flex-shrink-0">
+          Profile
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
+          Security
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
+          Notifications
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
+          Billing
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
+          Referrals
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
+          API & Integrations
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white flex-shrink-0">
+          KYC
+        </button>
       </div>
 
-      <div className="container-card p-4 sm:p-6 lg:p-8">
+      <div className="container-card p-4 sm:p-6 lg:p-8 w-full">
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:items-center">
             <div className="flex flex-col gap-3">
