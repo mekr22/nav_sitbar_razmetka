@@ -121,22 +121,6 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </div>
       </div>
 
-      {/* Time Period Toggle */}
-      <div className="flex gap-1 bg-[#181B22] p-1 rounded-full w-fit">
-        {['Day', 'Week', 'Month', 'Year'].map((period) => (
-          <button
-            key={period}
-            onClick={() => setTimePeriod(period.toLowerCase() as any)}
-            className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
-              timePeriod === period.toLowerCase()
-                ? 'bg-white text-black'
-                : 'text-[#B0B0B0] hover:text-white'
-            }`}
-          >
-            {period}
-          </button>
-        ))}
-      </div>
 
       {/* Graph Container with Progress Inside */}
       <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
