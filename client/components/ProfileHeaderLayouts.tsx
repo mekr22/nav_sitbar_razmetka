@@ -90,21 +90,22 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const nextLevelXP = stats?.level_info?.nextLevelXP || 100;
   const xpRemaining = nextLevelXP - currentXP;
 
+  // Static graph pattern - represents a typical XP progression curve
   const dataPoints = [
-    progressPercent * 0.3,
-    progressPercent * 0.45,
-    progressPercent * 0.65,
-    progressPercent * 0.75,
-    progressPercent * 0.88,
-    progressPercent * 0.92,
-    progressPercent * 0.95,
-    progressPercent * 0.98,
-    progressPercent * 1.0,
-    progressPercent * 0.96,
-    progressPercent * 0.90,
-    progressPercent * 0.82,
-    progressPercent * 0.75,
-    progressPercent * 0.70,
+    30,
+    45,
+    65,
+    75,
+    88,
+    92,
+    95,
+    98,
+    100,
+    96,
+    90,
+    82,
+    75,
+    70,
   ];
 
   const id = Math.random().toString(36).substr(2, 9);
@@ -114,7 +115,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const chartHeight = 150;
   const chartWidth = 320;
   const padding = 10;
-  const maxValue = Math.max(...dataPoints, 100);
+  const maxValue = 100;
 
   // Generate SVG path
   const points = dataPoints.map((value, idx) => {
