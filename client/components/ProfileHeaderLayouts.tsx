@@ -141,15 +141,14 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
       {/* Graph Container with Progress Inside */}
       <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
-        <div className="relative h-56 w-full flex items-center justify-center">
+        <div className="relative h-56 w-full p-4">
           <svg
-            className="h-full w-full"
+            className="w-full h-full"
             viewBox={`0 0 ${chartWidth} ${chartHeight}`}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid meet"
           >
-            {/* Clip path to show only filled portion */}
             <defs>
               <clipPath id={`${id}-clip`}>
                 <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
@@ -162,60 +161,41 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 y2="1"
                 gradientUnits="objectBoundingBox"
               >
-                <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                <stop stopColor="#A06AFF" stopOpacity="0.4" />
                 <stop offset="1" stopColor="#181A20" stopOpacity="0" />
               </linearGradient>
-              <linearGradient
-                id={strokeId}
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-                gradientUnits="objectBoundingBox"
-              >
-                <stop stopColor="#C6A6FF" />
-                <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
-              </linearGradient>
+              <filter id={`${id}-glow`} x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
             </defs>
 
-            {/* Filled area (completed progress) */}
+            {/* Background fill - only up to progress */}
             <g clipPath={`url(#${id}-clip)`}>
               <path
                 d={areaD}
                 fill={`url(#${gradientId})`}
               />
-              <path
-                d={pathD}
-                stroke={`url(#${strokeId})`}
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
             </g>
 
-            {/* Outline only (remaining progress) */}
+            {/* Full outline - always visible at 100% */}
             <path
               d={pathD}
-              stroke="#3A3F4D"
-              strokeWidth="2"
+              stroke="#A06AFF"
+              strokeWidth="1.5"
               strokeLinecap="round"
-              strokeLinejoin="round"
-              opacity="0.5"
+              filter={`url(#${id}-glow)`}
             />
           </svg>
 
-          {/* Progress Percentage Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-transparent via-transparent to-[#0C1014]/30">
+          {/* Progress Percentage Inside Graph */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
             <p className="text-5xl font-bold text-white drop-shadow-lg">{progressPercent}%</p>
-            <p className="text-xs text-[#E0AAFF] mt-1 font-semibold">Progress</p>
+            <p className="text-xs text-[#E0AAFF] mt-1 font-semibold uppercase tracking-wide">Progress</p>
           </div>
-        </div>
-
-        {/* X-axis labels */}
-        <div className="flex justify-between text-xs text-[#B0B0B0] px-6 py-3">
-          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
-            <span key={day} className="text-center">{day}</span>
-          ))}
         </div>
       </div>
 
