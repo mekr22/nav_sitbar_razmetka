@@ -360,19 +360,11 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         opacity="0.4"
                       />
 
-                      {/* Filled area with gradient - follows graph structure */}
+                      {/* Filled area with gradient - follows graph curve and structure */}
                       <g clipPath="url(#chart-progress-clip-main)">
-                        <rect
-                          x="0"
-                          y="0"
-                          width={chartWidth}
-                          height={chartHeight}
-                          fill="url(#filled-gradient-main)"
-                        />
                         <path
                           d={areaD}
-                          fill="#A06AFF"
-                          opacity="0.25"
+                          fill="url(#filled-gradient-main)"
                         />
                       </g>
 
