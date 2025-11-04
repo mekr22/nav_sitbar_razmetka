@@ -1,6 +1,8 @@
-import { FC, useMemo } from "react";
-import { Zap, Calendar, Trophy, Target, Flame, Star, TrendingUp } from "lucide-react";
+import { FC, useMemo, useState } from "react";
+import { Zap, Calendar, Trophy, Target, Flame, Star, TrendingUp, Edit } from "lucide-react";
 import "./ProfileHeader.css";
+import { useUserStatistics } from "@/hooks/useUserStatistics";
+import { AdminStatsModal } from "@/components/AdminStatsModal";
 
 interface ProfileHeaderProps {
   user?: {
@@ -12,6 +14,8 @@ interface ProfileHeaderProps {
 }
 
 const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
+  const { stats, updateStatistics, loading: statsLoading } = useUserStatistics();
+  const [showStatsModal, setShowStatsModal] = useState(false);
   const username = useMemo(() => {
     return (
       user?.user_metadata?.username ||
