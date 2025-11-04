@@ -49,43 +49,32 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
             </div>
 
             {/* User Info */}
-            <div className="flex flex-col items-center sm:items-start gap-2 w-full">
+            <div className="flex flex-col items-center sm:items-start gap-1 w-full">
               <h2 className="text-xl sm:text-2xl font-bold text-white">{username}</h2>
+              <p className="text-xs sm:text-sm text-[#B0B0B0]">@{username}</p>
 
-              {/* Tier Badge */}
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 text-xs font-semibold text-[#A06AFF]">
+              {/* Tier and Join Date Row */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-2">
+                <span className="inline-flex items-center gap-1 rounded-full border border-[#A06AFF] bg-[#A06AFF]/10 px-2 py-1 text-xs font-semibold text-[#A06AFF] w-fit">
                   <span className="flex h-4 w-4 items-center justify-center rounded bg-[#A06AFF] text-white text-[10px] font-bold">
                     4
                   </span>
                   TIER
                 </span>
-              </div>
-
-              {/* Join Date */}
-              <div className="flex items-center gap-1 text-xs sm:text-sm text-[#B0B0B0]">
-                <Calendar className="h-3 w-3 flex-shrink-0" />
-                Joined {joinDate}
+                <div className="flex items-center gap-1 text-xs sm:text-sm text-[#B0B0B0]">
+                  <Calendar className="h-3 w-3 flex-shrink-0" />
+                  Joined {joinDate}
+                </div>
               </div>
 
               {/* Followers */}
               <div className="flex gap-4 text-xs sm:text-sm pt-2">
                 <span className="text-[#B0B0B0]">
-                  <span className="text-white font-semibold">1</span> Followers
+                  <span className="text-white font-semibold">0</span> Following
                 </span>
                 <span className="text-[#B0B0B0]">
-                  <span className="text-white font-semibold">0</span> Closefriends
+                  <span className="text-white font-semibold">0</span> Followers
                 </span>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex gap-2 mt-4 w-full sm:w-auto">
-                <button className="flex-1 sm:flex-none flex h-9 items-center justify-center rounded-full bg-gradient-to-r from-[#A06AFF] to-[#482090] px-4 text-xs font-semibold text-white transition-opacity hover:opacity-90 whitespace-nowrap">
-                  Profile
-                </button>
-                <button className="flex-1 sm:flex-none flex h-9 items-center justify-center rounded-full border border-[#181B22] bg-[#0C101480] px-4 text-xs font-semibold text-white transition-colors hover:border-[#1F2230] whitespace-nowrap">
-                  Social Network
-                </button>
               </div>
             </div>
           </div>
