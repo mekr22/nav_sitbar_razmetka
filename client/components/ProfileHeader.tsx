@@ -366,6 +366,11 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                           d={areaD}
                           fill="url(#filled-gradient-main)"
                         />
+                        <path
+                          d={areaD}
+                          fill="#A06AFF"
+                          opacity="0.2"
+                        />
                       </g>
 
                       {/* Full outline - always visible at 100% */}
