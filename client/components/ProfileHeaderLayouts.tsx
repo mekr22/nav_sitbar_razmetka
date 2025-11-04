@@ -202,7 +202,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             {/* Line path with beautiful purple */}
             <path
               d={pathD}
-              stroke={`url(#${strokeId})`}
+              stroke="#C77DFF"
               strokeWidth="2.2"
               strokeLinecap="round"
               strokeLinejoin="round"
