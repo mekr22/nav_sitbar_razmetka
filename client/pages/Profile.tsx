@@ -256,6 +256,32 @@ const Profile: FC = () => {
   return (
     <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl py-6">
       <ProfileHeader user={session?.user} />
+
+      {/* Filter Tabs */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:overflow-x-auto scrollbar-hide">
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#A06AFF] rounded-full whitespace-nowrap transition-opacity hover:opacity-90">
+          Profile
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white">
+          Security
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white">
+          Notifications
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white">
+          Billing
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white">
+          Referrals
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white">
+          API & Integrations
+        </button>
+        <button className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#B0B0B0] border border-[#181B22] rounded-full whitespace-nowrap transition-colors hover:border-[#1F2230] hover:text-white">
+          KYC
+        </button>
+      </div>
+
       <div className="container-card p-4 sm:p-6 lg:p-8">
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:items-center">
