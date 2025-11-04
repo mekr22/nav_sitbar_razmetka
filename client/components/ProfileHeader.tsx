@@ -128,29 +128,29 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
       </div>
 
       {/* Right Sidebar - Advanced Level (2 columns) */}
-      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        <div className="flex items-start justify-between gap-4">
+      <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
+        <div className="flex items-start justify-between gap-4 mb-4">
           {/* Level Badge & Info */}
           <div className="flex items-start gap-3">
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#A0FF75] flex-shrink-0">
-              <span className="text-2xl font-bold text-black">42</span>
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
+              <span className="text-xl font-bold text-black">42</span>
             </div>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-0.5">
               <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
               <p className="text-xs text-[#B0B0B0]">Level 42</p>
             </div>
           </div>
 
           {/* Rating Badge */}
-          <div className="flex items-center gap-1 rounded-full bg-[#1F2230] px-3 py-1">
+          <div className="flex items-center gap-2 text-xs sm:text-sm">
             <span className="text-lg">⭐</span>
-            <span className="text-sm font-bold text-white">4.8</span>
-            <span className="text-xs text-[#B0B0B0]">(156)</span>
+            <span className="font-bold text-white">4.8</span>
+            <span className="text-[#B0B0B0]">(156)</span>
           </div>
         </div>
 
         {/* XP Info */}
-        <div className="mt-4 space-y-2">
+        <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
             <p className="text-[#B0B0B0]">3 750 / 5 000 XP</p>
             <p className="text-[#A0FF75] font-semibold">75%</p>
