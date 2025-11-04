@@ -96,7 +96,7 @@ export const AdminStatsModal: FC<AdminStatsModalProps> = ({
 
         <div className="grid gap-6">
           {/* Preview Section */}
-          <div className="rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-4">
+          <div className="rounded-2xl border border-[#181B22] bg-[#0C1014]/50 p-4">
             <h3 className="text-sm font-semibold text-white mb-3">Preview</h3>
             <div className="grid grid-cols-3 gap-4">
               <div>
