@@ -82,7 +82,6 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
 // Layout 3: Minimalist compact with graph
 export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) => {
-  const [timePeriod, setTimePeriod] = useState<'day' | 'week' | 'month' | 'year'>('day');
 
   // Generate sample data points based on progress percentage
   const progressPercent = stats?.level_info?.progressPercent || 0;
