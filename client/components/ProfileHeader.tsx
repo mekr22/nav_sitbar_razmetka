@@ -127,78 +127,108 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         </div>
       </div>
 
-      {/* Right Sidebar - Trader Info (2 columns) */}
+      {/* Right Sidebar - Advanced Level (2 columns) */}
       <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
-          <span className="text-xs font-semibold text-[#A0FF75] bg-[#A0FF75]/10 px-2 py-1 rounded-full">
-            4.6 (153)
-          </span>
-        </div>
-
-        <div className="mt-4 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-          <p className="text-xs uppercase tracking-wide text-[#B0B0B0] whitespace-nowrap">
-            Pro Traders Selected
-          </p>
-          <div className="mt-3 flex items-center gap-2">
-            <div className="flex-1 h-2 bg-[#181B22] rounded-full overflow-hidden">
-              <div className="h-full w-2/3 bg-[#A0FF75] rounded-full"></div>
+        <div className="flex items-start justify-between gap-4">
+          {/* Level Badge & Info */}
+          <div className="flex items-start gap-3">
+            <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#A0FF75] flex-shrink-0">
+              <span className="text-2xl font-bold text-black">42</span>
             </div>
-            <span className="text-sm font-semibold text-white">2/3</span>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-base sm:text-lg font-bold text-white">Advanced</h3>
+              <p className="text-xs text-[#B0B0B0]">Level 42</p>
+            </div>
+          </div>
+
+          {/* Rating Badge */}
+          <div className="flex items-center gap-1 rounded-full bg-[#1F2230] px-3 py-1">
+            <span className="text-lg">⭐</span>
+            <span className="text-sm font-bold text-white">4.8</span>
+            <span className="text-xs text-[#B0B0B0]">(156)</span>
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-[#181B22] space-y-3">
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-[#B0B0B0]">Verified Trader</p>
-            <span className="h-2 w-2 rounded-full bg-[#A0FF75]"></span>
+        {/* XP Info */}
+        <div className="mt-4 space-y-2">
+          <div className="flex items-center justify-between text-xs">
+            <p className="text-[#B0B0B0]">3 750 / 5 000 XP</p>
+            <p className="text-[#A0FF75] font-semibold">75%</p>
           </div>
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-[#B0B0B0]">Top Dealer</p>
-            <span className="h-2 w-2 rounded-full bg-[#A0FF75]"></span>
+          <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
+            <div className="h-full w-3/4 bg-[#A0FF75] rounded-full"></div>
           </div>
-          <div className="flex items-center justify-between">
-            <p className="text-xs text-[#B0B0B0]">Daily Trader</p>
-            <span className="h-2 w-2 rounded-full bg-[#A0FF75]"></span>
-          </div>
+          <p className="text-xs text-[#B0B0B0]">1 250 XP to reach Level 43</p>
         </div>
       </div>
 
       {/* Right Sidebar - Achievements (2 columns) */}
-      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2">
-        <h3 className="text-base sm:text-lg font-bold text-white mb-4">ACHIEVEMENTS (4)</h3>
+      <div className="rounded-2xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <h3 className="text-base sm:text-lg font-bold text-white uppercase">Achievements (4)</h3>
+          <span className="text-xs text-[#B0B0B0]">2 in Progress</span>
+        </div>
 
-        <div className="space-y-3">
-          {/* Achievement Card 1 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#A06AFF]/20 flex-shrink-0">
-              <span className="text-sm font-bold text-[#A06AFF]">✓</span>
+        {/* Achievement Grid 2x2 */}
+        <div className="grid grid-cols-2 gap-3">
+          {/* Achievement 1 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
+              <span className="text-lg">♦</span>
             </div>
-            <p className="text-xs sm:text-sm text-white font-medium">Verified Trader</p>
+            <p className="text-xs sm:text-sm text-white font-semibold">Verified Trader</p>
           </div>
 
-          {/* Achievement Card 2 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FFB800]/20 flex-shrink-0">
-              <span className="text-sm font-bold text-[#FFB800]">★</span>
+          {/* Achievement 2 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
+              <span className="text-lg">◎</span>
             </div>
-            <p className="text-xs sm:text-sm text-white font-medium">Trading Genius</p>
+            <p className="text-xs sm:text-sm text-white font-semibold">Sharp Shooter</p>
           </div>
 
-          {/* Achievement Card 3 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF6B9D]/20 flex-shrink-0">
-              <span className="text-sm font-bold text-[#FF6B9D]">●</span>
+          {/* Achievement 3 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
+              <span className="text-lg">⚡</span>
             </div>
-            <p className="text-xs sm:text-sm text-white font-medium">Daily Trader</p>
+            <p className="text-xs sm:text-sm text-white font-semibold">On Fire</p>
           </div>
 
-          {/* Achievement Card 4 */}
-          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#A0FF75]/20 flex-shrink-0">
-              <span className="text-sm font-bold text-[#A0FF75]">◆</span>
+          {/* Achievement 4 */}
+          <div className="flex items-center gap-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#A06AFF] flex-shrink-0">
+              <span className="text-lg">★</span>
             </div>
-            <p className="text-xs sm:text-sm text-white font-medium">Top Dealer</p>
+            <p className="text-xs sm:text-sm text-white font-semibold">Top Rated</p>
+          </div>
+        </div>
+
+        {/* Progress Achievements */}
+        <div className="pt-4 border-t border-[#181B22] space-y-4">
+          {/* Bull Master */}
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">📈</span>
+              <p className="text-xs sm:text-sm text-white font-semibold">Bull Master</p>
+              <span className="ml-auto text-xs text-[#A06AFF] font-semibold">72%</span>
+            </div>
+            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
+              <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
+            </div>
+          </div>
+
+          {/* Influencer */}
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="text-lg">⚡</span>
+              <p className="text-xs sm:text-sm text-white font-semibold">Influencer</p>
+              <span className="ml-auto text-xs text-[#A06AFF] font-semibold">45%</span>
+            </div>
+            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden">
+              <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
+            </div>
           </div>
         </div>
       </div>
