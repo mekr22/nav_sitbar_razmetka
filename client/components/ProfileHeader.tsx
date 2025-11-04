@@ -342,20 +342,6 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       preserveAspectRatio="xMidYMid meet"
                     >
                       <defs>
-                        <clipPath id="chart-clip-main">
-                          <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
-                        </clipPath>
-                        <linearGradient
-                          id="gradientFill-main"
-                          x1="0"
-                          y1="0"
-                          x2="0"
-                          y2="1"
-                          gradientUnits="objectBoundingBox"
-                        >
-                          <stop stopColor="#A06AFF" stopOpacity="0.4" />
-                          <stop offset="1" stopColor="#181A20" stopOpacity="0" />
-                        </linearGradient>
                         <filter id="glow-main" x="-50%" y="-50%" width="200%" height="200%">
                           <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                           <feMerge>
@@ -365,13 +351,15 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         </filter>
                       </defs>
 
-                      {/* Background fill - only up to progress */}
-                      <g clipPath="url(#chart-clip-main)">
-                        <path
-                          d={areaD}
-                          fill="url(#gradientFill-main)"
-                        />
-                      </g>
+                      {/* Background fill from bottom - fills based on progress percentage */}
+                      <rect
+                        x="0"
+                        y={chartHeight - (chartHeight * progressPercent) / 100}
+                        width={chartWidth}
+                        height={(chartHeight * progressPercent) / 100}
+                        fill="#A06AFF"
+                        opacity="0.15"
+                      />
 
                       {/* Full outline - always visible at 100% */}
                       <path
