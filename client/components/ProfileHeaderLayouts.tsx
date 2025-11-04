@@ -164,13 +164,13 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
       {/* Graph Container with Progress Inside */}
       <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
-        <div className="relative h-56">
+        <div className="relative h-56 w-full flex items-center justify-center">
           <svg
             className="h-full w-full"
             viewBox={`0 0 ${chartWidth} ${chartHeight}`}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="none"
+            preserveAspectRatio="xMidYMid meet"
           >
             {/* Clip path to show only filled portion */}
             <defs>
@@ -179,22 +179,22 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               </clipPath>
               <linearGradient
                 id={gradientId}
-                x1="1"
-                y1="1"
-                x2="1"
-                y2={chartHeight}
-                gradientUnits="userSpaceOnUse"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+                gradientUnits="objectBoundingBox"
               >
                 <stop stopColor="#A06AFF" stopOpacity="0.32" />
                 <stop offset="1" stopColor="#181A20" stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id={strokeId}
-                x1="1"
-                y1="1"
-                x2="1"
-                y2={chartHeight}
-                gradientUnits="userSpaceOnUse"
+                x1="0"
+                y1="0"
+                x2="0"
+                y2="1"
+                gradientUnits="objectBoundingBox"
               >
                 <stop stopColor="#C6A6FF" />
                 <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
@@ -210,7 +210,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               <path
                 d={pathD}
                 stroke={`url(#${strokeId})`}
-                strokeWidth="1.4"
+                strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
@@ -220,7 +220,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             <path
               d={pathD}
               stroke="#3A3F4D"
-              strokeWidth="1.4"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
               opacity="0.5"
