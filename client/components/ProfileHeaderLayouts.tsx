@@ -80,60 +80,156 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
   </div>
 );
 
-// Layout 3: Minimalist compact
-export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) => (
-  <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-3">
-    {/* Big Level Display */}
-    <div className="flex items-center justify-between">
-      <div className="text-center">
-        <p className="text-4xl font-bold text-[#A0FF75]">{stats?.current_level || 1}</p>
-        <p className="text-xs text-[#B0B0B0]">{stats?.level_info?.name || 'Newbie'}</p>
-      </div>
-      <div className="text-right">
-        <p className="text-2xl font-bold text-white">{stats?.level_info?.progressPercent || 0}%</p>
-        <p className="text-xs text-[#B0B0B0]">progress</p>
-      </div>
-    </div>
+// Layout 3: Minimalist compact with graph
+export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) => {
+  const [timePeriod, setTimePeriod] = React.useState<'day' | 'week' | 'month' | 'year'>('day');
 
-    {/* Minimal XP */}
-    <div className="h-1 bg-[#181B22] rounded-full overflow-hidden">
-      <div
-        className="h-full bg-[#A0FF75] rounded-full transition-all"
-        style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
-      ></div>
-    </div>
+  // Generate sample data points based on progress percentage
+  const progressPercent = stats?.level_info?.progressPercent || 0;
+  const dataPoints = [
+    progressPercent * 0.4,
+    progressPercent * 0.6,
+    progressPercent * 0.8,
+    progressPercent * 0.9,
+    progressPercent * 1.0,
+    progressPercent * 0.85,
+    progressPercent * 0.7,
+  ];
 
-    {/* Mini Achievement Dots */}
-    <div className="flex items-center justify-center gap-2 py-2">
-      {['Verified', 'Shooter', 'On Fire', 'Top'].map((label) => (
-        <div
-          key={label}
-          title={label}
-          className="h-3 w-3 rounded-full bg-[#A06AFF] cursor-help"
-        ></div>
-      ))}
-    </div>
+  const chartHeight = 120;
+  const chartWidth = 100;
+  const padding = 10;
+  const maxValue = Math.max(...dataPoints, 100);
 
-    {/* Quick Stats */}
-    <div className="grid grid-cols-2 gap-2 text-center">
-      <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-        <p className="text-xs text-[#B0B0B0]">XP</p>
-        <p className="text-sm font-bold text-white">{stats?.total_xp || 0}</p>
+  // Generate SVG path
+  const points = dataPoints.map((value, idx) => {
+    const x = padding + (idx / (dataPoints.length - 1)) * (chartWidth - padding * 2);
+    const y = chartHeight - padding - (value / maxValue) * (chartHeight - padding * 2);
+    return `${x},${y}`;
+  });
+
+  const pathD = `M ${points.join(' L ')}`;
+  const areaD = `M ${points[0]} L ${points.join(' L ')} L ${padding + (dataPoints.length - 1) / (dataPoints.length - 1) * (chartWidth - padding * 2)},${chartHeight - padding} L ${padding},${chartHeight - padding} Z`;
+
+  return (
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-4">
+      {/* Title and Time Period Toggle */}
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-bold text-white">XP Progress</h3>
+        <div className="flex gap-1 bg-[#181B22] p-1 rounded-full">
+          {['day', 'week', 'month', 'year'].map((period) => (
+            <button
+              key={period}
+              onClick={() => setTimePeriod(period as any)}
+              className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
+                timePeriod === period
+                  ? 'bg-white text-black'
+                  : 'text-[#B0B0B0] hover:text-white'
+              }`}
+            >
+              {period.charAt(0).toUpperCase() + period.slice(1)}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-        <p className="text-xs text-[#B0B0B0]">Rating</p>
-        <p className="text-sm font-bold text-white">4.8</p>
-      </div>
-    </div>
 
-    <button
-      onClick={onEditClick}
-      className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
-    >
-      Edit
-    </button>
-  </div>
-);
+      {/* Graph Container */}
+      <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-xl p-4">
+        <svg
+          viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+          className="w-full h-32"
+          preserveAspectRatio="none"
+        >
+          {/* Grid lines */}
+          <line
+            x1={padding}
+            y1={chartHeight - padding}
+            x2={chartWidth - padding}
+            y2={chartHeight - padding}
+            stroke="#1F2230"
+            strokeWidth="0.5"
+          />
+
+          {/* Area fill */}
+          <path
+            d={areaD}
+            fill="url(#gradientFill)"
+            opacity="0.6"
+          />
+
+          {/* Gradient definition */}
+          <defs>
+            <linearGradient id="gradientFill" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#A06AFF" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#482090" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+
+          {/* Line path */}
+          <path
+            d={pathD}
+            stroke="#A0FF75"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Data points */}
+          {points.map((point, idx) => {
+            const [x, y] = point.split(',').map(Number);
+            return (
+              <circle
+                key={idx}
+                cx={x}
+                cy={y}
+                r="1.5"
+                fill="#A0FF75"
+              />
+            );
+          })}
+        </svg>
+
+        {/* X-axis labels */}
+        <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
+          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
+            <span key={day}>{day}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* Stats Summary */}
+      <div className="grid grid-cols-2 gap-2 text-center">
+        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-xs text-[#B0B0B0]">XP</p>
+          <p className="text-sm font-bold text-white">{stats?.total_xp || 0}</p>
+        </div>
+        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-xs text-[#B0B0B0]">Progress</p>
+          <p className="text-sm font-bold text-[#A0FF75]">{progressPercent}%</p>
+        </div>
+      </div>
+
+      {/* Mini Achievement Dots */}
+      <div className="flex items-center justify-center gap-2 py-2">
+        {['Verified', 'Shooter', 'On Fire', 'Top'].map((label) => (
+          <div
+            key={label}
+            title={label}
+            className="h-3 w-3 rounded-full bg-[#A06AFF] cursor-help"
+          ></div>
+        ))}
+      </div>
+
+      <button
+        onClick={onEditClick}
+        className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
+      >
+        Edit Statistics
+      </button>
+    </div>
+  );
+};
 
 // Layout 4: Premium glass effect
 export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) => (
