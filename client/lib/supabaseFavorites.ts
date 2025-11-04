@@ -210,7 +210,7 @@ export async function checkFavorite(
     });
     return !!data;
   } catch (err) {
-    console.error("[checkFavorite] Exception:", toErrorMessage(err), err);
+    console.error("[checkFavorite] Exception:", toErrorMessage(err));
     return false;
   }
 }
