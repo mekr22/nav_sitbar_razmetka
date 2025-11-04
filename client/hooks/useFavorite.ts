@@ -68,10 +68,9 @@ export function useFavorite(productType: ProductType, productId: string) {
       } catch (error) {
         if (!cancelled) {
           console.error(
-            "[useFavorite] Error checking favorite:",
-            toErrorMessage(error),
-            error,
-          );
+          "[useFavorite] Error checking favorite:",
+          toErrorMessage(error),
+        );
         }
       } finally {
         if (!cancelled) {
@@ -114,7 +113,6 @@ export function useFavorite(productType: ProductType, productId: string) {
       console.error(
         "[useFavorite] Error toggling favorite:",
         toErrorMessage(error),
-        error,
       );
     }
   }, [isFavorite, productId, productType, user]);
@@ -166,7 +164,7 @@ export function useFavoriteMultiple(productType?: ProductType) {
         console.error(
           "[useFavoriteMultiple] Query error:",
           toErrorMessage(error),
-          error,
+          {code: error.code},
         );
         setFavorites(new Set());
         return;
@@ -182,7 +180,6 @@ export function useFavoriteMultiple(productType?: ProductType) {
       console.error(
         "[useFavoriteMultiple] Unexpected error loading favorites:",
         toErrorMessage(error),
-        error,
       );
       setFavorites(new Set());
     } finally {
@@ -242,7 +239,6 @@ export function useFavoriteMultiple(productType?: ProductType) {
         console.error(
           "[useFavoriteMultiple.toggle] Error toggling favorite:",
           toErrorMessage(error),
-          error,
         );
       }
     },
