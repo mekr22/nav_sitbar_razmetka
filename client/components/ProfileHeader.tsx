@@ -31,7 +31,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
   });
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full auto-cols-fr">
+    <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
       {/* Profile Card - Left Side (3 columns) */}
       <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-0 lg:col-span-3 overflow-hidden min-w-0">
         {/* Header Background Banner */}
