@@ -1,5 +1,5 @@
 import { FC, useMemo, useState } from "react";
-import { Calendar, Trophy, Target, Flame, Star, TrendingUp, Edit } from "lucide-react";
+import { Zap, Calendar, Trophy, Target, Flame, Star, TrendingUp, Edit } from "lucide-react";
 import "./ProfileHeader.css";
 import { useUserStatistics } from "@/hooks/useUserStatistics";
 import { AdminStatsModal } from "./AdminStatsModal";
