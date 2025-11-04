@@ -96,8 +96,7 @@ export async function addFavorite(
       console.error(
         "[addFavorite] Database error:",
         toErrorMessage(error),
-        error.code,
-        error.details,
+        {code: error.code, details: error.details},
       );
       return false;
     }
@@ -145,8 +144,7 @@ export async function removeFavorite(
         console.error(
           "[removeFavorite] Database error:",
           message,
-          error.code,
-          error.details,
+          {code: error.code, details: error.details},
         );
       }
       return false;
@@ -201,7 +199,7 @@ export async function checkFavorite(
       console.error(
         "[checkFavorite] Database error:",
         toErrorMessage(error),
-        error.code,
+        {code: error.code},
       );
       return false;
     }
@@ -241,7 +239,7 @@ export async function getUserFavoriteIds(
       console.error(
         "Error fetching user favorites:",
         toErrorMessage(error),
-        error,
+        {code: error.code},
       );
       return new Set();
     }
@@ -271,7 +269,7 @@ export async function getUserFavorites(
       console.error(
         "Error fetching user favorites:",
         toErrorMessage(error),
-        error,
+        {code: error.code},
       );
       return [];
     }
@@ -369,7 +367,7 @@ async function fetchProductByType(
         console.error(
           `Error fetching ${productType}:`,
           toErrorMessage(error),
-          error,
+          {code: error.code},
         );
       }
       return null;
