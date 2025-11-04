@@ -174,32 +174,32 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         <div className="grid grid-cols-2 gap-3 mb-4">
           {/* Achievement 1 */}
           <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
-              ♦
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <Trophy className="h-5 w-5 text-white" />
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">Verified Trader</p>
           </div>
 
           {/* Achievement 2 */}
           <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
-              ◎
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <Target className="h-5 w-5 text-white" />
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">Sharp Shooter</p>
           </div>
 
           {/* Achievement 3 */}
           <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
-              ◐
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <Flame className="h-5 w-5 text-white" />
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">On Fire</p>
           </div>
 
           {/* Achievement 4 */}
           <div className="flex items-center gap-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 p-3 hover:border-[#1F2230] transition-colors cursor-pointer">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0 text-lg">
-              ★
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#8B5CF6] flex-shrink-0">
+              <Star className="h-5 w-5 text-white" />
             </div>
             <p className="text-xs sm:text-sm text-white font-semibold">Top Rated</p>
           </div>
@@ -209,8 +209,8 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
         <div className="space-y-4">
           {/* Bull Master */}
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0 text-lg">
-              ▲
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
+              <TrendingUp className="h-5 w-5 text-white" />
             </div>
             <div className="flex-1 pt-1">
               <div className="flex items-center justify-between mb-2">
@@ -225,8 +225,8 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user }) => {
 
           {/* Influencer */}
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0 text-lg">
-              ⚡
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#181B22] flex-shrink-0">
+              <Zap className="h-5 w-5 text-white" />
             </div>
             <div className="flex-1 pt-1">
               <div className="flex items-center justify-between mb-2">
