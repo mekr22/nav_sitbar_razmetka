@@ -156,7 +156,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
       </div>
 
       {/* Graph Container with Progress Inside */}
-      <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 border border-[#A06AFF]/30 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
+      <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
         <div className="relative h-56">
           <svg
             className="h-full w-full"
