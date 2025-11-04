@@ -355,63 +355,65 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
                 {/* Graph */}
                 <div className="relative bg-[#0C1014]/50 rounded-xl p-4">
-                  <svg
-                    viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-                    className="w-full h-40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="none"
-                  >
-                    <defs>
-                      <clipPath id="chart-clip">
-                        <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
-                      </clipPath>
-                      <linearGradient
-                        id="gradientFill"
-                        x1="1"
-                        y1="1"
-                        x2="1"
-                        y2={chartHeight}
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#A06AFF" stopOpacity="0.32" />
-                        <stop offset="1" stopColor="#181A20" stopOpacity="0" />
-                      </linearGradient>
-                      <linearGradient
-                        id="strokeGradient"
-                        x1="1"
-                        y1="1"
-                        x2="1"
-                        y2={chartHeight}
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#C6A6FF" />
-                        <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
-                      </linearGradient>
-                    </defs>
+                  <div className="w-full h-40 flex items-center justify-center">
+                    <svg
+                      viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+                      className="w-full h-full"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      preserveAspectRatio="xMidYMid meet"
+                    >
+                      <defs>
+                        <clipPath id="chart-clip">
+                          <rect x="0" y="0" width={(chartWidth * progressPercent) / 100} height={chartHeight} />
+                        </clipPath>
+                        <linearGradient
+                          id="gradientFill"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                          gradientUnits="objectBoundingBox"
+                        >
+                          <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                          <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+                        </linearGradient>
+                        <linearGradient
+                          id="strokeGradient"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                          gradientUnits="objectBoundingBox"
+                        >
+                          <stop stopColor="#C6A6FF" />
+                          <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
+                        </linearGradient>
+                      </defs>
 
-                    {/* Filled area (completed progress) */}
-                    <g clipPath="url(#chart-clip)">
-                      <path d={areaD} fill="url(#gradientFill)" />
+                      {/* Filled area (completed progress) */}
+                      <g clipPath="url(#chart-clip)">
+                        <path d={areaD} fill="url(#gradientFill)" />
+                        <path
+                          d={pathD}
+                          stroke="url(#strokeGradient)"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </g>
+
+                      {/* Outline only (remaining progress) */}
                       <path
                         d={pathD}
-                        stroke="url(#strokeGradient)"
-                        strokeWidth="1.4"
+                        stroke="#3A3F4D"
+                        strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        opacity="0.5"
                       />
-                    </g>
-
-                    {/* Outline only (remaining progress) */}
-                    <path
-                      d={pathD}
-                      stroke="#3A3F4D"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      opacity="0.5"
-                    />
-                  </svg>
+                    </svg>
+                  </div>
                   <div className="flex justify-between text-xs text-[#B0B0B0] mt-2 px-2">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
                       <span key={day}>{day}</span>
