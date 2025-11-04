@@ -100,9 +100,13 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
     progressPercent * 0.7,
   ];
 
-  const chartHeight = 160;
-  const chartWidth = 160;
-  const padding = 12;
+  const id = Math.random().toString(36).substr(2, 9);
+  const gradientId = `${id}-gradient`;
+  const strokeId = `${id}-stroke`;
+
+  const chartHeight = 200;
+  const chartWidth = 280;
+  const padding = 15;
   const maxValue = Math.max(...dataPoints, 100);
 
   // Generate SVG path
@@ -116,143 +120,129 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const areaD = `M ${points[0]} L ${points.join(' L ')} L ${padding + (dataPoints.length - 1) / (dataPoints.length - 1) * (chartWidth - padding * 2)},${chartHeight - padding} L ${padding},${chartHeight - padding} Z`;
 
   return (
-    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2 space-y-6">
-      {/* Header with Level and Stats Info */}
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2 space-y-5">
+      {/* Header with Level Info */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="flex items-center gap-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#A0FF75] flex-shrink-0">
-            <span className="text-3xl font-bold text-black">{stats?.current_level || 1}</span>
+        <div className="flex items-center gap-3">
+          <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#A0FF75] flex-shrink-0">
+            <span className="text-2xl font-bold text-black">{stats?.current_level || 1}</span>
           </div>
           <div className="flex flex-col gap-1">
-            <h3 className="text-xl font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+            <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
             <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
           </div>
         </div>
-        <div className="flex gap-4 text-sm">
-          <div className="text-right">
-            <p className="text-[#A0FF75] font-bold">{progressPercent}%</p>
-            <p className="text-xs text-[#B0B0B0]">Progress</p>
-          </div>
-          <div className="text-right">
-            <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
-            <p className="text-xs text-[#B0B0B0]">XP to next</p>
-          </div>
+        <div className="text-right">
+          <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
+          <p className="text-xs text-[#B0B0B0]">XP to next</p>
         </div>
       </div>
 
       {/* Time Period Toggle */}
       <div className="flex gap-1 bg-[#181B22] p-1 rounded-full w-fit">
-        {['day', 'week', 'month', 'year'].map((period) => (
+        {['Day', 'Week', 'Month', 'Year'].map((period) => (
           <button
             key={period}
-            onClick={() => setTimePeriod(period as any)}
+            onClick={() => setTimePeriod(period.toLowerCase() as any)}
             className={`px-3 py-1 text-xs font-semibold rounded-full transition-all ${
-              timePeriod === period
+              timePeriod === period.toLowerCase()
                 ? 'bg-white text-black'
                 : 'text-[#B0B0B0] hover:text-white'
             }`}
           >
-            {period.charAt(0).toUpperCase() + period.slice(1)}
+            {period}
           </button>
         ))}
       </div>
 
-      {/* Large Graph Container */}
-      <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-2xl p-6">
-        <svg
-          viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-          className="w-full h-48"
-          preserveAspectRatio="none"
-        >
-          {/* Grid lines */}
-          <line
-            x1={padding}
-            y1={chartHeight - padding}
-            x2={chartWidth - padding}
-            y2={chartHeight - padding}
-            stroke="#1F2230"
-            strokeWidth="0.5"
-          />
-
-          {/* Area fill */}
-          <path
-            d={areaD}
-            fill="url(#gradientFill)"
-            opacity="0.5"
-          />
-
-          {/* Gradient definition */}
-          <defs>
-            <linearGradient id="gradientFill" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#A06AFF" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#482090" stopOpacity="0.1" />
-            </linearGradient>
-          </defs>
-
-          {/* Line path */}
-          <path
-            d={pathD}
-            stroke="#A0FF75"
-            strokeWidth="2"
+      {/* Graph Container with Progress Inside */}
+      <div className="relative bg-[#0C1014]/50 border border-[#181B22] rounded-2xl overflow-hidden">
+        <div className="relative h-56">
+          <svg
+            className="h-full w-full"
+            viewBox={`0 0 ${chartWidth} ${chartHeight}`}
             fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+          >
+            {/* Area fill */}
+            <path
+              d={areaD}
+              fill={`url(#${gradientId})`}
+            />
 
-          {/* Data points */}
-          {points.map((point, idx) => {
-            const [x, y] = point.split(',').map(Number);
-            return (
-              <circle
-                key={idx}
-                cx={x}
-                cy={y}
-                r="2"
-                fill="#A0FF75"
-              />
-            );
-          })}
-        </svg>
+            {/* Gradient definitions */}
+            <defs>
+              <linearGradient
+                id={gradientId}
+                x1="1"
+                y1="1"
+                x2="1"
+                y2={chartHeight}
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#A06AFF" stopOpacity="0.32" />
+                <stop offset="1" stopColor="#181A20" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient
+                id={strokeId}
+                x1="1"
+                y1="1"
+                x2="1"
+                y2={chartHeight}
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#C6A6FF" />
+                <stop offset="1" stopColor="#6B3BD7" stopOpacity="0.2" />
+              </linearGradient>
+            </defs>
+
+            {/* Line path */}
+            <path
+              d={pathD}
+              stroke={`url(#${strokeId})`}
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+
+          {/* Progress Percentage Overlay */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <p className="text-4xl font-bold text-white">{progressPercent}%</p>
+            <p className="text-xs text-[#B0B0B0] mt-1">Progress</p>
+          </div>
+        </div>
 
         {/* X-axis labels */}
-        <div className="flex justify-between text-xs text-[#B0B0B0] mt-3 px-2">
+        <div className="flex justify-between text-xs text-[#B0B0B0] px-6 py-3 border-t border-[#181B22]">
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].slice(0, dataPoints.length).map((day) => (
-            <span key={day}>{day}</span>
+            <span key={day} className="text-center">{day}</span>
           ))}
         </div>
       </div>
 
       {/* XP Details */}
-      <div className="grid grid-cols-3 gap-3 text-center">
-        <div className="p-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-xs text-[#B0B0B0] mb-1">Current XP</p>
-          <p className="text-sm font-bold text-white">{currentXP}</p>
+      <div className="grid grid-cols-3 gap-2 text-center text-xs">
+        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-[#B0B0B0] mb-1">Current</p>
+          <p className="font-bold text-white">{currentXP}</p>
         </div>
-        <div className="p-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-xs text-[#B0B0B0] mb-1">Next Level</p>
-          <p className="text-sm font-bold text-white">{nextLevelXP}</p>
+        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-[#B0B0B0] mb-1">Next Level</p>
+          <p className="font-bold text-white">{nextLevelXP}</p>
         </div>
-        <div className="p-3 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-xs text-[#B0B0B0] mb-1">Remaining</p>
-          <p className="text-sm font-bold text-[#A0FF75]">{xpRemaining}</p>
+        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
+          <p className="text-[#B0B0B0] mb-1">Remaining</p>
+          <p className="font-bold text-[#A0FF75]">{xpRemaining}</p>
         </div>
-      </div>
-
-      {/* Mini Achievement Dots */}
-      <div className="flex items-center justify-center gap-2 py-2">
-        {['Verified', 'Shooter', 'On Fire', 'Top'].map((label) => (
-          <div
-            key={label}
-            title={label}
-            className="h-3 w-3 rounded-full bg-[#A06AFF] cursor-help"
-          ></div>
-        ))}
       </div>
 
       <button
         onClick={onEditClick}
         className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
       >
+        <Edit className="h-3 w-3 inline mr-2" />
         Edit Statistics
       </button>
     </div>
