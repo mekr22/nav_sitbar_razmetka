@@ -122,8 +122,8 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
       </div>
 
 
-      {/* Graph Container with Progress Inside */}
-      <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-hidden shadow-lg shadow-[#A06AFF]/20">
+      {/* Graph Container */}
+      <div className="relative bg-gradient-to-b from-[#1a0033] to-[#0C1014]/50 rounded-2xl overflow-visible shadow-lg shadow-[#A06AFF]/20">
         <div className="relative h-56 w-full p-4">
           <svg
             className="w-full h-full"
@@ -164,10 +164,11 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             />
           </svg>
 
-          {/* Progress Percentage Inside Graph */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <p className="text-5xl font-bold text-white drop-shadow-lg">{progressPercent}%</p>
-            <p className="text-xs text-[#E0AAFF] mt-1 font-semibold uppercase tracking-wide">Progress</p>
+          {/* Progress Badge at Peak */}
+          <div className="absolute top-8 left-1/2 transform -translate-x-1/2 pointer-events-none">
+            <div className="bg-[#A06AFF] text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg shadow-[#A06AFF]/40">
+              {progressPercent}%
+            </div>
           </div>
         </div>
       </div>
