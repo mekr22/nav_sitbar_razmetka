@@ -163,7 +163,7 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
           ].map(({ icon: Icon, label }) => (
             <div
               key={label}
-              className="flex flex-col items-center justify-center gap-1 p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 flex-shrink-0 hover:border-[#A06AFF] hover:bg-[#A06AFF]/10 transition-colors"
+              className="flex flex-col items-center justify-center gap-1 p-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 flex-shrink-0 hover:border-[#A06AFF] hover:bg-[#A06AFF]/10 transition-colors"
               style={{ width: '70px', minWidth: '70px' }}
             >
               <Icon className="h-5 w-5 text-[#A06AFF]" />
