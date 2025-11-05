@@ -527,9 +527,10 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Edit Button */}
       <button
         onClick={onEditClick}
-        className="w-full px-3 py-2 text-xs font-semibold text-black bg-[#A0FF75] rounded-xl hover:bg-[#B8FF94] transition-colors font-mono font-bold tracking-wide"
+        className="w-full px-3 py-2 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] rounded-xl hover:from-[#B084FF] hover:to-[#5A2FA8] transition-colors border border-[#A06AFF]/30"
       >
-        → EDIT STATS
+        <Edit className="h-3 w-3 inline mr-2" />
+        Edit Statistics
       </button>
     </div>
   );
