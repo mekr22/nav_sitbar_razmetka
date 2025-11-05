@@ -437,21 +437,6 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                   </div>
                 </div>
 
-                {/* XP Stats */}
-                <div className="grid grid-cols-3 gap-2 text-center hidden">
-                  <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-                    <p className="text-xs text-[#B0B0B0] mb-1">Current</p>
-                    <p className="text-sm font-bold text-white">{currentXP}</p>
-                  </div>
-                  <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-                    <p className="text-xs text-[#B0B0B0] mb-1">Next Level</p>
-                    <p className="text-sm font-bold text-white">{nextLevelXP}</p>
-                  </div>
-                  <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-                    <p className="text-xs text-[#B0B0B0] mb-1">Remaining</p>
-                    <p className="text-sm font-bold text-[#C77DFF]">{xpRemaining}</p>
-                  </div>
-                </div>
 
                 <button
                   onClick={() => setShowStatsModal(true)}
