@@ -385,12 +385,15 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       />
                     </svg>
 
-                    {/* Progress Badge at Current Scale Point */}
+                    {/* Progress Badge on Graph Curve */}
                     <div
-                      className="absolute pointer-events-none transform -translate-x-1/2 -translate-y-full -top-1"
-                      style={{ left: `${(progressPercent / 100) * 100}%` }}
+                      className="absolute pointer-events-none transform -translate-x-1/2 -translate-y-1/2"
+                      style={{
+                        left: `${(progressPercent / 100) * 100}%`,
+                        top: '35%'
+                      }}
                     >
-                      <div className="bg-[#A06AFF] text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg shadow-[#A06AFF]/40 whitespace-nowrap">
+                      <div className="bg-[#A06AFF] text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg shadow-[#A06AFF]/50 whitespace-nowrap border border-[#C6A6FF]">
                         {progressPercent}%
                       </div>
                     </div>
