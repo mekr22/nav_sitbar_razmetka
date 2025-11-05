@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import { Trophy, Target, Flame, Star, TrendingUp, Zap, Edit } from "lucide-react";
+import { FC, useState, useRef } from "react";
+import { Trophy, Target, Flame, Star, TrendingUp, Zap, Edit, Swords, Heart, Gem, Crown } from "lucide-react";
 import { UserStatsWithCalculations } from "@/hooks/useUserStatistics";
 
 interface RightPanelProps {
