@@ -231,30 +231,30 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
     <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] lg:col-span-2 space-y-5 overflow-hidden">
       <div className="px-6 pt-6">
         {/* Header with Level Info and XP Stats */}
-        <div className="flex flex-col sm:flex-row sm:items-stretch sm:gap-3 gap-3">
+        <div className="flex flex-row items-stretch gap-3">
           {/* Level Info - Left */}
-          <div className="flex items-center gap-3 p-3 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 flex-shrink-0">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#A0FF75] flex-shrink-0">
-              <span className="text-lg font-bold text-black">{stats?.current_level || 1}</span>
+          <div className="flex items-center gap-2 p-3 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 flex-shrink-0">
+            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#C77DFF] flex-shrink-0 shadow-lg shadow-[#A06AFF]/40">
+              <span className="text-base font-bold text-white">{stats?.current_level || 1}</span>
             </div>
-            <div className="flex flex-col gap-0.5 min-w-0">
-              <h3 className="text-sm font-bold text-white truncate">{stats?.level_info?.name || 'Newbie'}</h3>
-              <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+            <div className="flex flex-col gap-0 min-w-0">
+              <h3 className="text-xs font-bold text-white truncate">{stats?.level_info?.name || 'Newbie'}</h3>
+              <p className="text-[10px] text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
             </div>
           </div>
 
           {/* XP Stats - Right */}
-          <div className="grid grid-cols-3 gap-2 flex-1">
-            <div className="p-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs">
-              <p className="text-[#B0B0B0] mb-1">Current</p>
+          <div className="flex gap-2 flex-1 items-stretch">
+            <div className="flex-1 p-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center">
+              <p className="text-[#B0B0B0] text-[10px]">Current</p>
               <p className="font-bold text-white text-sm">{currentXP}</p>
             </div>
-            <div className="p-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs">
-              <p className="text-[#B0B0B0] mb-1">Next</p>
+            <div className="flex-1 p-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center">
+              <p className="text-[#B0B0B0] text-[10px]">Next</p>
               <p className="font-bold text-white text-sm">{nextLevelXP}</p>
             </div>
-            <div className="p-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs">
-              <p className="text-[#B0B0B0] mb-1">Remaining</p>
+            <div className="flex-1 p-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center">
+              <p className="text-[#B0B0B0] text-[10px]">Remaining</p>
               <p className="font-bold text-[#A0FF75] text-sm">{xpRemaining}</p>
             </div>
           </div>
