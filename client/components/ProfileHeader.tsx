@@ -324,8 +324,8 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
 
                 {/* Graph */}
-                <div className="relative rounded-xl p-4 overflow-visible">
-                  <div className="relative w-full h-40">
+                <div className="relative rounded-xl overflow-visible -mx-4">
+                  <div className="relative w-full h-40 px-4">
                     <svg
                       viewBox={`0 0 ${chartWidth} ${chartHeight}`}
                       className="w-full h-full"
