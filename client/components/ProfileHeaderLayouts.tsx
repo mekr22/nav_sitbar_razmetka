@@ -416,7 +416,7 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Edit Button */}
       <button
         onClick={onEditClick}
-        className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] rounded-xl hover:opacity-90 transition-colors"
+        className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] rounded-xl hover:opacity-90 transition-colors mt-auto"
       >
         <Edit className="h-3 w-3" />
         Edit Statistics
