@@ -473,25 +473,25 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
       </div>
 
       {/* XP Progress Details */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between text-xs font-mono">
-          <span className="text-[#A0FF75]">→ progress</span>
-          <span className="text-white font-bold">{progressPercent}%</span>
+      <div className="space-y-3 rounded-2xl border border-[#1F2230] bg-[#0A0E12]/50 p-4">
+        <div className="flex items-center justify-between text-xs">
+          <span className="font-semibold text-white">Progress</span>
+          <span className="font-bold text-[#A06AFF]">{progressPercent}%</span>
         </div>
-        <div className="h-1.5 bg-[#1F2230] rounded-full overflow-hidden">
+        <div className="h-2.5 bg-[#1F2230] rounded-full overflow-hidden border border-[#1F2230]">
           <div
-            className="h-full bg-gradient-to-r from-[#A0FF75] to-[#7FD700] rounded-full transition-all duration-500"
+            className="h-full bg-gradient-to-r from-[#A06AFF] to-[#482090] rounded-full transition-all duration-500"
             style={{ width: `${progressPercent}%` }}
           ></div>
         </div>
-        <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-          <div className="text-[#A0FF75]">
-            <p className="text-[#B0B0B0] mb-1">Current</p>
-            <p className="text-white font-bold">{currentXP}</p>
+        <div className="grid grid-cols-2 gap-3 pt-2">
+          <div className="rounded-xl bg-[#0C1014]/50 border border-[#1F2230] p-3">
+            <p className="text-[#B0B0B0] text-xs mb-1">Current</p>
+            <p className="text-white font-bold text-sm">{currentXP}</p>
           </div>
-          <div className="text-[#A06AFF]">
-            <p className="text-[#B0B0B0] mb-1">Remaining</p>
-            <p className="text-white font-bold">{xpRemaining}</p>
+          <div className="rounded-xl bg-[#0C1014]/50 border border-[#1F2230] p-3">
+            <p className="text-[#B0B0B0] text-xs mb-1">Remaining</p>
+            <p className="text-white font-bold text-sm">{xpRemaining}</p>
           </div>
         </div>
       </div>
