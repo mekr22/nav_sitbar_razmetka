@@ -392,16 +392,16 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       />
                     </svg>
 
-                    {/* Dashed line from badge to graph peak */}
+                    {/* Dashed line from graph to badge */}
                     <svg
                       className="absolute top-0 left-0 w-full h-full pointer-events-none"
                       style={{ overflow: 'visible' }}
                     >
                       <line
                         x1={`${badgeXPercent}%`}
-                        y1="4px"
+                        y1="55%"
                         x2={`${badgeXPercent}%`}
-                        y2="55%"
+                        y2="calc(100% + 20px)"
                         stroke="#A06AFF"
                         strokeWidth="1.5"
                         strokeDasharray="4,4"
@@ -409,12 +409,12 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       />
                     </svg>
 
-                    {/* Progress Badge at End of Filled Area */}
+                    {/* Progress Badge at Bottom of Graph X-axis */}
                     <div
                       className="absolute pointer-events-none transform -translate-x-1/2"
                       style={{
                         left: `${badgeXPercent}%`,
-                        top: '0'
+                        bottom: '-32px'
                       }}
                     >
                       <div className="bg-[#A06AFF] text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg shadow-[#A06AFF]/50 whitespace-nowrap border-2 border-[#C6A6FF]">
