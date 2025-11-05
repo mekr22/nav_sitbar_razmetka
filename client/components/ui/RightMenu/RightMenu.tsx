@@ -402,7 +402,7 @@ const MarketplaceRightMenuContent: FC = () => {
   return (
     <>
       <div className="flex items-center gap-4">
-        <div className="flex h-11 flex-1 items-center gap-2 rounded-lg border border-[#181B22] bg-[#0C101480] px-3 backdrop-blur-[50px]">
+        <div className="flex h-11 flex-1 items-center gap-2 rounded-2xl border border-[#181B22] bg-[#0C101480] px-3 backdrop-blur-[50px]">
           <Search className="h-6 w-6 text-webGray" />
           <input
             className="w-full bg-transparent text-[15px] text-webGray placeholder:text-webGray outline-none"
