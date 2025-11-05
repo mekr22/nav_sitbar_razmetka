@@ -446,7 +446,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     const xpLeft = (stats?.level_info?.nextLevelXP || 100) - (stats?.total_xp || 0);
 
     return (
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full grid-rows-[auto_auto]">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
         <div className="lg:col-span-3">
           {profileCard}
         </div>
