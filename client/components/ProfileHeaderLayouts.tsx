@@ -191,7 +191,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             />
           </svg>
 
-          {/* Dashed line from badge to graph */}
+          {/* Dashed line from badge to graph peak */}
           <svg
             className="absolute top-0 left-0 w-full h-full pointer-events-none"
             style={{ overflow: 'visible' }}
@@ -200,7 +200,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
               x1={`${(progressPercent / 100) * 100}%`}
               y1="8px"
               x2={`${(progressPercent / 100) * 100}%`}
-              y2="45%"
+              y2="60%"
               stroke="#A06AFF"
               strokeWidth="1.5"
               strokeDasharray="4,4"
