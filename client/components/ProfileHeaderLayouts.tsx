@@ -384,10 +384,6 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
             { Icon: Target },
             { Icon: Flame },
             { Icon: Star },
-            { Icon: Trophy },
-            { Icon: Target },
-            { Icon: Flame },
-            { Icon: Star },
           ].map(({ Icon }, idx) => (
             <div
               key={idx}
