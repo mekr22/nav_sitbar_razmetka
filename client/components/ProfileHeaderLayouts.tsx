@@ -457,7 +457,7 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
           {/* Center content */}
           <div className="flex flex-col items-center gap-1">
             <span className="text-4xl font-bold text-white">{stats?.current_level || 1}</span>
-            <p className="text-xs uppercase text-[#A0FF75] font-mono font-bold tracking-wider">Tier</p>
+            <p className="text-xs uppercase text-[#A06AFF] font-bold tracking-wider">Tier</p>
           </div>
         </div>
 
