@@ -446,29 +446,32 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
     const xpLeft = (stats?.level_info?.nextLevelXP || 100) - (stats?.total_xp || 0);
 
     return (
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
-        <div className="lg:col-span-3 space-y-4">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full grid-rows-[auto_auto]">
+        <div className="lg:col-span-3">
           {profileCard}
+        </div>
 
-          {/* XP Progress Bar - Full Width */}
-          <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-sm font-bold text-white">Influencer</h3>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-white">{stats?.total_xp || 0} XP</span>
-                <span className="text-xs text-[#B0B0B0]">{progressPercent}% · {xpLeft} XP left</span>
-              </div>
+        <div className="lg:col-span-2">
+          <RightPanelLayout4 stats={stats} onEditClick={() => setShowStatsModal(true)} />
+        </div>
+
+        {/* Full Width Progress Bar */}
+        <div className="lg:col-span-5 rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-bold text-white">Influencer</h3>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-bold text-white">{stats?.total_xp || 0} XP</span>
+              <span className="text-xs text-[#B0B0B0]">{progressPercent}% · {xpLeft} XP left</span>
             </div>
-            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden border border-[#181B22]">
-              <div
-                className="h-full bg-gradient-to-r from-[#A0FF75] via-[#A06AFF] to-[#482090] rounded-full transition-all"
-                style={{ width: `${progressPercent}%` }}
-              ></div>
-            </div>
+          </div>
+          <div className="h-2 bg-[#181B22] rounded-full overflow-hidden border border-[#181B22]">
+            <div
+              className="h-full bg-gradient-to-r from-[#A0FF75] via-[#A06AFF] to-[#482090] rounded-full transition-all"
+              style={{ width: `${progressPercent}%` }}
+            ></div>
           </div>
         </div>
 
-        <RightPanelLayout4 stats={stats} onEditClick={() => setShowStatsModal(true)} />
         <AdminStatsModal
           open={showStatsModal}
           onOpenChange={setShowStatsModal}
