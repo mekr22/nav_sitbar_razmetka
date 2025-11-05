@@ -204,9 +204,9 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             style={{ overflow: 'visible' }}
           >
             <line
-              x1={`${(progressPercent / 100) * 100}%`}
+              x1={`${badgeXPercent}%`}
               y1="8px"
-              x2={`${(progressPercent / 100) * 100}%`}
+              x2={`${badgeXPercent}%`}
               y2="60%"
               stroke="#A06AFF"
               strokeWidth="1.5"
@@ -219,7 +219,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
           <div
             className="absolute pointer-events-none transform -translate-x-1/2"
             style={{
-              left: `${(progressPercent / 100) * 100}%`,
+              left: `${badgeXPercent}%`,
               top: '0'
             }}
           >
