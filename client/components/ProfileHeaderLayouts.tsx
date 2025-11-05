@@ -504,6 +504,39 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
         <Edit className="h-3 w-3 inline mr-2" />
         Edit Statistics
       </button>
+
+      {/* Progress Indicators */}
+      <div className="space-y-3 pt-4 border-t border-[#1F2230]">
+        <div className="flex items-start gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#181B22] flex-shrink-0">
+            <TrendingUp className="h-5 w-5 text-white" />
+          </div>
+          <div className="flex-1 pt-1">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-xs text-white font-semibold">Bull Master</p>
+              <span className="text-xs text-[#A06AFF] font-semibold">72%</span>
+            </div>
+            <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+              <div className="h-full w-[72%] bg-[#A06AFF] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#181B22] flex-shrink-0">
+            <Zap className="h-5 w-5 text-white" />
+          </div>
+          <div className="flex-1 pt-1">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-xs text-white font-semibold">Influencer</p>
+              <span className="text-xs text-[#A06AFF] font-semibold">45%</span>
+            </div>
+            <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden">
+              <div className="h-full w-[45%] bg-[#A06AFF] rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
