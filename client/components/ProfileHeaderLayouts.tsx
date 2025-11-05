@@ -345,22 +345,6 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </div>
       </div>
 
-      {/* XP Details */}
-      <div className="grid grid-cols-3 gap-2 text-center text-xs">
-        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-[#B0B0B0] mb-1">Current</p>
-          <p className="font-bold text-white">{currentXP}</p>
-        </div>
-        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-[#B0B0B0] mb-1">Next Level</p>
-          <p className="font-bold text-white">{nextLevelXP}</p>
-        </div>
-        <div className="p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50">
-          <p className="text-[#B0B0B0] mb-1">Remaining</p>
-          <p className="font-bold text-[#A0FF75]">{xpRemaining}</p>
-        </div>
-      </div>
-
       <button
         onClick={onEditClick}
         className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
