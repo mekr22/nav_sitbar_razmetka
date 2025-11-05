@@ -303,26 +303,6 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
               {/* Right: Level & Graph */}
               <div className="flex-1 flex flex-col gap-6">
-                {/* Level Header */}
-                <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#C77DFF] flex-shrink-0">
-                    <span className="text-3xl font-bold text-white">{stats?.current_level || 1}</span>
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
-                    <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
-                  </div>
-                  <div className="ml-auto text-right">
-                    <p className="text-[#C77DFF] font-bold">{progressPercent}%</p>
-                    <p className="text-xs text-[#B0B0B0]">Progress</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
-                    <p className="text-xs text-[#B0B0B0]">XP left</p>
-                  </div>
-                </div>
-
-
                 {/* Graph */}
                 <div className="relative rounded-xl overflow-visible -mx-4">
                   <div className="relative w-full h-40 px-4">
