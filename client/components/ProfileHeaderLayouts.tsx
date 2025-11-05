@@ -360,11 +360,8 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
 // Layout 4: Premium glass effect
 export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) => (
-  <div className="rounded-3xl border border-[#181B22] bg-gradient-to-br from-[#0C101480] to-[#181B22]/20 p-4 sm:p-6 lg:col-span-2 space-y-4 backdrop-blur-sm">
-    {/* Gradient BG */}
-    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#A06AFF]/5 to-[#482090]/5 pointer-events-none"></div>
-
-    <div className="relative space-y-4">
+  <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-4">
+    <div className="space-y-4">
       {/* Level Circle */}
       <div className="flex justify-center">
         <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-[#A0FF75] to-[#482090] shadow-lg">
