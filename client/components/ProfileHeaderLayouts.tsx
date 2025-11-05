@@ -25,19 +25,36 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Level Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] flex-shrink-0 shadow-lg shadow-[#A06AFF]/50 relative" style={{
-            transform: 'perspective(1000px) rotateX(5deg) rotateY(-5deg)',
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] flex-shrink-0 shadow-lg shadow-[#A06AFF]/50 relative overflow-hidden" style={{
+            transform: 'perspective(800px) rotateX(8deg) rotateY(-8deg) rotateZ(2deg)',
             transformStyle: 'preserve-3d'
           }}>
             <span
-              className="text-xl font-black text-white select-none"
+              className="text-xl font-black text-white select-none relative z-10"
               style={{
-                textShadow: '0 4px 8px rgba(0,0,0,0.6), 0 -2px 4px rgba(255,255,255,0.2)',
-                letterSpacing: '-0.5px'
+                textShadow: `
+                  0 1px 0 rgba(0,0,0,0.8),
+                  0 2px 0 rgba(0,0,0,0.7),
+                  0 3px 0 rgba(0,0,0,0.6),
+                  0 4px 0 rgba(0,0,0,0.5),
+                  0 5px 10px rgba(0,0,0,0.8),
+                  0 -1px 2px rgba(255,255,255,0.3),
+                  0 -2px 4px rgba(255,255,255,0.1)
+                `,
+                letterSpacing: '-0.5px',
+                filter: 'drop-shadow(0 2px 4px rgba(82,58,131,0.5))'
               }}
             >
               {stats?.current_level || 1}
             </span>
+            <div
+              className="absolute inset-0 rounded-xl"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 100%)',
+                pointerEvents: 'none',
+                transform: 'translateZ(20px)'
+              }}
+            />
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
