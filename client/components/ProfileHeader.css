@@ -1,0 +1,11 @@
+/* Hide scrollbar while keeping scroll functionality on lg screens (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

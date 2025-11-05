@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,6 +43,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow-y: scroll;
+  overflow-x: hidden;
   font-family:
     "Nunito Sans",
     ui-sans-serif,
@@ -104,6 +103,10 @@ textarea::-webkit-scrollbar {
   width: 6px;
 }
 
+img {
+  max-width: 100%;
+}
+
 textarea::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
@@ -132,6 +135,75 @@ textarea::-webkit-scrollbar-track {
 
 .scrollbar::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.custom-scroll {
+  cursor: grab;
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+
+.custom-scroll.is-dragging {
+  cursor: grabbing;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  height: 0;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+.news-filter-scroll {
+  position: relative;
+}
+
+.news-filter-scroll::before,
+.news-filter-scroll::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.news-filter-scroll::before {
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 16, 20, 0.2) 0%,
+    rgba(12, 16, 20, 0) 100%
+  );
+}
+
+.news-filter-scroll::after {
+  right: 0;
+  background: linear-gradient(
+    270deg,
+    rgba(12, 16, 20, 0.2) 0%,
+    rgba(12, 16, 20, 0) 100%
+  );
+}
+
+.news-filter-scroll.has-left-shadow::before {
+  opacity: 1;
+}
+
+.news-filter-scroll.has-right-shadow::after {
+  opacity: 1;
 }
 
 @layer components {
