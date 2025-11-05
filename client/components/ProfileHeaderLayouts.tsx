@@ -445,7 +445,7 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
               cy="50"
               r="45"
               fill="none"
-              stroke="#A0FF75"
+              stroke="#A06AFF"
               strokeWidth="2.5"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
