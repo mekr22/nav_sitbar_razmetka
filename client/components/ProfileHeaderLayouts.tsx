@@ -9,8 +9,16 @@ interface RightPanelProps {
 
 // Layout 2: Horizontal strip achievements
 export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const progressPercent = stats?.level_info?.progressPercent || 0;
   const id = Math.random().toString(36).substr(2, 9);
+
+  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (scrollContainerRef.current) {
+      e.preventDefault();
+      scrollContainerRef.current.scrollLeft += e.deltaY > 0 ? 100 : -100;
+    }
+  };
   const chartWidth = 652;
   const chartHeight = 221;
   const graphStartX = 8.75;
