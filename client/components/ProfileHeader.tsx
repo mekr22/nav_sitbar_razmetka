@@ -331,7 +331,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       className="w-full h-full"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      preserveAspectRatio="xMidYMid meet"
+                      preserveAspectRatio="none"
                     >
                       <defs>
                         <clipPath id="chart-progress-clip-main">
