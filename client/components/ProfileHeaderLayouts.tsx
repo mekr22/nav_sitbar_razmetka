@@ -484,14 +484,14 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
             style={{ width: `${progressPercent}%` }}
           ></div>
         </div>
-        <div className="grid grid-cols-2 gap-3 pt-2">
-          <div className="rounded-xl bg-[#0C1014]/50 border border-[#1F2230] p-3">
+        <div className="flex items-center justify-center gap-8 pt-2">
+          <div className="text-center">
             <p className="text-[#B0B0B0] text-xs mb-1">Current</p>
-            <p className="text-white font-bold text-sm">{currentXP}</p>
+            <p className="text-white font-bold text-lg">{currentXP}</p>
           </div>
-          <div className="rounded-xl bg-[#0C1014]/50 border border-[#1F2230] p-3">
+          <div className="text-center">
             <p className="text-[#B0B0B0] text-xs mb-1">Remaining</p>
-            <p className="text-white font-bold text-sm">{xpRemaining}</p>
+            <p className="text-white font-bold text-lg">{xpRemaining}</p>
           </div>
         </div>
       </div>
