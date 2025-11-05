@@ -496,34 +496,6 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="h-px bg-[#1F2230]"></div>
-
-      {/* Achievements as status indicators */}
-      <div className="space-y-2">
-        <p className="text-xs uppercase text-[#B0B0B0] font-mono tracking-wider">ACHIEVEMENTS</p>
-        <div className="grid grid-cols-2 gap-2">
-          {[
-            { icon: Trophy, name: 'Verified Trader', active: true },
-            { icon: Target, name: 'Sharp Shooter', active: true },
-            { icon: Flame, name: 'On Fire', active: false },
-            { icon: Star, name: 'Top Rated', active: false },
-          ].map(({ icon: Icon, name, active }) => (
-            <div
-              key={name}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-mono transition-all ${
-                active
-                  ? 'border-[#A0FF75] bg-[#A0FF75]/10 text-[#A0FF75]'
-                  : 'border-[#1F2230] bg-[#0C1014]/50 text-[#666666]'
-              }`}
-            >
-              <Icon className="h-3 w-3 flex-shrink-0" />
-              <span className="truncate">{name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Edit Button */}
       <button
         onClick={onEditClick}
