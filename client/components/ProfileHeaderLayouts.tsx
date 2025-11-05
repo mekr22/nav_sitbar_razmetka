@@ -229,9 +229,6 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
   return (
     <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] lg:col-span-2 space-y-5 overflow-hidden">
-      <div className="px-6 pt-6">
-        {/* Empty header - graph will be displayed below */}
-      </div>
 
       {/* Graph Container - Full Width */}
       <div className="relative overflow-visible shadow-lg shadow-[#A06AFF]/20">
