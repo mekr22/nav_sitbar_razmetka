@@ -25,8 +25,19 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Level Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#A0FF75] flex-shrink-0">
-            <span className="text-lg font-bold text-black">{stats?.current_level || 1}</span>
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] flex-shrink-0 shadow-lg shadow-[#A06AFF]/50 relative" style={{
+            transform: 'perspective(1000px) rotateX(5deg) rotateY(-5deg)',
+            transformStyle: 'preserve-3d'
+          }}>
+            <span
+              className="text-xl font-black text-white select-none"
+              style={{
+                textShadow: '0 4px 8px rgba(0,0,0,0.6), 0 -2px 4px rgba(255,255,255,0.2)',
+                letterSpacing: '-0.5px'
+              }}
+            >
+              {stats?.current_level || 1}
+            </span>
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
