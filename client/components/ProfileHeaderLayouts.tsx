@@ -317,7 +317,59 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </div>
       </div>
 
-      <div className="px-6 pb-6">
+      {/* Level Info and XP Stats Below Graph */}
+      <div className="px-6">
+        <div className="flex flex-row items-stretch gap-3">
+          {/* Level Info - Left */}
+          <div className="flex items-center gap-3 p-4 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 flex-shrink-0">
+            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] flex-shrink-0 shadow-lg shadow-[#A06AFF]/50" style={{
+              transform: 'perspective(800px) rotateX(8deg) rotateY(-8deg) rotateZ(2deg)',
+              transformStyle: 'preserve-3d'
+            }}>
+              <span
+                className="text-xl font-black text-white select-none relative z-10"
+                style={{
+                  textShadow: `
+                    0 1px 0 rgba(0,0,0,0.8),
+                    0 2px 0 rgba(0,0,0,0.7),
+                    0 3px 0 rgba(0,0,0,0.6),
+                    0 4px 0 rgba(0,0,0,0.5),
+                    0 5px 10px rgba(0,0,0,0.8),
+                    0 -1px 2px rgba(255,255,255,0.3),
+                    0 -2px 4px rgba(255,255,255,0.1)
+                  `,
+                  letterSpacing: '-0.5px',
+                  filter: 'drop-shadow(0 2px 4px rgba(82,58,131,0.5))'
+                }}
+              >
+                {stats?.current_level || 1}
+              </span>
+            </div>
+            <div className="flex flex-col gap-1 min-w-0">
+              <h3 className="text-sm font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+              <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+            </div>
+          </div>
+
+          {/* XP Stats - Right */}
+          <div className="flex gap-2 flex-1 items-stretch">
+            <div className="flex-1 p-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center">
+              <p className="text-[#B0B0B0] text-[10px]">Current</p>
+              <p className="font-bold text-white text-sm">{currentXP}</p>
+            </div>
+            <div className="flex-1 p-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center">
+              <p className="text-[#B0B0B0] text-[10px]">Next Level</p>
+              <p className="font-bold text-white text-sm">{nextLevelXP}</p>
+            </div>
+            <div className="flex-1 p-3 rounded-xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center">
+              <p className="text-[#B0B0B0] text-[10px]">Remaining</p>
+              <p className="font-bold text-[#A0FF75] text-sm">{xpRemaining}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 pb-6 pt-4">
         <button
           onClick={onEditClick}
           className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
