@@ -345,13 +345,15 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
         </div>
       </div>
 
-      <button
-        onClick={onEditClick}
-        className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
-      >
-        <Edit className="h-3 w-3 inline mr-2" />
-        Edit Statistics
-      </button>
+      <div className="px-6 pb-6">
+        <button
+          onClick={onEditClick}
+          className="w-full px-3 py-2 text-xs font-semibold text-white bg-[#A06AFF]/20 border border-[#A06AFF] rounded-xl hover:bg-[#A06AFF]/30 transition-colors"
+        >
+          <Edit className="h-3 w-3 inline mr-2" />
+          Edit Statistics
+        </button>
+      </div>
     </div>
   );
 };
