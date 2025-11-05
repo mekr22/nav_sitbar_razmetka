@@ -398,9 +398,9 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       style={{ overflow: 'visible' }}
                     >
                       <line
-                        x1={`${(progressPercent / 100) * 100}%`}
+                        x1={`${badgeXPercent}%`}
                         y1="4px"
-                        x2={`${(progressPercent / 100) * 100}%`}
+                        x2={`${badgeXPercent}%`}
                         y2="55%"
                         stroke="#A06AFF"
                         strokeWidth="1.5"
@@ -413,7 +413,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                     <div
                       className="absolute pointer-events-none transform -translate-x-1/2"
                       style={{
-                        left: `${(progressPercent / 100) * 100}%`,
+                        left: `${badgeXPercent}%`,
                         top: '0'
                       }}
                     >
