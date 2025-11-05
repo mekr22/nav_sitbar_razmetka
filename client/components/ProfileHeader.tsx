@@ -460,7 +460,35 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
   // Layout 5: Dark tech style
   return (
     <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
-      {profileCard}
+      <div className="lg:col-span-3 space-y-4">
+        {profileCard}
+
+        {/* Achievements Section for Layout 5 */}
+        <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
+          <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide mb-4">Achievements</h3>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { icon: Trophy, label: 'Verified Trader', active: true },
+              { icon: Target, label: 'Sharp Shooter', active: true },
+              { icon: Flame, label: 'On Fire', active: false },
+              { icon: Star, label: 'Top Rated', active: false },
+            ].map(({ icon: Icon, label, active }) => (
+              <div
+                key={label}
+                className={`flex items-center gap-3 rounded-2xl border px-4 py-3 transition-colors ${
+                  active
+                    ? 'border-[#A06AFF] bg-[#A06AFF]/10 text-[#A06AFF]'
+                    : 'border-[#181B22] bg-[#0C1014]/50 text-[#B0B0B0]'
+                }`}
+              >
+                <Icon className="h-5 w-5 flex-shrink-0" />
+                <p className="text-xs sm:text-sm font-semibold">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <RightPanelLayout5 stats={stats} onEditClick={() => setShowStatsModal(true)} />
       <AdminStatsModal
         open={showStatsModal}
