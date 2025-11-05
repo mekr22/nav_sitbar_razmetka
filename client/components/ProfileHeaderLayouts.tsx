@@ -316,7 +316,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
       {/* Level Info and XP Stats Below Graph */}
       <div className="px-6 py-2">
-        <div className="flex flex-row items-center gap-3 h-20">
+        <div className="flex flex-row items-center gap-3 h-10">
           {/* Level Info - Explorer */}
           <div className="flex-1 flex items-center justify-center flex-col gap-1 px-3 py-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 h-full">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] shadow-lg shadow-[#A06AFF]/50" style={{
