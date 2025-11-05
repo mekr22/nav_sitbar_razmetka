@@ -414,7 +414,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       className="absolute pointer-events-none transform -translate-x-1/2"
                       style={{
                         left: `${badgeXPercent}%`,
-                        bottom: '-32px'
+                        bottom: '-22px'
                       }}
                     >
                       <div className="bg-[#A06AFF] text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg shadow-[#A06AFF]/50 whitespace-nowrap border-2 border-[#C6A6FF]">
