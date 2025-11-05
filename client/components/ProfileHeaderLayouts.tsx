@@ -145,16 +145,25 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Horizontal Achievements Strip */}
       <div className="pt-2 border-t border-[#181B22]">
         <p className="text-xs uppercase text-[#B0B0B0] mb-3">Achievements</p>
-        <div className="flex gap-2 overflow-x-auto pb-2">
+        <div
+          ref={scrollContainerRef}
+          onWheel={handleWheel}
+          className="flex gap-2 overflow-x-auto pb-2 scroll-smooth"
+          style={{ scrollBehavior: 'smooth' }}
+        >
           {[
-            { icon: Trophy, label: 'Verified', color: 'from-[#8B5CF6] to-[#A06AFF]' },
-            { icon: Target, label: 'Shooter', color: 'from-[#8B5CF6] to-[#A06AFF]' },
-            { icon: Flame, label: 'On Fire', color: 'from-[#8B5CF6] to-[#A06AFF]' },
-            { icon: Star, label: 'Top Rated', color: 'from-[#8B5CF6] to-[#A06AFF]' },
+            { icon: Trophy, label: 'Verified' },
+            { icon: Target, label: 'Shooter' },
+            { icon: Flame, label: 'On Fire' },
+            { icon: Star, label: 'Top Rated' },
+            { icon: Swords, label: 'Warrior' },
+            { icon: Heart, label: 'Heartthrob' },
+            { icon: Gem, label: 'Diamond' },
+            { icon: Crown, label: 'Champion' },
           ].map(({ icon: Icon, label }) => (
             <div
               key={label}
-              className="flex flex-col items-center gap-1 p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 whitespace-nowrap flex-shrink-0"
+              className="flex flex-col items-center gap-1 p-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 whitespace-nowrap flex-shrink-0 hover:border-[#A06AFF] hover:bg-[#A06AFF]/10 transition-colors"
             >
               <Icon className="h-5 w-5 text-[#A06AFF]" />
               <p className="text-[10px] text-[#B0B0B0]">{label}</p>
