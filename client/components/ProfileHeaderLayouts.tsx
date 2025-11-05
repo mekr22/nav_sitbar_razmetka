@@ -378,14 +378,18 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Achievement Showcase */}
       <div className="grid grid-cols-4 gap-2">
         {[
-          { Icon: Trophy, color: 'from-[#8B5CF6] to-[#A06AFF]' },
-          { Icon: Target, color: 'from-[#8B5CF6] to-[#A06AFF]' },
-          { Icon: Flame, color: 'from-[#8B5CF6] to-[#A06AFF]' },
-          { Icon: Star, color: 'from-[#8B5CF6] to-[#A06AFF]' },
+          { Icon: Trophy },
+          { Icon: Target },
+          { Icon: Flame },
+          { Icon: Star },
+          { Icon: Trophy },
+          { Icon: Target },
+          { Icon: Flame },
+          { Icon: Star },
         ].map(({ Icon }, idx) => (
           <div
             key={idx}
-            className="flex items-center justify-center h-10 rounded-xl bg-gradient-to-br from-[#8B5CF6]/30 to-[#482090]/20 border border-[#1F2230]"
+            className="flex items-center justify-center h-10 rounded-xl bg-[#0C1014]/50 border border-[#181B22] hover:border-[#A06AFF] hover:bg-[#A06AFF]/10 transition-colors"
           >
             <Icon className="h-5 w-5 text-[#A06AFF]" />
           </div>
@@ -395,7 +399,7 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Edit Button */}
       <button
         onClick={onEditClick}
-        className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] rounded-xl hover:opacity-90 transition-opacity"
+        className="w-full flex items-center justify-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-gradient-to-r from-[#A06AFF] to-[#482090] rounded-xl hover:opacity-90 transition-colors"
       >
         <Edit className="h-3 w-3" />
         Edit Statistics
