@@ -21,7 +21,7 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const areaD = pathD + ` L ${chartWidth} ${chartHeight} L 0 ${chartHeight} Z`;
 
   return (
-    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-4">
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-4 min-w-0">
       {/* Level Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -37,7 +37,7 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
       </div>
 
       {/* Compact Graph */}
-      <div className="relative rounded-lg overflow-visible">
+      <div className="relative rounded-lg overflow-visible w-full">
         <div className="relative h-20 w-full">
           <svg
             className="w-full h-full"
