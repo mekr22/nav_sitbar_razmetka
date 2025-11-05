@@ -385,7 +385,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                       />
                     </svg>
 
-                    {/* Dashed line from badge to graph */}
+                    {/* Dashed line from badge to graph peak */}
                     <svg
                       className="absolute top-0 left-0 w-full h-full pointer-events-none"
                       style={{ overflow: 'visible' }}
@@ -394,7 +394,7 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                         x1={`${(progressPercent / 100) * 100}%`}
                         y1="4px"
                         x2={`${(progressPercent / 100) * 100}%`}
-                        y2="40%"
+                        y2="55%"
                         stroke="#A06AFF"
                         strokeWidth="1.5"
                         strokeDasharray="4,4"
