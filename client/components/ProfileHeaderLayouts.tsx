@@ -431,7 +431,7 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const strokeDashoffset = circumference - (progressPercent / 100) * circumference;
 
   return (
-    <div className="rounded-3xl border border-[#1F2230] bg-gradient-to-b from-[#0A0E12] to-[#000000] p-4 sm:p-6 lg:col-span-2 space-y-6">
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6 lg:col-span-2 space-y-6">
       {/* Tier Section with Integrated Progress Circle */}
       <div className="flex flex-col items-center gap-4 pb-4 border-b border-[#1F2230]">
         {/* Circular Progress Indicator */}
