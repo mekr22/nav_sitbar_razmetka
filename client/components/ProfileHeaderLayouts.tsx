@@ -220,7 +220,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             className="absolute pointer-events-none transform -translate-x-1/2"
             style={{
               left: `${badgeXPercent}%`,
-              bottom: '-40px'
+              bottom: '-28px'
             }}
           >
             <div className="bg-[#A06AFF] text-white px-3 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-[#A06AFF]/50 whitespace-nowrap border-2 border-[#C6A6FF]">
