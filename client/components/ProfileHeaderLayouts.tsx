@@ -191,15 +191,32 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             />
           </svg>
 
-          {/* Progress Badge on Graph Curve */}
+          {/* Dashed line from badge to graph */}
+          <svg
+            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            style={{ overflow: 'visible' }}
+          >
+            <line
+              x1={`${(progressPercent / 100) * 100}%`}
+              y1="8px"
+              x2={`${(progressPercent / 100) * 100}%`}
+              y2="45%"
+              stroke="#A06AFF"
+              strokeWidth="1.5"
+              strokeDasharray="4,4"
+              opacity="0.6"
+            />
+          </svg>
+
+          {/* Progress Badge at End of Filled Area */}
           <div
-            className="absolute pointer-events-none transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute pointer-events-none transform -translate-x-1/2"
             style={{
               left: `${(progressPercent / 100) * 100}%`,
-              top: '35%'
+              top: '0'
             }}
           >
-            <div className="bg-[#A06AFF] text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg shadow-[#A06AFF]/50 whitespace-nowrap border border-[#C6A6FF]">
+            <div className="bg-[#A06AFF] text-white px-3 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-[#A06AFF]/50 whitespace-nowrap border-2 border-[#C6A6FF]">
               {progressPercent}%
             </div>
           </div>
