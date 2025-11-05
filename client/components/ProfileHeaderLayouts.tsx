@@ -316,15 +316,15 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
       {/* Level Info and XP Stats Below Graph */}
       <div className="px-6 py-2">
-        <div className="flex flex-row items-center gap-2 h-20">
-          {/* Level Info - Left */}
-          <div className="flex items-center gap-2 px-3 py-2 rounded-xl border border-[#181B22] bg-[#0C1014]/50 flex-shrink-0 h-full">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] flex-shrink-0 shadow-lg shadow-[#A06AFF]/50" style={{
+        <div className="flex flex-row items-center gap-3 h-20">
+          {/* Level Info - Explorer */}
+          <div className="flex-1 flex items-center justify-center flex-col gap-1 px-3 py-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 h-full">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] shadow-lg shadow-[#A06AFF]/50" style={{
               transform: 'perspective(800px) rotateX(8deg) rotateY(-8deg) rotateZ(2deg)',
               transformStyle: 'preserve-3d'
             }}>
               <span
-                className="text-lg font-black text-white select-none relative z-10"
+                className="text-base font-black text-white select-none relative z-10"
                 style={{
                   textShadow: `
                     0 1px 0 rgba(0,0,0,0.8),
@@ -342,26 +342,28 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
                 {stats?.current_level || 1}
               </span>
             </div>
-            <div className="flex flex-col gap-0.5">
-              <h3 className="text-xs font-bold text-white whitespace-nowrap">{stats?.level_info?.name || 'Newbie'}</h3>
-              <p className="text-[10px] text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+            <div className="flex flex-col gap-0 text-center">
+              <h3 className="text-[10px] font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+              <p className="text-[9px] text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
             </div>
           </div>
 
-          {/* XP Stats - Right */}
-          <div className="flex gap-2 flex-1 items-center h-full">
-            <div className="flex-1 px-3 py-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center h-full">
-              <p className="text-[#B0B0B0] text-[9px] leading-tight">Current</p>
-              <p className="font-bold text-white text-sm">{currentXP}</p>
-            </div>
-            <div className="flex-1 px-3 py-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center h-full">
-              <p className="text-[#B0B0B0] text-[9px] leading-tight">Next Level</p>
-              <p className="font-bold text-white text-sm">{nextLevelXP}</p>
-            </div>
-            <div className="flex-1 px-3 py-2 rounded-lg border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center h-full">
-              <p className="text-[#B0B0B0] text-[9px] leading-tight">Remaining</p>
-              <p className="font-bold text-[#A0FF75] text-sm">{xpRemaining}</p>
-            </div>
+          {/* Current */}
+          <div className="flex-1 px-3 py-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center h-full">
+            <p className="text-[#B0B0B0] text-[9px] leading-tight">Current</p>
+            <p className="font-bold text-white text-sm">{currentXP}</p>
+          </div>
+
+          {/* Next Level */}
+          <div className="flex-1 px-3 py-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center h-full">
+            <p className="text-[#B0B0B0] text-[9px] leading-tight">Next Level</p>
+            <p className="font-bold text-white text-sm">{nextLevelXP}</p>
+          </div>
+
+          {/* Remaining */}
+          <div className="flex-1 px-3 py-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 text-center text-xs flex flex-col justify-center h-full">
+            <p className="text-[#B0B0B0] text-[9px] leading-tight">Remaining</p>
+            <p className="font-bold text-[#A0FF75] text-sm">{xpRemaining}</p>
           </div>
         </div>
       </div>
