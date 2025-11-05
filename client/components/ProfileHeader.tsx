@@ -391,29 +391,6 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
                 <div className="flex flex-row items-center gap-3 h-10">
                   {/* Level Info - Explorer */}
                   <div className="flex-1 flex items-center justify-center flex-col gap-1 px-3 py-2 rounded-2xl border border-[#181B22] bg-[#0C1014]/50 h-full">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] shadow-lg shadow-[#A06AFF]/50" style={{
-                      transform: 'perspective(800px) rotateX(8deg) rotateY(-8deg) rotateZ(2deg)',
-                      transformStyle: 'preserve-3d'
-                    }}>
-                      <span
-                        className="text-base font-black text-white select-none relative z-10"
-                        style={{
-                          textShadow: `
-                            0 1px 0 rgba(0,0,0,0.8),
-                            0 2px 0 rgba(0,0,0,0.7),
-                            0 3px 0 rgba(0,0,0,0.6),
-                            0 4px 0 rgba(0,0,0,0.5),
-                            0 5px 10px rgba(0,0,0,0.8),
-                            0 -1px 2px rgba(255,255,255,0.3),
-                            0 -2px 4px rgba(255,255,255,0.1)
-                          `,
-                          letterSpacing: '-0.5px',
-                          filter: 'drop-shadow(0 2px 4px rgba(82,58,131,0.5))'
-                        }}
-                      >
-                        {stats?.current_level || 1}
-                      </span>
-                    </div>
                     <div className="flex flex-col gap-0 text-center">
                       <h3 className="text-[10px] font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
                       <p className="text-[9px] text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
