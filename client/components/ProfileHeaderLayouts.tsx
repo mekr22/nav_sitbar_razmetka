@@ -130,8 +130,8 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
 
 
       {/* Graph Container */}
-      <div className="relative rounded-2xl overflow-visible shadow-lg shadow-[#A06AFF]/20">
-        <div className="relative h-56 w-full p-4">
+      <div className="relative rounded-2xl overflow-visible shadow-lg shadow-[#A06AFF]/20 -mx-6">
+        <div className="relative h-56 w-full px-4 py-4">
           <svg
             className="w-full h-full"
             viewBox={`0 0 ${chartWidth} ${chartHeight}`}
