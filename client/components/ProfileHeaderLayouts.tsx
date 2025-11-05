@@ -376,24 +376,27 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
       </div>
 
       {/* Achievement Showcase */}
-      <div className="grid grid-cols-4 gap-2">
-        {[
-          { Icon: Trophy },
-          { Icon: Target },
-          { Icon: Flame },
-          { Icon: Star },
-          { Icon: Trophy },
-          { Icon: Target },
-          { Icon: Flame },
-          { Icon: Star },
-        ].map(({ Icon }, idx) => (
-          <div
-            key={idx}
-            className="flex items-center justify-center h-10 rounded-xl bg-[#0C1014]/50 border border-[#181B22] hover:border-[#A06AFF] hover:bg-[#A06AFF]/10 transition-colors"
-          >
-            <Icon className="h-5 w-5 text-[#A06AFF]" />
-          </div>
-        ))}
+      <div>
+        <h3 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wide mb-3">Achievements</h3>
+        <div className="grid grid-cols-4 gap-2">
+          {[
+            { Icon: Trophy },
+            { Icon: Target },
+            { Icon: Flame },
+            { Icon: Star },
+            { Icon: Trophy },
+            { Icon: Target },
+            { Icon: Flame },
+            { Icon: Star },
+          ].map(({ Icon }, idx) => (
+            <div
+              key={idx}
+              className="flex items-center justify-center h-10 rounded-xl bg-[#0C1014]/50 border border-[#181B22] hover:border-[#A06AFF] hover:bg-[#A06AFF]/10 transition-colors"
+            >
+              <Icon className="h-5 w-5 text-[#A06AFF]" />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Progress Indicator */}
