@@ -25,7 +25,7 @@ export const RightPanelLayout2: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* Level Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#C77DFF] via-[#A06AFF] to-[#6B3BD7] flex-shrink-0 shadow-lg shadow-[#A06AFF]/50 relative overflow-hidden" style={{
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-transparent border-2 border-[#A06AFF] flex-shrink-0 shadow-lg shadow-[#A06AFF]/40 relative overflow-hidden" style={{
             transform: 'perspective(800px) rotateX(8deg) rotateY(-8deg) rotateZ(2deg)',
             transformStyle: 'preserve-3d'
           }}>
