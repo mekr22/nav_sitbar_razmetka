@@ -378,19 +378,6 @@ export const RightPanelLayout4: FC<RightPanelProps> = ({ stats, onEditClick }) =
         <p className="text-sm text-[#A0FF75] font-semibold">{stats?.total_xp || 0} XP</p>
       </div>
 
-      {/* Fancy XP Bar */}
-      <div className="space-y-2">
-        <div className="h-1.5 bg-[#181B22] rounded-full overflow-hidden border border-[#1F2230]">
-          <div
-            className="h-full bg-gradient-to-r from-[#A0FF75] via-[#A06AFF] to-[#482090] rounded-full transition-all shadow-lg"
-            style={{ width: `${stats?.level_info?.progressPercent || 0}%` }}
-          ></div>
-        </div>
-        <p className="text-xs text-center text-[#B0B0B0]">
-          {stats?.level_info?.progressPercent || 0}% · {(stats?.level_info?.nextLevelXP || 100) - (stats?.total_xp || 0)} XP left
-        </p>
-      </div>
-
       {/* Achievement Showcase */}
       <div className="grid grid-cols-4 gap-2">
         {[
