@@ -442,9 +442,32 @@ const ProfileHeader: FC<ProfileHeaderProps> = ({ user, layoutTab = 1 }) => {
 
   // Layout 4: Premium glass effect
   if (layoutTab === 4) {
+    const progressPercent = stats?.level_info?.progressPercent || 0;
+    const xpLeft = (stats?.level_info?.nextLevelXP || 100) - (stats?.total_xp || 0);
+
     return (
       <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-5 w-full">
-        {profileCard}
+        <div className="lg:col-span-3 space-y-4">
+          {profileCard}
+
+          {/* XP Progress Bar - Full Width */}
+          <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-4 sm:p-6">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-bold text-white">Influencer</h3>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold text-white">{stats?.total_xp || 0} XP</span>
+                <span className="text-xs text-[#B0B0B0]">{progressPercent}% · {xpLeft} XP left</span>
+              </div>
+            </div>
+            <div className="h-2 bg-[#181B22] rounded-full overflow-hidden border border-[#181B22]">
+              <div
+                className="h-full bg-gradient-to-r from-[#A0FF75] via-[#A06AFF] to-[#482090] rounded-full transition-all"
+                style={{ width: `${progressPercent}%` }}
+              ></div>
+            </div>
+          </div>
+        </div>
+
         <RightPanelLayout4 stats={stats} onEditClick={() => setShowStatsModal(true)} />
         <AdminStatsModal
           open={showStatsModal}
