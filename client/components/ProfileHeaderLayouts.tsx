@@ -210,7 +210,7 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
             viewBox={`0 0 ${chartWidth} ${chartHeight}`}
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid meet"
+            preserveAspectRatio="none"
           >
             <defs>
               <clipPath id={`${id}-progress-clip`}>
@@ -430,7 +430,7 @@ export const RightPanelLayout5: FC<RightPanelProps> = ({ stats, onEditClick }) =
       {/* XP Progress Details */}
       <div className="space-y-3">
         <div className="flex items-center justify-between text-xs font-mono">
-          <span className="text-[#A0FF75]">��� progress</span>
+          <span className="text-[#A0FF75]">→ progress</span>
           <span className="text-white font-bold">{progressPercent}%</span>
         </div>
         <div className="h-1.5 bg-[#1F2230] rounded-full overflow-hidden">
