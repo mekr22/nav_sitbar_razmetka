@@ -110,28 +110,29 @@ export const RightPanelLayout3: FC<RightPanelProps> = ({ stats, onEditClick }) =
   const areaD = pathD + ` L ${chartWidth} ${chartHeight} L 0 ${chartHeight} Z`;
 
   return (
-    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] p-6 lg:col-span-2 space-y-5">
-      {/* Header with Level Info */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#A0FF75] flex-shrink-0">
-            <span className="text-2xl font-bold text-black">{stats?.current_level || 1}</span>
+    <div className="rounded-3xl border border-[#181B22] bg-[#0C101480] lg:col-span-2 space-y-5 overflow-hidden">
+      <div className="px-6 pt-6">
+        {/* Header with Level Info */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#A0FF75] flex-shrink-0">
+              <span className="text-2xl font-bold text-black">{stats?.current_level || 1}</span>
+            </div>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
+              <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+            </div>
           </div>
-          <div className="flex flex-col gap-1">
-            <h3 className="text-lg font-bold text-white">{stats?.level_info?.name || 'Newbie'}</h3>
-            <p className="text-xs text-[#B0B0B0]">Level {stats?.current_level || 1}</p>
+          <div className="text-right">
+            <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
+            <p className="text-xs text-[#B0B0B0]">XP to next</p>
           </div>
-        </div>
-        <div className="text-right">
-          <p className="text-[#A06AFF] font-bold">{xpRemaining}</p>
-          <p className="text-xs text-[#B0B0B0]">XP to next</p>
         </div>
       </div>
 
-
-      {/* Graph Container */}
-      <div className="relative rounded-2xl overflow-visible shadow-lg shadow-[#A06AFF]/20 -mx-6">
-        <div className="relative h-56 w-full px-4 py-4">
+      {/* Graph Container - Full Width */}
+      <div className="relative overflow-visible shadow-lg shadow-[#A06AFF]/20">
+        <div className="relative h-56 w-full px-6 py-4">
           <svg
             className="w-full h-full"
             viewBox={`0 0 ${chartWidth} ${chartHeight}`}
